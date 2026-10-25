@@ -1,0 +1,14 @@
+{
+  "featureId": "L01",
+  "date": "2026-10-25",
+  "status": "passed",
+  "originalCriteriaUnchanged": true,
+  "goalComplete": false,
+  "requirements": {
+    "official_and_original_single_shared_heterogeneous_pin_mapping": ".local/library-query-closure-20261025/report.json",
+    "readroot_junction_and_query_bounds": ".local/library-boundaries-20261025/report.json"
+  },
+  "originalDeclarationHashesPreserved": true,
+  "externalFootprintVerified": false,
+  "globalFileSymlinkSkipRetained": true
+}

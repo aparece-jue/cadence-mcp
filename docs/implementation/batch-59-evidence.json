@@ -1,0 +1,36 @@
+{
+  "batch": 59,
+  "date": "2026-10-25",
+  "goalComplete": false,
+  "tools": 160,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "regression": {
+    "total": 391,
+    "passed": 390,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-391-dat-exports-20261025.txt"
+  },
+  "reportSha256": {
+    ".local/dat-exports-mcp-20261025/report.json": "e00d8cac3de287ed41829266656bd3e1b56bc4de91bd5e091c43f237008fbf7c",
+    ".local/dat-export-faults-20261025/report.json": "186790c805d3ff098e57f80a20f119861ed95cca0e6d64895b644f593b1e7c9a",
+    ".local/regression-391-dat-exports-20261025.txt": "71f4cad30d02b968ea4217beee76127b167c82d3d09fc16faf0e41c60e447bbc",
+    "docs/implementation/batch-59-dat-exports-2026-10-25.md": "706296160425d8f023eb361d9cf48a892195612d51c4f70559766c31f23a9afe"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_export_format.py": "57652b186413310f2475c83024390587e9f26cbf58f44e21475bf2af621cc8c8",
+    "src/cadence_mcp/pspice_export_worker.py": "44c0af17e927a2e9f501df9a51ac4b05ad5b6abfbe49ebe78eec5bc2c71875c2",
+    "src/cadence_mcp/pspice_exports.py": "1b3801ec8fbfb69cc60287f7a5fe0e110261f4f1d3f602fe7b7d32fb9cd943c6",
+    "src/cadence_mcp/server.py": "f947bc0787b0c232052549e8beea732900ceddda688d805a7dafab098fc4bbc7",
+    "tests/test_pspice_exports.py": "e5a07b6560dc3126cab0185e3cd9fbe3266fb1bbacfb83f69b7327dd04878dfa",
+    "tools/smoke_dat_exports.py": "fde981217763c76d734290247d0dc5e18b92fa2faa2340a2f509774f870e0ecb",
+    "tools/smoke_dat_export_faults.py": "6b15bd4d8628120d17496bfa7e8c4cfcbb82837fc3ff685647f442a5f3adfa16",
+    "contracts/tools.v0.1.json": "9ee0ebfc3495e1783c5aebccccfbfe64ac1300302d32e16e911679a0d422b4bd"
+  }
+}

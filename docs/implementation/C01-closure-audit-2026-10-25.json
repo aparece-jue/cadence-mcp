@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-25",
+  "scope": "C01 requirement-level closure; other gates not promoted",
+  "featureId": "C01",
+  "status": "passed",
+  "requirementEvidence": {
+    "independent_counts_empty_names_filters_paging": ".local/query-closure-20261025/report.json",
+    "live_staleness_snapshot_close": ".local/query-stale-final-20261025/report.json",
+    "original_official_regressions": ".local/definition-query-final-20261025/report.json"
+  },
+  "allLinkedIssuesResolved": true,
+  "originalCriteriaUnchanged": true,
+  "unresolvedWriterFailuresRemainOutsideC01": true,
+  "goalComplete": false
+}

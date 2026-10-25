@@ -1,0 +1,37 @@
+{
+  "batch": 53,
+  "goalComplete": false,
+  "tools": 155,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "scope": "bitmap query/preservation/delete/placement; creation/geometry/pixel replacement incomplete",
+  "reportSha256": {
+    ".local/bitmap-public-query-20261024/report.json": "8abd5943429bf1830119860f90ee7fa3f2f31c44b5ccd566ba33cbc466aa749d",
+    ".local/bitmap-public-edits-20261024/report.json": "658872fcbc2334f014a1eb55ab4a399957cb1c6a6550dcb6af94252dcf7f457b",
+    ".local/bitmap-pixel-only-fault-20261024/report.json": "e96d08c56c141c326fd6bfc7c1111275b53e641c6606ce2468181777a70d56ad",
+    ".local/bitmap-public-placement-v2-20261024/report.json": "dd2912087c9a683acb0490cf07d92d1a5a7783af5f59379df77f5d91cdfdff5a",
+    ".local/bitmap-public-group-20261024/report.json": "d7c507e0d461bb3e00b5b8121c6bd43eb9eef7f819b19fc1524d7a387b634fed",
+    ".local/bitmap-edit-faults-20261024/report.json": "4aaf4b9ce948de69f9b4dbd8e5950628229113811fa1ccfd7cbe483627cebe9a",
+    ".local/regression-361-bitmap-reader-20261024.txt": "0f59f2b9c29d77001ab5cd40bcbca9344b04d585ec08a6cc3a8c5f09fde0addf",
+    "docs/implementation/batch-53-bitmap-worker-2026-10-24.md": "1e96d5c2a3b6d2be7b06c8eeba9099685ca70f4be4408ec915657163b22adf73"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/bitmap_dib.py": "434c8b6c00a88ca6ddbee3cb4f20eb58aec0a16ce9c6376d294c813f5ea132be",
+    "src/cadence_mcp/embedded_tcl.py": "e6e9731503f64d2bc5c30fc3b425ce45d50bbde53cbffdec9bc068653ab523ae",
+    "src/cadence_mcp/environment.py": "ab7834268339942bdece9925936a2d32231d6e51ff4bacba5ae40b24de27b3e5",
+    "src/cadence_mcp/library_vector_query.py": "f401696481d18f328c17707a4f2bd3c6e4712e64f575a7462999df94e1ed1d32",
+    "src/cadence_mcp/library_vector_edit.py": "1edc548ff1681efa90f00c7b3e7444b91ab896fb9bd3775eaf794c144af57709",
+    "src/cadence_mcp/capture_place.py": "329eab65db9b1b29fb6152e1c36d767286e82258bbf81b578c768ea99193fc48",
+    "src/cadence_mcp/capture_multiunit_place.py": "49772150c8e3ce6ca1a7baa9693d3f6046a894258303bafe56a3de45713e2b5d",
+    "src/cadence_mcp/server.py": "c5a83ecb6837efa675514d671c96a700425fa027f299df1b7b6dc8dcaa95082d",
+    "src/cadence_mcp/adapters/dbo_vector_signature.tcl": "f524cc251ececc035625f40b99485cc7f46a35654ce6e8b20a8b6f8213b22db1",
+    "src/cadence_mcp/adapters/dbo_vector_json.tcl": "de26dc01cde7de3896ab89fb90be78afd92d964e726b99a836b721600e3a6d61",
+    "src/cadence_mcp/adapters/inspect_library_create.tcl": "e4d0183918b3a95b2b0799a3fadca1107d2b0c3991b608973bf3c90e7207ee7d",
+    "tests/test_bitmap_dib.py": "d3c1345c07d4e489f22c00ff04f2b6b8d891fe323cdd0a151ae443c6239a54ae",
+    "contracts/tools.v0.1.json": "202973a84ed7256156cd063e7b4e365b34abdeca465db66554b16d8de6537ce9"
+  }
+}

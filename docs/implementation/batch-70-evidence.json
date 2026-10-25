@@ -1,0 +1,53 @@
+{
+  "batch": 70,
+  "date": "2026-10-25",
+  "tools": 178,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 10,
+    "implemented_partial": 16,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "acceptedFeature": "E01",
+  "criteriaChanged": false,
+  "latestFullRegression": {
+    "total": 443,
+    "passed": 442,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-443-model-properties-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-70-approved-properties-2026-10-25.md": "44e3c0173cd271af0aafd0cc0792489eb0088b56858c91756c9d32ef2a183ff4",
+    ".local/model-properties-mcp-v3-20261025/report.json": "07733c28915659516d341b1ede4b297324bc1950c91b7e2f499f4613c7ac5fe0",
+    ".local/property-official-final-20261025/property-edits-report.json": "7a960ac69c13ec5df1783c3b28692b5abc8d9e9a61868a86c7dcd54c91f21195",
+    ".local/model-property-faults-20261025/report.json": "126899f892f0068f2d814eeac3eaa8a72488c94787e88527e97a3cddd320b8ec",
+    ".local/model-property-numerics-v2-20261025/report.json": "4df78d33095315e98a4b68a56e74d53948c1f2a43dc63e3fd7d4d6d93cdadac0",
+    ".local/model-fault-reverify-final-20261025/report.json": "349b103e3a693f34923671b2bb39ac7e8eb2774c0d3bf8241eafd6c848932e82",
+    ".local/property-snapshot-end-state-v2-20261025/report.json": "b022b3245b8a90de985e84a68e9ce49d8bca6ec4c021f245d41c3637fe828d6e",
+    ".local/regression-443-model-properties-20261025.txt": "ca3ef3b6543b06160fb08b8967aff22fde875523859b4121dfa28a7688abffc8",
+    ".local/model-property-read-20261025/report.json": "0a1f5463b9b03bca5482e9095fdd6bc6e35be6eeb5a323ad5c501b19dad84dc0",
+    ".local/model-property-fixture-20261025/report.json": "8331b6071b43c8a55ea53cdf4ca3c0cddf3d1db9d5ee21475c36de0632e269b6",
+    ".local/model-properties-mcp-20261025/report.json": "d6fd7ac60620ee7a425a2e60f5893fc36808bb7b9acdce9d935b1fbfb31e10ff",
+    ".local/model-properties-mcp-v2-20261025/report.json": "b529d81da5ecae0f6218a832e7d9cc6eaaba956006495f67def3e1bf6eb7894f",
+    ".local/model-property-numerics-20261025/report.json": "95ab57985f8d3f8ad9d558322828fb5cca910a4193e25be11193a3e9f9c3fb96",
+    ".local/property-snapshot-end-state-20261025/diagnostic-process.json": "d6c4a559967b2e4a8fd4647900a219b2d7e66b3e6911f817107067dd14f1d87f",
+    "docs/implementation/E01-closure-audit-2026-10-25.json": "fa82f51a9176fbf0b13ae4fede9e65871559f73e72a73fd74719a649d0d79640"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_edit.py": "63056d64f9724da266dc314e386ff41684eaff171ede064d007865095f6bd977",
+    "src/cadence_mcp/server.py": "eabd24a702ffd222954f709b6d798f72a8f2e38a973efc72d6d438872ae3abcc",
+    "src/cadence_mcp/adapters/edit_property.tcl": "91cbc66c517505f1f2510c431552b45ccded8995132fbab27d90c61d85492723",
+    "src/cadence_mcp/adapters/inspect_design_properties.tcl": "e5f365e95213009ced3a04e7a15d7247eeefc4a4e402fa976d755267bae453f1",
+    "tests/test_model_properties.py": "a30f3e7e37e2194c4f1d7185eee71b8e91433d975da4c119f98ddc7b8876f060",
+    "tests/test_isolated_jobs.py": "2f1280486bedbf96fc2968ddf69ce46a05e3e8ef807ed45ac43661e6ed8c0d8e",
+    "tools/smoke_model_properties.py": "f6ec4aa897a235cc287aa5e115e1ff9bd663fa8f437746e98227db97c864f5d7",
+    "tools/smoke_model_property_faults.py": "366c381d124fbfcdd23484d985a1364f7ed1b21df6e76b86cdd29d4df6e53d6d",
+    "tools/smoke_model_parameter_numerics.py": "151dfd29f44726523846d2c4404955b2567b1c6d0bc7d59aac6d5478d11be21f",
+    "contracts/tools.v0.1.json": "6f77dcb4e3173a82864f0a87c39da711dd2154b66ed7e6b92100730a088dd8bb"
+  }
+}

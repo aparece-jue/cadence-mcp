@@ -1,0 +1,11 @@
+{
+  "batch": 42,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/multiunit-naming-20261024/report.json": "d3e4a42cca5dbac4a1375f37b317218204730feb610b2595d21436cec878181d",
+    ".local/multiunit-naming-v2-20261024/report.json": "69d0242fb18622f802a3255c70a646900ef135fcdd7ab768faac8e165ac09d29",
+    ".local/multiunit-naming-hidden-dsn-20261024/report.json": "99885466119d1a32ef9e907ca67fd6a80dba31d6b2fbf9d53cd768b427ef0fbf",
+    ".local/multiunit-naming-visible-dsn-20261024/report.json": "d1e62b9792cfc8ae8f53f0be81b3764725c48209f3dffd5315e3a85f2ee2abc8",
+    ".local/shared-pin-heterogeneous-mcp-20261024/report.json": "1f3d55715fd1c7254df396fadd8edae0d9768f08ead658de094bea8e04dd0523"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "goalComplete": false,
+  "tools": 111,
+  "publicHierarchyWrites": false,
+  "regression": {
+    "total": 269,
+    "passed": 268,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-269-hierarchy-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/hierarchy_semantics.py": "d84ef68c67ea2418951058451c237746d5c895e96298bea7269eaa7391e1e6fd",
+    "src/cadence_mcp/adapters/probe_hierarchy_clone.tcl": "ae884a97c70ed196addb77d899180ff5ce062b57da17606f62b6bca3d5e55254",
+    "tests/test_hierarchy_semantics.py": "974b77d60dbcc7fa13c1b799b66bed004e21352ddb2caed56917eb66f17007a7",
+    "tools/probe_hierarchy_clone.py": "c8398cc3858acc33c0e571ac90bb7824083549e4cab12350ef6c4335516cdd4c",
+    "tools/accept_hierarchy_clone_nets.py": "4a0ae719d115873e06d93f697bb91c6080b002d139258157f9e7cf89d98084bf",
+    "tools/audit_hierarchy_clone_partition.py": "ce4784c01addbee11eb6b264d80c43a3a822c64e2fede44858d5fad9773f7450",
+    "tools/smoke_hierarchy_mcp.py": "ada835e8345be1cf0ae21b8d4efa7e8113bb0223ca9bb3090a189ef3b3c1aeb5"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "batch": 62,
+  "date": "2026-10-25",
+  "tools": 167,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 1,
+    "implemented_partial": 20,
+    "deferred": 10,
+    "planned": 2
+  },
+  "acceptedFeature": "C01",
+  "productionChanged": false,
+  "fullRegressionRunThisBatch": false,
+  "retainedRegression": {
+    "total": 411,
+    "passed": 410,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-411-solver-diagnostics-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-62-C01-query-acceptance-2026-10-25.md": "704f2ba33a118c262cb682eef146141b73bb25f34947be3df39b7ebbc9ccae09",
+    ".local/query-closure-20261025/report.json": "013a6d0b8741d3280841e537d09b6c0d2f457d76c0b143af3af0413d25560cb6",
+    ".local/query-stale-final-20261025/report.json": "bdcc3d272d42220d87fb889296f4abd8ff006976383e5d650fc19606b311ffb6",
+    ".local/definition-query-final-20261025/report.json": "9e76f6930f996ac8577c7a4b910871e040585fa1b98455c5f71ed636e17dc28e",
+    ".local/query-closure-20261025/expected.json": "021271ac802154ab4596e1655d863cb7ee63abf7697ac544d51ff88a28912f80",
+    "docs/implementation/C01-closure-audit-2026-10-25.json": "3ce2b1ee7f759796d71c957c24e713563b69dfc4a8a74e185182f0866bc0ea91"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture.py": "3de821b08598add8775a014ab2dd3d0d5392f8fdf408971b7ec099e9dcfecb82",
+    "src/cadence_mcp/adapters/inspect.tcl": "a4faefde21cead903cc35451d590cee8bd32d4950fd6adbcb860523678707d05",
+    "tools/fixture_query.tcl": "dc493be077a3469dfe094ce6ed2e170d24561be166c223fd200917ca81238810",
+    "tools/smoke_query_closure.py": "9145a4de0413cea791fdaca6caad62d9a106947af4505bfc58350de5f4c83693",
+    "tools/smoke_query_stale.py": "4b1bd4ee304f2611e173b89d36ccc6276c5bc7eba48b5eb3ff79a539aff6b39e",
+    "tools/smoke_definition_reads.py": "4a9b16303adb49ac353d1f88c5fefec77c7b17548ef5b97514d7bd103c9f0232",
+    "contracts/tools.v0.1.json": "d75bdd31411fd571bbac7d88c684e311d9231f8f000ec7cb46dbbed23dbf4628"
+  }
+}

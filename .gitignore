@@ -1,0 +1,35 @@
+# Local runtimes and generated files
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+build/
+
+# Local configuration, secrets, logs and design workspaces
+.env
+.env.*
+!.env.example
+*.log
+.local/
+/workspaces/
+/scratch/
+/artifacts/
+/local-config/
+
+# Real design files are excluded by default.
+# Deliberate redistributable fixtures may be force-added after review.
+*.dsn
+*.DSN
+*.olb
+*.OLB
+*.opj
+*.OPJ
+*.dat
+*.DAT
+
+# Python package metadata
+*.egg-info/

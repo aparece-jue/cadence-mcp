@@ -1,0 +1,13 @@
+{
+  ".local/placement-521716d26a/report.json": "b2872c2e1d36e0d855ad4976a86389a5d2f8544e29e7107d824f61032ccba98c",
+  ".local/definition-diagnostic-b0a9a2ce36/report.json": "bde196217622fdf1718114115120b441e040dbbfe84fc51a4b0eff935bdee8df",
+  ".local/definition-diagnostic-b0a9a2ce36/inspection.json.net-state.json": "fb7dd7838346a575c6163b9e517aa1bf8fafd6c4960e9de18c66a8740ce18179",
+  ".local/definition-fix-8ab816a3e4/report.json": "a81f5fcf76219949d04e4b05e6892bfa9c5a9014ae64765c9ce69ee8eddc8a7d",
+  ".local/definition-fix-1712d44e3c/report.json": "1473145e35175341e11f48720a4cd85fbc975d73488624d9af459a84c7e983f7",
+  ".local/definition-stdio-20261023/report.json": "5a5fb0e7b062342d2f842715b475feebf1e409f142d1cf4d690e4eca6416af3e",
+  ".local/pose-matrix-1fc81bf46d/report.json": "6d56df6203d5ce4928162e1e1e90e6fee9ab4191a959e0771801c4cff47c5f4d",
+  ".local/wire-alias-0666b70746/report.json": "f2a9454cee41420882db88b18bd747ef380819f366956a42a3ca10706b4f5f80",
+  ".local/connections-positive-negative-20261023/report.json": "2252c1c95b9582d5836dc82a78784d8fee686051e79701776bb645b26e16c30d",
+  ".local/connections-read-20261023/report.json": "52347b2372379318c47ed6e667a41ab1d37d74908cf38d8d81fc5b0f2acbc8ca",
+  ".local/regression-178-reader-20261023.txt": "2c2a745744f50a5f827807f1f1796c924c3a8e8e7e88212f46f949afbcd0fdea"
+}

@@ -1,0 +1,49 @@
+{
+  "batch": 81,
+  "date": "2026-10-25",
+  "tools": 193,
+  "productionChanged": true,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 16,
+    "implemented_partial": 9,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 508,
+    "passed": 507,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-508-library-family-20261025.txt"
+  },
+  "newFamilyNativeCases": 4,
+  "familyPlacementCases": 2,
+  "familyFaultCases": 4,
+  "fullL03Accepted": false,
+  "evidenceSha256": {
+    ".local/library-family-mcp-20261025/report.json": "e1bc7a04f487c1ef36181835f7572851afd855357dc8ebaf7633c01f74839e83",
+    ".local/library-family-mcp-v2-20261025/report.json": "decab175a3f3db46195aa4e7a7abe2121e727a1a0b4bb8793468bbe969b087d1",
+    ".local/library-family-faults-20261025/report.json": "8bf1b969e173fe954264ce638f4778f50d9c5f4124494f2e0f4074c41b40660d",
+    ".local/library-family-placement-v2-20261025/report.json": "f180092b11f211e4a8abb75e5f84df89386beae79b1f0a67e3590111d510741b",
+    ".local/regression-508-library-family-20261025.txt": "d69dcaad7012e7e0f6ed336ec6c906a6aba69ea2b02d65b0b5e972db9b69c6b2",
+    "docs/implementation/batch-81-library-package-families-2026-10-25.md": "8b7b14dc8a1bc68f5187c76283d9b553225d30f39ef4321a64d25dfef352d3d8",
+    ".local/library-family-mcp-v2-20261025/expected.json": "b850c646a9d29c748be860cb4e2bb88d2d3c2043c0197a9b1fdd5ec1fee6b67f",
+    ".local/library-family-mcp-v2-20261025/valid-first-output.olb": "344df655bef4ccb0819a2eae9cf211a10422b1c7e2ebd2dec3ff459c42b19e5c",
+    ".local/library-family-placement-v2-20261025/expected.json": "829d8e73b4d7023922cc1bae6c1d684d2a95b2060bd66efd9039f72e44677c1b"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_create.py": "088ed6c448edefb652a4bc259f1feec9c58bf567d68f85d8dbe71ea186592838",
+    "src/cadence_mcp/adapters/create_library.tcl": "3f1f277e8899200ebbcdf4a0e220159160fbc5ba1d227dc863d39d3c6f4563af",
+    "src/cadence_mcp/server.py": "cf1a665e65b9d104d60bef533de13cc88b4e087e1bf8097233cc5ef40cf99a48",
+    "tests/test_library_family.py": "79058d07e1ca2e1dc4b331d84e06ec8fbc64557347959318cb0450a46605da16",
+    "tools/smoke_library_family.py": "cf5cad2e30d66b3f6d75f05afbe9d238b9e6adb7a522c8cac56efe7edb1cb4d1",
+    "tools/smoke_library_family_faults.py": "fc4dcd0770f8e16ac7603afc9d9f280325516475c56c13a406d5398c91778624",
+    "tools/smoke_library_family_placement.py": "d4bc3da8ca43585c8a6e6f41100243d34413ebdae6b0a3ce2f134e5770d1826a",
+    "tools/fault_library_family_footprint.tcl": "380ce830308c0c287dbd580b9b07d50d8a98321c25116bef56a362bb939e1b1e",
+    "contracts/tools.v0.1.json": "898ef49d88febd2359449a1c1496214caf49f31a70fc53a1669f41dcd2d3599c"
+  }
+}

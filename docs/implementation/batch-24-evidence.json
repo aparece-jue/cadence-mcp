@@ -1,0 +1,22 @@
+{
+  "goalComplete": false,
+  "tools": 111,
+  "regression": {
+    "total": 260,
+    "passed": 259,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-260-run-output-final-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/pspice_runs.py": "c2442eb10213f4b8d082b6314e1ac2d9d877336f355e61679d2a8019cb3664ac",
+    "src/cadence_mcp/server.py": "e67cfcaa35de6c60dca7fd546a8c0a8c383e412d436da6f4b738b6fe55e92ce0",
+    "tests/test_run_output.py": "0dea2b095d2194d2b5268caa033d227357759fcc9d70faf868328ae4cdd7c0b4",
+    "tools/probe_native_measure.py": "1a2b40e1d895178edfabc8fe199b75c3ad7c7ac9f5b4a0e1634a9cd48f93f2c0",
+    "tools/smoke_run_output.py": "46380fd7f8fd5a6b81e90b6799dcbcdf39d8b57c8db4485389c8cec2dca5d830",
+    "contracts/tools.v0.1.json": "ee0de09041eb417b3ea2678725eb9675c7527dba4a504249ee580907c45fe98f"
+  },
+  "nativeMeasurePassed": false,
+  "runOutputPassed": true
+}

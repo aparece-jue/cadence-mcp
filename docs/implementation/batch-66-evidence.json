@@ -1,0 +1,42 @@
+{
+  "batch": 66,
+  "date": "2026-10-25",
+  "tools": 178,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 3,
+    "deferred": 10,
+    "implemented_partial": 18,
+    "planned": 2
+  },
+  "regression": {
+    "total": 429,
+    "passed": 428,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-429-cli-20261025.txt"
+  },
+  "originalCliTimeoutRootCauseProven": false,
+  "licenseFailureNativeVerified": false,
+  "reportSha256": {
+    "docs/implementation/batch-66-official-cli-2026-10-25.md": "7a4b8e99cf16c9bcd4c8c3f157177392222d6e34c71cefb78e8709adace5ed4f",
+    ".local/official-cli-recheck-20261025/report.json": "b9dc675dac4e8e208e41bf36c82ab16d28b0b2845faafd88d66cbbc9ddb02eeb",
+    ".local/cli-runs-mcp-20261025/report.json": "8f74568358d93f3742ffe279c61b4515bce72ff418affa949a8dac4954243241",
+    ".local/cli-faults-20261025/report.json": "7c7a1b30cca88aacbdb2818099d842a703fe7183bcca57fbd65065a1db820236",
+    ".local/native-measure-after-cli-20261025/report.json": "e16618812f8b9b5d57189b199e7e0d603052f88efbffce79ae380ea3ca1494ec",
+    ".local/regression-429-cli-20261025.txt": "28233e9d9c03b205142e717dcfd1cbd8bd178e55b945c3711c9df1eac12ec43b"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_cli_runs.py": "2b9aa2ac654a3230b8f14b231ab5a9cf7f87852671de2df91a1b692e1824bef2",
+    "src/cadence_mcp/pspice_runs.py": "9ca0f3dd00624bd73fee8696ca9be1dadf619b99dd6942f58daa2c4a11be36ef",
+    "src/cadence_mcp/server.py": "01a11dc17180eef11e24baa22b31ed3279826675db4e2ae6d6c68ec8a7cdd2d5",
+    "tests/test_cli_runs.py": "3f3ea8074bd08c0a0964f7278d8eb8ba41b33df13357a62d18401b4ccdc5ca46",
+    "tools/probe_official_cli.py": "9bf9249da7458654a3b07182b015caaf7fad59563284993a0919a52baea8a8e6",
+    "tools/smoke_cli_runs.py": "03961cef22e128aabe0bad2ed7cdb27e3a6ddd47f8f9910095543bcb1e237ed5",
+    "tools/smoke_cli_faults.py": "c209632f4567dd7861c512f9ad393b46e42711faf1e0d9fe802e9964cca1fee2",
+    "tools/smoke_native_measure_after_cli.py": "61ff84b43f7d519416731566ea529b5bab10e15e52725ebf2d6f63c81873d30d",
+    "contracts/tools.v0.1.json": "f263456f4c8c47148110591546efc256076b7b0c0569d432cc5f0ebcc166b64e"
+  }
+}

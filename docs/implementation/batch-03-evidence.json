@@ -1,0 +1,10 @@
+{
+  ".local/objects-display-stdio-20261023/objects-metadata-report.json": "3f96ae51d8f94611668d64fd7ddded65e14998690cfb0649e3c4454c4e1c823a",
+  ".local/out-reader-20261023-b/report.json": "bf5c8425d8a76911347ae1aaf15a47f5022a001aca31371f9940de5dcfba58a0",
+  ".local/pose-matrix-ee5c6266a1/report.json": "208927ba9b67f365b14f028d10fc539048b4489831d41b76701a5be6e58e6aa1",
+  ".local/object-samples-18f01a867b/report.json": "c0bf8e20f7639a1d1c17138df955b55fcf3e27e08de19e67ce2cd085e0f7658e",
+  ".local/regression-157-20261023.txt": "a28d56dc2719a284100dd2c27c5d6c965452fcd18420d3c1df0eb0149b4cf2f3",
+  ".local/regression-157-20261023-b.txt": "43eae7f3cc286a360c915a0c3111763049c1514c2dd298ea07aa0b31fe4818ba",
+  ".local/dat-probe-2344da67af/report.json": "1603ccc6a9e12d8c18530403171996ea1072f50e9c9ed44028423b8e2c292829",
+  ".local/dat-probe-2344da67af/probe.txt": "1c0eeb69fbea272b54898f38ec50a87760b3a5ab0973f9c5dfcfbf9ee1387730"
+}

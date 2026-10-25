@@ -1,0 +1,94 @@
+{
+  "goalComplete": false,
+  "fullRegressionPassed": false,
+  "files": [
+    {
+      "path": ".local/bus-fixtures-20261023/report.json",
+      "sha256": "3d7227ddd620890ae51159e996ca5cf048a27f9f069c4dfe3fcfa05dbb8e633a"
+    },
+    {
+      "path": ".local/bus-fixtures-20261023/descending/phase.json.error.json",
+      "sha256": "9a9ba710b73fa57c9443da4d81645b317829f21cd979b809ef9773328f8ad445"
+    },
+    {
+      "path": ".local/bus-fixtures-20261023/descending/phase-process.json",
+      "sha256": "a8545632e8cb387f3a6f638924ead5cae18fff139f0c737989ab3d6bd3d063d7"
+    },
+    {
+      "path": ".local/capture-drc-runtime-20261023/report.json",
+      "sha256": "def996397db8cd0f69cc7628b53fa673efdda40d91f73fcf34c994d479e03d51"
+    },
+    {
+      "path": ".local/wiring-exact-mcp-20261023/report.json",
+      "sha256": "1c541d74daf8fec30077439d857065d193fb0b1baae88dd3a796ce801cc126a5"
+    },
+    {
+      "path": ".local/bridge-atomic-native-20261023.txt",
+      "sha256": "321e6e0a005817995683ec64b58c5c45b88b9056910bec74f8adb94c70744641"
+    },
+    {
+      "path": ".local/regression-244-wiring-exact-20261023.txt",
+      "sha256": "8cea120ad6b314b14fcc6f0c5740dccd17636951bc3cb21f76d360c3a19bee97"
+    },
+    {
+      "path": ".local/regression-244-wiring-exact-v2-20261023.txt",
+      "sha256": "4df47e3d4b6b916ca321606b01f0bfe9fa486ca91fcd2debd42559e1168a8f43"
+    },
+    {
+      "path": ".local/regression-245-geometry-bridge-20261023.txt",
+      "sha256": "5ae341fb41886508e58ade7763e511e8a488b2d2c8500fec6dd6106d8bd25540"
+    },
+    {
+      "path": "src/cadence_mcp/wiring.py",
+      "sha256": "75c2cdee512c6633be9891b49b6afd9dc9879393cab45613a7ed769667f18474"
+    },
+    {
+      "path": "src/cadence_mcp/capture.py",
+      "sha256": "3de821b08598add8775a014ab2dd3d0d5392f8fdf408971b7ec099e9dcfecb82"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "e6c7a5e097889cf1bfd9df7ea4fada197d4343bf91808cc0df5634fc65635b82"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/bridge.tcl",
+      "sha256": "f5e96a861a8ea934a4c1446978d7aa7528cb2f1ae6d65e9abcc6c1e6ce90afcb"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/inspect_bus.tcl",
+      "sha256": "a635b1985ce4494569981fd5fb0169e58ab64bad518e4f3bb671cb6116056cb0"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/fixture_bus.tcl",
+      "sha256": "1776479bfddead13f300d769ac069891e2b9f42cf658786c08353acfdf1ec974"
+    },
+    {
+      "path": "tests/test_wiring_exact.py",
+      "sha256": "0a6afe0e7378cf76389f1a869f83d5106def4293a2eedf3b80cd0492a2254b5d"
+    },
+    {
+      "path": "tests/test_bridge_endpoint_atomic.py",
+      "sha256": "f94e1523cd341556a51f56a4b2aae5466f319c406020e38dffb34820206a9bec"
+    },
+    {
+      "path": "tests/test_readonly.py",
+      "sha256": "ff38a3d2c6078a7aa4f8eb285ce5812f3a60ab57772a9386452d83a500a9605f"
+    },
+    {
+      "path": "tools/probe_bus_fixtures.py",
+      "sha256": "ab3fb6945bdcddf3526a01f0a8fc14d01d3899e6ce7a77bddf97677c7e3ee10e"
+    },
+    {
+      "path": "tools/probe_capture_drc_runtime.py",
+      "sha256": "cfcd670a65883f3a915d6f84f5b7f97c34cab024638f54bf8d35984c3fb42c09"
+    },
+    {
+      "path": "tools/smoke_wiring_exact_mcp.py",
+      "sha256": "7ffc39b6f1cbe2d9aa2cb67146f29e25280dc29ef8f1f0df01c55dbf75f5f718"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "45091d4244a3a11e8e0a82e77faf5aaf3abd6dad342cb55ca3260fd8a3ba08f2"
+    }
+  ]
+}

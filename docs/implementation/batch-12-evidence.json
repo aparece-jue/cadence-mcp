@@ -1,0 +1,12 @@
+{
+  ".local/pspice-engine-20261023/expected.json": "17afdf6580d438b656fc17835f072c071ab6102e1e326c8898b0f3378b979bf6",
+  ".local/pspice-engine-20261023/report.json": "49f214ab814bef9c11fcc2341cccad6ba1a74fba035570acceed68245452d821",
+  ".local/engine-analog-20261023/expected.json": "c959b232cfa74ff73532624e8c042f951566074e3f708b1b93a6f764db8fc3b3",
+  ".local/engine-analog-20261023/report.json": "707b123b8e4605b487cb1b8c3a3470c3cf8f56efde3288e517e85c8f762a3296",
+  ".local/engine-analog-probeall-20261023/expected.json": "c959b232cfa74ff73532624e8c042f951566074e3f708b1b93a6f764db8fc3b3",
+  ".local/engine-analog-probeall-20261023/report.json": "2338ab80d1f7ac405460fd97ffd757ab79d939c418906a7ae666cd2efa2649ba",
+  ".local/engine-dat-mcp-20261023/report.json": "518c2b35fd7165c5e257736699a813594966f0d0641ee549dbea3d3a70049b14",
+  ".local/dat-compat-after-direct-20261023/report.json": "825da0151eba3277443eb78cd5c77651ee253e0dcf2ac532902f786ae7c0360d",
+  ".local/dat-compat-after-direct-20261023/tools-list.json": "2bae545ca865c31fb372ef27556f2c0d3cd90ea98dd6c4b36b7fe6b2436e6b8b",
+  ".local/regression-210-direct-dat-20261023.txt": "c0821e3c34aa2c660b45ecc23f812daa584ed7ff3228c8f8e3634f8e5b939f0a"
+}

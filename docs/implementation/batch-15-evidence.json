@@ -1,0 +1,10 @@
+{
+  ".local/library-create-traced-20261023/expected.json": "3863eb8405501fc0210f6a78ce189e61cd5fec3ad6a9e7572b1b78e8dd32d6fe",
+  ".local/library-create-traced-20261023/report.json": "788ee6b089ddcde8520e533484a07eb6dc586fe74e0d084ff511be53a8a8f4b6",
+  ".local/library-create-traced-20261023/native-result.json": "41c8815e62a03bbefad68a917d6b13164d48ce4b294e269510efabd4c01a3ff3",
+  ".local/library-create-positions-20261023/expected.json": "abe3d335a7dee3163d71011c10262239354313a04a20cb4ee0e7015f7183f4aa",
+  ".local/library-create-positions-20261023/report.json": "fc0e2d9608522094420952e48f3cc35d03f9a6eeb52687ba103dfe765b6f3368",
+  ".local/library-create-positions-20261023/native-result.json": "32545c7bc029a486e79fa022795a486d7060a318e2bdb62d7bca2bb87ac4b9d6",
+  ".local/page-rename-retest-20261023/report.json": "6dfe486db7c2f3ceef2bd955d7e31b43f41db956997860db22ebf20b70cbf100",
+  ".local/regression-222-library-page-final-20261023.txt": "f0e5a4c09e4f36872db871836f495926889b7540e7420aba4b1ca6202d546d2e"
+}

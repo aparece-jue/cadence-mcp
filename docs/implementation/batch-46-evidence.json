@@ -1,0 +1,16 @@
+{
+  "batch": 46,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/unit-edits-mcp-20261024/report.json": "961c813b38be9e11a762031b68d59dd6fc9537e92ce7be6a209e64432eb2ed00",
+    ".local/unit-edits-final-targeted-20261024/report.json": "ed64426836297f535b388718ed0262ba753ace13dea63726cbb01a696fbd46dc",
+    ".local/unit-edit-faults-20261024/report.json": "42751feb1869712e9d4544116db9bf6228c16b5cf99b062f3b8701b82f018749",
+    ".local/unit-edit-faults-v2-20261024/report.json": "d16bb21d02db1c47bd35b2785c1cea84a1aba0d190a89a6533e789b6f022a474",
+    ".local/shared-unit-nc-guard-20261024/report.json": "3c79081099610cfef1d41c970d1e39176d195fd6a656cdf0b26d11724398aced",
+    ".local/unit-connected-move-audit-20261024/report.json": "27a329c6300d264ebee3e13dc3585d16c39d3bcbad92dbb160e8b19e007fa433",
+    ".local/regression-317-unit-edit-20261024.txt": "0f328fa9fa371d4c71ee7e940f82d295f4003bd63284fcce577b85ec8b0aefa5",
+    ".local/regression-318-unit-edit-final-20261024.txt": "9386b0b752d74ff212f850c9520a99c6b9204af9d9465be7f9fb1db992b82003",
+    ".local/regression-318-unit-edit-record-guards-20261024.txt": "416ab941716e17e0688fd5bc396475758e06b4a3be1c895f0a5f7ff5bd568085",
+    "contracts/tools.v0.1.json": "a0ca1c15fd45c8a004413cec7073c2851ee9db4c03589d2fb1901a54a448097b"
+  }
+}

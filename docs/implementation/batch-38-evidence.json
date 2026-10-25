@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 296,
+    "passed": 295,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-296-net-symbol-case-20261024.txt"
+  },
+  "evidence": [
+    ".local/design-save-order-20261024/report.json",
+    ".local/live-capture-inventory-20261024/report.json",
+    ".local/owned-capture-host-20261024/report.json",
+    ".local/desktop-capture-host-20261024/observation.json"
+  ],
+  "files": {
+    "src/cadence_mcp/adapters/fixture_design_save_order.tcl": "69b26dff17b10461102c743e0b92b742df857d1febe615cc6e4292d6a14419ed",
+    "tools/probe_design_save_order.py": "b7be4d593ec47c92ac8e22d12d69d40c1984be9c63c576d795eae74940fc6fed",
+    "tools/probe_live_capture.py": "ff30bd722af68163a4a7c6dc2b81d262adeba22ef7ed44dd461691ceda974265",
+    "tools/open_owned_capture_host.py": "ff3f18b0ac0851d4b4543a15f7e29b576249fe8222740bc69e51fffbf36c9109"
+  }
+}

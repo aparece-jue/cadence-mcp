@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "regression": {
+    "total": 297,
+    "passed": 296,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-297-swap-bound-20261024.txt"
+  },
+  "evidence": [
+    ".local/multiunit-swap-maps-20261024/report.json",
+    ".local/pin-swap-range-20261024/report.json",
+    ".local/pin-swap-boundary-20261024/report.json",
+    ".local/multiunit-swap-completion-20261024/report.json",
+    ".local/regression-297-swap-bound-20261024.txt"
+  ],
+  "files": {
+    "src/cadence_mcp/library_create.py": "6e6a5581121905bc301634bc4a8d2744df83c6fffb5b49658e244fa44d9af2e3",
+    "src/cadence_mcp/server.py": "a113aacc4dee7b20ecf27d7fb048ae4843f1e49eae048c432b297628a83d5e27",
+    "tests/test_library_create.py": "a0d0eae5369e175fac1e1c02c5db7b359dcd13e0eaa85c320b930353e6534f4d",
+    "tools/smoke_multiunit_swap_maps.py": "fb2657330af293821c0030185aa0d1ee15464b7773f8e40ece7e5c4ec7c05c10",
+    "tools/probe_pin_swap_range.py": "6ae100b19f10a4d21c465f1aa87bc8494abec49bfe171380a8740cd12de4484c",
+    "tools/complete_multiunit_swap_maps.py": "6e6713eab73fcfee14d5a5bea4bde2496fc2de70e4290c4ecf81f7f6d4c87965",
+    "contracts/tools.v0.1.json": "6700ce29747b8ea1685f21e49b48fdd1fa1e5ae0f365a1af929377d9e452eeaf"
+  }
+}

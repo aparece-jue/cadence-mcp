@@ -1,0 +1,47 @@
+{
+  "batch": 69,
+  "date": "2026-10-25",
+  "tools": 178,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 4,
+    "deferred": 10,
+    "implemented_partial": 17,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "acceptedFeature": null,
+  "latestFullRegression": {
+    "total": 438,
+    "passed": 437,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-438-pin-start-20261025.txt"
+  },
+  "newOpenIssue": "ISS-L04-typed-user-property-persistence",
+  "reportSha256": {
+    "docs/implementation/batch-69-library-pin-start-2026-10-25.md": "3fb47d0f75935134e3ebce92d637e08780058993befba3313b2fd696ba509147",
+    ".local/pin-start-mcp-20261025/report.json": "c2b831e256094ddd5835354202a78be2f7e004cd21289825749501d86ba72eb0",
+    ".local/pin-start-faults-20261025/report.json": "fa804181c36224df25ae59ab2698cd047e41394d66f0dd3f50254702d4f5e4a9",
+    ".local/regression-438-pin-start-20261025.txt": "cfdebb02547e7e9ea62fc71d90451cc81da02e280e44b49dc701b7f11fc018ee",
+    ".local/typed-package-probe-v4-20261025/report.json": "e2bdb38941ec52cb2b9e2631bfd4bf5f6cff339845f4e7c4a9df4a2633f2f473",
+    ".local/typed-package-probe-v5-20261025/report.json": "462ffffa585b65aac6c29452e9a24c2f36b483609887b69885dc491c6194b65f",
+    ".local/typed-package-probe-v6-20261025/report.json": "fa4b22cab5809e7a4d559ceb7661cf5d2f238ab519921efeff94e8144c32005f",
+    ".local/value-constructors-20261025/native.json": "ffa9c96081f94a9d3287b912ffd8ca3599211f434bbfaacc85e9f49c3fc04d50",
+    ".local/value-constructors-20261025/process.json": "328d7fbfb4a6542f42b64e9a956a29d850857e17a3725a019240e0af3bb3076e",
+    ".local/typed-package-probe-v2-20261025/report.json": "a513469430018b8fd582438bf37da3414e80438ef40fd350a237c88012c59b15",
+    ".local/typed-package-probe-v3-20261025/report.json": "8bb07e87039ef7313b4057bedee6de1dce270d7cb23f025b82ddee4b81d6076d",
+    ".local/typed-package-probe-20261025/harness-error.json": "adcf53f0d30db7bdcea88754d1fa1018041a3a26f2ab9fcffa45b513631c0382"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_edit.py": "28a7859eb7c6c9bf8885c24579507bfcfc323557bbffdb3fcfd24590d48cc346",
+    "src/cadence_mcp/adapters/edit_library_pin.tcl": "9291ab4658a0df69e8e2be70b7c99451f12e67b994c6080e1bcb42beb1fde526",
+    "src/cadence_mcp/server.py": "d2185504900350ab65803c246e485a01e89c50836e91722283e2f28abe5b9c54",
+    "tests/test_library_pin_start.py": "f6ce4f5dcca4b3763fb2cc83cf64e098b5104270be117d24ffb5b4001dd1021f",
+    "tools/smoke_library_pin_start.py": "4f31890913f8da08fc47586352a989d164a6ba1cbdc1f9baa4272925c92756af",
+    "tools/smoke_library_pin_start_faults.py": "bb386fa2d6a799f8ad91aa6f5e2d41175cab7088412ac122437d53acf339e3e1",
+    "contracts/tools.v0.1.json": "2bea5a1902a881889adc58e9e5a6aa95c59039580315d3d84dbff6116c9d7b26"
+  }
+}

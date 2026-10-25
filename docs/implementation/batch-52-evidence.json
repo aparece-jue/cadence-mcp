@@ -1,0 +1,36 @@
+{
+  "batch": 52,
+  "goalComplete": false,
+  "tools": 155,
+  "bitmapMcpAvailable": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "reportSha256": {
+    ".local/save-order-exit-signals-20261024/report.json": "f5caf65d63db36719c139a94be774d4c5adcd56de951cb5f8745b9aabe6b107d",
+    ".local/save-order-exit-code-audit-20261024/report.json": "3ed17af68b1ac53c78df7a7b4226473d048cc6ea2b905a83ccaaa0a4acc30cda",
+    ".local/bitmap-native-fixture-20261024/report.json": "073c306d33bb90ca90f85f970906659e00afdf1477dce170d7e3bfcfe807b16a",
+    ".local/bitmap-native-fixture-v2-20261024/report.json": "617e5d2d23836fa5faf27d3c7e16fe536adeb914df94cc0d51813e334924c4fd",
+    ".local/bitmap-native-different-20261024/report.json": "9e0ab0637bf1c0390efd8a5607e41ad1b2e3b1ba83c5ccd6797533cf8b967e20",
+    ".local/bitmap-native-shifted-20261024/report.json": "8e2749ae38f4f600f9b9fdc88eae902da486ee90fb3239e20a2c36e60863fbd0",
+    ".local/bitmap-equivalence-v2-20261024.json": "aa37ab64005ecafe18fdf2550c2db566469d6e89270d02476c3a5fac57fecfb8",
+    ".local/bitmap-dib-bytes-20261024.json": "9be89782d5b7edd5bf67450409aae57d911c0df1d8cb89cd2a8e4dcad18f7a13",
+    ".local/bitmap-dib-bytes-v2-20261024.json": "ef45c5e718c3ea951734860d7d27120ebf04b5dc2e991d08b6aa9704b69b2d7c",
+    ".local/bitmap-dib-bytes-v3-20261024.json": "87f57f0ab79fbbd8dd75ee7aeba050922eaf0c989d33abb1eeab33793f7756df",
+    ".local/bitmap-dib-prototype-acceptance-20261024/report.json": "18faacd2d5ff14cc3625375a4427d630371cc3b7445943e01792ccd11a8987a0",
+    ".local/bitmap-bindings-20261024.json": "0f82f2339caa6560fa2d96b6123b8dd1dc72e94da149fca0d34c56656878440b",
+    ".local/bitmap-signatures-20261024.json": "aa9b2e9bba43540d6bb55d0fb463f2c502b7ab31c89e78186fd609edd3d5deff",
+    "docs/implementation/batch-52-bitmap-bytes-save-recheck-2026-10-24.md": "0703e449acb333aa13e222552d70aac4574c6c7bbf1f6f39f71c9aeb7fe84af8"
+  },
+  "prototypeSha256": {
+    "tools/probe_bitmap_bytes.py": "20f429268d216c5ac65d0be4be427dc6d987a92a4cabc54aa5141502e77f4534",
+    "src/cadence_mcp/adapters/embedded_bitmap_data.tcl": "43312cef3da4323b6e1aaa7b4b3b6ee1251b6f26d06b2f27a9eeb501524fc9eb",
+    "tools/accept_bitmap_dib_prototype.py": "d4f7632aaefdd2be67987252407183430d789e85ac1f595e412d67cce3cc62f9",
+    "tools/probe_bitmap_fixture.py": "152066a35d26205b692073c06d8143c699245aca0855eb4048770235d0a6df04",
+    "src/cadence_mcp/adapters/probe_bitmap_fixture.tcl": "3e0634ffa48e0d987e6e1b43d3fb1164f4ac3c74f6c84627f219667137d4791a",
+    "src/cadence_mcp/adapters/probe_bitmap_equivalence.tcl": "a6135cf9ac6353cbfbed2e19d8ad07c919988445bdc516c8778e4098ced2bdfd"
+  }
+}

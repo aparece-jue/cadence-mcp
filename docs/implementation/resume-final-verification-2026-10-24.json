@@ -1,0 +1,57 @@
+{
+  "createdAt": "2026-10-24T08:07:01.806663+00:00",
+  "goalComplete": false,
+  "scope": "Resume verification of batch48; no new feature acceptance",
+  "tests": {
+    "total": 325,
+    "passed": 324,
+    "skipped": 1,
+    "failed": 0
+  },
+  "actualTools": 143,
+  "actualContractMatches": true,
+  "nativePlacementCases": [
+    "fill-Normal",
+    "fill-Convert",
+    "text-Normal",
+    "text-Convert"
+  ],
+  "negativeOracleRefused": true,
+  "freshLifecycleNoReplay": true,
+  "sourceAndLibrariesUnchanged": true,
+  "previousEvidenceUnchanged": true,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "acceptanceMatrixBeforeSha256": "b65be9e3febecef4ef874e5590ae0d15258bc4b61d96332a63d135a4e7e02acb",
+  "evidenceSha256": {
+    ".local/resume-vector-final-20261024/report.json": "a6a40d136449a667e20721315e17d1362f9e6f518931fb22345b17cbe6e5f3f5",
+    ".local/resume-tools-20261024.json": "a1620b264566a24f9675737bd479d3f0c1ecc5c79dac021e8e8938cb78d3c8ed",
+    ".local/regression-resume-final-20261024.txt": "e2ad35138ec13680bc86ed98c4fcfc18d0ce2e02ea84a6e1a8e9ea2aba6ce63a"
+  },
+  "previousVerifiedSha256": {
+    ".local/vector-registration-20261024/report.json": "9889496dec3d9236b20d21a9529680d6feedb1d0e634067143fa3b7d0cddca5c",
+    ".local/vector-style-enums-20261024/report.json": "a92e41a12dfc319eccf6b8a60565dfdbe6ad481f25f11324897f4bf6106dc51a",
+    ".local/library-vectors-20261024/report.json": "744e64bd15ade2dccdf98a2df604a133c0ebd56f0329c0e9e798f1f1261fe24a",
+    ".local/library-vector-text-v2-20261024/report.json": "c637bf9ba92d2ae739f1f02b4a5beda64bc95349c566d4c8df112007af57cb3a",
+    ".local/library-vector-text-v3-20261024/report.json": "04c4c3605b2f4ccdfda6c5c9b93a15c1a5a23e890a0f6c3ad4d3601cfbe848c4",
+    ".local/vector-placement-curves-20261024/report.json": "c975aff171c6f84ceb31939e2e918ae4accbcc1a19306269d42c8aca7400e432",
+    ".local/vector-placement-paths-20261024/report.json": "5c996d10ecf53c42777e89f83aa6c2bebd74d664d640f3207813503e5a37f5f4",
+    ".local/vector-placement-text-fill-20261024/report.json": "5731d3a28dfbf5c3150204b5e4552489c182cecf0aa6e8bd3f8dd2c759c12e75",
+    ".local/vector-identity-faults-20261024/report.json": "b1784a287eeed2149a790d05f30df5acaa7251d0115f755e80662b467485cfd4",
+    ".local/text-vector-placement-faults-20261024/report.json": "adbca790e6ba46e3d94d257fa4b6b69f09cc779e5f687a43df1c956952db0c3b",
+    ".local/line-only-vector-compat-20261024/report.json": "91f9dd4922925619411808daa578f1d6003d336e19472ef2735199d0897cfc66",
+    ".local/regression-325-basic-vector-identity-20261024.txt": "10eaa52a76d2412f1059ca21b8ea6e6b440f009dc3e24675391d81138187702f",
+    "contracts/tools.v0.1.json": "a1620b264566a24f9675737bd479d3f0c1ecc5c79dac021e8e8938cb78d3c8ed",
+    "src/cadence_mcp/adapters/dbo_part_signature.tcl": "bfab6f24102594e92772e90643961885564c89f0c76c73d6479f6e82185c6ca8",
+    "src/cadence_mcp/adapters/dbo_vector_signature.tcl": "455cf264f62261b4a0c67ce33ee7317028bd57723c7c4cc4c9340109413efa15",
+    "src/cadence_mcp/adapters/inspect_placed_view.tcl": "c68aae817293d51543b587c2977eedbb0c6b97c7bd88450e112df68af89dcc4d",
+    "src/cadence_mcp/capture_place.py": "92acf4ce5163f216d2116df6a4b4a4b1e6153b9e35920479cd2466d6ef53b28b",
+    "src/cadence_mcp/capture_multiunit_place.py": "8c4cbeed566449f365861e9e99c495c575bce8b5648be55c0e3bb90577ada7ad",
+    "src/cadence_mcp/server.py": "e3dbe5ff12abb44e64e055106070019dae953eb50308fd126c8371f5689633fd"
+  },
+  "remaining": "Original 33 incomplete gates retained; public complex-vector create/query is not implemented by this resume check."
+}

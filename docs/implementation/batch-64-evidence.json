@@ -1,0 +1,42 @@
+{
+  "batch": 64,
+  "date": "2026-10-25",
+  "tools": 173,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 2,
+    "deferred": 10,
+    "implemented_partial": 19,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "regression": {
+    "total": 420,
+    "passed": 419,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-420-input-checks-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-64-native-input-checks-2026-10-25.md": "2421c53e745737666592910c11080786bf9fd1a2d280dc87e6ef730b27cf574f",
+    ".local/input-checks-mcp-v2-20261025/report.json": "9afb708ae2e635713c5cb1cc71176dedd9bd1321588f88a6cef408bc0501f26d",
+    ".local/input-check-faults-v2-20261025/report.json": "b6438c6b80e51a3e68c26583bd5bce9051efbf9d23f22586e1e240993fc5d89b",
+    ".local/input-setup-probe-20261025/report.json": "311cae596aa3f6b63359c3e37dbe312fe2f9af61b936f4746ae7ed236a669a54",
+    ".local/input-checks-mcp-20261025/report.json": "8b6faa2eefd5a869f0bb0f4968a9500bf3e53cc8d81e88a0d2b0a34d76ea44f0",
+    ".local/input-check-faults-20261025/report.json": "2163b1a3ca0543376691b28c9b40f7a6ae42c94e213edb70eac97e1b1ddf1940",
+    ".local/regression-420-input-checks-20261025.txt": "e9648706c9c7b70dffbee5e4add47896632e03e0b4e58fad08b925f385525c23"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_input_checks.py": "5603707ba16923959f984299b3f5afc54dfb5a8b6b19a8c239c610f130457f45",
+    "src/cadence_mcp/adapters/check_pspice_input.tcl": "c633229956b501ef454245a0b223457f778ce6a82cd5cfd4a79ec98d370d941d",
+    "src/cadence_mcp/server.py": "17870b41148be38c65e2f4e111283d8d53fdd56bbeb09d8994796f92f18db731",
+    "tests/test_input_checks.py": "83e520b42efce94451a30afce31afb061864642c1b0e0428aeb1cbcf7cb1f488",
+    "tools/probe_input_setup.py": "c386772ef61029bea6f38ad5596231a8faa0fe41ce6388f97a8cdd09bf8fabe2",
+    "tools/check_input_probe.tcl": "c633229956b501ef454245a0b223457f778ce6a82cd5cfd4a79ec98d370d941d",
+    "tools/smoke_input_checks.py": "a5e484b60e501157521e8798768a70916731e9cf54fda6fb447c1c1702d6706a",
+    "tools/smoke_input_check_faults.py": "0eef49e384b556337a61b0011ef2f58b33f57f983e29402a98e990c7915eea6c",
+    "contracts/tools.v0.1.json": "95b64d4876f11a076cfdc99dfe3525755c893882826518be492fa1a72641362b"
+  }
+}

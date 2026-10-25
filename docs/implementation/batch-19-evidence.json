@@ -1,0 +1,69 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/part-edits-20261023/report.json",
+      "sha256": "b2b9315ebfc0b2b130154158775f4e3a76bce8abc74b6b8b38edd54d172c2935"
+    },
+    {
+      "path": ".local/part-edit-opening-phase-20261023/native-result.json",
+      "sha256": "cb9dae7276f60cc26f31799fd5f0f43d4364ac86ad28994644dbf6f3cefa5269"
+    },
+    {
+      "path": ".local/part-edits-v2-20261023/report.json",
+      "sha256": "ebd498aaee590e5b13f3c1e0a1ea5f48fb7d34e127e6335ef48e7e5a9afe42f7"
+    },
+    {
+      "path": ".local/part-edit-mcp-20261023/report.json",
+      "sha256": "0a36f3e1888287c1a8712c4d96e394338a02d401606e5799d3b357018fb0b214"
+    },
+    {
+      "path": ".local/part-pose-centered-20261023/report.json",
+      "sha256": "2a3d2416b49a90f00e8417f40add6dc88e5769b502253f6dbd2e7d83b6f08a11"
+    },
+    {
+      "path": ".local/part-edit-faults-20261023/report.json",
+      "sha256": "c88abff78f13c8b6ca09fbee6e2366a88daa1517a84f9cd9b9d9a9c467c9ddb4"
+    },
+    {
+      "path": ".local/regression-233-part-edit-20261023.txt",
+      "sha256": "97b84fe5f27dc937da6416196d774af63680c37a934d2a992c31188f3546e98f"
+    },
+    {
+      "path": "src/cadence_mcp/capture_part_edit.py",
+      "sha256": "cabbf4144eda296849e2f8265f8bb3acd4287708183e5e5d7131f2521a680611"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/edit_part.tcl",
+      "sha256": "6a5735c76e6e8d3341f9f87262de7241d3f71ba7815e47ef4d3a1593d86ca8b8"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "80efd01edf0d09c21426f48ed88d09316d413fe2a64031099409ab87fd3be9bd"
+    },
+    {
+      "path": "tests/test_part_edit.py",
+      "sha256": "e0404ee1d0c079f3ce940d0caacb3a2138b4dd0ccd64eb5a00e05907c57dc5a4"
+    },
+    {
+      "path": "tools/accept_part_edits.py",
+      "sha256": "77a26d27563d1eafec5ffccd38b441bc664a9dad170afb37486b17b549d07f76"
+    },
+    {
+      "path": "tools/smoke_part_edit_mcp.py",
+      "sha256": "8c8e477a1f3e3a06eb06af8290f9ea034291f4f69ac97a5e16b6a67b18813f73"
+    },
+    {
+      "path": "tools/accept_part_pose_matrix.py",
+      "sha256": "7c82448fd4d2b207f2fcf754e6fb0c882ed09451659fc347c8187e5080436c7b"
+    },
+    {
+      "path": "tools/smoke_part_edit_faults.py",
+      "sha256": "56e350ec3fbf995e047f5eebb7f1f898f716c65606ef846f4a7f29ea12baaf0c"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "b637b7567504e9b9457175a4708db753c2fd96adb13ec2077e0023e584884292"
+    }
+  ]
+}

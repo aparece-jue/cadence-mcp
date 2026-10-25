@@ -1,0 +1,31 @@
+{
+  "batch": 56,
+  "goalComplete": false,
+  "issueResolved": false,
+  "productionUnchangedFromBatch55": true,
+  "tools": 155,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "reportSha256": {
+    ".local/native-page-status-text-20261024/report.json": "fc51978ad104632f73e34ed7d7e1a8cccd35dc4a23b9b52a63481b19ef049e36",
+    ".local/new-wire-constructor-matrix-20261024/report.json": "48f472820db210b8f710b19f404db70e20ffd47eb2981793679821c04cf9de9e",
+    ".local/new-wire-constructor-matrix-v2-20261024/report.json": "6b6f490e29ddd69621c1d0fdf4220c908b52dca39da817836ae4ac414fd44178",
+    ".local/new-wire-initialization-matrix-20261024/report.json": "7b0fb7f020b3aed274b5a53ee59b848e1277ef05b99042d86c939b799649c77b",
+    ".local/design-serialization-versions-20261024/report.json": "1f4a614e4a9a93b7f33a5cff2d6d8cdc4954731a67b1e2dbcab45f485ada68e9",
+    ".local/new-wire-expansion-matrix-20261024/report.json": "e765f6c84dda015d8b799247fe1232bb01949587833a21704f81cd427118cd46",
+    ".local/new-design-constructor-matrix-20261024/report.json": "54d98f35795c0b6c96112ea1e91eef61fd94fdc8eaa2c5a53041329ddde46285",
+    "docs/implementation/batch-56-new-wire-3969-diagnostics-2026-10-24.md": "e2857a93eb9748f46a53fa0456513190d7ea5752d7897ba408efb99dc94bbf4a"
+  },
+  "probeSha256": {
+    "src/cadence_mcp/adapters/probe_page_status.tcl": "28b5ae0da3bb95d36deab625d7749636e928f5b9408ebc319b109f98389c3ba9",
+    "src/cadence_mcp/adapters/fixture_wire_modes.tcl": "a024ec9c4984e8630b1e59774bf9d2c073510168ab7caad578ed64b428a83750",
+    "src/cadence_mcp/adapters/fixture_wire_initialization.tcl": "6992e1c285e864ed9f1d71d1aff506dee8d918126e8ffe9d6f424a96e18d2094",
+    "src/cadence_mcp/adapters/probe_design_versions.tcl": "4a89603b5516c3a5b1e6e88cad5ef20d4bda2565193b83718b75406205130fce",
+    "src/cadence_mcp/adapters/fixture_wire_expansion.tcl": "910655ebea0382f0c8f1ea020094f448a69e9a156d03130ec288193e6b703fd8",
+    "src/cadence_mcp/adapters/fixture_design_constructors.tcl": "40b9dbe4657ecfd90a00f13c85e89bdfbe191d227ffeaece1162821ad240145e"
+  }
+}

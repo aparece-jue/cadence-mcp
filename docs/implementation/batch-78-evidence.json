@@ -1,0 +1,139 @@
+{
+  "batch": 78,
+  "date": "2026-10-25",
+  "tools": 192,
+  "productionChanged": true,
+  "goalComplete": false,
+  "acceptedFeature": "P03",
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 15,
+    "implemented_partial": 10,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 488,
+    "passed": 487,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-488-measurement-units-20261025.txt"
+  },
+  "originalP03Criteria": [
+    {
+      "id": "P03-DC",
+      "requirement": "divider DC absolute error <=1e-6V",
+      "passed": true,
+      "evidence": ".local/pspice-result-acceptance-20261025/report.json",
+      "observedMaximumErrorV": 0.0
+    },
+    {
+      "id": "P03-TRAN",
+      "requirement": "RC time constant relative error <=1%; independent full sampled curve",
+      "passed": true,
+      "evidence": ".local/pspice-result-acceptance-20261025/report.json",
+      "maximumTauRelativeError": 4.0613764178409895e-06
+    },
+    {
+      "id": "P03-AC",
+      "requirement": "RC cutoff relative error <=1%; independent real/imaginary response",
+      "passed": true,
+      "evidence": ".local/pspice-result-acceptance-20261025/report.json",
+      "maximumCutoffRelativeError": 3.723978334546629e-05
+    },
+    {
+      "id": "P03-OUT",
+      "requirement": "exit status and OUT jointly judged; native exit0 error cannot be successful",
+      "passed": true,
+      "evidence": ".local/pspice-result-acceptance-20261025/report.json"
+    },
+    {
+      "id": "P03-MEASURE",
+      "requirement": "native DC/TRAN/AC field/value/at distinction and independent expectations",
+      "passed": true,
+      "evidence": ".local/pspice-result-acceptance-20261025/report.json"
+    },
+    {
+      "id": "P03-UNITS",
+      "requirement": "numeric units/source metadata or explicit unknown; no silent native-unit claim",
+      "passed": true,
+      "evidence": ".local/measurement-dimensions-mcp-20261025/report.json"
+    },
+    {
+      "id": "P03-PROVENANCE",
+      "requirement": "fresh task/artifact association, immutable old measurement evidence, wrong-oracle rejection and fault recovery",
+      "passed": true,
+      "evidence": [
+        ".local/pspice-result-acceptance-20261025/report.json",
+        ".local/measurement-dimensions-mcp-20261025/report.json",
+        ".local/native-measure-faults-20261025/report.json",
+        ".local/cli-faults-20261025/report.json",
+        ".local/native-measure-mcp-v2-20261025/report.json"
+      ]
+    }
+  ],
+  "currentSixRunArtifactAudit": [
+    {
+      "backend": "engine",
+      "analysis": "dc",
+      "planId": "49045696c5be4a69865d6d0390ad082e",
+      "manifestSha256": "d313a387e11715225e76e2979986c3195db07b0438fd56757043990f4dc92efa",
+      "allArtifactHashesMatch": true
+    },
+    {
+      "backend": "engine",
+      "analysis": "transient",
+      "planId": "dafbaa92747148639cd6ece985de322d",
+      "manifestSha256": "8bf5af57dd89b84211e1ae5ae7c8b63c088978dce27ed114df96a4b2892ce0aa",
+      "allArtifactHashesMatch": true
+    },
+    {
+      "backend": "engine",
+      "analysis": "ac",
+      "planId": "4efe8cd6991f496fbe2df4b0e019298b",
+      "manifestSha256": "258c16c96e6d73a9f9dc80040072c93c64f3a6c50e909468e4b5a1ed313b5847",
+      "allArtifactHashesMatch": true
+    },
+    {
+      "backend": "cli",
+      "analysis": "dc",
+      "planId": "dc9e72ec4a5c46c7831cc8c7a9225e84",
+      "manifestSha256": "18becfb16a4cbbb7af59d8d4775567604a677e4b93ea9558aa814e7c8f14df3a",
+      "allArtifactHashesMatch": true
+    },
+    {
+      "backend": "cli",
+      "analysis": "transient",
+      "planId": "148cab5753fa44e9a3e699439aef84ca",
+      "manifestSha256": "d93c7709b9f832bce00f3f93b7aed05cd0b4bb76d7c53034bfa6252d904e3b62",
+      "allArtifactHashesMatch": true
+    },
+    {
+      "backend": "cli",
+      "analysis": "ac",
+      "planId": "930b15d9165c445c89e1244d752581a5",
+      "manifestSha256": "786315854087450686c8afec7a40797bd2e0acb36b3ef00b74767114dc7edb0d",
+      "allArtifactHashesMatch": true
+    }
+  ],
+  "nativeUnitMetadataAvailable": false,
+  "reportSha256": {
+    ".local/pspice-result-acceptance-20261025/report.json": "58f2c07645acd1772931fe2602976fd03615bcb617eedbc96483201349a070be",
+    ".local/measurement-dimensions-mcp-20261025/report.json": "974845819862f4bed1fb291589af554c706feac6a7ae150bdc5ed5c3a9a63646",
+    ".local/regression-488-measurement-units-20261025.txt": "11c54f6c6c92cd08589002f224ed3817dbd2e09ed65fb4ea6f3a40c575db16b3",
+    ".local/native-measure-faults-20261025/report.json": "9fe37958a45250aaecf50c5efa42362d81a56e898dfeb6477d2280efe050491c",
+    ".local/cli-faults-20261025/report.json": "7c7a1b30cca88aacbdb2818099d842a703fe7183bcca57fbd65065a1db820236",
+    ".local/native-measure-mcp-v2-20261025/report.json": "c06bfc317681a3c3ab491f91116d9ab0eed6cfe36df392af142719cd3c46d81e",
+    "docs/implementation/batch-78-P03-results-acceptance-2026-10-25.md": "0599b3672d8c0533c312b750cbbc486db6e50600cdcc4b86c75dbde40db2beef"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_measurement_units.py": "e0d19bd3901243c31efddd1681c2e1ad6d8f2dd10c9a22abd32474f963a89bc0",
+    "src/cadence_mcp/pspice_measurements.py": "1c11ff0028526fc425c43414c0be3bc169763c34c9d7271901548441fb3a1c56",
+    "src/cadence_mcp/server.py": "878a75b4575a226e78412b42d64a4e8c356f974f249d38e8f02b302a751b1e05",
+    "tests/test_measurement_units.py": "e4d28a51ec4ef3c225280426b5f92272e4e3496d5193777802f79f5a2323de90",
+    "tools/smoke_result_acceptance.py": "86f186bb50f814730dc8f6bfcefcae7da093c7e7bf7bf951e3153855b14c20be",
+    "tools/smoke_measurement_dimensions.py": "6fb53b4ebe067231b5d4bd26586fcc82096614746b40d3fd7839745a199ed292",
+    "contracts/tools.v0.1.json": "8ac137d9a77a74f2d7317aa246533b8a564ee35d65c647e3548d562028010579"
+  }
+}

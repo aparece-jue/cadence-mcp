@@ -1,0 +1,23 @@
+{
+  "tools": 121,
+  "goalComplete": false,
+  "scope": "single_unit_unbound_scalar_pin",
+  "regression": {
+    "total": 276,
+    "passed": 275,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-276-nc-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/capture_nc.py": "f10c9416937d17ec97a848c2d31723923c6bf7201c3d19003e7e9280c74b3b04",
+    "src/cadence_mcp/adapters/edit_nc.tcl": "47ae130f8d546f5a313f4d4bdef67082e4ec08e705c50a7e3be497e7cd9dc7c0",
+    "src/cadence_mcp/server.py": "5fca463d814308d86a4ddb9697d043d4d9792fdd0e4e4f3fc7ba891a15932f02",
+    "tests/test_nc.py": "1f9b035b92a88fb58bf58c268c09a73a5eb4b172dfedd5c68a5f2a695e0b0ffa",
+    "tests/test_readonly.py": "5e6d619535b2212a172b2005ac470354af60222651e565f76379487245aa92d7",
+    "tools/smoke_nc_edits.py": "28beb56253991f38c2160e2e177b09a6fc3bb6faef38f2ade1d4f3c239d927f6",
+    "tools/smoke_nc_faults.py": "5d18c3535fc398abbce534efe781544455aa8ad8390c08f983e369ae9c543077",
+    "contracts/tools.v0.1.json": "747e796d397c52426383a8a013e9cb9cff95064022efa0e59cd34656cf7e7910"
+  }
+}

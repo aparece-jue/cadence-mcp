@@ -1,0 +1,28 @@
+{
+  "batch": 57,
+  "goalComplete": false,
+  "customComplexDat9Accepted": true,
+  "dat10WriterResolved": false,
+  "productionUnchangedFromBatch55": true,
+  "tools": 155,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "reportSha256": {
+    ".local/dat-complex-writer-trace-20261024/report.json": "466128a1de59a3ac1346bbfa966edb257b17335178ccb44a3c54d2fe52c8322f",
+    ".local/dat-block-lifecycle-20261024/report.json": "e8a2118ba2fee7aeb6045bbbb9f09ad126d94aa03f94c19f1883901baf66078d",
+    ".local/dat-writer-variants-20261024/report.json": "139735d4fed1b10fb792a6a11ac303c947619e2a1bdc28f7f2eb00f564038e62",
+    ".local/custom-complex-dat-mcp-20261024/report.json": "a9699f9e6ea3ec9604f7c2b8fb949238d2804c29127569812571d14473fae8d7",
+    "docs/implementation/batch-57-complex-dat-v9-acceptance-2026-10-24.md": "4eee822423e82990e295db8bbd0fe77d09b383312333c7939b882908ea9d8505"
+  },
+  "fixtureAndProbeSha256": {
+    "tools/trace_complex_dat_writer.py": "7634e8ab5d7388f97fa59262ec7012db7c9cc459a37aee95402454c7fce4575e",
+    "tools/probe_dat_block_lifecycle.py": "c2e60f9d7f01ca8f3d2e878214f1ed3d2dda11231e506714eed84b0354b21b5f",
+    "tools/probe_dat_writer_variants.py": "d01325557f094ad6e069212709fd7731ed6dee772c4f04e42074eb7126a72fad",
+    "tools/smoke_custom_complex_dat.py": "43e338234c0272422d52802e635a22beb6f3de5c816c6d1e2e473143b117b298",
+    "src/cadence_mcp/adapters/fixture_complex_dat_v9.tcl": "5cc4c89da7a7ffdcec45329ca5764897d08ae3156bce107f7d78e4b2b6cdc38e"
+  }
+}

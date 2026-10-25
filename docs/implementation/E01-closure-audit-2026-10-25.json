@@ -1,0 +1,86 @@
+{
+  "featureId": "E01",
+  "date": "2026-10-25",
+  "originalAcceptance": "before/after预期、计划hash、幂等、保存、新进程重开；net不变不代表仿真语义不变",
+  "criteriaChanged": false,
+  "status": "passed",
+  "scope": [
+    "Value",
+    "PCB Footprint",
+    "Implementation",
+    "TC1",
+    "TC2"
+  ],
+  "requirements": [
+    {
+      "requirement": "Original approved parameter/model/footprint property scope",
+      "evidence": [
+        ".local/model-properties-mcp-v3-20261025/report.json",
+        ".local/property-official-final-20261025/property-edits-report.json"
+      ],
+      "conclusion": "Five literal approved existing fields with unique part-definition target; unsupported fields and non-model type explicitly refused. Multiunit/occurrence/symbol replacement remains in original separate gates."
+    },
+    {
+      "requirement": "Explicit before/after and bound plan hash",
+      "evidence": [
+        ".local/model-properties-mcp-v3-20261025/report.json",
+        ".local/property-official-final-20261025/property-edits-report.json"
+      ],
+      "conclusion": "Per-case prewritten declarations/full expected graph and source revision, native target/old-value guards, durable plan digest."
+    },
+    {
+      "requirement": "Idempotence and no replay",
+      "evidence": [
+        ".local/model-properties-mcp-v3-20261025/report.json",
+        ".local/property-official-final-20261025/property-edits-report.json",
+        ".local/model-property-faults-20261025/report.json"
+      ],
+      "conclusion": "Fresh servers return stable outputs; started/cancelled/failed mutations not replayed."
+    },
+    {
+      "requirement": "Save and independent fresh process reopen",
+      "evidence": [
+        ".local/model-properties-mcp-v3-20261025/report.json",
+        ".local/property-official-final-20261025/property-edits-report.json",
+        ".local/model-fault-reverify-final-20261025/report.json"
+      ],
+      "conclusion": "Actual native writes plus independent inspections verify exact expected value, definition pin nets and complete effective-property multiset for new plans."
+    },
+    {
+      "requirement": "Fault and unrelated property/source protection",
+      "evidence": [
+        ".local/model-property-faults-20261025/report.json",
+        ".local/model-fault-reverify-final-20261025/report.json"
+      ],
+      "conclusion": "Receipt loss, cancellation, true execution timeout, source change and real unrelated TC2 edit are separately covered; no silent acceptance."
+    },
+    {
+      "requirement": "Net preservation does not certify electrical behavior",
+      "evidence": [
+        ".local/model-property-numerics-v2-20261025/report.json",
+        ".local/model-properties-mcp-v3-20261025/report.json"
+      ],
+      "conclusion": "Property tool leaves electrical/model-resolution/netlist flags false; separate original circuits and mathematical oracles establish bounded parameter/model semantics. Explicit manual transfer, no V04/P05 certification."
+    },
+    {
+      "requirement": "Current contract and regression",
+      "evidence": [
+        ".local/regression-443-model-properties-20261025.txt",
+        "contracts/tools.v0.1.json"
+      ],
+      "conclusion": "178 actual tools and 443 tests with 442 passed/one preexisting global file-symlink permission skip; skip remains A01 incomplete, not counted as business pass."
+    }
+  ],
+  "notCertified": [
+    "arbitrary_model_or_parameter_syntax",
+    "model_definition_existence_by_property_tool",
+    "model_pin_compatibility",
+    "symbol_or_cache_replacement",
+    "native_capture_netlist_generation",
+    "full_design_electrical_behavior",
+    "multiunit_group_edit",
+    "occurrence_connectivity",
+    "native_drc",
+    "external_physical_footprint"
+  ]
+}

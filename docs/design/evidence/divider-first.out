@@ -1,0 +1,26 @@
+
+**** 10/22/26 13:32:29 *** PSpice 24.1.0 (4 September 2024) *** ID# 0 ********
+
+ * Isolated compatibility probe: 5V resistor divider
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+V1 IN 0 DC 5
+R1 IN OUT 1k
+R2 OUT 0 1k
+.OP
+.TRAN 1us 10us
+.PRINT TRAN V(OUT)
+.PROBE V(OUT)
+.END
+
+ERROR(ORPSIM-15090): PRINT device OUT is undefined
+
+ERROR(ORPSIM-15090): PROBE device OUT is undefined
+

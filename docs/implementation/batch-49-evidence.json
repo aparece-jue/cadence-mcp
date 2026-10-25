@@ -1,0 +1,45 @@
+{
+  "batch": 49,
+  "goalComplete": false,
+  "tools": 144,
+  "tests": {
+    "total": 333,
+    "passed": 332,
+    "skipped": 1
+  },
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "openIssue": "ISS-L02-comment-font-quality-persistence",
+  "reportSha256": {
+    ".local/public-library-vectors-v2-20261024/report.json": "679763605527d93e087b762d3081d1bebd45816600c580960e398219e2c6f684",
+    ".local/public-vector-faults-20261024/report.json": "84d0690620f709d8ae1a1a4578bb0143f94c907940fed48847ad97d8e2b12582",
+    ".local/public-vector-legacy-faults-20261024/report.json": "37ea642bbdee482ab4862a512f5da7d1222bec76e34c3deadbbf5af3d8fb9c53",
+    ".local/public-vector-placement-20261024/report.json": "9d0a1f4f621c78ba8e8d0d569d6db24b6363cf3abec467ec353f083afe9e1fe7",
+    ".local/public-vector-font-quality1-20261024/report.json": "8b3c63e0ba4d1c9cd013201610e01fc1a617ade9bd65b35ce5b6500b2febb5f0",
+    ".local/public-library-vectors-20261024/report.json": "2cb6bdd4bce8a2e58ee64d93d9f0fd57504f1001f41f08b45770c34fe344e33d",
+    ".local/public-vector-fields-20261024/report.json": "bceeedd798132f0eb2a15fac06c2ad8353099054b3bb76f3a54d4a7d5ef8a065",
+    ".local/logfont-quality-20261024.json": "90b76c49bf7f0566e756e9fd4c7be7c8a24ce395498de8f6d1ebb106b0acf78f",
+    ".local/comment-font-trace-v2-20261024.json": "965fc1954d7562d0083d59404769a5509b7be111c00eaf93569a2141e7656e0c",
+    ".local/comment-font-reopen-v2-20261024.json": "704f477103b055254652d1f567858194143ae64a62e43471e077a61e123c1b22",
+    ".local/regression-333-public-vectors-20261024.txt": "07be6861acae511d455fed2d1e352b8f89ea4d9c4d2c01dd668ff685a00272fa",
+    "contracts/tools.v0.1.json": "8d9d72108509910c7125ab7900b574fdb3e757685e7a6ec16016dbc22126fd35",
+    "docs/implementation/batch-49-public-library-vectors-2026-10-24.md": "5a7a2b80463451e8db29c1c96a2d6df833c4d9bf8929a229896a689d690c87db"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_vectors.py": "73604d9d2e7f521442a322af444ea6ffa4164a7990ff948f8121f5b19130243a",
+    "src/cadence_mcp/library_vector_query.py": "856201b4c574e517186cc64408ffa5db7547981e04336e93647d5ca1afe05963",
+    "src/cadence_mcp/library_create.py": "7c4205b49ff642d3fdf9928a3dae683beee16ad0a2189d99b769b5a5f87ce950",
+    "src/cadence_mcp/server.py": "495a797166d5c3e7709260ad743708930d1c66ffa4fa43e3de12f76a4e733500",
+    "src/cadence_mcp/adapters/create_library.tcl": "d09ce78b5446be0ec9ea3d6122e1053d21d963456d5784bcbc4f5b73c42ee418",
+    "src/cadence_mcp/adapters/dbo_create_vector.tcl": "27f54534947f8b2d05ea18b5f0f8ff3883abcacaf2f95615cd2c2e6fae1592cc",
+    "src/cadence_mcp/adapters/dbo_vector_json.tcl": "d106ce9734690ad09a42ceaeec40b9880c8228457954307e1163723af837536a",
+    "src/cadence_mcp/adapters/inspect_library_create.tcl": "43a3a3d11471cdc7fabc9992bc4d063b89ea7435a8a3fc1944bcc097450c842a",
+    "src/cadence_mcp/adapters/inspect_library_vectors.tcl": "6809306cd9e61d9c55c9ad5fc32d12b1aacd623883bc49699447fc7022f6bec4",
+    "tests/test_library_vectors.py": "5f4bfd28dd7945882604f7c5eb7709a08c72847e00b40599d0be574261b2ff0f",
+    "tests/test_readonly.py": "4f57aecd13029a09dc21edaf0ce0e2c6df9678da4308323ea610298cf0c79bbc"
+  }
+}

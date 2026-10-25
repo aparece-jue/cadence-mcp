@@ -1,0 +1,10 @@
+{
+  "batch": 43,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/multiunit-power-networks-20261024/report.json": "4cf210db13d4620461610cede746d58499d053f267a4023927f408219caf0667",
+    ".local/multiunit-power-networks-20261024/expected.json": "ebb8d3efe59da13c1da2609e4c5e14914c41314dc0f80376d67c880c5561e0b7",
+    ".local/multiunit-power-nets-mcp-20261024/report.json": "b4a36d7dd70df0c843e22288f7bea24f423d651f08f0c83b5d69aca81b34e8bb",
+    ".local/multiunit-power-nets-mcp-v2-20261024/report.json": "b571bd9c4d738665d2887845b5c753989f71e6bc03df0d0ef8fc024256a82a41"
+  }
+}

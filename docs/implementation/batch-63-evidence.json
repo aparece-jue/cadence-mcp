@@ -1,0 +1,47 @@
+{
+  "batch": 63,
+  "date": "2026-10-25",
+  "tools": 167,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 2,
+    "deferred": 10,
+    "implemented_partial": 19,
+    "planned": 2
+  },
+  "acceptedFeature": "C02",
+  "productionChanged": false,
+  "fullRegressionRunThisBatch": false,
+  "retainedRegression": {
+    "total": 411,
+    "passed": 410,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-411-solver-diagnostics-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-63-C02-property-layer-acceptance-2026-10-25.md": "ae554fc5331bfc2b481d8b0434673d6f112e218800ab1ac2e3e6c10143d595a9",
+    ".local/property-layers-mcp-20261025/report.json": "ae68fea9e0b8cbb90c3e114b318f97ec2d4a1866f3bb780c5628598e18170eb2",
+    ".local/same-reference-property-layers-20261025/report.json": "cd490d45d06471e8bb97e19809adf008f7596faabd6919ddde7e467089c98bdb",
+    ".local/property-fallback-public-20261025/report.json": "21447d7d4de85233a4919237fd54e7a63adc89ab5f5fcb11add54149a34a7cb5",
+    ".local/property-layers-probe-v4-20261025/report.json": "802d013bc736e9c442e8cbe8ae1228225e21e341000a0777cddfebd6d3d4705e",
+    ".local/property-layers-probe-20261025/report.json": "587788711e99937ce4c83839370c728df1b41ba63419ef9e2d362314a30fc505",
+    ".local/property-layers-probe-v2-20261025/report.json": "fcbb10e8281e7b1557184dfbe3f0a8fee16b2f78cad8e9c44cfa21ff3231ff3c",
+    ".local/property-layers-probe-v3-20261025/report.json": "1098d1dd7378eb62499325f02d0c25856303230cb938859a35e31d26d422d9f4",
+    ".local/property-layers-mcp-20261025/expected.json": "d752a7f4698cf578dd2efa010e84cbffb32e4dc650ab8e7a746e290c3c5159ac",
+    "docs/implementation/C02-closure-audit-2026-10-25.json": "c545ddafcbce8e08cf143a23fec6a99e7bf05c4a1d85c32d3ae760466b38929a"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_property_layers.py": "e6456eab4a13f75bf835778fdbe4517bee8228a98bea03bbebb164c8819316b1",
+    "src/cadence_mcp/capture_properties.py": "ee7ef4f135238dd7dc279cdf27b8db981c33b03add0f23890b5aa70dcbdd9201",
+    "src/cadence_mcp/adapters/inspect_property_layers.tcl": "c32abb88c3d9e72179e49f20a0ce43cecbce619944bfed9d777c90f41271fb99",
+    "tools/fixture_property_layers.tcl": "41c1c590176e9e88659722e5b630f314c18e6daa671366b61f16ffb6bbd0e5eb",
+    "tools/probe_property_layers.py": "0473cfdf3cd48666b4e2b9146aadc34f8635bba0547239ffc94de8254e4b489f",
+    "tools/smoke_property_layers.py": "2d579d513befb4a7f80df9888f6da602240032dcb8326a48af55f15a1980619b",
+    "tools/smoke_same_reference_layers.py": "b309dd38343358bf5d21c3e3f054f452958e93f8a7346b8bc07af03bb70c6e0d",
+    "tools/smoke_property_fallback.py": "41e6a92e5250d8bf168509b90b78a5ad6906b941433b21ac881f07a3aedbf0c5",
+    "contracts/tools.v0.1.json": "d75bdd31411fd571bbac7d88c684e311d9231f8f000ec7cb46dbbed23dbf4628"
+  }
+}

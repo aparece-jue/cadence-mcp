@@ -1,0 +1,22 @@
+{
+  "tools": 116,
+  "goalComplete": false,
+  "regression": {
+    "total": 272,
+    "passed": 271,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-272-hierarchy-write-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/capture_hierarchy_edit.py": "d2a624e7aef2ac8180aba7bd66975792f9f2a0db6ea72e6a4a16e53a538da3e4",
+    "src/cadence_mcp/adapters/edit_hierarchy_clone.tcl": "41d9f729af29b475e406e88cc2f8ebd9f4941b3333be2a6de8a574b554d9c4ed",
+    "src/cadence_mcp/server.py": "3f592478cba9e736d3be48ea5074d0bd24d090908a3d65124dbc0cae076aabc4",
+    "tests/test_hierarchy_clone.py": "99650382c93445390938782a352ba25c5ca6fb893fc00d0bce7f42578b3a8917",
+    "tools/smoke_hierarchy_clone.py": "5ef8c19a4ab469fcaa6ba2801c8e473f76dc5357de9b324d37d5aca2cab56076",
+    "tools/smoke_hierarchy_clone_faults.py": "3de5ff7ef81c58dd0c92cfa43ca8815a01779b5e232c4390384d340525404f80",
+    "tools/accept_hierarchy_bad_oracle.py": "8a0bc09869832dbf9a712bf8694f71541e596f9a430f01ba48b21f4840500c96",
+    "contracts/tools.v0.1.json": "6b3ba192ff366aeb5a957b319e2b11e554cfad49d24713928ad58cc8149baea1"
+  }
+}

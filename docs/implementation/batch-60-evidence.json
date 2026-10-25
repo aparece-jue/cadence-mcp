@@ -1,0 +1,46 @@
+{
+  "batch": 60,
+  "date": "2026-10-25",
+  "tools": 166,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "regression": {
+    "total": 401,
+    "passed": 400,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-401-native-measure-20261025.txt"
+  },
+  "nativeMeasureEntryIssueResolved": true,
+  "digitalSamplesVerified": false,
+  "reportSha256": {
+    "docs/implementation/batch-60-native-measurements-2026-10-25.md": "691aafeb0ca9170a332ec2acaa4863c65e646c062e22f7d98041d71c2c345ac2",
+    ".local/native-measure-modes-20261025/report.json": "f5eb1a43f6031ee9b6369723a0db7546093ae584291aca50262fd14a353f5169",
+    ".local/native-measure-mcp-20261025/report.json": "d3b3acff92eea55ab73014e9cf2f500e738be4434cf9a060293f86c6867a663b",
+    ".local/native-measure-mcp-v2-20261025/report.json": "c06bfc317681a3c3ab491f91116d9ab0eed6cfe36df392af142719cd3c46d81e",
+    ".local/native-measure-faults-20261025/report.json": "9fe37958a45250aaecf50c5efa42362d81a56e898dfeb6477d2280efe050491c",
+    ".local/transient-after-native-measure-20261025/report.json": "109187ef383062774fb4e2f9a24a9ee0e9f558193f669cfb80e86a784cdd22a0",
+    ".local/digital-get-forms-20261025/report.json": "f7b913e6d52608189459f6e7bda1d524fe983f59d8cf8ea5955218b3430974a4",
+    ".local/regression-401-native-measure-20261025.txt": "615e8bd0364a42ae58400db25be711d66777b8a1e32df819db6809639987d3e6"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_measurements.py": "9ba2ff05a92b2f0e33a84c38ca486ed234b55cb105c8be614e500d8408b35da2",
+    "src/cadence_mcp/adapters/pspice_engine_measure.tcl": "2c0f8658f43ae11c4c4b0441e7aede0afc602764794b137846ec3a0334d5bc68",
+    "src/cadence_mcp/pspice_runs.py": "6de536773212f37e37227028784eaef44b9b4a27cebfe73b7362aebf07c4e096",
+    "src/cadence_mcp/server.py": "63c7ce0662e5bca2504ef4a5a63fe9d6efbee754669920cffcbab3fcd86b8d1a",
+    "tests/test_native_measurements.py": "8974bc7444bcc1a1de669083d6ea4b181c715cb6763f6646911668246e6c7fc6",
+    "tools/smoke_native_measure.py": "944c89db5eda60a967cacd869ac6f790c33a497a24c5fb33a398cacf867231c7",
+    "tools/smoke_native_measure_faults.py": "5804cbda056283b25675014c5116531d6fe510f2975ac0af4fe318d153333cdd",
+    "tools/probe_measure_modes.py": "890232cc406280c631c1fcb3ed0c37b7c838e76eb1a511a1766638b616141157",
+    "tools/probe_measure_modes.tcl": "e2dc2a001f0f39951a8e8af1281d484a073cd71503f1ac77840ca3ace6315122",
+    "tools/probe_digital_get_forms.py": "c70c71dc28624f2dffdec9188ea2b617d55cce8380872829e260d3860a938050",
+    "tools/probe_digital_get_forms.tcl": "a43a2d4feae09b718ff5852ced22366809b8d683ca521481c80587ea9df9b1cb",
+    "contracts/tools.v0.1.json": "7ef3e7697f28bdb8bb3b3e571bf4dfce77be609533a26a6deacd4f5b618a601f"
+  }
+}

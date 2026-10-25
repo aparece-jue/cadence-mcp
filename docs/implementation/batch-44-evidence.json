@@ -1,0 +1,70 @@
+{
+  "batch": 44,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/alternate-placement-mcp-20261024/report.json": "b663798c487d7d3ac899edda1452c805a19dbc4136938d22d853589b0665d87a",
+    ".local/alternate-placement-mcp-v2-20261024/report.json": "caa1a3db71efce04e21b16f6a5afd76ebb4c9fb6dddbb63606e5cca6aa476cba",
+    ".local/alternate-placement-mcp-v3-20261024/report.json": "455de208e81b7923744019ce5a0d60f605326dac39ce6715260fdd79a1dfbdd8",
+    ".local/line-only-variant-20261024/report.json": "6d634da35f533b076e8bd037488cd6c040be302e7bb8cd8a360e5004dde5a850",
+    ".local/line-only-placement-mcp-20261024/report.json": "1ef316f7460a8445cba5a460a309481b8897f73c34a22c6ae1cea1952d5794db",
+    ".local/alternate-placement-faults-20261024/report.json": "4d61aab78c0ab170b4b15876e61c9df369e41dcab010f37ff97f7d177029bf1e",
+    ".local/regression-300-alternate-view-final-20261024.txt": "8e46cd14f4e82d3869a9c84594f9b74de994ebb5f76a3dbbe14ddb5a16010ded",
+    "contracts/tools.v0.1.json": "ff33ef3b49c7d8f6af687305fa0d191c0bb0db4b0a55fbd52756354eb8f9dd88"
+  },
+  "savedViewComparisons": [
+    {
+      "case": "canonical-Normal",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 4
+      },
+      "sha256": "2dc5e103546448121cfc90c66059a5e10bb6d6476a57899eaf023fbd49d61b4b"
+    },
+    {
+      "case": "canonical-Convert",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 4
+      },
+      "sha256": "2dc5e103546448121cfc90c66059a5e10bb6d6476a57899eaf023fbd49d61b4b"
+    },
+    {
+      "case": "arbitrary-Normal",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 4
+      },
+      "sha256": "2dc5e103546448121cfc90c66059a5e10bb6d6476a57899eaf023fbd49d61b4b"
+    },
+    {
+      "case": "arbitrary-Convert",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 4
+      },
+      "sha256": "2dc5e103546448121cfc90c66059a5e10bb6d6476a57899eaf023fbd49d61b4b"
+    },
+    {
+      "case": "diagram-Normal",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 4
+      },
+      "sha256": "2dc5e103546448121cfc90c66059a5e10bb6d6476a57899eaf023fbd49d61b4b"
+    },
+    {
+      "case": "diagram-Convert",
+      "comparison": {
+        "matches": true,
+        "pinCount": 3,
+        "lineCount": 5
+      },
+      "sha256": "d7d8783e1736d28dd2dde26cb9dae671dba07041f1f63691e51fd6fd8cc70410"
+    }
+  ]
+}

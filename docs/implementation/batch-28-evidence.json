@@ -1,0 +1,23 @@
+{
+  "goalComplete": false,
+  "tools": 116,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 272,
+    "passed": 271,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-272-hierarchy-write-20261023.txt"
+  },
+  "ncNativePassed": true,
+  "ncReadMcpPassed": true,
+  "freshHierarchyPortsPassed": false,
+  "files": {
+    "src/cadence_mcp/adapters/fixture_hierarchy_ports.tcl": "33b413b1e4fc31600db67489415d525e254a7a649c6e7c8b6fb5bbabcb36f965",
+    "src/cadence_mcp/adapters/fixture_nc_edit.tcl": "12defab57f2d134a6d97e8833e3402431ae5fed469586377308aafb3f52a5972",
+    "tools/probe_hierarchy_ports.py": "f312e2b7f20da0e4ba79eb3a16edd9cb58dee822f11e51d69414453ceb4efc85",
+    "tools/accept_nc_lifecycle.py": "edf879f6f2eee1a53ff8645099483a5b946695337bb0527d4d18bed4c5d378d3",
+    "tools/smoke_nc_reads.py": "0ef431ddbd32a3b5cf6d3d16758b1148c1644706d213da1f261415db5219ec7a"
+  }
+}

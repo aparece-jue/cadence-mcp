@@ -1,0 +1,36 @@
+{
+  "batch": 58,
+  "date": "2026-10-25",
+  "goalComplete": false,
+  "tools": 155,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "digitalValuesVerified": false,
+  "mixedAnalogVerified": true,
+  "reportSha256": {
+    ".local/digital-dat-representation-20261024/report.json": "c27c3455300c1ae8670b002e86a86d6d427b870615cbb2a287e1cdadc7812240",
+    ".local/digital-dat-representation-trace-20261024/report.json": "dd9a65f85f4af145e3b204e11e8b82a4cc2c0904fd6376c7e850ccfff1259903",
+    ".local/digital-trace-calls-20261024/report.json": "01d87339604e75cc3040b03e30340eb11a878330681c424abd707436def078e8",
+    ".local/digital-reader-lifecycle-20261024/report.json": "f36e0652d212eb4575b4b6fc29bae8d0b642350b10cfbf28a153201445a2e01a",
+    ".local/digital-catalog-mcp-20261024/report.json": "33999a5f43d0a280235e1bc8716ab3ea4d1715b48d1fd11008be4d9d1bff421b",
+    ".local/complex-dat-after-digital-20261024/report.json": "80e9ae0530856ac49d4775a3a069bd5e6e2c9c174decfd39ad58bb5f0655e5e7",
+    ".local/official-dat-after-digital-20261024/report.json": "9a5b66b69bdf787a1e7f992b9523306351ac454f12e495ee76d0163964b4b37e",
+    ".local/mixed-dat-fixture-20261024/report.json": "256f205a732093c5ec94966097c7450f9bf6d51ed14b211def7a5aab14e47dfe",
+    ".local/mixed-analog-run-mcp-20261024/report.json": "41f306046e945f0800e47e72514fb8ae08e1af24f9d012947800df6e8eb345a5",
+    ".local/regression-383-mixed-dat-analog-20261024.txt": "83c5e92c8aac7e5717b13cc988537c0a9ae91b12631e1dfca02f5ed86b4e120e",
+    "docs/implementation/batch-58-digital-catalog-mixed-analog-2026-10-25.md": "60eadec26c941110c7ecac05a9567e00e3bf0dd2b7374bb0338ba55bc4fc76a8"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_dat.py": "c9f1e7443316ae45c47f43a7b9a707d238f7b99cc38d34fb128d5cfa5d8e4084",
+    "src/cadence_mcp/adapters/inspect_dat.tcl": "4d9c78063124a76e1ef689f0f917fc784e7b9fc460c46dc5e62f34c0ecf0e806",
+    "src/cadence_mcp/pspice_runs.py": "e4bddeee60ac80d249f9b8c4a4531231fe042c438736ab42998cb88cf8096c05",
+    "src/cadence_mcp/server.py": "7b63dc1db19689bb2c1e2f8298b7cbf885a082bd06ce7a126114f2e7621c9745",
+    "tests/test_dat_digital_metadata.py": "8a5767aba258fc7c12fcdb5181b2da88a20c6e118758d6b52015c18dbe4edc8c",
+    "tests/test_dat_mixed_analog.py": "7f4047ec301568d4682ae5054a244da8c077eeb2c874620678459a3e6cb72473",
+    "contracts/tools.v0.1.json": "e0b3b087e868216e429028ad3513192e11204054e34aac262c7297623ef798c4"
+  }
+}

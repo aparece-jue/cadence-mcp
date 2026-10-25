@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cadence-mcp"
+version = "0.1.0a1"
+description = "Local Capture and PSpice automation MCP server"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+dependencies = ["mcp==2.3.0", "pydantic==2.14.1"]
+
+[project.scripts]
+cadence-mcp = "cadence_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cadence_mcp = ["adapters/*.tcl"]

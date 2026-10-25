@@ -1,0 +1,40 @@
+{
+  "batch": 82,
+  "date": "2026-10-25",
+  "version": "0.1.0a1",
+  "tools": 193,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "newDeferredIssue": "ISS-D01-crosspage-shared-vcc-unbound",
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 17,
+    "implemented_partial": 8,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 516,
+    "passed": 515,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-alpha1-20261025.txt"
+  },
+  "evidenceSha256": {
+    ".local/crosspage-cached-unit-native-20261025/report.json": "4fa03680b16f833233832ac20d285935e645e8facef827efcb7ef21987ea1954",
+    ".local/crosspage-cached-unit-mcp-20261025/report.json": "3fefb83d5403f74da3f9baf471836b77ff37587346dcccf8316e6a3d549658fe",
+    ".local/crosspage-cached-power-audit-v2-20261025/report.json": "aac9ea047f9b2a2d0503a297c525da48355ed550f20552061890a07554ed1ca6",
+    ".local/alpha1-test/smoke-v2/report.json": "677db0f56be164f9b20e6932ffe426c9bb6c3b4d1eb27f990f85550ba7dc8ac9",
+    ".local/regression-alpha1-20261025.txt": "898ff637e353845209518bfde7ca47e083582064b267de872fb7e22945d7aed9",
+    "docs/implementation/batch-82-crosspage-and-alpha1-2026-10-25.md": "4145c7d59da2153edc35f2ec377a9b8812f6f39d2212ca4eb90da7ae85327a4b"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_cached_unit_add.py": "ddf8238f98200b8ecb98416427b7d54fbebedbad11933477f13df054e3ff99e4",
+    "src/cadence_mcp/capture_multiunit_place.py": "27caae3d071772105c5cd1567b0007a727800c2ab95f77a1b56f4810a40ef8bc",
+    "src/cadence_mcp/adapters/add_cached_unit.tcl": "13cf2ccb28c77abedefcb172e47cc26ff298d3e49085a7e22502a6353a7f1a0f",
+    "src/cadence_mcp/server.py": "4259c641f2bf781fcb835c52e0f5fe2dc1a0cbec088b3b0ad6694c4d3dda9dab",
+    "tests/test_cached_unit_crosspage.py": "ba6efb64e612908610a4303a9835d9bd9064fc9416cbe2dfed95316a6ab3015c",
+    "contracts/tools.v0.1.json": "6e5bf7f5f9c8ab61ed4dba5dab9c4be17bf5af4b29c55ade3211a3e874297f2c"
+  }
+}

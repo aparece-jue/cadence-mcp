@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "regression": {
+    "total": 296,
+    "passed": 295,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-296-net-symbol-case-20261024.txt"
+  },
+  "evidence": [
+    ".local/capture-host-bootstrap-20261024/report.json",
+    ".local/schematic-expansion-20261024/report.json",
+    ".local/net-symbol-case-guard-20261024/report.json",
+    ".local/regression-296-net-symbol-case-20261024.txt"
+  ],
+  "files": {
+    "src/cadence_mcp/capture_net_symbol_edit.py": "c68b84c36010f85965ec0a4a04bc1819f778ff5a6934aae349cf84ed7b1d244e",
+    "tests/test_net_symbol_edit.py": "f43d932be53cffbcd16dfb8f3f2eded06fbd92c150a17c27e608ec1d71d789fc",
+    "tools/probe_capture_host.py": "8d0c8690b6a7fa5197989aa077eab4d32d0d4767f202683b03f1d36361ef29bf",
+    "tools/probe_schematic_expansion.py": "38a797e5bbfa26d9cb21b98ef8a5b7694cd2651299fbba6045c5a1e16ac7a874",
+    "tools/smoke_net_symbol_case_guard.py": "20c4715b84f424709f869169a5f2167833605633acf706698b0172ed05a0c699"
+  }
+}

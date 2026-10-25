@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0a1",
+  "wheel": {
+    "file": "cadence_mcp-0.1.0a1-py3-none-any.whl",
+    "sha256": "c95a3e5bfcb43cc1a87280daf0913342c0071b0d020f61c6ca12f18378199ba3"
+  },
+  "zip": {
+    "file": "cadence-mcp-0.1.0-alpha.1-windows.zip",
+    "sha256": "8a260532bb89fa8f29a2679e62aba06e714fdaecc705bae4b6958a1ccb9dd83b"
+  },
+  "packagedModuleFilesVerified": 200,
+  "regression": {
+    "total": 516,
+    "passed": 515,
+    "skipped": 1
+  },
+  "nativeSmokeEvidenceSha256": "677db0f56be164f9b20e6932ffe426c9bb6c3b4d1eb27f990f85550ba7dc8ac9",
+  "installedDependenciesCheckPassed": true
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1",
+  "profileId": "user-layout/default",
+  "version": "0.1.0",
+  "status": "draft_not_project_approved",
+  "extends": ["base/connectivity@0.1.0"],
+  "rules": [
+    {
+      "id": "SCH-ID-001", "version": "0.1.0",
+      "title": "Physical package references are unique in the intended design scope",
+      "appliesTo": ["capture.design"],
+      "selector": {"entity": "part", "scope": "design_occurrences"},
+      "check": "capture.package_reference_unique",
+      "parameters": {"allowUnitsOfSamePackage": true},
+      "severity": "error", "enforcement": "block", "overridable": false,
+      "source": {"kind": "proposed_base_rule", "reference": "05-design-standards.md"}
+    },
+    {
+      "id": "SCH-CONN-001", "version": "0.1.0",
+      "title": "Layout-only edits preserve expected pin-to-net connectivity",
+      "appliesTo": ["capture.layout_change"],
+      "selector": {"entity": "pin", "scope": "design_occurrences"},
+      "check": "capture.expected_connectivity_equal",
+      "parameters": {"expectedArtifactRequired": true, "allowIncompleteCoverage": false},
+      "severity": "error", "enforcement": "block", "overridable": false,
+      "source": {"kind": "proposed_base_rule", "reference": "03-tool-contracts.md#4-plan-与验证"}
+    },
+    {
+      "id": "SCH-LAYOUT-001", "version": "0.1.0",
+      "title": "Functional modules have readable boundaries and annotations",
+      "appliesTo": ["capture.page"],
+      "selector": {"entity": "page", "scope": "design"},
+      "check": "manual.functional_module_layout",
+      "parameters": {"font": "Arial", "frameStyle": "dashed", "nativeColorEnum": null},
+      "severity": "warning", "enforcement": "manual", "overridable": true,
+      "source": {"kind": "existing_user_preference", "reference": "cadence-capture-tcl/references/drawing-style.md"}
+    }
+  ],
+  "waivers": [],
+  "notes": ["Checker IDs and the base profile are proposed and are not installed implementations.", "Native Capture style/color enums belong to version-specific adapters.", "A project must pin the resolved profile and hash before execution."]
+}

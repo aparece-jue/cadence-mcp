@@ -1,0 +1,47 @@
+{
+  "batch": 51,
+  "goalComplete": false,
+  "tools": 155,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "tests": {
+    "total": 354,
+    "passed": 353,
+    "skipped": 1,
+    "independentFullRuns": 2
+  },
+  "resolvedProcessIssue": "ISS-P02-process-directory-release-152",
+  "reportSha256": {
+    ".local/library-package-edits-v2-20261024/report.json": "567fb4ccf4f9ffea6a6215f66054c7e1c614cd87b5da1fd8ffe72a07d09081f1",
+    ".local/library-package-faults-20261024/report.json": "fa91bde8c7838c4374846d4332a7052d28d19805dd1409545efa274ef3c612a6",
+    ".local/package-library-placement-20261024/report.json": "788d3ef86a4609906b47425fc300b925ddcf0fa43f9e41ad52c43e203d14cbc0",
+    ".local/library-package-faults-exit-signals-20261024/report.json": "3330b7834c6ecbc6d641f8440423d8a4984590a965c7aec30eef969a03a12a18",
+    ".local/pspice-engine-exit-signals-20261024/report.json": "f9b13048d7cf08259ecd6ab871c6516152bf83c712ffadcdef3de6c7d17fa6f2",
+    ".local/library-package-edits-20261024/report.json": "25d3c05f9f99c8bc7b441c7a36bf14da66bcc79a22b53779e593f95be8610438",
+    ".local/process-exit-release-audit-20261024/report.json": "1c3b643271e16af2c5291777b218d29484e1a99cfb7e1699bb1912f2a4e12dfb",
+    ".local/process-exit-release-temp-before-20261024.json": "e5bd2d6f422640a105c1230d013c10f83c93fba43e7d69fbfe4e207649afbf3e",
+    ".local/process-exit-release-after-20261024/report.json": "9c3a3e27e840c35bc332926dbacb27aa78018c8d5e3319c10fa89d52cf82c5e0",
+    ".local/process-exit-release-temp-after-20261024.json": "ecf24942610a3a5eb88d228d3da9980d0e7d861616597a29d0bb840a000270e2",
+    ".local/regression-354-package-exit-signals-20261024.txt": "5ed1ade5027bbbab2aea25172c3c6cd17cfe12b6be083c5c793eadc1848c09cd",
+    ".local/regression-354-package-exit-signals-confirm-20261024.txt": "efd4d374342a73df0f82921f4dd4ed95f86a2d2d764f3df08b50f59672eacf01",
+    ".local/regression-352-library-package-edits-20261024.txt": "ecb79eadc685ea45c1fe45350c4947fcaf02a00d891ab757be90b824280a7b0d",
+    "contracts/tools.v0.1.json": "35fc488ccf80e49e2ab7691680b5231e3ca8aae8d03c6f02aaa77401eb81f6ce",
+    "docs/implementation/batch-51-package-properties-exit-signals-2026-10-24.md": "f7275e16245b9de9cf610253163c5593d617c3278ea3b20eb9910cb8c677121d"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_package_edit.py": "15a9266cab56ad89110c8ae3a3016587535650ab6e91b50b2f660d185cc1e33f",
+    "src/cadence_mcp/adapters/dbo_package_properties.tcl": "34d0dc7b8a4f21956d98c77aa91c0c3f4c9c4806fa3325a1eaab9ab2bf31834e",
+    "src/cadence_mcp/adapters/inspect_library_package_properties.tcl": "ad6106ececde3cba682eb929962dd31c08c1fddbf5be831fbbee9aa79025bdcb",
+    "src/cadence_mcp/adapters/edit_library_package.tcl": "a0d0a88e69ee51a352069afcbfbabff62c9751c5b701b3351b2010e36bb09c01",
+    "src/cadence_mcp/server.py": "6d94bbd86dd0fc498c18715d45453de06e1ee22aaa55c23dd51492dfc5699a41",
+    "src/cadence_mcp/process_tree.py": "fdf0facc77174787e3b5a3aa584c05149bbec193a40c2ebaa09aca6ca181a2ba",
+    "tests/test_library_package_edit.py": "98af89c5f28aeaa73d24ee1b70c2288627a954c7d33292c28295efc3f782e965",
+    "tests/test_process_exit_signals.py": "47c65cf12567af761de79967c6c1de179b743d4c3b8758741536e979ea6048dd",
+    "tests/test_process_tree.py": "eec76179923a483927ae4879cac08d6425cb85c82d8720a3e07b37473b18b969",
+    "tests/test_readonly.py": "87cf9cd6b406e461c2d7a7b26b37ca87b0221dcbdd888294bf6ae121bd98b53b"
+  }
+}

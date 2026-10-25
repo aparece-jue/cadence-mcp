@@ -1,0 +1,58 @@
+{
+  "batch": 80,
+  "date": "2026-10-25",
+  "tools": 193,
+  "goalComplete": false,
+  "productionChanged": true,
+  "acceptedFeature": null,
+  "resolvedIssue": "ISS-H01-iterator-errors-published-partial",
+  "fullH01Accepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 16,
+    "implemented_partial": 9,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 500,
+    "passed": 499,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-500-hierarchy-integrity-20261025.txt"
+  },
+  "nativeAudit": {
+    "passed": true,
+    "normalRows": 24,
+    "normalFullDocumentUnchanged": true,
+    "legacyChildFaultReturnedPartialRows": 14,
+    "legacyPropertyFaultDifferences": [
+      {
+        "occurrenceId": "occ-2",
+        "expectedPropertyCount": 10,
+        "actualPropertyCount": 1
+      }
+    ],
+    "repairedBothFaultsFailWithoutOutput": true,
+    "faultIsInjectedNotAClaimOfRealDesignCorruption": true,
+    "sourceUnchanged": true,
+    "fullH01Accepted": false
+  },
+  "evidenceSha256": {
+    ".local/hierarchy-iterator-integrity-20261025/audit.json": "fff6374bb1c75164d2cf67176e9774c9a4dd4fa8d389e43ab27d9b2cd2b57555",
+    ".local/hierarchy-iterator-integrity-20261025/hierarchy-before80/report.json": "5e50e596c9571cc319d9558f4216fee80312e6f0c550074a0e3a3b64b802e8a5",
+    ".local/hierarchy-iterator-integrity-20261025/hierarchy-after80/report.json": "a82bd612e195832be420c1183d18f00d7552eef3d9500c257ea7bc9ad8e4ef31",
+    ".local/hierarchy-integrity-mcp-20261025/report.json": "43c72936f4283a808a69ffd8813f633f005b4c88ed6db992c28f4b0d07ee9cd7",
+    ".local/regression-500-hierarchy-integrity-20261025.txt": "e702c78f30cac37b31596a2158269678abebf2c7be8761e3198bf69570e1e03e",
+    "docs/implementation/batch-80-hierarchy-iterator-integrity-2026-10-25.md": "07614c2444ec4be80565b0569c92d25fafe9deaa62f1874e2c9a6201dc600ca0"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_hierarchy.py": "d2c95ec6ec6de49ce78fe320656bd6f4c30c606d2f1901be903c533b071586ae",
+    "src/cadence_mcp/adapters/inspect_hierarchy.tcl": "6ccf56137913d204adb985cf8630a7e225b5da573aace06fdbaf55a88925a234",
+    "tests/test_hierarchy_integrity.py": "50fa1304ce5fbccfa1558307b53e9bc51b4b14554b7c0ed4f7102cc8b143ea55",
+    "tools/hierarchy_iterator_fault.tcl": "5c1a964eaf8c5522297594d037ffe9bac10f64be5192faa3110a9eb71f98616e",
+    "tools/probe_hierarchy_iterator_integrity.py": "794aa2886553123253c04387999e10150e43bb603c121cfacd70fbab95f8f76d",
+    "contracts/tools.v0.1.json": "99762373a202bc14c5c404f10c720e151d0e936a09507133d395c80dce3e4cbb"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "batch": 45,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/multiunit-wire-frame-20261024/report.json": "9e3c680dbff733ca6710018390f3c8d779ead8f87daa4736e4eaf033fdf3979a",
+    ".local/multiunit-placement-mcp-20261024/report.json": "d02eec43c4446c0eca8f3c8d9b1404ad8b9130a342eb764f0bf4e163d5604c0f",
+    ".local/multiunit-placement-mcp-v2-20261024/report.json": "110f201edcf5db4d3224cf9a47d0594a63b89a771483d2278bfc9244ad894016",
+    ".local/multiunit-placement-faults-20261024/report.json": "52de4f170f1c208b83a2577f5e7bb6d418f06e10294d3f1b38548a2aea662a8a",
+    ".local/multiunit-plan-guards-20261024/report.json": "6b6288b5f7beb865e8a4a23194bdf7f831cdfc4dfe09479fd67da9083b80c682",
+    ".local/multiunit-artifact-tamper-20261024/report.json": "231efe442458f815734ec95ade5338e88986efd449e8d203e0eb3c8568814b4b",
+    ".local/regression-307-multiunit-placement-20261024.txt": "331ee931aa17f184e3b15ce22a19de08d8b1fd7ad33fe19016498796a7d2d4ae",
+    ".local/regression-310-multiunit-final-20261024.txt": "aa86e697178ceed16b49c9173f6ba4d0803ad39c9d813cf2966734e9b5ea448d",
+    "contracts/tools.v0.1.json": "1e269aab9e69f3a9e446caf36b5101ea58359659edecf4effb6df52869867749"
+  },
+  "terminalSecondGroupArtifact": "intentionally tampered and refused; exact backup retained, other outputs intact"
+}

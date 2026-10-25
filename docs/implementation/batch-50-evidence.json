@@ -1,0 +1,46 @@
+{
+  "batch": 50,
+  "goalComplete": false,
+  "tools": 149,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "tests": {
+    "total": 342,
+    "passed": 341,
+    "errors": 0,
+    "skipped": 1
+  },
+  "resourceIssueRemainsOpen": "ISS-P02-process-directory-release-152",
+  "reportSha256": {
+    ".local/library-vector-edits-lines-20261024/report.json": "175732907f3d48583e76229efaa7a1639edaa514b2f20ed12c9a6822e3941f8b",
+    ".local/library-vector-edits-path-text-20261024/report.json": "b6b5acf24d939112ae65cfc2f11a33757168015bbe06043548515f72f76c341d",
+    ".local/library-vector-edits-lines-v2-20261024/report.json": "b89eaca67b39512404c67713dade9cdccd0f8dde5ab64ee96affe972f8fd37b3",
+    ".local/library-vector-edits-path-text-v2-20261024/report.json": "96a5e800b25b94c5ccd64f371920af500f8995b2ee42718a206f7d8dae3e635c",
+    ".local/library-vector-edits-final-text-20261024/report.json": "b744e3c9c0adf39459d9f1b9d60a90b4027e749cf172f3e59cd0e528126278e3",
+    ".local/library-vector-edit-faults-20261024/report.json": "36fd151ea98a03bf06b5091a8e7c9132b21a5b012c7014bd22f0ea8c09e660e8",
+    ".local/library-vector-edit-faults-v2-20261024/report.json": "5afb1f5c54be073309cd60780083860c61f932f8f0965c36f0bfc6c96611fd3c",
+    ".local/edited-vector-placement-20261024/report.json": "83a08c4b26d5d18b0d51ac53a26c9d486ed666f28c9d59a6ae058be500cb3e2b",
+    ".local/library-vector-multipackage-v2-20261024/report.json": "381224604ff3367ed5e68f223d6beee1b46df85e713074b3ae8d771c6fd9a0e7",
+    ".local/library-vector-multipackage-delete-20261024/report.json": "16aa81774267133aed50625e89fce8d2bf5ae28e1db5510927c5fcb2f0b47cc5",
+    ".local/library-vector-multipackage-20261024/report.json": "b42f78cd0f085b8292a96675ba275a5422ae2fb9d5413fdbb2ca882434925cbd",
+    ".local/regression-341-library-vector-edits-20261024.txt": "86dc687cd22bf1ec71eaf041b1bd742b33c98ebc8bd18f1c30873d4e922e233f",
+    ".local/regression-341-library-vector-edits-final-20261024.txt": "b409175fe421c267e319c1d0bde4b4d350656c39a8d0ce178db33794dce15a80",
+    ".local/regression-342-library-vector-edits-20261024.txt": "fb0e6e9cfc8e45c80cdb347f6f02765cc2db86f0e8ae156d9aa88d54964ef353",
+    "contracts/tools.v0.1.json": "86cdf0b84817c000e025d303ff7413dc0abe3a2c1ddd6083e154549eef9dae06",
+    "docs/implementation/batch-50-library-vector-edits-2026-10-24.md": "7e5d6637bf613041b8aacac10e4cd7365ecea84f303459338b5e849f85669911"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_vector_edit.py": "1e6aadec1c112f74468c10053860a7ae5b352bdfb32aa96ca91ab6d21160e891",
+    "src/cadence_mcp/adapters/edit_library_vector.tcl": "7879b0a75c98f22cd57dc1f905a5c7b23b074543615f5d1edf19bd6f17ab513d",
+    "src/cadence_mcp/server.py": "2ac11e18cac9a9a41f6b4af548b06fca3da16c5f4d2b8ba6fed85ece110957a3",
+    "tests/test_library_vector_edit.py": "4f312c6dc9994ce83fd01e1bc3212e7de8796b01954c280a34e3f667ca1d6a8e",
+    "tests/test_readonly.py": "389648acefe4f7e9aec8f43277088985e70ced1b892a927667a4ffeedf857fe9",
+    "tools/smoke_library_vector_edits.py": "472f453ba02ad7b4ffd3c10e2474b86b13f8690d4ce0ca356b5227a3f95355c6",
+    "tools/smoke_library_vector_edit_faults.py": "10df135b7797305d545525e68f955864f5a9fffa4b8525a51aea9028488732cf",
+    "tools/smoke_vector_multipackage.py": "45da14072db7dea497417e22ed391bb4970558ee8f3d66de5b14c2d40e4b6456"
+  }
+}

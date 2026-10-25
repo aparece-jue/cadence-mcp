@@ -1,0 +1,13 @@
+{
+  "batch": 47,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/cached-unit-add-20261024/report.json": "f45b4ac5d6dd73b34b85d1ed726511c138fdbb2c15c828beee1f947e8596fd79",
+    ".local/cached-unit-add-mcp-20261024/report.json": "62ed0964b9513e027ba49910e62fa2327ad18f45a47d99d4e25a92f9e45fe4ea",
+    ".local/cached-unit-add-mcp-v2-20261024/report.json": "ff08b259e19be9def4392ee3ddc580d6d4825617a051e1c0a826726de511b7f9",
+    ".local/cached-unit-faults-20261024/report.json": "43b800cbca9250384bcf4f7f0c413ac8c700cbea30a97520b0d36b1bec242532",
+    ".local/regression-324-cached-unit-add-20261024.txt": "1ec46774e27b4fb04861d2a63e30addbe7f2c4e619cf50417730622833131ac6",
+    ".local/regression-325-cached-unit-final-20261024.txt": "b0ae44461367084a1ae7975f2b6e252469068a166a457783855365da0d621995",
+    "contracts/tools.v0.1.json": "a6b9c07d1224c9abca9941bd67a28b7cc0e980a525d0f17001653a1a9b276c7b"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "regression": {
+    "total": 300,
+    "passed": 299,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-300-library-variants-20261024.txt"
+  },
+  "evidence": [
+    ".local/library-part-variants-20261024/report.json",
+    ".local/library-part-variants-mcp-20261024/report.json",
+    ".local/library-variant-faults-20261024/report.json",
+    ".local/regression-300-library-variants-20261024.txt"
+  ],
+  "files": {
+    "src/cadence_mcp/library_create.py": "dc257bb716105ec7dbd241ca123aa905cb95e27db468da2c4ee10af924ac0f26",
+    "src/cadence_mcp/adapters/create_library.tcl": "9d66dc6b91cfd26a8646cf4a4e85b14df7c48e2df99a272116654320cbbb8a41",
+    "src/cadence_mcp/adapters/fixture_library_variants.tcl": "9d66dc6b91cfd26a8646cf4a4e85b14df7c48e2df99a272116654320cbbb8a41",
+    "src/cadence_mcp/server.py": "acbd9382be1b67203e2d02c06dbed1dc876ab28824f8e8a518b16fbc87bddf5b",
+    "tests/test_library_create.py": "b527f0617270df451ae91e73997ca86382c9de9ac040c358a4afb0b31d249574",
+    "tools/library_variant_graphs.py": "00a04975396cc9cd82c18db8b19f6f509944457c858aeedfc8a171ee0cfb5480",
+    "tools/probe_library_variants.py": "3942eff6fd1a8a67ccb4ab931d654c447d4ceb0048d52b1d912f073172980cfb",
+    "tools/smoke_library_part_variants.py": "8f6b3d1f805d3d00fa1496bee88fc4df98fb8e5009416a2202faf0aaffacd0bb",
+    "tools/smoke_library_variant_faults.py": "a87286a34725de46a07715fe3b6a13078de49f92a44cd9192832071dc8c89a2c",
+    "contracts/tools.v0.1.json": "4e81ea896bbc6b659b0d90756a148fcd99ca44b3d4a0153a798073af05bd5580"
+  }
+}

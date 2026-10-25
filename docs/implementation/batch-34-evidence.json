@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "regression": {
+    "total": 294,
+    "passed": 293,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-294-net-symbol-edit-20261024.txt"
+  },
+  "evidence": [
+    ".local/net-symbol-edits-mcp-20261024/report.json",
+    ".local/net-symbol-edits-mcp-v2-20261024/report.json",
+    ".local/net-symbol-edits-mcp-completion-20261024/report.json",
+    ".local/net-symbol-edit-faults-20261024/report.json",
+    ".local/regression-294-net-symbol-edit-20261024.txt"
+  ],
+  "files": {
+    "src/cadence_mcp/capture_net_symbol_edit.py": "af7eda31cdd49a3010d42a061bbe084536b68d153a4d4007e5a42180a333e36e",
+    "src/cadence_mcp/adapters/edit_net_symbol_name.tcl": "2cf2f9ad7308ddcadbb74c92cf17ecc6754a54fcd40794882e76c37ede7d28cf",
+    "src/cadence_mcp/server.py": "df07086e91af75a554886a4db3e72fafdbcf55e7c5706a56fe009cb0378aa68d",
+    "tests/test_net_symbol_edit.py": "60cced0621edc788b5515117b67e81a2908d29088cb37fa487ab3a5164d88d3f",
+    "tests/test_readonly.py": "96dda41f32bde39018da991d8ad76daa192903f0f7411508e4a2ad1f17cab48e",
+    "tools/smoke_net_symbol_edits.py": "39e40d6d431f83b100a712a1c3836a3df2231b4f0eda5e96484cec0e6a5d925a",
+    "tools/complete_net_symbol_edit_acceptance.py": "16cf96eca23507a8b3335346a54fd9b5c109211e0b97b497343c766131b250cf",
+    "tools/smoke_net_symbol_edit_faults.py": "9b40a00d2b4b6590160291bd558d5707d5f21b5fad511e3fda0219412f622b6f",
+    "contracts/tools.v0.1.json": "eb8d9d4d6e8878885658eeb5586a0c48e0740e1be88aaad6c4f4b0bfbe42cdd4"
+  }
+}

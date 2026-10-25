@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "cadence": {
+      "command": "C:/path/to/cadence-mcp/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "cadence_mcp.server",
+        "--install-root",
+        "C:/path/to/Cadence/SPB_24.1",
+        "--workspace-root",
+        "C:/path/to/cadence-mcp/.local/workspaces",
+        "--read-root",
+        "C:/path/to/designs",
+        "--gui-bridge-root",
+        "C:/path/to/cadence-mcp/.local"
+      ]
+    }
+  }
+}

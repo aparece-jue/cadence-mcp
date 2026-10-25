@@ -1,0 +1,77 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/library-pin-semantic-20261023/harness-error.json",
+      "sha256": "e986fd4f1d55f3390b45b550577614e034551ea9d2baa30d13849269436c54c9"
+    },
+    {
+      "path": ".local/library-pin-semantic-v2-20261023/report.json",
+      "sha256": "38849573d9bc3e52ad64000f6684b074f97bbad8b613a778754962f110615337"
+    },
+    {
+      "path": ".local/library-pin-mcp-20261023/report.json",
+      "sha256": "831f99abc957fddb71d0ac94795ca2cf3eabd96b060454180607a5aaead74662"
+    },
+    {
+      "path": ".local/library-pin-faults-20261023/report.json",
+      "sha256": "3409906509aadd7e0492b88eef0ab7c398f25ae7440c979f4da29e5fcdc540d0"
+    },
+    {
+      "path": ".local/edited-library-placement-20261023/report.json",
+      "sha256": "498135ff5d5afbbc3e8c131d90f6c34408917651d26a50f6f3fca430bc93cf77"
+    },
+    {
+      "path": ".local/legacy-library-edit-audit-20261023/report.json",
+      "sha256": "3eefb7f711793e300aa2653d128b5d4c8bf246c11b79323d1566e6fc8bbc8e9c"
+    },
+    {
+      "path": ".local/regression-250-library-pin-20261023.txt",
+      "sha256": "87bb0cbc91ae535d6cda0ef89a4b259e61baa7460c4bb2e5c49d5327eeb2c104"
+    },
+    {
+      "path": "src/cadence_mcp/library_semantics.py",
+      "sha256": "92c5ea8823dd5abdbedd753170be2ce28824c58cecfc7802b02c0012efd5c3df"
+    },
+    {
+      "path": "src/cadence_mcp/library_edit.py",
+      "sha256": "7e9cbe49b95ca9cf54930926591e56695e2bbe65e9c0c5d3e4d42b9969df0dc6"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/edit_library_pin.tcl",
+      "sha256": "6e6816990f209f73fc5df493a6b24aefb9b1c7c418e88defc485db0c6be83341"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "9c0f6302c575f569d3713c4a71c8e3ac54ecaccacc2108c06af7a1180415abf9"
+    },
+    {
+      "path": "tests/test_library_semantics.py",
+      "sha256": "3a5d762347860016a278c7dfb3ae63b1b7b73dd8f3dec81bfa7a714d45968901"
+    },
+    {
+      "path": "tools/smoke_library_pin_edits.py",
+      "sha256": "c9a62150d3322aefe1dc5b35c6a0ff057a0e49dd9096253c714cde655807844e"
+    },
+    {
+      "path": "tools/smoke_library_pin_mcp.py",
+      "sha256": "2705ddb682d0b1f6682b7de8c6a7dfc96f2e5bda61c5acbf7cb2e755f5f57796"
+    },
+    {
+      "path": "tools/smoke_library_pin_faults.py",
+      "sha256": "781c634ee6b185b963a1e669933eedb5faebc350bee134dbd26f8043cd7967df"
+    },
+    {
+      "path": "tools/smoke_edited_library_placement.py",
+      "sha256": "fcfdbdf711852df2f5c4580afb03c5ef4f222dd2ac11754dea1d97f06fb1f9a7"
+    },
+    {
+      "path": "tools/verify_legacy_library_edit.py",
+      "sha256": "f8c34583f8f8523430612b96f77a824c1f1d937460097a8d8a97919f856f5319"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "486afa8a338ef745763a91b56f094cd759bd16328b0d3af2dd782b45c903302f"
+    }
+  ]
+}

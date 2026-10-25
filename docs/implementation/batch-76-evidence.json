@@ -1,0 +1,56 @@
+{
+  "batch": 76,
+  "date": "2026-10-25",
+  "tools": 191,
+  "productionChanged": false,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 14,
+    "implemented_partial": 12,
+    "planned": 2
+  },
+  "newDeferredIssue": "ISS-C04-inventory-matrix-reopen-3969",
+  "latestFullRegression": {
+    "total": 473,
+    "passed": 472,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-473-display-fonts-v2-20261025.txt"
+  },
+  "fullRegressionReexecutedThisBatch": false,
+  "productionBaselineSha256": {
+    "src/cadence_mcp/capture_display_fonts.py": "b4fa426f58ffa22a2e527274f9668c105ca9f8643b017a87f02ce070aeb695f3",
+    "src/cadence_mcp/adapters/inspect_display_fonts.tcl": "52ce9ebdfae165339f945a673c795a6f1ec5a82df53232e81dfb5547778fe738",
+    "src/cadence_mcp/adapters/edit_display_font.tcl": "c8c0c14ed298eb7edfd4e1086aaff63f5a4cdd070761c68cceb6f05887a5a624",
+    "src/cadence_mcp/server.py": "64f5a09b83ac901a34b4c92ccc8d1a44e4af38f03fad3e08042da6ec00cf481c",
+    "tests/test_display_fonts.py": "b6c39f300db4a6ffb06ad8f80280f635d013dfb47f2d3bd9e96621e1b9d599c5",
+    "tests/test_readonly.py": "8e3ee5b1d670f695c0c96395252a5275551dd158afc4554cf954117c0700ac1f",
+    "tools/smoke_display_fonts.py": "5ff473ce1c1b8968a5e165ec5f21b6aa919e5e01b25a02ea57b1a5066cae7c51",
+    "tools/smoke_display_font_faults.py": "2b79a3e5695484fc2718c52b293086e3d7a69e1fe060abb8e4fb0b7c3ed3fb39",
+    "tools/smoke_display_font_default.py": "a7e3cc78fdc1d0761f5489772b23b784cf605a933d37b577c227ef57646240cf",
+    "contracts/tools.v0.1.json": "4c3059049fab3e993b6253d08442eb29df9e1f46d2e7038235ced265f0c01d44"
+  },
+  "reportSha256": {
+    ".local/reference-connections-mcp-v4-20261025/report.json": "f9c909f060e3c6a806aeabd47d87f24694294d7c4dc0eda4c2b7483c95ac7de9",
+    ".local/connection-inventory-mcp-20261025/report.json": "a913b5732d47d3c5c40333c69bd2ce6af22994aba5d8b165154a35fbb13f4bd7",
+    ".local/connection-inventory-matrix-v2-20261025/report.json": "d85310fef94bc42095477c87169ce01397e4d56959746ac3bb3ef783d201585c",
+    ".local/connection-inventory-matrix-v2-20261025/expected.json": "d31c2041a595af1fb15e8af5813febf04376a0ba612bf8016c8651ebabcd4560",
+    ".local/connection-inventory-matrix-v2-20261025/diagnostic-process.json": "9ce03bbe9aba6cf5d63468a93761c8f493b5820510a8477483be1b5d09003ffd",
+    ".local/connection-inventory-matrix-v2-20261025/diagnostic-direct-v2.log": "f43e16f479e3fcec480042fa663e017fbc188e3cbc057f7427d3bbfb558e6635",
+    ".local/connection-inventory-matrix-20261025/report.json": "46517509e24654dd57868c188a3a291cf0b549744db0ad871d14b94f2e5cfdb0",
+    ".local/reference-connections-mcp-20261025/report.json": "eccf8724ae2e89fbb50c8775839d707aa104648d20d7ac30c46350aff79c4b09",
+    ".local/reference-connections-mcp-v2-20261025/report.json": "ffd3650c691e6c35e7f85ea7c83633ab82bfffc16d2e2daa468d3d82ddd0db98",
+    ".local/reference-connections-mcp-v3-20261025/report.json": "de937fcb15ecab81e5b969f190ad2898afa1f48c75bd47f1a7c55d230364e6cb",
+    "docs/implementation/batch-76-connection-inventory-2026-10-25.md": "c02f9ed4344c2894c21baa2f0bec76263ef37cfb0436cc617a086af39d82031f"
+  },
+  "newToolSha256": {
+    "tools/prepare_connection_inventory.py": "71af2a1bed9db601abef3dfb2f38ee5830de47762a97c8054d1d6c0c6568782c",
+    "tools/fixture_connection_inventory.tcl": "3d792534ccc6000c9928f72a2c4b1ebc960e4b8a92444f1f5557caa1d8274e6c",
+    "tools/smoke_connection_inventory.py": "edc3b208534fb5d41401042209de1895048a628182d36be8d2bb6f9f5c47dc1f",
+    "tools/smoke_reference_connections.py": "b3811f3233b51e038f555c9891741500a6a51ca137e20e224381c08b69866239"
+  }
+}

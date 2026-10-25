@@ -1,0 +1,14 @@
+{
+  ".local/library-creates-20261023/expected.json": "64f754f1b1301bde3cdd96075f22fa98cd97460b7959c996dc5a8972323dca47",
+  ".local/library-creates-20261023/report.json": "a1d0e46c496a23e4c2158986120940bb7c2ad1cee4d4f014ff07f695f453ad3d",
+  ".local/library-creates-recover-20261023/report.json": "e7145ae29f09a3b4bde9df84bffe8e620e9c9f526334f8ade5141c9b3d69471e",
+  ".local/library-create-mcp-20261023/report.json": "3e0214e9e38c3118f69296b59c5e9dcac610dd10d0d66a3a75bee85aa1aa1570",
+  ".local/library-create-mcp-final-20261023/expected.json": "c027d1f374e566a563cbc4163105b15d4e43fa405360641e13e827c030eb6342",
+  ".local/library-create-mcp-final-20261023/report.json": "3b4d525b46954cdf9364f5f7a969512d96c3768c92a34b1f14cf53c60de86e4c",
+  ".local/library-create-mcp-final-20261023/tools-list.json": "009f82fb1fac88dfc4d9d25f7a5701bbe13ed8c7e3678b8d9faf883042d0a63d",
+  ".local/library-create-faults-20261023/report.json": "8c586feb89b8e07c2277f52313c66f62154ddee97c8ea9608f7525fd8e179dbf",
+  ".local/created-library-placement-20261023/report.json": "d05daa2549f0631423d833fb8486e464154ae1949c76c3bdd19830f2e6520e5a",
+  ".local/created-library-placement-v2-20261023/report.json": "14cebc98fe64a6d915ac60c91390fa8ec5b4bffc1ddc86d29b72b3f01bdbe6ee",
+  ".local/regression-228-library-create-20261023.txt": "8707aab7ca28a583e0fd7b904808d0e7ef1d033df3849ace94a16d98a213564f",
+  ".local/library-creates-20261023/work/isolated-jobs/capture_library_create/plan-d750388190bb4bb6aa8b715587766834/debug-inspection-v2-report.json": "895497e75e3f37bfd5fb6dfecef69df1499c83071515f3218b5b2a276ba79e2f"
+}

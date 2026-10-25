@@ -1,0 +1,10 @@
+{
+  ".local/pspice-run-mcp-20261023/expected.json": "f84fdb4157d053aa0b19206a604b1755e2b5489a73026fdbd6b13ab3263ed28a",
+  ".local/pspice-run-mcp-20261023/report.json": "33498b5c4197db95639e18341c0d25f973e2f734f2efbf7688e3e3dc4bb842cc",
+  ".local/pspice-run-mcp-20261023/tools-list.json": "2b4d2c2a9f314bd516ebab24157f0422596a980d7489f5f8d3e284c0b01ba2c5",
+  ".local/pspice-run-faults-20261023/report.json": "0b08b9a0b6dcbae9b84a86066582083c5d6377b98ba7e8c55f02c1d85f4eebcc",
+  ".local/run-transient-mcp-20261023/expected.json": "710b12f28a8627dc9b00e1b12644388743c9ce865e91e71a743eb77b8cb932e5",
+  ".local/run-transient-mcp-20261023/report.json": "061bfeca5a2d3df78d2d695d431c74dce5c5747cdc08fe61759f5a72cfb1e2e0",
+  ".local/regression-215-engine-runs-20261023.txt": "21fe778dd85f010f653d89bb8368a4cc9c0c05011d7615bd16031452f1a0d51e",
+  ".local/regression-215-engine-runs-final-20261023.txt": "d0131e3eddb18a53134a7b35b8cea1f969baacbc54a3987ef3903f38b5370d7c"
+}

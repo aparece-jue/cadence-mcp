@@ -1,0 +1,53 @@
+{
+  "batch": 72,
+  "date": "2026-10-25",
+  "tools": 184,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 11,
+    "implemented_partial": 15,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "acceptedFeature": null,
+  "latestFullRegression": {
+    "total": 456,
+    "passed": 455,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-456-cache-replace-20261025.txt"
+  },
+  "publicCacheReplacementAvailable": true,
+  "fullL05Accepted": false,
+  "newDeferredIssue": "ISS-L05-heterogeneous-unbound-gnd-replace",
+  "reportSha256": {
+    "docs/implementation/batch-72-durable-cache-replace-2026-10-25.md": "8d13205db4622401ff4f7e88767e0cbcbc6310308a83facca2aed5a40bc2cde1",
+    ".local/cache-replace-mcp-20261025/report.json": "d49006355057625c205c8774c3e77871bb779b391e8f60ec2cdfa132e8baf46e",
+    ".local/cache-replace-faults-20261025/report.json": "3dece28ddb7634b58a5b94c1e9d183326123bbb2a5c3034fc546681714bbe367",
+    ".local/multiunit-cache-replace-20261025/report.json": "f224fd522c357f89bf8162578474fd59e0d4934e5bafe182bf016631c1c64cf8",
+    ".local/hetero-cache-replace-failure-audit-v2-20261025/report.json": "ea76e4ce4adebfee3ce54a3c60811453aad7c92a01e99354fbc173ed6aab67d8",
+    ".local/multiunit-cache-replace-20261025/source-unchanged-audit.json": "9be6c5e7b0a16dda8e8cb808100ec29e6d4685f7cdcf71c96ff194c5922e4847",
+    ".local/cache-replacement-task-probe-v2-20261025/report.json": "8a7287ea222a4dc741ee0eb0e1e8eee875c3cf8551db03b11a9fdb9cbe31e173",
+    ".local/cache-layer-preservation-20261025/report.json": "93d90bb59647ae96a556618d3560c3f98f4f169e1ce0620c9cb60e0ae1be25c3",
+    ".local/regression-456-cache-replace-20261025.txt": "e76d8882710b0d6c6472b7b69216f09ea7cdc753fedee303e4cb2ad9b32e7138",
+    ".local/cache-replacement-task-probe-20261025/report.json": "5e2b07123f75aac78de18a7decda42190a981741d205a67084f0e35802f42288",
+    ".local/cache-replacement-task-probe-20261025/diagnostic-process-v2.json": "55911990617b8d9d434e9abe4f940b2df43cee35779359249bd8497e19a82d3b",
+    ".local/hetero-cache-replace-failure-audit-20261025/report.json": "0904f0e61e866f2c28443bff28d522793daedfbb9867beeff33c066a6915585a"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_cache_replace.py": "520faabfe9f081b315368a19a341b26b68f6235b3cf625ab7007d261d31291ed",
+    "src/cadence_mcp/adapters/inspect_cache_replace_state.tcl": "72364d8c77995f445061dc72c62e549cee7e9480fbbf96b6b282ad6416751153",
+    "src/cadence_mcp/adapters/replace_cache.tcl": "33bab51c5a8fd749a634ad6ce93f8009a9ee32fc492d4abd0437e38e3a0bf8ba",
+    "src/cadence_mcp/server.py": "1d0b53eb61a4fa575b4307eb0c544a70f6db74ddb2f3e41b4cca6aa7780396ed",
+    "tests/test_cache_replace.py": "f84d5800d598a9520a7af20f9c6a297c018a04e3344593b8cffe8a58794c7b6c",
+    "tests/test_readonly.py": "23e256a0582a41fdf309347402e36716055906f4900ebb5c749b64cbc2c54910",
+    "tools/fixture_cache_overrides.tcl": "c964e8ac56a6c6ba89237de37c259fd5613356488370cffc4bd0c01b1adfb95d",
+    "tools/smoke_cache_replace.py": "8a5e02fe5279f3bcd5680ff1d27b12aec7e679f1ddb20b01169b3d5db96f0344",
+    "tools/smoke_cache_replace_faults.py": "66f1b34cfa95a5e88ca23be689ad85f45a1ab41c63b8e8debbeb705c2eb8e01a",
+    "tools/smoke_multiunit_cache_replace.py": "d7d64f339d6b6d8ee8733250571d45f7d40c37e4228eccb878fcb9ea9f417911",
+    "contracts/tools.v0.1.json": "ace68ec45b5f40e67fedcfc8a5b86b8f122e35c970fc12a70fd05b42b6f70131"
+  }
+}

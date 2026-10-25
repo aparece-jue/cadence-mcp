@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 294,
+    "passed": 293,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-294-net-symbol-edit-20261024.txt"
+  },
+  "evidence": [
+    ".local/cross-page-20261024/report.json",
+    ".local/hierarchy-copied-ports-20261024/report.json",
+    ".local/cross-page-read-trace-20261024/report.json",
+    ".local/copied-port-read-trace-20261024/report.json",
+    ".local/cross-page-root-init-20261024/report.json",
+    ".local/copied-port-root-init-20261024/report.json"
+  ],
+  "integrityAudit": [
+    {
+      "fixture": "cross-page-20261024",
+      "sourceStillMatchesSavedHash": true,
+      "sha256": "44cc70deecb57f5d951a33ce6f43ce9e66fdb7266b71a10fbbdb9cbcd0593b35",
+      "fullAcceptancePassed": false
+    },
+    {
+      "fixture": "hierarchy-copied-ports-20261024",
+      "sourceStillMatchesSavedHash": true,
+      "sha256": "708fd5db599bb964946256bc741821fc3836c50a2362ab29e83eefdd38d9621e",
+      "fullAcceptancePassed": false
+    }
+  ],
+  "files": {
+    "src/cadence_mcp/adapters/fixture_cross_page.tcl": "30d4df732803fefb27d2bc1f193a832490200a9382fceedae06e4d80a7be0314",
+    "src/cadence_mcp/adapters/inspect_cross_page.tcl": "5ae787ac5209b9eb810cf6ad65c2f2dc4d98e98cafbaac09b3eac320c9be32c1",
+    "src/cadence_mcp/adapters/fixture_hierarchy_ports_copied.tcl": "818d402da16ff0ac74e53fa356a775bcf9cd851b8b1083e5ef55ca68d5df5f2a",
+    "tools/probe_cross_page.py": "0ef6a0d3672c03ce6dfa5ccaedd89b021fdc027c580360920b6d0e0d3c8d9e61",
+    "tools/probe_copied_ports.py": "568a365dcbe5d6e864e821a2c1430d32010379c10cff986577d18de635537da6",
+    "tools/diagnose_fresh_graph_reads.py": "9d6077ac8d4336cc9a2b2e19563ba9b18ae82eeac5f143b362ca4796ccca7707"
+  }
+}

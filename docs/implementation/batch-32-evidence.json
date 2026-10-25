@@ -1,0 +1,23 @@
+{
+  "goalComplete": false,
+  "tools": 132,
+  "regression": {
+    "total": 291,
+    "passed": 290,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-291-net-symbol-create-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/capture_net_symbol_create.py": "508b993e9aba336c8f7147bc2daccb6760568fb1577cd2affbae056d18e1eab8",
+    "src/cadence_mcp/adapters/create_net_symbol.tcl": "23dc57312be56ef09ce2500c541b956f43b8c1290111dd4a0412509f5f3bbcb9",
+    "src/cadence_mcp/server.py": "0869b6199ee4f72972c743521151e5d192960b2af00f84bd0834faf4514bb9ed",
+    "tests/test_net_symbol_create.py": "9c95904924fc9daa17b18cfcdff3e0c9f8c55a8c60c5ea09c99dc17673ebc64e",
+    "tests/test_readonly.py": "ec719695eb814a740707bf5d93b6687a8daeffee0a4e8b3dca38279d462205fe",
+    "tools/smoke_net_symbol_creates.py": "d1ea121c145f2306f4d1546f963abd68c42e7b8a96d54be015bd72d851811084",
+    "tools/smoke_net_symbol_create_faults.py": "35bf091959e489c571768dc5e99c1e96a89087aaa92157fd2da988fe82d28dea",
+    "tools/probe_net_symbol_name_lengths.py": "1c42e131edc4a83f17551fa595ab2bd5b93efb8c140f5ee16c485303aefab760",
+    "contracts/tools.v0.1.json": "44dfe7955bc99c57e1bdde0d4f13ec1b3f59b3623a369025230e5e8f2ac423e9"
+  }
+}

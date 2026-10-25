@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-24",
+  "goalComplete": false,
+  "tools": 137,
+  "nativeNetlistAccepted": false,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 294,
+    "passed": 293,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-294-net-symbol-edit-20261024.txt"
+  },
+  "evidence": [
+    ".local/netlist-runtime-20261024/report.json",
+    ".local/netlist-runtime-v2-20261024/report.json",
+    ".local/netlist-signatures-20261024/report.json",
+    ".local/capture-pspice-netlist-20261024/report.json",
+    ".local/netlist-modes-20261024/report.json",
+    ".local/netlist-com-20261024/report.json",
+    ".local/netlist-com-v2-20261024/report.json"
+  ],
+  "integrityAudit": [
+    {
+      "directory": "capture-pspice-netlist-20261024/official_private_copy",
+      "sourceHashMatches": true,
+      "netBytes": 0,
+      "netlistAccepted": false
+    },
+    {
+      "directory": "netlist-modes-20261024/legacy",
+      "sourceHashMatches": true,
+      "netBytes": 0,
+      "netlistAccepted": false
+    },
+    {
+      "directory": "netlist-com-v2-20261024/none",
+      "sourceHashMatches": true,
+      "netBytes": 0,
+      "netlistAccepted": false
+    },
+    {
+      "directory": "netlist-com-v2-20261024/sta",
+      "sourceHashMatches": true,
+      "netBytes": 0,
+      "netlistAccepted": false
+    },
+    {
+      "directory": "netlist-com-v2-20261024/mta",
+      "sourceHashMatches": true,
+      "netBytes": 0,
+      "netlistAccepted": false
+    }
+  ],
+  "files": {
+    "src/cadence_mcp/adapters/inspect_pspice_netlist_runtime.tcl": "52a852b4c58ca68d8a47b8f4de7cf87dd3b3a11f451450920372f6d6756e01dd",
+    "src/cadence_mcp/adapters/inspect_netlist_signatures.tcl": "1c1f213c391e8abad2d154808ee7a50020674e1b9057da56905cad285b43764a",
+    "src/cadence_mcp/adapters/generate_pspice_netlist_probe.tcl": "525702cf59346915cd4cdb7c1c2ae83b39f4be386aeba5a7925fdb42307eb9e5",
+    "src/cadence_mcp/adapters/generate_pspice_netlist_diagnostic.tcl": "9c32d52f696af67a65749d4303ee76c2672943425292304a79a506bc5bd6d24f",
+    "tools/probe_netlist_runtime.py": "f61d4a8d06234694b27d057a5ff7eeb9200dc89a9ea2575e87453ea4b66ae3db",
+    "tools/probe_netlist_signatures.py": "ef331db335b2b448aed39aa9052677a52dd4e69c9d1a0930ebf6bbe37dc85ce6",
+    "tools/probe_capture_pspice_netlist.py": "5fa0ba076cc2ac79b0255a396c343814e5a634eeab3fb35d3a3d714d951cdaaf",
+    "tools/probe_netlist_modes.py": "4c0a91d3c2d6c8cf105c8e28f2647cc5895081cdcf06ef46141db6637c76ed18",
+    "tools/embedded_tcl_com_probe.py": "f12416188f2ff1be220a84db28e9ddaaff3a580b09dd6e4d927df5771c012ee5",
+    "tools/probe_netlist_com.py": "9ddeff39e1f7e558b327e8a151fd787eaaf27e159818be037bccc6acb0c528b2"
+  }
+}

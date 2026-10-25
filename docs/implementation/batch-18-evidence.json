@@ -1,0 +1,45 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/occurrence-nets-fulladd-20261023/report.json",
+      "sha256": "9809daf35039016065d9123474611307c810142bcf5b136834b0dec38b3a39e0"
+    },
+    {
+      "path": ".local/occurrence-nets-phase-20261023/native.json.error.json",
+      "sha256": "ade504bc7fd0e352ce61dacf0d84490c814a695c2fa8db3a3dd8bd0a217656ab"
+    },
+    {
+      "path": ".local/occurrence-nets-device-map-20261023/report.json",
+      "sha256": "21f1c8491282a5f7fe022cedc1f243bab6e594fcb48abc895772f84eb038d747"
+    },
+    {
+      "path": ".local/occurrence-map-accept-20261023/report.json",
+      "sha256": "d26e8ef2db108cad28fa64da5e9fe8ed94e819c3af9cdca99a894459d3a67465"
+    },
+    {
+      "path": ".local/occurrence-map-accept-20261023/connected/native.json.error.json",
+      "sha256": "108d54926cf0e9b00d3bd8de1678f5c1d6061830e70448a276c547522d7b3b3f"
+    },
+    {
+      "path": ".local/occurrence-map-accept-20261023/pinmap-verification.json",
+      "sha256": "8130edb7645702b161a31ef02fd4480fbbe2cdae4ee08bc815fb55ade384cdc5"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/inspect_occurrence_nets.tcl",
+      "sha256": "2a5a98c889b599e9b30a3664ac457e86c089d025a4f430804e2bb95862a0b3f9"
+    },
+    {
+      "path": "tools/probe_occurrence_nets.py",
+      "sha256": "6218d83c6d83879b6091d8090483d05d4ba754c41ea12e1343cb162441b19747"
+    },
+    {
+      "path": "tools/accept_occurrence_mapping.py",
+      "sha256": "9d117e10bdbdb5efa59eac931b53ff479f2107064b994ea181d0a552a7af690f"
+    },
+    {
+      "path": "tools/verify_occurrence_pinmap.py",
+      "sha256": "893fa88618780f705e23572ce213e273bf39a2687e9905e832a24cdd21b13f8c"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/reference-identity-v2-20261023/report.json",
+      "sha256": "8ac7a488d4105cba2b0a602512146452c783b31e4c6d6b5c0d04352182833d03"
+    },
+    {
+      "path": ".local/reference-identity-v3-20261023/report.json",
+      "sha256": "03ad01e463c1318b7319bc78d033955c282739fd759d4601a285209db6d8cf64"
+    },
+    {
+      "path": ".local/reference-maps-20261023/report.json",
+      "sha256": "39bfa390ea6ec277a535f5acf4c678e482b7c73011b24abcb93671e372d07be1"
+    },
+    {
+      "path": ".local/reference-map-mcp-20261023/report.json",
+      "sha256": "dd804aa409dd6c432c852e243b80721846ba450b73cc672662de9a074e79cf73"
+    },
+    {
+      "path": ".local/reference-map-faults-20261023/report.json",
+      "sha256": "c822d03be83fb3e11d3b24a99c7eea63b0e0757deec9e40d5a8c66fcdc631d1c"
+    },
+    {
+      "path": ".local/regression-257-reference-map-20261023.txt",
+      "sha256": "7b28b9911dde2d3d0f3d0e4a9167dd0847f1f3b56960e95edaa2036745c4d385"
+    },
+    {
+      "path": "src/cadence_mcp/capture_references.py",
+      "sha256": "00b4f1a19aab1aeeb935462fc0b750f85be67926a8c526004bd96c5361304654"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/edit_references.tcl",
+      "sha256": "0d9c81f0957b44688cc320ff6efb73cf0010f2b0827d4773c3f8c45f3b6e5f63"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/inspect_reference_units.tcl",
+      "sha256": "470b80ec8e7aa6df980e90472992eed7c41a3bc750a004c985970b13c20e45f0"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "4d609df14449ddb69160cc2029f9500453111a7bc5bf5cf83e4f5638dda9db07"
+    },
+    {
+      "path": "tests/test_reference_map.py",
+      "sha256": "9db91b4b5a1323a95fa624b104c5c0135ea801cf87e00c512eca0c3fc0979745"
+    },
+    {
+      "path": "tests/test_reference_scope.py",
+      "sha256": "e12a4b6849bdbe6d52849129474d4226ab9ad4169081aa10c15372e2ad51ee00"
+    },
+    {
+      "path": "tools/probe_reference_identity.py",
+      "sha256": "eb882601a7f9f20c0944ef76105ab16ee3141a1b32494fcd209c6060a2b48607"
+    },
+    {
+      "path": "tools/smoke_reference_maps.py",
+      "sha256": "ea050d82dc1f906a0e8ca626ae6b60e6358a9cb5b9f5e65c96088dfcfe5b57a7"
+    },
+    {
+      "path": "tools/smoke_reference_mcp.py",
+      "sha256": "0eb18609fff6376c9b6a51415822eccc762e5019a3342aad35c605e14505285a"
+    },
+    {
+      "path": "tools/smoke_reference_faults.py",
+      "sha256": "d2d168dcdd7bbbb7a7a414c9f8fa5a057a15ffb773e63d97a56d5833870feda7"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "b87cf8fb6bdd0700504f04a17b80cf44a7d3c95c25ba22328613ef1c3b7575c2"
+    }
+  ]
+}

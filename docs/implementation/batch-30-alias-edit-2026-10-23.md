@@ -1,0 +1,35 @@
+# Batch 30 — standalone scalar alias edits and native page partitions
+
+## Behavior and scope
+
+CaptureAliasEdits(kind=capture_alias_edit) adds5 public tools capture_plan_alias_edit/apply_alias_edit/alias_edit_jobs/cancel_alias_edit/recover_alias_edit. capture_open_edit_result adds kind=alias. Actual126 tools, contract snapshot from real stdio. D04 remains partial and all34 original full gates remain unchanged.
+
+Inputs bind immutable session alias ID, source fingerprint, qualified page, native owning-wire ID/full path/old net, unique old alias name/anchor. Operation set changes name and/or anchor on the same scalar owner wire; delete removes only the selected alias. Scalar identifier grammar is bounded, excludes whitespace/bus brackets/control characters. Off-wire moves, noops, ambiguous aliases and direct detected cross-network name merges are refused. An expectedWireNet can explicitly declare canonical owner name; move defaults to old owner, rename defaults to new alias name. Delete permits a new auto-generated target net name by default, while preserving native memberships; explicit expectedWireNet is still checked if supplied.
+
+Fixed JSON edit_alias.tcl validates native wire ID, path and old canonical name, scalar cast and unique old alias name/location. Iterators released before documented DboAlias.SetName/SetLocation(p511) or DboWire.DeleteAlias(p496/498), then complete page/schematic/design save. New owned copy only, never source edits or arbitrary scripts/eval.
+
+## Why an additional native partition reader was required
+
+The native probe `.local/alias-probe-20261023/report.json` saves and independently reads3 cases. Rename updates connected R101.2/R102.1 to MCP_RENAMED. On-wire movement to(400,310) retains MCP_MIDDLE. Delete leaves both pins connected but the native canonical name becomes N02664 on this fixture. No algorithmic promise is made about future auto-generated names. The discovery report's passed flag means native execution/readback, not yet full electrical acceptance.
+
+New inspect_page_net_partition.tcl groups pin and wire records by their actual GetNet native object identity within each page, never by text equality. Pin identities use qualified page and full definition ReferenceDesignator/number/name; wire identity uses qualified geometry with its native ID retained for target lookup. Native handles remain internal and are emitted only as synthetic page-local group tokens. Page scope separates equal tokens/names on different pages. This is not an occurrence/full-flat or global cross-page net service.
+
+First `.local/alias-partition-accept-20261023/report.json` fails. Direct diagnostic initially omitted process_env and could not locate installation catalogs; it is not treated as the original failure cause. A correctly configured owned probe also failed. V2 writes bounded phase/stack evidence: `.local/alias-partition-accept-v2-20261023/baseline-native.json.error.json` identifies DboNet.GetName returning1037. Local reference p730 declares GetNetName; changing to that method resolves the error without ignoring statuses or substituting label grouping. Original failures remain retained.
+
+page_net_partition.py canonicalizes native memberships independent of snapshot group IDs/order and wire path direction, preserving member identities, unbound states and every non-target net name. Only the preselected target native group name may change; all memberships must remain identical. A caller-declared owner name is checked independently. Duplicate semantic pins/coincident wires, malformed fields or nonunique target groups are rejected.
+
+`.local/alias-partition-accept-v3-20261023/report.json` verifies all3 saved outputs against predeclared structural/connection expectations: full pin definition structure and bound flags unchanged; only requested alias object/name/anchor changes; native page pin/wire partition invariant with permitted target name change. All saved artifacts/source hashes unchanged. The structural definition digest intentionally omits net text; the independent native partition check supplies membership and all non-target name invariants, so this is not accepting arbitrary net changes by weakening a single comparator.
+
+## Public durable verification
+
+Plan stores structural definition, exact expected connection objects, selected-page all-part pose/hotspot baseline and native partition digest. Fresh verification checks receipt, every structural pin/bound state, actual alias/connection semantics, affected-page geometry, and native pin/wire partition with expected owner name. Result scope scalar_alias_preserve_page_net_membership, nativePagePartitionsVerified=true, observedWireNet reported, designPassed=null. Intentional merges, occurrence flat nets, global cross-page relationships, bus aliases, alias fonts/rotation/render, other-page geometry and unrelated properties/DRC remain unverified.
+
+`.local/alias-edits-mcp-20261023/report.json` passes real126-tool stdio rename/move/delete from immutable source, saved output opening, expected labels/anchors and selected bound/unbound pins. Invalid/noop/off-wire/bus-name/delete-extra/unknown-field inputs refused. A deliberately wrong expected owner name produces native saved output but verification rejects alias_owner_name_mismatch; open refuses, fresh same-key apply refuses replay. Pending cancel/jobs, fresh-server same-key idempotency/recover/open and tamper rejection pass. Only final successful delete output is intentionally tampered and stays rejected; rename/move and original/native probe outputs remain intact. Wrong-oracle output is unverified, never promoted.
+
+`.local/alias-faults-20261023/report.json` passes actual native completion receipt loss then fresh verification-only recovery/open/nativeCompletionVerified=false/hash unchanged, startup cancellation and1-second timeout. Owned processes0 and replay refusal checked; this does not cover every save window or repair the historical intermittent process-directory handle issue.
+
+Eight new host tests:5 native partition invariants (ID/order, selected-name-only allowance, same-name split detection, page isolation, malformed/ambiguous identities) and3 alias edit invariants (target-only immutable edit, delete preserving other aliases/wire, off-wire/noop/bus/conflict/invalid operation rejection). Intermediate281 regression281 tests280pass1skip; final284 tests283pass1 original symlink permission skip. Current public contracts126. No GUI/installation/real design mutation, commits or pushes. Goal active.
+
+## Remaining
+
+D04 global/power/ground/offpage create/edit/delete/rotation and closure; explicit intentional alias network merges, multiple-alias dominance/Unicode/complex wire matrix, all NC package/unit/occurrence/bus/connected-cleanup policies, full faults/render/DRC and original matrix. H03 fresh-port native crash and previous issues remain open. Next independent global/offpage symbol-bound lifecycle; do not treat these page-definition alias checks as full H02 or whole-design electrical acceptance.

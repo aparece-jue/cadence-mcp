@@ -1,0 +1,40 @@
+{
+  "batch": 61,
+  "date": "2026-10-25",
+  "tools": 167,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "implemented_partial": 21,
+    "deferred": 10,
+    "planned": 2
+  },
+  "regression": {
+    "total": 411,
+    "passed": 410,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-411-solver-diagnostics-20261025.txt"
+  },
+  "licenseFailureNativeVerified": false,
+  "reportSha256": {
+    "docs/implementation/batch-61-solver-diagnostics-2026-10-25.md": "0bd179779746e3b83023dc6f6b99361932570a16b67fe45cbd6023259372a65d",
+    ".local/solver-diagnostics-probe-20261025/report.json": "02cc7cafb3f52bf112f5e20154012713ce20109e38e54770dc59cd0787eb157f",
+    ".local/solver-diagnostics-mcp-20261025/report.json": "2f33ee470be1241f96c4530ab9952217fc82b19c97dd1169590d316578d38204",
+    ".local/measure-failure-inspect-20261025/report.json": "45ae84fc79fc40f74eae1c674eabd4fca73fe319d0dcdf8986ce04837f8ac9f0",
+    ".local/regression-411-solver-diagnostics-20261025.txt": "48fd56da53f5453a77eb0c867a6a16638ae1c13892e9228d49a6367d333194e8"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_diagnostics.py": "c528f6bac275b17eadc300cd8d516393429b21eacd57f948438b7d2c6a5dc3ce",
+    "src/cadence_mcp/pspice_failure.py": "57fbc676419394510aba0aad884da537e3551cb31d95a16a3706625edae3ad56",
+    "src/cadence_mcp/pspice_output.py": "8853d5e884ba94b48cba0cd88be15fd169ddf4602dd9e0f6e75a1ecade2f5e6a",
+    "src/cadence_mcp/pspice_runs.py": "a8a20951031076b931059dcd5b22ffb8a4ec82c961f45f119d649ba6930fb95a",
+    "src/cadence_mcp/server.py": "d83401016c7f6abc4a83c4f14166dbc584b99d96a12f16ee75ab4a808b21e239",
+    "tests/test_solver_diagnostics.py": "178d2372bb8ade159dcf413c240cd81efb57d5852787ba924c6c1f308c736a32",
+    "tools/probe_solver_failures.py": "a52f097baf9db1b6593159da1deaca56cc66d47714b11a9dea89a35d3833c02d",
+    "tools/smoke_solver_diagnostics.py": "14e8160d4c4867df1edab7c9dc82b9c23e791eb121a8276c2da5dc3ac171edb3",
+    "tools/smoke_measure_failure_inspect.py": "05b2a382af8fa5620ab5eb50ee1ff27e5f1446a089f14ebc1f4c7a40fd5fca24",
+    "contracts/tools.v0.1.json": "d75bdd31411fd571bbac7d88c684e311d9231f8f000ec7cb46dbbed23dbf4628"
+  }
+}

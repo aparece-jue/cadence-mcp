@@ -1,0 +1,28 @@
+{
+  "goalComplete": false,
+  "tools": 127,
+  "publicNetSymbolWrites": false,
+  "regression": {
+    "total": 287,
+    "passed": 286,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-287-net-symbols-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/net_symbols.py": "3a11e232bec71016575d78169f7fd050cdb12ff54d2736b0f11463cb24597e5c",
+    "src/cadence_mcp/server.py": "419759483d4b3676ac58a14ea263776ca947391ee744639bc18f7bb92b0b14c2",
+    "src/cadence_mcp/adapters/inspect_net_symbols.tcl": "18d9320e92d89b39ab60fbdf5bd22d19b9539871148c3348dd74d04748c9c8fe",
+    "src/cadence_mcp/adapters/fixture_net_symbol_add.tcl": "7fed7017bdb9b7cb1eed8f07724ebd6342d71132ac218a601a796387bcd6cd75",
+    "src/cadence_mcp/adapters/inspect_net_symbol_bindings.tcl": "fe08c162111d7f1ccff558a372742e78415b6fce31f5a894ff5c0b5627d0b13d",
+    "tests/test_net_symbols.py": "943d3b1d17e4611b91f469d2620b13cc63534b324adf0214d6b87db5edd47b00",
+    "tests/test_readonly.py": "40986e6934916cdb6fa628e3ce6d81272c01546e7b159652991c60eb106d45b0",
+    "tools/inventory_net_symbols.py": "5c06659f92a9f5096a3f0f23a31d1e9b87af9ffb9f2133faf478fe5848af0ede",
+    "tools/probe_net_symbols.py": "67fad28ca70d8551c96f1360b9b543d4051dd3c1cdec21761f3a7ca006a9fbb0",
+    "tools/accept_net_symbol_bindings.py": "5cfc9686ce97d20f63bf0ed932c22280b7e2d1da38f78a36944be737afb0299c",
+    "tools/smoke_net_symbol_reads.py": "c16b118a97ed65d152c5b11f65d7d7cf68377a601ef3be15a097620da0b02411",
+    "tools/smoke_net_symbol_library.py": "f3b947d72ec16210528b2f052ffc537f5eebd6f34d132f67f1514293e01b91a0",
+    "contracts/tools.v0.1.json": "792844279c8707f10f58ea9d71b47c2e6d62a385ef0311c2dff38e61e13baa61"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "batch": 41,
+  "goalComplete": false,
+  "reportSha256": {
+    ".local/multiunit-group-20261024/report.json": "03913a1ba223e834229d518598388e108abee1aafcb1b0c7cb17232ecaa9f0e2",
+    ".local/multiunit-group-v2-20261024/report.json": "623da2ad8cb03b5fffd9e736f8f0638ccaf2adaa5b41055478c2c5f7bf19afe4",
+    ".local/multiunit-group-suffix-20261024/report.json": "394f1d7e8447e458309504b68de3bec23ff2b58aaf09736f342f2d8c8b206535",
+    ".local/multiunit-group-pin-identity-20261024/report.json": "d3689fb3f78722de4b3ea18c6b39f92a14caacfc7631f948fbfce4d0a00f98cf",
+    ".local/multiunit-shared-pin-audit-20261024/report.json": "2560bd746de3f9fa20d90df6fc1ec4370c445fcbd8e318143586f641a29c5e5e",
+    ".local/shared-pin-reads-mcp-20261024/report.json": "bf0e6acf245b8375c768f2901d6ebd3ecd4c21e04dec9e80494e98e973bb37c8",
+    ".local/shared-pin-reads-mcp-v2-20261024/report.json": "d50a5e0d2801824f963af8bdc5626d02dea9040547c7845251e11fd36dca928e",
+    ".local/multiunit-group-shared-reads-20261024/report.json": "f14946b077ca72a14564690a976d3057e08769d91b7ac59d8ff418c23a6bffe9",
+    ".local/regression-300-shared-pins-20261024.txt": "5746a1369ea6e57565159f3ee8ec1c1d9dc827905f40ce05023fe528d940986e"
+  }
+}

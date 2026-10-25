@@ -1,0 +1,43 @@
+{
+  "batch": 68,
+  "date": "2026-10-25",
+  "tools": 178,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 4,
+    "deferred": 10,
+    "implemented_partial": 17,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "acceptedFeature": null,
+  "latestFullRegression": {
+    "total": 433,
+    "passed": 432,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-433-pin-geometry-native-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-68-library-pin-geometry-2026-10-25.md": "130d88c8dd530c3d23f629b8318ab755b488e2621182d2168f097e764d906dfb",
+    ".local/pin-geometry-mcp-20261025/report.json": "1338d7293bf12fe5cf895daf8e63582570002a655ead7738a6b9dc9a1950c034",
+    ".local/pin-geometry-faults-20261025/report.json": "e1240dce5aa1518ad9769d03f741f04a231ce73341183f81c30754167c9c0dac",
+    ".local/pin-geometry-timeout-v2-20261025/report.json": "4d52581d08297e96d4eb208fc084f4dba55b8a437ed99cac9b2f0d66a4a4649f",
+    ".local/pin-preservation-negatives-20261025/report.json": "106c82008f7c5d5ae0de5773dccc3d5ac5bf7477c360e1045744a6dd7cb6bd86",
+    ".local/regression-433-pin-geometry-native-20261025.txt": "13b4c72146c4c0e59e64f3c9fd746097046f478f260c06bb92eb95cbe574f747",
+    ".local/regression-433-pin-geometry-20261025.txt": "968aa51df4f3b26eb4a423622daf0d4a2d9682be4d52a3e56477f27225938efe"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_edit.py": "79407b130477c85b433f86d6ecd55d6fa84bd826e652a5edf8f3bb5b932d70fe",
+    "src/cadence_mcp/server.py": "56f23009790fbec8ac92ea4b8a942130354fccf2892bf57470d4ce58fb95f235",
+    "src/cadence_mcp/adapters/edit_library_pin.tcl": "41fd2cd684f8d40d0b19fc5a422d50703c2952fdd4d58387a1384b2ec9799115",
+    "tests/test_library_pin_geometry.py": "89b94c51743a6bd4f716135d5a46c0ab0d62623f011dc2b8fb860dddb7fd5457",
+    "tools/smoke_library_pin_geometry.py": "f578b4826e2bbdb11b82916676c51049b930fa56b1718661177916b5c3beda38",
+    "tools/smoke_library_pin_geometry_faults.py": "76641efb792347fef01c74e9c97ec5602cba160724966974144cdeafbd835781",
+    "tools/smoke_library_pin_preservation.py": "94eb11611e2c3e97f651a08ebc513d56a14c6bad12c8d8c6cd13e4475de6b10d",
+    "contracts/tools.v0.1.json": "ccd71c3e3312c9f6d0f686f036e010611386a48f47fd2c64c8dae87ad4849478"
+  },
+  "historicalFaultRetained": ".local/pin-geometry-faults-20261025/report.json"
+}

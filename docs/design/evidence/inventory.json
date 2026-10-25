@@ -1,0 +1,243 @@
+{
+  "install": [
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\cap_ug\\Running_PSpice_in_Batch_Mode.html",
+      "sha256": "2956bdd1da5178c3bb8e0123e7059f7c4cc9e4b439ed877c160f528fd441b35b",
+      "text": "cap_ug__Running_PSpice_in_Batch_Mode.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\pspug\\007_set_sim_Batch_Simulations.html",
+      "sha256": "45377623b50f1caa4bf9600d32304b567c8ae4465a3df7c747b31c4e0267f3fd",
+      "text": "pspug__007_set_sim_Batch_Simulations.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclsample\\Overview.html",
+      "sha256": "489ed7d9fbc784d7dfb23fee4f7446329149bf9696a88833579f7b3e243d3beb",
+      "text": "psptclsample__Overview.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclsample\\Modifying_Parameters_in_PSpice_using_TCL_Scripts.html",
+      "sha256": "c3842a4daed45129b4511087774c13fc9aeeb11e28c7acf585f74a3c4fd04859",
+      "text": "psptclsample__Modifying_Parameters_in_PSpice_using_TCL_Scripts.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclsample\\Performing_PSpice_Advanaced_Analysis_Simulations_using_TCL_Scripts.html",
+      "sha256": "d45927a376801eebf51fe9ad1e76e02f60d425c98a0a98f0a85aaadc38a0ed86",
+      "text": "psptclsample__Performing_PSpice_Advanaced_Analysis_Simulations_using_TCL_Scripts.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\orctclcap\\Automating_Common_OrCAD_Tasks_using_TCL_Scripts.html",
+      "sha256": "938405a548f090f69d7c859bbb32f1a8c4e13508fe81cebbfe69f6f85833aede",
+      "text": "orctclcap__Automating_Common_OrCAD_Tasks_using_TCL_Scripts.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\orctclcap\\Getting_the_Occurrence_Object_of_a_Selected_Part.html",
+      "sha256": "49edbebe71d539e57e3ef6d6d851e9f5493324ef5b16988d06ff43a731e0824a",
+      "text": "orctclcap__Getting_the_Occurrence_Object_of_a_Selected_Part.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\orcadtclgsg\\Overview.html",
+      "sha256": "b1a4a39f0b1fda1a0ab463c511e7ef3ca963cbf5f842c12f1d1f01949a355816",
+      "text": "orcadtclgsg__Overview.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\orcadtclgsg\\Introduction_to_the_OrCAD_TCL_Environment.html",
+      "sha256": "9de2673b0d8b5c42a9c67cf219be2adaa0cddbdfab8e608df667386992797165",
+      "text": "orcadtclgsg__Introduction_to_the_OrCAD_TCL_Environment.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\orcadtclgsg\\Setting_up_the_OrCAD_TCL_Environment.html",
+      "sha256": "52cb284bc02a67d9945fc3b8418186f6511c5e23b68c4ae0d57fd4445ed3ed6e",
+      "text": "orcadtclgsg__Setting_up_the_OrCAD_TCL_Environment.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclcmdref\\PSpiceSetupAnalysis.html",
+      "sha256": "6b6aef24df876d13e72f961d3ad3fb2009fc4f4b9c7feb8de94d7e41d5552599",
+      "text": "psptclcmdref__PSpiceSetupAnalysis.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclcmdref\\Accessing_PSpice_Data_Files_using_TCL_Commands.html",
+      "sha256": "a859bf04160c263dfa76daada2a2ae6c8c4078229a596f70d63c3c83a4e3d85b",
+      "text": "psptclcmdref__Accessing_PSpice_Data_Files_using_TCL_Commands.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\psptclsample\\Accessing_PSpice_using_TCL_Scripts.html",
+      "sha256": "3e5b7b72760b8202df94cae90935d8cbfe97982a13f0b382ae7e52a7c2f8d276",
+      "text": "psptclsample__Accessing_PSpice_using_TCL_Scripts.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\doc\\capinfomodel\\dboimnew.html",
+      "sha256": "81b856bb511a363c56e617b8f598a47fb1ebd606b57c23373a6d93e92cadd6c2",
+      "text": "capinfomodel__dboimnew.txt"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tcltk\\bin\\tclsh.exe",
+      "exists": true,
+      "size": 71168,
+      "sha256": "ee3906feaa86a98dd73234823331ab8f9ba459f6a54fec08ca22c06a2b235c36"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tcltk\\bin\\tcl86.dll",
+      "exists": true,
+      "size": 1667072,
+      "sha256": "068eddc8cd48f135f05b05a9303b57838ad7993aeea4e8ec644313b63ea76ce5"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\Capture.exe",
+      "exists": true,
+      "size": 23283456,
+      "sha256": "5697880106dec0c24a97276e2385cadc3c60e523c75aff3132ffa7cc79339177"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\orDb_Dll_Tcl64.dll",
+      "exists": true,
+      "size": 28371712,
+      "sha256": "e78ae550bcf2ecc25dd195ec33215d546bd0c7dd4a1e2cecd24dc502c64da95f"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\psp_cmd.exe",
+      "exists": true,
+      "size": 139008,
+      "sha256": "f1bc710fa465063561855e4309c2f31675ad8ddabec82fedea41da7d131c50c4"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\pspice.exe",
+      "exists": true,
+      "size": 12475648,
+      "sha256": "decb476915ee38fb9f049a639c4ee4afb2dfa3b6cee2e6c28fba8846993df267"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\capture\\tclscripts\\OrCAD_Capture_TclTk_Extensions.pdf",
+      "exists": true,
+      "size": 5578472,
+      "sha256": "65208a1b8da3946cdc3f6be8473a1cf01d8f6c34533d0e087a0a2a1765780386"
+    },
+    {
+      "path": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\capture\\library\\CAPSYM.OLB",
+      "exists": true,
+      "size": 48128,
+      "sha256": "dbfe9f22628c42985db09bb2630f356ca7b65721af1366a4c9ad8fafee320aa8"
+    }
+  ],
+  "repository": {
+    "head": "ref: refs/heads/master",
+    "commit": "1cbe53f3b915f996215e869253625ce445068b4e",
+    "exe_sha256": "897402159f2393c6a7e20da620f520fb9a10862aef2f7162d68e0eaecae7a662",
+    "modules": [
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\auto_gnd.enc",
+        "sha256": "a02ac365cd055d53b694433e897e175b772da8287e1624e2ef14ac85b7d5d4e4",
+        "decoded_lines": 289,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\auto_power.enc",
+        "sha256": "9d31ff28d51c7bc653b0c26cd82dce3e7925bfce90b5bb872f9978e8e6cddb9f",
+        "decoded_lines": 145,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\CadenceMCPTool.enc",
+        "sha256": "fe7d2133bcf3ea73bb3ba06c7861858afe8c3a0380d3b5df4affeee771444b8e",
+        "decoded_lines": 209,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\circuit_query.enc",
+        "sha256": "2da77cca92fdd0a409609b0811955f9347048767c250beafb62a2599b6d74916",
+        "decoded_lines": 532,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\draw_pins.enc",
+        "sha256": "da969a42e03249cb443c564665327124559c9cb975f8c17c599cba802a79e537",
+        "decoded_lines": 125,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\get_selected_pins.enc",
+        "sha256": "e809bc7cf9fe856697b2dd69b36a8da724ec6628ef2c212cda2f8e119f0a1684",
+        "decoded_lines": 173,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\pkgIndex.enc",
+        "sha256": "9b9ffe20a406d9fa032861b6eb230f0c05e5e162ea5da934ef92e757b3214138",
+        "decoded_lines": 1,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\place_netalias_db.enc",
+        "sha256": "bf1d8dfd174101a9946c427cfcd43127bcb39e02c38d72a64b9be4eab4cde49e",
+        "decoded_lines": 95,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\place_netalias_on_wire.enc",
+        "sha256": "239e63ad74c5fc85ef704d6268f139985bbe0fc5477c5b06e752f48ff9ed08ae",
+        "decoded_lines": 213,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\place_noconnect_db.enc",
+        "sha256": "5628a9b7cfb5a127f388eb887348ba2142eb0c36fd41474ab376ee068dadaff2",
+        "decoded_lines": 37,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\rename_refdes_by_page.enc",
+        "sha256": "d5151d0336d7f664ccb8363492e30d16d90924b19ad83e3eb5616066d528d226",
+        "decoded_lines": 582,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\server_core.enc",
+        "sha256": "9202e1896157e5933c34fe6a4a5df4eb7e864304f401913eeb6b8784dceb64ae",
+        "decoded_lines": 381,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CadenceMCPTool\\utils.enc",
+        "sha256": "8ccba297bfadb2cd43ef18f134add6832c9af00b4b079cae7a2484c7fb7f3510",
+        "decoded_lines": 253,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\HJ_CapacitorDeratingCheck.enc",
+        "sha256": "65cf6ce3ae7cdb855d7d97ff6d173ef1904eb8f2ac09aaa70317bf39b8a6b3de",
+        "decoded_lines": 1943,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\kmx_set_text_format_fixed.enc",
+        "sha256": "92c13d8d4e867a93231e4947a09b0d3bacb4088bc804eb837599ad8185451338",
+        "decoded_lines": 349,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\WF_add_prefix_suffix_tool.enc",
+        "sha256": "02d2655826010363e2d5cd826d546784e40631c65540569d10ed8e9034160604",
+        "decoded_lines": 1009,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\WF_align_helper_tool.enc",
+        "sha256": "a2d79afdb5796e928c5aa9dcb1b459ce46c6bff58c11a473d68484ba16b016b9",
+        "decoded_lines": 1160,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\WF_format_component_properties.enc",
+        "sha256": "5e01cc26f1e0359701790e42c3f4c29d733c3053c72432cb147c92e0f9380720",
+        "decoded_lines": 684,
+        "prior_decoded_matches": true
+      },
+      {
+        "source": "D:\\workspace\\git\\cadence-mcp-public\\capture-tcl-crypt\\CaptureCoreKit\\WF_property_viewer.enc",
+        "sha256": "092f655de1cd4170104eabce31d5acac7578e6269e092e893ff55b0176c91a32",
+        "decoded_lines": 868,
+        "prior_decoded_matches": true
+      }
+    ]
+  }
+}

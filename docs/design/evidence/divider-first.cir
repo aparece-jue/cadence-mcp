@@ -1,0 +1,9 @@
+* Isolated compatibility probe: 5V resistor divider
+V1 IN 0 DC 5
+R1 IN OUT 1k
+R2 OUT 0 1k
+.OP
+.TRAN 1us 10us
+.PRINT TRAN V(OUT)
+.PROBE V(OUT)
+.END

@@ -1,0 +1,7 @@
+Alpha test: 5V equal resistor divider
+V1 IN 0 DC 5
+R1 IN OUT 1k
+R2 OUT 0 1k
+.DC V1 0 5 1
+.PROBE V([OUT])
+.END

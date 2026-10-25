@@ -1,0 +1,40 @@
+{
+  "batch": 65,
+  "date": "2026-10-25",
+  "tools": 173,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 3,
+    "deferred": 10,
+    "implemented_partial": 18,
+    "planned": 2
+  },
+  "acceptedFeature": "P01",
+  "productionChanged": false,
+  "retainedRegression": {
+    "total": 420,
+    "passed": 419,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-420-input-checks-20261025.txt"
+  },
+  "reportSha256": {
+    "docs/implementation/batch-65-P01-input-acceptance-2026-10-25.md": "5e962cfa518067cf1f6f810862b4d2c1a0c2d6fb5ad2ea487640398d3ca8871c",
+    ".local/named-selectors-mcp-20261025/report.json": "bf35b1ac489adb6f106bd76d11003a7e04f8369c1cc09c0c949a4aac8de0385a",
+    ".local/input-boundaries-mcp-20261025/report.json": "679efed33504014328738654830e214895c8a79fd3e83a0c328b0aea54993f8f",
+    ".local/input-checks-mcp-v2-20261025/report.json": "9afb708ae2e635713c5cb1cc71176dedd9bd1321588f88a6cef408bc0501f26d",
+    ".local/input-check-faults-v2-20261025/report.json": "b6438c6b80e51a3e68c26583bd5bce9051efbf9d23f22586e1e240993fc5d89b",
+    ".local/named-selectors-mcp-20261025/expected.json": "c959b232cfa74ff73532624e8c042f951566074e3f708b1b93a6f764db8fc3b3",
+    "docs/implementation/P01-closure-audit-2026-10-25.json": "c40061f50e8cf7d1e64a6d27c46ceb7e6cd60332dfacb47cffcf92beef1f2bfe"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_input.py": "bd7637357d228f8ca6264e52d63a248f25bacf398799a88d6bcb26726a2cbf96",
+    "src/cadence_mcp/pspice_input_checks.py": "5603707ba16923959f984299b3f5afc54dfb5a8b6b19a8c239c610f130457f45",
+    "src/cadence_mcp/pspice_runs.py": "a8a20951031076b931059dcd5b22ffb8a4ec82c961f45f119d649ba6930fb95a",
+    "tools/smoke_named_selectors.py": "2a566bdcbc98a1425987864352125dd85370e1ec8bb5c1fb8a6c56ba1a166740",
+    "tools/smoke_input_boundaries.py": "7af32493e83dc90b91da14774260c4b40c40c83a5d5661c6d01f1c23ec9d31ba",
+    "contracts/tools.v0.1.json": "95b64d4876f11a076cfdc99dfe3525755c893882826518be492fa1a72641362b"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "batch": 77,
+  "date": "2026-10-25",
+  "tools": 192,
+  "productionChanged": true,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 15,
+    "implemented_partial": 11,
+    "planned": 2
+  },
+  "reconfirmedDeferredIssue": "ISS-D05-comment-text-coordinate-frame",
+  "latestFullRegression": {
+    "total": 480,
+    "passed": 479,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-480-page-vectors-20261025.txt"
+  },
+  "pageVectorReadContractPassed": true,
+  "textPlacementAccepted": false,
+  "declaredObjectsAccepted": 28,
+  "declaredObjectsUnaccepted": 4,
+  "reportSha256": {
+    ".local/page-vector-mcp-20261025/report.json": "09f99278dd7f0deea478bee211d4e88b3a0daf593b111eb6a9dd12eef17adbfb",
+    ".local/page-vector-declared-audit-20261025/report.json": "c0949e22c6b7c20285d731e53afcd7616c7f96d52e45dc9a23ca4e39b99a82d8",
+    ".local/page-vector-probe-20261025/report.json": "4e5e5d15d082d1e7b6259836404717a8ee5a9425ab72880c9c312d6d267148ad",
+    ".local/page-vector-probe-v2-20261025/report.json": "95e744a39419cafc9daf0fa537588a936d4cb906b3dd75fed139053653487b7c",
+    ".local/regression-480-page-vectors-20261025.txt": "b344a9ca4ecf5d82d01a998c16d5fd25abba7768e3527567e701307129ce1c56",
+    "docs/implementation/batch-77-page-vector-query-2026-10-25.md": "feebbfce7e03e04d2bad563dadab4fd80860b94c173f450f072584cdba93f66e"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_page_vectors.py": "fa58b5b66b16f1b0413177b67a8c08282531f1780b7be782a9095163236f386e",
+    "src/cadence_mcp/adapters/inspect_page_vectors.tcl": "a51d8e9afd040efbd29039e76bcb95fd761cd1f08dec6eb962d4a4b5f761ee4f",
+    "src/cadence_mcp/embedded_tcl.py": "66c10ad56bbf71785a3f133a0ef255f8922378136feec819f5c7bbbec16a86f5",
+    "src/cadence_mcp/server.py": "b4a4a265f8d1b6b8ab9902cb1bc93037f63e5d0088184cdeac1c913a3fdcd309",
+    "tests/test_page_vectors.py": "b076436ffb344875a6144eae12c36c986323a13ba1e9b466761728ed49283a55",
+    "tests/test_readonly.py": "f664528687b8ce53fbae07f21041baa8d125e6f05b5ecc4ee060427bd22ece2f",
+    "tools/prepare_page_vector_fixture.py": "b3bb77cc08ccd049c57a7313329295e5f32ba0602226147a7ec6ee04d9952b8e",
+    "tools/fixture_page_vectors.tcl": "e187dd0639b99ed862ac2604802984662018e28997f1fc92c363253b9e9ffe92",
+    "tools/smoke_page_vectors.py": "cc2c4f22aac089cea67a7c4d779f44d1b908fff0634a62cfc7810e29f922d485",
+    "contracts/tools.v0.1.json": "998dfbba81d3e7af10f28258ab220599f2fc74f216d5b1e609889a50940dc697"
+  }
+}

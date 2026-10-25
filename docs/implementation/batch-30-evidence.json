@@ -1,0 +1,26 @@
+{
+  "goalComplete": false,
+  "tools": 126,
+  "regression": {
+    "total": 284,
+    "passed": 283,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-284-alias-edit-20261023.txt"
+  },
+  "files": {
+    "src/cadence_mcp/capture_alias_edit.py": "da5034266b45a715fab79d0f724549f4a4865cf28f66385eec308ae7ebc94f87",
+    "src/cadence_mcp/page_net_partition.py": "bed4836dbf0929d887e790e96d990034ca979b66c6af44368c23d3c0399bf07f",
+    "src/cadence_mcp/adapters/edit_alias.tcl": "f781492a5078da9ba47cfcd9d4ea9a1b3a40455e930ff38cb7945f6729a6d833",
+    "src/cadence_mcp/adapters/inspect_page_net_partition.tcl": "5e871914ded780ffbd67a2500eddc4e63bed6cd85f0d1f71a67c7d8afd9c6973",
+    "src/cadence_mcp/server.py": "c6b4eda4b49b8f311449d835eca4a801c0561c3a7c86bc273e4a513b6ac2c711",
+    "tests/test_alias_edit.py": "01b9bb785489af24e36513298634b6bb55d1d37f46f809e11b33beb306ba005b",
+    "tests/test_page_net_partition.py": "887e650214ab2c2493562c2420fb83a1ed8318e47e869871b67b60fd751c3f6f",
+    "tools/probe_alias_edits.py": "4256624e378c4f16200289509c7102157115df5149bda2704f7f1ded0db405a1",
+    "tools/accept_alias_partitions.py": "9a1b59ef430f60e01fbd4ac2937335613593be23dc783deed46112a0093c4717",
+    "tools/smoke_alias_edits.py": "92b4e3c745ba9b39e6803291925698de0ad5c2150c8b9d158212257782a513d9",
+    "tools/smoke_alias_faults.py": "d0cf72fdf2c820c88add3d3c339cef582a5ea5dc7ecc301c1ad6630ca52b88f2",
+    "contracts/tools.v0.1.json": "ae33229fe600955e3c29069772521f72e533fca854a027279d9d5825ef31034a"
+  }
+}

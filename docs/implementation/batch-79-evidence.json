@@ -1,0 +1,46 @@
+{
+  "batch": 79,
+  "date": "2026-10-25",
+  "tools": 193,
+  "productionChanged": true,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 16,
+    "implemented_partial": 9,
+    "planned": 2
+  },
+  "newDeferredIssue": "ISS-H01-root-property-native-access-violation",
+  "latestFullRegression": {
+    "total": 495,
+    "passed": 494,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-495-occurrence-properties-20261025.txt"
+  },
+  "componentLayersAccepted": true,
+  "rootLayersAccepted": false,
+  "fullInheritanceSourceVerified": false,
+  "reportSha256": {
+    ".local/occurrence-property-probe-20261025/report.json": "96d4080e3c0da0fdad8c81243aae5ce60ed2cf2108cce97addcc2320b70e4bdb",
+    ".local/occurrence-overrides-20261025/report.json": "81e6155efb8e23184fb3dbab45dceefc348c8d5ba8b924862471f3b036bd1219",
+    ".local/occurrence-properties-mcp-20261025/report.json": "68ab9b03ef704af5f237ab8551b748b679e00b32905bf031d2ff12a2ca842144",
+    ".local/regression-495-occurrence-properties-20261025.txt": "3365d86bb85bcdb48156fb4fbe08460f3159d40e62c1aeb94734ced5d0be5b11",
+    "docs/implementation/batch-79-occurrence-property-layers-2026-10-25.md": "a123f79bd07f3ab3ca818ab0eed11c80ce9f40e46c4380fde17522f20364edfe",
+    ".local/batch79-probe-sources/original-failed-root-request.json": "e4e4841adbf1e51bc1cd267e2c90ef65186bad9497043a80c132d7caa7a8ee2c"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_occurrence_properties.py": "93b40f0fdb1941c4246128baff569efb690df1ca1be7b122f2aa6266230b9734",
+    "src/cadence_mcp/adapters/inspect_occurrence_properties.tcl": "98246824d14bc4979537181f1d8fe1e4a84889ae2db26de0fd5805f96040f44e",
+    "src/cadence_mcp/server.py": "20084476c469880b0a1ffe487904f1ac0bddc7dfcbaa70cd0ce106fe1d6a4147",
+    "tests/test_occurrence_properties.py": "3dfcbc95b34a91e04d73b8637896b0a62818a024ad753dd92fd1affd2db619bf",
+    "tests/test_readonly.py": "e69fc8d6b46abf2d96b23cf4f69af94da7a1b176b8451e243ab73742c2381ec8",
+    "tools/prepare_occurrence_override_fixture.py": "465b4a2a3a9f2e591d4140383b63f991e06fdbbe5a16cd0494bc501727e35265",
+    "tools/fixture_occurrence_overrides.tcl": "66e3ca0a7d67f597e780d1b428327f9c4593b05d413105eb1b3d236292b8eb2d",
+    "tools/smoke_occurrence_properties.py": "85da39d2564d92f409d4f1476cbc76126e589f2011cca9cedfd5fba5a06f36c3",
+    "contracts/tools.v0.1.json": "99762373a202bc14c5c404f10c720e151d0e936a09507133d395c80dce3e4cbb"
+  }
+}

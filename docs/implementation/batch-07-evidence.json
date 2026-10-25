@@ -1,0 +1,8 @@
+{
+  ".local/typed-wire-174a550d24/report.json": "dd455e40c914521c01bb231912a5923bc4ecba5052f39db31371618dac4fa1c2",
+  ".local/wire-add-stdio-owner-20261023/report.json": "08110aa59ecad5a7f5d1a22035d08b0673045db074568668b72a8b5c0cb70732",
+  ".local/wire-add-faults-mcp-20261023/report.json": "3241ab00aaddaf0976c5ea039ec01008b4c73b4640d20d2b304c40132606fa4e",
+  ".local/wire-add-stdio-owner-20261023/tools-list.json": "c51ca5cc39a182607cd3dedf0bf5cbf47973f4ffac321e735041706d45863bd2",
+  ".local/wire-add-faults-owner-20261023/report.json": "e677cb7d987118e886aef1e10233ce89989493976a08c5b24289029d1473e8ad",
+  ".local/regression-188-wire-owner-20261023.txt": "1221f7f2b40fa3456af92ece06ce3c5720a00a74338beefa7219501d59650b18"
+}

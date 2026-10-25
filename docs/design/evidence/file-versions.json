@@ -1,0 +1,38 @@
+[
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\Capture.exe",
+    "Length": 23283456,
+    "FileVersion": "24.1-2024",
+    "ProductVersion": "24.1-2024"
+  },
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\orDb_Dll_Tcl64.dll",
+    "Length": 28371712,
+    "FileVersion": "24.1.0 d001",
+    "ProductVersion": "24.1.0 d001"
+  },
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\psp_cmd.exe",
+    "Length": 139008,
+    "FileVersion": null,
+    "ProductVersion": null
+  },
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\pspice.exe",
+    "Length": 12475648,
+    "FileVersion": "24.1-2024",
+    "ProductVersion": "24.1-2024"
+  },
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\orPSP_ENG64.dll",
+    "Length": 132540672,
+    "FileVersion": "24.1.0 d001",
+    "ProductVersion": "24.1.0"
+  },
+  {
+    "FullName": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\oradvctrlr64.dll",
+    "Length": 7909632,
+    "FileVersion": "24.1.0 d001",
+    "ProductVersion": "24.1.0 d001"
+  }
+]

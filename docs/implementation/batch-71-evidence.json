@@ -1,0 +1,43 @@
+{
+  "batch": 71,
+  "date": "2026-10-25",
+  "tools": 179,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 10,
+    "implemented_partial": 16,
+    "planned": 2
+  },
+  "productionChanged": true,
+  "acceptedFeature": null,
+  "latestFullRegression": {
+    "total": 448,
+    "passed": 447,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-448-cache-bindings-final-20261025.txt"
+  },
+  "publicCacheReplacementAvailable": false,
+  "reportSha256": {
+    "docs/implementation/batch-71-cache-source-identity-2026-10-25.md": "508232a525b78368dce7ed6be4c8db549d3f150cfab5f5367cce69f80c59d493",
+    ".local/cache-bindings-mcp-20261025/report.json": "b7d37926cee8d8cb9735e5c0f53c629320c59f4bf32af07b0c443086a0e0d9ae",
+    ".local/cache-source-qualified-audit-20261025/report.json": "dede93ad15d8c7a1fa10fe7af53824713cea3ce1030b4ef1d0e0aedaf1564980",
+    ".local/cache-binding-probe-20261025/report.json": "62551daeba0b5892486282faca85c9245ad493550acadac07384721f25145a21",
+    ".local/regression-448-cache-bindings-final-20261025.txt": "8e852c602409fb3c77a4fd3bbe86924cc393ee05814a64c6d60ef9de8bb50556",
+    ".local/regression-448-cache-bindings-20261025.txt": "d71c65c0a53ff48afafcebc1ff1baf29fad135281da14ada559f9806c3a415a7"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_cache_bindings.py": "21af17246a495cd67892996ed107116b93b8126d0c7d64b7b738ab4b16e3daef",
+    "src/cadence_mcp/adapters/dbo_cache_bindings.tcl": "26666cd24f7decde0db168726e14a5bf17df1714de9329f505ad77cd7976a0b6",
+    "src/cadence_mcp/adapters/inspect_cache_bindings.tcl": "9b123bce5ff4eff6dfce940b88df5fde9b4e74e98ebeeecb3746bcc84a1f2106",
+    "src/cadence_mcp/server.py": "353d7a2c5f15ca8cb00484ea0bc85d969b387134677cc9bb15298fc23ddd0585",
+    "tests/test_cache_bindings.py": "710ff75008602ac5d5d905922f535bf35aefbb07932740d2a7a7b0010d333fc0",
+    "tests/test_readonly.py": "7312fe6be7954649804edb53c18aeb0e9a98d8ccf39af5be35f06401c32e1cb4",
+    "tools/smoke_cache_bindings.py": "32a9e11941a9a016a288a59b9b4028e3d1fa93ec161b0d4de1cef3e06a44995c",
+    "tools/audit_source_qualified_cache_replace.py": "ba45f33e04116d6df9ef1a394ae12d877ad3ec6988e8b0ff5ed3cefe586e6ac2",
+    "contracts/tools.v0.1.json": "91e3ff4b9038d4b0313c6e32612b826661b7377abd250b0495ea3ec99f9cec5e"
+  }
+}

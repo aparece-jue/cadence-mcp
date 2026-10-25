@@ -1,0 +1,24 @@
+{
+  "goalComplete": false,
+  "tools": 111,
+  "regression": {
+    "total": 263,
+    "passed": 262,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-263-cache-20261023.txt"
+  },
+  "cacheReplacementPublic": false,
+  "files": {
+    "src/cadence_mcp/adapters/inspect_cache.tcl": "1cc6536d18164014fa9e43dd71a96ab55707f5c2a1e8f62367f7a28c55440510",
+    "src/cadence_mcp/adapters/probe_cache_replace.tcl": "7794bb08bf0d7f3c91bb73a0b7c9ed89145f711fa6445f007cf2ea8f619f3f36",
+    "src/cadence_mcp/cache_semantics.py": "5709a7786675de6bf9f1de4b6f548656a7f8c9065fe50a05f280d051c1fc893a",
+    "src/cadence_mcp/capture_cache.py": "56a4fc4cb37698d043fca7856249a94eab68fadb4146db8ea8e148bcd26cc545",
+    "tests/test_cache_semantics.py": "9a50c3221bc583d56adf81aa1bc56b51f923fbea1b24e110f5f6a7b7155353aa",
+    "tools/probe_cache_replace.py": "773c054e3f4acf86dfaba4a4a4d04fe1d575bf4cebf2d9b3c682c97c8cef0673",
+    "tools/accept_cache_enumeration.py": "2fdfd2829daea1ae0e205860aa1509fe5f30afadff25cb378819dd5167beb430",
+    "tools/smoke_cache_query.py": "b7745a1b550c4080cec24ef954c2a360bace2956fa28828845cf062e691db95c",
+    "tools/audit_cache_combined.py": "d41fc685209c0f3da5830c3ca85e09bcfb65ddffc2c51db3ee01f827c1bd5b05"
+  }
+}

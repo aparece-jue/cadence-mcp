@@ -1,0 +1,26 @@
+[
+  {
+    "name": "capture_dbo_command_visibility",
+    "args": [
+      "D:\\Program Files\\Cadence\\SPB_24.1\\tcltk\\bin\\tclsh.exe",
+      "C:\\Users\\lenovo\\Documents\\ChatGPT\\cadence tool\\design-plan\\runtime_probe.tcl",
+      "D:\\Program Files\\Cadence\\SPB_24.1"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.11,
+    "stdout": "tcl_version=8.6.5\r\npointer_size=8\r\nbefore_dbo=0\r\nload_catch=0\r\nload_result=can't read \"lBuild\": no such variable\r\ncommand:DboTclHelper_sCreateSession=1\r\ncommand:DboState=1\r\ncommand:DboSession=1\r\ncommand:GetActivePage=0\r\ncommand:GetSelectedObjects=0\r\ncommand:orExecuteDrc=0\r\ncommand:orExecutePst=0\r\nNo session or design was opened.\r\n",
+    "stderr": ""
+  },
+  {
+    "name": "pspice_cli_divider",
+    "args": [
+      "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\psp_cmd.exe",
+      "/r",
+      "C:\\Users\\lenovo\\Documents\\ChatGPT\\cadence tool\\design-plan\\evidence\\scratch\\divider.cir"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 26.11,
+    "stdout": "\r\n**** PSpice 24.1.0 (4 September 2024) ****\r\n\r\n* Isolated compatibility probe: 5V resistor divider\r\nReading and checking circuit\r\nCircuit has errors ... run aborted\r\nSee output file for details\r\nAn error occurred during simulation.\r\n",
+    "stderr": ""
+  }
+]

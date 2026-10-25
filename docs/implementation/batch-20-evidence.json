@@ -1,0 +1,85 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/design-create-20261023/report.json",
+      "sha256": "601ec055de9bd195f63753236d2850cfe2c38ff815c24a0342f79aac53dbd3a0"
+    },
+    {
+      "path": ".local/design-create-v2-20261023/report.json",
+      "sha256": "ec57396806cf385b7cabbe93589d630a65d998426f28ae3fe53d0c0e1ae419ac"
+    },
+    {
+      "path": ".local/design-create-ascii-20261023/report.json",
+      "sha256": "52681f3b498116281312a54366f7e4eb0719d402232aa98b4300c5e5eaa1e252"
+    },
+    {
+      "path": ".local/page-content-20261023/report.json",
+      "sha256": "4b5ece6fdfeb2b77e87418ae869a4474b0d2133f1619afff85866502b364cd31"
+    },
+    {
+      "path": ".local/design-create-mcp-20261023/report.json",
+      "sha256": "5188d3048f599e68a26d30281ebb3a4928bfb6c2a8c3240edc3298b3a378396c"
+    },
+    {
+      "path": ".local/design-create-lifecycle-20261023/report.json",
+      "sha256": "8c9de7dfebe54d91815c94ea8b0b6657a011496f51bd4b82d093076cbfd016c3"
+    },
+    {
+      "path": ".local/design-create-faults-20261023/report.json",
+      "sha256": "a8205dc72e4d18fb45828f50792d0d15d0d0c19bee785508f1653f810bec6b11"
+    },
+    {
+      "path": ".local/regression-238-design-create-20261023.txt",
+      "sha256": "1afc8291fbc41f165b804f21ae617108b07ecf2d52933305ac30bfc65a8c1395"
+    },
+    {
+      "path": "src/cadence_mcp/capture_design_create.py",
+      "sha256": "6dcd09eb9ee898d3093a3b5b567602f8d965ad184d845d053a8d7a017b769428"
+    },
+    {
+      "path": "src/cadence_mcp/capture_page_edit.py",
+      "sha256": "e79e0a44e350cc330d47def5009e4409a78996bd776305e435a0c8911cd74978"
+    },
+    {
+      "path": "src/cadence_mcp/capture_pages.py",
+      "sha256": "5029fdba70e0ea2e967144216af42fad4c29daa9f502b2e603210cb4fd407ee8"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/create_design.tcl",
+      "sha256": "7c668fba61f240a9a895e8948622eb6b8f0642893093d5cb7bcd0aa6e80c967c"
+    },
+    {
+      "path": "src/cadence_mcp/adapters/inspect_document_meta.tcl",
+      "sha256": "c4a363fefadb2b974d20a71eec1f34f73982b91515143379616557f4ef89091f"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "6a624bc462260d6931d7f1954356099f42a33401c302e4240b0ae23f61bf89d7"
+    },
+    {
+      "path": "tests/test_design_create.py",
+      "sha256": "40dfd86d685b120840d55cc22acab1569596a7c8b99c5bc31cd0d2d41bf45665"
+    },
+    {
+      "path": "tests/test_design_metadata.py",
+      "sha256": "0f735c082eec5b56abb695324726c72721b6be88a43e3f6b8ee8fcb88f7cdf35"
+    },
+    {
+      "path": "tools/smoke_design_create_mcp.py",
+      "sha256": "3cad16eddcc9fd6390c355bb9415b3787284dda79d94752025921b74796eeeb1"
+    },
+    {
+      "path": "tools/smoke_design_lifecycle.py",
+      "sha256": "3003f6ccc2e26e567a283fb64acdb92c5fd55fbb16ff8511998df38cccbc953c"
+    },
+    {
+      "path": "tools/smoke_design_faults.py",
+      "sha256": "336b93519dd234a4162bbed9a016be20ae3d7c2515ee5361485ee82e147283d6"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "07ef83f5b7401c45fa7a5e747df83f9aec5e2a991ab79c48bea9d5eb3b17edb4"
+    }
+  ]
+}

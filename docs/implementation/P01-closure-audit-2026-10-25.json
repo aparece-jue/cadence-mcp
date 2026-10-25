@@ -1,0 +1,15 @@
+{
+  "featureId": "P01",
+  "date": "2026-10-25",
+  "status": "passed",
+  "originalCriteriaUnchanged": true,
+  "goalComplete": false,
+  "requirements": {
+    "explicit_nested_relative_closure_and_boundary_refusal": ".local/input-boundaries-mcp-20261025/report.json",
+    "model_ground_parameters_analysis_diagnostics": ".local/input-checks-mcp-v2-20261025/report.json",
+    "fault_recovery_identity_binding": ".local/input-check-faults-v2-20261025/report.json",
+    "original_named_selectors_and_unchanged_numeric_oracles": ".local/named-selectors-mcp-20261025/report.json"
+  },
+  "allLinkedIssuesResolved": true,
+  "retainedGlobalFileSymlinkSkipNotAccepted": true
+}

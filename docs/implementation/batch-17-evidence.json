@@ -1,0 +1,49 @@
+{
+  "goalComplete": false,
+  "files": [
+    {
+      "path": ".local/hierarchy-mcp-20261023/report.json",
+      "sha256": "9034390f64d6b7e04ba264b8b6f63236e69a03a938a867ff1bfb1a0fd2c4e6c3"
+    },
+    {
+      "path": ".local/hierarchy-identity-20261023/report.json",
+      "sha256": "56211d08b1517117b4fe98ec235391fe1bd2b05f85d8c41a5e494723ca5073bc"
+    },
+    {
+      "path": ".local/hierarchy-identity-v2-20261023/report.json",
+      "sha256": "92bcb6dbab6d48259fdee8392d219c9309f16d9f5d9c310f4f62f4019fbf24c3"
+    },
+    {
+      "path": ".local/document-lifecycle-v2-20261023/report.json",
+      "sha256": "edfe2cb02d9159bafc97c1f5c582e7247a3cd6b45563b75952b763e3bb44d1f8"
+    },
+    {
+      "path": ".local/regression-230-hierarchy-20261023.txt",
+      "sha256": "938db3795d8deaf9a33067770b9927e358e7ff1d8ac133852698bc03be732baa"
+    },
+    {
+      "path": "src/cadence_mcp/capture_hierarchy.py",
+      "sha256": "bc810dfa7b702cc820eda0794c4207c775e6d867cc9070bc4bb6aba0121d0bf1"
+    },
+    {
+      "path": "src/cadence_mcp/server.py",
+      "sha256": "8473fb0ff506737539cedc461facc2cebe4b3dc339f40abd509d478c862f177b"
+    },
+    {
+      "path": "tests/test_hierarchy_internal.py",
+      "sha256": "ff40c1bec665fc622ff3bb10751a7dd30caaa9058394eaf5b44ddc4455a02680"
+    },
+    {
+      "path": "tools/accept_hierarchy_identity.py",
+      "sha256": "7564a0276d67a36b4b7c626107e6333ec7745b4c04ac7221a58a6f9a512ac4ec"
+    },
+    {
+      "path": "tools/smoke_hierarchy_mcp.py",
+      "sha256": "512330629705f731ed91e9bc5f82d1a5bd64a75e339a510dbfad83a813716a23"
+    },
+    {
+      "path": "contracts/tools.v0.1.json",
+      "sha256": "492facfbe12d1b1a0ba9deeabd289fbb8cb257169f1426b068b3cc77e10cf7f8"
+    }
+  ]
+}

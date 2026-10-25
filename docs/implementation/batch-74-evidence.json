@@ -1,0 +1,64 @@
+{
+  "batch": 74,
+  "date": "2026-10-25",
+  "tools": 185,
+  "productionChanged": false,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 12,
+    "implemented_partial": 14,
+    "planned": 2
+  },
+  "newDeferredIssue": "ISS-E03-native-incremental-target-scope",
+  "latestFullRegression": {
+    "total": 466,
+    "passed": 465,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-466-package-references-20261025.txt"
+  },
+  "fullRegressionReexecutedThisBatch": false,
+  "productionBaselineSha256": {
+    "src/cadence_mcp/capture_package_references.py": "571843b67c907d6fd69df9e48b4a26b210029c6dd51d77811190ffcfd11c28fb",
+    "src/cadence_mcp/capture_references.py": "b26c524425c9aea7835ca58858c29b510d04582b51da58eb6fb32a86bb62d67f",
+    "src/cadence_mcp/adapters/edit_package_references.tcl": "7c63d4d923c71cf24ad6eedb3f60543a1f0ecfdac6e062a9cb6f6e91acc53d9d",
+    "src/cadence_mcp/server.py": "c38352fa5ed5a3941e6b6547e968bbe8eac212f95c0c634bd4379b7dae2a8a7d",
+    "tests/test_package_references.py": "59c8a4039f0328647244556080f7fedf18dda3e1d0e098538250426ca9e1d232",
+    "tests/test_readonly.py": "06c481e7d9730a7025bc543dee2173c060625b3842367c0a84eb98dd186087c0",
+    "tools/smoke_package_references.py": "0e458f9b50c8c74c6d72c160a47a92ea6487b9b618b93d968c5a55dc3e409d19",
+    "tools/smoke_package_reference_faults.py": "c6b5b3c5fe48583bb1e119c95a57750cb54702c2fdde59e50dd66c16308d9c34",
+    "contracts/tools.v0.1.json": "12029dbd54550125f32650412763167b293fc7ee6940956945d19b3c8f1ba80d"
+  },
+  "reportSha256": {
+    ".local/package-reference-crosspage-20261025/report.json": "b4a958738b914f381818010948ed63fb03039e98f986762e016dabeee4338e76",
+    ".local/package-reference-crosspage-mcp-20261025/report.json": "3efdd176290f642a1e0befdc655c721b7c917d16c361fa958cdfd0285117bef3",
+    ".local/refdes-manager-entry-20261025/report.json": "93cb67d02ad9d1dd20d23fa588ade4cc17c3043243cf93caf91470aa23403ca4",
+    ".local/refdes-manager-signatures-20261025/report.json": "fc98586e93bbdde5ebd96de5cf846125d1d1f72b5f1b032f3bdb4b61930588f5",
+    ".local/annotation-options-v2-20261025/report.json": "cca126401564ab21a94c2aa26a0b557b5db7182231b748a2b4d3f4ec6ea1bc0c",
+    ".local/annotation-options-v3-20261025/report.json": "f0ea920b85ae057d37fc051154115571044c0b3f751cd2285254139d566cead9",
+    ".local/native-incremental-annotation-v2-20261025/report.json": "0591ebf1158c77c049cc514189471e1cec8459fe00c94de5215e24b8791f002e",
+    ".local/native-incremental-annotation-v2-20261025/failure-audit.json": "68efa965510f3ec9c81ae15ad196242109e3e3f1f75e79f5edc8eb5d9113bcab",
+    ".local/native-incremental-annotation-20261025/report.json": "5d38d229196559a14b149ef08354cc38e353195afc30d1cd3e6d9135ba73c51c",
+    ".local/annotation-options-20261025/report.json": "c4dcab891edcd8430422d6958ad828f6005a1c1643e3069c3c45d4566ec53665",
+    "docs/implementation/batch-74-crosspage-and-native-annotation-2026-10-25.md": "2d16e2774e2c1631177921af4935bee4b3c7322ca0147d8b08d6e718ef2cdec6"
+  },
+  "newToolSha256": {
+    "tools/prepare_crosspage_reference_fixture.py": "e6b4e01620ada460e8609f0b9ba9aa8937c3d03129d8bf37b3507f1999e11103",
+    "tools/fixture_crosspage_references.tcl": "8efd85a68413f8a32fdf6f14afeccac9e0500d8cac8846fc8aac3c0d54ed2eb0",
+    "tools/smoke_crosspage_reference_mcp.py": "4f0559a20cec7ccfd26b7231b604eea38c3057d5b374b683b43bae78c9bf73e2"
+  },
+  "privateProbeSha256": {
+    ".local/batch74-probe-sources/audit_annotation_failure74.py": "72909eb2a573533a3c799c0dd0f8b9e01cb5791ea3bc8b08e1335e0f5f6c4bc6",
+    ".local/batch74-probe-sources/fixture_incremental_annotation74.tcl": "502b9e1d804886367123ccdfc9aaa8bbfd14dd7a0c36d4ef19d4330dad105405",
+    ".local/batch74-probe-sources/probe_annotation_options74.py": "54aeff0357424689515110aa51f204d9cd2574946dcb51951992974df6a9a6a9",
+    ".local/batch74-probe-sources/probe_annotation_options74.tcl": "1be7bf20ee9a155a7c572f5428d6cb253488eeff0fa8ae9118a39f2a55af9d97",
+    ".local/batch74-probe-sources/probe_crosspage_references74.py": "9ed4370be039b17681597ac10b4368c627d4071e3f773dc99611805b1b06b8c6",
+    ".local/batch74-probe-sources/probe_incremental_annotation74.py": "8ae70e3de9243c9e9b8039efa743bbcf8d39defb022bcde90abfdff75e232881",
+    ".local/batch74-probe-sources/probe_refdes_manager74.py": "39bbd0711d1f9440d3e81d95e9eef09cbb4395f02bafe991a3c08ce9b8b997af",
+    ".local/batch74-probe-sources/probe_refdes_manager74.tcl": "d733ce0e7a073166d05b0be256660f4ee37dd9f77404f6410cf888a9c0058a8a"
+  }
+}

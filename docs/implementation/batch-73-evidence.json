@@ -1,0 +1,41 @@
+{
+  "batch": 73,
+  "date": "2026-10-25",
+  "tools": 185,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 5,
+    "deferred": 11,
+    "implemented_partial": 15,
+    "planned": 2
+  },
+  "acceptedFeature": null,
+  "fullE03Accepted": false,
+  "latestFullRegression": {
+    "total": 466,
+    "passed": 465,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-466-package-references-20261025.txt"
+  },
+  "reportSha256": {
+    ".local/package-reference-mcp-v2-20261025/report.json": "b86e4ad6ae6864a90c562c975ea7a2f2f0d4852b9cf8072a618852a6a90dbebc",
+    ".local/package-reference-faults-20261025/report.json": "8dc39c780120fe6f76fea3a4d166e92bbd6b1cb2bc092240a3eea37ddba42a70",
+    ".local/package-reference-nc-20261025/report.json": "7f1fbfc0bc75197f6fa3ea2c55929bbb95ff7e56dbc1bbfeaea5501cff4c2acf",
+    ".local/regression-466-package-references-20261025.txt": "da6a003ea922a4df06ffd887100f11a8f9b3fce1f2c51b3ad03d3bab096c4e76",
+    "docs/implementation/batch-73-package-references-2026-10-25.md": "4c180ee2f732704b491c19ca6fb0584d92c8625a05d9019663546289c05b7e59"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_package_references.py": "571843b67c907d6fd69df9e48b4a26b210029c6dd51d77811190ffcfd11c28fb",
+    "src/cadence_mcp/capture_references.py": "b26c524425c9aea7835ca58858c29b510d04582b51da58eb6fb32a86bb62d67f",
+    "src/cadence_mcp/adapters/edit_package_references.tcl": "7c63d4d923c71cf24ad6eedb3f60543a1f0ecfdac6e062a9cb6f6e91acc53d9d",
+    "src/cadence_mcp/server.py": "c38352fa5ed5a3941e6b6547e968bbe8eac212f95c0c634bd4379b7dae2a8a7d",
+    "tests/test_package_references.py": "59c8a4039f0328647244556080f7fedf18dda3e1d0e098538250426ca9e1d232",
+    "tests/test_readonly.py": "06c481e7d9730a7025bc543dee2173c060625b3842367c0a84eb98dd186087c0",
+    "tools/smoke_package_references.py": "0e458f9b50c8c74c6d72c160a47a92ea6487b9b618b93d968c5a55dc3e409d19",
+    "tools/smoke_package_reference_faults.py": "c6b5b3c5fe48583bb1e119c95a57750cb54702c2fdde59e50dd66c16308d9c34",
+    "contracts/tools.v0.1.json": "12029dbd54550125f32650412763167b293fc7ee6940956945d19b3c8f1ba80d"
+  }
+}

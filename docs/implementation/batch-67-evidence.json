@@ -1,0 +1,40 @@
+{
+  "batch": 67,
+  "date": "2026-10-25",
+  "tools": 178,
+  "goalComplete": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 4,
+    "deferred": 10,
+    "implemented_partial": 17,
+    "planned": 2
+  },
+  "acceptedFeature": "L01",
+  "productionChanged": false,
+  "retainedRegression": {
+    "total": 429,
+    "passed": 428,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-429-cli-20261025.txt"
+  },
+  "licenseFailureNativeVerified": false,
+  "reportSha256": {
+    "docs/implementation/batch-67-L01-library-query-acceptance-2026-10-25.md": "ec9b7958ad6624e3ebb04875b2d573e64ad97aefeb18d469ed7a88f6d16dbcb6",
+    ".local/library-query-closure-20261025/report.json": "c5f83331c62743a3d76d72c8dd0e264cefb5e543092c911be862078ea04ea925",
+    ".local/library-boundaries-20261025/report.json": "ed97acf75f86f35135bbfaa34b6d9c1940a9301bbe4d01317e53241591211a70",
+    ".local/license-child-probe-20261025/report.json": "d2fcd28209b101c05e050d266c5b2b857aa447f2fdf319df15f39a9bc734e2d1",
+    ".local/library-query-closure-20261025/expected.json": "9fd7e1f18a27de9258fe838e2ef081a2f2091a6c8fa6825e4a9b557fd3de62d8",
+    "docs/implementation/L01-closure-audit-2026-10-25.json": "7a446f1d7ecdf3bb8bbd5ba73f6b3d0b4dddd4fc3c424d918e7840c7a1740288"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library.py": "c333258b88789b6d96410272c090056595872b50533f0b22ceff490b2fbbe638",
+    "src/cadence_mcp/adapters/inspect_library.tcl": "0c2f20b611f9177211ed159d4a1d54c29ae92254dfb1a8935b6cce324d9131c1",
+    "tools/probe_license_child.py": "85dd5eba07ea39c9623e11f2e0556da8a36863338644617d7a3b7ca8997adf81",
+    "tools/smoke_library_closure.py": "6a1747bc759f120c2b5b6774079261731fd8381ec846281556d2c1a6b5193cca",
+    "tools/smoke_library_boundaries.py": "6b223a0c26f09905edfdff189dcd2f7904ffe1fe7f572a4ddd27b09ed6f613de",
+    "contracts/tools.v0.1.json": "f263456f4c8c47148110591546efc256076b7b0c0569d432cc5f0ebcc166b64e"
+  }
+}
