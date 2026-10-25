@@ -33515,9 +33515,277 @@
     "_meta": null
   },
   {
+    "name": "capture_get_library_pin_style",
+    "title": null,
+    "description": "Read eleven native symbol-pin flags for a revision-bound library pin and enumerate all shared symbol scopes. No rendered appearance, DSN cache or electrical-behavior verdict.",
+    "inputSchema": {
+      "properties": {
+        "libraryId": {
+          "title": "Libraryid",
+          "type": "string"
+        },
+        "pinId": {
+          "title": "Pinid",
+          "type": "string"
+        }
+      },
+      "required": [
+        "libraryId",
+        "pinId"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_get_library_pin_styleArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
     "name": "capture_plan_library_pin_edit",
     "title": null,
-    "description": "Plan a pin name/type/startPoint/hotSpot/visibility symbol edit or a device-local physical pad renumber in a new OLB copy. Preview shows all shared symbol rows affected; partial heterogeneous shared-pad function changes, duplicate pads and shared-pad renumbering are refused. Semantic package/device/cell/part/position identities survive reordered snapshots. Geometry/visibility edits freeze and verify all modeled vectors, declared pin starts and reference templates. No existing OLB or DSN cache update.",
+    "description": "Plan a pin name/type/startPoint/hotSpot/visibility symbol edit or a device-local physical pad renumber in a new OLB copy. Preview shows all shared symbol rows affected; partial heterogeneous shared-pad function changes, duplicate pads and shared-pad renumbering are refused. Semantic package/device/cell/part/position identities survive reordered snapshots. Geometry/visibility edits freeze and verify all modeled vectors, declared pin starts and reference templates. Optional style changes long/clock/dot and independently verifies all11 native pin flags across the complete library; preserves modeled graphics and start points. Preview includes the derived global flag for visibility/type changes: power pins remain global, other pins become global when hidden. This symbol flag does not certify instance/flat connectivity. No existing OLB or DSN cache update.",
     "inputSchema": {
       "properties": {
         "libraryId": {
@@ -33619,6 +33887,17 @@
           ],
           "default": null,
           "title": "Startpoint"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LibraryPinStyleChange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -33626,6 +33905,51 @@
         "pinId"
       ],
       "type": "object",
+      "$defs": {
+        "LibraryPinStyleChange": {
+          "additionalProperties": false,
+          "properties": {
+            "long": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Long"
+            },
+            "clock": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Clock"
+            },
+            "dot": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Dot"
+            }
+          },
+          "title": "LibraryPinStyleChange",
+          "type": "object"
+        }
+      },
       "additionalProperties": false,
       "title": "capture_plan_library_pin_editArguments"
     },

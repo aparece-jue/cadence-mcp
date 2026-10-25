@@ -1,0 +1,56 @@
+{
+  "batch": 84,
+  "date": "2026-10-26",
+  "tools": 194,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "resolvedIssue": "ISS-L04-derived-global-style-baseline",
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 526,
+    "passed": 525,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+  },
+  "mcpCases": 5,
+  "nativeVisibilityTransitions": 16,
+  "nativeFaultCases": 4,
+  "fullL04Accepted": false,
+  "evidenceSha256": {
+    ".local/library-pin-style-mcp-20261026/report.json": "2751bd1df37b0aa24883c6268f67c2db5a95732113aeefa710d6259b9205a582",
+    ".local/library-pin-style-mcp-v2-20261026/report.json": "c89e31fc6690288c7f8408388f41ae054a2d75151b4f08c800e9048e04b84432",
+    ".local/pin-visibility-global-matrix-v5-20261026/report.json": "0f1224acffdb39a4d533148c7cef06199f97328d42a9fcbd7bdf192018ff78d8",
+    ".local/library-pin-style-faults-20261026/report.json": "699661bb946e3d6f76d60aababbeca8bd1d7562caaf66e979bb424f9a5619abb",
+    ".local/library-pin-style-timeout-marker-20261026/report.json": "5da67eef78e5d655675193d8aa34a8d7e7600c054f5d22422b74c77c178cd878",
+    ".local/pin-style-read-guards-20261026/report.json": "186cc95f2f92416c25333e9c066a601cd8c396790008873221640ce9a7d09207",
+    ".local/pin-style-old-oracle-audit-20261026/report.json": "cf82fbd8220f99144b906e6a9e920e6dffac66c42803a39557892c50dba28635",
+    ".local/pin-style-combination-audit-20261026/report.json": "5e68b1028809303e86bf1a6a9f4086f93e122c779cda1e5ea0e058effeaeac77",
+    ".local/pin-style-probe-history-20261026.json": "309edff27cba86cebfd3e9de3f5bba3ee23025098bc048ca33fd1346f60b0d35",
+    ".local/regression-526-pin-style-final-20261026.txt": "9240d905bb0df1ec4b5f1133777d08cf5a86821dcb5865aaac18bdb17edacf13",
+    "docs/implementation/batch-84-library-pin-style-2026-10-26.md": "9d96ed77fee303d60e28d5eea51abd4a1cc4568b61ac743ded85f374179bf0f9"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_pin_style.py": "5bc26231b7f80be1111789073f2a83dd895cf2d382d3039021dc76ab5272682b",
+    "src/cadence_mcp/library_edit.py": "565a7f58b28b5dce559e2852f1f3926d1a4379df93fe2e128596851effe51acb",
+    "src/cadence_mcp/server.py": "3749088e5f0e117edf5b66612c8925c4fc51db9948c6eb7e0a0cc134ddbb27c1",
+    "src/cadence_mcp/adapters/dbo_pin_style.tcl": "4e585330033bfabbbb0c23408a35aba4301f7b18f7a9945cf4678a1b0c37c416",
+    "src/cadence_mcp/adapters/inspect_library_pin_styles.tcl": "0cd2c0c69cb1f6576bca6d08af6dd90ba4abd25ca141b457ff7f15536a9b18d8",
+    "src/cadence_mcp/adapters/edit_library_pin.tcl": "329e62778ce752497a1d0ca921a5cab8a1b750005359c7efea4878947bfe747b",
+    "tests/test_library_pin_style.py": "49edec283b18f53dccc65588d23d7f010713721bef5f461641fc3d3331bca491",
+    "tests/test_readonly.py": "dbe0407b6705c27a495a9e839ecc7aa5dbae81869d3318e094cee99c2e635243",
+    "tools/smoke_library_pin_style.py": "9a9778106a8a0bb068a4240afe24a19f7dd0bf7e64398cd1b9e7d0c5f94c720b",
+    "tools/smoke_library_pin_style_faults.py": "195b8238df5c2cec0edcd3fa243caf0d6dad8eb02c2c77a26caedcfa55b2a98e",
+    "tools/smoke_library_pin_style_read_guards.py": "7923526e7189181def8e27d5d3dcc2690474210720417a29ab743b0f61c5ea26",
+    "tools/probe_pin_visibility_global.py": "f7df8ce1e0c1b835f6371f31cfc90831741d1eaf83a65c8bacd1311ca06fb586",
+    "tools/probe_pin_visibility_global.tcl": "e18e8c714037c81df03f2b00ba83ea5e857b20ee8141b33ea7541c966a544925",
+    "contracts/tools.v0.1.json": "e314a7270ff50d90073d0ce071eba9c9dfc3ece7777333aa09fa4c46d75036f1"
+  }
+}

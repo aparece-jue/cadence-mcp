@@ -2,6 +2,7 @@
 # argv: installRoot copiedOLB outputJSON maxObjects
 package require json
 source [file join [file dirname [info script]] json.tcl]
+source [file join [file dirname [info script]] dbo_pin_style.tcl]
 namespace eval cmcp {variable count 0; variable limit 100000}
 proc cmcp::cs {v} {return [DboTclHelper_sMakeCString $v]}
 proc cmcp::str {v} {return [DboTclHelper_sGetConstCharPtr $v]}
@@ -119,6 +120,13 @@ set rc [catch {
     } finally {delete_DboLibPackagesIter $iterator}
     if {$selectedCount != 1 || [llength $selected] != 2} {error pin_not_found}
     lassign $selected pin device
+    if {[dict exists $spec pinStyle]} {
+        set phase check_pin_style;set actualStyle [cmcp::pinStyle $pin]
+        dict for {key value} [dict get $spec expectedStyle] {if {[dict get $actualStyle $key]!=[expr {$value ? 1 : 0}]} {error old_pin_style_mismatch}}
+        foreach {key setter} {long SetIsLong clock SetIsClock dot SetIsDot} {
+            if {[dict exists $spec pinStyle $key]} {set phase set_pin_style;cmcp::check [$pin $setter [expr {[dict get $spec pinStyle $key] ? 1 : 0}]]}
+        }
+    }
     if {$changeName} {set phase set_pin_name;cmcp::check [$pin SetPinName [cmcp::cs $newName]]}
     if {$changeType} {set phase set_pin_type;cmcp::check [$pin SetPinType $newType]}
     if {$changeNumber} {set phase set_device_number;cmcp::check [$device SetPinNumber $expectedPosition [cmcp::cs $newNumber]]}

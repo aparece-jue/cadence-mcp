@@ -1,6 +1,13 @@
 # 当前自主执行状态
 
-2026-10-25。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计，不提交推送。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计，不提交推送。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+
+## 第八十四批引脚标志（2026-10-26）
+
+- 新只读capture_get_library_pin_style，既有pin edit新增long/clock/dot；完整11标志/共享scope及定义/图形/起点/模板保持，实际194工具。
+- 首组合误将global当独立字段，失败及唯一差异审计保留；16原生转换确认power或hidden派生规则，新计划明确预览，原失败摘要仍拒绝。5新MCP、4原生故障及marker超时/陈旧副本读取拒绝通过。
+- 新8host；526完整回归525通过/1原权限skip，合同同步。L04仍partial；34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%不变，目标active。
+- 说明见docs/library-pin-style.md和batch-84-library-pin-style-2026-10-26.md；仅同步develop，alpha.1/main/tag保持固定。无GUI、安装/真实设计修改。
 
 ## 第八十三批单单元引脚边界（2026-10-25）
 

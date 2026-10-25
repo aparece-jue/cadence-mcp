@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -750,17 +750,29 @@
         ".local/value-constructors-20261025/process.json",
         ".local/typed-package-probe-v2-20261025/report.json",
         ".local/typed-package-probe-v3-20261025/report.json",
-        ".local/typed-package-probe-20261025/harness-error.json"
+        ".local/typed-package-probe-20261025/harness-error.json",
+        ".local/library-pin-style-mcp-20261026/report.json",
+        ".local/library-pin-style-mcp-v2-20261026/report.json",
+        ".local/pin-visibility-global-matrix-v5-20261026/report.json",
+        ".local/library-pin-style-faults-20261026/report.json",
+        ".local/library-pin-style-timeout-marker-20261026/report.json",
+        ".local/pin-style-read-guards-20261026/report.json",
+        ".local/pin-style-old-oracle-audit-20261026/report.json",
+        ".local/pin-style-combination-audit-20261026/report.json",
+        ".local/pin-style-probe-history-20261026.json",
+        ".local/regression-526-pin-style-final-20261026.txt",
+        "docs/implementation/batch-84-library-pin-style-2026-10-26.md"
       ],
       "issues": [
         "ISS-L04-library-reopen-identity",
         "ISS-L04-multi-package-vector-save",
         "ISS-L04-package-footprint-canonical-order",
-        "ISS-L04-typed-user-property-persistence"
+        "ISS-L04-typed-user-property-persistence",
+        "ISS-L04-derived-global-style-baseline"
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Six actual MCP tools support new-copy symbol pin name/type and device-local pad number edits. Stable complete base metadata graph excludes only traversal IDs/order, preserves package/device/cell/part variants and all available pin fields; native selector uses semantic names/device position/logical pin position, JSON declaration. Official analog combined fields, Unicode/literal, homogeneous shared-symbol and heterogeneous unit scope, conflicts, durable lifecycle/faults and edited OLB->new DSN placement pass. Original frozen failed artifact also passes read-only semantic audit; old failed ledger unchanged/no auto-migration/native completion reacceptance. Symbol vector/font/hotspot editing, package/user properties/reference template, DSN cache updates, all variants/fault/soak/full L04 still required. Batch50 public basic-vector update/delete with frozen full modeled definition/template/pin-start/vector/order preservation passes18 native MCP cases, fault recovery/negative preservation, and4 edited-library DSN placements. Multi-package first save failed; all previewed native context writes fix new update/delete fixtures, keeping original failure. Full gate remains incomplete: unmodeled properties, bitmap/nested symbols/rendering, cache/variant and original requirements are retained. Batch51 package fixed fields/string user-property lifecycle, two footprint-name placements and fault matrix pass. Owned exit-signal race reproduced and fixed with60+60 after cases and two354 full runs. Full gate remains incomplete; typed properties, other library attributes/cache variants/general resource and simulation requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch68 supersedes the historical hotspot-unavailable statement only: optional hotSpot/visible pin edits with strict bounded declarations, old-value guards and independent modeled definition/vector/template/pin-start preservation passed four native MCP fixtures, combined legacy fields, receipt loss, cancellation, corrected apply-only timeout, wrong preservation and changed-source negatives. Initial planning-timeout failure retained. Full L04 remains incomplete: typed user properties and other symbol/pin attributes, complete variant coverage and original unresolved requirements remain; no DSN/cache/render/DRC acceptance is implied. Batch69 adds optional startPoint symbol-pin edits with explicit per-view old/new preview, unique/shared-old-start checks, 64-row bound, strict native preconditions and complete modeled graph verification. Four actual MCP original library variants plus combined fields, no-change/schema, fresh lifecycle and three native fault cases pass. Typed user-property persistence is still unverified: three official overload combinations write every tested type as native string0, and DboValue setters report Code1/Failed1. Production string-only restriction remains. Independent unmet requirement logged and deferred; full L04 still incomplete.",
+      "remaining": "Six actual MCP tools support new-copy symbol pin name/type and device-local pad number edits. Stable complete base metadata graph excludes only traversal IDs/order, preserves package/device/cell/part variants and all available pin fields; native selector uses semantic names/device position/logical pin position, JSON declaration. Official analog combined fields, Unicode/literal, homogeneous shared-symbol and heterogeneous unit scope, conflicts, durable lifecycle/faults and edited OLB->new DSN placement pass. Original frozen failed artifact also passes read-only semantic audit; old failed ledger unchanged/no auto-migration/native completion reacceptance. Symbol vector/font/hotspot editing, package/user properties/reference template, DSN cache updates, all variants/fault/soak/full L04 still required. Batch50 public basic-vector update/delete with frozen full modeled definition/template/pin-start/vector/order preservation passes18 native MCP cases, fault recovery/negative preservation, and4 edited-library DSN placements. Multi-package first save failed; all previewed native context writes fix new update/delete fixtures, keeping original failure. Full gate remains incomplete: unmodeled properties, bitmap/nested symbols/rendering, cache/variant and original requirements are retained. Batch51 package fixed fields/string user-property lifecycle, two footprint-name placements and fault matrix pass. Owned exit-signal race reproduced and fixed with60+60 after cases and two354 full runs. Full gate remains incomplete; typed properties, other library attributes/cache variants/general resource and simulation requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch68 supersedes the historical hotspot-unavailable statement only: optional hotSpot/visible pin edits with strict bounded declarations, old-value guards and independent modeled definition/vector/template/pin-start preservation passed four native MCP fixtures, combined legacy fields, receipt loss, cancellation, corrected apply-only timeout, wrong preservation and changed-source negatives. Initial planning-timeout failure retained. Full L04 remains incomplete: typed user properties and other symbol/pin attributes, complete variant coverage and original unresolved requirements remain; no DSN/cache/render/DRC acceptance is implied. Batch69 adds optional startPoint symbol-pin edits with explicit per-view old/new preview, unique/shared-old-start checks, 64-row bound, strict native preconditions and complete modeled graph verification. Four actual MCP original library variants plus combined fields, no-change/schema, fresh lifecycle and three native fault cases pass. Typed user-property persistence is still unverified: three official overload combinations write every tested type as native string0, and DboValue setters report Code1/Failed1. Production string-only restriction remains. Independent unmet requirement logged and deferred; full L04 still incomplete. Batch84 adds native eleven-flag query and optional long/clock/dot editing in existing pin tasks. Complete flag/definition/vector/start/template preservation, five MCP cases and16 type-aware visibility/global transitions pass; initial independent-global assumption failed and is retained, new plans explicitly model derived global and old failed oracle stays rejected. Four native faults plus staged timeout/source-change guards pass. Full L04 remains partial: original typed properties/other attributes/full variant/render/cache and other unresolved requirements remain.",
       "previousQueueOrderBeforeTypedPropertyDeferral": 43
     },
     {
@@ -2659,6 +2671,19 @@
       "mitigation": "Public creation schema/validator now requires explicit nonempty1..128 literal names, before assets or durable plan. No generated-name oracle normalization.",
       "exactEmptyPersistenceAccepted": false,
       "nextAction": "After independent items inspect native anonymous pin naming/storage semantics; retain original oracle/output and do not infer SDK impossibility."
+    },
+    {
+      "id": "ISS-L04-derived-global-style-baseline",
+      "featureId": "L04",
+      "status": "resolved",
+      "summary": "Initial style verifier incorrectly preserved global as an independent flag while visibility changed; original composite operation failed strictly.",
+      "originalEvidence": ".local/library-pin-style-mcp-20261026/report.json",
+      "differenceAudit": ".local/pin-style-combination-audit-20261026/report.json",
+      "resolution": "New plans preview the matrix-proven type-aware global derivation; verify still compares all11 flags exactly. Old failed plan digest/output are retained and still rejected.",
+      "nativeMatrix": ".local/pin-visibility-global-matrix-v5-20261026/report.json",
+      "positiveEvidence": ".local/library-pin-style-mcp-v2-20261026/report.json",
+      "oldOracleAudit": ".local/pin-style-old-oracle-audit-20261026/report.json",
+      "fullFeatureAccepted": false
     }
   ],
   "excluded": [
@@ -2680,16 +2705,16 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-10-25",
-    "tools": 193,
+    "date": "2026-10-26",
+    "tools": 194,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 518,
-      "passed": 517,
+      "total": 526,
+      "passed": 525,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-518-pin-name-20261025.txt"
+      "evidence": ".local/regression-526-pin-style-final-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -2722,12 +2747,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 518,
-      "passed": 517,
+      "total": 526,
+      "passed": 525,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-518-pin-name-20261025.txt"
+      "evidence": ".local/regression-526-pin-style-final-20261026.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3086,7 +3111,13 @@
     "alphaInstalledSmokeEvidence": ".local/alpha1-test/smoke-v2/report.json",
     "libraryPinBoundaryEvidence": ".local/library-pin-boundaries-v2-20261025/report.json",
     "libraryExactEmptyNameAccepted": false,
-    "libraryEmptyNameIssue": "ISS-L02-empty-pin-name-canonicalization"
+    "libraryEmptyNameIssue": "ISS-L02-empty-pin-name-canonicalization",
+    "libraryPinStyleQueryAvailable": true,
+    "libraryPinStyleEditAvailable": true,
+    "libraryPinStyleEvidence": ".local/library-pin-style-mcp-v2-20261026/report.json",
+    "libraryPinStyleFaultEvidence": ".local/library-pin-style-faults-20261026/report.json",
+    "libraryPinGlobalMatrixEvidence": ".local/pin-visibility-global-matrix-v5-20261026/report.json",
+    "fullL04Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

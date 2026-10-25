@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-25",
+  "asOf": "2026-10-26",
   "metric": "required_gates_fully_accepted",
   "passed": 6,
   "total": 34,
@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 193,
+  "toolCount": 194,
   "latestFullRegression": {
-    "total": 518,
-    "passed": 517,
+    "total": 526,
+    "passed": 525,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-518-pin-name-20261025.txt"
+    "evidence": ".local/regression-526-pin-style-final-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "45704b63bad85b5c4ae66acb2c234a5b50bac6fa1aafd07d531bc5551fcbc761"
+  "acceptanceCanonicalSha256": "854155a8dc582ef329ba95935356004bc69a78133280c39b1729dc6baccec584"
 }

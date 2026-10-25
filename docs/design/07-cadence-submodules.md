@@ -43,3 +43,5 @@
 2026-10-23 用户授权自主完成开发与验收，计划见docs/implementation/cadence-plan.md（从仓库根解析）；验收失败保留证据并移到队尾，继续独立项，最后集中修复。只有全部必需功能验收通过才结束目标并交用户评审，不自动提交推送。
 
 2026-10-24：原34项详细状态与证据以docs/implementation/cadence-acceptance.json为主档；本表保留完成条件，不用工具数或回归通过率代替业务完成率。
+
+2026-10-26 第84批：库引脚标志查询与long/clock/dot编辑、全库标志校验及global派生语义见[功能说明](../library-pin-style.md)；L04完整门禁仍未通过。
