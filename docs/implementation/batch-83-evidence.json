@@ -1,0 +1,40 @@
+{
+  "batch": 83,
+  "date": "2026-10-25",
+  "tools": 193,
+  "goalComplete": false,
+  "acceptedFeature": null,
+  "newDeferredIssue": "ISS-L02-empty-pin-name-canonicalization",
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 518,
+    "passed": 517,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-518-pin-name-20261025.txt"
+  },
+  "exactEmptyNameAccepted": false,
+  "evidenceSha256": {
+    ".local/library-pin-boundaries-20261025/report.json": "dc2454c0dc3c1d2ac3c73b67da2e5a3b5dfe5a02f1d5f30e9fcc71c9d630ed73",
+    ".local/library-pin-boundaries-v2-20261025/report.json": "2e18b398c037421574f993e53f30861b43fae30129c9d789c3bbc9add631954d",
+    ".local/empty-pin-setters-20261025/report.json": "a40c18032d0203533a47ef6a57e15f04ce85fd258ddc2ddd49e6ebe38bde528f",
+    ".local/library-pin-boundaries-v2-20261025/original-failure-audit.json": "b7e9e2312458b72307bd223f001a810f42a7d9fa6faf030712cf51591cac4464",
+    ".local/regression-518-pin-name-20261025.txt": "9ceb78cb0e48aa487d7cf30d4eeb51a5746db09f0d263243e0208a0904d838a4",
+    "docs/implementation/batch-83-library-pin-boundaries-2026-10-25.md": "75a9bb4b2b21a43743219b6cb27f4f28615ef873187eac4c4a444020c8331d5b"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/library_create.py": "70d74b1ce18df8132f1c032dfedf0f803c638d4ce54cb3bbee5356ac422d4791",
+    "src/cadence_mcp/server.py": "437d301c9f98c3281eef38a348602fba4b0c9c900d2b40faca873871be25b558",
+    "tests/test_empty_pin_name.py": "c8f2fc63b676d9f1834dbd25a5968468bfa4ba59b0925b426e14ad8cf2ae5de2",
+    "tools/smoke_library_pin_boundaries.py": "0baaefe92f0669a35645a4c220222e8267ebc67ead66077960e886cd8aebe9e3",
+    "tools/probe_empty_pin_name.py": "1068d294c19a5b897982d31809f27683efca7d3f16cdc5b590394cf5235570dc",
+    "contracts/tools.v0.1.json": "c78a9d939183d1313785cdc1e2cc2f0e573f6f3085b582a5335d391291a83e70"
+  }
+}

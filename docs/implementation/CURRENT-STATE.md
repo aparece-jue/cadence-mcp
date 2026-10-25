@@ -2,6 +2,13 @@
 
 2026-10-25。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计，不提交推送。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第八十三批单单元引脚边界（2026-10-25）
+
+- 两组0..4095稀疏/独立乱序12脚、全部type/visibility/swap边界、第三组非空Unicode/128字符/重复名真实MCP保存重开/完整图/逐条分页/fresh不重放通过。
+- 原空名矩阵保存重开变$PIN0，三种官方setter探针仍不符；唯一字段差异及原oracle/输出hash审计保持。创建schema/Python现提前拒绝空名，显式非空矩阵与原失败分开，未认证精确空名。
+- ISS-L02-empty-pin-name-canonicalization open，完整L02 deferred后移；193合同同步。新2host，518完整回归517通过/1原权限skip；34现6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%不变，目标active。
+- 无GUI、安装/真实设计修改；只同步develop，alpha.1固定不变。详见batch-83-library-pin-boundaries-2026-10-25.md。
+
 ## 第八十二批跨页缺失单元及alpha.1（2026-10-25）
 
 - 既有缺失单元补放新增显式targetPageId，同schematic跨页冻结全部原实例已建模状态，并校验共享pad原生身份；原同页/旧计划兼容。普通B跨页原生与真实MCP、原B同页通过；供电P.8跨页VCC变unbound，严格拒绝，原引脚保持，失败与只读差异审计保留。

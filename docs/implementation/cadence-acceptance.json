@@ -476,7 +476,7 @@
       "module": "库",
       "title": "创建OLB及单单元符号/物理引脚",
       "required": true,
-      "queueOrder": 50,
+      "queueOrder": 66,
       "dependencies": [
         "L01"
       ],
@@ -485,7 +485,7 @@
       ],
       "implementation": "CreateLib/NewPackage/NewCell/NewPart/NewDevice/NewSymbolPinScalar经逐个核实签名执行",
       "acceptance": "预定义逻辑/物理脚表；保存后新进程读取、名称/类型/可见性/编号一致",
-      "status": "implemented_partial",
+      "status": "deferred",
       "evidence": [
         ".local/library-create-traced-20261023/report.json",
         ".local/library-create-positions-20261023/report.json",
@@ -539,16 +539,24 @@
         ".local/library-family-faults-20261025/report.json",
         ".local/library-family-placement-v2-20261025/report.json",
         ".local/regression-508-library-family-20261025.txt",
-        "docs/implementation/batch-81-library-package-families-2026-10-25.md"
+        "docs/implementation/batch-81-library-package-families-2026-10-25.md",
+        ".local/library-pin-boundaries-20261025/report.json",
+        ".local/library-pin-boundaries-v2-20261025/report.json",
+        ".local/empty-pin-setters-20261025/report.json",
+        ".local/library-pin-boundaries-v2-20261025/original-failure-audit.json",
+        ".local/regression-518-pin-name-20261025.txt",
+        "docs/implementation/batch-83-library-pin-boundaries-2026-10-25.md"
       ],
       "issues": [
         "ISS-L02-library-create-f6355f7ec1",
         "ISS-L02-vector-iterator-status",
         "ISS-L02-comment-font-quality-persistence",
-        "ISS-L02-bitmap-pixel-identity"
+        "ISS-L02-bitmap-pixel-identity",
+        "ISS-L02-empty-pin-name-canonicalization"
       ],
       "implementationReady": true,
-      "remaining": "Typed one-package scalar/line OLB create/save/reopen, template/pin-start/hotspot/type/visible/shared/swap/body/style/width, Unicode, new-server idempotency, receipt-loss recover/native-start cancel/timeout and actual placement pass. Full symbol vector/font/render scope, alternate variants and all native fault/resource gates still pending. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion."
+      "remaining": "Typed one-package scalar/line OLB create/save/reopen, template/pin-start/hotspot/type/visible/shared/swap/body/style/width, Unicode, new-server idempotency, receipt-loss recover/native-start cancel/timeout and actual placement pass. Full symbol vector/font/render scope, alternate variants and all native fault/resource gates still pending. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion. Batch83 adds independent sparse0..4095/out-of-order12-pin physical maps, all8types, visibility/swap boundary fields, Unicode/128char/repeated literal-name MCP save/reopen/paging/fresh lifecycle. Original empty-name declaration persisted as$PIN0; SetPinName/SetName/combined official probes all preserve the mismatch. Exact empty literal remains unaccepted and full L02 deferred/moved last. Creation now rejects empty literal before assets/durable plan, aligned with existing pin-edit contract. Separate nonempty matrix passes without rewriting old oracle. Font/pixel replacement/remaining original requirements retained.",
+      "previousQueueOrderBeforeEmptyNameDeferral": 50
     },
     {
       "id": "L03",
@@ -2639,6 +2647,18 @@
       "auditEvidence": ".local/crosspage-cached-power-audit-v2-20261025/report.json",
       "positiveEvidence": ".local/crosspage-cached-unit-mcp-20261025/report.json",
       "nextAction": "After independent work inspect shared-power association across pages; do not rewrite the oracle or treat same labels as native network identity."
+    },
+    {
+      "id": "ISS-L02-empty-pin-name-canonicalization",
+      "featureId": "L02",
+      "status": "open",
+      "summary": "Declared empty symbol pin name reads back as$PIN0; complete other modeled fields match. Three official setter paths also fail the original exact-empty oracle.",
+      "evidence": ".local/library-pin-boundaries-20261025/report.json",
+      "nativeSetterEvidence": ".local/empty-pin-setters-20261025/report.json",
+      "auditEvidence": ".local/library-pin-boundaries-v2-20261025/original-failure-audit.json",
+      "mitigation": "Public creation schema/validator now requires explicit nonempty1..128 literal names, before assets or durable plan. No generated-name oracle normalization.",
+      "exactEmptyPersistenceAccepted": false,
+      "nextAction": "After independent items inspect native anonymous pin naming/storage semantics; retain original oracle/output and do not infer SDK impossibility."
     }
   ],
   "excluded": [
@@ -2664,12 +2684,12 @@
     "tools": 193,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 516,
-      "passed": 515,
+      "total": 518,
+      "passed": 517,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-alpha1-20261025.txt"
+      "evidence": ".local/regression-518-pin-name-20261025.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -2702,12 +2722,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 516,
-      "passed": 515,
+      "total": 518,
+      "passed": 517,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-alpha1-20261025.txt"
+      "evidence": ".local/regression-518-pin-name-20261025.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3063,7 +3083,10 @@
     "cachedUnitCrosspagePowerAccepted": false,
     "cachedUnitCrosspageIssue": "ISS-D01-crosspage-shared-vcc-unbound",
     "alphaVersion": "0.1.0a1",
-    "alphaInstalledSmokeEvidence": ".local/alpha1-test/smoke-v2/report.json"
+    "alphaInstalledSmokeEvidence": ".local/alpha1-test/smoke-v2/report.json",
+    "libraryPinBoundaryEvidence": ".local/library-pin-boundaries-v2-20261025/report.json",
+    "libraryExactEmptyNameAccepted": false,
+    "libraryEmptyNameIssue": "ISS-L02-empty-pin-name-canonicalization"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

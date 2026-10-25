@@ -38891,7 +38891,7 @@
   {
     "name": "capture_plan_library_create",
     "title": null,
-    "description": "Plan one new OLB from a single package or a bounded package family. Repeated exact cellName with distinct partName creates alternate symbol views; all views must preserve position/name/electrical-type functions, while geometry/visibility may differ. Device physical maps/shared pads/swap IDs and package footprint/template are independently verified. Optional typed vectors declare line/box/ellipse/arc/polygon/polyline/bezier/fill/text/bitmap in draw order after legacy lines. Bitmap creation requires an allowed sourceBmp path plus independent BMP/DIB SHA256, dimensions and DIB size; exact RGB24/RGB32 bottom-up BMP assets are validated and privately frozen before execution. Geometry/style/font fields are bounded. Text location is bounds top-left. Accepts one package or a packages family of 2..8 independent package variants with disjoint native cell/part namespaces. Total physical pad count is summed per package and excludes extra views; no DSN cache/instance update or external footprint geometry certification.",
+    "description": "Plan one new OLB from a single package or a bounded package family. Pin names must be explicit nonempty literals; native auto-generated anonymous names are outside this exact-name declaration. Repeated exact cellName with distinct partName creates alternate symbol views; all views must preserve position/name/electrical-type functions, while geometry/visibility may differ. Device physical maps/shared pads/swap IDs and package footprint/template are independently verified. Optional typed vectors declare line/box/ellipse/arc/polygon/polyline/bezier/fill/text/bitmap in draw order after legacy lines. Bitmap creation requires an allowed sourceBmp path plus independent BMP/DIB SHA256, dimensions and DIB size; exact RGB24/RGB32 bottom-up BMP assets are validated and privately frozen before execution. Geometry/style/font fields are bounded. Text location is bounds top-left. Accepts one package or a packages family of 2..8 independent package variants with disjoint native cell/part namespaces. Total physical pad count is summed per package and excludes extra views; no DSN cache/instance update or external footprint geometry certification.",
     "inputSchema": {
       "properties": {
         "spec": {
@@ -39442,6 +39442,7 @@
             },
             "name": {
               "maxLength": 128,
+              "minLength": 1,
               "title": "Name",
               "type": "string"
             },

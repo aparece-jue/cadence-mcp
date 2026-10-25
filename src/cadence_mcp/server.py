@@ -188,7 +188,7 @@ def packed(row: dict) -> CallToolResult:
 
 class LibrarySymbolPin(StrictModel):
     position: Annotated[int, Field(ge=0, le=4095)]
-    name: Annotated[str, Field(max_length=128)]
+    name: Annotated[str, Field(min_length=1, max_length=128)]
     pinType: Annotated[int, Field(ge=0, le=7)]
     start: Annotated[list[int], Field(min_length=2, max_length=2)]
     hotSpot: Annotated[list[int], Field(min_length=2, max_length=2)]
@@ -1260,7 +1260,7 @@ def create_server(config: Config) -> MCPServer:
 
     @register(readonly=False)
     async def capture_plan_library_create(spec: LibraryCreationSpec | LibraryFamilySpec) -> ToolResult:
-        """Plan one new OLB from a single package or a bounded package family. Repeated exact cellName with distinct partName creates alternate symbol views; all views must preserve position/name/electrical-type functions, while geometry/visibility may differ. Device physical maps/shared pads/swap IDs and package footprint/template are independently verified. Optional typed vectors declare line/box/ellipse/arc/polygon/polyline/bezier/fill/text/bitmap in draw order after legacy lines. Bitmap creation requires an allowed sourceBmp path plus independent BMP/DIB SHA256, dimensions and DIB size; exact RGB24/RGB32 bottom-up BMP assets are validated and privately frozen before execution. Geometry/style/font fields are bounded. Text location is bounds top-left. Accepts one package or a packages family of 2..8 independent package variants with disjoint native cell/part namespaces. Total physical pad count is summed per package and excludes extra views; no DSN cache/instance update or external footprint geometry certification."""
+        """Plan one new OLB from a single package or a bounded package family. Pin names must be explicit nonempty literals; native auto-generated anonymous names are outside this exact-name declaration. Repeated exact cellName with distinct partName creates alternate symbol views; all views must preserve position/name/electrical-type functions, while geometry/visibility may differ. Device physical maps/shared pads/swap IDs and package footprint/template are independently verified. Optional typed vectors declare line/box/ellipse/arc/polygon/polyline/bezier/fill/text/bitmap in draw order after legacy lines. Bitmap creation requires an allowed sourceBmp path plus independent BMP/DIB SHA256, dimensions and DIB size; exact RGB24/RGB32 bottom-up BMP assets are validated and privately frozen before execution. Geometry/style/font fields are bounded. Text location is bounds top-left. Accepts one package or a packages family of 2..8 independent package variants with disjoint native cell/part namespaces. Total physical pad count is summed per package and excludes extra views; no DSN cache/instance update or external footprint geometry certification."""
         return await invoke(library_creates.plan, spec.model_dump(), backend="capture_dbo",
                             coverage=("declared_library_create_plan", "physical_logical_pin_map"), not_checked=("rendered_labels_fonts", "native_drc"))
 

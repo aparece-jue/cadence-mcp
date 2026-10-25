@@ -65,7 +65,7 @@ def validate_spec(spec):
                 if set(pin)!={'position','name','pinType','start','hotSpot','visible'}:raise ValueError()
                 if type(pin['position']) is not int or not 0<=pin['position']<=4095 or pin['position'] in positions:raise ValueError()
                 positions.add(pin['position'])
-                if not isinstance(pin['name'],str) or len(pin['name'])>128 or any(c in pin['name'] for c in '\x00\r\n') or type(pin['pinType']) is not int or not 0<=pin['pinType']<8 or not point(pin['start']) or not point(pin['hotSpot']) or type(pin['visible']) is not bool:raise ValueError()
+                if not isinstance(pin['name'],str) or not 1<=len(pin['name'])<=128 or any(c in pin['name'] for c in '\x00\r\n') or type(pin['pinType']) is not int or not 0<=pin['pinType']<8 or not point(pin['start']) or not point(pin['hotSpot']) or type(pin['visible']) is not bool:raise ValueError()
             for line in sym['lines']:
                 if set(line)!={'start','end','style','width'} or not point(line['start']) or not point(line['end']) or line['start']==line['end']:raise ValueError()
                 if type(line['style']) is not int or not 0<=line['style']<=4 or type(line['width']) is not int or not 0<=line['width']<=2:raise ValueError()
