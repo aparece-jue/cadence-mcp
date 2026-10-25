@@ -1,5 +1,13 @@
 # cadence-mcp
 
+<!-- progress:start -->
+
+[![完整验收进度](docs/progress.svg)](docs/PROGRESS.md)
+
+[当前进度：6/34（17.6%）](docs/PROGRESS.md) · [研发同步规则](docs/DEVELOPMENT.md) · [参考资料](docs/references/INDEX.md)
+
+<!-- progress:end -->
+
 > **测试版 v0.1.0-alpha.1**（Python 包版本 `0.1.0a1`）：[下载预发布版](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0-alpha.1) · [安装与试用指南](docs/testing/alpha-1.md) · [版本说明](docs/releases/v0.1.0-alpha.1.md)。Windows x64 / 本机已验证 Cadence 24.1，193个工具，34项业务门禁中6项完整通过，其余仍在研发。以下批次描述保留历史过程，当前能力与限制以测试版指南和最新验收清单为准。
 
 

@@ -1,0 +1,45 @@
+{
+  "asOf": "2026-10-25",
+  "metric": "required_gates_fully_accepted",
+  "passed": 6,
+  "total": 34,
+  "percent": 17.6,
+  "remaining": 28,
+  "statusCounts": {
+    "passed": 6,
+    "baseline_passed": 1,
+    "implemented_partial": 8,
+    "deferred": 17,
+    "planned": 2,
+    "failed": 0,
+    "waiting_dependency": 0,
+    "unverified": 0
+  },
+  "groups": {
+    "Capture": {
+      "passed": 4,
+      "total": 28,
+      "percent": 14.3
+    },
+    "PSpice": {
+      "passed": 2,
+      "total": 5,
+      "percent": 40.0
+    },
+    "最终联合验收": {
+      "passed": 0,
+      "total": 1,
+      "percent": 0.0
+    }
+  },
+  "toolCount": 193,
+  "latestFullRegression": {
+    "total": 516,
+    "passed": 515,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-alpha1-20261025.txt"
+  },
+  "acceptanceCanonicalSha256": "7875e6bdb86ef66146b325f81a7db4ceea7ce718c049926471caf0c7b41cc6e8"
+}
