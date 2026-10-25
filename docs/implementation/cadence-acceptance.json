@@ -431,11 +431,15 @@
         "contracts/tools.v0.1.json",
         ".local/page-vector-mcp-20261025/report.json",
         ".local/page-vector-declared-audit-20261025/report.json",
-        ".local/regression-480-page-vectors-20261025.txt"
+        ".local/regression-480-page-vectors-20261025.txt",
+        ".local/page-text-definition-20261026/report.json",
+        ".local/graphic-text-mcp-v2-20261026/report.json",
+        ".local/graphic-text-faults-20261026/report.json",
+        ".local/graphic-text-cancel-v2-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted."
+      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain."
     },
     {
       "id": "L01",
@@ -1338,14 +1342,18 @@
         ".local/page-vector-probe-20261025/report.json",
         ".local/page-vector-probe-v2-20261025/report.json",
         ".local/page-vector-declared-audit-20261025/report.json",
-        ".local/page-vector-mcp-20261025/report.json"
+        ".local/page-vector-mcp-20261025/report.json",
+        ".local/page-text-definition-20261026/report.json",
+        ".local/graphic-text-mcp-v2-20261026/report.json",
+        ".local/graphic-text-faults-20261026/report.json",
+        ".local/graphic-text-cancel-v2-20261026/report.json"
       ],
       "issues": [
         "ISS-D05-comment-text-coordinate-frame"
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Typed zero-rotation decorative-line add/save/reopen, full definition/pin-net and connection baseline, target-page line geometry multiset pass. Text/fonts, style/width/color, other shapes, edit/delete, titleblock, rendered bounds and dedicated native fault matrix remain required. Native comment-text position oracle failed; retained and moved to queue tail. Existing public line addition remains a passed slice, not full D05. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch77 original32 page-graphic fixture adds28 nontext positive native descriptors/transforms; four comment-text locations remain0,0 after explicit SetLocation and save/reopen. Existing issue reconfirmed and full D05 deferred/moved last; no public text writer."
+      "remaining": "Typed zero-rotation decorative-line add/save/reopen, full definition/pin-net and connection baseline, target-page line geometry multiset pass. Text/fonts, style/width/color, other shapes, edit/delete, titleblock, rendered bounds and dedicated native fault matrix remain required. Native comment-text position oracle failed; retained and moved to queue tail. Existing public line addition remains a passed slice, not full D05. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch77 original32 page-graphic fixture adds28 nontext positive native descriptors/transforms; four comment-text locations remain0,0 after explicit SetLocation and save/reopen. Existing issue reconfirmed and full D05 deferred/moved last; no public text writer. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain."
     },
     {
       "id": "H01",
@@ -2131,7 +2139,14 @@
       "evidence": ".local/graphic-text-20261023/report.json",
       "latestEvidence": ".local/page-vector-probe-v2-20261025/report.json",
       "latestAuditEvidence": ".local/page-vector-declared-audit-20261025/report.json",
-      "latestObservation": "Four rotations of NewGraphicCommentTextInst plus explicit GraphicInstance.SetLocation return success but saved instance locations remain0,0; literals/fonts/local definitions persist.28 other declared page instances and independently transformed points pass. Original failing expected/location outputs unchanged; root cause unresolved."
+      "latestObservation": "Definition.SetBoundingBox/SetLocation + inverse native pose preserve requested page control-point anchor across8poses and actual MCP. Public text-add now available with modeled preservation/fault guards. Original constructor/instance-location oracle remains false; no claim that instance SetLocation was repaired. Full D05/edit/delete/render/font-quality/clipping scopes remain open.",
+      "additionalEvidence": [
+        ".local/page-text-definition-20261026/report.json",
+        ".local/graphic-text-mcp-v2-20261026/report.json",
+        ".local/graphic-text-faults-20261026/report.json",
+        ".local/graphic-text-cancel-v2-20261026/report.json",
+        ".local/graphic-text-faults-20261026/audit.json"
+      ]
     },
     {
       "id": "ISS-P01-named-output-selectors",
@@ -2730,15 +2745,15 @@
   ],
   "lastBatch": {
     "date": "2026-10-26",
-    "tools": 194,
+    "tools": 199,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 526,
-      "passed": 525,
+      "total": 531,
+      "passed": 530,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+      "evidence": ".local/regression-531-graphic-text-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3151,7 +3166,13 @@
     "noncenteredFrameEvidence": ".local/noncentered-pose-rectangle-b-20261026/report.json",
     "noncenteredFrameMcpEvidence": ".local/pose-frame-mcp-20261026/report.json",
     "noncenteredFrameAudit": ".local/pose-frame-audit-20261026/audit.json",
-    "fullC03Accepted": false
+    "fullC03Accepted": false,
+    "graphicTextAddAvailable": true,
+    "graphicTextNativeEvidence": ".local/page-text-definition-20261026/report.json",
+    "graphicTextMcpEvidence": ".local/graphic-text-mcp-v2-20261026/report.json",
+    "graphicTextFaultEvidence": ".local/graphic-text-faults-20261026/report.json",
+    "graphicTextCancelEvidence": ".local/graphic-text-cancel-v2-20261026/report.json",
+    "graphicTextFailureAudit": ".local/graphic-text-faults-20261026/audit.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

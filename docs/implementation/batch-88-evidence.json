@@ -1,0 +1,51 @@
+{
+  "batch": 88,
+  "date": "2026-10-26",
+  "tools": 199,
+  "goalComplete": false,
+  "fullD05Accepted": false,
+  "nativePoseCases": 8,
+  "mcpCases": 3,
+  "faultCategoriesAccepted": 4,
+  "originalFaultReportPassed": false,
+  "cancelRetestPassed": true,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 531,
+    "passed": 530,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-531-graphic-text-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/page-text-definition-20261026/report.json": "6a9747df99f2782080997e903f2a868da5d8c07249060a50d1eb10c481e0bdbb",
+    ".local/graphic-text-mcp-v2-20261026/report.json": "b038332f5d6b4ac72726a220c2538be17d0f18948182c7913db32d45436dc1ca",
+    ".local/graphic-text-faults-20261026/report.json": "9b261c53f8b468f569b01be7f350ed3cb4eab60799ee2064a3d2bc484d96c816",
+    ".local/graphic-text-cancel-v2-20261026/report.json": "f8da2f17ed98a880a49aaecf886c0880e035896b6836c9bd3d64c4ec352e3ff4",
+    ".local/graphic-text-mcp-20261026/report.json": "3571caeac8c9636d50c5c1c21f5ea6f9453f5c46bbf4da6d52b30c581fa930a2",
+    ".local/graphic-text-mcp-20261026/work/isolated-jobs/capture_graphic_text/plan-9ecf03a8314d4befb9ff31eac2888485/plan.json": "fb93cf13203d4d6451447140286d024d22df5d12ec4c2b92b7f10dcef918f742",
+    ".local/graphic-text-mcp-20261026/work/isolated-jobs/capture_graphic_text/plan-9ecf03a8314d4befb9ff31eac2888485/native-result.json": "cf66a1740b9176584176a74b44bec66e4ba0129f6fc54aa839b4fbeb3a1a0c3d",
+    ".local/graphic-text-faults-20261026/audit.json": "02f7271b92185122e26f5920593a5798391ee2a9774db3a7c7e14e6d05cc71ba",
+    ".local/regression-531-graphic-text-20261026.txt": "003da4f3e7a97ba99f313ad73555dac31baee9d17f860e8e748f90dddda87750"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_graphic_text.py": "09dc53a0b109cd6249375ca3d82c9841c755272a3fb213d76bf84d6eb6d21255",
+    "src/cadence_mcp/adapters/write_graphic_text.tcl": "43d3eb20c31aacb40520b00795e1df49e1d0e8d63f27255f079b8a5721464fae",
+    "src/cadence_mcp/adapters/fixture_page_text_definition.tcl": "218890ce0705e35c345f15a9a99e48e8431c17a0671e7e654525b77af8677291",
+    "src/cadence_mcp/server.py": "e91d03b9eb772d8de8bbaae5d79327f7290f18c46aeb042d4ba2b69ad879823f",
+    "tests/test_graphic_text.py": "be49094bcc1f1e515db381279f2229440ed8fd11c219c0a14aa6f99826befa6f",
+    "tests/test_readonly.py": "3894e2588be893b4a97151638ef2ddda87226dfbdf5a39a75652d5d44e7bb7fd",
+    "tools/probe_page_text_definition.py": "df1c5ed35fb2b0c49980a387319174ffad11abd272c1b88f094c08f84bb4ff87",
+    "tools/smoke_graphic_text_mcp.py": "688e6e3ad285c47ae0f49e63ef6e2585591fca27a64177cadaf767ddb98ea44b",
+    "tools/smoke_graphic_text_faults.py": "fdc149b4037b1ff038f7024a385b3c95903b81c0064498843f365672bfd1bfdb",
+    "contracts/tools.v0.1.json": "2c43c5cf86729ba0e6a6f1ba814ad0374b5fab5bb6b9ca9e7bb1b39ab320e762",
+    "docs/graphic-text.md": "b56024af39f12203059404a32023275beb37befa94793307e8e5bd32e2d18ca5"
+  }
+}

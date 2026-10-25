@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第八十八批页面文字写入（2026-10-26）
+
+- 定义层Location/BoundingBox及逆姿态保留页面锚点，8native姿态通过；原实例位置仍0，旧失败保留。新5任务及open-result kind，实际199工具，冻结所有支持页图形顺序/几何、原实例已建模状态及定义/连接。
+- 3真实MCP中文/多行/旋转镜像/字体、非法输入/取消/fresh不重放通过；回执丢失只核验、启动取消、DLL加载后marker超时、无关原生额外图形apply/recover拒绝通过。首次helper缺失及取消harness错误期望失败均保持，独立审计分类。
+- 新5host，199合同同步；531完整回归530通过/1原权限skip。34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active；完整D05/C05不提升。
+- 说明见docs/graphic-text.md及batch-88-page-text-add-2026-10-26.md。后续文字/图形编辑删除及页面/视觉/其他原门禁；无GUI，安装/真实设计不改。同步develop，alpha.1保持固定。
+
 ## 第八十七批非居中坐标框架（2026-10-26）
 
 - 原40×40符号中心候选8姿态匹配；80×40偏移边界否定中心假设（2/8），失败保留。新100×60偏移边界在写入前声明宽高补偿模型，8native保存重开及8真实MCP/关闭拒绝通过；独立原生点转换与pin热点相同。

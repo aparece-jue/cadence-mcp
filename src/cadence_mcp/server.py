@@ -22,6 +22,7 @@ from .capture_edit import CapturePropertyEdits
 from .capture_wire import CaptureWireAdds
 from .capture_wire_edit import CaptureWireEdits
 from .capture_graphic_line import CaptureGraphicLines
+from .capture_graphic_text import CaptureGraphicTexts
 from .capture_part_edit import CapturePartEdits
 from .capture_alias_edit import CaptureAliasEdits
 from .capture_net_symbol_edit import CaptureNetSymbolEdits
@@ -280,6 +281,7 @@ def create_server(config: Config) -> MCPServer:
     wire_adds = CaptureWireAdds(config, capture)
     wire_edits = CaptureWireEdits(config, capture)
     graphic_lines = CaptureGraphicLines(config, capture)
+    graphic_texts = CaptureGraphicTexts(config, capture)
     part_edits = CapturePartEdits(config, capture)
     reference_edits = CaptureReferenceEdits(config, capture)
     hierarchy_edits = CaptureHierarchyEdits(config, capture)
@@ -335,7 +337,7 @@ def create_server(config: Config) -> MCPServer:
     async def invoke(fn, *args, coverage=(), not_checked=(), level="runtime_probed", backend="python"):
         try:
             context=contextvars.copy_context()
-            pool=diagnostic_pool if fn is diagnose or fn in (property_edits.cancel, cache_replacements.cancel, user_properties.cancel, display_properties.cancel, wire_adds.cancel, wire_edits.cancel, graphic_lines.cancel, part_edits.cancel, reference_edits.cancel, hierarchy_edits.cancel, nc_edits.cancel, alias_edits.cancel, net_symbol_edits.cancel, net_symbol_creates.cancel, design_creates.cancel, placements.cancel, multiunit_placements.cancel, simulation_runs.cancel, simulation_exports.cancel, cli_runs.cancel, input_checks.cancel, measurement_runs.cancel, library_creates.cancel, library_pin_edits.cancel, library_vector_edits.cancel, library_package_edits.cancel) else work_pool
+            pool=diagnostic_pool if fn is diagnose or fn in (property_edits.cancel, cache_replacements.cancel, user_properties.cancel, display_properties.cancel, wire_adds.cancel, wire_edits.cancel, graphic_lines.cancel, graphic_texts.cancel, part_edits.cancel, reference_edits.cancel, hierarchy_edits.cancel, nc_edits.cancel, alias_edits.cancel, net_symbol_edits.cancel, net_symbol_creates.cancel, design_creates.cancel, placements.cancel, multiunit_placements.cancel, simulation_runs.cancel, simulation_exports.cancel, cli_runs.cancel, input_checks.cancel, measurement_runs.cancel, library_creates.cancel, library_pin_edits.cancel, library_vector_edits.cancel, library_package_edits.cancel) else work_pool
             data = await asyncio.get_running_loop().run_in_executor(pool,context.run,fn,*args)
             row = result(data, backend=backend, level=level, coverage=coverage, not_checked=not_checked)
             if isinstance(data, dict) and (data.get("nextCursor") is not None or data.get("nextOffset") is not None):
@@ -364,7 +366,7 @@ def create_server(config: Config) -> MCPServer:
         """Describe implemented experimental features separately from runtime probes and unimplemented workflows."""
         features = {
             "environment.files": "implemented", "environment.runtime_probe": "implemented",
-            "capture.single_dsn_copy": "implemented", "capture.design_create": "experimental_ascii_root_and_single_empty_page", "capture.library_create": "experimental_declared_single_or_family_graph_and_basic_vectors", "capture.library_vectors": "experimental_part_bound_native_order", "capture.library_vector_edit": "experimental_inplace_fields_and_delete_modeled_preservation", "capture.library_package_edit": "experimental_fixed_fields_and_explicit_string_properties", "capture.library_pin_edit": "experimental_symbol_geometry_flags_and_device_pad_mapping", "capture.library_pin_style_query": "experimental_native_scalar_pin_flags", "capture.shared_pin_definition_query": "experimental_explicit_shared_enumeration", "capture.definition_query": "experimental", "capture.part_properties": "experimental", "capture.property_layers": "experimental", "capture.display_property_layout": "experimental_unambiguous_definitions", "capture.display_font": "experimental_existing_instance_full_descriptor_and_inheritance", "capture.user_property_lifecycle": "experimental_unambiguous_definitions", "capture.isolated_property_edit": "experimental_unambiguous_definitions", "capture.cache_binding": "experimental_source_qualified_placed_package", "capture.cache_replacement": "experimental_compatible_physical_pins_modeled_instance_preservation", "capture.part_geometry": "experimental", "capture.connection_objects": "experimental", "capture.wire_add": "experimental_explicit_definition_expectations", "capture.wire_edit": "experimental_two_point_scalar", "capture.placement": "experimental_explicit_library_and_hotspots", "capture.alternate_view_placement": "experimental_source_pin_and_basic_vector_identity", "capture.multiunit_placement": "experimental_atomic_complete_package", "capture.unit_pose_delete": "experimental_native_identity_pinid_expectations", "capture.cached_unit_add": "experimental_existing_group_missing_device", "capture.graphic_objects": "experimental", "capture.page_vectors": "experimental_typed_local_definitions_and_native_control_points", "capture.graphic_line_add": "experimental_rotation_zero", "capture.part_edit": "experimental_explicit_definition_pose_delete", "capture.reference_map": "experimental_single_unit_definition_map", "capture.package_reference_map": "experimental_explicit_whole_package_definition_map", "capture.net_symbol_edit": "experimental_scalar_name_delete_page_membership", "capture.net_symbol_create": "experimental_source_bound_page_definition", "capture.net_symbols": "experimental_kind_name_metadata", "capture.alias_edit": "experimental_scalar_alias_preserve_page_membership", "capture.nc_edit": "experimental_single_unit_unbound_scalar_pin", "capture.hierarchy_clone": "experimental_top_level_internal_block_reuse", "capture.occurrence_structure": "experimental_revision_scoped_unit_identity", "capture.occurrence_properties": "experimental_component_and_immediate_definition_layers",
+            "capture.single_dsn_copy": "implemented", "capture.design_create": "experimental_ascii_root_and_single_empty_page", "capture.library_create": "experimental_declared_single_or_family_graph_and_basic_vectors", "capture.library_vectors": "experimental_part_bound_native_order", "capture.library_vector_edit": "experimental_inplace_fields_and_delete_modeled_preservation", "capture.library_package_edit": "experimental_fixed_fields_and_explicit_string_properties", "capture.library_pin_edit": "experimental_symbol_geometry_flags_and_device_pad_mapping", "capture.library_pin_style_query": "experimental_native_scalar_pin_flags", "capture.shared_pin_definition_query": "experimental_explicit_shared_enumeration", "capture.definition_query": "experimental", "capture.part_properties": "experimental", "capture.property_layers": "experimental", "capture.display_property_layout": "experimental_unambiguous_definitions", "capture.display_font": "experimental_existing_instance_full_descriptor_and_inheritance", "capture.user_property_lifecycle": "experimental_unambiguous_definitions", "capture.isolated_property_edit": "experimental_unambiguous_definitions", "capture.cache_binding": "experimental_source_qualified_placed_package", "capture.cache_replacement": "experimental_compatible_physical_pins_modeled_instance_preservation", "capture.part_geometry": "experimental", "capture.connection_objects": "experimental", "capture.wire_add": "experimental_explicit_definition_expectations", "capture.wire_edit": "experimental_two_point_scalar", "capture.placement": "experimental_explicit_library_and_hotspots", "capture.alternate_view_placement": "experimental_source_pin_and_basic_vector_identity", "capture.multiunit_placement": "experimental_atomic_complete_package", "capture.unit_pose_delete": "experimental_native_identity_pinid_expectations", "capture.cached_unit_add": "experimental_existing_group_missing_device", "capture.graphic_objects": "experimental", "capture.page_vectors": "experimental_typed_local_definitions_and_native_control_points", "capture.graphic_line_add": "experimental_rotation_zero", "capture.graphic_text_add": "experimental_definition_anchor_and_modeled_preservation", "capture.part_edit": "experimental_explicit_definition_pose_delete", "capture.reference_map": "experimental_single_unit_definition_map", "capture.package_reference_map": "experimental_explicit_whole_package_definition_map", "capture.net_symbol_edit": "experimental_scalar_name_delete_page_membership", "capture.net_symbol_create": "experimental_source_bound_page_definition", "capture.net_symbols": "experimental_kind_name_metadata", "capture.alias_edit": "experimental_scalar_alias_preserve_page_membership", "capture.nc_edit": "experimental_single_unit_unbound_scalar_pin", "capture.hierarchy_clone": "experimental_top_level_internal_block_reuse", "capture.occurrence_structure": "experimental_revision_scoped_unit_identity", "capture.occurrence_properties": "experimental_component_and_immediate_definition_layers",
             "capture.page_query": "experimental", "capture.pin_net_definition": "experimental", "capture.compare_connections": "experimental_selected_definitions",
             "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "unavailable",
             "capture.olb": "experimental_read_only", "capture.cache_query": "experimental_read_only", "capture.write_save_reopen": "unavailable",
@@ -1144,6 +1146,41 @@ def create_server(config: Config) -> MCPServer:
         return await invoke(graphic_lines.recover, planId, planDigest, backend="capture_dbo",
                             coverage=("existing_graphic_line_artifact_verification",), not_checked=("native_completion", "rendered_layout", "native_drc"))
 
+    @register(readonly=False)
+    async def capture_plan_graphic_text_add(sessionId: str, pageId: str,
+            text: Annotated[str, Field(min_length=1, max_length=4096)],
+            location: Annotated[list[Annotated[int, Field(strict=True, ge=-1000000, le=1000000)]], Field(min_length=2, max_length=2)],
+            width: Annotated[int, Field(strict=True, ge=1, le=100000)],
+            height: Annotated[int, Field(strict=True, ge=1, le=100000)], font: VectorFont,
+            rotation: Annotated[int, Field(strict=True, ge=0, le=3)] = 0,
+            mirror: Annotated[int, Field(strict=True, ge=0, le=1)] = 0) -> ToolResult:
+        """Plan literal page text in a new copy. location is the page anchor; width/height are local declared box dimensions, not rendered glyph bounds. Preserve all supported page graphics and modeled existing instance state. Only font quality1 is accepted; no DRC or clipping verdict."""
+        return await invoke(graphic_texts.plan, sessionId, pageId, text, location, width, height, rotation, mirror, font.model_dump(), backend="capture_dbo", coverage=("explicit_text_page_anchor", "ordered_modeled_graphic_preservation"), not_checked=("rendered_glyph_bounds", "native_drc"))
+
+    @register(readonly=False)
+    async def capture_apply_graphic_text_add(planId: str, planDigest: str,
+                                            idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
+        """Add a planned page text in an owned copy, save and independently reopen; no source mutation."""
+        return await invoke(graphic_texts.apply, planId, planDigest, idempotencyKey, backend="capture_dbo",
+                            coverage=("graphic_text_save_reopen", "modeled_graphics_instances_and_connections"), not_checked=("rendered_layout", "native_drc"))
+
+    @register(readonly=True)
+    async def capture_graphic_text_jobs(offset: Annotated[int, Field(ge=0, le=4096)] = 0,
+                                         limit: Annotated[int, Field(ge=1, le=100)] = 50) -> ToolResult:
+        """List durable page-text jobs without launching Capture."""
+        return await invoke(graphic_texts.jobs, offset, limit, coverage=("durable_graphic_text_jobs",))
+
+    @register(readonly=False)
+    async def capture_cancel_graphic_text_add(planId: str, planDigest: str) -> ToolResult:
+        """Cancel only the owned planned or active page-text operation."""
+        return await invoke(graphic_texts.cancel, planId, planDigest, coverage=("owned_graphic_text_cancel",))
+
+    @register(readonly=False)
+    async def capture_recover_graphic_text_add(planId: str, planDigest: str) -> ToolResult:
+        """Verify an existing stopped page-text artifact; never replay mutation."""
+        return await invoke(graphic_texts.recover, planId, planDigest, backend="capture_dbo",
+                            coverage=("existing_graphic_text_artifact_verification",), not_checked=("native_completion", "rendered_layout", "native_drc"))
+
     @register(readonly=True)
     async def capture_get_library_pin_style(libraryId: str, pinId: str) -> ToolResult:
         """Read eleven native symbol-pin flags for a revision-bound library pin and enumerate all shared symbol scopes. No rendered appearance, DSN cache or electrical-behavior verdict."""
@@ -1417,9 +1454,9 @@ def create_server(config: Config) -> MCPServer:
                             coverage=("existing_user_property_artifact_verification",), not_checked=("native_completion", "electrical_behavior"))
 
     @register(readonly=False)
-    async def capture_open_edit_result(planId: str, planDigest: str, kind: Literal["property", "cache_replace", "user_property", "display_property", "display_font", "wire_add", "wire_edit", "placement", "multiunit_placement", "graphic_line", "part_edit", "design_create", "reference", "hierarchy_clone", "nc", "alias", "net_symbol_create", "net_symbol_edit"]) -> ToolResult:
+    async def capture_open_edit_result(planId: str, planDigest: str, kind: Literal["property", "cache_replace", "user_property", "display_property", "display_font", "wire_add", "wire_edit", "placement", "multiunit_placement", "graphic_line", "graphic_text", "part_edit", "design_create", "reference", "hierarchy_clone", "nc", "alias", "net_symbol_create", "net_symbol_edit"]) -> ToolResult:
         """Open a verified isolated edit output as a fresh immutable session for chained operations, including after server restart. No arbitrary path/root expansion; reject unverified or changed artifacts."""
-        writer = {"property": property_edits, "cache_replace": cache_replacements, "user_property": user_properties, "display_property": display_properties, "display_font": display_fonts, "wire_add": wire_adds, "wire_edit": wire_edits, "placement": placements, "multiunit_placement": multiunit_placements, "graphic_line": graphic_lines, "part_edit": part_edits, "design_create": design_creates, "reference": reference_edits, "hierarchy_clone": hierarchy_edits, "nc": nc_edits, "alias": alias_edits, "net_symbol_edit": net_symbol_edits, "net_symbol_create": net_symbol_creates}[kind]
+        writer = {"property": property_edits, "cache_replace": cache_replacements, "user_property": user_properties, "display_property": display_properties, "display_font": display_fonts, "wire_add": wire_adds, "wire_edit": wire_edits, "placement": placements, "multiunit_placement": multiunit_placements, "graphic_line": graphic_lines, "graphic_text": graphic_texts, "part_edit": part_edits, "design_create": design_creates, "reference": reference_edits, "hierarchy_clone": hierarchy_edits, "nc": nc_edits, "alias": alias_edits, "net_symbol_edit": net_symbol_edits, "net_symbol_create": net_symbol_creates}[kind]
         return await invoke(writer.open_output, planId, planDigest, backend="capture_dbo",
                             coverage=("verified_output_session",), not_checked=("external_dependencies", "occurrence_connectivity"))
 
