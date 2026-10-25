@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第八十七批非居中坐标框架（2026-10-26）
+
+- 原40×40符号中心候选8姿态匹配；80×40偏移边界否定中心假设（2/8），失败保留。新100×60偏移边界在写入前声明宽高补偿模型，8native保存重开及8真实MCP/关闭拒绝通过；独立原生点转换与pin热点相同。
+- 原origin失败与新中心失败均保持，补充只读审计解释24已存结果，未重写旧oracle；首次报告更新脚本中断目录也保留。新docs/coordinate-frames.md明确有限验证范围及实际热点使用方法，完整C03仍未通过。
+- 正式194工具/生产/合同不变；沿用第84批526完整回归525通过/1原权限skip，本轮语法/native/MCP/进度检查。34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active。
+- 宿主旧派发仍无boot/receipt，不重发、无桌面输入。详见batch-87-noncentered-coordinate-frames-2026-10-26.md及batch-87-evidence.json。第85/86批已推送develop c12aa71。
+
 ## 第八十六批导线逐点构造与宿主对照（2026-10-26）
 
 - 空构造+NewPoint旧版本仍3969，新版本0页内导线/重开objects空，两个SetPoint返回1003；五例均失败，原报告与独立分类审计保持，未放宽预期。

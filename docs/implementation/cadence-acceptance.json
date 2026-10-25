@@ -335,14 +335,19 @@
         ".local/multiunit-naming-v2-20261024/report.json",
         ".local/multiunit-naming-hidden-dsn-20261024/report.json",
         ".local/multiunit-naming-visible-dsn-20261024/report.json",
-        ".local/shared-pin-heterogeneous-mcp-20261024/report.json"
+        ".local/shared-pin-heterogeneous-mcp-20261024/report.json",
+        ".local/noncentered-pose-frame-v2-20261026/report.json",
+        ".local/noncentered-pose-rectangle-a-20261026/report.json",
+        ".local/noncentered-pose-rectangle-b-20261026/report.json",
+        ".local/pose-frame-mcp-20261026/report.json",
+        ".local/pose-frame-audit-20261026/audit.json"
       ],
       "issues": [
         "ISS-C03-pose-matrix-ee5c6266a1",
         "ISS-C03-pose-matrix-1fc81bf46d"
       ],
       "implementationReady": true,
-      "remaining": "原姿态通过，90度出现固定参考帧偏移；八姿态仅1通过，不能用观察值改预期。 Centered owned two-pin fixture passes all 8 poses through typed edit backend; original noncentered affine mismatch is not resolved or replaced. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification."
+      "remaining": "原姿态通过，90度出现固定参考帧偏移；八姿态仅1通过，不能用观察值改预期。 Centered owned two-pin fixture passes all 8 poses through typed edit backend; original noncentered affine mismatch is not resolved or replaced. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch87: original40x40 center hypothesis8poses pass but predeclared80x40 offset rectangle rejects center6/8. New independent100x60 offset rectangle predeclared width/height-compensated model passes8native and8real MCP read/closed-session cases. Native GetOffsetGraphicPoint agrees with pin hotspots; read-only audit explains all24rows under size model without modifying old failed origin/center oracles. General arbitrary-source frames, full original gate/integration remain unaccepted."
     },
     {
       "id": "C04",
@@ -2085,7 +2090,15 @@
       "evidence": "D:\\workspace\\git\\cadence-mcp\\.local\\pose-matrix-1fc81bf46d\\report.json",
       "phase": "geometry_oracle",
       "attemptedCases": 2,
-      "acceptedCases": 1
+      "acceptedCases": 1,
+      "additionalEvidence": [
+        ".local/noncentered-pose-frame-v2-20261026/report.json",
+        ".local/noncentered-pose-rectangle-a-20261026/report.json",
+        ".local/noncentered-pose-rectangle-b-20261026/report.json",
+        ".local/pose-frame-mcp-20261026/report.json",
+        ".local/pose-frame-audit-20261026/audit.json"
+      ],
+      "latestObservation": "Original local-zero oracle remains false. Center-based candidate fails the non-square holdout; new predeclared width/height compensation passes independent100x60 all8poses and actual MCP. Native transformed graphic points agree with hotspots. Fixed-fixture mismatch is explained, but general frame/source integration not certified; issue remains open pending broader original gate."
     },
     {
       "id": "ISS-C01-status-owner-candidate",
@@ -3134,7 +3147,11 @@
     "wirePointConstructionEvidence": ".local/wire-point-construction-20261026/report.json",
     "wirePointConstructionAudit": ".local/wire-point-construction-20261026/audit.json",
     "wireCaptureHostEvidence": ".local/wire-capture-context-v2-20261026/report.json",
-    "wireCaptureHostState": "dispatch_unacknowledged_no_replay"
+    "wireCaptureHostState": "dispatch_unacknowledged_no_replay",
+    "noncenteredFrameEvidence": ".local/noncentered-pose-rectangle-b-20261026/report.json",
+    "noncenteredFrameMcpEvidence": ".local/pose-frame-mcp-20261026/report.json",
+    "noncenteredFrameAudit": ".local/pose-frame-audit-20261026/audit.json",
+    "fullC03Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

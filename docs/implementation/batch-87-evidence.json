@@ -1,0 +1,45 @@
+{
+  "batch": 87,
+  "date": "2026-10-26",
+  "tools": 194,
+  "goalComplete": false,
+  "fullC03Accepted": false,
+  "nativeMatrixCases": 24,
+  "independentSizeHoldoutAccepted": 8,
+  "mcpReadCases": 8,
+  "originalCenterRectangleMatrixAccepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 526,
+    "passed": 525,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "evidenceSha256": {
+    ".local/pose-matrix-1fc81bf46d/report.json": "6d56df6203d5ce4928162e1e1e90e6fee9ab4191a959e0771801c4cff47c5f4d",
+    ".local/noncentered-pose-frame-v2-20261026/report.json": "a27dbd2a43e6194c79ffc961eba926ed09cab6803d66e78bdf66d9088dff773a",
+    ".local/noncentered-pose-rectangle-a-20261026/report.json": "b929b41d00cae9060441e0cc177c39a00d7320c906438af842cdfe93e627d0fa",
+    ".local/noncentered-pose-rectangle-b-20261026/report.json": "4dfe31e0db462a69beaca536698fc0b597808bba67ea6bd87977bcc84394b3b2",
+    ".local/pose-frame-mcp-20261026/report.json": "8dec41d3c7148109aa2cb722a828259142f0071aeb8530f6319d51e2f83982a8",
+    ".local/pose-frame-audit-20261026/audit.json": "89c8ab837368c431a03f6c647e7cb1ce0c9d9badf5e4989317eb2f99cca716bc",
+    ".local/noncentered-pose-frame-20261026/report.json": "86ed9d58eceb8337fe7d1b5d61454e65ba1b6ece0d4588f7a64c7b7428a772b6",
+    ".local/noncentered-pose-frame-20261026/probe-original.py": "d4abe1fe3aafb4c3556bd19634110c721998d7d971b9501ea470d4305e963453"
+  },
+  "implementationSha256": {
+    "tools/probe_noncentered_pose_frames.py": "4df71a512c0e0821b056ed4a69be4f4c4cc0d0a284fb29e4fda1bc0c08ca583a",
+    "tools/fixture_part_pose_bounds.tcl": "adc2fcdd3063920636c0360f26399bc94f2ec17a4d2fdbae36cd054ee86b9169",
+    "src/cadence_mcp/adapters/probe_part_coordinate_frame.tcl": "3bc1260bd8f608e43161e13af4b2a8d4eb61a57c9462fec4d2a0910d066a95fc",
+    "tools/smoke_pose_frame_mcp.py": "1e57ca7c6b5a87fbb0c0aabaad5858479af3ad1b4e305ca22bf5622150b211a2",
+    "contracts/tools.v0.1.json": "e314a7270ff50d90073d0ce071eba9c9dfc3ece7777333aa09fa4c46d75036f1",
+    "docs/coordinate-frames.md": "2823760447effd91e40b566e955051b27e3ecb34f6f5befb0208de478bd9098d"
+  }
+}

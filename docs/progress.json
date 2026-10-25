@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-526-pin-style-final-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "676cd1a67be76384662c10a908da9926f5d01079269db69cac6004c153629d51"
+  "acceptanceCanonicalSha256": "a7462d9c313159735306cd8cf8200958c827840155d20330235848a96bbe1166"
 }
