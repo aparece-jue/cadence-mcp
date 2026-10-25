@@ -1188,7 +1188,10 @@
         ".local/new-wire-expansion-matrix-20261024/report.json",
         ".local/new-design-constructor-matrix-20261024/report.json",
         ".local/wire-page-state-20261026/report.json",
-        ".local/wire-page-state-v2-20261026/report.json"
+        ".local/wire-page-state-v2-20261026/report.json",
+        ".local/wire-point-construction-20261026/report.json",
+        ".local/wire-point-construction-20261026/audit.json",
+        ".local/wire-capture-context-v2-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -2207,9 +2210,13 @@
         ".local/new-wire-expansion-matrix-20261024/report.json",
         ".local/new-design-constructor-matrix-20261024/report.json",
         ".local/wire-page-state-20261026/report.json",
-        ".local/wire-page-state-v2-20261026/report.json"
+        ".local/wire-page-state-v2-20261026/report.json",
+        ".local/wire-point-construction-20261026/report.json",
+        ".local/wire-point-construction-20261026/audit.json",
+        ".local/wire-capture-context-v2-20261026/report.json",
+        ".local/wire-capture-context-v2-20261026/desktop-observation.json"
       ],
-      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim."
+      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim. Batch86: empty wire plus NewPoint bNewVersion0 still3969; version1 has0 owned wires and is rejected; SetPoint on empty wire returns1003. Capture-host forwarding to explicit private PID20696 produced no boot/receipt; existing Simulation Manager product-choice and nonresponding Capture titles observed, no actionable control. Dispatch unacknowledged, no replay, no host write result claimed."
     },
     {
       "id": "ISS-H04-native-page-3969",
@@ -3123,7 +3130,11 @@
     "libraryPinGlobalMatrixEvidence": ".local/pin-visibility-global-matrix-v5-20261026/report.json",
     "fullL04Accepted": false,
     "wirePageStateEvidence": ".local/wire-page-state-v2-20261026/report.json",
-    "fullD03Accepted": false
+    "fullD03Accepted": false,
+    "wirePointConstructionEvidence": ".local/wire-point-construction-20261026/report.json",
+    "wirePointConstructionAudit": ".local/wire-point-construction-20261026/audit.json",
+    "wireCaptureHostEvidence": ".local/wire-capture-context-v2-20261026/report.json",
+    "wireCaptureHostState": "dispatch_unacknowledged_no_replay"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第八十六批导线逐点构造与宿主对照（2026-10-26）
+
+- 空构造+NewPoint旧版本仍3969，新版本0页内导线/重开objects空，两个SetPoint返回1003；五例均失败，原报告与独立分类审计保持，未放宽预期。
+- 宿主转发绑定原私有PID20696/设计及独立Dbo会话，但无boot/receipt；保留dispatch_unacknowledged_no_replay。窗口只读观察有未响应Capture及产品选择窗口，未获得可操作产品控件，无桌面输入；不重发，不冒称宿主保存失败/成功。
+- 正式194工具/生产代码/合同不变；沿用第84批526回归525通过/1原权限skip。本轮语法、证据断言、进度检查。34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active。
+- 详见batch-86-wire-points-host-2026-10-26.md及batch-86-evidence.json。下步先观察同一宿主派发是否确认，再处理宿主依赖；安装/真实设计未改。GitHub网络故障，上批c665385尚待补推。
+
 ## 第八十五批导线页面初始化对照（2026-10-26）
 
 - 默认、实际先建网络、InitUndoRedoData三例仍NextPage3969；UpdatePageState前/后/撤销初始化后三例原生3221225477，第二轮调用前后落盘标记确认停在该调用，所有owned进程归零。

@@ -1,0 +1,38 @@
+{
+  "batch": 86,
+  "date": "2026-10-26",
+  "tools": 194,
+  "goalComplete": false,
+  "fullD03Accepted": false,
+  "nativeCases": 5,
+  "nativeAccepted": 0,
+  "hostState": "dispatch_unacknowledged_no_replay",
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 526,
+    "passed": 525,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "evidenceSha256": {
+    ".local/wire-point-construction-20261026/report.json": "51199ac5219ced2d1c3f8563b791c840a702fc5b603ee403cb61e16e4b0a0e5f",
+    ".local/wire-point-construction-20261026/audit.json": "32e562786b2d1d7b5c500c28f39744f383f2d421234e4acf69889abc58565141",
+    ".local/wire-capture-context-v2-20261026/report.json": "72615a6101dd8b615e7c08cb52366a4ad9cc956670e7e0db2cd006f6bcc96248",
+    ".local/wire-capture-context-v2-20261026/desktop-observation.json": "39c03cd395cf5028c1d14d731134c41cd68286d69e47edf2d1ce6cda0db2e60c"
+  },
+  "implementationSha256": {
+    "tools/probe_wire_points.py": "1dc998c0480f619fe2a2293a46e8cb96d85fe750bb881649f13d34065136f3ed",
+    "src/cadence_mcp/adapters/fixture_wire_points.tcl": "c9496ec892855d5902a06bb193700a1b261ec83db7533a446e83171d91f427ee",
+    "tools/probe_wire_capture_context.py": "0460e3e0e74a892d527ea80633f68414bccc838d33887def82098efd54e5326f",
+    "contracts/tools.v0.1.json": "e314a7270ff50d90073d0ce071eba9c9dfc3ece7777333aa09fa4c46d75036f1"
+  }
+}
