@@ -1186,7 +1186,9 @@
         ".local/new-wire-initialization-matrix-20261024/report.json",
         ".local/design-serialization-versions-20261024/report.json",
         ".local/new-wire-expansion-matrix-20261024/report.json",
-        ".local/new-design-constructor-matrix-20261024/report.json"
+        ".local/new-design-constructor-matrix-20261024/report.json",
+        ".local/wire-page-state-20261026/report.json",
+        ".local/wire-page-state-v2-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -2203,9 +2205,11 @@
         ".local/new-wire-initialization-matrix-20261024/report.json",
         ".local/design-serialization-versions-20261024/report.json",
         ".local/new-wire-expansion-matrix-20261024/report.json",
-        ".local/new-design-constructor-matrix-20261024/report.json"
+        ".local/new-design-constructor-matrix-20261024/report.json",
+        ".local/wire-page-state-20261026/report.json",
+        ".local/wire-page-state-v2-20261026/report.json"
       ],
-      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged."
+      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim."
     },
     {
       "id": "ISS-H04-native-page-3969",
@@ -3117,7 +3121,9 @@
     "libraryPinStyleEvidence": ".local/library-pin-style-mcp-v2-20261026/report.json",
     "libraryPinStyleFaultEvidence": ".local/library-pin-style-faults-20261026/report.json",
     "libraryPinGlobalMatrixEvidence": ".local/pin-visibility-global-matrix-v5-20261026/report.json",
-    "fullL04Accepted": false
+    "fullL04Accepted": false,
+    "wirePageStateEvidence": ".local/wire-page-state-v2-20261026/report.json",
+    "fullD03Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

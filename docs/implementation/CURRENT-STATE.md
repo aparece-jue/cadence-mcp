@@ -1,6 +1,13 @@
 # 当前自主执行状态
 
-2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计，不提交推送。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+
+## 第八十五批导线页面初始化对照（2026-10-26）
+
+- 默认、实际先建网络、InitUndoRedoData三例仍NextPage3969；UpdatePageState前/后/撤销初始化后三例原生3221225477，第二轮调用前后落盘标记确认停在该调用，所有owned进程归零。
+- 两轮各六例全部失败，原预期与失败证据保留；未将这些API接入正式写入，生产读取仍严格。此结论限当前独立解释器夹具，不宣称GUI/整个SDK不可行。
+- 正式工具仍194，无生产实现变化，沿用第84批526完整回归525通过/1原权限skip。本轮诊断语法、证据断言及进度检查；34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active。
+- 详见batch-85-wire-page-state-2026-10-26.md及batch-85-evidence.json。下一步比较成功已有页与新建页原生状态及序列化；不改安装/真实设计，无GUI。
 
 ## 第八十四批引脚标志（2026-10-26）
 

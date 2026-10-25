@@ -1,0 +1,36 @@
+{
+  "batch": 85,
+  "date": "2026-10-26",
+  "tools": 194,
+  "goalComplete": false,
+  "fullD03Accepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 526,
+    "passed": 525,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "nativeCasesPerRound": 6,
+  "nativeAccepted": 0,
+  "evidenceSha256": {
+    ".local/wire-page-state-20261026/report.json": "fa6376067625f2fb08ebcf288af41c365d178ec623acd06ba9e0a6d6445b0fd2",
+    ".local/wire-page-state-v2-20261026/report.json": "3b53b60434dd37d39a1cb12c4aa14ee0bee5e86858d9b92190b81e6e98395eb2",
+    ".local/wire-page-state-20261026/adapter-original.tcl": "0225609b75b34ad31cda672676ba940589721a208384f1ae92350b0c773b26a8",
+    ".local/wire-page-state-20261026/probe-original.py": "66417095c76c1fd9a7bfe7e82ab84f70e30428b94ba5ce45e905ed6041f64ecc"
+  },
+  "implementationSha256": {
+    "tools/probe_wire_page_state.py": "392c2a627922ee08914537a64ffcc87d81c009cad02b1b73df78a7090ac2c960",
+    "src/cadence_mcp/adapters/fixture_wire_page_state.tcl": "58f41aa3be824b015aac94c5647c8acb654ae5ec228f2a90b0a258ec1ecb94c2",
+    "contracts/tools.v0.1.json": "e314a7270ff50d90073d0ce071eba9c9dfc3ece7777333aa09fa4c46d75036f1"
+  }
+}
