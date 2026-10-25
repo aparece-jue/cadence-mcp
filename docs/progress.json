@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 200,
+  "toolCount": 202,
   "latestFullRegression": {
-    "total": 536,
-    "passed": 535,
+    "total": 544,
+    "passed": 543,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-536-graphic-text-edit-20261026.txt"
+    "evidence": ".local/regression-544-page-bounds-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "4ae32682ae4753d7200003cbc6778e57dc3702d3269e3f9f498056fff92b944d"
+  "acceptanceCanonicalSha256": "d1f3007b838db5a73e18c7ca887b092b0e282335c351e17665444948afc7d07b"
 }

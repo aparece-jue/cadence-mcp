@@ -34,5 +34,7 @@
 | SIM-OUTPUT-SELECTORS | PRINT/PROBE output variable disambiguation; anchors26898/42747, brackets force node names | `doc/pspcref/01commands.html` | `0b4842419e91` |
 | SIM-CLI-OPTIONS | Command-line option table; actual psp_cmd only/r accepted in this batch, extra flag combination rejects | `doc/pspcref/00intro.html` | `6725e8a86e01` |
 | SIM-LICENSE-ENV | CDS_LIC_FILE port@host syntax; child-only override did not prove license-unavailable behavior | `doc/pcbInstall/chap8.html` | `7faf1449d520` |
+| CAP-PAGE-ALIGN | 官方页面排列示例：GetDocUnits(1)边界及PhysicalGranularity用户单位转换 | `tools/capture/tclscripts/capAlignObject/capObjectAlignment.tcl` | `bccb4b118379` |
+| CAP-PAGE-CUSTOM | 官方自定义页面示例：原始PageWidth/PageHeight与用户单位的区别 | `tools/capture/tclscripts/capCustomSamples/capCustomizePage.tcl` | `0ccc2e04e608` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

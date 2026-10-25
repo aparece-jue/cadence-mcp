@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第九十批页面尺寸与声明边界（2026-10-26）
+
+- 新2只读工具，实际202；原生physical/doc尺寸、比例/标志及声明comment控制点边界，零尺寸明确未知。英制/公制、9对象27点/0与10留白、其他/空/零页、非法/关闭及缓存变更拒绝真实MCP通过；迭代边界故障拒绝且不发布结果。
+- 先前fixture语法错误在DB入口前退出，源/report保留，Tcl完整性修正后新副本验收。零尺寸3969假说经6组新设计尺寸初始化仍失败，且既有成功wire页同样0×0，未作为修复；原失败和预期保持。
+- 新8host、202合同同步，544完整回归543通过/1原权限skip。34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active；C05/D05/V02完整范围保留。
+- 说明见docs/page-bounds.md，证据见batch-90-page-dimensions-bounds-2026-10-26.md及batch-90-evidence.json。无GUI、安装/真实设计修改；第87–89批已同步develop 2800f75，alpha.1固定。
+
 ## 第八十九批文字更新删除（2026-10-26）
 
 - 新1个edit planner复用文字任务family，实际200工具；不可变页图形index/nativeId定位，update完整替换/delete拒绝change，其他有序图形、原实例已建模状态及定义/连接保持。

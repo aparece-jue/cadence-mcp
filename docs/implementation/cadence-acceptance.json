@@ -199,6 +199,20 @@
       "meaning": "CDS_LIC_FILE port@host syntax; child-only override did not prove license-unavailable behavior",
       "sha256": "7faf1449d520cc7ffff3d4cc21d2b86682e2c9845f155ee835546a3df0070f21",
       "size": 15647
+    },
+    {
+      "sourceId": "CAP-PAGE-ALIGN",
+      "installRelativePath": "tools/capture/tclscripts/capAlignObject/capObjectAlignment.tcl",
+      "meaning": "官方页面排列示例：GetDocUnits(1)边界及PhysicalGranularity用户单位转换",
+      "sha256": "bccb4b1183796e4336a381494a6e16e195a835ec1eb860c6e3229143ba4beb4d",
+      "size": 108459
+    },
+    {
+      "sourceId": "CAP-PAGE-CUSTOM",
+      "installRelativePath": "tools/capture/tclscripts/capCustomSamples/capCustomizePage.tcl",
+      "meaning": "官方自定义页面示例：原始PageWidth/PageHeight与用户单位的区别",
+      "sha256": "0ccc2e04e6084b8af3859aa8a28c9b295ba251b7a005b933240b441e4671f6b1",
+      "size": 8701
     }
   ],
   "features": [
@@ -408,7 +422,9 @@
         "C01"
       ],
       "sources": [
-        "CAP-REF"
+        "CAP-REF",
+        "CAP-PAGE-ALIGN",
+        "CAP-PAGE-CUSTOM"
       ],
       "implementation": "NewGraphicsIter/DisplayProps/TitleBlocks及边界API，记录坐标单位",
       "acceptance": "文字/符号旋转、边界、图框与特殊字符fixture",
@@ -440,11 +456,13 @@
         ".local/graphic-text-update-faults-20261026/report.json",
         ".local/graphic-text-delete-faults-20261026/report.json",
         ".local/graphic-text-add-compat-20261026/report.json",
-        ".local/graphic-text-legacy-audit-20261026/report.json"
+        ".local/graphic-text-legacy-audit-20261026/report.json",
+        ".local/page-bounds-mcp-v3-20261026/report.json",
+        ".local/page-bounds-guards-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted."
+      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained."
     },
     {
       "id": "L01",
@@ -1205,7 +1223,8 @@
         ".local/wire-page-state-v2-20261026/report.json",
         ".local/wire-point-construction-20261026/report.json",
         ".local/wire-point-construction-20261026/audit.json",
-        ".local/wire-capture-context-v2-20261026/report.json"
+        ".local/wire-capture-context-v2-20261026/report.json",
+        ".local/wire-page-size-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -1322,7 +1341,9 @@
         "C01"
       ],
       "sources": [
-        "CAP-REF"
+        "CAP-REF",
+        "CAP-PAGE-ALIGN",
+        "CAP-PAGE-CUSTOM"
       ],
       "implementation": "typed graphic/text操作，电气线与装饰线分离",
       "acceptance": "页边界、坐标/字体/姿态、图形不引入电气连接、重开",
@@ -1356,14 +1377,16 @@
         ".local/graphic-text-update-faults-20261026/report.json",
         ".local/graphic-text-delete-faults-20261026/report.json",
         ".local/graphic-text-add-compat-20261026/report.json",
-        ".local/graphic-text-legacy-audit-20261026/report.json"
+        ".local/graphic-text-legacy-audit-20261026/report.json",
+        ".local/page-bounds-mcp-v3-20261026/report.json",
+        ".local/page-bounds-guards-20261026/report.json"
       ],
       "issues": [
         "ISS-D05-comment-text-coordinate-frame"
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Typed zero-rotation decorative-line add/save/reopen, full definition/pin-net and connection baseline, target-page line geometry multiset pass. Text/fonts, style/width/color, other shapes, edit/delete, titleblock, rendered bounds and dedicated native fault matrix remain required. Native comment-text position oracle failed; retained and moved to queue tail. Existing public line addition remains a passed slice, not full D05. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch77 original32 page-graphic fixture adds28 nontext positive native descriptors/transforms; four comment-text locations remain0,0 after explicit SetLocation and save/reopen. Existing issue reconfirmed and full D05 deferred/moved last; no public text writer. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted."
+      "remaining": "Typed zero-rotation decorative-line add/save/reopen, full definition/pin-net and connection baseline, target-page line geometry multiset pass. Text/fonts, style/width/color, other shapes, edit/delete, titleblock, rendered bounds and dedicated native fault matrix remain required. Native comment-text position oracle failed; retained and moved to queue tail. Existing public line addition remains a passed slice, not full D05. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch77 original32 page-graphic fixture adds28 nontext positive native descriptors/transforms; four comment-text locations remain0,0 after explicit SetLocation and save/reopen. Existing issue reconfirmed and full D05 deferred/moved last; no public text writer. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained."
     },
     {
       "id": "H01",
@@ -1565,18 +1588,22 @@
         "C05"
       ],
       "sources": [
-        "CAP-REF"
+        "CAP-REF",
+        "CAP-PAGE-ALIGN",
+        "CAP-PAGE-CUSTOM"
       ],
       "implementation": "直接Dbo几何分析；junction由H02解释，不依赖PDF",
       "acceptance": "已知坐标正反例与边界、跨页隔离，人工项不冒充自动通过",
       "status": "implemented_partial",
       "evidence": [
         ".local/wiring-exact-mcp-20261023/report.json",
-        ".local/regression-245-geometry-bridge-20261023.txt"
+        ".local/regression-245-geometry-bridge-20261023.txt",
+        ".local/page-bounds-mcp-v3-20261026/report.json",
+        ".local/page-bounds-guards-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "capture_check_wiring v0.2 has exact rational all-orientation linear intersections/overlaps/T contacts, explicit optional native-unit grid/origin, 2000 segment/10000 vertex/finding bounds. Six new independent math/bounds/grid tests plus native MCP two declared grid origins pass. Native diagonal-specific drawing fixtures, symbol/text avoidance/rendered bounds, junction/occurrence/full V02 and resource gates remain required.",
+      "remaining": "capture_check_wiring v0.2 has exact rational all-orientation linear intersections/overlaps/T contacts, explicit optional native-unit grid/origin, 2000 segment/10000 vertex/finding bounds. Six new independent math/bounds/grid tests plus native MCP two declared grid origins pass. Native diagonal-specific drawing fixtures, symbol/text avoidance/rendered bounds, junction/occurrence/full V02 and resource gates remain required. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained.",
       "dependencyRationale": "Existing immutable wire coordinate fixtures support independent geometry/grid checking before full C03 pose or C05 rendered-bound acceptance; all original symbol/text/hierarchy requirements retained."
     },
     {
@@ -2256,9 +2283,12 @@
         ".local/wire-point-construction-20261026/report.json",
         ".local/wire-point-construction-20261026/audit.json",
         ".local/wire-capture-context-v2-20261026/report.json",
-        ".local/wire-capture-context-v2-20261026/desktop-observation.json"
+        ".local/wire-capture-context-v2-20261026/desktop-observation.json",
+        ".local/wire-page-size-20261026/report.json",
+        ".local/page-dimensions-probe-20261026/passing-wire-actual.json",
+        ".local/page-dimensions-probe-20261026/audit.json"
       ],
-      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim. Batch86: empty wire plus NewPoint bNewVersion0 still3969; version1 has0 owned wires and is rejected; SetPoint on empty wire returns1003. Capture-host forwarding to explicit private PID20696 produced no boot/receipt; existing Simulation Manager product-choice and nonresponding Capture titles observed, no actionable control. Dispatch unacknowledged, no replay, no host write result claimed."
+      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim. Batch86: empty wire plus NewPoint bNewVersion0 still3969; version1 has0 owned wires and is rejected; SetPoint on empty wire returns1003. Capture-host forwarding to explicit private PID20696 produced no boot/receipt; existing Simulation Manager product-choice and nonresponding Capture titles observed, no actionable control. Dispatch unacknowledged, no replay, no host write result claimed. Batch90: default0x0 and five explicit9700x7200 size initialization before/after-wire variants still NextPage3969. A previously accepted wire page also has0x0 doc size. Size-only fix hypothesis is rejected for these fixtures; original error remains open."
     },
     {
       "id": "ISS-H04-native-page-3969",
@@ -2759,15 +2789,15 @@
   ],
   "lastBatch": {
     "date": "2026-10-26",
-    "tools": 200,
+    "tools": 202,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 536,
-      "passed": 535,
+      "total": 544,
+      "passed": 543,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-536-graphic-text-edit-20261026.txt"
+      "evidence": ".local/regression-544-page-bounds-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3192,7 +3222,14 @@
     "graphicTextUpdateFaultEvidence": ".local/graphic-text-update-faults-20261026/report.json",
     "graphicTextDeleteFaultEvidence": ".local/graphic-text-delete-faults-20261026/report.json",
     "graphicTextAddCompatibilityEvidence": ".local/graphic-text-add-compat-20261026/report.json",
-    "graphicTextLegacyPlanAudit": ".local/graphic-text-legacy-audit-20261026/report.json"
+    "graphicTextLegacyPlanAudit": ".local/graphic-text-legacy-audit-20261026/report.json",
+    "pageDimensionsAvailable": true,
+    "pageGraphicBoundsAvailable": true,
+    "pageBoundsMcpEvidence": ".local/page-bounds-mcp-v3-20261026/report.json",
+    "pageBoundsGuardsEvidence": ".local/page-bounds-guards-20261026/report.json",
+    "wirePageSizeEvidence": ".local/wire-page-size-20261026/report.json",
+    "wirePageSizeFixAccepted": false,
+    "fullV02Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

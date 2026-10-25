@@ -29,7 +29,7 @@ GUI 验证已在测试副本上实际运行原生 DRC 并通过 File → Print �
 
 从 [设计包总览](docs/design/README.md) 开始阅读，其中包含本机核查、架构、工具契约、兼容性验证、实施阶段和规范体系。
 
-接线坐标及旋转参考点见 [符号定义坐标与页面热点](docs/coordinate-frames.md)，包含本机正反例及已验证范围。 页面文字新增见 [文字写入说明](docs/graphic-text.md)。
+接线坐标及旋转参考点见 [符号定义坐标与页面热点](docs/coordinate-frames.md)，包含本机正反例及已验证范围。 页面文字操作见 [文字写入说明](docs/graphic-text.md)，尺寸与声明框检查见 [页面边界说明](docs/page-bounds.md)。
 
 运行与安装见 [第一阶段说明](docs/phase1.md)，验证范围见 [本机验证记录](docs/validation/phase1-2026-10-22.md)。本机 24.1 已通过标准 stdio MCP 在 FULLADD 示例副本上读取 2 个原理图定义、2 页、9 个器件、41 个引脚，并用新 Tcl 进程重复读取核对；源文件指纹不变。此结果不证明重复层次的 occurrence 网络、独立预期节点表、保存重开已通过。后续已完成独立引擎DC/AC/瞬态求解，原始CLI路径仍未验收；见下方实施记录。
 

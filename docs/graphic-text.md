@@ -1,6 +1,6 @@
 # 页面文字写入（develop实验能力）
 
-文字任务工具：capture_plan_graphic_text_add、capture_apply_graphic_text_add、capture_graphic_text_jobs、capture_cancel_graphic_text_add、capture_recover_graphic_text_add。已验证产物可用capture_open_edit_result(kind="graphic_text")打开。当前develop共200工具；已发布alpha.1固定包仍193工具，不会被这次研发自动改变。
+文字任务工具：capture_plan_graphic_text_add、capture_apply_graphic_text_add、capture_graphic_text_jobs、capture_cancel_graphic_text_add、capture_recover_graphic_text_add。已验证产物可用capture_open_edit_result(kind="graphic_text")打开。当前develop共202工具；已发布alpha.1固定包仍193工具，不会被这次研发自动改变。
 
 ## 输入及坐标
 
@@ -33,3 +33,5 @@ fresh apply以相同key不会重放。recover只验证已停止任务的现有�
 已支持新增、完整更新和删除页面文字。页面裁切、实际字体字形渲染、标题栏/嵌套符号、未建模属性、实例显示字体及occurrence/原生DRC不在成功结论中。已有图形描述中的字体字段需保持，但不将其等同视觉验收。D05完整门禁仍未通过。
 
 官方依据为安装内CAP-REF p455–456（NewGraphicCommentTextInst）、p708–709（定义层SetBoundingBox/SetLocation）、p300（原生点转换）；完整来源指纹见参考索引。原实例位置失败预期及首次MCP helper缺失失败都保留，见第88批记录。
+
+页面原生尺寸和声明框界外点可用[只读边界工具](page-bounds.md)检查；它不提升为实际glyph/打印裁切验收。

@@ -1,0 +1,51 @@
+{
+  "batch": 90,
+  "date": "2026-10-26",
+  "tools": 202,
+  "goalComplete": false,
+  "fullD05Accepted": false,
+  "fullV02Accepted": false,
+  "objectsChecked": 9,
+  "controlPointsChecked": 27,
+  "nativeFaultCases": 2,
+  "wireSizeCases": 6,
+  "wireSizeFixAccepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 544,
+    "passed": 543,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-544-page-bounds-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/page-bounds-mcp-v3-20261026/report.json": "bafbeb0cb76a8ee8a26df4336a8f817b085826e6d322f1c14aee26bf9238147e",
+    ".local/page-bounds-guards-20261026/report.json": "dc64d76e40b98a9e0ae4fc2e8721fe3e08b15022e6b49018c56b3f0e8c477d8f",
+    ".local/wire-page-size-20261026/report.json": "045918921ebc45d43a3fcb24d275c39e5e33cba2138e2cceefb355712f2f43cf",
+    ".local/page-bounds-mcp-v2-20261026/report.json": "71d95252f33637d78765dccd73841047deb7a734e72bcf3cfd596f318a0862fe",
+    ".local/page-dimensions-probe-20261026/passing-wire-actual.json": "8f5eb3478e894dd2792cbd9f771d3f5ecc9e580f81f07a94e24f9b2b4eb8da2e",
+    ".local/page-dimensions-probe-20261026/audit.json": "c0e939bf652d82462533c920be16f72e4fc1954bd050327e5c9de19a83788e51",
+    ".local/regression-544-page-bounds-20261026.txt": "949473f29d3fe39e5abf6d1358f1b83c5e090bb98d6ac63f3c83ad36713e03b4"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_page_bounds.py": "17202a3eee7dc279cc8ccc643babea9d492ce18b245a396c40011e6f0c4c1e55",
+    "src/cadence_mcp/adapters/inspect_page_dimensions.tcl": "74115151d52548c1f62fd4b529337cd9b4adfd5e170e641dd8493e71a993b879",
+    "src/cadence_mcp/adapters/fixture_wire_page_size.tcl": "479ae7601ff42d8a142c21a529578a9964827c26d117a9076915e1a0be05b016",
+    "src/cadence_mcp/server.py": "f6b2970012ef2bd082ff7ea78328859b2a7823b9bade2dc8514d7d4ad8471e64",
+    "tests/test_page_bounds.py": "5a9f4d074e13f3f01aa43a7118d6a6910a09b4705ba30bf38505320ed163803b",
+    "tests/test_readonly.py": "7cfbba57b8074850a204926fc4c487fbac705cc3819130a5143774de0fd723e1",
+    "tools/fixture_page_bounds.tcl": "9a23ae3f6d86d1e69d816ec048519939c3705ea89fd9970a20cb7f75249c788f",
+    "tools/smoke_page_bounds.py": "c5854133b34eecedc5716ed95b4b91e723473728f8d5745b0bea4a4845cf791e",
+    "tools/smoke_page_bounds_guards.py": "416d5a3d50c6c58909c94fdc7197582b02e798a8e24d367cce8f96a00a22ab46",
+    "tools/probe_wire_page_size.py": "f41dc3ee6722cbbb92612f819a52a89159a016992cc2b8a55c927b3ccfcc23c2",
+    "contracts/tools.v0.1.json": "fc4b54cf5724fb3a692cba9828ece1f7ad17f0491b03b12d63af87e853f48574",
+    "docs/page-bounds.md": "3a419e240748002529cd92079aeb5230dd65e4beaacb706468badf1b1ca0a37b"
+  }
+}
