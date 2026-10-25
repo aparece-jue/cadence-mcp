@@ -47,5 +47,11 @@
     "tools/smoke_graphic_text_faults.py": "fdc149b4037b1ff038f7024a385b3c95903b81c0064498843f365672bfd1bfdb",
     "contracts/tools.v0.1.json": "2c43c5cf86729ba0e6a6f1ba814ad0374b5fab5bb6b9ca9e7bb1b39ab320e762",
     "docs/graphic-text.md": "b56024af39f12203059404a32023275beb37befa94793307e8e5bd32e2d18ca5"
+  },
+  "precommitReview": {
+    "fingerprintsVerified": 20,
+    "toolsVerified": 199,
+    "acceptanceVerified": "6/34",
+    "documentationCorrection": "Targeted18 tests were17 passed and1 original symlink-privilege skip, not a missing Tcl environment skip. Final531 tests were530 passed and1 same skip."
   }
 }
