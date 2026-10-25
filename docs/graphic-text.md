@@ -1,6 +1,6 @@
 # 页面文字写入（develop实验能力）
 
-新增五个MCP工具：capture_plan_graphic_text_add、capture_apply_graphic_text_add、capture_graphic_text_jobs、capture_cancel_graphic_text_add、capture_recover_graphic_text_add。已验证产物可用capture_open_edit_result(kind="graphic_text")打开。当前develop共199工具；已发布alpha.1固定包仍193工具，不会被这次研发自动改变。
+文字任务工具：capture_plan_graphic_text_add、capture_apply_graphic_text_add、capture_graphic_text_jobs、capture_cancel_graphic_text_add、capture_recover_graphic_text_add。已验证产物可用capture_open_edit_result(kind="graphic_text")打开。当前develop共200工具；已发布alpha.1固定包仍193工具，不会被这次研发自动改变。
 
 ## 输入及坐标
 
@@ -18,8 +18,18 @@ plan预览原生定义描述、页面锚点和姿态。apply只写新的隔离DS
 
 fresh apply以相同key不会重放。recover只验证已停止任务的现有产物；回执丢失时不伪称已观察native完成。启动取消、DLL加载后的实际超时、无关图形被另一个原生操作改变后拒绝apply/recover均有证据。
 
+## 更新和删除
+
+先通过capture_query_page_vectors取得目标文字的objectId，传入capture_plan_graphic_text_edit(sessionId, graphicId, operation, change)。operation为update或delete。update要求change包含text、location、width、height、font；rotation/mirror默认0，可显式声明。它是完整替换，不把缺省字段当作保留旧值。delete要求change为空；不能选择非文字图形。
+
+预览保留oldGraphic及新声明。执行与恢复仍使用既有capture_apply_graphic_text_add、capture_graphic_text_jobs、capture_cancel_graphic_text_add、capture_recover_graphic_text_add，open结果仍kind=graphic_text；名称中的add是既有任务入口名称，现支持同family的三种计划，不需要另开任务队列。
+
+目标同时绑定不可变源副本、页内原生顺序和nativeId，原生迭代器释放后才修改/删除；不以同名文字猜目标。其他有序图形/实例/定义/连接摘要需保持。delete成功返回graphicRemovalVerified=true、pageAnchorVerified=false；新增/更新相反。无关图形变化会拒绝apply和verify-only恢复。
+
+32混合图形/4段相同文字中，8姿态更新及首/中/末文字删除实际MCP通过；两类操作各4原生故障通过。3既有新增用例复测和3旧199工具时期计划/回执的副本只读核验通过，未重放旧写入。
+
 ## 现有限制
 
-本批只实现文字新增；编辑/删除、页面裁切、实际字体字形渲染、标题栏/嵌套符号、未建模属性、实例显示字体及occurrence/原生DRC不在成功结论中。已有图形描述中的字体字段需保持，但不将其等同视觉验收。D05完整门禁仍未通过。
+已支持新增、完整更新和删除页面文字。页面裁切、实际字体字形渲染、标题栏/嵌套符号、未建模属性、实例显示字体及occurrence/原生DRC不在成功结论中。已有图形描述中的字体字段需保持，但不将其等同视觉验收。D05完整门禁仍未通过。
 
 官方依据为安装内CAP-REF p455–456（NewGraphicCommentTextInst）、p708–709（定义层SetBoundingBox/SetLocation）、p300（原生点转换）；完整来源指纹见参考索引。原实例位置失败预期及首次MCP helper缺失失败都保留，见第88批记录。

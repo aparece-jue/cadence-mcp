@@ -21,3 +21,41 @@ class GraphicTextTests(unittest.TestCase):
  def test_unsupported_geometry_refused_instead_of_omitted(self):
   with patch('cadence_mcp.capture_graphic_text.query_page_vectors',return_value={'supportedGeometryComplete':False,'items':[],'nextCursor':None}):
    with self.assertRaises(CadenceError):page_rows(None,'s','p')
+
+class GraphicTextEditTests(unittest.TestCase):
+ def writer(self,kind='text'):
+  import threading
+  from types import SimpleNamespace
+  from cadence_mcp.capture_graphic_text import CaptureGraphicTexts
+  self.row={'objectId':'p/graphic-1','pageId':'p','index':0,'nativeId':73,'nativeTypeCode':61,'kind':kind,'location':[0,0],'rotationCode':0,'mirrorCode':0,'localDescriptor':['text','same'],'pageControlPoints':[]}
+  self.session={'data':{'page':[{'objectId':'p','schematicId':'s','name':'page'}]},'pageVectors':{'p':[self.row]}}
+  w=object.__new__(CaptureGraphicTexts);w.capture=SimpleNamespace(lock=threading.RLock(),_session=lambda sid:self.session);return w
+ def test_delete_binds_source_index_and_native_id(self):
+  w=self.writer()
+  with patch('cadence_mcp.capture_graphic_text.page_rows'),patch.object(w,'_plan',return_value={'planned':True}) as create:
+   self.assertEqual(w.plan_edit('s','p/graphic-1','delete'),{'planned':True});edit=create.call_args.args[-1];self.assertEqual(edit['targetIndex'],0);self.assertEqual(edit['targetNativeId'],73);self.assertIsNone(create.call_args.args[2])
+ def test_update_requires_complete_strict_declaration(self):
+  w=self.writer();change={'text':'new','location':[300,450],'width':180,'height':40,'font':{},'rotation':1,'mirror':1}
+  with patch('cadence_mcp.capture_graphic_text.page_rows'),patch.object(w,'_plan',return_value={}) as create:
+   w.plan_edit('s','p/graphic-1','update',change);self.assertEqual(create.call_args.args[2]['pageControlPoints'][0],[300,450]);self.assertEqual(change['font'],{})
+   for bad in ({**change,'mirror':True},{k:v for k,v in change.items() if k!='font'},{**change,'extra':'eval'}):
+    with self.assertRaises(CadenceError):w.plan_edit('s','p/graphic-1','update',bad)
+ def test_delete_forbids_change_and_nontext_foreign_huge_ids(self):
+  w=self.writer('line')
+  with patch('cadence_mcp.capture_graphic_text.page_rows'):
+   for ident in ('p/graphic-1','p/graphic-2','other/graphic-1','p/graphic-'+('9'*5000)):
+    with self.assertRaises(CadenceError):w.plan_edit('s',ident,'delete')
+  with self.assertRaises(CadenceError):w.plan_edit('s','p/graphic-1','delete',{})
+  with self.assertRaises(CadenceError):w.plan_edit('s','p/graphic-1','update')
+ def test_replacement_preserves_order_and_duplicate_multiplicity(self):
+  from types import SimpleNamespace
+  from cadence_mcp.isolated_jobs import digest
+  data={'page':[{'objectId':'p','schematicId':'s','name':'page'}],'schematic':[{'objectId':'s','name':'root'}]};cap=SimpleNamespace(_session=lambda sid:{'data':data});rows=[{'text':'duplicate'},{'text':'middle'},{'text':'duplicate'}]
+  with patch('cadence_mcp.capture_graphic_text.page_rows',side_effect=lambda *args:copy.deepcopy(rows)):
+   actual=graphic_state(cap,'s','p',{'text':'new'},1);self.assertEqual(actual,[{'scope':['root','page'],'digest':digest([rows[0],{'text':'new'},rows[2]])}]);self.assertEqual(rows[1],{'text':'middle'})
+ def test_deletion_keeps_other_duplicate_and_order(self):
+  from types import SimpleNamespace
+  from cadence_mcp.isolated_jobs import digest
+  data={'page':[{'objectId':'p','schematicId':'s','name':'page'}],'schematic':[{'objectId':'s','name':'root'}]};cap=SimpleNamespace(_session=lambda sid:{'data':data});rows=[{'text':'duplicate'},{'text':'middle'},{'text':'duplicate'}]
+  with patch('cadence_mcp.capture_graphic_text.page_rows',side_effect=lambda *args:copy.deepcopy(rows)):
+   self.assertEqual(graphic_state(cap,'s','p',None,0),[{'scope':['root','page'],'digest':digest(rows[1:])}])

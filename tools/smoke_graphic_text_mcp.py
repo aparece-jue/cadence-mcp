@@ -5,6 +5,7 @@ from mcp.client.stdio import StdioServerParameters
 from cadence_mcp.core import sha256
 p=argparse.ArgumentParser()
 for n in ('install-root','workspace-root','source'):p.add_argument('--'+n,type=Path,required=True)
+p.add_argument("--expected-tools",type=int,default=200)
 a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);source=a.source.resolve();before=sha256(source)
 cases=[{'rotation':0,'mirror':0,'text':'MCP文本 [x]$;\nR1 / R10','location':[300,450],'font':{}},{'rotation':1,'mirror':1,'text':'旋转 Ω中文','location':[420,520],'font':{'height':-17,'weight':700,'italic':True,'underline':True}},{'rotation':3,'mirror':0,'text':'文字三','location':[500,600],'font':{'faceName':'Courier New','height':-14,'strikeOut':True}}]
 (root/'expected.json').write_text(json.dumps(cases,ensure_ascii=False,indent=2),encoding='utf-8');oracle=sha256(root/'expected.json');env=os.environ.copy();env['PYTHONPATH']=str(Path(__file__).resolve().parents[1]/'src');params=StdioServerParameters(command=sys.executable,args=['-m','cadence_mcp.server','--install-root',str(a.install_root),'--workspace-root',str(root/'work'),'--read-root',str(source.parent),'--timeout-seconds','90'],env=env)
@@ -14,7 +15,7 @@ async def main():
   async with Client(params,mode='legacy',read_timeout_seconds=240) as c:
    async def call(n,args):
     r=await c.call_tool(n,args);assert not r.is_error,(n,r.structured_content);return r.structured_content['data']
-   report['tools']=len((await c.list_tools()).tools);assert report['tools']==199
+   report['tools']=len((await c.list_tools()).tools);assert report['tools']==a.expected_tools
    sid=(await call('capture_open',{'workspaceId':(await call('cadence_create_workspace',{'sourceDesign':str(source)}))['workspaceId']}))['sessionId'];page=next(p for p in (await call('capture_query',{'sessionId':sid,'entity':'page','scope':{'kind':'design'}}))['items'] if p['name']=='MCP_PLACE')
    for i,case in enumerate(cases):
     args={'sessionId':sid,'pageId':page['objectId'],'width':180,'height':40,**case};plan=await call('capture_plan_graphic_text_add',args);keys={k:plan[k] for k in ('planId','planDigest')};result=await call('capture_apply_graphic_text_add',{**keys,'idempotencyKey':f'text-{i}'})

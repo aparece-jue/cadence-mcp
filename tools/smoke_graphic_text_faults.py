@@ -5,6 +5,7 @@ from unittest.mock import patch
 from cadence_mcp.core import Config,CadenceError,sha256
 from cadence_mcp.capture import CaptureService
 from cadence_mcp.capture_graphic_text import CaptureGraphicTexts
+from cadence_mcp.capture_page_vectors import query_page_vectors
 from cadence_mcp.environment import ADAPTERS,process_env
 from cadence_mcp.process_tree import run_owned_process
 class LoseReceipt(CaptureGraphicTexts):
@@ -23,12 +24,17 @@ class ExtraGraphic(CaptureGraphicTexts):
 p=argparse.ArgumentParser()
 for k in ('install-root','workspace-root','source'):p.add_argument('--'+k,type=Path,required=True)
 p.add_argument("--mode",choices=("receipt_loss","cancel_at_start","native_timeout","extra_graphic"))
-a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);source=a.source.resolve();before=sha256(source);report={'passed':False,'cases':[],'sourceSha256':before}
+p.add_argument("--operation",choices=("add","update","delete"),default="add")
+a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);source=a.source.resolve();before=sha256(source);report={'passed':False,'cases':[],'sourceSha256':before,'operation':a.operation}
 for mode,cls in [('receipt_loss',LoseReceipt),('cancel_at_start',CancelAtStart),('native_timeout',CaptureGraphicTexts),('extra_graphic',ExtraGraphic)]:
  if a.mode and mode!=a.mode:continue
  row={'mode':mode,'passed':False};report['cases'].append(row)
  try:
-  cfg=Config(a.install_root,root/mode,(source.parent,),60);cap=CaptureService(cfg);sid=cap.open(cap.create_workspace(str(source))['workspaceId'])['sessionId'];page=next(p for p in cap.sessions[sid]['data']['page'] if p['name']=='MCP_PLACE');writer=cls(cfg,cap);plan=writer.plan(sid,page['objectId'],'fault text [x]$;\n中文',[300,450],180,40,1,1,{});row['plan']=plan
+  cfg=Config(a.install_root,root/mode,(source.parent,),60);cap=CaptureService(cfg);sid=cap.open(cap.create_workspace(str(source))['workspaceId'])['sessionId'];page=next(p for p in cap.sessions[sid]['data']['page'] if p['name']=='MCP_PLACE');writer=cls(cfg,cap);change={'text':'fault text [x]$;\n中文','location':[300,450],'width':180,'height':40,'rotation':1,'mirror':1,'font':{}}
+  if a.operation=='add':plan=writer.plan(sid,page['objectId'],change['text'],change['location'],180,40,1,1,{})
+  else:
+   target=next(v for v in query_page_vectors(cap,sid,page['objectId'],limit=1000)['items'] if v['kind']=='text');plan=writer.plan_edit(sid,target['objectId'],a.operation,None if a.operation=='delete' else change)
+  row['plan']=plan
   try:
    if mode=='native_timeout':
     delayed=root/'delayed';delayed.mkdir();script=(ADAPTERS/'write_graphic_text.tcl').read_text(encoding='utf-8')

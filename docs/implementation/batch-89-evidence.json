@@ -1,0 +1,48 @@
+{
+  "batch": 89,
+  "date": "2026-10-26",
+  "tools": 200,
+  "goalComplete": false,
+  "fullD05Accepted": false,
+  "mcpEditCases": 11,
+  "updateFaultCases": 4,
+  "deleteFaultCases": 4,
+  "addCompatibilityCases": 3,
+  "legacyPlanVerifyOnlyCases": 3,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 536,
+    "passed": 535,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-536-graphic-text-edit-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/graphic-text-edits-20261026/report.json": "f53765fb435856553d6d2a55801f85245128db08ff4368d72845926209c1827d",
+    ".local/graphic-text-update-faults-20261026/report.json": "5baa674cef193739570a1103d2cc4fe9fef142164844f8c093fd6e9ef3f1d8e2",
+    ".local/graphic-text-delete-faults-20261026/report.json": "123af8d866a41ba7750e75e1a6646b96ebf888a41aaa598e54e4e70bf10dd782",
+    ".local/graphic-text-add-compat-20261026/report.json": "8f42ea3e03efc084442ac32a84496e72bf18f232cd7c82c3aa2c1978e1707acb",
+    ".local/graphic-text-legacy-audit-20261026/report.json": "7a9f640e22417b4809dab25036f346bf42f13a13699033d4eaa1a0d39ddefe5f",
+    ".local/regression-536-graphic-text-edit-20261026.txt": "d2f4fcc729e2c8fed96ff6d53dd01da3df6535a4963d7d48c328e0f89f38696d"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_graphic_text.py": "7b7dc58f0e2860195dc888279e028a67063feed1d98d4602b6471327e970fee2",
+    "src/cadence_mcp/adapters/write_graphic_text.tcl": "9ef7cb416fbd2ce5fb6e288accded5d88241f2668ce06c373c3a62de115477fe",
+    "src/cadence_mcp/server.py": "cdb8f035a8dd613fad83f8566272e79c368f0185da0bb3cedc4ae62f7748eba1",
+    "tests/test_graphic_text.py": "e35013197c33bd43084bf9c57cd4fe0f6824870077c24328c83e2d1071b64abf",
+    "tests/test_readonly.py": "5903145df3b8f4c92640b8166aa3194482412b63cfbf5852b23b86046bb4ad6e",
+    "tools/smoke_graphic_text_edits.py": "c4b6079e39c3344dcda7dbb2a18f7d86bdbda698e52ceeccb69c734fca5b6e99",
+    "tools/smoke_graphic_text_faults.py": "34dde84401e8ef70f7f569e56163f54a41e0e3b56a3d945bd690469f437262b9",
+    "tools/smoke_graphic_text_mcp.py": "ffb8f0fa6da21375fbff390858cf1d536e8743b202c55692994d3e99a3017416",
+    "tools/audit_legacy_text_plans.py": "112ba053795b2a66dcdcfb2a9b005f7f66e4c9bbe231cda8c3ef2c2903a71bf8",
+    "contracts/tools.v0.1.json": "c169f476ef0e9bf26d8dc691131d8e7abf204c8d3aeb13ac15e1bfc816159f4d",
+    "docs/graphic-text.md": "9e5b53e993a752f0026995e174df19789088da68343d1a350df44ce0f1d56e99"
+  }
+}

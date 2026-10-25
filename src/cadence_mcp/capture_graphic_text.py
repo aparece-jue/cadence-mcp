@@ -1,5 +1,8 @@
 """Explicit page text addition via native definition coordinates, with modeled preservation."""
-import copy,json
+import copy,json,re
+from typing import Annotated
+from pydantic import Field
+from .library_vectors import VectorModel,VectorFont,Point
 from datetime import datetime,timezone
 from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits,definition_baseline
@@ -11,6 +14,15 @@ from .capture_display_fonts import font_fields
 from .core import CadenceError,checked_path,sha256,write_json
 from .environment import ADAPTERS
 from .isolated_jobs import digest
+
+class GraphicTextChange(VectorModel):
+    text:Annotated[str,Field(min_length=1,max_length=4096)]
+    location:Point
+    width:Annotated[int,Field(ge=1,le=100000)]
+    height:Annotated[int,Field(ge=1,le=100000)]
+    font:VectorFont
+    rotation:Annotated[int,Field(ge=0,le=3)]=0
+    mirror:Annotated[int,Field(ge=0,le=1)]=0
 
 def declaration(text,location,width,height,rotation,mirror,font):
     if not isinstance(text,str) or not 1<=len(text)<=4096 or '\x00' in text or '\r' in text or any(0xD800<=ord(c)<=0xDFFF for c in text):raise CadenceError('invalid_graphic_text','Use 1..4096 literal characters and LF newlines; NUL/CR/surrogates are invalid.')
@@ -39,7 +51,7 @@ def page_rows(capture,sid,page_id):
         cursor=q['nextCursor']
         if cursor is None:return result
 
-def graphic_state(capture,sid,target=None,added=None):
+def graphic_state(capture,sid,target=None,added=None,edit_index=None):
     data=capture._session(sid)['data'];out=[]
     if len(data['page'])>64:raise CadenceError('input_limit','Text preservation supports at most64 pages.')
     seen=set()
@@ -47,7 +59,10 @@ def graphic_state(capture,sid,target=None,added=None):
         sch=next(s for s in data['schematic'] if s['objectId']==page['schematicId']);scope=(sch['name'],page['name'])
         if scope in seen:raise CadenceError('ambiguous_target','Page semantic identities must be unique.')
         seen.add(scope);rows=page_rows(capture,sid,page['objectId'])
-        if page['objectId']==target:rows.append(copy.deepcopy(added))
+        if page['objectId']==target:
+            if edit_index is None:rows.append(copy.deepcopy(added))
+            elif added is None:del rows[edit_index]
+            else:rows[edit_index]=copy.deepcopy(added)
         out.append({'scope':list(scope),'digest':digest(rows)})
     return sorted(out,key=lambda r:r['scope'])
 
@@ -55,28 +70,49 @@ class CaptureGraphicTexts(CapturePropertyEdits):
     kind='capture_graphic_text'
     def plan(self,sid,page_id,text,location,width,height,rotation=0,mirror=0,font=None):
         added=declaration(text,location,width,height,rotation,mirror,{} if font is None else font)
+        return self._plan(sid,page_id,added,location,width,height)
+    def plan_edit(self,sid,graphic_id,operation,change=None):
+        if operation not in ('update','delete') or (operation=='delete' and change is not None) or (operation=='update' and change is None):raise CadenceError('invalid_graphic_text_edit','Update needs a full change declaration; delete requires no change.')
+        added=None
+        if operation=='update':
+            try:change=GraphicTextChange.model_validate(change).model_dump()
+            except (ValueError,TypeError) as error:raise CadenceError('invalid_graphic_text_edit','Declare a complete strictly typed text replacement.') from error
+            added=declaration(change['text'],change['location'],change['width'],change['height'],change['rotation'],change['mirror'],change['font'])
+        with self.capture.lock:
+            session=self.capture._session(sid)
+            match=re.fullmatch(r'(.+)/graphic-([1-9][0-9]{0,5})',graphic_id) if isinstance(graphic_id,str) and len(graphic_id)<=256 else None
+            page=next((p for p in session['data']['page'] if match and p['objectId']==match[1]),None)
+            if page is None:raise CadenceError('invalid_scope','Graphic ID is outside this immutable session.')
+            page_rows(self.capture,sid,page['objectId'])
+            rows=session['pageVectors'][page['objectId']];index=int(match[2])-1
+            if index>=len(rows) or rows[index]['objectId']!=graphic_id or rows[index]['kind']!='text':raise CadenceError('invalid_graphic_text_edit','Select one page text graphic returned by this session.')
+            target=rows[index]
+            edit={'operation':operation,'targetIndex':index,'targetNativeId':target['nativeId'],'oldGraphic':{k:copy.deepcopy(v) for k,v in target.items() if k not in {'objectId','pageId','nativeId','index','nativeTypeCode'}}}
+            return self._plan(sid,page['objectId'],added,None if change is None else change['location'],None if change is None else change['width'],None if change is None else change['height'],edit)
+    def _plan(self,sid,page_id,added,location,width,height,edit=None):
         with self.capture.lock:
             session=self.capture._session(sid);data=session['data'];page=next((p for p in data['page'] if p['objectId']==page_id),None)
             if page is None:raise CadenceError('invalid_scope','Page is outside this immutable session.')
             sch=next(s for s in data['schematic'] if s['objectId']==page['schematicId'])
             if any(len(v)>512 or '\x00' in v for v in (sch['name'],page['name'])):raise CadenceError('input_limit','Page locator exceeds bounds.')
             directory=session['design'].parent;units=read_units(self.capture,sid)
-            p={'sourceDesign':str(session['design']),'sourceFingerprint':session['revision'],'schematicName':sch['name'],'pageName':page['name'],'pageAnchor':location,'localWidth':width,'localHeight':height,'added':added,'definitionDigest':definition_baseline(data),'connectionDigest':connection_digest(data,inventory(self.capture,sid)),'instanceDigest':digest(read_state(self.config,session['design'],directory,units)),'expectedGraphics':graphic_state(self.capture,sid,page_id,added)}
+            p={'sourceDesign':str(session['design']),'sourceFingerprint':session['revision'],'schematicName':sch['name'],'pageName':page['name'],'pageAnchor':location,'localWidth':width,'localHeight':height,'added':added,'definitionDigest':definition_baseline(data),'connectionDigest':connection_digest(data,inventory(self.capture,sid)),'instanceDigest':digest(read_state(self.config,session['design'],directory,units)),'expectedGraphics':graphic_state(self.capture,sid,page_id,added,None if edit is None else edit['targetIndex'])}
+            if edit is not None:p.update(copy.deepcopy(edit))
             if len(json.dumps(p,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Text baseline exceeds48KiB.')
             self.capture._session(sid);return self.create_plan(p)
-    def preview(self,p):return {k:p[k] for k in ('schematicName','pageName','pageAnchor','localWidth','localHeight','added','sourceFingerprint')}
+    def preview(self,p):return {**{k:p[k] for k in ('schematicName','pageName','pageAnchor','localWidth','localHeight','added','sourceFingerprint')},'operation':p.get('operation','add'),**({'oldGraphic':p['oldGraphic']} if 'oldGraphic' in p else {})}
     def preflight(self,p):
         source=checked_path(p['sourceDesign'],(self.config.workspace_root,))
         if sha256(source)!=p['sourceFingerprint']:raise CadenceError('target_changed','Text source changed after planning.')
     def native_command(self,directory,p):
-        spec=directory/'text-spec.json';write_json(spec,{k:p[k] for k in ('schematicName','pageName','added')})
+        spec=directory/'text-spec.json';write_json(spec,{k:p[k] for k in ('schematicName','pageName','added','operation','targetIndex','targetNativeId') if k in p})
         return [self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'write_graphic_text.tcl',self.config.install_root,directory/'design.dsn',spec,directory/'native-result.json']
     def verify(self,directory,p,native_completed):
         target=checked_path(str(directory/'design.dsn'),(directory,));before=sha256(target)
         if target.stat().st_size>128*1024*1024:raise CadenceError('output_limit','Text output exceeds128MiB.')
         if native_completed:
             receipt=directory/'native-result.json'
-            if receipt.stat().st_size>4096 or json.loads(receipt.read_text(encoding='utf-8'))!={'saved':True,'operation':'add_graphic_text'}:raise CadenceError('invalid_worker_result','Text save receipt mismatch.')
+            if receipt.stat().st_size>4096 or json.loads(receipt.read_text(encoding='utf-8'))!={'saved':True,'operation':p.get('operation','add')+'_graphic_text'}:raise CadenceError('invalid_worker_result','Text save receipt mismatch.')
         cap=CaptureService(self.config);cap.workspaces['output']={'directory':directory,'manifest':{'copiedFingerprint':before}};sid=cap.open('output')['sessionId']
         try:
             data=cap.sessions[sid]['data'];units=read_units(cap,sid)
@@ -87,4 +123,4 @@ class CaptureGraphicTexts(CapturePropertyEdits):
         self.preflight(p)
         if sha256(target)!=before:raise CadenceError('target_changed','Text output changed during verification.')
         ident=directory.name.removeprefix('plan-');artifact={'artifactId':'graphic-text-'+ident,'kind':'capture_edited_design','workspaceRelativePath':'design.dsn','sha256':before,'size':target.stat().st_size,'producedByJob':ident,'sourceFingerprint':p['sourceFingerprint'],'createdAt':datetime.now(timezone.utc).isoformat(),'validationState':'validated'}
-        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,'sourceModified':False,'independentReopenVerified':True,'nativeCompletionVerified':native_completed,'pageAnchorVerified':True,'modeledGraphicsAndInstancesPreserved':True,'definitionAndConnectionBaselinePreserved':True,'designPassed':None,'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),'notChecked':['rendered_glyph_bounds','page_clipping','titleblock_and_nested_symbols','instance_display_fonts','unmodeled_properties','occurrence_connectivity','native_drc']}
+        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,'sourceModified':False,'independentReopenVerified':True,'nativeCompletionVerified':native_completed,'pageAnchorVerified':p.get('operation','add')!='delete','graphicRemovalVerified':p.get('operation','add')=='delete','modeledGraphicsAndInstancesPreserved':True,'definitionAndConnectionBaselinePreserved':True,'designPassed':None,'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),'notChecked':['rendered_glyph_bounds','page_clipping','titleblock_and_nested_symbols','instance_display_fonts','unmodeled_properties','occurrence_connectivity','native_drc']}

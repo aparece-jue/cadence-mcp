@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第八十九批文字更新删除（2026-10-26）
+
+- 新1个edit planner复用文字任务family，实际200工具；不可变页图形index/nativeId定位，update完整替换/delete拒绝change，其他有序图形、原实例已建模状态及定义/连接保持。
+- 32混合图形/4同名文字中8姿态更新及首/中/末删除11真实MCP通过；update/delete各4原生故障通过，3新增兼容复测和3旧plan/receipt只读副本核验通过，均不重放。故障扩展脚本首次语法错误在执行前退出，未启动native。
+- 新5host，200合同同步，536完整回归535通过/1原权限skip。34仍6 passed/1 baseline/7 partial/18 deferred/2 planned，17.6%，目标active；完整C05/D05仍未通过。
+- 使用见docs/graphic-text.md；证据见batch-89-page-text-edit-delete-2026-10-26.md及batch-89-evidence.json。后续页面边界/视觉及其他原门禁；无GUI、安装/真实设计修改。前批提交待网络恢复一起补推develop，alpha.1固定。
+
 ## 第八十八批页面文字写入（2026-10-26）
 
 - 定义层Location/BoundingBox及逆姿态保留页面锚点，8native姿态通过；原实例位置仍0，旧失败保留。新5任务及open-result kind，实际199工具，冻结所有支持页图形顺序/几何、原实例已建模状态及定义/连接。
