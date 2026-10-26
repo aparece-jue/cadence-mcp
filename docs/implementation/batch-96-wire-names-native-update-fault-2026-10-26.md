@@ -1,0 +1,15 @@
+# 第96批：导线命名与真实编辑器中的页面更新
+
+2026-10-26，D03/C00；固定新设计与导线几何预期不变。
+
+本机官方WireScalar.SetName声明核查后，在独立全新夹具比较default、empty_name、named_wire。默认保存成功但独立NextPage3969；空名和MCP_FIXED名称设置均返回1021，未进入保存。保持三例失败，未把名称或网络预期改成观察结果。生产读取器及写入接口不变。
+
+从上一批已独立核对为空的初始化before.dsn复制新的MCP_UPDATE_WIRE，源hash971c…及0对象先核验。认证Open只派发一次，升级提示None/Finish后观察原回执，不重放；展开目标私有设计/ROOT并打开MAIN。新增空PSpice Resources文件夹未消除升级提示，不能声称无GUI打开修复。
+
+固定probe_editor_update_wire.py检查实际GetActivePage/View、原空页/原导线预期，在真正应用会话构造导线后调用UpdatePageState。阶段落盘为entered/editor_verified/new_wire/before_update_page_state，没有after_update或save、没有回执。GUI实际显示Capture异常退出提示。关闭通知后获准进程查询确认Capture数量0；未归档、未向第三方发送工程，没有猜测具体访问异常码或将转发进程退出0当作宿主成功。
+
+源DSN磁盘hash仍971c…，独立读取0对象通过，表明此次更新没有保存新导线；原报告保持未确认/failed，另作停止阶段与来源审计，不重发。随后启动一次原有Capture程序，取消自动重载异常前项目，用已有固定接口打开干净私有LowPassFilters控制工程。新PID5256、bridgeReady=true、控制源SHA77dca…不变。恢复成功不覆盖导线失败。旧PID20696的绑定后续不得复用。
+
+新增固定开发工具5个：fixture_wire_names.tcl、probe_wire_names.py、prepare_update_wire_fixture.py、probe_editor_update_wire.py、audit_editor_update_fault.py。Python语法/Tcl完整性、3实际名称分支、实际宿主原生调用和独立审计执行。本批无生产/合同变化，正式202工具；沿用第93批完整554项553通过/1原权限skip，不宣称本轮重新完整回归。
+
+按原计划失败后移，D03排至队尾，原34项和完整验收6/34（17.6%）保持。继续独立的模型库依赖解析接口、DRC规则配置，再集中处理布线根因。安装/真实设计未改；原生数据与认证不上传，原创源码、元数据、状态与失败摘要同步develop，alpha.1固定。

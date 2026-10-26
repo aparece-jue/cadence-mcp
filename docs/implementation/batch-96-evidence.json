@@ -1,0 +1,52 @@
+{
+  "batch": 96,
+  "date": "2026-10-26",
+  "tools": 202,
+  "goalComplete": false,
+  "wireNameCases": 3,
+  "wireNameCasesPassed": 0,
+  "actualEditorUpdateAccepted": false,
+  "nativeFaultDialogObserved": true,
+  "nativeFaultCodeRecorded": false,
+  "oldPid": 20696,
+  "recoveryPid": 5256,
+  "recoveryBridgeReady": true,
+  "sourceDiskMutationFromFault": false,
+  "mutationReplay": false,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 554,
+    "passed": 553,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
+  },
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "evidenceSha256": {
+    ".local/wire-name-initialization-20261026/report.json": "19de7532ed7f5953073efd9c7d957458c88481e56d4c735bff6a6840588c9d39",
+    ".local/wire-name-initialization-20261026/empty_name/receipt.json": "d77d4ea65ef7cbdec1fb06c8df81be783781638172dfb0308bb71479340d5dde",
+    ".local/wire-name-initialization-20261026/named_wire/receipt.json": "58552c8c589fffd940a90829f26058d2cc663b090a77da46ccbfd383783f874b",
+    ".local/editor-update-wire-20261026/report.json": "69a5c3009d1ac5e4645f4cfff90c8fcadd099c3d4d45dc9b3484072334d16708",
+    ".local/editor-update-open-20261026/report.json": "29004b9b1b43bd767f9178cc5a8b4e882e501fce0dd76b712878307d49115a1c",
+    ".local/editor-update-open-20261026/opened.json": "46a8bfefd2f526248500c37c21775d0fa9767c99ef66df96f79ce09fb86a97a9",
+    ".local/editor-update-binding-20261026/report.json": "f00ed1377498b3fa76f4b451f004a12e4140ba7c544c2101981b7786d5c7f294",
+    ".local/editor-update-wire-result-20261026/report.json": "c134b130afe43a4958d4ed7c5fca99b91e664790fd707d2eec9a6e4d3424897f",
+    ".local/editor-update-wire-result-20261026/phases.txt": "c0289e65e60fa15713a8a5680c70533e443b51510eb29b870d33132d0b8aeb89",
+    ".local/editor-update-fault-audit-20261026/report.json": "060a2d9823c62d25c0577674b15ee96846c85ee616e2936698a8b9a330ef4a87",
+    ".local/capture-recovery-update-fault-20261026/report.json": "ca9a9cf80142f09ce83094dbab44a978b7ebcdd215457e1adc11456fcaca04a6"
+  },
+  "implementationSha256": {
+    "tools/audit_editor_update_fault.py": "ca4f8e30ebd6c233d0e5fdb717e2f8470a00fafc2917d34159a5b82de4d2eff9",
+    "tools/prepare_update_wire_fixture.py": "3d5f3626377da1959a19692069e7455e5c28cf049f56fd7bcb1994b991460ad0",
+    "tools/probe_editor_update_wire.py": "26c5ac7559bc59c22aea81cb4c3b91986ce33af75e85871079f330e2a69df276",
+    "tools/probe_wire_names.py": "2c6d620b990456f6e8c0fd92dad647018f4262813fef98efc97456e7e640f7d1",
+    "tools/fixture_wire_names.tcl": "45b86e651983587ee5048d1862ffb18c3d316b92ea50e4e5ae1748495c6fa301"
+  }
+}

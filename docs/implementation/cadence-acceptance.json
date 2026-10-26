@@ -310,11 +310,22 @@
         ".local/editor-session-wire-20261026/report.json",
         ".local/editor-session-wire-20261026/phases.txt",
         ".local/editor-session-wire-audit-20261026/report.json",
-        ".local/editor-wire-preconditions-audit-20261026/report.json"
+        ".local/editor-wire-preconditions-audit-20261026/report.json",
+        ".local/wire-name-initialization-20261026/report.json",
+        ".local/wire-name-initialization-20261026/empty_name/receipt.json",
+        ".local/wire-name-initialization-20261026/named_wire/receipt.json",
+        ".local/editor-update-wire-20261026/report.json",
+        ".local/editor-update-open-20261026/report.json",
+        ".local/editor-update-open-20261026/opened.json",
+        ".local/editor-update-binding-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/phases.txt",
+        ".local/editor-update-fault-audit-20261026/report.json",
+        ".local/capture-recovery-update-fault-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests. Batch91: startup product modal resolved once; authenticated read-only binding recovered in PID20696, then explicitly switched between clean private fixtures using fixed guarded Open. Does not certify every original bridge gate. Batch94: private minimal OPJ Open waits on Update Old Project modal. Restricted process query incorrectly suggested exit; UI and elevated process query prove same20696 alive. None/no conversion, accidentally toggled do-not-ask immediately restored unchecked; late original Open receipt observed, no replay. Fresh authenticated binding on private blank design ready. Batch95: old binding correctly refuses target_changed after prior private save; fresh binding prepared before new Open. One private upgrade modal None/Finish, original late receipt audited without replay; actual MAIN editor opened. No prompt-preference change, no host-exit assumption."
+      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests. Batch91: startup product modal resolved once; authenticated read-only binding recovered in PID20696, then explicitly switched between clean private fixtures using fixed guarded Open. Does not certify every original bridge gate. Batch94: private minimal OPJ Open waits on Update Old Project modal. Restricted process query incorrectly suggested exit; UI and elevated process query prove same20696 alive. None/no conversion, accidentally toggled do-not-ask immediately restored unchecked; late original Open receipt observed, no replay. Fresh authenticated binding on private blank design ready. Batch95: old binding correctly refuses target_changed after prior private save; fresh binding prepared before new Open. One private upgrade modal None/Finish, original late receipt audited without replay; actual MAIN editor opened. No prompt-preference change, no host-exit assumption. Batch96: true native unexpected-exit notification observed during private UpdatePageState experiment. Elevated query confirms old host exit; restart once, cancel auto project reload, fixed Open clean private control, fresh PID5256 binding ready, source unchanged. Original unacknowledged dispatch retained, no replay."
     },
     {
       "id": "C01",
@@ -1271,7 +1282,7 @@
       "module": "布线",
       "title": "导线创建/修改/删除与junction语义",
       "required": true,
-      "queueOrder": 53,
+      "queueOrder": 67,
       "dependencies": [
         "C04",
         "C01"
@@ -1322,7 +1333,18 @@
         ".local/editor-session-wire-20261026/report.json",
         ".local/editor-session-wire-20261026/phases.txt",
         ".local/editor-session-wire-audit-20261026/report.json",
-        ".local/editor-wire-preconditions-audit-20261026/report.json"
+        ".local/editor-wire-preconditions-audit-20261026/report.json",
+        ".local/wire-name-initialization-20261026/report.json",
+        ".local/wire-name-initialization-20261026/empty_name/receipt.json",
+        ".local/wire-name-initialization-20261026/named_wire/receipt.json",
+        ".local/editor-update-wire-20261026/report.json",
+        ".local/editor-update-open-20261026/report.json",
+        ".local/editor-update-open-20261026/opened.json",
+        ".local/editor-update-binding-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/phases.txt",
+        ".local/editor-update-fault-audit-20261026/report.json",
+        ".local/capture-recovery-update-fault-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -1330,7 +1352,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged."
+      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged. Batch96: default wire still3969; SetName empty/named both1021 before save. Actual initialized active-page host UpdatePageState after NewWireScalar enters method, no return/save marker; native unexpected-exit dialog observed and old20696 exited after close. Original blank source hash unchanged and independently0objects; no replay. Fresh Capture5256/private control and authenticated bridge recovered. Exact exception code not recorded; full D03 unresolved."
     },
     {
       "id": "D04",
@@ -2466,10 +2488,21 @@
         ".local/editor-session-wire-20261026/report.json",
         ".local/editor-session-wire-20261026/phases.txt",
         ".local/editor-session-wire-audit-20261026/report.json",
-        ".local/editor-wire-preconditions-audit-20261026/report.json"
+        ".local/editor-wire-preconditions-audit-20261026/report.json",
+        ".local/wire-name-initialization-20261026/report.json",
+        ".local/wire-name-initialization-20261026/empty_name/receipt.json",
+        ".local/wire-name-initialization-20261026/named_wire/receipt.json",
+        ".local/editor-update-wire-20261026/report.json",
+        ".local/editor-update-open-20261026/report.json",
+        ".local/editor-update-open-20261026/opened.json",
+        ".local/editor-update-binding-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/report.json",
+        ".local/editor-update-wire-result-20261026/phases.txt",
+        ".local/editor-update-fault-audit-20261026/report.json",
+        ".local/capture-recovery-update-fault-20261026/report.json"
       ],
-      "latestObservation": "Editor opened, initialized empty page independently reads0objects. Same saved bytes + actual active editor guard then new wire still NextPage3969; editor initialization alone is not a fix.",
-      "latestEvidence": ".local/editor-session-wire-audit-20261026/report.json"
+      "latestObservation": "Named initialization1021 and actual-editor UpdatePageState native unexpected exit do not fix fresh-wire persistence. No saved mutation from fault, blank independently0objects; old20696 exit/new5256 recovery verified. Exact native exception code unavailable. Failure moved to queue tail.",
+      "latestEvidence": ".local/editor-update-fault-audit-20261026/report.json"
     },
     {
       "id": "ISS-H04-native-page-3969",
@@ -3037,7 +3070,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Investigate fresh-wire initialization/serialization requirements beyond app session and page editor; retain strict original oracle, continue explicit DRC rule/model dependency work; retry pending develop push when network recovers.",
+    "nextIndependentWork": "D03 failed routes retained at queue tail. Continue local native model-library dependency APIs and exact DRC rule configuration on private control design; no retry of faulted mutation.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3206,7 +3239,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 95,
+    "batch": 96,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3478,7 +3511,7 @@
     "privateRuleEnableObserved": false,
     "privateRuleConfigRestored": true,
     "privateRuleEvidence": ".local/drc-private-rule-20261026/report.json",
-    "privateCaptureActiveDesign": ".local/editor-app-wire-20261026/MCP_VIEW_WIRE.dsn",
+    "privateCaptureActiveDesign": ".local/capture-host-design-20261024/lowpassfilters.dsn",
     "lateOpenAudit": ".local/blank-app-wire-open-audit-20261026/report.json",
     "editorInitializationAccepted": true,
     "editorInitializationEvidence": ".local/editor-page-initialization-20261026/report.json",
@@ -3486,7 +3519,11 @@
     "editorInitializedWireAccepted": false,
     "editorInitializedWireStatus": ".local/editor-session-wire-audit-20261026/report.json",
     "gitSyncPending": false,
-    "lastSuccessfulImplementationCommit": "042af82"
+    "lastSuccessfulImplementationCommit": "042af82",
+    "privateCapturePid": 5256,
+    "editorUpdatePageStateAccepted": false,
+    "editorUpdateFaultAudit": ".local/editor-update-fault-audit-20261026/report.json",
+    "wireNameInitializationEvidence": ".local/wire-name-initialization-20261026/report.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }
