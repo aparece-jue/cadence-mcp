@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第九十三批模型原始字节与扩展预算（2026-10-26）
+
+- 定位opamp.lib非UTF8字节含实际模型行；显式preserve-bytes保持原字节，不猜编码。standard预算64文件/32MiB保留，extended256文件/64MiB可选；两者单文件8MiB/深度32，策略纳入manifest/持久plan及任务重定位。
+- 原生默认库215文件/34549814字节闭包实际MCP准备及逐文件来源/字节审计通过，1649 opaque字节保持。PROBE64及CORE数值PATH兼容修复；ROM/PAL外部FILE模板仍导致执行拒绝（4库），原生AC未运行验收。完整V04不提升。
+- 分压器首轮插注释导致原标题移入正文，原失败留证；新副本CLI完成但OUT注释未定义字节阻断核验。显式模式仅转义完整注释行显示，其他行严格；原任务MCP只恢复核对2.5V/OUT/DAT，原生hash不变，无重跑。
+- 正式202工具新增参数契约已同步，554完整回归553通过/1原权限skip。原34项仍6完整通过17.6%，目标active。使用见docs/pspice-input-options.md；证据batch-93-evidence.json。下一步模型使用/外部依赖闭环与明确DRC规则覆盖；安装/真实设计未改。
+
 ## 第九十二批原生CIR与DRC配置（2026-10-26）
 
 - 认证只读取得DRC配置：flow1、在线电气各规则0，ERC输出对输出E；内部候选GetDRCSettings键返回unknown，未猜测启用或写全局配置。原冲突零错误负例保持失败。

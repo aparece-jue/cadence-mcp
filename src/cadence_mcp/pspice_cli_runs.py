@@ -1,7 +1,7 @@
 """Official noninteractive psp_cmd /r over the established frozen-run contract."""
 import json
 from .core import CadenceError,checked_path,sha256,write_json
-from .pspice_runs import PSpiceRuns,ANALYSES
+from .pspice_runs import PSpiceRuns,ANALYSES,decode_run_output
 from .pspice_output import parse_out
 from .pspice_diagnostics import failure_for_output
 
@@ -71,7 +71,7 @@ class PSpiceCliRuns(PSpiceRuns):
         if (d/'result.out').exists():
             out=checked_path(str(d/'result.out'),(d,))
             if out.stat().st_size>32*1024*1024:raise CadenceError('output_limit','CLI OUT exceeds bound.')
-            parsed=parse_out(out.read_text(encoding='cp1252'))
+            parsed=parse_out(decode_run_output(out.read_bytes(),p))
             if parsed['hasErrorDiagnostics']:raise failure_for_output(parsed)
         return super().verify(d,p,native_completed)
 

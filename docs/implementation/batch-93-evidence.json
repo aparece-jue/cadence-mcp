@@ -1,0 +1,58 @@
+{
+  "batch": 93,
+  "date": "2026-10-26",
+  "tools": 202,
+  "goalComplete": false,
+  "nativeNominalFiles": 215,
+  "nativeNominalBytes": 34549814,
+  "opaqueBytesPreserved": 1649,
+  "nativeNominalPreparationAudited": true,
+  "nativeNominalSolverAccepted": false,
+  "preservedCliExistingRecoveryAccepted": true,
+  "noNativeRecoveryReplay": true,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 554,
+    "passed": 553,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/model-encoding-diagnosis-20261026/report.json": "30de2dede66f6a0b2f22c61538e70e15ae573b6cf922d3b4febfebb7d1050cf3",
+    ".local/profile-cir-closure-bytes-20261026/report.json": "1de38d3085e140f2ef17cde9a6b1e0d240678845b9c3df6090f0144665ca8790",
+    ".local/profile-model-closure-inventory-20261026/report.json": "3bfaff0c4a0a2d9d3487902a7651768a12d2bb09b737d9b0bb191a17d4cd2db0",
+    ".local/native-profile-ac-mcp-20261026/report.json": "f34a47c9b8bfba4b7f57722a7bd333aa695694d946b5d26b9e0afa97e3b055e3",
+    ".local/native-profile-ac-mcp-v2-20261026/report.json": "fc2f10d33f553296ce422c7c5ec518f517d4b1a7625d53f0d844a489e1bc0ab7",
+    ".local/native-model-byte-audit-20261026/report.json": "c3794a54e4bbb70562fbf0be47f3988a3834c07a7af19502ab4bf6136bccc1e1",
+    ".local/preserved-cli-mcp-20261026/report.json": "801f5c180e3722c8113e6ac06c7d020e9eea435ff51409f0000e2d396962bd3a",
+    ".local/preserved-cli-mcp-v2-20261026/report.json": "4cf2973af3fbbccc7401d5309735869713d270e66b2751df08af8c824b9defc1",
+    ".local/preserved-cli-recovery-20261026/report.json": "e9b3f5390134ba4bcbcec7adbece64147d6f856914052ee774470b4e9c1edfc9",
+    ".local/regression-553-model-byte-budget-20261026.txt": "26de04b1bf766946ab8e764f20c53926c50cd90c428006c2ca858a76c0481037",
+    ".local/regression-554-model-byte-budget-final-20261026.txt": "8148999a0b46814f222d2a5cdc874d92415c00adc5add07805e626c1d423da26"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_input.py": "f3d0aa9c9c1987c672f923e10062c1b94a015a32fb4dd22e38ced31a8f238432",
+    "src/cadence_mcp/pspice_runs.py": "44647ce76f4f25dfc7597d64d2e104e4140fdd142702e77a49ffcade6b6c2bce",
+    "src/cadence_mcp/pspice_cli_runs.py": "0306108830b0da7425fd2d33fab09afbc347f5ccb5ecee4f282c0c0ba497688f",
+    "src/cadence_mcp/server.py": "05efc0de4d1ac4843be5ca39915965720c6228b7ca31fb21fb9b70f1c2ec3b7b",
+    "tests/test_pspice_input.py": "57aaaca8c7e5ae1c46380f7a7c87b2f911ca4595dc488cfb25e53d80fa66d8ee",
+    "tests/test_pspice_runs.py": "853a08f72513a453a7dae1828063d83de22b01b66a9b118d383447750ff20945",
+    "contracts/tools.v0.1.json": "347d94121417171c61cc62ddc0acc86db57f0fc97ec14e8a6a5e079606e19e16",
+    "docs/pspice-input-options.md": "22e57dcc9a25c9acdf77085a5e69feee1a7de003ab23050afac435febff60a7c",
+    "tools/audit_native_model_bytes.py": "bd956d6a4cb40b03effa6f2d9414f79d717ee56375f3398511fc61e906d5052a",
+    "tools/diagnose_model_encoding.py": "50212ae7ea33bb5521a186834254643659eaabd660ab1cbee3de963c95077346",
+    "tools/inspect_model_closure.py": "fccaf168475827a67fa638b38f25306e209621c9ec1fea913794972151a88a7e",
+    "tools/recover_preserved_cli.py": "57eff36a52541665a9d9fff7550a9c6a88eae7145a3fde484646d013bf169cde",
+    "tools/smoke_native_profile_ac.py": "c747714749451221b4a20d9b83882a839f578f6e44bb1e2a8946683c0ce6a574",
+    "tools/smoke_preserved_cli.py": "8db690c3fbde19efceadac626983d16e878006474664b681d76b0e77a00b4251",
+    "tools/probe_profile_cir_closure.py": "c21829b629ed04a2382fd12131b270deb86546aa571b093a5e579c7f0384b742"
+  }
+}

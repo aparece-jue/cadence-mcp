@@ -681,9 +681,9 @@ def create_server(config: Config) -> MCPServer:
                             not_checked=("fresh_solver_run", "job_association", "measurements", "waveforms", "full_diagnostic_grammar"))
 
     @register(readonly=False)
-    async def pspice_prepare(sourceCircuit: str) -> ToolResult:
-        """Prepare a new copied CIR input with bounded explicit .INC/.INCLUDE/.LIB references from configured roots. Preserve original bytes and rewrite references to copied files. No engine run or full syntax/model/implicit-file validation."""
-        return await invoke(simulation_inputs.prepare, sourceCircuit, backend="python",
+    async def pspice_prepare(sourceCircuit: str, inputEncoding: Literal["utf-8", "preserve-bytes"] = "utf-8", inputBudget: Literal["standard", "extended"] = "standard") -> ToolResult:
+        """Prepare a new copied CIR input with bounded explicit .INC/.INCLUDE/.LIB references from configured roots. Standard budget64files/32MiB; explicit extended256files/64MiB, both8MiB/file/depth32. Default strict UTF-8; explicit preserve-bytes retains opaque model bytes without guessing/transcoding, but reference filenames must be valid UTF-8. Preserve originals and rewrite copied references. No engine run or full syntax/model/implicit-file validation."""
+        return await invoke(simulation_inputs.prepare, sourceCircuit, inputEncoding, inputBudget, backend="python",
                             coverage=("explicit_simulation_reference_snapshot",),
                             not_checked=("engine_syntax", "model_validity", "implicit_or_embedded_file_references", "simulation"))
 

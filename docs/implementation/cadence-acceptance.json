@@ -255,6 +255,20 @@
       "meaning": "PSpice官方分号行尾注释规则，本批只扩展显式依赖引用解析",
       "sha256": "0b4842419e912d7b4a34f2c3d9e979c800147cff10f0b899ac67e1f07dbdcb9c",
       "size": 394310
+    },
+    {
+      "sourceId": "SIM-PROBE64",
+      "installRelativePath": "doc/psphlp/01_chap01.html",
+      "meaning": "官方.PROBE64输出指令示例",
+      "sha256": "ed9f232bca0863a179dcbd7e7f9b998cfe73083770e0142f5b85b805239fbaa1",
+      "size": 51717
+    },
+    {
+      "sourceId": "SIM-CORE-PATH",
+      "installRelativePath": "doc/pspcref/02analog.html",
+      "meaning": "CORE磁芯模型PATH数值参数，区分外部文件路径",
+      "sha256": "98d22e318d5e190ec6f19a8c6defc157fd5d8319d734848b3c434b78a90fa1b0",
+      "size": 1044740
     }
   ],
   "features": [
@@ -1732,13 +1746,24 @@
         ".local/profile-cir-mapping-audit-20261026/report.json",
         ".local/profile-cir-closure-20261026/report.json",
         ".local/profile-cir-closure-v2-20261026/report.json",
-        ".local/regression-546-profile-cir-comments-20261026.txt"
+        ".local/regression-546-profile-cir-comments-20261026.txt",
+        ".local/model-encoding-diagnosis-20261026/report.json",
+        ".local/profile-cir-closure-bytes-20261026/report.json",
+        ".local/profile-model-closure-inventory-20261026/report.json",
+        ".local/native-profile-ac-mcp-20261026/report.json",
+        ".local/native-profile-ac-mcp-v2-20261026/report.json",
+        ".local/native-model-byte-audit-20261026/report.json",
+        ".local/preserved-cli-mcp-20261026/report.json",
+        ".local/preserved-cli-mcp-v2-20261026/report.json",
+        ".local/preserved-cli-recovery-20261026/report.json",
+        ".local/regression-553-model-byte-budget-20261026.txt",
+        ".local/regression-554-model-byte-budget-final-20261026.txt"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance."
     },
     {
       "id": "P01",
@@ -1771,13 +1796,24 @@
         ".local/profile-cir-mapping-audit-20261026/report.json",
         ".local/profile-cir-closure-20261026/report.json",
         ".local/profile-cir-closure-v2-20261026/report.json",
-        ".local/regression-546-profile-cir-comments-20261026.txt"
+        ".local/regression-546-profile-cir-comments-20261026.txt",
+        ".local/model-encoding-diagnosis-20261026/report.json",
+        ".local/profile-cir-closure-bytes-20261026/report.json",
+        ".local/profile-model-closure-inventory-20261026/report.json",
+        ".local/native-profile-ac-mcp-20261026/report.json",
+        ".local/native-profile-ac-mcp-v2-20261026/report.json",
+        ".local/native-model-byte-audit-20261026/report.json",
+        ".local/preserved-cli-mcp-20261026/report.json",
+        ".local/preserved-cli-mcp-v2-20261026/report.json",
+        ".local/preserved-cli-recovery-20261026/report.json",
+        ".local/regression-553-model-byte-budget-20261026.txt",
+        ".local/regression-554-model-byte-budget-final-20261026.txt"
       ],
       "issues": [
         "ISS-P01-named-output-selectors"
       ],
       "implementationReady": true,
-      "remaining": " Batch92: accept documented semicolon end-of-line comments on explicit .LIB/.INC references, preserving single-file refusal and dollar comments; original nominal-library failure then advances to explicit nonUTF8 refusal. UTF8 policy/limits unchanged; this is not complete native default-library acceptance.",
+      "remaining": " Batch92: accept documented semicolon end-of-line comments on explicit .LIB/.INC references, preserving single-file refusal and dollar comments; original nominal-library failure then advances to explicit nonUTF8 refusal. UTF8 policy/limits unchanged; this is not complete native default-library acceptance. Batch93: opt-in preserve-bytes and extended256files/64MiB added; default strictUTF8/64files32MiB unchanged. Original/opaque bytes/BOM/line endings and reference rebasing verified; binary/invalid-reference/invalid-policy and extended-budget bounds refuse. Not engine syntax/model acceptance.",
       "previousRemainingBeforeAcceptance": "Native parser/setup durable checks now verify frozen explicit closure identity; real nested/relative parameter and model OP setup positives, no-ground/undefined-parameter/bad-analysis/missing-model negatives, separate5/3V parameter solve and fault matrix pass. Original named IN/OUT output-selector issue remains open; compare documented bracket-forced node forms with original oracles. Remaining original explicit reference/syntax criteria need closure audit; implicit/embedded/dynamic files and all SPICE dialects remain unsupported.",
       "acceptedAt": "2026-10-25",
       "acceptanceReport": "docs/implementation/batch-65-P01-input-acceptance-2026-10-25.md",
@@ -1841,7 +1877,18 @@
         ".local/native-measure-after-cli-20261025/report.json",
         ".local/regression-429-cli-20261025.txt",
         ".local/license-child-probe-20261025/report.json",
-        "docs/implementation/batch-67-L01-library-query-acceptance-2026-10-25.md"
+        "docs/implementation/batch-67-L01-library-query-acceptance-2026-10-25.md",
+        ".local/model-encoding-diagnosis-20261026/report.json",
+        ".local/profile-cir-closure-bytes-20261026/report.json",
+        ".local/profile-model-closure-inventory-20261026/report.json",
+        ".local/native-profile-ac-mcp-20261026/report.json",
+        ".local/native-profile-ac-mcp-v2-20261026/report.json",
+        ".local/native-model-byte-audit-20261026/report.json",
+        ".local/preserved-cli-mcp-20261026/report.json",
+        ".local/preserved-cli-mcp-v2-20261026/report.json",
+        ".local/preserved-cli-recovery-20261026/report.json",
+        ".local/regression-553-model-byte-budget-20261026.txt",
+        ".local/regression-554-model-byte-budget-final-20261026.txt"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -1849,7 +1896,7 @@
         "ISS-P02-native-license-unavailable-unverified"
       ],
       "implementationReady": true,
-      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged.",
+      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance.",
       "previousQueueOrderBeforeLicenseDeferral": 40
     },
     {
@@ -2868,9 +2915,29 @@
       "summary": "Native profile CIR imports nom.lib; reference-comment compatibility fixed but closure encounters nonUTF8 official model data. No silent transcoding, omitted library, or solver acceptance.",
       "evidence": ".local/profile-cir-closure-v2-20261026/report.json",
       "additionalEvidence": [
-        ".local/profile-cir-closure-20261026/report.json"
+        ".local/profile-cir-closure-20261026/report.json",
+        ".local/model-encoding-diagnosis-20261026/report.json",
+        ".local/profile-cir-closure-bytes-20261026/report.json",
+        ".local/profile-model-closure-inventory-20261026/report.json",
+        ".local/native-profile-ac-mcp-20261026/report.json",
+        ".local/native-profile-ac-mcp-v2-20261026/report.json",
+        ".local/native-model-byte-audit-20261026/report.json"
       ],
-      "expected": "Resolve actual original model closure with explicit verified decoding and provenance before isolated solver execution."
+      "expected": "Resolve actual original model closure with explicit verified decoding and provenance before isolated solver execution.",
+      "latestEvidence": ".local/native-model-byte-audit-20261026/report.json",
+      "latestObservation": "Original opaque bytes retained with explicit policy; full215-file prepared closure source/byte audit passes. No charset guess/transcoding. Native model execution remains unaccepted due embedded FILE templates in4library files."
+    },
+    {
+      "id": "ISS-V04-nominal-model-embedded-files",
+      "featureId": "V04",
+      "status": "open",
+      "summary": "Actual default-library215-file closure contains ROM/PAL external FILE templates; execution preflight refuses4files after numeric CORE PATH false-positive fix. Native profile AC solver not executed/accepted.",
+      "evidence": ".local/native-model-byte-audit-20261026/report.json",
+      "additionalEvidence": [
+        ".local/native-profile-ac-mcp-20261026/report.json",
+        ".local/native-profile-ac-mcp-v2-20261026/report.json"
+      ],
+      "expected": "Resolve used models and external file dependencies explicitly with provenance/isolation, preserving original native profile/NET/numerical oracle; do not skip unsafe templates or silently delete nominal libraries."
     }
   ],
   "excluded": [
@@ -2896,12 +2963,12 @@
     "tools": 202,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 546,
-      "passed": 545,
+      "total": 554,
+      "passed": 553,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-546-profile-cir-comments-20261026.txt"
+      "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -2909,7 +2976,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Resolve explicit native library encoding/dependency provenance and verify per-design DRC rule configuration/coverage; keep original failed conflict oracle and all34 gates.",
+    "nextIndependentWork": "Resolve native model-use/external FILE dependencies without weakening original oracle; continue explicit per-design DRC coverage/configuration and all original34 gates.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3078,7 +3145,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 92,
+    "batch": 93,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3337,7 +3404,13 @@
     "nativeLocalCirEvidence": ".local/profile-cir-native-v2-20261026/report.json",
     "nativeLocalCirMappingEvidence": ".local/profile-cir-mapping-audit-20261026/report.json",
     "nativeModelClosureAccepted": false,
-    "nativeDrcConfigurationReadEvidence": ".local/drc-config-read-20261026/commands.json"
+    "nativeDrcConfigurationReadEvidence": ".local/drc-config-read-20261026/commands.json",
+    "opaqueModelBytePreparationAvailable": true,
+    "extendedInputBudgetAvailable": true,
+    "nativeNominalPreparedFiles": 215,
+    "nativeNominalByteAudit": ".local/native-model-byte-audit-20261026/report.json",
+    "nativeNominalSolverAccepted": false,
+    "preservedCliRecoveryEvidence": ".local/preserved-cli-recovery-20261026/report.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

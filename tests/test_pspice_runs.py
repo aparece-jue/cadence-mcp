@@ -4,7 +4,7 @@ from unittest.mock import patch
 from cadence_mcp.core import Config,CadenceError,sha256,write_json
 from cadence_mcp.pspice_input import PSpiceInputs
 from cadence_mcp.pspice_dat import PSpiceDat
-from cadence_mcp.pspice_runs import PSpiceRuns,expectations_valid
+from cadence_mcp.pspice_runs import PSpiceRuns,expectations_valid,execution_preflight,decode_run_output
 class RunTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);root=Path(self.temp.name)
@@ -19,6 +19,43 @@ class RunTests(unittest.TestCase):
         before=sha256(self.source);p=self.runs.plan(self.sid,'dc',[self.point()]);directory,_,row=self.runs._load(p['planId'])
         files=self.runs.rebased_inputs(directory,row['plan']['payload']);self.assertIn(str((directory/'deps/file-001.inc').as_posix()).encode(),files['input.cir'])
         self.assertNotIn(str(self.inputs.inputs[self.sid]['directory'].as_posix()).encode(),files['input.cir']);self.assertEqual(before,sha256(self.source))
+    def test_preserved_model_bytes_survive_job_rebase_and_policy_checks(self):
+        model=self.source.parent/'legacy.lib';raw=b'* legacy\x81E\r\n.MODEL DTEST D\x81E\r\n';model.write_bytes(raw)
+        self.source.write_bytes(b'* input\r\n.LIB "legacy.lib"\r\n.DC V1 5 5 1\r\n.PROBE64 V(*)\r\n.END\r\n')
+        sid=self.inputs.prepare(str(self.source),'preserve-bytes')['simulationId'];plan=self.runs.plan(sid,'dc');directory,_,row=self.runs._load(plan['planId']);payload=row['plan']['payload'];rebased=self.runs.rebased_inputs(directory,payload)
+        self.assertEqual(rebased['deps/file-001.lib'],raw)
+        self.assertTrue(rebased['input.cir'].endswith(b'.END\r\n'))
+        self.assertEqual(payload['inputEncoding'],'preserve-bytes')
+        payload['inputEncoding']='utf-8'
+        with self.assertRaises(CadenceError):self.runs.preflight(payload)
+
+    def test_numeric_core_path_is_not_a_file_but_actual_file_forms_still_refuse(self):
+        execution_preflight('.MODEL Ktest CORE AREA=.65 PATH=8.0 MS=1.2E6')
+        for text in ('.MODEL Ktest CORE PATH=other.dat', '.MODEL Ktest CORE PATH=8 FILE=other.dat',
+                     '.OPTIONS PATH=8', '.MODEL Ktest CORE PATH=8evil', '+ FILE=|JEDEC_FILE|'):
+            with self.subTest(text=text),self.assertRaises(CadenceError):execution_preflight(text)
+
+    def test_extended_plan_record_remains_bounded_and_reloadable(self):
+        lines=['* extended fixture']
+        for i in range(200):
+            (self.source.parent/f'm{i}.lib').write_text('* empty model\n')
+            lines.append(f'.LIB "m{i}.lib"')
+        self.source.write_text('\n'.join(lines)+'\n.DC V1 5 5 1\n.END\n')
+        sid=self.inputs.prepare(str(self.source),'utf-8','extended')['simulationId']
+        plan=self.runs.plan(sid,'dc');directory,_,row=self.runs._load(plan['planId'])
+        self.assertEqual(len(row['plan']['payload']['files']),201)
+        self.assertGreater((directory/'plan.json').stat().st_size,65536)
+        self.assertLess((directory/'plan.json').stat().st_size,self.runs.max_record_bytes)
+        self.assertEqual(len(self.runs.rebased_inputs(directory,row['plan']['payload'])),201)
+
+    def test_undefined_out_bytes_only_allowed_in_explicit_full_comments(self):
+        raw=b"* legacy comment \x81E\r\nERROR(ORPSIM-12345): failed\r\n"
+        with self.assertRaises(UnicodeDecodeError):decode_run_output(raw,{})
+        text=decode_run_output(raw,{'inputEncoding':'preserve-bytes'})
+        self.assertIn(r'\x81E',text)
+        self.assertIn('ERROR(ORPSIM-12345)',text)
+        with self.assertRaises(CadenceError):decode_run_output(b'ERROR(ORPSIM-12345): \x81E',{'inputEncoding':'preserve-bytes'})
+
     def test_invalid_sample_numbers_analysis_and_timeout_refused(self):
         for field,value in [('row',True),('real',float('nan')),('absoluteTolerance',0),('traceName','bad\nname')]:
             p=self.point();p[field]=value;self.assertFalse(expectations_valid([p]))

@@ -42,5 +42,7 @@
 | CAP-DRC-NATIVE | 本机DRC包装签名核查，仅元数据不分发二进制 | `tools/bin/orDRC64.dll` | `4b0571b7a8c2` |
 | SIM-LOCAL-CIR | 本地profile读取、目录前置条件及updateCirFileI调用示例；未source整体服务 | `share/orTclscripts/tclscripts/orPSpiceSrvrEnv/orPSpiceSrvrEnv.tcl` | `7df7230cc471` |
 | SIM-REFERENCE-COMMENTS | PSpice官方分号行尾注释规则，本批只扩展显式依赖引用解析 | `doc/pspcref/01commands.html` | `0b4842419e91` |
+| SIM-PROBE64 | 官方.PROBE64输出指令示例 | `doc/psphlp/01_chap01.html` | `ed9f232bca08` |
+| SIM-CORE-PATH | CORE磁芯模型PATH数值参数，区分外部文件路径 | `doc/pspcref/02analog.html` | `98d22e318d5e` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

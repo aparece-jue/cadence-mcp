@@ -25,6 +25,8 @@ class PSpiceInputs:
     def _reference(self, owner, name):
         if any(char in name for char in ("{", "}", "%", "*", "?", "\x00", "\r", "\n")):
             raise CadenceError("unsupported_reference", "Dynamic or wildcard references require a dedicated resolver.")
+        if any(0xD800 <= ord(char) <= 0xDFFF for char in name):
+            raise CadenceError("unsupported_reference", "Reference filenames require valid UTF-8 even in byte-preserving mode.")
         value = Path(name)
         if value.is_absolute():
             return checked_path(str(value), self.config.read_roots)
@@ -37,7 +39,12 @@ class PSpiceInputs:
             raise CadenceError("missing_or_ambiguous_reference", "A referenced input is missing or ambiguous in configured roots.")
         return checked_path(str(candidates.pop()), self.config.read_roots)
 
-    def prepare(self, source_circuit: str) -> dict:
+    def prepare(self, source_circuit: str, input_encoding: str = "utf-8", input_budget: str = "standard") -> dict:
+        if input_encoding not in {"utf-8", "preserve-bytes"}:
+            raise CadenceError("unsupported_encoding", "Select utf-8 or explicit preserve-bytes input handling.")
+        if input_budget not in {"standard", "extended"}:
+            raise CadenceError("input_limit", "Select a standard or extended input budget.")
+        max_files, max_bytes = (64, 32 * 1024 * 1024) if input_budget == "standard" else (256, 64 * 1024 * 1024)
         with self.lock:
             if len(self.inputs) >= 64:
                 raise CadenceError("input_limit", "At most 64 prepared inputs may be registered per server.")
@@ -53,17 +60,17 @@ class PSpiceInputs:
                     raise CadenceError("reference_cycle", "Cyclic input references are not supported.")
                 if path in files:
                     return
-                if depth > 32 or len(files) >= 64:
+                if depth > 32 or len(files) >= max_files:
                     raise CadenceError("input_limit", "Reference depth or file count exceeds the limit.")
                 if not path.is_file() or path.stat().st_size > 8 * 1024 * 1024:
                     raise CadenceError("input_limit", "Referenced input is missing, not a file, or exceeds 8 MiB.")
                 before = sha256(path)
                 raw = path.read_bytes()
                 total += len(raw)
-                if total > 32 * 1024 * 1024:
-                    raise CadenceError("input_limit", "Total simulation inputs exceed 32 MiB.")
+                if total > max_bytes:
+                    raise CadenceError("input_limit", "Total simulation inputs exceed the selected byte budget.")
                 try:
-                    text = raw.decode("utf-8-sig")
+                    text = raw.decode("utf-8-sig", errors="surrogateescape" if input_encoding == "preserve-bytes" else "strict")
                 except UnicodeDecodeError as error:
                     raise CadenceError("unsupported_encoding", "This input resolver currently requires UTF-8/ASCII inputs.") from error
                 if "\x00" in text:
@@ -76,7 +83,8 @@ class PSpiceInputs:
                     suffix = ".inc"
                 destination = "input.cir" if path == source else f"deps/file-{index:03d}{suffix}"
                 row = {"source": path, "sha256": before, "raw": raw, "text": text,
-                       "relativePath": destination, "references": []}
+                       "relativePath": destination, "references": [],
+                       "opaqueByteCount": sum(0xDC80 <= ord(char) <= 0xDCFF for char in text)}
                 files[path] = row
                 stack.add(path)
                 for number, line in enumerate(text.splitlines()):
@@ -119,33 +127,44 @@ class PSpiceInputs:
                 original = directory / "originals" / f"source-{index:03d}.bin"
                 with original.open("xb") as stream:
                     stream.write(row["raw"])
-                lines = row["text"].splitlines()
+                lines = row["text"].splitlines(keepends=input_encoding == "preserve-bytes")
                 references = []
                 for ref in row["references"]:
                     target = files[ref["target"]]["relativePath"]
                     # PSpice's documented absolute quoted filename syntax avoids
                     # assuming nested includes change the engine working directory.
                     resolved = (directory / target).as_posix()
-                    lines[ref["lineIndex"]] = f'.{ref["directive"]} "{resolved}"'
+                    old_line = lines[ref["lineIndex"]]
+                    ending = "\r\n" if old_line.endswith("\r\n") else "\n" if old_line.endswith("\n") else "\r" if old_line.endswith("\r") else ""
+                    lines[ref["lineIndex"]] = f'.{ref["directive"]} "{resolved}"' + (ending if input_encoding == "preserve-bytes" else "")
                     references.append({"line": ref["lineIndex"] + 1, "directive": ref["directive"], "targetRelativePath": target})
                 output = directory / row["relativePath"]
                 output.parent.mkdir(exist_ok=True)
-                with output.open("x", encoding="utf-8", newline="\n") as stream:
-                    stream.write("\n".join(lines) + "\n")
+                if input_encoding == "preserve-bytes":
+                    raw_prepared = "".join(lines).encode("utf-8", errors="surrogateescape")
+                    if row["raw"].startswith(b"\xef\xbb\xbf"):
+                        raw_prepared = b"\xef\xbb\xbf" + raw_prepared
+                    with output.open("xb") as stream:
+                        stream.write(raw_prepared)
+                else:
+                    with output.open("x", encoding="utf-8", newline="\n") as stream:
+                        stream.write("\n".join(lines) + "\n")
                 manifest_files.append({"sourcePath": str(path), "sourceSha256": row["sha256"],
                     "originalRelativePath": original.relative_to(directory).as_posix(), "relativePath": row["relativePath"],
-                    "preparedSha256": sha256(output), "size": output.stat().st_size, "references": references})
+                    "preparedSha256": sha256(output), "size": output.stat().st_size, "references": references,
+                    "inputEncoding": input_encoding, "opaqueByteCount": row["opaqueByteCount"]})
             # Snapshot all originals again to reject changes across closure traversal.
             if any(sha256(path) != row["sha256"] for path, row in files.items()):
                 raise CadenceError("source_changed", "A source changed while its reference closure was being prepared.")
             manifest = {"simulationId": simulation_id, "entryRelativePath": "input.cir", "files": manifest_files,
-                        "analyses": sorted(analyses), "fileCount": len(files), "sourceFingerprint": files[source]["sha256"],
+                        "inputEncoding": input_encoding, "inputBudget": input_budget,
+                        "inputLimits": {"files": max_files, "totalBytes": max_bytes, "fileBytes": 8 * 1024 * 1024, "depth": 32}, "analyses": sorted(analyses), "fileCount": len(files), "sourceFingerprint": files[source]["sha256"],
                         "referenceResolver": "explicit-inc-include-lib@0.1.0", "inputEngineVerified": False,
                         "notChecked": ["engine_syntax", "model_validity", "ground_semantics", "numerical_results",
-                                       "implicit_or_embedded_file_references", "non_utf8_inputs"]}
+                                       "implicit_or_embedded_file_references", "opaque_byte_engine_interpretation" if input_encoding == "preserve-bytes" else "non_utf8_inputs"]}
             write_json(directory / "input-manifest.json", manifest)
             self.inputs[simulation_id] = {"directory": directory, "manifest": manifest, "manifestHash": sha256(directory / "input-manifest.json")}
-            return {key: manifest[key] for key in ("simulationId", "entryRelativePath", "analyses", "fileCount", "sourceFingerprint", "referenceResolver", "inputEngineVerified", "notChecked")}
+            return {key: manifest[key] for key in ("simulationId", "inputEncoding", "inputBudget", "inputLimits", "entryRelativePath", "analyses", "fileCount", "sourceFingerprint", "referenceResolver", "inputEngineVerified", "notChecked")}
 
     def get(self, simulation_id):
         with self.lock:
@@ -161,6 +180,7 @@ class PSpiceInputs:
                 if sha256(target) != file["preparedSha256"] or sha256(original) != file["sourceSha256"]:
                     raise CadenceError("target_changed", "Prepared simulation inputs changed.")
             return {"simulationId": simulation_id, "inputEngineVerified": False,
+                    "inputEncoding": row["manifest"].get("inputEncoding", "utf-8"), "inputBudget": row["manifest"].get("inputBudget", "standard"),
                     "entryRelativePath": row["manifest"]["entryRelativePath"],
                     "fileCount": row["manifest"]["fileCount"], "analyses": row["manifest"]["analyses"],
                     "sourceFingerprint": row["manifest"]["sourceFingerprint"], "preparedInputsVerified": True,

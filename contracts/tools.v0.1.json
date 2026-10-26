@@ -14134,11 +14134,29 @@
   {
     "name": "pspice_prepare",
     "title": null,
-    "description": "Prepare a new copied CIR input with bounded explicit .INC/.INCLUDE/.LIB references from configured roots. Preserve original bytes and rewrite references to copied files. No engine run or full syntax/model/implicit-file validation.",
+    "description": "Prepare a new copied CIR input with bounded explicit .INC/.INCLUDE/.LIB references from configured roots. Standard budget64files/32MiB; explicit extended256files/64MiB, both8MiB/file/depth32. Default strict UTF-8; explicit preserve-bytes retains opaque model bytes without guessing/transcoding, but reference filenames must be valid UTF-8. Preserve originals and rewrite copied references. No engine run or full syntax/model/implicit-file validation.",
     "inputSchema": {
       "properties": {
         "sourceCircuit": {
           "title": "Sourcecircuit",
+          "type": "string"
+        },
+        "inputEncoding": {
+          "default": "utf-8",
+          "enum": [
+            "utf-8",
+            "preserve-bytes"
+          ],
+          "title": "Inputencoding",
+          "type": "string"
+        },
+        "inputBudget": {
+          "default": "standard",
+          "enum": [
+            "standard",
+            "extended"
+          ],
+          "title": "Inputbudget",
           "type": "string"
         }
       },

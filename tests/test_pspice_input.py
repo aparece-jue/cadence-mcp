@@ -126,6 +126,72 @@ class InputTests(unittest.TestCase):
             with self.assertRaises(CadenceError) as error: self.service.prepare(str(self.source))
             self.assertEqual(error.exception.code, expected)
 
+    def test_explicit_byte_preservation_keeps_model_bytes_and_line_endings(self):
+        raw = b"* opaque comment\x81E\r\nR1 1 0 1k\x81E\r\n* no final newline\x85"
+        model = self.inputs / "legacy.lib"
+        model.write_bytes(raw)
+        self.source.write_bytes(b'\xef\xbb\xbf* main\r\n.LIB "legacy.lib"; comment\r\n.OP\r\n.END\r\n')
+        with self.assertRaises(CadenceError) as error:
+            self.service.prepare(str(self.source))
+        self.assertEqual(error.exception.code, "unsupported_encoding")
+        prepared = self.service.prepare(str(self.source), "preserve-bytes")
+        self.assertEqual(prepared["inputEncoding"], "preserve-bytes")
+        row = self.service.inputs[prepared["simulationId"]]
+        dependency = row["manifest"]["files"][1]
+        self.assertEqual((row["directory"] / dependency["relativePath"]).read_bytes(), raw)
+        self.assertEqual(dependency["opaqueByteCount"], 3)
+        main = (row["directory"] / "input.cir").read_bytes()
+        self.assertTrue(main.startswith(b"\xef\xbb\xbf* main\r\n.LIB "))
+        self.assertTrue(main.endswith(b"\r\n.OP\r\n.END\r\n"))
+        self.assertTrue(self.service.get(prepared["simulationId"])["preparedInputsVerified"])
+        self.assertIn("opaque_byte_engine_interpretation", prepared["notChecked"])
+        self.assertEqual(model.read_bytes(), raw)
+
+    def test_byte_preservation_rejects_binary_bad_reference_and_unknown_policy(self):
+        for content, policy, expected in ((b"* title\n\x00\n.OP\n.END", "preserve-bytes", "unsupported_input"),
+                                          (b'* title\n.INC "bad\x81.lib"\n.OP\n.END', "preserve-bytes", "unsupported_reference"),
+                                          (b"* title\n.OP\n.END", "guess", "unsupported_encoding")):
+            self.source.write_bytes(content)
+            with self.assertRaises(CadenceError) as error:
+                self.service.prepare(str(self.source), policy)
+            self.assertEqual(error.exception.code, expected)
+        self.assertFalse(self.service.inputs)
+
+    def test_mcp_byte_preservation_is_explicit_and_not_engine_verification(self):
+        (self.inputs / "legacy.lib").write_bytes(b"* legacy\x81E\n.MODEL DTEST D\n")
+        self.source.write_text('* input\n.LIB "legacy.lib"\n.OP\n.END\n', encoding="utf-8")
+        async def exercise():
+            async with Client(create_server(self.config), raise_exceptions=True) as client:
+                strict = await client.call_tool("pspice_prepare", {"sourceCircuit": str(self.source)})
+                self.assertTrue(strict.is_error)
+                value = await client.call_tool("pspice_prepare", {"sourceCircuit": str(self.source), "inputEncoding": "preserve-bytes"})
+                self.assertFalse(value.is_error)
+                self.assertEqual(value.structured_content["data"]["inputEncoding"], "preserve-bytes")
+                self.assertFalse(value.structured_content["data"]["inputEngineVerified"])
+                invalid = await client.call_tool("pspice_prepare", {"sourceCircuit": str(self.source), "inputEncoding": "guess"})
+                self.assertTrue(invalid.is_error)
+        asyncio.run(exercise())
+
+    def test_extended_budget_is_explicit_and_bounded(self):
+        for i in range(256):
+            (self.inputs / f"model{i}.lib").write_text(f"* model {i}\n", encoding="utf-8")
+        def circuit(count):
+            return "* resource fixture\n" + "".join(f'.LIB "model{i}.lib"\n' for i in range(count)) + ".OP\n.END\n"
+        self.source.write_text(circuit(64), encoding="utf-8")
+        with self.assertRaises(CadenceError) as error:
+            self.service.prepare(str(self.source))
+        self.assertEqual(error.exception.code, "input_limit")
+        value = self.service.prepare(str(self.source), "utf-8", "extended")
+        self.assertEqual(value["fileCount"], 65)
+        self.assertEqual(value["inputLimits"]["files"], 256)
+        self.assertEqual(value["inputLimits"]["totalBytes"], 64 * 1024 * 1024)
+        self.source.write_text(circuit(256), encoding="utf-8")
+        with self.assertRaises(CadenceError) as error:
+            self.service.prepare(str(self.source), "utf-8", "extended")
+        self.assertEqual(error.exception.code, "input_limit")
+        with self.assertRaises(CadenceError):
+            self.service.prepare(str(self.source), "utf-8", "unbounded")
+
     def test_reference_depth_limit_and_unknown_registration(self):
         for i in range(34):
             (self.inputs / f"m{i}.inc").write_text(f'.INC "m{i+1}.inc"\n', encoding="utf-8")

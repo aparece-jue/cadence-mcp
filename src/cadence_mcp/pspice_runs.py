@@ -13,7 +13,7 @@ from .gui_jobs import durable_json
 
 ANALYSES={'dc':('DC','DC Sweep'),'ac':('AC','AC Sweep'),'transient':('TRAN','Transient Analysis')}
 RELATIVE=re.compile(r'(?:input\.cir|deps/file-\d{3}\.[a-z0-9]{1,8})')
-DIRECTIVES={'.INC','.INCLUDE','.LIB','.DC','.AC','.TRAN','.OP','.END','.MODEL','.SUBCKT','.ENDS','.PARAM','.FUNC','.GLOBAL','.OPTIONS','.TEMP','.IC','.NODESET','.PROBE','.PRINT','.MEAS','.MEASURE','.FOUR','.TF','.NOISE','.ALIASES','.ENDALIASES'}
+DIRECTIVES={'.INC','.INCLUDE','.LIB','.DC','.AC','.TRAN','.OP','.END','.MODEL','.SUBCKT','.ENDS','.PARAM','.FUNC','.GLOBAL','.OPTIONS','.TEMP','.IC','.NODESET','.PROBE','.PROBE64','.PRINT','.MEAS','.MEASURE','.FOUR','.TF','.NOISE','.ALIASES','.ENDALIASES'}
 
 def execution_preflight(text):
     """Reject unsupported file/control forms; this does not certify all SPICE syntax."""
@@ -22,7 +22,22 @@ def execution_preflight(text):
         if not value or value.startswith('*'):continue
         first=value.split()[0].upper()
         if first.startswith('.') and first not in DIRECTIVES:raise CadenceError('unsupported_execution_directive','This directive requires a dedicated execution contract.')
-        if re.search(r'\b(?:FILE|PATH|LIBPATH|DLL|STMLIB|STIMULUS|TABLEFILE)\s*=',value,re.I):raise CadenceError('unsupported_embedded_reference','Embedded file/path sources require a dedicated resolver.')
+        checked=value
+        if re.match(r'^\.MODEL\s+\S+\s+CORE\b',value,re.I):
+            checked=re.sub(r'\bPATH\s*=\s*\+?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?=\s|\)|$)','',value,flags=re.I)
+        if re.search(r'\b(?:FILE|PATH|LIBPATH|DLL|STMLIB|STIMULUS|TABLEFILE)\s*=',checked,re.I):raise CadenceError('unsupported_embedded_reference','Embedded file/path sources require a dedicated resolver.')
+
+def decode_run_output(raw,payload):
+    """Preserve raw artifacts; only escape undefined CP1252 bytes on full comment lines."""
+    if payload.get('inputEncoding')!='preserve-bytes':return raw.decode('cp1252')
+    lines=[]
+    for line in raw.splitlines(keepends=True):
+        try:lines.append(line.decode('cp1252'))
+        except UnicodeDecodeError as error:
+            if not line.lstrip().startswith(b'*'):
+                raise CadenceError('unsupported_output_encoding','Undefined OUT bytes outside full comments require explicit handling.','verify') from error
+            lines.append(line.decode('cp1252',errors='backslashreplace'))
+    return ''.join(lines)
 
 def expectations_valid(rows):
     if not isinstance(rows,list) or len(rows)>32:return False
@@ -37,6 +52,7 @@ def expectations_valid(rows):
 
 class PSpiceRuns(IsolatedJobs):
     kind='pspice_engine_run'
+    max_record_bytes=262144
     def __init__(self,config,inputs,data):
         super().__init__(config);self.inputs=inputs;self.data=data
     def plan(self,simulation_id,analysis,expected_samples=None,timeout_seconds=None):
@@ -50,10 +66,10 @@ class PSpiceRuns(IsolatedJobs):
             for f in manifest['files']:
                 relative=f['relativePath']
                 if not RELATIVE.fullmatch(relative):raise CadenceError('invalid_input_manifest','Input file identity is not a generated path.')
-                execution_preflight((row['directory']/relative).read_text(encoding='utf-8'))
+                execution_preflight((row['directory']/relative).read_text(encoding='utf-8',errors='surrogateescape' if manifest.get('inputEncoding')=='preserve-bytes' else 'strict'))
                 files.append({k:f[k] for k in ('relativePath','preparedSha256','originalRelativePath','sourceSha256','references')})
-            payload={'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
-            if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Simulation plan exceeds durable record bound.')
+            payload={'inputEncoding':manifest.get('inputEncoding','utf-8'),'inputBudget':manifest.get('inputBudget','standard'),'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
+            if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>196608:raise CadenceError('plan_limit','Simulation plan exceeds durable record bound.')
             self.preflight(payload);return self.create_plan(payload)
     def backend_name(self):return 'independent_pspice_engine_tcl'
     def extra_scope(self):return 'declared_native_measurement_fields_only'
@@ -63,19 +79,25 @@ class PSpiceRuns(IsolatedJobs):
     def preflight(self,p):
         directory=checked_path(p['preparedDirectory'],(self.config.workspace_root,))
         if sha256(checked_path(str(directory/'input-manifest.json'),(directory,)))!=p['manifestHash']:raise CadenceError('target_changed','Prepared input manifest changed after planning.')
+        if p.get('inputEncoding','utf-8') not in ('utf-8','preserve-bytes') or p.get('inputBudget','standard') not in ('standard','extended'):raise CadenceError('invalid_plan','Unsupported input encoding/budget policy.')
+        manifest=json.loads((directory/'input-manifest.json').read_text(encoding='utf-8'))
+        if p.get('inputEncoding','utf-8')!=manifest.get('inputEncoding','utf-8') or p.get('inputBudget','standard')!=manifest.get('inputBudget','standard'):raise CadenceError('invalid_plan','Input policies differ from immutable manifest.')
         if p['analysis'] not in ANALYSES or not expectations_valid(p['expectedSamples']) or type(p['timeoutSeconds']) is not int or not 1<=p['timeoutSeconds']<=self.config.timeout_seconds:raise CadenceError('invalid_plan','Invalid fixed simulation payload.')
         for f in p['files']:
             if not RELATIVE.fullmatch(f['relativePath']):raise CadenceError('invalid_plan','Input path is not a generated relative name.')
             for relative,key in [(f['relativePath'],'preparedSha256'),(f['originalRelativePath'],'sourceSha256')]:
                 if sha256(checked_path(str(directory/relative),(directory,)))!=f[key]:raise CadenceError('target_changed','Prepared input bytes changed after planning.')
     def rebased_inputs(self,directory,p):
+        preserve=p.get('inputEncoding')=='preserve-bytes'
         source=Path(p['preparedDirectory']);names={f['relativePath'] for f in p['files']};result={}
         for f in p['files']:
-            lines=(source/f['relativePath']).read_text(encoding='utf-8').splitlines()
+            raw=(source/f['relativePath']).read_bytes();lines=raw.decode('utf-8-sig',errors='surrogateescape' if preserve else 'strict').splitlines(keepends=preserve)
             for ref in f['references']:
                 if ref['targetRelativePath'] not in names or ref['directive'] not in ('INC','INCLUDE','LIB') or type(ref['line']) is not int or not 1<=ref['line']<=len(lines):raise CadenceError('invalid_input_manifest','Invalid closure reference.')
-                lines[ref['line']-1]='.'+ref['directive']+' "'+(directory/ref['targetRelativePath']).as_posix()+'"'
-            text='\n'.join(lines)+'\n';execution_preflight(text);result[f['relativePath']]=text.encode('utf-8')
+                old=lines[ref['line']-1];ending='\r\n' if old.endswith('\r\n') else '\n' if old.endswith('\n') else '\r' if old.endswith('\r') else ''
+                lines[ref['line']-1]='.'+ref['directive']+' "'+(directory/ref['targetRelativePath']).as_posix()+'"'+(ending if preserve else '')
+            text=''.join(lines) if preserve else '\n'.join(lines)+'\n';execution_preflight(text);result[f['relativePath']]=text.encode('utf-8',errors='surrogateescape' if preserve else 'strict')
+            if preserve and raw.startswith(b'\xef\xbb\xbf'):result[f['relativePath']]=b'\xef\xbb\xbf'+result[f['relativePath']]
         return result
     def execute(self,directory,p,cancel,on_started):
         self.preflight(p)
@@ -91,7 +113,7 @@ class PSpiceRuns(IsolatedJobs):
         path=directory/'result.out'
         if path.is_file() and path.stat().st_size<=32*1024*1024:
             try:
-                data=parse_out(path.read_text(encoding='cp1252'))
+                data=parse_out(decode_run_output(path.read_bytes(),p))
                 if data['hasErrorDiagnostics']:return failure_for_output(data,'solver')
             except (CadenceError,UnicodeError):pass
         return CadenceError('pspice_engine_failed','The owned PSpice engine failed; inspect the retained task receipt.','solver')
@@ -113,7 +135,7 @@ class PSpiceRuns(IsolatedJobs):
         if native_completed:self.confirm_receipt(directory,p)
         out=checked_path(str(directory/'result.out'),(directory,));dat=checked_path(str(directory/'result.dat'),(directory,))
         if max(out.stat().st_size,dat.stat().st_size)>32*1024*1024:raise CadenceError('output_limit','Simulation output exceeds bound.')
-        before={name:sha256(path) for name,path in [('out',out),('dat',dat)]};text=out.read_text(encoding='cp1252');parsed=parse_out(text)
+        before={name:sha256(path) for name,path in [('out',out),('dat',dat)]};text=decode_run_output(out.read_bytes(),p);parsed=parse_out(text)
         if parsed['hasErrorDiagnostics']:raise failure_for_output(parsed,'verify')
         self.confirm_output(text,p)
         internal=PSpiceDat(Config(self.config.install_root,self.config.workspace_root,(directory,),self.config.timeout_seconds))
@@ -178,7 +200,7 @@ class PSpiceRuns(IsolatedJobs):
             if out.stat().st_size>32*1024*1024:raise CadenceError('output_limit','OUT exceeds 32 MiB.')
             raw=out.read_bytes()
             if len(raw)>32*1024*1024:raise CadenceError('output_limit','OUT exceeds 32 MiB.')
-            report=parse_out(raw.decode('cp1252',errors='strict'))
+            report=parse_out(decode_run_output(raw,row['plan']['payload']))
             import hashlib
             fingerprint=hashlib.sha256(raw).hexdigest()
             manifest=json.loads((directory/'run-artifacts.json').read_text(encoding='utf-8'))
