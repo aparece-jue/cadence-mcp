@@ -213,6 +213,34 @@
       "meaning": "官方自定义页面示例：原始PageWidth/PageHeight与用户单位的区别",
       "sha256": "0ccc2e04e6084b8af3859aa8a28c9b295ba251b7a005b933240b441e4671f6b1",
       "size": 8701
+    },
+    {
+      "sourceId": "CAP-LOCAL-PSPICE-NET",
+      "installRelativePath": "share/orTclscripts/tclscripts/orPrmDesigner/orPrmHandlerSimulation.tcl",
+      "meaning": "本地PSpice NET生成调用和日志读取示例",
+      "sha256": "a2323ca2820493157e0fb97a06dd4ba3df673a7b3ed041c09c4b8b592ae6e94c",
+      "size": 17537
+    },
+    {
+      "sourceId": "CAP-ASP-DISPATCH",
+      "installRelativePath": "share/orTclscripts/tclscripts/orPrmDesigner/orPrmDesigner.tcl",
+      "meaning": "区分远端ASP分发与本地NET接口，远端接口未调用",
+      "sha256": "59b10cfa1a35ef4cede2d8e311f812aac17bbcb35f08721d5a985c5c4a49f8df",
+      "size": 33873
+    },
+    {
+      "sourceId": "CAP-ONLINE-DRC",
+      "installRelativePath": "tools/capture/tclscripts/capOnlineDRC/tcl/capDRCImpl.tcl",
+      "meaning": "在线DRC设计事件/订阅机制；不证明全部规则开启",
+      "sha256": "38d6393f6b9ec85c28bef58e4af88922e4c92a1a05df7befb42e4b28daaa6978",
+      "size": 6432
+    },
+    {
+      "sourceId": "CAP-DRC-NATIVE",
+      "installRelativePath": "tools/bin/orDRC64.dll",
+      "meaning": "本机DRC包装签名核查，仅元数据不分发二进制",
+      "sha256": "4b0571b7a8c2c9bae81ced670981ee40098a52a9db84f4967fe834d3fdd67217",
+      "size": 592128
     }
   ],
   "features": [
@@ -232,11 +260,14 @@
       "evidence": [
         "docs/validation/bridge-final-2026-10-22.md",
         "docs/validation/bridge-operations-2026-10-23.md",
-        ".local/bridge-atomic-native-20261023.txt"
+        ".local/bridge-atomic-native-20261023.txt",
+        ".local/host-recovery-20261026/report.json",
+        ".local/late-capture-wire-audit-20261026/report.json",
+        ".local/drc-error-host-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests."
+      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests. Batch91: startup product modal resolved once; authenticated read-only binding recovered in PID20696, then explicitly switched between clean private fixtures using fixed guarded Open. Does not certify every original bridge gate."
     },
     {
       "id": "C01",
@@ -1224,7 +1255,8 @@
         ".local/wire-point-construction-20261026/report.json",
         ".local/wire-point-construction-20261026/audit.json",
         ".local/wire-capture-context-v2-20261026/report.json",
-        ".local/wire-page-size-20261026/report.json"
+        ".local/wire-page-size-20261026/report.json",
+        ".local/late-capture-wire-audit-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -1232,7 +1264,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance."
+      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate."
     },
     {
       "id": "D04",
@@ -1627,13 +1659,22 @@
         ".local/capture-drc-runtime-20261023/report.json",
         ".local/capture-host-bootstrap-20261024/report.json",
         ".local/live-capture-inventory-20261024/report.json",
-        ".local/desktop-capture-host-20261024/observation.json"
+        ".local/desktop-capture-host-20261024/observation.json",
+        ".local/capture-local-drc-20261026/report.json",
+        ".local/capture-local-drc-v2-20261026/report.json",
+        ".local/capture-local-drc-v2-20261026/native-report.log",
+        ".local/drc-error-fixture-20261026/report.json",
+        ".local/drc-error-fixture-v2-20261026/report.json",
+        ".local/drc-definition-fixture-20261026/report.json",
+        ".local/drc-error-host-20261026/report.json",
+        ".local/capture-error-drc-20261026/report.json",
+        ".local/capture-error-drc-audit-20261026/report.json"
       ],
       "issues": [
         "ISS-V03-capture-runtime-inventory-timeout"
       ],
       "implementationReady": false,
-      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged."
+      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending."
     },
     {
       "id": "V04",
@@ -1663,13 +1704,17 @@
         ".local/capture-host-bootstrap-20261024/report.json",
         ".local/live-capture-inventory-20261024/report.json",
         ".local/owned-capture-host-20261024/report.json",
-        ".local/desktop-capture-host-20261024/observation.json"
+        ".local/desktop-capture-host-20261024/observation.json",
+        ".local/capture-local-netlist-20261026/report.json",
+        ".local/capture-netlist-oracle-v2-20261026/oracle.json",
+        ".local/capture-local-netlist-accepted-20261026/report.json",
+        ".local/capture-netlist-mapping-audit-20261026/report.json"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked."
     },
     {
       "id": "P01",
@@ -2767,6 +2812,22 @@
       "positiveEvidence": ".local/library-pin-style-mcp-v2-20261026/report.json",
       "oldOracleAudit": ".local/pin-style-old-oracle-audit-20261026/report.json",
       "fullFeatureAccepted": false
+    },
+    {
+      "id": "ISS-V03-online-drc-misses-output-conflict",
+      "featureId": "V03",
+      "status": "open",
+      "summary": "Fresh native online DRC reports0errors/0warnings for a saved/reopened deliberate output/output conflict; rule enablement/coverage unproven.",
+      "evidence": ".local/capture-error-drc-audit-20261026/report.json",
+      "additionalEvidence": [
+        ".local/drc-error-fixture-20261026/report.json",
+        ".local/drc-error-fixture-v2-20261026/report.json",
+        ".local/drc-definition-fixture-20261026/report.json",
+        ".local/drc-error-host-20261026/report.json",
+        ".local/capture-error-drc-20261026/report.json",
+        ".local/capture-error-drc-audit-20261026/report.json"
+      ],
+      "expected": "Detect deliberate conflicting output pins; do not accept a zero-error report as clean electrical evidence."
     }
   ],
   "excluded": [
@@ -2805,15 +2866,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": [
-      "remaining_numbering_and_library_gates",
-      "Capture_connection_save_failures",
-      "native_DRC_and_Capture_netlist_generation",
-      "Capture_to_PSpice_parameter_iteration",
-      "L05_unbound_heterogeneous_GND_and_full_origin_preservation_deferred",
-      "other_deferred_native_and_permission_failures",
-      "final_all_required_gate_audit"
-    ],
+    "nextIndependentWork": "Inspect explicit electrical DRC rule configuration/coverage and native local profile->CIR closure; preserve intentional-error oracle and original34 gates.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -2923,7 +2976,7 @@
     "liveCaptureInventoryEvidence": ".local/live-capture-inventory-20261024/report.json",
     "privateCaptureHostOpenEvidence": ".local/owned-capture-host-20261024/report.json",
     "desktopHostObservationEvidence": ".local/desktop-capture-host-20261024/observation.json",
-    "privateCaptureBridgeReady": false,
+    "privateCaptureBridgeReady": true,
     "multiunitSwapMapEvidence": ".local/multiunit-swap-completion-20261024/report.json",
     "multiunitSwapFailedEvidence": ".local/multiunit-swap-maps-20261024/report.json",
     "pinSwapNativeBoundaryEvidence": ".local/pin-swap-boundary-20261024/report.json",
@@ -2982,7 +3035,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 67,
+    "batch": 91,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3206,7 +3259,7 @@
     "wirePointConstructionEvidence": ".local/wire-point-construction-20261026/report.json",
     "wirePointConstructionAudit": ".local/wire-point-construction-20261026/audit.json",
     "wireCaptureHostEvidence": ".local/wire-capture-context-v2-20261026/report.json",
-    "wireCaptureHostState": "dispatch_unacknowledged_no_replay",
+    "wireCaptureHostState": "late_acknowledged_independent_reopen_failed_no_replay",
     "noncenteredFrameEvidence": ".local/noncentered-pose-rectangle-b-20261026/report.json",
     "noncenteredFrameMcpEvidence": ".local/pose-frame-mcp-20261026/report.json",
     "noncenteredFrameAudit": ".local/pose-frame-audit-20261026/audit.json",
@@ -3229,7 +3282,15 @@
     "pageBoundsGuardsEvidence": ".local/page-bounds-guards-20261026/report.json",
     "wirePageSizeEvidence": ".local/wire-page-size-20261026/report.json",
     "wirePageSizeFixAccepted": false,
-    "fullV02Accepted": false
+    "fullV02Accepted": false,
+    "lateWireAudit": ".local/late-capture-wire-audit-20261026/report.json",
+    "captureLocalNetlistEvidence": ".local/capture-local-netlist-accepted-20261026/report.json",
+    "captureNetlistMappingEvidence": ".local/capture-netlist-mapping-audit-20261026/report.json",
+    "nativeOnlineDrcInvoked": true,
+    "nativeOnlineDrcConflictDetected": false,
+    "nativeOnlineDrcAudit": ".local/capture-error-drc-audit-20261026/report.json",
+    "fullV03Accepted": false,
+    "fullV04Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-544-page-bounds-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "d1f3007b838db5a73e18c7ca887b092b0e282335c351e17665444948afc7d07b"
+  "acceptanceCanonicalSha256": "71c855655d16df6c3e0ee65936334b1059d7695452c7230763f2b8abb2e2ed24"
 }

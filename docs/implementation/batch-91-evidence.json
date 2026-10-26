@@ -1,0 +1,61 @@
+{
+  "batch": 91,
+  "date": "2026-10-26",
+  "tools": 202,
+  "goalComplete": false,
+  "nativeLocalNetlistMappingAccepted": true,
+  "nativeNetlistMappingCases": 5,
+  "nativeOnlineDrcInvocationAccepted": true,
+  "nativeOnlineDrcConflictDetected": false,
+  "fullV03Accepted": false,
+  "fullV04Accepted": false,
+  "lateWireReopenAccepted": false,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 544,
+    "passed": 543,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-544-page-bounds-20261026.txt"
+  },
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "evidenceSha256": {
+    ".local/host-recovery-20261026/report.json": "ee5056a9da6d01dc2d9591c6ce46a52d91d828c67268b89383053abed8f1b083",
+    ".local/late-capture-wire-audit-20261026/report.json": "ffd5e47ecda8388a56c90aad1f76cdd1e1b3bd21fb174494b13d908a31673a3c",
+    ".local/capture-local-netlist-20261026/report.json": "064ab42913b4624dfcc64c0bb55cd2b9be408cb737ab381dca746b4002788597",
+    ".local/capture-netlist-oracle-v2-20261026/oracle.json": "60b65938af2da09f7e9fbdd85914822a78b74b62cdeaf970371d98410d82aab0",
+    ".local/capture-local-netlist-accepted-20261026/report.json": "5eb4f948180f03c2a652a1c4b0152ec7e13c9c310f351fbcb53a123a704e8a6b",
+    ".local/capture-netlist-mapping-audit-20261026/report.json": "da97b40ecf6d302f56de43c286a50dc910ef58ce679c28a14f0f35458fc2b2f0",
+    ".local/capture-local-drc-20261026/report.json": "473f7e77251916998edc8d692a96b8ece8331b389385e9056829b123724e9b9b",
+    ".local/capture-local-drc-v2-20261026/report.json": "78cd420b1e3b7b6cdb5c32ca2826ceea9273e0abf747787df8c66fdaf7ca2397",
+    ".local/capture-local-drc-v2-20261026/native-report.log": "3cbe3045c911198250e0844b5a868350bc41b3556bff1165fb9f31b8b8093a0d",
+    ".local/drc-error-fixture-20261026/report.json": "27becdae9283158277edbae72342743263571df0e2314b0988f8f3e64d93e874",
+    ".local/drc-error-fixture-v2-20261026/report.json": "7e2a174755e617762d9926e34eef51161a54d959e2ce6a4c54d549d70e515a8e",
+    ".local/drc-definition-fixture-20261026/report.json": "e78cf53c7f56ee40754043e79d9426e4c9a6f9266dccf4d7f9fd8782586f3dec",
+    ".local/drc-error-host-20261026/report.json": "b306352eb6afb81b617da35f49bb34ad7bb3d9f05947efcdf7fa253120bf1df2",
+    ".local/capture-error-drc-20261026/report.json": "feab2f27be3632a5a7ff1b373d3d80929a5c8ed9c2f69ab5dd36552eb7704d79",
+    ".local/capture-error-drc-audit-20261026/report.json": "97d97175a04c0cf2ed7d2a0c91e719543525612f2e333afe486be6760e164b03"
+  },
+  "implementationSha256": {
+    "tools/audit_capture_drc_conflict.py": "abe2b0e2d0b1ac8b8d4f8a77d3367360744d282a6ad972c058efe3e0dbb86087",
+    "tools/audit_capture_netlist_mapping.py": "f7a817ad33f33ea5b08c440c782ee1150f12aa43c98a40064e1a0a0100399ce5",
+    "tools/audit_late_capture_wire.py": "427ab9fd75ac2f31feca78dc898e5372c11d3ec52c286dc7f50a5255947c82e1",
+    "tools/fixture_drc_definition_conflict.tcl": "71913f2218dec83714cbe6f65ec219e37d9cf44f071dc283b8524334bc1f7ff4",
+    "tools/fixture_drc_output_conflict.tcl": "85e00d036412bf76bd58cf43a126501727fa48fe1c9b830fce2684bd6160d5e0",
+    "tools/freeze_capture_netlist_oracle.py": "b0d7e58ca00c24d95c6fc4535418428fa740b9e7e8d855debbe80648b5e536f1",
+    "tools/inspect_capture_host_commands.py": "8cc152282f9507bd980aae9c5c27a416f1dffa9fdb70df3cf287e3a2db571351",
+    "tools/prepare_drc_definition_fixture.py": "22e7fdc800f5bd31b80970105de35b5a701f54d20e8e8f200aa935feacfca267",
+    "tools/prepare_drc_error_fixture.py": "9ea54b9dcb4cd103f4f213c5097b1e8846468d03576b1b1fa722f4352cbbe0fc",
+    "tools/probe_bound_capture_drc.py": "00b11bf845e0025771ec6bac7b17447d93aaa3232edc2073e1f7f443ce5f8e9b",
+    "tools/probe_bound_capture_netlist.py": "667c2370306e1824820d9c5eb8e6d3ec234ea38d5fa85e722ed11a4ad92cda67",
+    "tools/rebind_private_capture.py": "ac313bc5e3b4a1899ad8ef20b8aabaab15e891f6dcb93d651d08c0d98ab5bb43",
+    "tools/switch_private_capture_fixture.py": "3de17a2ff8e4a541a928a966a738582b962b0c0426263602d8c8d870ee5f7c3c"
+  }
+}
