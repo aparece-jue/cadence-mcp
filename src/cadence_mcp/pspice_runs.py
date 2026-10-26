@@ -10,6 +10,7 @@ from .pspice_dat import PSpiceDat
 from .pspice_output import parse_out
 from .pspice_diagnostics import failure_for_output
 from .gui_jobs import durable_json
+from .pspice_model_use import prove_unused_libraries
 
 ANALYSES={'dc':('DC','DC Sweep'),'ac':('AC','AC Sweep'),'transient':('TRAN','Transient Analysis')}
 RELATIVE=re.compile(r'(?:input\.cir|deps/file-\d{3}\.[a-z0-9]{1,8})')
@@ -26,6 +27,15 @@ def execution_preflight(text):
         if re.match(r'^\.MODEL\s+\S+\s+CORE\b',value,re.I):
             checked=re.sub(r'\bPATH\s*=\s*\+?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?=\s|\)|$)','',value,flags=re.I)
         if re.search(r'\b(?:FILE|PATH|LIBPATH|DLL|STMLIB|STIMULUS|TABLEFILE)\s*=',checked,re.I):raise CadenceError('unsupported_embedded_reference','Embedded file/path sources require a dedicated resolver.')
+
+def execution_closure(root,files,rows):
+    try:
+        for raw in files.values():execution_preflight(raw.decode('utf-8-sig',errors='surrogateescape'))
+        return None
+    except CadenceError as original:
+        if original.code!='unsupported_embedded_reference':raise
+        try:return prove_unused_libraries(root,files,rows,execution_preflight)
+        except CadenceError:raise original
 
 def decode_run_output(raw,payload):
     """Preserve raw artifacts; only escape undefined CP1252 bytes on full comment lines."""
@@ -66,16 +76,16 @@ class PSpiceRuns(IsolatedJobs):
             for f in manifest['files']:
                 relative=f['relativePath']
                 if not RELATIVE.fullmatch(relative):raise CadenceError('invalid_input_manifest','Input file identity is not a generated path.')
-                execution_preflight((row['directory']/relative).read_text(encoding='utf-8',errors='surrogateescape' if manifest.get('inputEncoding')=='preserve-bytes' else 'strict'))
                 files.append({k:f[k] for k in ('relativePath','preparedSha256','originalRelativePath','sourceSha256','references')})
-            payload={'inputEncoding':manifest.get('inputEncoding','utf-8'),'inputBudget':manifest.get('inputBudget','standard'),'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
+            proof=execution_closure(row['directory'],{f['relativePath']:(row['directory']/f['relativePath']).read_bytes() for f in files},files)
+            payload={'modelUseProof':proof,'inputEncoding':manifest.get('inputEncoding','utf-8'),'inputBudget':manifest.get('inputBudget','standard'),'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>196608:raise CadenceError('plan_limit','Simulation plan exceeds durable record bound.')
             self.preflight(payload);return self.create_plan(payload)
     def backend_name(self):return 'independent_pspice_engine_tcl'
     def extra_scope(self):return 'declared_native_measurement_fields_only'
     def backend_not_checked(self):return ['cli_backend']
     def preview(self,p):
-        return {k:p[k] for k in ('simulationId','sourceFingerprint','analysis','timeoutSeconds','expectedSamples')}|{'fileCount':len(p['files']),'backend':self.backend_name(),'implicitModelLookupVerified':False}
+        return {k:p[k] for k in ('simulationId','sourceFingerprint','analysis','timeoutSeconds','expectedSamples')}|{'fileCount':len(p['files']),'backend':self.backend_name(),'implicitModelLookupVerified':False,'modelUseProof':p.get('modelUseProof')}
     def preflight(self,p):
         directory=checked_path(p['preparedDirectory'],(self.config.workspace_root,))
         if sha256(checked_path(str(directory/'input-manifest.json'),(directory,)))!=p['manifestHash']:raise CadenceError('target_changed','Prepared input manifest changed after planning.')
@@ -87,6 +97,7 @@ class PSpiceRuns(IsolatedJobs):
             if not RELATIVE.fullmatch(f['relativePath']):raise CadenceError('invalid_plan','Input path is not a generated relative name.')
             for relative,key in [(f['relativePath'],'preparedSha256'),(f['originalRelativePath'],'sourceSha256')]:
                 if sha256(checked_path(str(directory/relative),(directory,)))!=f[key]:raise CadenceError('target_changed','Prepared input bytes changed after planning.')
+        if execution_closure(directory,{f['relativePath']:(directory/f['relativePath']).read_bytes() for f in p['files']},p['files'])!=p.get('modelUseProof'):raise CadenceError('model_use_changed','Execution-scope proof differs from the immutable plan.')
     def rebased_inputs(self,directory,p):
         preserve=p.get('inputEncoding')=='preserve-bytes'
         source=Path(p['preparedDirectory']);names={f['relativePath'] for f in p['files']};result={}
@@ -96,8 +107,9 @@ class PSpiceRuns(IsolatedJobs):
                 if ref['targetRelativePath'] not in names or ref['directive'] not in ('INC','INCLUDE','LIB') or type(ref['line']) is not int or not 1<=ref['line']<=len(lines):raise CadenceError('invalid_input_manifest','Invalid closure reference.')
                 old=lines[ref['line']-1];ending='\r\n' if old.endswith('\r\n') else '\n' if old.endswith('\n') else '\r' if old.endswith('\r') else ''
                 lines[ref['line']-1]='.'+ref['directive']+' "'+(directory/ref['targetRelativePath']).as_posix()+'"'+(ending if preserve else '')
-            text=''.join(lines) if preserve else '\n'.join(lines)+'\n';execution_preflight(text);result[f['relativePath']]=text.encode('utf-8',errors='surrogateescape' if preserve else 'strict')
+            text=''.join(lines) if preserve else '\n'.join(lines)+'\n';result[f['relativePath']]=text.encode('utf-8',errors='surrogateescape' if preserve else 'strict')
             if preserve and raw.startswith(b'\xef\xbb\xbf'):result[f['relativePath']]=b'\xef\xbb\xbf'+result[f['relativePath']]
+        if execution_closure(directory,result,p['files'])!=p.get('modelUseProof'):raise CadenceError('model_use_changed','Rebased execution scope differs from its plan.')
         return result
     def execute(self,directory,p,cancel,on_started):
         self.preflight(p)

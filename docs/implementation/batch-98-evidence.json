@@ -1,0 +1,41 @@
+{
+  "batch": 98,
+  "date": "2026-10-26",
+  "tools": 203,
+  "goalComplete": false,
+  "acceptedScope": "flat_literal_builtins_unused_readable_library_only",
+  "ownCliVoltage": 2.5,
+  "defaultClosureNativeAcAccepted": false,
+  "defaultClosureSolverStarted": false,
+  "refusal": {
+    "file": "deps/file-033.lib",
+    "physicalLine": 2775,
+    "kind": "$CDNENCSTART"
+  },
+  "priorTrialsRetained": true,
+  "originalAcOracleUnchanged": true,
+  "latestFullRegression": {
+    "total": 566,
+    "passed": 565,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-566-model-use-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/native-profile-ac-mcp-v3-20261026/report.json": "85dd78b545fc103e7c9c94021a972eb2c2976eaa68f14f8cacf22d59acff08ba",
+    ".local/literal-library-cli-20261026/report.json": "7125948b6742d6a0d70ffe2dbf349189ceb6eb1cb8c51acc5e680ae8b1b55e97",
+    ".local/literal-library-cli-v2-20261026/report.json": "2cdb084d5f91c0e518d21dbe745e8613f3f1a0f94ecaf18c5fe50dc668511b04",
+    ".local/literal-library-cli-v3-20261026/report.json": "abd690303103158da4901a31e73f86f06472ef505de324d6b720265368c7c60a",
+    ".local/regression-566-model-use-20261026.txt": "14045cca39ae80282319696e30d421c5154dd5ce7c43895c64765e281f184938",
+    ".local/model-use-encrypted-refusal-20261026.json": "5c5df9a2311c0925d6ec48a3ea8404536a217547b4299a90d40ba7f8dffa5fb5"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_model_use.py": "84acc59dc016575126c88310775142e760e8f7fc72ead51d53942a685d867d2e",
+    "src/cadence_mcp/pspice_runs.py": "b55a2e41e37a815a4eabd86cb6252bff997720c925c406f16cd2b73a4eb75635",
+    "tests/test_pspice_model_use.py": "e31a336311a593729e12b0b49c3431d4aa94049894b2f37bd7448a50c00eeac2",
+    "tools/smoke_literal_library_cli.py": "f426249397d7cf3b2b304a3a47ed7750805d8857412c62c14b6ed5f8187ac8d7",
+    "tools/smoke_native_profile_ac.py": "75f9b2d47c50974111b680af2c9ca4b1749442844a446454fd20afb283e5205e",
+    "tools/diagnose_prepared_library_use.py": "da6bce42298709057b4e9f2121381d9062d8bb6348fca00505f2955b284e8a8f"
+  }
+}

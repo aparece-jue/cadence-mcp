@@ -34,12 +34,12 @@
   },
   "toolCount": 203,
   "latestFullRegression": {
-    "total": 560,
-    "passed": 559,
+    "total": 566,
+    "passed": 565,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-560-native-library-metadata-20261026.txt"
+    "evidence": ".local/regression-566-model-use-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "39c12fbe08f3d7c1921336085b5b4d51869b68a2641c8da3b2a4c9b935f8891c"
+  "acceptanceCanonicalSha256": "47b1e1cbe07d28fce2bbb0e900488043c02a6b0d5e7da10212b2c20b2961e388"
 }

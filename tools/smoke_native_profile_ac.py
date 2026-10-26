@@ -4,7 +4,7 @@ from pathlib import Path
 from mcp import Client
 from mcp.client.stdio import StdioServerParameters
 from cadence_mcp.core import sha256
-r=Path(__file__).resolve().parents[1];root=r/'.local/native-profile-ac-mcp-v2-20261026';root.mkdir(exist_ok=False);source=r/'.local/profile-cir-native-v2-20261026/project/LowPassFilters-PSpiceFiles/LPFilters/AC/AC.cir';install=Path(r'D:\Program Files\Cadence\SPB_24.1');library=install/'tools/pspice/library';before=sha256(source)
+r=Path(__file__).resolve().parents[1];root=r/'.local/native-profile-ac-mcp-v3-20261026';root.mkdir(exist_ok=False);source=r/'.local/profile-cir-native-v2-20261026/project/LowPassFilters-PSpiceFiles/LPFilters/AC/AC.cir';install=Path(r'D:\Program Files\Cadence\SPB_24.1');library=install/'tools/pspice/library';before=sha256(source)
 expected=[]
 for row,f in [(0,.1),(99,200.)]:
  for trace,z in [('V(N00509)',1/(1.5+1j*2*math.pi*f*500*7e-6)),('V(N00813)',1000/(1000+1j*2*math.pi*f*2))]:expected.append({'block':0,'row':row,'traceName':trace,'real':z.real,'imaginary':z.imag,'absoluteTolerance':2e-5,'relativeTolerance':1e-4})

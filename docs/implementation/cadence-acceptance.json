@@ -290,6 +290,13 @@
       "meaning": "官方库私有副本75顶层/32局部定义核验，原始模型不上传",
       "sha256": "987c7563ecfc4c916fd30da60626d4211970552aec12cb2366e2fecb8caa3071",
       "size": 41854
+    },
+    {
+      "sourceId": "SIM-LIB-READ-SCOPE",
+      "installRelativePath": "doc/pspug/003_model_Configuring_Model_Libraries.html",
+      "meaning": "LIB按需读取定义与INC全文读取的区别；不证明未知/加密库语义",
+      "sha256": "5a70a565ae5912f7ef6b9dc544d65e100cefd908dbb5db31fc50c7aa6784e0ef",
+      "size": 31079
     }
   ],
   "features": [
@@ -1843,13 +1850,19 @@
         ".local/native-library-parser-20261026/report.json",
         ".local/library-metadata-mcp-20261026/report.json",
         ".local/library-metadata-mcp-v2-20261026/report.json",
-        ".local/regression-560-native-library-metadata-20261026.txt"
+        ".local/regression-560-native-library-metadata-20261026.txt",
+        ".local/native-profile-ac-mcp-v3-20261026/report.json",
+        ".local/literal-library-cli-20261026/report.json",
+        ".local/literal-library-cli-v2-20261026/report.json",
+        ".local/literal-library-cli-v3-20261026/report.json",
+        ".local/regression-566-model-use-20261026.txt",
+        ".local/model-use-encrypted-refusal-20261026.json"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance."
     },
     {
       "id": "P01",
@@ -3086,12 +3099,12 @@
     "tools": 203,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 560,
-      "passed": 559,
+      "total": 566,
+      "passed": 565,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-560-native-library-metadata-20261026.txt"
+      "evidence": ".local/regression-566-model-use-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3099,7 +3112,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Use native metadata/source scopes to develop explicit model/AKO/subcircuit dependency resolution and preserve rejection of unresolved external FILE templates; continue exact native DRC rule configuration, D03 remains deferred tail.",
+    "nextIndependentWork": "V03 exact per-design native DRC rule configuration/readback; encrypted model-use closure and full original V04 remain deferred",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3268,7 +3281,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 97,
+    "batch": 98,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3548,7 +3561,7 @@
     "editorInitializedWireAccepted": false,
     "editorInitializedWireStatus": ".local/editor-session-wire-audit-20261026/report.json",
     "gitSyncPending": false,
-    "lastSuccessfulImplementationCommit": "042af82",
+    "lastSuccessfulImplementationCommit": "61571de",
     "privateCapturePid": 5256,
     "editorUpdatePageStateAccepted": false,
     "editorUpdateFaultAudit": ".local/editor-update-fault-audit-20261026/report.json",
@@ -3556,7 +3569,10 @@
     "libraryMetadataAvailable": true,
     "libraryMetadataScope": "top_level_only_locals_counted",
     "libraryMetadataMcpEvidence": ".local/library-metadata-mcp-v2-20261026/report.json",
-    "nativeLibraryReachabilityAccepted": false
+    "nativeLibraryReachabilityAccepted": false,
+    "literalUnusedLibraryProofAvailable": true,
+    "literalUnusedLibraryCliEvidence": ".local/literal-library-cli-v3-20261026/report.json",
+    "nativeAcLatestEvidence": ".local/native-profile-ac-mcp-v3-20261026/report.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }
