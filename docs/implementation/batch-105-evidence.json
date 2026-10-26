@@ -52,5 +52,13 @@
     "tests/test_capture_pspice_receipt.py": "6024fc93942909fa49d06c0911439b643f49951617ab29d71a632ec85810101f",
     "tests/test_native_netlist_adapter.py": "e63afbcf50ec27e5f4586758bf5330ee6a6b1dc4124912aef63a9440895ff3ac",
     "tools/smoke_native_netlist_components.py": "e1ce69804c4af2305e4911031d2f925a1d7e4baf6b8c894df7d3bb60d0ad3509"
+  },
+  "gitSyncResult": {
+    "state": "pending",
+    "implementationCommit": "c237c06",
+    "returnCode": 128,
+    "durationSeconds": 21.75,
+    "remoteUpdateVerified": false,
+    "receiptSha256": "f0be087325c3d881aa7b53ae454cf3293ec9743a607db15de569ed585a516961"
   }
 }
