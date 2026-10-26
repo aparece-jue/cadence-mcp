@@ -1,0 +1,56 @@
+{
+  "batch": 105,
+  "date": "2026-10-26",
+  "tools": 204,
+  "goalComplete": false,
+  "fullV04Accepted": false,
+  "fullP05Accepted": false,
+  "publicNativeGenerationMcpTasksAvailable": false,
+  "nativeProjectSnapshotComponentsAccepted": true,
+  "sourceRolesBound": [
+    "design_session_snapshot",
+    "source_project_template",
+    "source_profile"
+  ],
+  "snapshotScope": "same_directory_design_single_profile@1",
+  "uiRestorationRemovedOnlyInTaskCopy": true,
+  "unknownUiPathsRefused": true,
+  "nativePidAndNonceReceiptAccepted": true,
+  "forwarderExitIsCompletionProof": false,
+  "allFourBoundedLogCategoriesRequired": true,
+  "nativeSameNonceRefusalAcknowledged": true,
+  "nativeOutputsMatchPriorIndependentAudit": true,
+  "sourceAndStagedInputsPreserved": true,
+  "desktopActionsUsed": false,
+  "newTests": 23,
+  "latestFullRegression": {
+    "total": 618,
+    "passed": 617,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-618-native-project-components-final-20261026.txt"
+  },
+  "fullRegressionRunThisBatch": true,
+  "durableTaskAndUnresolvedHostFenceImplemented": false,
+  "genericProjectHierarchyModelResourceAndLogOwnershipAccepted": false,
+  "gitSyncPendingAtRecordCreation": true,
+  "previousLocalAndRemoteCommit": "f366106",
+  "evidenceSha256": {
+    ".local/native-netlist-components-20261026/report.json": "eaa902603e706b0840d3472414c9c82a95ee144f14ba40063b6fa8ed7d57fb50",
+    ".local/native-netlist-components-v2-20261026/report.json": "c9546b0478e0cda6b595ee59baebc10927b854b84a4e13dd2af3af5e06ae235c",
+    ".local/native-components-portable-20261026/report.json": "8bad8fd810d8f3f6d9ab30e4f24374b1bdce2d095eff97883dcfba26b59138a4",
+    ".local/native-components-final-20261026/report.json": "2c45baabbb6cfc84bb252423b4476ff996eab3da34e332155dafaea4119dfa98",
+    ".local/regression-618-native-project-components-20261026.txt": "04dcccf3d44bc9323dd6720c95efc4f212d0ede93135fdc10b587d23976f5e36",
+    ".local/regression-618-native-project-components-final-20261026.txt": "aa5c854d6d4bcfff61bc3026aaa43292935abc1d5e733874efbb338f6c7c77c1"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_pspice_project.py": "8762e6cfa4d7647bcef215b73463e1acef5d7e57f77b59effde9944b2747ec45",
+    "src/cadence_mcp/capture_pspice_receipt.py": "6ea2c8f8900b0f3d92c91da2712416c82c4c4de479da1e1091052d8d4a72dd23",
+    "src/cadence_mcp/adapters/capture_pspice_netlist_job.tcl": "a7cd70d9682f1c35e7ffa2bc99bf2ea762ed472515613e4594825b07b6991c44",
+    "tests/test_capture_pspice_project.py": "95c80b28c911a7688bc6223e7f9875786bf4d8d9919630e6913af07e6b6143a6",
+    "tests/test_capture_pspice_receipt.py": "6024fc93942909fa49d06c0911439b643f49951617ab29d71a632ec85810101f",
+    "tests/test_native_netlist_adapter.py": "e63afbcf50ec27e5f4586758bf5330ee6a6b1dc4124912aef63a9440895ff3ac",
+    "tools/smoke_native_netlist_components.py": "e1ce69804c4af2305e4911031d2f925a1d7e4baf6b8c894df7d3bb60d0ad3509"
+  }
+}

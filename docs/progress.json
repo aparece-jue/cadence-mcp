@@ -34,12 +34,12 @@
   },
   "toolCount": 204,
   "latestFullRegression": {
-    "total": 595,
-    "passed": 594,
+    "total": 618,
+    "passed": 617,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-595-native-profile-aliases-20261026.txt"
+    "evidence": ".local/regression-618-native-project-components-final-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "c6d71a4af55fe889cad235a92f85f1407d963a1f543599dcfd048141d5ef3e1e"
+  "acceptanceCanonicalSha256": "705c4b82e6f9a29cbe177e13246123f05f0aca0e6a0dd1a9218dde8201d82dbc"
 }
