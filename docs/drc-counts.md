@@ -1,0 +1,15 @@
+# 原生DRC计数读回
+
+`capture_gui_query(sessionId, entity="drc_counts")`通过认证实例/代次会话只读查询electricalErrors、electricalWarnings、physicalErrors、physicalWarnings。先以read attach，结束detach；不触发DRC、不保存设计、不转储日志。需重载本开发版可信桥接，固定alpha.1不自动更新。实际工具总数203。
+
+原生计数索引的设计键必须使用GetActivePMDesign→GetName→MakeStdStr，保留原始大小写/分隔符拼写，不能复用文件系统规范化路径。安装内CAP-DRC-NATIVE-KEY有同样用法，只读其代码、不调用PCB创建。本机同一设计原始键电气2、规范化键0；路径身份仍由桥接按规范化绝对路径验证，使用原始索引键不放松目标边界。
+
+四个计数须为0至2147483647的整数，拒绝负数、布尔、浮点、缺字段及未知结构。返回runRequested=false、completionVerified=false、coverageVerified=false、atomicCrossCategorySnapshotVerified=false：它只证明当前计数读回，不能由0声称设计干净，也不能由多次稳定声称所有异步规则结束。不同类别调用不承诺原子快照。
+
+第101批读取验收：独立已存在日志包含2条ORCAP1628与5条ORCAP36071，实际MCP计数2/5吻合，重复稳定，七项规则配置读回及detach拒绝通过。首次人工把物理5误数4的失败保留；修正依据为验收前已转储日志，不是由被测接口生成新期望。原四引脚冲突覆盖仍未验收，不以2条记录替代。
+
+新项目原生创建后，其副本可直接重开，未再触发旧模板升级；ProjectVersion19981106也出现在24.1新OPJ中，不是运行版本证据。官方CAP-PROJECT24说明已有工程仍可后续建立仿真profile/模型；PSpice资源目录本身不能证明profile已创建。
+
+本轮离线菜单的MessageBox调用形式及ShowDRCOutput0未能自动处理末尾日志询问；原命令经用户关闭后确认，未重放。该路径已按计划后移。在线直接接口的即时规范化键0与晚到原始键2分别保留，全程独立审计原14个引脚连接及类型不变。完整V03仍需四引脚原预期覆盖、可靠完成边界、干净/故障及正式MCP任务生命周期，详见implementation/batch-101-evidence.json。
+
+`tools/smoke_drc_counts.py`依赖本机先前私有fixture/独立日志，只验收读回与会话边界；`tools/observe_online_drc_after_run.py`只延后读计数并转储新日志，不重跑原检查；`tools/audit_online_native_drc.py`独立重开比较原始与规则测试副本。

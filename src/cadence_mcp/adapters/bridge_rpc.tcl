@@ -147,6 +147,24 @@ proc ::cmcpBridge::drc_configuration {} {
     if {$online ni {0 1} || $flow ni {0 1}} {error invalid_drc_configuration}
     return [cmcp::obj nativeConfiguration [cmcp::q $raw] onlineEnabled [expr {$online?"true":"false"}] flowEnabled [expr {$flow?"true":"false"}]]
 }
+proc ::cmcpBridge::drc_counts {} {
+    foreach command {::COrDRCTclInterface_GetElectricalDRCCount ::COrDRCTclInterface_GetPhysicalDRCCount} {if {![llength [info commands $command]]} {error capability_unavailable}}
+    if {![info exists ::COrDRCTclInterface_DRC_ERROR] || ![info exists ::COrDRCTclInterface_DRC_WARNING]} {error capability_unavailable}
+    if {$::COrDRCTclInterface_DRC_ERROR!=0 || $::COrDRCTclInterface_DRC_WARNING!=1} {error invalid_drc_counts}
+    set design [GetActivePMDesign]
+    if {$design eq "NULL" || $design eq ""} {error target_changed}
+    # The native index key is not a filesystem path to normalize: preserve exact GetName spelling.
+    set key [DboTclHelper_sMakeStdStr [nameOf $design]]
+    set fields {}
+    foreach method {GetElectricalDRCCount GetPhysicalDRCCount} category {electrical physical} {
+        foreach severity {DRC_ERROR DRC_WARNING} label {Errors Warnings} {
+            set value [::COrDRCTclInterface_$method $key [set ::COrDRCTclInterface_$severity]]
+            if {![string is integer -strict $value] || $value<0 || $value>2147483647} {error invalid_drc_counts}
+            lappend fields $category$label $value
+        }
+    }
+    return [cmcp::obj {*}$fields]
+}
 proc ::cmcpBridge::rpcReply {request status data {code ""}} {
     variable config; variable generation
     return [cmcp::obj protocol 2 requestId [cmcp::q [dict get $request requestId]] instanceId [cmcp::q [dict get $config instanceId]] pid [pid] generation $generation status [cmcp::q $status] code [cmcp::q $code] data $data]
@@ -169,6 +187,7 @@ proc ::cmcpBridge::rpc {request} {
     if {$operation eq "hello"} {
         if {[dict size $params]} {error "extra params"}
         set caps [list [cmcp::q status] [cmcp::q pages] [cmcp::q selection]]
+        if {[llength [info commands ::COrDRCTclInterface_GetElectricalDRCCount]] && [llength [info commands ::COrDRCTclInterface_GetPhysicalDRCCount]] && [info exists ::COrDRCTclInterface_DRC_ERROR] && [info exists ::COrDRCTclInterface_DRC_WARNING]} {lappend caps [cmcp::q drc_counts]}
         if {[llength [info commands ::capGetDRCConfigData]] && [llength [info commands ::capIsOnlineDrcEnabled]] && [llength [info commands ::COrDRCTclInterface_sIsDRCFlowEnabled]]} {lappend caps [cmcp::q drc_configuration]}
         set writable [expr {[dict exists $config allowPropertyWrite] && [dict get $config allowPropertyWrite]}]
         if {$writable} {lappend caps [cmcp::q property.plan] [cmcp::q property.apply] [cmcp::q property.outcome]}
@@ -206,12 +225,13 @@ proc ::cmcpBridge::rpc {request} {
     if {![dict exists $sessions $sid] || [dict get $params generation] ne $generation} {return [rpcReply $request failed [cmcp::obj] session_lost]}
     dict set sessions $sid expires [expr {[clock milliseconds]+600000}]
     if {$operation eq "session.close"} {dict unset sessions $sid; return [rpcReply $request succeeded [cmcp::obj closed true]]}
-    if {$operation ni {status pages selection drc_configuration}} {return [rpcReply $request failed [cmcp::obj] capability_unavailable]}
+    if {$operation ni {status pages selection drc_configuration drc_counts}} {return [rpcReply $request failed [cmcp::obj] capability_unavailable]}
     set before $generation
     set rc [catch {
         switch -- $operation {
             status {set data [cmcp::obj activeDesign [cmcp::q $path] dirtyState [cmcp::q $dirty] readOnly [expr {[dict get $sessions $sid access] eq "read" ? "true" : "false"}]]}
             drc_configuration {set data [drc_configuration]}
+            drc_counts {set data [drc_counts]}
             pages {set data [pages]}
             selection {set data [selection [dict get $request requestId]]}
         }
@@ -220,7 +240,7 @@ proc ::cmcpBridge::rpc {request} {
     if {$before != $generation || $lost} {return [rpcReply $request failed [cmcp::obj] session_lost]}
     if {[clock milliseconds] > $deadline} {return [rpcReply $request failed [cmcp::obj] deadline_exceeded]}
     if {$rc} {
-        if {$message ni {result_limit no_active_page target_changed dbo_error capability_unavailable invalid_drc_configuration}} {set message dbo_error}
+        if {$message ni {result_limit no_active_page target_changed dbo_error capability_unavailable invalid_drc_configuration invalid_drc_counts}} {set message dbo_error}
         return [rpcReply $request failed [cmcp::obj] $message]
     }
     return [rpcReply $request succeeded $data]

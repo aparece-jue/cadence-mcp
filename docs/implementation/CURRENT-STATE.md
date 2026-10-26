@@ -2,6 +2,14 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百零一批原生项目与DRC计数键（2026-10-26）
+
+- 直接DSN打开进入24.1原生Select Project Type，用户确认后生成新OPJ；其ProjectVersion仍19981106，证明不能据该字段判断17.4。新原生项目的副本两次认证打开成功、无升级窗口。PSpice资源目录不等于已创建profile，联合仿真仍待验收；官方明确既有项目可后续配置仿真。
+- Tcl内部附加MessageBox、另发提示宏、项目ShowDRCOutput0均未自动结束离线菜单末尾ORCAP1805；用户关闭后原回执确认/回调恢复，无DRC重放。活动工程曾变为其他同名副本，loader拒绝错绑定，固定PID只读确认后恢复；后续使用唯一工程名。
+- 新私有OPJ七个准确在线字段全部TRUE，读回7/7；直接接口无菜单弹窗。立即规范化路径计数仍0，延后以GetName原始键读到2电气错误，同文件规范化键仍0；晚到日志2电气+5物理，原14引脚连接/类型独立保持。不能由初始0排除故障，也不能以2条记录证明原四引脚全部覆盖或执行完成。
+- 新增既有capture_gui_query的drc_counts：保留原生GetName键，4个计数严格校验，明确runRequested/completionVerified/coverageVerified/atomicCrossCategorySnapshotVerified均false。实际MCP重复稳定、7项配置及detach拒绝通过。首次人工把物理5误数4的reader失败保留；依据先前独立原生日志精确计数修正，未改变四引脚覆盖预期。
+- 新4解析+1原生缺能力测试，580完整回归579通过/1原权限skip，203工具/扩展契约同步。V03仍deferred并后移，34仍6完整通过17.6%，目标active。下一步推进原P04数字DAT/格式门禁，菜单提示与完整DRC任务留待集中处理。详见docs/drc-counts.md、batch-101-evidence.json；安装/真实设计未改，alpha.1固定。
+
 ## 第一百批原生离线DRC检出原冲突（2026-10-26）
 
 - 根据24.1官方指南修正为选择DSN、PCB菜单DRC；旧Tools路径在回调前拒绝，原失败保留。固定临时配置返回回调实际调用1次；原四输出冲突全部检出，新报告13errors/7ORCAP-1628。末尾查看日志问题由用户处理后晚到回执确认，回调完整恢复、配置不变。

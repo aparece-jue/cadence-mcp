@@ -25,3 +25,11 @@ def decode_drc_configuration(data):
     except (ValueError,TypeError,KeyError,UnicodeError) as e:
         raise CadenceError('invalid_drc_configuration','Native DRC configuration is missing required fields or has an unsupported shape.') from e
     return {'configurationSha256':hashlib.sha256(raw.encode('utf-8')).hexdigest(),'onlineEnabled':data['onlineEnabled'],'flowEnabled':data['flowEnabled'],'configuredFlags':{k:v=='1' for k,v in sorted(flags.items())},'onlineElectricalEnabledCount':sum(flags[k]=='1' for k in ONLINE),'onlineElectricalRuleCount':len(ONLINE),'ercColumnOrder':list(ROWS),'ercMatrix':matrix,'rulesExecuted':False,'coverageVerified':False,'scope':'native_configuration_readback_only'}
+
+COUNTS=('electricalErrors','electricalWarnings','physicalErrors','physicalWarnings')
+def decode_drc_counts(data):
+    if not isinstance(data,dict) or set(data)!=set(COUNTS) or any(type(data[k]) is not int or not 0<=data[k]<=2147483647 for k in COUNTS):
+        raise CadenceError('invalid_drc_counts','Native DRC counters must be four nonnegative bounded integers.')
+    return {**data,'designIdentitySource':'native_GetName_without_normalization','runRequested':False,
+            'completionVerified':False,'coverageVerified':False,'atomicCrossCategorySnapshotVerified':False,
+            'scope':'observed_native_counters_only'}

@@ -1304,7 +1304,7 @@
   {
     "name": "capture_gui_query",
     "title": null,
-    "description": "Read live Capture state, pages, selection or native DRC configuration; configuration does not prove rules were executed.",
+    "description": "Read live Capture state, pages, selection, native DRC configuration or observed counters. Configuration/counters do not certify completed rule execution.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -1316,7 +1316,8 @@
             "status",
             "pages",
             "selection",
-            "drc_configuration"
+            "drc_configuration",
+            "drc_counts"
           ],
           "title": "Entity",
           "type": "string"

@@ -26,7 +26,7 @@ namespace eval ::cmcpHostDrcProbe {
    set duringConfig [capGetDRCConfigData]
    if {![regexp {"RunElectricRuleWiresOnline"\s*:\s*"1"} $duringConfig]} {error rule_not_observably_enabled}
    set runResult [::COrDRCTclInterface_CleanAndRunOnlineDRC $design]
-   set designName [DboTclHelper_sMakeStdStr DESIGN]
+   set designName [DboTclHelper_sMakeStdStr [::cmcpBridge::nameOf $design]]
    foreach severity {DRC_ERROR DRC_WARNING} {set constant ::COrDRCTclInterface_$severity;lappend countsAfter [cmcp::obj severity [cmcp::q $severity] count [::COrDRCTclInterface_GetElectricalDRCCount $designName [set $constant]]]}
    set dumpResult [::COrDRCTclInterface_DumpAllDRCErrorToLogFile $design]
   } finally {set restoreResult [::COrDRCTclInterface_EnableDRC $design "DRC_Check_Unconnected_Nets_Online" false]}

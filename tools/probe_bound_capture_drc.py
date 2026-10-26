@@ -20,7 +20,7 @@ namespace eval ::cmcpHostDrcProbe {
  set enums {};foreach name [lsort [info globals ::COrDRCTclInterface_*]] {if {[string is integer -strict [set $name]]} {lappend enums [cmcp::obj name [cmcp::q $name] value [set $name]]}}
  set argumentRows {};foreach name {::capGetDRCList ::GetDRCErrorMessage ::GetDRCSettings} {set args {};if {[llength [info procs $name]]} {foreach arg [info args $name] {lappend args [cmcp::q $arg]}};lappend argumentRows [cmcp::obj command [cmcp::q $name] procedureArgs [cmcp::arr $args]]}
  set countsBefore {};set countsAfter {};set rc [catch {
-  set designName [DboTclHelper_sMakeStdStr DESIGN]
+  set designName [DboTclHelper_sMakeStdStr [::cmcpBridge::nameOf $design]]
   foreach severity {DRC_ERROR DRC_WARNING} {set constant ::COrDRCTclInterface_$severity;if {[info exists $constant]} {lappend countsBefore [cmcp::obj severity [cmcp::q $severity] count [::COrDRCTclInterface_GetElectricalDRCCount $designName [set $constant]]]}}
   set runResult [::COrDRCTclInterface_CleanAndRunOnlineDRC $design]
   foreach severity {DRC_ERROR DRC_WARNING} {set constant ::COrDRCTclInterface_$severity;if {[info exists $constant]} {lappend countsAfter [cmcp::obj severity [cmcp::q $severity] count [::COrDRCTclInterface_GetElectricalDRCCount $designName [set $constant]]]}}

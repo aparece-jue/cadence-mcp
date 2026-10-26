@@ -1,5 +1,7 @@
 # Capture24.1原生离线DRC验证
 
+本页保留第100批离线菜单验证；第101批原生项目重开、提示失败及计数键修复见[drc-counts.md](drc-counts.md)。
+
 24.1安装内用户指南CAP-DRC-RUN24要求在项目管理器选择DSN，使用PCB→Design Rules Check。旧的Tools路径在本机返回No MenuID Found，未调用配置回调。此PCB菜单属于Capture原理图DRC，不表示项目包含Allegro开发。
 
 原生菜单通过CAP-DRC-ACTION的回调取得配置。私有诊断暂时替换配置窗口启动函数，返回原生配置加DoModal=1，再在finally恢复函数；不是把“关闭配置框”当作运行证据。实际取得新DRC报告，全部原四个输出冲突检出，收到晚到结束回执，原函数和配置均恢复。仍没有可公开的MCP原生DRC执行任务。

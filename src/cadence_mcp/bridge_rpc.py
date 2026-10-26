@@ -90,7 +90,7 @@ class RpcConnection:
             if row['status']!='succeeded':
                 code=row['code']
                 allowed={'deadline_exceeded','stale_generation','session_lost','session_limit','session_conflict',
-                         'target_changed','result_limit','no_active_page','dbo_error','capability_unavailable','invalid_drc_configuration',
+                         'target_changed','result_limit','no_active_page','dbo_error','capability_unavailable','invalid_drc_configuration','invalid_drc_counts',
                          'write_denied','write_access_required','dirty_design','stale_plan','plan_limit','state_indeterminate','object_not_found','ambiguous_target','unknown_outcome','bridge_busy'}
                 raise CadenceError(code if code in allowed else 'bridge_protocol_error','Capture rejected the bridge request.','gui_bridge')
             if operation!='property.apply' and sha256(design)!=expected_hash:raise CadenceError('target_changed','Bound file changed during request.')
@@ -153,7 +153,7 @@ class GuiBridgeManager:
 
     def query(self,session_id,entity):
         with self.lock:
-            if entity not in {'status','pages','selection','drc_configuration'}:raise CadenceError('capability_unavailable','Only typed read queries are enabled.')
+            if entity not in {'status','pages','selection','drc_configuration','drc_counts'}:raise CadenceError('capability_unavailable','Only typed read queries are enabled.')
             if session_id not in self.sessions:raise CadenceError('session_lost','GUI session is detached or lost.')
             session=self.sessions[session_id]
             try:
@@ -167,6 +167,9 @@ class GuiBridgeManager:
             if entity=='drc_configuration':
                 from .drc_configuration import decode_drc_configuration
                 data=decode_drc_configuration(data)
+            elif entity=='drc_counts':
+                from .drc_configuration import decode_drc_counts
+                data=decode_drc_counts(data)
             return {'sessionId':session_id,'generation':reply['generation'],**data}
 
     def detach(self,session_id):
