@@ -34,12 +34,12 @@
   },
   "toolCount": 203,
   "latestFullRegression": {
-    "total": 572,
-    "passed": 571,
+    "total": 575,
+    "passed": 574,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-572-drc-configuration-final-20261026.txt"
+    "evidence": ".local/regression-575-native-drc-locations-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "4f75d41b659d8b41f85a3e49cf2b53dd804fb4ea78e97edf0cf652abd55513f1"
+  "acceptanceCanonicalSha256": "98ce7f75b5671b45bd1282d7e39b094f75c46c0969fd9dc6c5d30ddebcbb733c"
 }

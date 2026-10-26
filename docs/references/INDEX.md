@@ -49,5 +49,9 @@
 | SIM-LIB-BREAKOUT | 官方库私有副本75顶层/32局部定义核验，原始模型不上传 | `tools/pspice/library/breakout.lib` | `987c7563ecfc` |
 | SIM-LIB-READ-SCOPE | LIB按需读取定义与INC全文读取的区别；不证明未知/加密库语义 | `doc/pspug/003_model_Configuring_Model_Libraries.html` | `5a70a565ae59` |
 | CAP-DRC-UI-FIELDS | DRC普通/在线字段及ERC行列；Run提交配置、Apply保存配置，不证明实际规则执行 | `tools/capture/tclscripts/capDRCConfig/hybrid/nativeJS/DRCConfig.js` | `c0d1ed48526a` |
+| CAP-DRC-RUN24 | 24.1原生DRC由PCB菜单启动，需选择DSN；运行可保存设计/设置 | `doc/cap_ug/Running_Design_Rules_Check_-_Physical_Rules.html` | `e50aa4214504` |
+| CAP-TCL-MENU-MACRO | SelectPMItem、Menu及MessageBox宏示例；末尾日志提示宏尚未验收 | `doc/orctclcap/Common_Tips_and_Tricks.html` | `0791f43fb27b` |
+| CAP-DRC-ACTION | 原生DRC菜单到配置返回回调的调用链 | `tools/capture/tclscripts/capAutoLoad/capAutoDRCConfigInit.tcl` | `3dab4431557c` |
+| CAP-LOWPASS-OPJ | 24.1随附模板仍含历史项目字段，不能据此认定运行版本17.4 | `tools/capture/templates/pspice/LowPassFilters.opj` | `1cbe75c241c8` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

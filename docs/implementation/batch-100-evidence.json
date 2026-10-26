@@ -1,0 +1,55 @@
+{
+  "batch": 100,
+  "date": "2026-10-26",
+  "tools": 203,
+  "goalComplete": false,
+  "actualExecutableVersion": "24.1-2024",
+  "nativeOfflineConflictScopeAccepted": true,
+  "originalOnlineConflictFailureRetained": true,
+  "fullV03Accepted": false,
+  "originalConflictPins": [
+    "R1.2",
+    "R_load.2",
+    "R_Load1.2",
+    "C1.1"
+  ],
+  "nativeErrorCount": 13,
+  "nativeOrcap1628Count": 7,
+  "locatedDiagnosticCount": 13,
+  "originalDefinitionPinNetAndTypesPreserved": true,
+  "callbackRestored": true,
+  "configurationUnchanged": true,
+  "nativeAutoSavedPrivateDsnOpj": true,
+  "initialImmutableSourceExpectationFailedRetained": true,
+  "oldToolsMenuRefusedBeforeCallback": true,
+  "nativeLogPromptHandledByUser": true,
+  "nativeLogPromptMacroVerified": false,
+  "secondLegacyOpjOpenBlocked": true,
+  "directDsnWithoutOpjPreparedOnly": true,
+  "latestFullRegression": {
+    "total": 575,
+    "passed": 574,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-575-native-drc-locations-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/offline-drc-fixture-host-20261026/report.json": "57e89edec9bea54316bd45e91dd0a245996d233eeaf2485ed0908e68e5ec38a6",
+    ".local/offline-drc-fixture-host-20261026/opened.json": "0435c4282b015d84aa17efa3bf1b6ea7477edac33ce93d74a85ca201578bd1b4",
+    ".local/offline-drc-rebound-20261026/report.json": "b37bdf6316e333ac79f622c6f79ee700a638f447ab1a842e26826c2c2c8e2a97",
+    ".local/offline-native-menu-drc-20261026/report.json": "12b0f493f3841f88fbb8b5ad0eafa9e7720c7e2fa237ce3652db7b25bdf8afc6",
+    ".local/offline-native-menu-drc-v2-20261026/report.json": "6ec715b728658a386c83058a7ed813370bf1c3f3a3a252e494dcb1f2cf8a9437",
+    ".local/offline-native-menu-drc-v2-20261026/native-result.json": "e19acf3482f778b3b6b9c02b225f783dbc0210fe8143a0e7858b238b7a2c73ee",
+    ".local/offline-native-menu-drc-audit-20261026/report.json": "17648f56cb5a5536997b9416053b6f2ada3f2eb0705004578b12cc145054d4ac",
+    ".local/offline-native-menu-drc-audit-20261026/parsed-locations.json": "f255fb4b9686598972aa09c9f857b826cb031e993aa203d11da441a4bbd6c5c4",
+    ".local/offline-drc-fixture-v2-host-20261026/report.json": "494d05b97f60339b1a2c9affdea3394f8db989bb35ffd7c3d271128ba5eb5b33",
+    ".local/regression-575-native-drc-locations-20261026.txt": "1c08ab4ba712fd53b347db734387186680954d66464023325eb06840f85fd965"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/drc.py": "12358cb277960308382766a0b05c479df07b570c25bf944c29d92140c3a3fe2b",
+    "tests/test_drc.py": "8d9669b7113b33479500d3fc3d5083c94e130ace28fe8ebc310488b0e563b537",
+    "tools/probe_native_menu_drc.py": "2093b0ba3ec665ae1ad398056080d979eb29756b34fa13fa5f5be6914545d646",
+    "tools/audit_native_menu_drc.py": "79968b4c353df7c0fd8676444ebd6f6a68fc52057fbae2ddbeb33f10b729c032"
+  }
+}
