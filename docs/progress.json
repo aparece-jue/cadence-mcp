@@ -8,9 +8,9 @@
   "statusCounts": {
     "passed": 6,
     "baseline_passed": 1,
-    "implemented_partial": 7,
+    "implemented_partial": 8,
     "deferred": 18,
-    "planned": 2,
+    "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
     "unverified": 0
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-595-native-profile-aliases-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "5bea4ec60565e13d260ab5e4519b943e3ae3493570c32cdb00027004a508eda0"
+  "acceptanceCanonicalSha256": "4bd64e90c5760d48a4654bd74985a2ddb8f461c12ba5cbc043bc5a3facea9fbb"
 }

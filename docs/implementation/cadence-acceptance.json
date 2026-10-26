@@ -2016,13 +2016,19 @@
         ".local/profile-private-ini-portable-20261026/report.json",
         ".local/private-profile-alias-portable-audit-20261026/report.json",
         ".local/private-ini-portable-ac-mcp-20261026/report.json",
-        ".local/regression-595-native-profile-aliases-20261026.txt"
+        ".local/regression-595-native-profile-aliases-20261026.txt",
+        ".local/p05-modified-netlist-20261026/report.json",
+        ".local/p05-modified-project-netlist-20261026/report.json",
+        ".local/p05-baseline-netlist-20261026/report.json",
+        ".local/p05-cycle-chain-audit-v2-20261026/report.json",
+        ".local/p05-modified-project-export-verified-20261026/report.json",
+        ".local/p05-missing-project-guard-20261026/guard-report.json"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch104: different complete private projects exported in the existing authenticated host without GUI switching; sourceOPJ andDSN/active binding preserved. Bare DSN failsORNET1165, missing same-stemOPJ now refused before dispatch in the prototype. Formal MCP input-generation tasks and original nominal/folded-reference scope remain open."
     },
     {
       "id": "P01",
@@ -2304,9 +2310,9 @@
         "SIM-CLI",
         "SIM-ENGINE"
       ],
-      "implementation": "设计revision->输入manifest->求解->结果来源闭环",
+      "implementation": "Existing MCP property/CLI tasks plus authenticated fixed native generation prototype; complete formal native-generation MCP task contracts are next.",
       "acceptance": "副本电阻值修改后预期电压变化，独立重开、旧结果不能复用",
-      "status": "planned",
+      "status": "implemented_partial",
       "evidence": [
         ".local/profile-private-ini-literal-20261026/report.json",
         ".local/private-ini-profile-ac-mcp-20261026/report.json",
@@ -2319,11 +2325,30 @@
         ".local/profile-private-ini-portable-20261026/report.json",
         ".local/private-profile-alias-portable-audit-20261026/report.json",
         ".local/private-ini-portable-ac-mcp-20261026/report.json",
-        ".local/regression-595-native-profile-aliases-20261026.txt"
+        ".local/regression-595-native-profile-aliases-20261026.txt",
+        ".local/p05-resistor-iteration-20261026/property-report.json",
+        ".local/p05-resistor-iteration-20261026/expected.json",
+        ".local/p05-modified-netlist-20261026/report.json",
+        ".local/p05-modified-project-netlist-20261026/report.json",
+        ".local/p05-baseline-netlist-20261026/report.json",
+        ".local/p05-native-inputs-20261026/report.json",
+        ".local/p05-parameter-cycle-mcp-20261026/report.json",
+        ".local/p05-cycle-chain-audit-20261026/report.json",
+        ".local/p05-cycle-chain-audit-v2-20261026/report.json",
+        ".local/p05-modified-project-export-verified-20261026/report.json",
+        ".local/p05-portable-native-inputs-20261026/report.json",
+        ".local/p05-portable-cycle-mcp-20261026/report.json",
+        ".local/p05-portable-audit-argument-failure-20261026.json",
+        ".local/p05-portable-audit-namespace-followup-20261026.json",
+        ".local/p05-portable-cycle-audit-v3-20261026/report.json",
+        ".local/p05-missing-project-guard-20261026/guard-report.json",
+        ".local/p05-original-preservation-20261026/report.json"
       ],
-      "issues": [],
-      "implementationReady": false,
-      "remaining": "Original gate remains planned: native configured baseline AC now accepted for original scalar DSN export with complete ALS/NET and four independent complex values; parameter-edit iteration, formal native-generation MCP tasks and stale-output cycle remain unimplemented/unaccepted. Original nominal library case unchanged."
+      "issues": [
+        "ISS-P05-native-generation-not-public"
+      ],
+      "implementationReady": true,
+      "remaining": "Original resistor500ohm→1kohm iteration now passes real property write/reopen, fresh NET/ALS and native profile CIR, two MCP CLI solves with frozen complex expectations, explicit source provenance, old-DAT prestart refusal and fresh-server idempotence. Native-generation phases remain controlled development scripts rather than formal MCP tasks. Task lifecycle/fault/path acceptance and remaining original V04/P04 joint gates remain; full P05 not promoted."
     },
     {
       "id": "A01",
@@ -3303,6 +3328,14 @@
       "summary": "Native generator folds long absolute INC into quoted directory plus continuation quoted filename. Original single-line include oracle failed; generic preparation of this format has not been accepted. Relative explicit ALS include succeeds without changing this original case.",
       "evidence": ".local/profile-private-ini-explicit-alias-20261026/report.json",
       "remaining": "Implement and accept native folded file-reference parsing with exact source-line binding and path boundaries, preserving original generated CIR."
+    },
+    {
+      "id": "ISS-P05-native-generation-not-public",
+      "featureId": "P05",
+      "status": "open",
+      "summary": "Actual resistor iteration prototype passes, but NET/ALS and profile-CIR generation are not yet registered as typed durable MCP tasks.",
+      "evidence": ".local/p05-portable-cycle-audit-v3-20261026/report.json",
+      "remaining": "Implement the two native-generation task phases and their original lifecycle/source/path/fault acceptance; then rerun P05 through MCP only."
     }
   ],
   "excluded": [
@@ -3341,7 +3374,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Advance P05: approved Value edit in a private DSN, fresh host-native NET+ALS generation, native configured CIR and independent changed-voltage expectations with stale-output refusal; preserve nominal-library and folded-reference failures.",
+    "nextIndependentWork": "Implement docs/design/08 native NET/ALS task family first, with explicit project/DSN/profile identity, authenticated host forwarding and receipt-only completion; then independent profile/CIR task family and MCP-only P05 lifecycle rerun.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3401,7 +3434,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": true,
+    "fullRegressionRunThisBatch": false,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -3828,7 +3861,14 @@
     "privateNativeProfileAcEvidence": ".local/private-ini-portable-ac-mcp-20261026/report.json",
     "privateNativeAliasesAuditEvidence": ".local/private-profile-alias-portable-audit-20261026/report.json",
     "nativeNoSavedTracesRecoveryEvidence": ".local/private-profile-no-traces-recovery-20261026/report.json",
-    "fullP05Accepted": false
+    "fullP05Accepted": false,
+    "parameterIterationPrototypeAccepted": true,
+    "parameterIterationMcpOnlyAccepted": false,
+    "parameterIterationEvidence": ".local/p05-parameter-cycle-mcp-20261026/report.json",
+    "parameterIterationAuditEvidence": ".local/p05-portable-cycle-audit-v3-20261026/report.json",
+    "nativeNetlistDifferentPrivateProjectAccepted": true,
+    "nativeNetlistMissingProjectGuardAccepted": true,
+    "nativeNetlistGenerationMcpAvailable": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

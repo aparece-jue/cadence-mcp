@@ -1,0 +1,88 @@
+{
+  "scope": "Original required P05 resistor change500ohm to1kohm, other circuit parameters fixed; complex voltages frozen before DSN mutation",
+  "sourceFingerprint": "77dca668ad134b7159d94971d612152209524be9b7705688b1af719ccf9bf517",
+  "change": {
+    "reference": "R1",
+    "property": "Value",
+    "before": "500",
+    "after": "1k"
+  },
+  "cases": {
+    "before": [
+      {
+        "block": 0,
+        "row": 0,
+        "traceName": "V(N00509)",
+        "real": 0.6666652337494039,
+        "imaginary": -0.0009773822803503965,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 0,
+        "traceName": "V(N00813)",
+        "real": 0.9999984208657895,
+        "imaginary": -0.0012566350770373434,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 99,
+        "traceName": "V(N00509)",
+        "real": 0.06946237401410504,
+        "imaginary": -0.20367431831004437,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 99,
+        "traceName": "V(N00813)",
+        "real": 0.1366764984976091,
+        "imaginary": -0.3435055068787721,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      }
+    ],
+    "after": [
+      {
+        "block": 0,
+        "row": 0,
+        "traceName": "V(N00509)",
+        "real": 0.4999975819586157,
+        "imaginary": -0.0010995521112056933,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 0,
+        "traceName": "V(N00813)",
+        "real": 0.9999984208657895,
+        "imaginary": -0.0012566350770373434,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 99,
+        "traceName": "V(N00509)",
+        "real": 0.024576757966292287,
+        "imaginary": -0.10809422718634161,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      },
+      {
+        "block": 0,
+        "row": 99,
+        "traceName": "V(N00813)",
+        "real": 0.1366764984976091,
+        "imaginary": -0.3435055068787721,
+        "absoluteTolerance": 2e-05,
+        "relativeTolerance": 0.0001
+      }
+    ]
+  }
+}
