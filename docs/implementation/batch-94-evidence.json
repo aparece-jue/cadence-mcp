@@ -1,0 +1,46 @@
+{
+  "batch": 94,
+  "date": "2026-10-26",
+  "goalComplete": false,
+  "tools": 202,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 554,
+    "passed": 553,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
+  },
+  "privateRuleEnableObserved": false,
+  "privateRuleConfigRestored": true,
+  "appOwnedWireAccepted": false,
+  "appOwnedWireNextPageCode": 3969,
+  "hostExitClaimCorrected": true,
+  "capturePid": 20696,
+  "openMutationReplayed": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "evidenceSha256": {
+    ".local/drc-private-rule-20261026/report.json": "95288369f1c578a7f8de3b1032b35d6f819f6d3a7f15fd1fd562d4d2f07b7bb9",
+    ".local/blank-app-wire-20261026/report.json": "648f1e8dc6c5657435e24c57fa4bdc94db7967d165e7796cfbac6112f8fc81db",
+    ".local/blank-app-wire-host-20261026/report.json": "aa72fa1e116b7f642590e942a89995655d4dfb603152107980b8096f8cdfd4ca",
+    ".local/blank-app-wire-host-20261026/opened.json": "25e299f89aa9ebfdcfa94fcb150c344ed361e2ffe9d40a37f9f8e0d35f1dcb04",
+    ".local/blank-app-wire-open-audit-20261026/report.json": "3deb5bd9d39429aa0433e3795ec71662109a630da8a5544d8b6fdf7f858fd3b9",
+    ".local/blank-app-wire-binding-20261026/report.json": "a4eea82eb1bbf931312d2c1c65a2ab499cee6eb2ddf168411519a893ff59e37f",
+    ".local/app-session-wire-20261026/report.json": "84e043d2e084cb38721d5b4fa25e0f9dd202695dac107af19fe0c79370d79752",
+    ".local/app-session-wire-audit-20261026/report.json": "a571050b789019389e64fb5a79f7b504a66d1baac11f69ad3d2c89ec8cfdee6a"
+  },
+  "implementationSha256": {
+    "tools/audit_app_session_wire.py": "3bce3dd2226b9c6ceb97ba24e09ed88a9c8949a66b174bb3a42f0c7cda46c58d",
+    "tools/fixture_blank_capture_wire.tcl": "df8a0d6e736c4927f0bf6e49956a7155dde3f64f2cc99a222b11b0b9d9db9450",
+    "tools/prepare_blank_capture_wire.py": "403f6d81a64b6212092955a9312f1e89329c5a68b6de719690e93ceb445472b3",
+    "tools/probe_app_session_wire.py": "ea98f615b912a34c3ff2df2bd31b39c46498c9e7fc237d05ab64b150c0a2f6b8",
+    "tools/probe_private_drc_rule.py": "7cbbfa7fdd54c9f374b47306530ab528f0ce2434d213e5e2ddfb36c7709dcf61"
+  }
+}

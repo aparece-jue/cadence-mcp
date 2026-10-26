@@ -291,11 +291,18 @@
         ".local/bridge-atomic-native-20261023.txt",
         ".local/host-recovery-20261026/report.json",
         ".local/late-capture-wire-audit-20261026/report.json",
-        ".local/drc-error-host-20261026/report.json"
+        ".local/drc-error-host-20261026/report.json",
+        ".local/blank-app-wire-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/opened.json",
+        ".local/blank-app-wire-open-audit-20261026/report.json",
+        ".local/blank-app-wire-binding-20261026/report.json",
+        ".local/app-session-wire-20261026/report.json",
+        ".local/app-session-wire-audit-20261026/report.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests. Batch91: startup product modal resolved once; authenticated read-only binding recovered in PID20696, then explicitly switched between clean private fixtures using fixed guarded Open. Does not certify every original bridge gate."
+      "remaining": "最终门禁仍需对应回归；未扩大既有支持范围 Endpoint descriptor publication race fixed by closed temporary file plus no-overwrite rename. Native Tcl protocol/boundary tests pass; new actual Capture GUI reload is not reaccepted by these harness tests. Batch91: startup product modal resolved once; authenticated read-only binding recovered in PID20696, then explicitly switched between clean private fixtures using fixed guarded Open. Does not certify every original bridge gate. Batch94: private minimal OPJ Open waits on Update Old Project modal. Restricted process query incorrectly suggested exit; UI and elevated process query prove same20696 alive. None/no conversion, accidentally toggled do-not-ask immediately restored unchecked; late original Open receipt observed, no replay. Fresh authenticated binding on private blank design ready."
     },
     {
       "id": "C01",
@@ -1284,7 +1291,14 @@
         ".local/wire-point-construction-20261026/audit.json",
         ".local/wire-capture-context-v2-20261026/report.json",
         ".local/wire-page-size-20261026/report.json",
-        ".local/late-capture-wire-audit-20261026/report.json"
+        ".local/late-capture-wire-audit-20261026/report.json",
+        ".local/blank-app-wire-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/opened.json",
+        ".local/blank-app-wire-open-audit-20261026/report.json",
+        ".local/blank-app-wire-binding-20261026/report.json",
+        ".local/app-session-wire-20261026/report.json",
+        ".local/app-session-wire-audit-20261026/report.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -1292,7 +1306,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate."
+      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested."
     },
     {
       "id": "D04",
@@ -1700,13 +1714,14 @@
         ".local/drc-profile-commands-20261026/report.json",
         ".local/drc-config-read-20261026/report.json",
         ".local/drc-config-read-20261026/commands.json",
-        ".local/drc-settings-read-20261026/commands.json"
+        ".local/drc-settings-read-20261026/commands.json",
+        ".local/drc-private-rule-20261026/report.json"
       ],
       "issues": [
         "ISS-V03-capture-runtime-inventory-timeout"
       ],
       "implementationReady": false,
-      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending. Batch92: actual read-only capGetDRCConfigData proves online electrical rule flags all0 while overall online flow1 and OUT/OUT ERC severity E. Per-design GetDRCSettings queried candidate internal keys returns default unknown, so no guessed EnableDRC or global config write executed. Prior error oracle remains failed; explicit rule coverage/enablement still required."
+      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending. Batch92: actual read-only capGetDRCConfigData proves online electrical rule flags all0 while overall online flow1 and OUT/OUT ERC severity E. Per-design GetDRCSettings queried candidate internal keys returns default unknown, so no guessed EnableDRC or global config write executed. Prior error oracle remains failed; explicit rule coverage/enablement still required. Batch94: private per-design EnableDRC(\"DRC_Check_Unconnected_Nets_Online\",true) returns1, but config readback unchanged0; DRC execution intentionally refused, finally restorefalse returns1 and full config/source/OPJ hashes unchanged. Return value alone does not prove rule enabled."
     },
     {
       "id": "V04",
@@ -2408,9 +2423,17 @@
         ".local/wire-capture-context-v2-20261026/desktop-observation.json",
         ".local/wire-page-size-20261026/report.json",
         ".local/page-dimensions-probe-20261026/passing-wire-actual.json",
-        ".local/page-dimensions-probe-20261026/audit.json"
+        ".local/page-dimensions-probe-20261026/audit.json",
+        ".local/blank-app-wire-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/report.json",
+        ".local/blank-app-wire-host-20261026/opened.json",
+        ".local/blank-app-wire-open-audit-20261026/report.json",
+        ".local/blank-app-wire-binding-20261026/report.json",
+        ".local/app-session-wire-20261026/report.json",
+        ".local/app-session-wire-audit-20261026/report.json"
       ],
-      "latestObservation": "New20 constructor/initialization/Expand/root-constructor comparisons yield no full topology pass. bNewVersion1 removes3969 only by creating0 page-owned wires, and is rejected. Defaults/version0 persist1 wire but NextPage3969. Native message text empty, version fields same as passing existing design; root cause unresolved. Production strict checks unchanged. Batch85: actual NewNetScalar before wire and InitUndoRedoData still reopen3969; three UpdatePageState variants exit3221225477 with before-call marker and no after-call marker. All owned processes terminated. These APIs are not a fix; standalone context only, no GUI/general SDK impossibility claim. Batch86: empty wire plus NewPoint bNewVersion0 still3969; version1 has0 owned wires and is rejected; SetPoint on empty wire returns1003. Capture-host forwarding to explicit private PID20696 produced no boot/receipt; existing Simulation Manager product-choice and nonresponding Capture titles observed, no actionable control. Dispatch unacknowledged, no replay, no host write result claimed. Batch90: default0x0 and five explicit9700x7200 size initialization before/after-wire variants still NextPage3969. A previously accepted wire page also has0x0 doc size. Size-only fix hypothesis is rejected for these fixtures; original error remains open."
+      "latestObservation": "Same3969 after actual app-owned Capture session creates/saves fresh-wire design; not explained solely by separate Dbo session. Original independent expected geometry preserved.",
+      "latestEvidence": ".local/app-session-wire-audit-20261026/report.json"
     },
     {
       "id": "ISS-H04-native-page-3969",
@@ -2906,7 +2929,9 @@
       ],
       "expected": "Detect deliberate conflicting output pins; do not accept a zero-error report as clean electrical evidence.",
       "latestEvidence": ".local/drc-config-read-20261026/commands.json",
-      "latestObservation": "All online electrical flags0; flow enabled1 and ERC OUT/OUT=E. This is a demonstrated configuration gap, not a fully proven sole cause or accepted repair."
+      "latestObservation": "All online electrical flags0; flow enabled1 and ERC OUT/OUT=E. This is a demonstrated configuration gap, not a fully proven sole cause or accepted repair.",
+      "latestEnableEvidence": ".local/drc-private-rule-20261026/report.json",
+      "latestEnableObservation": "Per-design native EnableDRC returns1 but public config remains0; no DRC run, config restored and DSN/OPJ unchanged. Exact accepted rule identifier/coverage unresolved."
     },
     {
       "id": "ISS-V04-native-nominal-library-encoding",
@@ -2976,7 +3001,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Resolve native model-use/external FILE dependencies without weakening original oracle; continue explicit per-design DRC coverage/configuration and all original34 gates.",
+    "nextIndependentWork": "Verify actual schematic editor/page initialization before fresh-wire construction; determine explicit native DRC rule identifiers/configuration and continue native model-use/external dependency closure without weakening original34 gates.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3036,7 +3061,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": true,
+    "fullRegressionRunThisBatch": false,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -3145,7 +3170,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 93,
+    "batch": 94,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3410,7 +3435,15 @@
     "nativeNominalPreparedFiles": 215,
     "nativeNominalByteAudit": ".local/native-model-byte-audit-20261026/report.json",
     "nativeNominalSolverAccepted": false,
-    "preservedCliRecoveryEvidence": ".local/preserved-cli-recovery-20261026/report.json"
+    "preservedCliRecoveryEvidence": ".local/preserved-cli-recovery-20261026/report.json",
+    "appOwnedWireEvidence": ".local/app-session-wire-20261026/report.json",
+    "appOwnedWireStatusAudit": ".local/app-session-wire-audit-20261026/report.json",
+    "appOwnedWireAccepted": false,
+    "privateRuleEnableObserved": false,
+    "privateRuleConfigRestored": true,
+    "privateRuleEvidence": ".local/drc-private-rule-20261026/report.json",
+    "privateCaptureActiveDesign": ".local/blank-app-wire-20261026/MCP_HOST_WIRE.dsn",
+    "lateOpenAudit": ".local/blank-app-wire-open-audit-20261026/report.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }
