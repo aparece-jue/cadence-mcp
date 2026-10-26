@@ -48,5 +48,6 @@
 | SIM-LIB-PARSER-CALLER | 官方getLibJson使用parseLib的依据；未source整体服务或调用上传函数 | `share/orTclscripts/tclscripts/orPSpiceSrvrEnv/orPSpiceSrvr.tcl` | `16dcb21a325d` |
 | SIM-LIB-BREAKOUT | 官方库私有副本75顶层/32局部定义核验，原始模型不上传 | `tools/pspice/library/breakout.lib` | `987c7563ecfc` |
 | SIM-LIB-READ-SCOPE | LIB按需读取定义与INC全文读取的区别；不证明未知/加密库语义 | `doc/pspug/003_model_Configuring_Model_Libraries.html` | `5a70a565ae59` |
+| CAP-DRC-UI-FIELDS | DRC普通/在线字段及ERC行列；Run提交配置、Apply保存配置，不证明实际规则执行 | `tools/capture/tclscripts/capDRCConfig/hybrid/nativeJS/DRCConfig.js` | `c0d1ed48526a` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

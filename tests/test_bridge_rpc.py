@@ -80,6 +80,13 @@ class NativeRpcTests(unittest.TestCase):
         temp.write_text(json.dumps({'path':str(path or self.design),'dirty':dirty}),encoding='utf-8');temp.replace(target)
         time.sleep(0.35)
 
+    def test_missing_native_drc_configuration_is_unavailable(self):
+        hello=self.connection.call('hello',{});g=hello['generation'];sid=uuid.uuid4().hex
+        self.assertNotIn('drc_configuration',hello['data']['capabilities'])
+        self.connection.call('session.open',{'sessionId':sid,'generation':g})
+        with self.assertRaises(CadenceError) as error:self.connection.call('drc_configuration',{'sessionId':sid,'generation':g})
+        self.assertEqual(error.exception.code,'capability_unavailable')
+
     def test_auth_deadline_and_instance(self):
         self.assertIsNone(self.request(token='bad'))
         self.assertIsNone(self.request(instanceId='wrong'))

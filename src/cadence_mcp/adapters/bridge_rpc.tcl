@@ -119,6 +119,34 @@ proc ::cmcpBridge::selection {snapshotId} {
     }
     return [cmcp::obj selectionSnapshotId [cmcp::q $snapshotId] pageName [cmcp::q [nameOf $page]] items [cmcp::arr $result] complete true writable false]
 }
+proc ::cmcpBridge::drc_configuration {} {
+    foreach command {::capGetDRCConfigData ::capIsOnlineDrcEnabled ::COrDRCTclInterface_sIsDRCFlowEnabled} {
+        if {![llength [info commands $command]]} {error capability_unavailable}
+    }
+    set raw [::capGetDRCConfigData]
+    if {[string bytelength $raw]>65536} {error result_limit}
+    set parsed [::json::json2dict $raw]
+    if {![dict exists $parsed DesignPath] || ![string equal -nocase [file normalize [dict get $parsed DesignPath]] [activeDesign]]} {error target_changed}
+    # Compact only inspected flags and ERC data before crossing the16KiB transport.
+    set fields {};set count 0
+    foreach key [lsort [dict keys $parsed]] {
+        if {![string match Run* $key]} {continue}
+        if {[incr count]>128 || ![regexp {^Run[A-Za-z]+$} $key] || [dict get $parsed $key] ni {0 1}} {error invalid_drc_configuration}
+        lappend fields $key [cmcp::q [dict get $parsed $key]]
+    }
+    set matrix {};set expected {IN_PIN IO_PIN OUT_PIN OC_PIN PAS_PIN HIZ_PIN OE_PIN IN_PORT IO_PORT OUT_PORT OC_PORT PAS_PORT HIZ_PORT OE_PORT DBGLOBAL UNCONNECTED}
+    if {![dict exists $parsed ERCMatrix] || [lsort [dict keys [dict get $parsed ERCMatrix]]] ne [lsort $expected]} {error invalid_drc_configuration}
+    foreach key $expected {
+        set values [dict get $parsed ERCMatrix $key];if {[llength $values]!=16} {error invalid_drc_configuration}
+        set cells {};foreach value $values {if {$value ni {- W E}} {error invalid_drc_configuration};lappend cells [cmcp::q $value]}
+        lappend matrix $key [cmcp::arr $cells]
+    }
+    lappend fields ERCMatrix [cmcp::obj {*}$matrix]
+    set raw [cmcp::obj {*}$fields]
+    set online [::capIsOnlineDrcEnabled];set flow [::COrDRCTclInterface_sIsDRCFlowEnabled]
+    if {$online ni {0 1} || $flow ni {0 1}} {error invalid_drc_configuration}
+    return [cmcp::obj nativeConfiguration [cmcp::q $raw] onlineEnabled [expr {$online?"true":"false"}] flowEnabled [expr {$flow?"true":"false"}]]
+}
 proc ::cmcpBridge::rpcReply {request status data {code ""}} {
     variable config; variable generation
     return [cmcp::obj protocol 2 requestId [cmcp::q [dict get $request requestId]] instanceId [cmcp::q [dict get $config instanceId]] pid [pid] generation $generation status [cmcp::q $status] code [cmcp::q $code] data $data]
@@ -141,6 +169,7 @@ proc ::cmcpBridge::rpc {request} {
     if {$operation eq "hello"} {
         if {[dict size $params]} {error "extra params"}
         set caps [list [cmcp::q status] [cmcp::q pages] [cmcp::q selection]]
+        if {[llength [info commands ::capGetDRCConfigData]] && [llength [info commands ::capIsOnlineDrcEnabled]] && [llength [info commands ::COrDRCTclInterface_sIsDRCFlowEnabled]]} {lappend caps [cmcp::q drc_configuration]}
         set writable [expr {[dict exists $config allowPropertyWrite] && [dict get $config allowPropertyWrite]}]
         if {$writable} {lappend caps [cmcp::q property.plan] [cmcp::q property.apply] [cmcp::q property.outcome]}
         return [rpcReply $request succeeded [cmcp::obj activeDesign [cmcp::q $path] dirtyState [cmcp::q $dirty] bindingLost [expr {$lost ? "true" : "false"}] executable [cmcp::q [file normalize [info nameofexecutable]]] tclVersion [cmcp::q [info patchlevel]] capabilities [cmcp::arr $caps] writable [expr {$writable ? "true" : "false"}] sessionCount [dict size $sessions] propertyPlanCount [dict size $propertyPlans] observerMode [cmcp::q polling_and_registered_events]]]
@@ -177,11 +206,12 @@ proc ::cmcpBridge::rpc {request} {
     if {![dict exists $sessions $sid] || [dict get $params generation] ne $generation} {return [rpcReply $request failed [cmcp::obj] session_lost]}
     dict set sessions $sid expires [expr {[clock milliseconds]+600000}]
     if {$operation eq "session.close"} {dict unset sessions $sid; return [rpcReply $request succeeded [cmcp::obj closed true]]}
-    if {$operation ni {status pages selection}} {return [rpcReply $request failed [cmcp::obj] capability_unavailable]}
+    if {$operation ni {status pages selection drc_configuration}} {return [rpcReply $request failed [cmcp::obj] capability_unavailable]}
     set before $generation
     set rc [catch {
         switch -- $operation {
             status {set data [cmcp::obj activeDesign [cmcp::q $path] dirtyState [cmcp::q $dirty] readOnly [expr {[dict get $sessions $sid access] eq "read" ? "true" : "false"}]]}
+            drc_configuration {set data [drc_configuration]}
             pages {set data [pages]}
             selection {set data [selection [dict get $request requestId]]}
         }
@@ -190,7 +220,7 @@ proc ::cmcpBridge::rpc {request} {
     if {$before != $generation || $lost} {return [rpcReply $request failed [cmcp::obj] session_lost]}
     if {[clock milliseconds] > $deadline} {return [rpcReply $request failed [cmcp::obj] deadline_exceeded]}
     if {$rc} {
-        if {$message ni {result_limit no_active_page target_changed dbo_error}} {set message dbo_error}
+        if {$message ni {result_limit no_active_page target_changed dbo_error capability_unavailable invalid_drc_configuration}} {set message dbo_error}
         return [rpcReply $request failed [cmcp::obj] $message]
     }
     return [rpcReply $request succeeded $data]

@@ -1,0 +1,45 @@
+{
+  "batch": 99,
+  "date": "2026-10-26",
+  "tools": 203,
+  "goalComplete": false,
+  "acceptedScope": "authenticated_source_bound_native_drc_configuration_read_only",
+  "onlineMasterEnabled": true,
+  "flowEnabled": true,
+  "onlineElectricalEnabledCount": 0,
+  "onlineElectricalRuleCount": 7,
+  "ercOutputToOutput": "E",
+  "rulesExecutedThisBatch": false,
+  "fullV03Accepted": false,
+  "firstResponseOverTransportLimitRetained": true,
+  "transportLimitBytes": 16384,
+  "getDrcSettingsActualFieldsReturned": "unknown",
+  "latestFullRegression": {
+    "total": 572,
+    "passed": 571,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-572-drc-configuration-final-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/drc-config-recovered-20261026/report.json": "58028749aecc42d32417738de8623c35124ae621ea89ee0c9b093d91311c6287",
+    ".local/drc-config-recovered-20261026/commands.json": "5e66df76654917c399d44fe8fd414cf1c4a8180491179855d829fa783989e570",
+    ".local/drc-exact-settings-read-20261026/report.json": "ac8d9504282a18cac9e1739044dd4c4f5c57fbb567461eca26425518a2088733",
+    ".local/drc-exact-settings-read-20261026/commands.json": "36115d19c3651a4bcf77e7d4130084334c56972ddadbc94d5b31ea9854977962",
+    ".local/drc-configuration-mcp-20261026/report.json": "e573b49e0b0209ea63aabad6518c77428986db6c6bc70a486c9ad263002e2bd9",
+    ".local/drc-configuration-mcp-v2-20261026/report.json": "bfc6c961ca015a91762e6d6bf55e18eff4926b3b7fdc42c5937ff6582105f2b1",
+    ".local/regression-572-drc-configuration-20261026.txt": "70ba4e9d2d4773134b52a5593937bf1d96c3b1091f03d2cecb1141901909d289",
+    ".local/regression-572-drc-configuration-final-20261026.txt": "a73f13febd262d04bbdafc51f9862891cfd57ebe0255d7d6e577566454ff41b9"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/drc_configuration.py": "a1c79dc1b3343dd3d4c8b843a650a2b53ceb05ad02ff3aa547ad7a3254e44cb3",
+    "src/cadence_mcp/bridge_rpc.py": "773a11f52f4e38838f451419034def340aa03e0624a268a479cebb2320a27aa4",
+    "src/cadence_mcp/adapters/bridge_rpc.tcl": "32657a487085e4e888afbda722f233bad93da80bcf5e7a1568f07c2a97949761",
+    "src/cadence_mcp/server.py": "da18d2c39e3ae4544fe62901e9583bec3b874d5d9622f710dd68fd7a31a42159",
+    "tests/test_drc_configuration.py": "6496aed9481f87d88db79d71cb94dea31b192448c4c661e59904f2be4e58a770",
+    "tests/test_bridge_rpc.py": "ed83ac96a689f5b7fb55f753f75bca355dd5b34cc8f1632ac243fc17c6c376f6",
+    "tools/smoke_drc_configuration.py": "afefcc979c7803ed0753987c3021c762dbcc6e44fa984a835a38c75aa030ef38",
+    "contracts/tools.v0.1.json": "c9fe00ce9e6b44869a1dc6bc3d0f136acb28a6d6e8223be3b4fd3cc6d92bc470"
+  }
+}

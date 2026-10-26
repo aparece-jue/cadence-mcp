@@ -399,8 +399,8 @@ def create_server(config: Config) -> MCPServer:
         return await invoke(gui.attach, instanceId, access, backend="capture_gui_bridge", coverage=("gui_session_binding",))
 
     @register(readonly=True)
-    async def capture_gui_query(sessionId: str, entity: Literal["status", "pages", "selection"]) -> ToolResult:
-        """Read live Capture state, pages or selection through a generation-bound session; never return native pointers."""
+    async def capture_gui_query(sessionId: str, entity: Literal["status", "pages", "selection", "drc_configuration"]) -> ToolResult:
+        """Read live Capture state, pages, selection or native DRC configuration; configuration does not prove rules were executed."""
         return await invoke(gui.query, sessionId, entity, backend="capture_gui_bridge",
                             coverage=("live_gui_read",), not_checked=("write_lease", "native_drc", "connectivity_validation"))
 

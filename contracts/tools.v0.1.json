@@ -1304,7 +1304,7 @@
   {
     "name": "capture_gui_query",
     "title": null,
-    "description": "Read live Capture state, pages or selection through a generation-bound session; never return native pointers.",
+    "description": "Read live Capture state, pages, selection or native DRC configuration; configuration does not prove rules were executed.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -1315,7 +1315,8 @@
           "enum": [
             "status",
             "pages",
-            "selection"
+            "selection",
+            "drc_configuration"
           ],
           "title": "Entity",
           "type": "string"
