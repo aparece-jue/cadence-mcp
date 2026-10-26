@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-595-native-profile-aliases-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "4bd64e90c5760d48a4654bd74985a2ddb8f461c12ba5cbc043bc5a3facea9fbb"
+  "acceptanceCanonicalSha256": "c6d71a4af55fe889cad235a92f85f1407d963a1f543599dcfd048141d5ef3e1e"
 }
