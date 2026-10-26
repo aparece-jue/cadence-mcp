@@ -44,5 +44,8 @@
 | SIM-REFERENCE-COMMENTS | PSpice官方分号行尾注释规则，本批只扩展显式依赖引用解析 | `doc/pspcref/01commands.html` | `0b4842419e91` |
 | SIM-PROBE64 | 官方.PROBE64输出指令示例 | `doc/psphlp/01_chap01.html` | `ed9f232bca08` |
 | SIM-CORE-PATH | CORE磁芯模型PATH数值参数，区分外部文件路径 | `doc/pspcref/02analog.html` | `98d22e318d5e` |
+| SIM-LIB-PARSER | 本地parseLib元数据入口；只记录指纹，不分发二进制 | `tools/bin/orPSpiceLibParser64.dll` | `f3c3139288a9` |
+| SIM-LIB-PARSER-CALLER | 官方getLibJson使用parseLib的依据；未source整体服务或调用上传函数 | `share/orTclscripts/tclscripts/orPSpiceSrvrEnv/orPSpiceSrvr.tcl` | `16dcb21a325d` |
+| SIM-LIB-BREAKOUT | 官方库私有副本75顶层/32局部定义核验，原始模型不上传 | `tools/pspice/library/breakout.lib` | `987c7563ecfc` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

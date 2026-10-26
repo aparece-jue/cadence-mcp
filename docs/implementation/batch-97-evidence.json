@@ -1,0 +1,46 @@
+{
+  "batch": 97,
+  "date": "2026-10-26",
+  "tools": 203,
+  "goalComplete": false,
+  "libraryMetadataAcceptedScope": "top_level_names_formal_ports_ako_only",
+  "ownDefinitionsChecked": 4,
+  "officialTopLevelDefinitions": 75,
+  "officialLocalDefinitionsNotReturned": 32,
+  "firstScopeMismatchRetained": true,
+  "nativeLibraryReachabilityAccepted": false,
+  "fullV04Accepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 560,
+    "passed": 559,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-560-native-library-metadata-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/native-library-parser-20261026/report.json": "4b9f6e2ad0c92527ad9e950b71898e83df726e70a21bdcc7ff47557b3fd485b3",
+    ".local/library-metadata-mcp-20261026/report.json": "d950fd6a5f2e6a6d23c52c36d00c03b4803828ed0961247e6ba9f70ebe7570e7",
+    ".local/library-metadata-mcp-v2-20261026/report.json": "50be39ed9d721ac8b183228852c588dcdefb5f189348d5bc5e197117265bd5ab",
+    ".local/regression-560-native-library-metadata-20261026.txt": "fc62c1b75dec3f67c0f9ea1e48dafd0bc72f822f6cfa9771665dd47cb3b00a86"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_library_metadata.py": "63e21985ea80dbad24d5fba5bdbd69f2b407582840f975eb79d4f0651facf5f7",
+    "src/cadence_mcp/adapters/inspect_pspice_library.tcl": "7eff225aab4d20c6851218e8c670aa234c505f410aa58fac9a2de7c4555cdd9f",
+    "src/cadence_mcp/server.py": "4865b496e671f239df7161a71331ac23f896ac8ad21acbd61c9afbb2e4dfa415",
+    "tests/test_pspice_library_metadata.py": "4d7f23592c846a93148ca417c520564a4159a1a5db09aadfe6538574d1d7e764",
+    "tests/test_readonly.py": "a81839d8ecf79c2c16fcb8fd17a076c68ccb9a909df1693536e8fe3cb728462e",
+    "contracts/tools.v0.1.json": "f67a22913d6d73899f9d2653924eef4b4a637783d964a9bc3623336ecbaed98f",
+    "docs/pspice-library-metadata.md": "dedea8e3d0ea0b4cc4933f36d9b8792820ca79e1227815aba9bceb88b2359246",
+    "tools/probe_local_library_parser.py": "123717e8ea6170386fa291a380fe901020382e38bd8d0a8d16329c10a81f8579",
+    "tools/probe_local_library_parser.tcl": "69d71bc2d0c46005185de0a4cb392301caa77e715c14b83b18a6ba26a079bc7a",
+    "tools/smoke_library_metadata.py": "3a3a98af637f302da04cd2f166a55a696bb388f934c1d1bb0c72fbfe0e7c5474"
+  }
+}

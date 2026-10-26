@@ -51,6 +51,7 @@ from .library_vector_query import query_library_vectors
 from .library_edit import LibraryPinEdits
 from .library_vector_edit import LibraryVectorEdits
 from .library_package_edit import LibraryPackageEdits,query_package_properties
+from .pspice_library_metadata import inspect_library_metadata
 from .pspice_input import PSpiceInputs
 from .pspice_input_checks import PSpiceInputChecks
 from .pspice_dat import PSpiceDat
@@ -679,6 +680,15 @@ def create_server(config: Config) -> MCPServer:
         return await invoke(inspect_output, config, sourceOutput, encoding,
                             coverage=("imported_out_diagnostics", "bias_voltage_tables"),
                             not_checked=("fresh_solver_run", "job_association", "measurements", "waveforms", "full_diagnostic_grammar"))
+
+    @register(readonly=True)
+    async def pspice_inspect_library(sourceLibrary: str, pinCount: Annotated[int, Field(ge=0, le=4096)] = 0,
+                                    offset: Annotated[int, Field(ge=0, le=100000)] = 0,
+                                    limit: Annotated[int, Field(ge=1, le=1000)] = 100) -> ToolResult:
+        """Inspect top-level native model/subcircuit names, AKO references and formal ports from one copied .lib; count local definitions without returning their metadata. Pin count marks matching subcircuits; it does not filter out other rows. Referenced libraries are refused; no engine execution, model-validity or dependency-closure claim."""
+        return await invoke(inspect_library_metadata, config, sourceLibrary, pinCount, offset, limit,
+                            backend="native_pspice_library_parser", coverage=("library_definition_metadata", "source_snapshot_identity"),
+                            not_checked=("dependency_closure", "model_validity", "solver", "physical_pin_mapping"))
 
     @register(readonly=False)
     async def pspice_prepare(sourceCircuit: str, inputEncoding: Literal["utf-8", "preserve-bytes"] = "utf-8", inputBudget: Literal["standard", "extended"] = "standard") -> ToolResult:

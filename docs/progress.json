@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 202,
+  "toolCount": 203,
   "latestFullRegression": {
-    "total": 554,
-    "passed": 553,
+    "total": 560,
+    "passed": 559,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
+    "evidence": ".local/regression-560-native-library-metadata-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "c07cd0f224d3114d4c171e7094b733addc1313f236696a0fc41e598d6d339e2b"
+  "acceptanceCanonicalSha256": "39c12fbe08f3d7c1921336085b5b4d51869b68a2641c8da3b2a4c9b935f8891c"
 }
