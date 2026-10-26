@@ -73,6 +73,13 @@ class PSpiceCliRuns(PSpiceRuns):
             if out.stat().st_size>32*1024*1024:raise CadenceError('output_limit','CLI OUT exceeds bound.')
             parsed=parse_out(decode_run_output(out.read_bytes(),p))
             if parsed['hasErrorDiagnostics']:raise failure_for_output(parsed)
+            if not (d/'result.dat').exists() and not (d/'result.dat').is_symlink():
+                if not (d/'input.dat').exists() and not (d/'input.dat').is_symlink() and any(
+                    row['severity']=='warning' and row['code']=='ORPSIM-16527' and
+                    'no traces have been specified for plotting' in row['message'].lower()
+                    for row in parsed['diagnostics']):
+                    raise CadenceError('pspice_no_saved_traces','Native OUT reports no selected plotting traces and no DAT was produced; configure saved traces before creating a fresh run.','verify')
+                raise CadenceError('incomplete_simulation_output','The completed CLI task has no canonical DAT; retained OUT and completion receipt do not establish a usable simulation result.','verify')
         return super().verify(d,p,native_completed)
 
     def worker_error(self,d,p,process):

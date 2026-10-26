@@ -50,3 +50,21 @@ class CliRunTests(unittest.TestCase):
   cli,d,p,_=self.output();reader=MagicMock();reader.open.return_value={'datId':'test'};reader.query.return_value={'items':[{'analysisName':'DC Sweep','analogReadSupported':True,'rowCount':1,'index':0,'axis':'V1','dataTypeCode':0}]};reader.samples.return_value={'items':[{'real':2.5,'imaginary':None}]}
   with patch('cadence_mcp.pspice_runs.PSpiceDat',return_value=reader):result=cli.verify(d,p,True)
   manifest=json.loads((d/'run-artifacts.json').read_text());self.assertEqual(manifest['backend'],'official_psp_cmd_r');self.assertEqual(manifest['scope'],'declared_trace_rows_only');self.assertTrue(manifest['nativeOutputIdentityVerified']);self.assertNotIn('cli_backend',result['notChecked']);self.assertTrue(result['numericalAcceptanceVerified'])
+
+class CliMissingDataTests(unittest.TestCase):
+ service=CliRunTests.service
+ output=CliRunTests.output
+ def test_native_no_trace_warning_and_missing_dat_classified(self):
+  cli,d,p,_=self.output();(d/'input.dat').unlink();(d/'result.dat').unlink()
+  (d/'result.out').write_text(BANNER+'WARNING(ORPSIM-16527): DAT file will not be generated as no traces have been specified for plotting.\n')
+  with self.assertRaises(CadenceError) as caught:cli.verify(d,p,True)
+  self.assertEqual(caught.exception.code,'pspice_no_saved_traces');self.assertEqual(caught.exception.phase,'verify')
+ def test_other_missing_dat_does_not_invent_no_saved_trace_reason(self):
+  for message in ['', 'WARNING(ORPSIM-16527): unrelated text', 'WARNING(ORPSIM-1): no traces have been specified for plotting.']:
+   cli,d,p,_=self.output();(d/'input.dat').unlink();(d/'result.dat').unlink();(d/'result.out').write_text(BANNER+message)
+   with self.subTest(message=message),self.assertRaises(CadenceError) as caught:cli.verify(d,p,True)
+   self.assertEqual(caught.exception.code,'incomplete_simulation_output')
+ def test_warning_does_not_replace_existing_data_validation(self):
+  cli,d,p,_=self.output();(d/'result.out').write_text(BANNER+'WARNING(ORPSIM-16527): DAT file will not be generated as no traces have been specified for plotting.\n')
+  with patch('cadence_mcp.pspice_runs.PSpiceRuns.verify',return_value={'sentinel':'independent verification'}) as verify:
+   self.assertEqual(cli.verify(d,p,True),{'sentinel':'independent verification'});verify.assert_called_once_with(d,p,True)

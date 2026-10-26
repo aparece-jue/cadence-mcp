@@ -374,6 +374,34 @@
       "meaning": "STIM状态字符与数字器件语法",
       "sha256": "37de227ee448a228f820c9663d1a0f469b560797186c3aa9e359c70dce4ce571",
       "size": 445546
+    },
+    {
+      "sourceId": "SIM-PROFILE-NATIVE-JSON",
+      "installRelativePath": "tools/pspice/tclscripts/pspDB/pspice.tcl",
+      "meaning": "官方profile创建/读写JSON流程；不证明CorSimSrvr全部语义",
+      "sha256": "1e75aa2a194bd24da3af8cc79452933931e8fd4184349636b5a42323590dad41",
+      "size": 11436
+    },
+    {
+      "sourceId": "SIM-ALIASES",
+      "installRelativePath": "doc/pspcref/01commands.html",
+      "meaning": "ALIASES映射及INC/LIB定义",
+      "sha256": "0b4842419e912d7b4a34f2c3d9e979c800147cff10f0b899ac67e1f07dbdcb9c",
+      "size": 394310
+    },
+    {
+      "sourceId": "SIM-CONFIGURATION",
+      "installRelativePath": "doc/pspug/007_set_sim_Configuration_Files.html",
+      "meaning": "profile/design/global库与包含文件配置",
+      "sha256": "3324abb736c8986f800b19c85c928b4ee52a785b3f882119d10fc968e17e4c42",
+      "size": 18792
+    },
+    {
+      "sourceId": "SIM-ALT-INI",
+      "installRelativePath": "doc/pspcref/00intro.html",
+      "meaning": "PSpice进程-i参数；不能直接视为CorSimSrvr_setIniFile语义",
+      "sha256": "6725e8a86e0174ca7ac28b230dca6bb403946fc0d654363ed5b93fe46111c7e2",
+      "size": 61330
     }
   ],
   "features": [
@@ -1925,7 +1953,11 @@
       ],
       "sources": [
         "CAP-REF",
-        "SIM-CLI"
+        "SIM-CLI",
+        "SIM-PROFILE-NATIVE-JSON",
+        "SIM-ALIASES",
+        "SIM-CONFIGURATION",
+        "SIM-ALT-INI"
       ],
       "implementation": "原生生成CIR/网表与模型映射，不把PCB网表当仿真输入",
       "acceptance": "CIR/模型/分析配置来源核对，原理图节点映射与新输出归属",
@@ -1972,13 +2004,25 @@
         ".local/literal-library-cli-v2-20261026/report.json",
         ".local/literal-library-cli-v3-20261026/report.json",
         ".local/regression-566-model-use-20261026.txt",
-        ".local/model-use-encrypted-refusal-20261026.json"
+        ".local/model-use-encrypted-refusal-20261026.json",
+        ".local/profile-private-ini-literal-20261026/report.json",
+        ".local/private-ini-profile-ac-mcp-20261026/report.json",
+        ".local/private-profile-no-traces-recovery-20261026/report.json",
+        ".local/profile-private-ini-with-aliases-20261026/report.json",
+        ".local/profile-private-ini-explicit-alias-20261026/report.json",
+        ".local/profile-private-ini-relative-alias-20261026/report.json",
+        ".local/private-ini-relative-alias-ac-mcp-20261026/report.json",
+        ".local/private-profile-alias-mapping-audit-20261026/report.json",
+        ".local/profile-private-ini-portable-20261026/report.json",
+        ".local/private-profile-alias-portable-audit-20261026/report.json",
+        ".local/private-ini-portable-ac-mcp-20261026/report.json",
+        ".local/regression-595-native-profile-aliases-20261026.txt"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted."
     },
     {
       "id": "P01",
@@ -2107,7 +2151,19 @@
         ".local/preserved-cli-mcp-v2-20261026/report.json",
         ".local/preserved-cli-recovery-20261026/report.json",
         ".local/regression-553-model-byte-budget-20261026.txt",
-        ".local/regression-554-model-byte-budget-final-20261026.txt"
+        ".local/regression-554-model-byte-budget-final-20261026.txt",
+        ".local/profile-private-ini-literal-20261026/report.json",
+        ".local/private-ini-profile-ac-mcp-20261026/report.json",
+        ".local/private-profile-no-traces-recovery-20261026/report.json",
+        ".local/profile-private-ini-with-aliases-20261026/report.json",
+        ".local/profile-private-ini-explicit-alias-20261026/report.json",
+        ".local/profile-private-ini-relative-alias-20261026/report.json",
+        ".local/private-ini-relative-alias-ac-mcp-20261026/report.json",
+        ".local/private-profile-alias-mapping-audit-20261026/report.json",
+        ".local/profile-private-ini-portable-20261026/report.json",
+        ".local/private-profile-alias-portable-audit-20261026/report.json",
+        ".local/private-ini-portable-ac-mcp-20261026/report.json",
+        ".local/regression-595-native-profile-aliases-20261026.txt"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -2115,7 +2171,7 @@
         "ISS-P02-native-license-unavailable-unverified"
       ],
       "implementationReady": true,
-      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance.",
+      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted.",
       "previousQueueOrderBeforeLicenseDeferral": 40
     },
     {
@@ -2251,9 +2307,23 @@
       "implementation": "设计revision->输入manifest->求解->结果来源闭环",
       "acceptance": "副本电阻值修改后预期电压变化，独立重开、旧结果不能复用",
       "status": "planned",
-      "evidence": [],
+      "evidence": [
+        ".local/profile-private-ini-literal-20261026/report.json",
+        ".local/private-ini-profile-ac-mcp-20261026/report.json",
+        ".local/private-profile-no-traces-recovery-20261026/report.json",
+        ".local/profile-private-ini-with-aliases-20261026/report.json",
+        ".local/profile-private-ini-explicit-alias-20261026/report.json",
+        ".local/profile-private-ini-relative-alias-20261026/report.json",
+        ".local/private-ini-relative-alias-ac-mcp-20261026/report.json",
+        ".local/private-profile-alias-mapping-audit-20261026/report.json",
+        ".local/profile-private-ini-portable-20261026/report.json",
+        ".local/private-profile-alias-portable-audit-20261026/report.json",
+        ".local/private-ini-portable-ac-mcp-20261026/report.json",
+        ".local/regression-595-native-profile-aliases-20261026.txt"
+      ],
       "issues": [],
-      "implementationReady": false
+      "implementationReady": false,
+      "remaining": "Original gate remains planned: native configured baseline AC now accepted for original scalar DSN export with complete ALS/NET and four independent complex values; parameter-edit iteration, formal native-generation MCP tasks and stale-output cycle remain unimplemented/unaccepted. Original nominal library case unchanged."
     },
     {
       "id": "A01",
@@ -3225,6 +3295,14 @@
         ".local/native-log-messagebox-command-20261026/report.json"
       ],
       "expected": "Bounded structured native execution with explicit outcome and known report; do not claim no-GUI completion from report existence."
+    },
+    {
+      "id": "ISS-V04-native-folded-include",
+      "featureId": "V04",
+      "status": "open",
+      "summary": "Native generator folds long absolute INC into quoted directory plus continuation quoted filename. Original single-line include oracle failed; generic preparation of this format has not been accepted. Relative explicit ALS include succeeds without changing this original case.",
+      "evidence": ".local/profile-private-ini-explicit-alias-20261026/report.json",
+      "remaining": "Implement and accept native folded file-reference parsing with exact source-line binding and path boundaries, preserving original generated CIR."
     }
   ],
   "excluded": [
@@ -3250,12 +3328,12 @@
     "tools": 204,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 592,
-      "passed": 591,
+      "total": 595,
+      "passed": 594,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-592-digital-records-20261026.txt"
+      "evidence": ".local/regression-595-native-profile-aliases-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3263,7 +3341,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Preserve P04 flag/format/DAT10 failures and defer full gate; advance remaining original business gates before returning to difficult native paths. No repeated offline DRC menu prompt.",
+    "nextIndependentWork": "Advance P05: approved Value edit in a private DSN, fresh host-native NET+ALS generation, native configured CIR and independent changed-voltage expectations with stale-output refusal; preserve nominal-library and folded-reference failures.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3745,7 +3823,12 @@
     "digitalChangeRecordsMcpAvailable": true,
     "digitalChangeRecordsScope": "unflagged_getDigital_change_records_v1",
     "digitalChangeRecordsEvidence": ".local/digital-records-mcp-20261026/report.json",
-    "fullP04Accepted": false
+    "fullP04Accepted": false,
+    "privateNativeIniSelectionAccepted": true,
+    "privateNativeProfileAcEvidence": ".local/private-ini-portable-ac-mcp-20261026/report.json",
+    "privateNativeAliasesAuditEvidence": ".local/private-profile-alias-portable-audit-20261026/report.json",
+    "nativeNoSavedTracesRecoveryEvidence": ".local/private-profile-no-traces-recovery-20261026/report.json",
+    "fullP05Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

@@ -2,6 +2,14 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百零三批私有库配置、ALS与原生AC闭环（2026-10-26）
+
+- CorSimSrvr_setIniFile实际接受准确文件路径。pathstring成员赋值拒绝、误传-i后无库两次失败保留；准确路径时CIR包含指定原创库，全局INI/源工程未改。没有放宽加密库策略或删除原nom库引用，默认215文件案例仍未通过。
+- 旧NET链遗漏同次产生的ALS，原生PROBE alias(*)没有信号，CLI退出0/OUT完成但ORPSIM16527且无DAT。新增专门pspice_no_saved_traces和一般incomplete_simulation_output诊断，原错误优先；已有DAT继续原核验。原失败任务只recover/observe，旧文件全不变且未重跑。
+- 只放入ALS不会自动引用；显式私有INI引用同源ALS后，原生CIR到真实MCP/CLI/DAT四个RC/RL复数值原预期通过，两套新目录复测成功。ALS对生成前冻结的DSN7器件14脚及4类故障审计通过。长绝对INC被原生折行，原单行预期失败留证，新增V04待验证项；工程相对引用成功不代替其修复。
+- 204工具不变，595完整回归594通过/1原权限skip。原34项仍6完整通过17.6%，V04仍deferred、P05仍planned；参数修改→新原生NET/ALS→新数值和正式MCP原生生成业务未完成。说明docs/native-profile-library-aliases.md，证据batch-103-evidence.json。
+- 上一批5ff0de4本地提交后GitHub连接重置，远端最后核实f6d2d9c，保持待同步。下一步围绕P05电阻参数迭代推进，不重复离线DRC菜单。alpha.1固定，安装与真实设计未改。
+
 ## 第一百零二批原生数字瞬态变更记录（2026-10-26）
 
 - 新增只读pspice_dat_digital_samples，准确目录/别名绑定并在独立原生进程二次验证canonical。六状态、时间、原生强度码、压缩记录分页实际MCP通过；7090头行不再当作INIT/RUN各4条记录的长度。源DAT不变，无GUI。

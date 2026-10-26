@@ -59,5 +59,9 @@
 | SIM-DIG-ENUM | 本机SDK六状态枚举；不证明getDigital标志或尾字段格式 | `tools/pspice/api/include/PSpiceDigApiDefs.h` | `a71b3a54f902` |
 | SIM-DIG-CONCEPTS | 数字六状态与64强度概念 | `doc/pspug/14digsim_Concepts_of_Digital_Simulation.html` | `e2a0b012233e` |
 | SIM-DIG-STIM | STIM状态字符与数字器件语法 | `doc/pspcref/03digita.html` | `37de227ee448` |
+| SIM-PROFILE-NATIVE-JSON | 官方profile创建/读写JSON流程；不证明CorSimSrvr全部语义 | `tools/pspice/tclscripts/pspDB/pspice.tcl` | `1e75aa2a194b` |
+| SIM-ALIASES | ALIASES映射及INC/LIB定义 | `doc/pspcref/01commands.html` | `0b4842419e91` |
+| SIM-CONFIGURATION | profile/design/global库与包含文件配置 | `doc/pspug/007_set_sim_Configuration_Files.html` | `3324abb736c8` |
+| SIM-ALT-INI | PSpice进程-i参数；不能直接视为CorSimSrvr_setIniFile语义 | `doc/pspcref/00intro.html` | `6725e8a86e01` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

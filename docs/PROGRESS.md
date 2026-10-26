@@ -20,7 +20,7 @@
 | 存在未通过项，已后移 | 18 |
 | 待实施/总验收 | 2 |
 
-当前工具数：204。最近完整回归：592项，591通过、1跳过；测试通过率不作为业务完成度。
+当前工具数：204。最近完整回归：595项，594通过、1跳过；测试通过率不作为业务完成度。
 
 [最新批次与下一步](implementation/CURRENT-STATE.md) · [原实施/验收计划](implementation/cadence-plan.md) · [原始验收清单与问题](implementation/cadence-acceptance.json) · [参考资料索引](references/INDEX.md) · [研发与Git同步规则](DEVELOPMENT.md)
 
