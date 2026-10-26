@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "b36b5f2e7d3a4601a250cc2058dfdd388d0663ff0fe5bdc2d89daa66b94b9f29"
+  "acceptanceCanonicalSha256": "af5a2003e3e13126a5fd95dda4a50a8d2a118db8bf8cc77676e9f309a8f105ba"
 }
