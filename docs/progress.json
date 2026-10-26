@@ -34,12 +34,12 @@
   },
   "toolCount": 202,
   "latestFullRegression": {
-    "total": 544,
-    "passed": 543,
+    "total": 546,
+    "passed": 545,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-544-page-bounds-20261026.txt"
+    "evidence": ".local/regression-546-profile-cir-comments-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "71c855655d16df6c3e0ee65936334b1059d7695452c7230763f2b8abb2e2ed24"
+  "acceptanceCanonicalSha256": "6b1274868c4566f748acff70d6f666067624873f68b9a3ef5dce706b11effbe3"
 }

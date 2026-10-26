@@ -54,6 +54,33 @@ class InputTests(unittest.TestCase):
                 self.assertTrue(destination.is_file())
         self.assertEqual(before, {file: sha256(file) for file in before})
 
+    def test_library_inline_comments_and_no_space_comment_delimiter(self):
+        library = self.inputs / "one model.lib"
+        library.write_text(".MODEL DTEST D\n", encoding="utf-8")
+        for directive in ('.LIB "one model.lib" ; official library comment',
+                          '.INC "one model.lib";no separating space',
+                          '.LIB "one model.lib" $ existing dollar comment'):
+            with self.subTest(directive=directive):
+                self.source.write_text(f"* comment fixture\n{directive}\n.OP\n.END\n", encoding="utf-8")
+                before = sha256(self.source)
+                prepared = self.service.prepare(str(self.source))
+                self.assertEqual(prepared["fileCount"], 2)
+                self.assertEqual(before, sha256(self.source))
+                self.service.close(prepared["simulationId"])
+        (self.inputs / "plain.lib").write_text(".MODEL DTEST D\n", encoding="utf-8")
+        self.source.write_text("* comment fixture\n.LIB plain.lib;comment\n.OP\n.END\n", encoding="utf-8")
+        self.assertEqual(self.service.prepare(str(self.source))["fileCount"], 2)
+
+    def test_reference_comments_do_not_allow_missing_names_or_extra_arguments(self):
+        for directive in ('.LIB ; no filename', '.INC $ no filename',
+                          '.LIB "model.lib" extra ; not a single-file reference',
+                          '.INC model.lib other.lib;comment'):
+            with self.subTest(directive=directive):
+                self.source.write_text(f"* rejected\n{directive}\n.OP\n.END\n", encoding="utf-8")
+                with self.assertRaises(CadenceError) as error:
+                    self.service.prepare(str(self.source))
+                self.assertEqual(error.exception.code, "unsupported_reference")
+
     def test_cycle_missing_ambiguous_and_outside_references_fail(self):
         scenarios = [(".INC missing.inc", "missing_or_ambiguous_reference"),
                      (".LIB", "unsupported_reference"),

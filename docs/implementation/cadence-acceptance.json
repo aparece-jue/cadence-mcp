@@ -241,6 +241,20 @@
       "meaning": "本机DRC包装签名核查，仅元数据不分发二进制",
       "sha256": "4b0571b7a8c2c9bae81ced670981ee40098a52a9db84f4967fe834d3fdd67217",
       "size": 592128
+    },
+    {
+      "sourceId": "SIM-LOCAL-CIR",
+      "installRelativePath": "share/orTclscripts/tclscripts/orPSpiceSrvrEnv/orPSpiceSrvrEnv.tcl",
+      "meaning": "本地profile读取、目录前置条件及updateCirFileI调用示例；未source整体服务",
+      "sha256": "7df7230cc471ee70bb9f6d1216b2af0dbaf8f9c4e7994cc6461c4dcdf7e96745",
+      "size": 20479
+    },
+    {
+      "sourceId": "SIM-REFERENCE-COMMENTS",
+      "installRelativePath": "doc/pspcref/01commands.html",
+      "meaning": "PSpice官方分号行尾注释规则，本批只扩展显式依赖引用解析",
+      "sha256": "0b4842419e912d7b4a34f2c3d9e979c800147cff10f0b899ac67e1f07dbdcb9c",
+      "size": 394310
     }
   ],
   "features": [
@@ -1668,13 +1682,17 @@
         ".local/drc-definition-fixture-20261026/report.json",
         ".local/drc-error-host-20261026/report.json",
         ".local/capture-error-drc-20261026/report.json",
-        ".local/capture-error-drc-audit-20261026/report.json"
+        ".local/capture-error-drc-audit-20261026/report.json",
+        ".local/drc-profile-commands-20261026/report.json",
+        ".local/drc-config-read-20261026/report.json",
+        ".local/drc-config-read-20261026/commands.json",
+        ".local/drc-settings-read-20261026/commands.json"
       ],
       "issues": [
         "ISS-V03-capture-runtime-inventory-timeout"
       ],
       "implementationReady": false,
-      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending."
+      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending. Batch92: actual read-only capGetDRCConfigData proves online electrical rule flags all0 while overall online flow1 and OUT/OUT ERC severity E. Per-design GetDRCSettings queried candidate internal keys returns default unknown, so no guessed EnableDRC or global config write executed. Prior error oracle remains failed; explicit rule coverage/enablement still required."
     },
     {
       "id": "V04",
@@ -1708,13 +1726,19 @@
         ".local/capture-local-netlist-20261026/report.json",
         ".local/capture-netlist-oracle-v2-20261026/oracle.json",
         ".local/capture-local-netlist-accepted-20261026/report.json",
-        ".local/capture-netlist-mapping-audit-20261026/report.json"
+        ".local/capture-netlist-mapping-audit-20261026/report.json",
+        ".local/profile-cir-native-20261026/report.json",
+        ".local/profile-cir-native-v2-20261026/report.json",
+        ".local/profile-cir-mapping-audit-20261026/report.json",
+        ".local/profile-cir-closure-20261026/report.json",
+        ".local/profile-cir-closure-v2-20261026/report.json",
+        ".local/regression-546-profile-cir-comments-20261026.txt"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open."
     },
     {
       "id": "P01",
@@ -1741,13 +1765,19 @@
         ".local/regression-420-input-checks-20261025.txt",
         "docs/implementation/batch-65-P01-input-acceptance-2026-10-25.md",
         ".local/named-selectors-mcp-20261025/report.json",
-        ".local/input-boundaries-mcp-20261025/report.json"
+        ".local/input-boundaries-mcp-20261025/report.json",
+        ".local/profile-cir-native-20261026/report.json",
+        ".local/profile-cir-native-v2-20261026/report.json",
+        ".local/profile-cir-mapping-audit-20261026/report.json",
+        ".local/profile-cir-closure-20261026/report.json",
+        ".local/profile-cir-closure-v2-20261026/report.json",
+        ".local/regression-546-profile-cir-comments-20261026.txt"
       ],
       "issues": [
         "ISS-P01-named-output-selectors"
       ],
       "implementationReady": true,
-      "remaining": "",
+      "remaining": " Batch92: accept documented semicolon end-of-line comments on explicit .LIB/.INC references, preserving single-file refusal and dollar comments; original nominal-library failure then advances to explicit nonUTF8 refusal. UTF8 policy/limits unchanged; this is not complete native default-library acceptance.",
       "previousRemainingBeforeAcceptance": "Native parser/setup durable checks now verify frozen explicit closure identity; real nested/relative parameter and model OP setup positives, no-ground/undefined-parameter/bad-analysis/missing-model negatives, separate5/3V parameter solve and fault matrix pass. Original named IN/OUT output-selector issue remains open; compare documented bracket-forced node forms with original oracles. Remaining original explicit reference/syntax criteria need closure audit; implicit/embedded/dynamic files and all SPICE dialects remain unsupported.",
       "acceptedAt": "2026-10-25",
       "acceptanceReport": "docs/implementation/batch-65-P01-input-acceptance-2026-10-25.md",
@@ -2827,7 +2857,20 @@
         ".local/capture-error-drc-20261026/report.json",
         ".local/capture-error-drc-audit-20261026/report.json"
       ],
-      "expected": "Detect deliberate conflicting output pins; do not accept a zero-error report as clean electrical evidence."
+      "expected": "Detect deliberate conflicting output pins; do not accept a zero-error report as clean electrical evidence.",
+      "latestEvidence": ".local/drc-config-read-20261026/commands.json",
+      "latestObservation": "All online electrical flags0; flow enabled1 and ERC OUT/OUT=E. This is a demonstrated configuration gap, not a fully proven sole cause or accepted repair."
+    },
+    {
+      "id": "ISS-V04-native-nominal-library-encoding",
+      "featureId": "V04",
+      "status": "open",
+      "summary": "Native profile CIR imports nom.lib; reference-comment compatibility fixed but closure encounters nonUTF8 official model data. No silent transcoding, omitted library, or solver acceptance.",
+      "evidence": ".local/profile-cir-closure-v2-20261026/report.json",
+      "additionalEvidence": [
+        ".local/profile-cir-closure-20261026/report.json"
+      ],
+      "expected": "Resolve actual original model closure with explicit verified decoding and provenance before isolated solver execution."
     }
   ],
   "excluded": [
@@ -2853,12 +2896,12 @@
     "tools": 202,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 544,
-      "passed": 543,
+      "total": 546,
+      "passed": 545,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-544-page-bounds-20261026.txt"
+      "evidence": ".local/regression-546-profile-cir-comments-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -2866,7 +2909,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Inspect explicit electrical DRC rule configuration/coverage and native local profile->CIR closure; preserve intentional-error oracle and original34 gates.",
+    "nextIndependentWork": "Resolve explicit native library encoding/dependency provenance and verify per-design DRC rule configuration/coverage; keep original failed conflict oracle and all34 gates.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -2926,7 +2969,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": false,
+    "fullRegressionRunThisBatch": true,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -3035,7 +3078,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 91,
+    "batch": 92,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3290,7 +3333,11 @@
     "nativeOnlineDrcConflictDetected": false,
     "nativeOnlineDrcAudit": ".local/capture-error-drc-audit-20261026/report.json",
     "fullV03Accepted": false,
-    "fullV04Accepted": false
+    "fullV04Accepted": false,
+    "nativeLocalCirEvidence": ".local/profile-cir-native-v2-20261026/report.json",
+    "nativeLocalCirMappingEvidence": ".local/profile-cir-mapping-audit-20261026/report.json",
+    "nativeModelClosureAccepted": false,
+    "nativeDrcConfigurationReadEvidence": ".local/drc-config-read-20261026/commands.json"
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

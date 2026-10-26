@@ -12,7 +12,7 @@ from .core import CadenceError, checked_path, new_id, sha256, write_json
 
 
 REFERENCE = re.compile(r'^\s*\.(INC|INCLUDE|LIB)\b(.*)$', re.IGNORECASE)
-ARGUMENT = re.compile(r'''^\s*(?:"([^"\r\n]+)"|'([^'\r\n]+)'|([^\s]+))\s*(?:\$.*)?$''')
+ARGUMENT = re.compile(r'''^\s*(?:"([^"\r\n]+)"|'([^'\r\n]+)'|([^\s;$]+))\s*(?:[;$].*)?$''')
 FILE_DIRECTIVES = {".STMLIB", ".STIMULUS", ".LOADBIAS", ".SAVEBIAS", ".VECTOR", ".TEXT"}
 
 

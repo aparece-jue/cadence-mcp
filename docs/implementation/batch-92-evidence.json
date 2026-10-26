@@ -1,0 +1,50 @@
+{
+  "batch": 92,
+  "date": "2026-10-26",
+  "goalComplete": false,
+  "tools": 202,
+  "nativeCirGenerated": true,
+  "nativeCirMappingCases": 5,
+  "nativeModelClosureAccepted": false,
+  "drcOnlineElectricalRulesEnabled": false,
+  "fullV03Accepted": false,
+  "fullV04Accepted": false,
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "latestFullRegression": {
+    "total": 546,
+    "passed": 545,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-546-profile-cir-comments-20261026.txt"
+  },
+  "evidenceSha256": {
+    ".local/drc-profile-commands-20261026/report.json": "75ff00801b5ccab9be5f939cebd035abfd860f9d2db87a6b34081bdb4493e277",
+    ".local/drc-config-read-20261026/report.json": "5a79adf517789dec5bda2e34595ea64c81d2dadd06a0372d52cf5c3ccc97fc20",
+    ".local/drc-config-read-20261026/commands.json": "b5cf75b1f0921b0ca993ee0f094d23a8c9d5d350d2d0e1b134f2cacd27303525",
+    ".local/drc-settings-read-20261026/commands.json": "9ce3fd4d805f0c1647adac74089df19d09c6ed7c07dafe026de73e0f7c8f468d",
+    ".local/profile-cir-native-20261026/report.json": "c9f126a7915383d4d988fc0717f253c40521dc727742b9dabf6d19cd6a9e38e9",
+    ".local/profile-cir-native-v2-20261026/report.json": "ea6f8ee607cc81888e2d43bc8782f5ea7249f6736a7f03f9d6e42f82607ac8f6",
+    ".local/profile-cir-mapping-audit-20261026/report.json": "c1d1f46d897ed6d0923303f6abe79b0b9601161d0efe1fbfcc3ae4478c2fc4a9",
+    ".local/profile-cir-closure-20261026/report.json": "464c3694c6fe89746aab054881765141c1bb97e7ad6ffd2f81f492fadb859fb2",
+    ".local/profile-cir-closure-v2-20261026/report.json": "fa50076b9090af9f06398f38bd1661e233a5f69969ef45a368260a68abd12252",
+    ".local/regression-546-profile-cir-comments-20261026.txt": "cc7f15e2ef791293d512ed6297b17a870eb298dd009f9f0a02ddad33486d2327"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_input.py": "43b0a155b7ff2c41360fdc573425cdd7e69ea9c16b9e0826e92fed4d49776ef3",
+    "tests/test_pspice_input.py": "391a764bf1990c53b13da01fe01477a100522bfd8ae96e17788ab32973c73844",
+    "tools/inspect_capture_drc_profile_commands.py": "43a7e5bf5e2271e800bcaff13cba66f1a95c538ad1cf2f984f324b3213ca2309",
+    "tools/read_capture_drc_configuration.py": "b7703ed9514b8581133f468eeef48c5da5c43cf6683b5301b97662a9270130a5",
+    "tools/read_capture_drc_settings.py": "d4b8736d386b3b6edaabff2512d10703b4651b8f0d91ef9457f02f43692fc909",
+    "tools/probe_local_profile_cir.py": "33603853310bef56b1ea8d0ccd2a79875651c9ba371800c3bac77d480939d6f0",
+    "tools/probe_local_profile_cir.tcl": "8bac0f0c5801cd33808ef40b27640d3588b044cf71c2d866fbc3432290061d17",
+    "tools/probe_profile_cir_closure.py": "73f0e8da8dd42e2d221a946c72af793b244cead7d38a2d9306fbf0cc76a9880b",
+    "tools/audit_profile_cir_mapping.py": "e91731cff446f997a0c90ede8fc4cc1012aefca25e80d7fa5eccd740d80724ff"
+  }
+}

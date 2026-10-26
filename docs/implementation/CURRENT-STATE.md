@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第九十二批原生CIR与DRC配置（2026-10-26）
+
+- 认证只读取得DRC配置：flow1、在线电气各规则0，ERC输出对输出E；内部候选GetDRCSettings键返回unknown，未猜测启用或写全局配置。原冲突零错误负例保持失败。
+- 本地独立CorSimSrvr实际profile→CIR：缺profile子目录首轮update=-1；遵循官方mkdir前置条件的新副本update0生成638字节CIR，原AC100点/0.1–200及NET引用独立核对，4负例拒绝。未执行远端/求解器。
+- 修复官方nom.lib分号行尾注释引用解析，新增2测试；相同CIR闭包由unsupported_reference推进到unsupported_encoding，未悄悄转码或移除库。正式202工具不变，546完整回归545通过/1原权限skip。
+- 原34项仍6完整通过（17.6%），V03/V04及模型闭环未通过。详见batch-92-local-profile-cir-drc-config-2026-10-26.md和batch-92-evidence.json；下一步明确库编码/依赖来源与按设计规则配置，安装/真实设计未改。
+
 ## 第九十一批宿主恢复、本地NET与在线DRC（2026-10-26）
 
 - 一次必要的PSpice A/D启动产品弹窗确认后，Capture20696响应恢复；认证只读桥接重建成功。旧wire派发随后确认，未重放；独立重开仍NextPage3969，原失败报告不改。
