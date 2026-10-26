@@ -1,0 +1,47 @@
+{
+  "batch": 95,
+  "date": "2026-10-26",
+  "tools": 202,
+  "goalComplete": false,
+  "editorInitializationAccepted": true,
+  "editorWireAccepted": false,
+  "wireNextPageCode": 3969,
+  "preconditionsVerified": true,
+  "geometryOracleWeakened": false,
+  "fullRegressionRunThisBatch": false,
+  "latestFullRegression": {
+    "total": 554,
+    "passed": 553,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-554-model-byte-budget-final-20261026.txt"
+  },
+  "featureCounts": {
+    "baseline_passed": 1,
+    "passed": 6,
+    "deferred": 18,
+    "implemented_partial": 7,
+    "planned": 2
+  },
+  "evidenceSha256": {
+    ".local/editor-app-wire-20261026/report.json": "d334df1e34d0d5bf1103b740a7168210f63bb9d52bd1fb2fb7e570b0e73e8b20",
+    ".local/app-wire-postsave-binding-20261026/report.json": "3a3d9f6a7dc65cc6f6bba9d8f13022d793e1a327fb5330302ecf18cbcfa20403",
+    ".local/editor-app-wire-open-v2-20261026/report.json": "6df0e96b08f21922cdb204ebee527f1b566aa26919c69a45695f48b8b4dd1874",
+    ".local/editor-app-wire-open-v2-20261026/opened.json": "0702593a9d958f4b66e5f474909d67d60b0f694db5c5a87b88ef9891d2ce5c31",
+    ".local/editor-view-binding-20261026/report.json": "e30eb68254888c3fbfdbab315e4977be1edbddeef064c7686e10530f8830a110",
+    ".local/editor-page-initialization-20261026/report.json": "1dcc479c6184d624e52c839149102741aea81a50ac8fc4b75ff59f54b1d7cc3f",
+    ".local/editor-page-initialization-20261026/connections.json": "4742f89b4dc4a4b2f9fe4e082a4e5c6416bce2c1704911f5974a542389838ed2",
+    ".local/editor-initialized-binding-20261026/report.json": "979fa7190cd5ca2617d59b005251359326e2fe90e2096d9fb6bda36c2b0d67ed",
+    ".local/editor-session-wire-20261026/report.json": "6173adbd04f34cf63f26f7a3444136facf0b091457bee19a89318db9c52c9a2a",
+    ".local/editor-session-wire-20261026/phases.txt": "430ea5371ea301a9faab48d113973f2b3224353f307a6b3a3bc712b238b1393e",
+    ".local/editor-session-wire-audit-20261026/report.json": "eabcf7adb867339cb97fa31266f2ec1b0f0cbded62e86cd92ccf4eab35664e25",
+    ".local/editor-wire-preconditions-audit-20261026/report.json": "fcad52fbc2b96acf1bb1665f897c11df6744fce6642734084ca943537e440453"
+  },
+  "implementationSha256": {
+    "tools/audit_editor_session_wire.py": "41e46ac382c351838658654363f63632e99f46de9b3f8ef36114e324c6bdb3ec",
+    "tools/prepare_editor_capture_wire.py": "cef9a1f28b5a632f2370a202337f36fc3434ceb3e6204ea750fb0a1ee2caf3b9",
+    "tools/probe_editor_session_wire.py": "35d53c2305329dc1e2055b1d5bf9e182a3f69432707e746d1b08a0c86beb24a0",
+    "tools/save_private_editor_initialization.py": "81bb98bfce0099480c73f665562eb31fb59cc7c121029e28782fc87d90a4732b"
+  }
+}
