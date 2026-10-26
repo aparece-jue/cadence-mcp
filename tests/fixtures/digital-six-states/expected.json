@@ -1,0 +1,38 @@
+{
+  "timeStates": [
+    [
+      0,
+      "0"
+    ],
+    [
+      1e-06,
+      "R"
+    ],
+    [
+      2e-06,
+      "1"
+    ],
+    [
+      3e-06,
+      "F"
+    ],
+    [
+      4e-06,
+      "0"
+    ],
+    [
+      5e-06,
+      "X"
+    ],
+    [
+      6e-06,
+      "Z"
+    ],
+    [
+      7e-06,
+      "Z"
+    ]
+  ],
+  "strengthExpectation": "Low drive500ohm weaker than high50ohm, both positive native codes; Z has strength0; codes within64states. No resistance/code formula asserted.",
+  "sourceSha256": "fab3bde6efa00565f1fcea75f7ee716f97e9c34521a37ece9969f311e98d8c74"
+}

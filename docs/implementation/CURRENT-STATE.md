@@ -2,6 +2,13 @@
 
 2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百零二批原生数字瞬态变更记录（2026-10-26）
+
+- 新增只读pspice_dat_digital_samples，准确目录/别名绑定并在独立原生进程二次验证canonical。六状态、时间、原生强度码、压缩记录分页实际MCP通过；7090头行不再当作INIT/RUN各4条记录的长度。源DAT不变，无GUI。
+- 合法激励0→R→1→F→0→X→Z及末尾Z共8条，独立时间/状态和相对驱动强度通过。原混合DIN5条也通过。Time/缺失名称拒绝，未知状态字26即使请求首条也整条拒绝，不猜测标志；未解释尾字不公开。
+- 原Time/DIN组合读取独立进程异常、非法R→F原生hazard、DAT10写入失败全部保留。P04完整验收不提升，后移继续原始业务项。源代码、接口、原创激励/预期、资料指纹和测试见docs/pspice-digital-records.md与batch-102-evidence.json。
+- 204实际工具/契约，592完整回归591通过/1原权限skip。原34项仍6完整通过17.6%，目标active，alpha.1保持固定。上一批82c885e已本地提交，但GitHub443连接两次失败，远端最后核实f6d2d9c；本批开始修正gitSyncPending=true，最终同步结果以Git实际回执为准。
+
 ## 第一百零一批原生项目与DRC计数键（2026-10-26）
 
 - 直接DSN打开进入24.1原生Select Project Type，用户确认后生成新OPJ；其ProjectVersion仍19981106，证明不能据该字段判断17.4。新原生项目的副本两次认证打开成功、无升级窗口。PSpice资源目录不等于已创建profile，联合仿真仍待验收；官方明确既有项目可后续配置仿真。

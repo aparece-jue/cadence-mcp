@@ -12431,7 +12431,7 @@
   {
     "name": "pspice_dat_open",
     "title": null,
-    "description": "Import an allowed DAT file and read native analog/digital/mixed block and trace metadata on an isolated immutable copy. Digital aliases/counts are checked separately. Analog samples from completely described mixed blocks are supported; digital logic samples remain unavailable. No simulation or solver-success claim.",
+    "description": "Import an allowed DAT file and read native analog/digital/mixed block and trace metadata on an isolated immutable copy. Digital aliases/counts are checked separately. Analog samples from completely described mixed blocks are supported; unflagged digital change records use the dedicated digital endpoint; native flagged states remain unsupported. No simulation or solver-success claim.",
     "inputSchema": {
       "properties": {
         "sourceDat": {
@@ -13022,6 +13022,294 @@
       "type": "object",
       "additionalProperties": false,
       "title": "pspice_dat_samplesArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
+    "name": "pspice_dat_digital_samples",
+    "title": null,
+    "description": "Read unflagged native digital transient change records with time, six enum states and strength codes. Resolve exact catalog aliases before invoking getDigital; axes/missing names never reach it. Pagination uses per-trace records, not block header rows. Unknown native state flags reject the full trace; opaque tail words are retained privately and never returned. No voltage, resistance, hazard or fresh solver-success claim.",
+    "inputSchema": {
+      "properties": {
+        "datId": {
+          "title": "Datid",
+          "type": "string"
+        },
+        "block": {
+          "maximum": 127,
+          "minimum": 0,
+          "title": "Block",
+          "type": "integer"
+        },
+        "traceName": {
+          "title": "Tracename",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 1000,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "datId",
+        "block",
+        "traceName"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "pspice_dat_digital_samplesArguments"
     },
     "execution": null,
     "outputSchema": {

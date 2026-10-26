@@ -56,5 +56,8 @@
 | CAP-PROJECT24 | 24.1原生项目创建、启用PSpice及既有工程后续仿真配置 | `doc/cap_ug/Creating_a_Project.html` | `fc0b1ef3b6e7` |
 | CAP-DRC-NATIVE-KEY | 只读参考GetName原始字符串再MakeStdStr查询DRC计数；不调用PCB创建 | `tools/capture/tclscripts/capNewPcbEditorBoard/tcl/OrHandlerNewPcbEditorBoard.tcl` | `d67121d51d01` |
 | CAP-DRC-OUTPUT-OPTIONS | Show DRC Outputs选项；实际0仍出现末尾日志询问，不作为自动结束保证 | `tools/capture/tclscripts/capDRCConfig/hybrid/DRCConfig.html` | `75ffe613816b` |
+| SIM-DIG-ENUM | 本机SDK六状态枚举；不证明getDigital标志或尾字段格式 | `tools/pspice/api/include/PSpiceDigApiDefs.h` | `a71b3a54f902` |
+| SIM-DIG-CONCEPTS | 数字六状态与64强度概念 | `doc/pspug/14digsim_Concepts_of_Digital_Simulation.html` | `e2a0b012233e` |
+| SIM-DIG-STIM | STIM状态字符与数字器件语法 | `doc/pspcref/03digita.html` | `37de227ee448` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

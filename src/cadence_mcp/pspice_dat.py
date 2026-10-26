@@ -46,6 +46,7 @@ def decode_headers(raw):
             groups = row.get('Trace Names',{})
             if not isinstance(groups,dict): raise ValueError('trace groups')
             analog_supported = row['DataType']==0 or (row['DataType']==2 and digital_complete and row['NumberofAnalogColumns']>0)
+            digital_supported=digital_complete and digital_rows>0 and digital_columns>0 and axis=="Time" and analysis=="Transient Analysis"
             table, ownership = [], {}
             for kind,key,count in [('analog','Analog Names',row['NumberofAnalogColumns']),('digital','Digital Names',digital_columns)]:
                 names=groups.get(key,[])
@@ -63,7 +64,8 @@ def decode_headers(raw):
                         ownership[token]=name
                     trace={'name':name,'aliases':aliases,**(unit_for(name,axis) if kind=='analog' else {'unit':None,'unitSource':'digital_logic_not_physical_quantity'})}
                     if row['DataType']!=0:
-                        trace.update(signalType=kind,sampleReadSupported=kind=='analog' and analog_supported,rowCount=row['NumberofAnalogRows'] if kind=='analog' else digital_rows)
+                        trace.update(signalType=kind,sampleReadSupported=analog_supported if kind=='analog' else digital_supported,rowCount=row['NumberofAnalogRows'] if kind=='analog' else digital_rows)
+                    if kind=='digital':trace.update(rowCountSource='block_header_not_per_trace_record_count',digitalReadScope='unflagged_getDigital_change_records_v1' if digital_supported else None)
                     table.append(trace)
             total += sum(1+len(t['aliases']) for t in table)
             if total>100000: raise ValueError('trace limit')
@@ -75,7 +77,8 @@ def decode_headers(raw):
                    'analogReadSupported':analog_supported}
             if row['DataType']!=0:
                 block.update(analogRowCount=row['NumberofAnalogRows'],analogTraceCount=row['NumberofAnalogColumns'],
-                             digitalMetadataComplete=digital_complete,digitalReadSupported=False,
+                             digitalMetadataComplete=digital_complete,digitalReadSupported=digital_supported,
+                             digitalReadScope='unflagged_getDigital_change_records_v1' if digital_supported else None,
                              digitalRowCount=digital_rows if digital_complete else None,digitalTraceCount=digital_columns if digital_complete else None)
             blocks.append(block);traces[index]=table
         return blocks, traces
@@ -117,7 +120,7 @@ class PSpiceDat:
 
     def _worker(self,directory,mode,block=0,trace=''):
         output=directory / (new_id('read')+'.json')
-        argv=[str(self.config.install_root/FILES['tclsh']),str(ADAPTERS/'inspect_dat.tcl'),str(self.config.install_root),
+        argv=[str(self.config.install_root/FILES['tclsh']),str(ADAPTERS/('inspect_digital_dat.tcl' if mode=='digital_trace' else 'inspect_dat.tcl')),str(self.config.install_root),
               str(directory/'imported.dat'),str(output),mode,str(block),trace,str(ADAPTERS/'json.tcl')]
         process=run_owned_process(argv,directory,process_env(self.config),self.config.timeout_seconds)
         write_json(directory/(new_id('process')+'.json'),process)
@@ -208,6 +211,25 @@ class PSpiceDat:
             return {**self._page(rows,offset,limit),'block':block,'trace':canonical,'requestedTrace':trace,
                     'complex':selected['complex'],**unit_for(canonical,selected['axis']),
                     'revision':session['manifest']['revision'],'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan')}
+
+    def digital_samples(self,ident,block,trace,offset=0,limit=1000):
+        from .pspice_digital import decode_digital_records,SCOPE
+        with self.lock:
+            session=self._session(ident);selected=self._block(session,block)
+            if not selected.get('digitalReadSupported'):raise CadenceError('capability_unavailable','Dedicated digital records require complete positive-row transient metadata.')
+            self._page(range(selected['digitalRowCount']),offset,limit)
+            matches=[t for t in session['traces'][block] if t.get('signalType')=='digital' and (trace==t['name'] or trace in t['aliases'])]
+            if len(matches)!=1:raise CadenceError('trace_not_found','Exact digital canonical name or alias is missing; axes and analog names are not sent to the digital reader.')
+            canonical=matches[0]['name'];raw=self._worker(session['directory'],'digital_trace',block,canonical)
+            self._session(ident);rows=decode_digital_records(raw,selected,canonical)
+            return {**self._page(rows,offset,limit),'block':block,'trace':canonical,'requestedTrace':trace,
+                    'blockDigitalRows':selected['digitalRowCount'],'rowCountSource':'native_per_trace_change_records',
+                    'timeUnit':'s','timeUnitSource':'axis_name_convention','signalType':'digital','digitalReadScope':SCOPE,
+                    'strengthEncoding':'native_integer_0_to_63','strengthResistanceMappingVerified':False,
+                    'nativeOpaqueTailReturned':False,'nativeOpaqueTailSemanticsVerified':False,
+                    'nativeFlaggedStatesSupported':False,'probeDisplayInterpretationVerified':False,
+                    'revision':session['manifest']['revision'],'provenance':session['manifest']['provenance'],
+                    'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan')}
 
     def measure(self,ident,block,trace,measurement='summary',component='real',at_axis=None,threshold=None,direction='either'):
         from .pspice_measure import validate_measurement,measure_samples

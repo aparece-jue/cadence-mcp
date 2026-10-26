@@ -373,7 +373,7 @@ def create_server(config: Config) -> MCPServer:
             "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "unavailable",
             "capture.olb": "experimental_read_only", "capture.cache_query": "experimental_read_only", "capture.write_save_reopen": "unavailable",
             "capture.gui_note_write_save_reopen": "experimental_fixture_only", "capture.gui_job_resolution": "experimental_fixture_only", "capture.gui_diagnose": "experimental_config_required",
-            "capture.gui_status": "experimental_config_required", "capture.gui_sessions": "experimental_config_required", "capture.gui_drc_pdf": "unavailable", "pspice.prepare": "experimental_explicit_references_only", "pspice.input_check": "experimental_native_parse_setup_only", "pspice.run": "experimental_independent_engine_tcl", "pspice.cli_run": "experimental_official_psp_cmd_r", "pspice.dat": "experimental_analog_mixed_analog_and_digital_catalog", "pspice.dat_export": "experimental_bound_csv_json_rows", "pspice.native_measurements": "experimental_complete_analysis_named_fields", "pspice.failure_diagnostics": "experimental_stopped_job_explicit_errors", "pspice.inspect_output": "experimental_imported_out_diagnostics_bias_only",
+            "capture.gui_status": "experimental_config_required", "capture.gui_sessions": "experimental_config_required", "capture.gui_drc_pdf": "unavailable", "pspice.prepare": "experimental_explicit_references_only", "pspice.input_check": "experimental_native_parse_setup_only", "pspice.run": "experimental_independent_engine_tcl", "pspice.cli_run": "experimental_official_psp_cmd_r", "pspice.dat": "experimental_analog_and_unflagged_digital_change_records", "pspice.dat_export": "experimental_bound_csv_json_rows", "pspice.native_measurements": "experimental_complete_analysis_named_fields", "pspice.failure_diagnostics": "experimental_stopped_job_explicit_errors", "pspice.inspect_output": "experimental_imported_out_diagnostics_bias_only",
         }
         return packed(result({"features": features, "backend": "standalone", "readOnly": False, "writesRequirePlan": True,
                               "writeTargets": "new_isolated_copies_or_prepared_gui_fixtures", "dependencyClosureVerified": False}, level="documented",
@@ -638,7 +638,7 @@ def create_server(config: Config) -> MCPServer:
 
     @register(readonly=False)
     async def pspice_dat_open(sourceDat: str) -> ToolResult:
-        """Import an allowed DAT file and read native analog/digital/mixed block and trace metadata on an isolated immutable copy. Digital aliases/counts are checked separately. Analog samples from completely described mixed blocks are supported; digital logic samples remain unavailable. No simulation or solver-success claim."""
+        """Import an allowed DAT file and read native analog/digital/mixed block and trace metadata on an isolated immutable copy. Digital aliases/counts are checked separately. Analog samples from completely described mixed blocks are supported; unflagged digital change records use the dedicated digital endpoint; native flagged states remain unsupported. No simulation or solver-success claim."""
         return await invoke(simulation_data.open, sourceDat, backend="pspice_data",
                             coverage=("imported_dat_metadata",), not_checked=("fresh_solver_run", "numerical_oracle", "digital_samples"))
 
@@ -655,6 +655,15 @@ def create_server(config: Config) -> MCPServer:
         return await invoke(simulation_data.samples, datId, block, traceName, offset, limit, backend="pspice_data",
                             coverage=("dat_analog_samples", "real_complex_values", "sample_pagination"),
                             not_checked=("fresh_solver_run", "job_association", "numerical_oracle", "native_units", "digital_samples"))
+
+    @register(readonly=True)
+    async def pspice_dat_digital_samples(datId: str, block: Annotated[int, Field(strict=True, ge=0, le=127)], traceName: str,
+                                       offset: Annotated[int, Field(strict=True, ge=0)] = 0,
+                                       limit: Annotated[int, Field(strict=True, ge=1, le=1000)] = 1000) -> ToolResult:
+        """Read unflagged native digital transient change records with time, six enum states and strength codes. Resolve exact catalog aliases before invoking getDigital; axes/missing names never reach it. Pagination uses per-trace records, not block header rows. Unknown native state flags reject the full trace; opaque tail words are retained privately and never returned. No voltage, resistance, hazard or fresh solver-success claim."""
+        return await invoke(simulation_data.digital_samples, datId, block, traceName, offset, limit, backend="pspice_data",
+                            coverage=("unflagged_digital_change_records", "digital_catalog_binding", "record_pagination"),
+                            not_checked=("native_flagged_state_semantics", "strength_resistance_mapping", "opaque_tail_semantics", "fresh_solver_run"))
 
     @register(readonly=True)
     async def pspice_dat_measure(datId: str, block: Annotated[int, Field(strict=True, ge=0, le=127)], traceName: str,

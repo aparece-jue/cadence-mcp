@@ -15,9 +15,9 @@ class DigitalMetadataTests(unittest.TestCase):
  def test_pure_digital_counts_aliases_and_no_physical_unit_claim(self):
   blocks,traces=decode_headers(document(digital()));block=blocks[0]
   self.assertEqual(block['rowCount'],7090);self.assertEqual(block['digitalTraceCount'],2)
-  self.assertTrue(block['digitalMetadataComplete']);self.assertFalse(block['digitalReadSupported']);self.assertFalse(block['analogReadSupported'])
+  self.assertTrue(block['digitalMetadataComplete']);self.assertTrue(block['digitalReadSupported']);self.assertFalse(block['analogReadSupported'])
   self.assertEqual(traces[0][0]['aliases'],['U4:INIT']);self.assertEqual(traces[0][0]['signalType'],'digital')
-  self.assertIsNone(traces[0][0]['unit']);self.assertFalse(traces[0][0]['sampleReadSupported'])
+  self.assertIsNone(traces[0][0]['unit']);self.assertTrue(traces[0][0]['sampleReadSupported'])
  def test_mixed_keeps_separate_row_counts_and_axis(self):
   row=digital();row.update(DataType=2,NumberofAnalogRows=3,NumberofAnalogColumns=2)
   row['Trace Names']['Analog Names']=['Time','V(OUT)']

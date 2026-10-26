@@ -353,6 +353,27 @@
       "meaning": "Show DRC Outputs选项；实际0仍出现末尾日志询问，不作为自动结束保证",
       "sha256": "75ffe613816b4f93537fccab9fadfa02e07eadbdc032fe83f965701ac181da6c",
       "size": 49666
+    },
+    {
+      "sourceId": "SIM-DIG-ENUM",
+      "installRelativePath": "tools/pspice/api/include/PSpiceDigApiDefs.h",
+      "meaning": "本机SDK六状态枚举；不证明getDigital标志或尾字段格式",
+      "sha256": "a71b3a54f902037c0b960e52502a430086c6a7af718270ca9925edf2100dab46",
+      "size": 15217
+    },
+    {
+      "sourceId": "SIM-DIG-CONCEPTS",
+      "installRelativePath": "doc/pspug/14digsim_Concepts_of_Digital_Simulation.html",
+      "meaning": "数字六状态与64强度概念",
+      "sha256": "e2a0b012233ee1ac03f7f304b050cba6f43a61ba217a5fb481acd9c73b187956",
+      "size": 9036
+    },
+    {
+      "sourceId": "SIM-DIG-STIM",
+      "installRelativePath": "doc/pspcref/03digita.html",
+      "meaning": "STIM状态字符与数字器件语法",
+      "sha256": "37de227ee448a228f820c9663d1a0f469b560797186c3aa9e359c70dce4ce571",
+      "size": 445546
     }
   ],
   "features": [
@@ -2158,7 +2179,10 @@
       "dependencies": [],
       "sources": [
         "SIM-DATA",
-        "SIM-DAT-EXAMPLE"
+        "SIM-DAT-EXAMPLE",
+        "SIM-DIG-ENUM",
+        "SIM-DIG-CONCEPTS",
+        "SIM-DIG-STIM"
       ],
       "implementation": "固定原生DAT适配器，不能把DAT当CSV；数据量限制与分页",
       "acceptance": "命名/块/单位、复数、缺trace、分块边界与原生/解析值比对",
@@ -2189,7 +2213,16 @@
         ".local/dat-exports-mcp-20261025/report.json",
         ".local/dat-export-faults-20261025/report.json",
         ".local/regression-391-dat-exports-20261025.txt",
-        ".local/digital-get-forms-20261025/report.json"
+        ".local/digital-get-forms-20261025/report.json",
+        ".local/pio-method-inventory-20261026/report.json",
+        ".local/pio-digital-signature-20261026/report.json",
+        ".local/pio-digital-read-20261026/report.json",
+        ".local/pio-digital-read-din-only-20261026/report.json",
+        ".local/pio-digital-six-states-20261026/report.json",
+        ".local/pio-digital-legal-six-states-20261026/report.json",
+        ".local/pio-digital-multitrace-20261026/report.json",
+        ".local/digital-records-mcp-20261026/report.json",
+        ".local/regression-592-digital-records-20261026.txt"
       ],
       "issues": [
         "ISS-P04-complex-fixture-native-crash",
@@ -2197,7 +2230,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Bound CSV/JSON analog exports, complex/range samples, source provenance, fresh recovery, cancellation, timeout and corruption rejection pass. Digital state/strength/time access, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion."
+      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion."
     },
     {
       "id": "P05",
@@ -2969,11 +3002,20 @@
       "evidence": ".local/digital-trace-calls-20261024/report.json",
       "additionalEvidence": [
         ".local/mixed-dat-fixture-20261024/report.json",
-        ".local/mixed-analog-run-mcp-20261024/report.json"
+        ".local/mixed-analog-run-mcp-20261024/report.json",
+        ".local/pio-method-inventory-20261026/report.json",
+        ".local/pio-digital-signature-20261026/report.json",
+        ".local/pio-digital-read-20261026/report.json",
+        ".local/pio-digital-read-din-only-20261026/report.json",
+        ".local/pio-digital-six-states-20261026/report.json",
+        ".local/pio-digital-legal-six-states-20261026/report.json",
+        ".local/pio-digital-multitrace-20261026/report.json",
+        ".local/digital-records-mcp-20261026/report.json",
+        ".local/regression-592-digital-records-20261026.txt"
       ],
-      "remaining": "Verify a documented/native digital accessor and independent state/time/strength oracles; retain capability_unavailable until then.",
-      "latestEvidence": ".local/digital-get-forms-20261025/report.json",
-      "latestObservation": "Eight fixed documented/sample get forms: analog1V correct, digital DIN identical58zero rows to missing name; getR/longget empty even for analog control. No reliable digital value/time/strength access proven; remains open."
+      "remaining": "Validate native flagged-state and remaining digital format semantics; only bounded unflagged transient records currently available.",
+      "latestEvidence": ".local/digital-records-mcp-20261026/report.json",
+      "latestObservation": "Dedicated getDigital canonical names returns native per-trace change records; legal six-state/time/relative-strength and compressed aliases pass actual MCP. Original numeric-reader/combined-axis crash failures retained. Flagged26 safely refused."
     },
     {
       "id": "ISS-P03-uncoded-native-error",
@@ -3205,15 +3247,15 @@
   ],
   "lastBatch": {
     "date": "2026-10-26",
-    "tools": 203,
+    "tools": 204,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 580,
-      "passed": 579,
+      "total": 592,
+      "passed": 591,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-580-native-drc-counts-20261026.txt"
+      "evidence": ".local/regression-592-digital-records-20261026.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3221,7 +3263,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Defer offline confirmation and full V03 coverage/completion. Advance independent original P04 digital DAT state/strength and data-format acceptance while retaining all original oracles.",
+    "nextIndependentWork": "Preserve P04 flag/format/DAT10 failures and defer full gate; advance remaining original business gates before returning to difficult native paths. No repeated offline DRC menu prompt.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3669,7 +3711,7 @@
     "editorWirePreconditionsAudit": ".local/editor-wire-preconditions-audit-20261026/report.json",
     "editorInitializedWireAccepted": false,
     "editorInitializedWireStatus": ".local/editor-session-wire-audit-20261026/report.json",
-    "gitSyncPending": false,
+    "gitSyncPending": true,
     "lastSuccessfulImplementationCommit": "f6d2d9c",
     "privateCapturePid": 5256,
     "editorUpdatePageStateAccepted": false,
@@ -3699,7 +3741,11 @@
     "nativeDrcLateElectricalErrors": 2,
     "nativeDrcLatePhysicalErrors": 5,
     "nativeDrcLogPromptUnattendedVerified": false,
-    "native24ProjectCopiesReopenWithoutUpgradeVerified": true
+    "native24ProjectCopiesReopenWithoutUpgradeVerified": true,
+    "digitalChangeRecordsMcpAvailable": true,
+    "digitalChangeRecordsScope": "unflagged_getDigital_change_records_v1",
+    "digitalChangeRecordsEvidence": ".local/digital-records-mcp-20261026/report.json",
+    "fullP04Accepted": false
   },
   "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
 }

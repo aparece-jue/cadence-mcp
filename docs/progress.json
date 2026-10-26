@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 203,
+  "toolCount": 204,
   "latestFullRegression": {
-    "total": 580,
-    "passed": 579,
+    "total": 592,
+    "passed": 591,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-580-native-drc-counts-20261026.txt"
+    "evidence": ".local/regression-592-digital-records-20261026.txt"
   },
-  "acceptanceCanonicalSha256": "cee18505eebf657c6bbf2365e632ca023c2586ce6b53300df5d07eef78944e91"
+  "acceptanceCanonicalSha256": "893e47bb3aff4b6b84c33974430fcab001950e96525ef1f4598cfdb312aa0f60"
 }

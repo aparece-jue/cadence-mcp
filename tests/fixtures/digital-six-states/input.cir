@@ -1,0 +1,17 @@
+Original independent six-state digital fixture
+VPOWER DPWR 0 DC 5
+VANALOG ANALOG 0 DC 1
+RLOAD ANALOG 0 1k
+.MODEL IOLOCAL UIO(DRVH=50 DRVL=500)
+UDIG STIM(1,1) DPWR 0 DIN IOLOCAL
++ 0s 0
++ 1us R
++ 2us 1
++ 3us F
++ 4us 0
++ 5us X
++ 6us Z
+.OPTIONS DIGINITSTATE=0
+.TRAN 0.1us 7us
+.PROBE
+.END
