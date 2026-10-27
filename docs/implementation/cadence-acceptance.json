@@ -1779,7 +1779,7 @@
       "module": "层次",
       "title": "跨页/层次块/端口创建与连接",
       "required": true,
-      "queueOrder": 22,
+      "queueOrder": 72,
       "dependencies": [
         "D03",
         "H02"
@@ -1811,13 +1811,27 @@
         ".local/copied-port-read-trace-20261024/report.json",
         ".local/cross-page-root-init-20261024/report.json",
         ".local/copied-port-root-init-20261024/report.json",
-        ".local/schematic-expansion-20261024/report.json"
+        ".local/schematic-expansion-20261024/report.json",
+        ".local/editor-ports-20261027/report.json",
+        ".local/editor-ports-20261027/forensic-recovery-v2-report.json",
+        ".local/editor-ports-v2-20261027/report.json",
+        ".local/editor-ports-v2-20261027/forensic-recovery-v2-report.json",
+        ".local/editor-port-read-controls-20261027/report.json",
+        ".local/editor-port-read-qualified-20261027/report.json",
+        ".local/port-symbol-coordinate-source-20261027/geometry.json",
+        ".local/editor-ports-v3-20261027/report.json",
+        ".local/editor-ports-v4-20261027/report.json",
+        ".local/editor-ports-v5-20261027/report.json",
+        ".local/editor-ports-shared-iterator-20261027/report.json",
+        ".local/editor-hierarchy-scaffold-20261027/report.json",
+        ".local/editor-hierarchy-ports-20261027/report.json",
+        ".local/editor-hierarchy-audit-20261027/report.json"
       ],
       "issues": [
         "ISS-H03-fresh-port-native-crash"
       ],
       "implementationReady": true,
-      "remaining": "Public5-tool durable top-level same-page internal block reuse passes two real stdio references/locations, source tree/properties and native partition checks, wrong-hotspot rejection and receipt-loss/cancel/timeout. Fresh child/block/port CRUD, direction/missing/name matrix, nested/cross-page/closure/cycle/incoming refs, annotation/new overrides, unrelated definition properties/other-page geometry/render/DRC and full fault matrix remain. Batch28 fresh child-port construction failed with access violation during create_child_ports, no saved design; issue retained at tail."
+      "remaining": "Public5-tool durable top-level same-page internal block reuse passes two real stdio references/locations, source tree/properties and native partition checks, wrong-hotspot rejection and receipt-loss/cancel/timeout. Fresh child/block/port CRUD, direction/missing/name matrix, nested/cross-page/closure/cycle/incoming refs, annotation/new overrides, unrelated definition properties/other-page geometry/render/DRC and full fault matrix remain. Batch28 fresh child-port construction failed with access violation during create_child_ports, no saved design; issue retained at tail. Batch119: official native PlacePort/SetPinType/PlaceWire prototype saves and independently reopens original port hotspots/directions; source OLB pin offset0,10 converted to requested page anchor without changing old oracle. Raw1022 is normal NULL iterator termination, confirmed by native Message and4controls; typed helper rejects nonNULL1022 and otherNULL errors. Original TOP/BLOCK_A/CHILD full scaffold with2schematics/2pages/1block/2pins now saves and C01/C04/C03/H01 public reads pass, including original400,320/500,320 parent hotspots. Child IN/OUT and wire share a native DboNet; declared OUT remains OUT while canonical net is IN. Both old and direct PortOccurrence.GetFlatNet returnNULL at parent pins: original cross-boundary rule remains unaccepted. No public fresh-port writer or fault/direction/missing/naming/nested matrix yet; fullH03 not promoted. Initial false1022 and coordinate/name-reader failures preserved; owned partials saved as unverified forensic copies and host/fence restored."
     },
     {
       "id": "H04",
@@ -3006,9 +3020,11 @@
         ".local/cross-page-read-trace-20261024/report.json",
         ".local/copied-port-read-trace-20261024/report.json",
         ".local/cross-page-root-init-20261024/report.json",
-        ".local/copied-port-root-init-20261024/report.json"
+        ".local/copied-port-root-init-20261024/report.json",
+        ".local/editor-hierarchy-ports-20261027/report.json",
+        ".local/editor-hierarchy-audit-20261027/report.json"
       ],
-      "latestObservation": "Alternate valid capsym PORTLEFT-L typed CopySymbol -> NewPort/SetPinType graph passes prior crash stage and complete save, tree reopens BLOCK_A->CHILD implementation. Full definition/objects/binding readers fail; port direction/hotspot/connectivity gates not accepted, original uninitialized NewPortSymbol path remains unresolved."
+      "latestObservation": "Batch119: fixed native editor alternative accepts sourceOLB symbol offset, typed ports, fresh parent/child structure and independent public readers. Original standalone constructor crash is not claimed fixed; complete public writer, original cross-boundary flat relation and remaining matrices still required."
     },
     {
       "id": "ISS-D04-symbol-pose-retained-net",
@@ -3516,6 +3532,16 @@
         ".local/nested-bundle-trace-20261027/report.json",
         ".local/nested-bundle-trace-20261027/create.json.phases"
       ]
+    },
+    {
+      "id": "ISS-H03-native-graph-parent-flat-null",
+      "featureId": "H03",
+      "status": "open",
+      "summary": "Readable fresh native editor TOP/BLOCK_A/CHILD graph has correct parent hotspots/port directions and connected child ports, but both legacy and direct GetFlatNet diagnostics giveNULL for two parent boundary pins. Original cross-boundary connectivity remains unaccepted; no name-only inference.",
+      "evidence": ".local/editor-hierarchy-audit-20261027/report.json",
+      "dependencies": [
+        "H02"
+      ]
     }
   ],
   "excluded": [
@@ -3541,12 +3567,12 @@
     "tools": 221,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 691,
-      "passed": 690,
-      "skipped": 1,
+      "total": 698,
+      "passed": 697,
       "errors": 0,
+      "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-v010-20261027.txt"
+      "evidence": ".local/regression-native-ports-20261027.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3554,7 +3580,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Continue independent original gates after deferring nested Bundle write/read failure; inspect official editor-context creation and preserve the declared graph oracle.",
+    "nextIndependentWork": "Preserve parent-boundary flat-null failure at tail; continue independent original gates, then native hierarchy/net cache mapping with original graph oracle. Public typed port write lifecycle still required.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3571,12 +3597,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 691,
-      "passed": 690,
-      "skipped": 1,
+      "total": 698,
+      "passed": 697,
       "errors": 0,
+      "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-v010-20261027.txt"
+      "evidence": ".local/regression-native-ports-20261027.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3614,7 +3640,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": false,
+    "fullRegressionRunThisBatch": true,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -3723,7 +3749,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 118,
+    "batch": 119,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4103,7 +4129,9 @@
     "validatedReleaseVersion": "0.1.0",
     "fullGoalComplete": false,
     "developmentVersion": "0.1.1.dev0",
-    "branchPolicy": "develop=research; alpha=accepted-test-tag; release=accepted-scoped-release-tag"
+    "branchPolicy": "develop=research; alpha=accepted-test-tag; release=accepted-scoped-release-tag",
+    "nativeFreshPortPrerequisiteAccepted": true,
+    "fullH03Accepted": false
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

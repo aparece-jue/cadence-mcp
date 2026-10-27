@@ -1,0 +1,73 @@
+{
+  "batch": 119,
+  "date": "2026-10-27",
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "tools": 221,
+  "newPublicTools": 0,
+  "nativePortConstructionAccepted": true,
+  "originalHierarchyStructureAndChildConnectivityAccepted": true,
+  "parentChildFlatConnectivityAccepted": false,
+  "fullH03Accepted": false,
+  "iteratorQualification": {
+    "nativeMessage": "ERROR(ORDBDLL-1022): At normal end of iteration",
+    "acceptedOnlyWithNull": true,
+    "qualifiedMethods": [
+      "NextView",
+      "NextPage",
+      "NextWire",
+      "NextPort"
+    ],
+    "nonnullErrorAndOtherNullErrorRefused": true,
+    "newTests": 7
+  },
+  "coordinateContract": {
+    "sourceOlbOnlyOffset": [
+      0,
+      10
+    ],
+    "originalHotspotOraclePreserved": true,
+    "rotationMirrorScope": "zero_only"
+  },
+  "names": {
+    "declaredPorts": [
+      "IN",
+      "OUT"
+    ],
+    "computedMergedNet": "IN",
+    "declaredNameNotReplacedByCanonicalNet": true
+  },
+  "failedProbeOutputsPreserved": true,
+  "partialOutputSavedForForensicsOnly": true,
+  "hostRecoveredAndOriginalReceiptsUnchanged": true,
+  "legacyAndDirectFlatBothNull": true,
+  "latestFullRegression": {
+    "total": 698,
+    "passed": 697,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-native-ports-20261027.txt"
+  },
+  "syntaxCheckedPythonFiles": 16,
+  "evidenceSha256": {
+    ".local/regression-native-ports-20261027.txt": "01ecb416661787e81f9e64601c51e18b8b09859a0a6a28a271a22afc22342171",
+    ".local/editor-ports-20261027/report.json": "47a2565efd106605a95bdadd49c33dc12ba0638cd495d51192e2917d024265c3",
+    ".local/editor-ports-20261027/forensic-recovery-v2-report.json": "3af3a3daa4934ae241c2902ef1e436a31827d415744b3cc36fd019ceee399410",
+    ".local/editor-ports-v2-20261027/report.json": "e24995617dc9091af86414812ba1df018e50eda83950316a026dd2f22d9fecca",
+    ".local/editor-ports-v2-20261027/forensic-recovery-v2-report.json": "e48ebfb577fccdea1f36d16dc707028ab26e3f4b4d2d9ea836104581515a2891",
+    ".local/editor-port-read-controls-20261027/report.json": "60e60d51350d2b8dd4317875394c1c023d4fc50cf64e47b136e6c20a3a74eed2",
+    ".local/editor-port-read-qualified-20261027/report.json": "5837004e43b3cb6a2f6c77d6c91f4360573742a98e9de6836182fd5fc1cf98f4",
+    ".local/port-symbol-coordinate-source-20261027/geometry.json": "46a7d87167d0cf4c6db566232b1c9582db512f19e6962fca058b278e5412ea17",
+    ".local/editor-ports-v3-20261027/report.json": "36ba9d22da3974ca6cb20b81ca19169067059b1b317cc43374c1a543b7e711bd",
+    ".local/editor-ports-v4-20261027/report.json": "7b4b251856a48435cb396136547de973f682615a699903f7a786b87aff8591cb",
+    ".local/editor-ports-v5-20261027/report.json": "5bec391851492aeaba85cbceb8d2cad0684457b4c7e0c75837f6973a84b2cc96",
+    ".local/editor-ports-shared-iterator-20261027/report.json": "a066902736f33395376882bd919868014b5a8ce6dfb2706f271e2a3c955be85d",
+    ".local/editor-hierarchy-scaffold-20261027/report.json": "2835aeb7af1fc55250be333e7fc8193c869693e95977e6b3e1779b4b745dab0d",
+    ".local/editor-hierarchy-ports-20261027/report.json": "5194f67afcfec95dfdce3c43d1592473d89da26523fb45cbe370ea1e45b94b5d",
+    ".local/editor-hierarchy-audit-20261027/report.json": "0af9c19f884d89434ccfc3832a460fef7aa100002fd03b0c56ce0e945940f06c",
+    "src/cadence_mcp/adapters/dbo_iterator.tcl": "230618c49fb7799332e0c216b60df605736c2e01c8b457f50d04965645eca415",
+    "tests/test_dbo_iterator.py": "374a0da03c9a4c50052a2ddcd9cd7559aa13768db7ddde1bc73b3389e5844596"
+  }
+}

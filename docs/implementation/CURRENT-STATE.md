@@ -2,6 +2,14 @@
 
 2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百一十九批新端口原生替代与原父子图读回（2026-10-27）
+
+- 按失败后移从Bundle转H03。官方PlacePort/SetPinType/PlaceWire在私有宿主副本运行；初始两例误将NULL迭代后的1022当失败，保留围栏/dirty私有现场。两份输出仅保存取证并关闭、原宿主/文件hash恢复，原失败回执保持；初次恢复脚本的不存在命令错误亦保留，修正为已验证数据库定位成功，无GUI输入/真实设计变更。
+- 空白/四电阻/两取证副本对照及DboState.Message证明1022=At normal end of iteration；新固定四方法helper只接受NULL+1022，不放宽非NULL/其他错误。7注入测试+新真实端口任务通过。独立源OLB边界/pin计算0,10偏移，保留100,100/300,100原热点；声明IN/OUT与canonical IN区分，类型0/1及同DboNet/导线连接保存重开通过。早期坐标与canonical-name误作declared-name诊断失败不改写。
+- 原TOP/BLOCK_A/CHILD骨架2schematics/2pages/1part/2pins保存重开；子页端口创建/连线通过，公开MCP父块400,300、两边界400,320/500,320、子热点、层次结构/Implementation CHILD读回符合原32f349f0..预期。不是仅新造一个无层次的简化正例。
+- 原跨层连通仍失败：旧路径与直接PortOccurrence.GetFlatNet对父块两pin都NULL。原rule不改、不按名字误合并，不把子页同网当父子连接。H03新issue后移；还缺公共typed fresh-port writer、原方向/缺失/命名/重复/嵌套及生命周期矩阵，完整H03不提升，旧原生NewPort构造器未修复。
+- 完整698项697通过/1原symlink权限skip；开发221工具、65发行范围均保持，alpha/release不动。原34仍6完整通过17.6%。本批源码、原创研究与证据按新授权同步develop；回执.local/native-ports-batch119。下一步独立项与后移H02/H03边界网络初始化/映射；详见native-port-research.md、batch-119-evidence.json。
+
 ## 第一百一十八批三渠道分支与恢复研发（2026-10-27）
 
 - 用户新授权继续研发闭环及按分支同步。已在GitHub创建并核对alpha=64e7ca9/tag alpha.2、release=e59f888/tag v0.1.0；本地同名跟踪分支建立，仍在develop研发。main及全部既有tag/Release资产未改。研发资料/源码/计划/进度/验收摘要按完成批次推develop；alpha/release只验收晋级。最新规则写AGENTS、docs/BRANCHES、DEVELOPMENT及branches.json。
