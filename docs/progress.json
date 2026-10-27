@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-native-ports-20261027.txt"
   },
-  "acceptanceCanonicalSha256": "54430ca9cb1e7efebf1e3520e062bc90f748df245066943a6f6cc5eab3a0f728"
+  "acceptanceCanonicalSha256": "3dc5447fec1ec587b3d3b5971686b9c7ce57e770858ee9db492357e0497d261e"
 }

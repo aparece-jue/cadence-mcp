@@ -1,0 +1,65 @@
+{
+  "batch": 120,
+  "date": "2026-10-27",
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "tools": 221,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "nativeDiagonalGeometryAccepted": true,
+  "fullV02Accepted": false,
+  "diagonalSegments": 9,
+  "exactCrossing": [
+    [
+      820,
+      7
+    ],
+    [
+      760,
+      7
+    ]
+  ],
+  "reversedOverlap": [
+    [
+      325,
+      125
+    ],
+    [
+      375,
+      175
+    ]
+  ],
+  "tContact": [
+    550,
+    150
+  ],
+  "sharedEndpointAndGapNegativesAccepted": true,
+  "threeExplicitGridsAccepted": true,
+  "nativeSourceAndOraclesUnchanged": true,
+  "hostRestoredClean": true,
+  "targetedRegression": {
+    "wiring": {
+      "total": 14,
+      "passed": 14,
+      "skipped": 0
+    },
+    "readonly": {
+      "total": 13,
+      "passed": 12,
+      "skipped": 1
+    },
+    "source": "actual unittest terminal output; original file-symlink privilege skip retained"
+  },
+  "fullRegressionNotRerun": true,
+  "priorBatchDevelopSyncVerified": "7ddb8404aed67fd1f0d6d9f77ec8dde6acdf2227",
+  "evidenceSha256": {
+    ".local/native-diagonal-20261027/expected.json": "ef3d39edab7e117631512f9999c699c6ccbddf0bfbcb79d3f030fa5dd7e428e6",
+    ".local/native-diagonal-20261027/report.json": "a1b104e7c0de4a69bd5d57ea8e81e450bc7dd09918310f34f0add1eeb333ac18",
+    ".local/native-diagonal-20261027/connections.json": "c484124dd641564fbfe9106e3c8b68031b120e840656eaffa64b4a12f84b6208",
+    ".local/native-diagonal-mcp-20261027/expected.json": "bb8edbfc427d2880dd7c6c15d67307a285d0d9880e5b951981f3eb9562c13faa",
+    ".local/native-diagonal-mcp-20261027/report.json": "90ac9737d62462e60064d85716cb43eaf2ecf3ac9863fdc302f8106ac346398e",
+    "tools/probe_native_diagonal.py": "fede5c9a16ff4c96599da27cf5ac587b1e6593d76d5156bf1b665170f340a260",
+    "tools/smoke_native_diagonal_mcp.py": "afbd19beb05eeea93a0c8a8a041537e8c8cc0e804e17b9217245a494458f784c"
+  }
+}

@@ -1943,11 +1943,14 @@
         ".local/wiring-exact-mcp-20261023/report.json",
         ".local/regression-245-geometry-bridge-20261023.txt",
         ".local/page-bounds-mcp-v3-20261026/report.json",
-        ".local/page-bounds-guards-20261026/report.json"
+        ".local/page-bounds-guards-20261026/report.json",
+        ".local/native-diagonal-20261027/report.json",
+        ".local/native-diagonal-mcp-20261027/report.json",
+        "docs/implementation/batch-120-evidence.json"
       ],
       "issues": [],
       "implementationReady": true,
-      "remaining": "capture_check_wiring v0.2 has exact rational all-orientation linear intersections/overlaps/T contacts, explicit optional native-unit grid/origin, 2000 segment/10000 vertex/finding bounds. Six new independent math/bounds/grid tests plus native MCP two declared grid origins pass. Native diagonal-specific drawing fixtures, symbol/text avoidance/rendered bounds, junction/occurrence/full V02 and resource gates remain required. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained.",
+      "remaining": "capture_check_wiring v0.2 has exact rational all-orientation linear intersections/overlaps/T contacts, explicit optional native-unit grid/origin, 2000 segment/10000 vertex/finding bounds. Six new independent math/bounds/grid tests plus native MCP two declared grid origins pass. Native diagonal-specific drawing fixtures, symbol/text avoidance/rendered bounds, junction/occurrence/full V02 and resource gates remain required. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained. Batch120: ten native editor wires (nine diagonals), saved/reopened without segment replacement, pass real public MCP exact fractional crossing(820/7,760/7), reversed collinear overlap325,125..375,175, diagonal/horizontal T550,150, shared-endpoint and separated-gap negatives. Three explicit grids produce2/18/0 off-grid vertices and preserve all other finding counts; artifacts/source/oracles unchanged. This closes the native diagonal-specific geometry prerequisite only; symbol/text clearance, native cross-page isolation, junction/occurrence/full V02/resource matrices remain unaccepted. No production code or public tool changes.",
       "dependencyRationale": "Existing immutable wire coordinate fixtures support independent geometry/grid checking before full C03 pose or C05 rendered-bound acceptance; all original symbol/text/hierarchy requirements retained."
     },
     {
@@ -3749,7 +3752,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 119,
+    "batch": 120,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4131,7 +4134,23 @@
     "developmentVersion": "0.1.1.dev0",
     "branchPolicy": "develop=research; alpha=accepted-test-tag; release=accepted-scoped-release-tag",
     "nativeFreshPortPrerequisiteAccepted": true,
-    "fullH03Accepted": false
+    "fullH03Accepted": false,
+    "nativeDiagonalGeometryAccepted": true,
+    "evidence": "docs/implementation/batch-120-evidence.json",
+    "targetedRegression": {
+      "wiring": {
+        "total": 14,
+        "passed": 14,
+        "skipped": 0
+      },
+      "readonly": {
+        "total": 13,
+        "passed": 12,
+        "skipped": 1
+      },
+      "source": "actual unittest terminal output; original file-symlink privilege skip retained"
+    },
+    "fullRegressionRerunThisBatch": false
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
