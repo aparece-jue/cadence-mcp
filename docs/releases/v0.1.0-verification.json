@@ -1,0 +1,35 @@
+{
+  "version": "0.1.0",
+  "tools": 65,
+  "wheel": {
+    "file": "cadence_mcp-0.1.0-py3-none-any.whl",
+    "sha256": "72cc5c3ba01e1f0622f038bd9e6eeff3b51bd9d7158c6663c5b9adca480144ba"
+  },
+  "zip": {
+    "file": "cadence-mcp-0.1.0-windows.zip",
+    "sha256": "0cba09ad96b561b2515f76ea71b8fece8a7632ce0f1eaab52e32a26580e27019"
+  },
+  "packagedModuleFilesVerified": 237,
+  "regression": {
+    "total": 691,
+    "passed": 690,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-v010-20261027.txt"
+  },
+  "installedCaptureEngineDatBusPassed": true,
+  "installedAllSupportedGroupsPassed": true,
+  "dependenciesCheckPassed": true,
+  "cliExcluded": true,
+  "evidenceSha256": {
+    ".local/v010-core/report.json": "6a2b2138a7c3a11695c263945fcb54954ac0802fe3a44152208995d305d7e210",
+    ".local/v010-numeric/report.json": "da185df205017ade5965ad2032e1f76f66872817e9711c57f5c9e1180f23bc8f",
+    ".local/v010-test/property-library/report.json": "07f872d21a5ab0fb2fe123722e4315d75da6d16444f48f1e4dc9386e7c62624c",
+    ".local/v010-test/bus-pin-query/report.json": "6398a56d5e6068c49c0a708a11ba0bfcec41db203a58ba63155f3f82dc6019e9",
+    ".local/v010-test/bus-create/report.json": "32225da5151b36bfc0b413e6a5070a8681bbb96cca9983119dc3867c77a7a04a",
+    ".local/v010-test/wire-add/report.json": "88012ea7c7dc54950e58b6c22b7e1ddf5af11a2c08b49cd112cecd2a2bff92cc",
+    ".local/v010-test/wire-delete/report.json": "157f17125d2b6385f94bf3499c938494a4261ac6a905db6daf8c1bbf0dbd7009",
+    ".local/regression-v010-20261027.txt": "75afd64cd66ec657dc8e24a96c85e5ed58a437e3a5342463953d8851551324d2"
+  }
+}

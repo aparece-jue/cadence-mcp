@@ -10,7 +10,8 @@ p=argparse.ArgumentParser()
 for n in ('install-root','workspace-root','capture-source','circuit-source','contract'):p.add_argument('--'+n,type=Path,required=True)
 p.add_argument('--backend',choices=['cli','engine'],default='cli')
 p.add_argument('--expected-version',default='0.1.0a1');p.add_argument('--expected-tool-count',type=int,default=193)
-a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);inputs=root/'inputs';inputs.mkdir();dsn=inputs/'sample.dsn';cir=inputs/'divider.cir';shutil.copy2(a.capture_source,dsn);shutil.copy2(a.circuit_source,cir);before={str(p):sha256(p) for p in (a.capture_source,a.circuit_source,dsn,cir)};env=os.environ.copy();env.pop('PYTHONPATH',None);params=StdioServerParameters(command=sys.executable,args=['-m','cadence_mcp.server','--install-root',str(a.install_root.resolve()),'--workspace-root',str(root/'workspaces'),'--read-root',str(inputs),'--timeout-seconds','60'],env=env);report={'passed':False,'version':cadence_mcp.__version__,'importPath':cadence_mcp.__file__,'checks':{}}
+p.add_argument('--server-module',default='cadence_mcp.server')
+a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);inputs=root/'inputs';inputs.mkdir();dsn=inputs/'sample.dsn';cir=inputs/'divider.cir';shutil.copy2(a.capture_source,dsn);shutil.copy2(a.circuit_source,cir);before={str(p):sha256(p) for p in (a.capture_source,a.circuit_source,dsn,cir)};env=os.environ.copy();env.pop('PYTHONPATH',None);params=StdioServerParameters(command=sys.executable,args=['-m',a.server_module,'--install-root',str(a.install_root.resolve()),'--workspace-root',str(root/'workspaces'),'--read-root',str(inputs),'--timeout-seconds','60'],env=env);report={'passed':False,'version':cadence_mcp.__version__,'importPath':cadence_mcp.__file__,'checks':{}}
 async def main():
  try:
   assert report['version']==a.expected_version and 'site-packages' in report['importPath']

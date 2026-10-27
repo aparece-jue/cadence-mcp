@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "cadence-v010": {
+      "command": "D:/cadence-mcp-v010/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "cadence_mcp.validated_server",
+        "--install-root",
+        "D:/Program Files/Cadence/SPB_24.1",
+        "--workspace-root",
+        "D:/cadence-mcp-v010/workspaces",
+        "--read-root",
+        "D:/cadence-mcp-v010/inputs",
+        "--timeout-seconds",
+        "60"
+      ]
+    }
+  }
+}

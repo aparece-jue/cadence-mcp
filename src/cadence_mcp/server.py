@@ -287,7 +287,9 @@ class SimulationSampleExpectation(StrictModel):
     relativeTolerance: Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)] = 0.0
 
 
-def create_server(config: Config) -> MCPServer:
+def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
+    if profile not in ('development','validated'):raise ValueError('Unknown server profile')
+    from .validated_profile import TOOLS as VALIDATED_TOOLS,protect,narrow_schema,capabilities as validated_capabilities
     capture = CaptureService(config)
     property_edits = CapturePropertyEdits(config, capture)
     user_properties = CaptureUserProperties(config, capture)
@@ -331,10 +333,14 @@ def create_server(config: Config) -> MCPServer:
 
     def register(*, readonly: bool):
         def decorator(fn):
+            if profile=='validated':
+                if fn.__name__ not in VALIDATED_TOOLS:return fn
+                fn=protect(fn,{'wire_add':wire_adds,'wire_edit':wire_edits},packed)
             tool = Tool.from_function(fn, annotations=ToolAnnotations(
                 read_only_hint=readonly, destructive_hint=False, open_world_hint=False))
             # SDK generates one Pydantic input model per function. Make unknown
             # top-level fields fail as well as the nested strict scope models.
+            if profile=='validated':narrow_schema(tool)
             tool.fn_metadata.arg_model.model_config = ConfigDict(extra="forbid", strict=True)
             tool.fn_metadata.arg_model.model_rebuild(force=True)
             tool.parameters = tool.fn_metadata.arg_model.model_json_schema()
@@ -384,6 +390,7 @@ def create_server(config: Config) -> MCPServer:
     @register(readonly=True)
     async def cadence_get_capabilities() -> ToolResult:
         """Describe implemented experimental features separately from runtime probes and unimplemented workflows."""
+        if profile=='validated':return packed(result(validated_capabilities(),level='documented',coverage=('validated_release_registry',),not_checked=('current_runtime','full_project_completion')))
         features = {
             "environment.files": "implemented", "environment.runtime_probe": "implemented",
             "pspice.parameter_step": "experimental_literal_param_list_cli_only",
@@ -1865,6 +1872,7 @@ def create_server(config: Config) -> MCPServer:
         """Release this server's cached read-only session; never save, delete a design, or touch a Capture GUI session."""
         return await invoke(capture.close, sessionId, coverage=("cache_release",))
 
+    if profile=='validated' and {tool.name for tool in tools}!=VALIDATED_TOOLS:raise ValueError('Validated release registration differs from its whitelist')
     return MCPServer("cadence-mcp", version=__version__, tools=tools, log_level="WARNING", lifespan=lifespan,
                      instructions="Work only in registered copies. GUI sessions default to read access. Experimental fixed MCP_NOTE writes require a prepared fixture binding and immutable plan; uncertain writes are never replayed. Definition-level pin nets are not occurrence-expanded connectivity. Approved isolated property edits require a durable plan and produce a new copy. Only capabilities listed by cadence_get_capabilities are supported. Full schematic authoring, native DRC, PDF delivery and end-to-end Capture-to-PSpice remain incomplete.")
 

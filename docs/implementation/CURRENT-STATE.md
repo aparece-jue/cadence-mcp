@@ -2,6 +2,13 @@
 
 2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；当前不自动提交推送，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百一十七批已验证能力发行版v0.1.0（2026-10-27）
+
+- 用户要求整理已验证功能成发行版，新增独立validated_server/default console和65工具白名单；开发入口仍221，原34门禁不改。Schema要求导线显式宿主、edit仅delete；结果kind/引擎backend/只读GUI权限/标准UTF8输入/连接对象类别收窄，运行前复核，旧独立导线plan不能apply/recover/open。CLI、数字DAT、profile链路、层次/Bundle等未验证范围不注册；共享内部开发入口仅显式启用，不属本版支持。
+- 新9项边界及实际注册/参数防绕过测试；完整691项690通过/1原symlink权限skip。237源码文件wheel逐字节保持，独立环境pip check通过；65工具实际stdio合同逐字段相同，原开发221合同保留。
+- 独立安装的原生实测：Capture、OLB五实体、Value修改保存重开并保持8脚、独立parser/setup、新引擎DC2.5V/AC301点/瞬态541点与原独立数学预期、3类原生错误拒绝、新服务无重放。原生新增线/alias、带alias删除四pin解绑、总线新增保持原网及8物理成员升降序/缺/脱离四例均从发行入口通过，无开发PYTHONPATH。安装/真实设计未改。
+- 新固定ZIP/wheel/哈希、逐项支持矩阵/机器白名单、安装与桥接说明、本机独立客户端配置。alpha.1/alpha.2保持。只对明确列出的操作范围发行，整体6/34仍17.6%，不声称完整A01或全部Cadence验收完成。发布同步/下载验证回执见.local/v010-test/release-receipt.json；本轮发布提交推送由用户请求授权，常规研发仍不自动推送。
+
 ## 第一百一十六批八物理引脚成员与alpha.2（2026-10-27）
 
 - 四电阻/八物理引脚通过公开MCP放置、总线升降序/缺分支/脱离四例，独立进程HasMember/GetPosition/GetMember指针身份符合冻结预期；pin_member接入现有capture_query_bus，不新增工具。缺DATA7分支对应pin未连接；脱离入口的已命名DATA7仍是原生成员，但entry引用为空，两种语义分别报告，不把成员关系当完整布线。

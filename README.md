@@ -8,6 +8,8 @@
 
 <!-- progress:end -->
 
+> **发行版 v0.1.0（已验证能力）**：[下载](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0) · [安装](docs/testing/v0.1.0.md) · [65工具支持范围](docs/releases/v0.1.0-supported.md)。默认使用validated_server；开发入口仍221工具，原完整研发6/34，不将本发行声明为全部功能完成。
+
 > **测试版 v0.1.0-alpha.2**（Python 包版本 `0.1.0a2`）：[下载预发布版](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0-alpha.2) · [安装与试用指南](docs/testing/alpha-2.md) · [版本说明](docs/releases/v0.1.0-alpha.2.md)。Windows x64 / 本机验证 Cadence 24.1，221个工具；原34项门禁仍6项完整通过。新增原生编辑布线、普通总线/物理成员查询及受限PSpice联动。未完成范围见指南。[旧alpha.1](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0-alpha.1)保留。
 
 

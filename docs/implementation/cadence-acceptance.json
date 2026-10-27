@@ -3520,12 +3520,12 @@
     "tools": 221,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 682,
-      "passed": 681,
+      "total": 691,
+      "passed": 690,
       "skipped": 1,
       "errors": 0,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-alpha2-20261027.txt"
+      "evidence": ".local/regression-v010-20261027.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3550,12 +3550,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 682,
-      "passed": 681,
+      "total": 691,
+      "passed": 690,
       "skipped": 1,
       "errors": 0,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-alpha2-20261027.txt"
+      "evidence": ".local/regression-v010-20261027.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3702,7 +3702,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 116,
+    "batch": 117,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4077,7 +4077,10 @@
     "publicBusPinMemberQueryAvailable": true,
     "alpha2ReleasePrepared": true,
     "alpha2InstalledCliSmokePassed": false,
-    "alpha2InstalledEngineSmokePassed": true
+    "alpha2InstalledEngineSmokePassed": true,
+    "validatedReleaseTools": 65,
+    "validatedReleaseVersion": "0.1.0",
+    "fullGoalComplete": false
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
