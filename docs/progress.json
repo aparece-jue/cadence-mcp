@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-v010-20261027.txt"
   },
-  "acceptanceCanonicalSha256": "d35e622071c0e2da7350b9d12cddf96aa47e00fa839db4dab0f94660bc83020b"
+  "acceptanceCanonicalSha256": "85b649e67474ce3c5b569d73e01aa3abd0b7f39880615e44e2dddbc6962dec5c"
 }

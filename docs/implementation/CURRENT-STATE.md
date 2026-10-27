@@ -1,6 +1,14 @@
 # 当前自主执行状态
 
-2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；当前不自动提交推送，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+
+## 第一百一十八批三渠道分支与恢复研发（2026-10-27）
+
+- 用户新授权继续研发闭环及按分支同步。已在GitHub创建并核对alpha=64e7ca9/tag alpha.2、release=e59f888/tag v0.1.0；本地同名跟踪分支建立，仍在develop研发。main及全部既有tag/Release资产未改。研发资料/源码/计划/进度/验收摘要按完成批次推develop；alpha/release只验收晋级。最新规则写AGENTS、docs/BRANCHES、DEVELOPMENT及branches.json。
+- develop版本0.1.1.dev0、默认控制台恢复221工具开发入口；显式cadence-mcp-validated保留范围限制接口。alpha/release保持既有标签源码，用户安装环境不改。9项范围隔离/参数/旧任务guard再验通过；本批仅版本/入口元数据及研发探针变化，沿用上批691/690/1权限skip完整回归，不冒称重跑。
+- 恢复H04研发：只读本机枚举/辅助函数确认后，在新空白副本冻结嵌套B_TOP→CTRL+B_CHILD→READY+DATA[7..0]图。首次MakeBool无初值被拒绝；修正显式FALSE的新副本原生崩溃。新阶段记录定位到child_scalar的直接AddMember调用；两个模板创建回传true及bool读取已完成。另一全新副本走官方map.AddBundleMember，所有成员与保存调用返回，但GetBundle读取报missing_bundle。完整嵌套图仍未验收，不开放新工具、不声称根因已定；原图预期/source全部保持，失败后移。
+- 独立三页43-pin无bus读取控制通过，source不变；仅证明多页无bus分支遍历，不能替代跨页/层次/Bundle成员验收。原34项仍6完整通过17.6%。新增issue ISS-H04-bundle-definition-write-readback保留两条失败路径。官方资料仍只存定位/原创总结，安装/真实设计未改，无GUI输入。
+- 本批发布过的65工具v0.1.0与221工具alpha.2均保持；只将本批源码/原创研发资料提交推送develop，Git同步回执在.local/branch-channels-20261027。下一步按原队列推进独立未通过项，Bundle留尾部按官方编辑上下文/名称映射继续定位。见batch-118-evidence.json。
 
 ## 第一百一十七批已验证能力发行版v0.1.0（2026-10-27）
 

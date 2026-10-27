@@ -1,5 +1,7 @@
 # cadence-mcp
 
+[研发分支 develop](https://github.com/aparece-jue/cadence-mcp/tree/develop) · [测试分支 alpha](https://github.com/aparece-jue/cadence-mcp/tree/alpha) · [发行分支 release](https://github.com/aparece-jue/cadence-mcp/tree/release) · [分支与晋级规则](docs/BRANCHES.md)
+
 <!-- progress:start -->
 
 [![完整验收进度](docs/progress.svg)](docs/PROGRESS.md)

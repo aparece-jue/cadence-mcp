@@ -1,0 +1,76 @@
+{
+  "batch": 118,
+  "date": "2026-10-27",
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "tools": 221,
+  "developmentVersion": "0.1.1.dev0",
+  "channels": {
+    "passed": true,
+    "branches": {
+      "alpha": {
+        "tag": "v0.1.0-alpha.2",
+        "commit": "64e7ca9bb61bb04d80575d7289104405a2c2afe9",
+        "remoteCreated": true,
+        "remoteVerified": true
+      },
+      "release": {
+        "tag": "v0.1.0",
+        "commit": "e59f888607bdc647c3dbcec1a235663fc3b3eeb4",
+        "remoteCreated": true,
+        "remoteVerified": true
+      },
+      "develop": {
+        "commit": "e59f888607bdc647c3dbcec1a235663fc3b3eeb4"
+      },
+      "main": {
+        "commit": "0a31dda05dfce224fc27cb1f6a950e9fedb4b6fc",
+        "changed": false
+      }
+    },
+    "noForceUpdate": true,
+    "publishedTagsUnchanged": true
+  },
+  "releaseTagsAndInstalledPackagesUnchanged": true,
+  "developmentConsole": "cadence_mcp.server",
+  "validatedProfileGuardTests": {
+    "total": 9,
+    "passed": 9
+  },
+  "fullRegressionRepeated": false,
+  "latestFullRegressionEvidence": ".local/regression-v010-20261027.txt",
+  "multiPageReadControl": {
+    "passed": true,
+    "pageCount": 3,
+    "pinCount": 43,
+    "membershipPairCount": 0,
+    "sourceUnchanged": true,
+    "scope": "multi_page_no_bus_reader_control_only"
+  },
+  "bundleResearch": {
+    "runtimeEnumsAndBoolHelpersPresent": true,
+    "zeroArgumentMakeBoolRejected": true,
+    "explicitBoolTemplatesCreatedInWorker": true,
+    "directAddMemberNativeCrashPhase": "child_scalar",
+    "mappedAddBundleMemberAndSaveReturned": true,
+    "mappedDefinitionQuery": "missing_bundle",
+    "nestedGraphAcceptancePassed": false,
+    "rootCauseConfirmed": false,
+    "publicToolsAdded": 0,
+    "unverifiedItemDeferred": true
+  },
+  "evidenceSha256": {
+    ".local/branch-channels-20261027/report.json": "beea29ef04769dfb090549ac121ce3f8a091eb18a9c4f6ceb1d2556dd3d484bb",
+    ".local/bundle-runtime-20261027/runtime.json": "259af739813d7303882b5dd2738c0667ce7a607e9db27dac969f8d1f6a0416c7",
+    ".local/bus-pin-multipage-20261027/report.json": "b25610f27e2bf85ecade202924abb8eb23e10e961854f5f733a957099a78870f",
+    ".local/nested-bundle-probe-20261027/report.json": "f93b8da1f9a8c6e0937ecb457048b18fef13d79bb31da9aa40491a8e3c8cb1be",
+    ".local/nested-bundle-probe-20261027/create.json": "33897cd9f4e236f7b3db7eddc2a7e2c171615ccf7162763fb0719c89d0b27e90",
+    ".local/nested-bundle-probe-v2-20261027/report.json": "581489c03bc1838a70816cfd24f2387fffb5722c8d5fc09fc2f8c9f05e604602",
+    ".local/nested-bundle-trace-20261027/report.json": "307233adc6dbcf0213dd82d61ef5fd94570a8b3eb7c68c1c76512f0e524faadf",
+    ".local/nested-bundle-trace-20261027/create.json.phases": "28418c2d6954709b3fd2c2e570306760743ea40326ac8fe10379dc3000f65b26",
+    ".local/nested-bundle-map-20261027/report.json": "27be983e1394c60a2627d91e563577e46f7eb5bbde70b0bae611bdbc34f70e93",
+    ".local/nested-bundle-map-20261027/create.json": "63ffdfc322756c4e4a19dda47cca04bc0591b04a553c122345611148a700e39f",
+    ".local/branch-channels-20261027/profile-check.txt": "be2084e892f2dab19c9dcd1782a879f721852057b16c87f2bf29501cb7a8c0f0"
+  }
+}

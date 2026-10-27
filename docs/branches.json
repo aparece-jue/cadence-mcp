@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-27",
+  "development": {
+    "branch": "develop",
+    "version": "0.1.1.dev0",
+    "entryPoint": "cadence_mcp.server",
+    "tools": 221
+  },
+  "alpha": {
+    "branch": "alpha",
+    "tag": "v0.1.0-alpha.2",
+    "commit": "64e7ca9bb61bb04d80575d7289104405a2c2afe9",
+    "tools": 221
+  },
+  "release": {
+    "branch": "release",
+    "tag": "v0.1.0",
+    "commit": "e59f888607bdc647c3dbcec1a235663fc3b3eeb4",
+    "entryPoint": "cadence_mcp.validated_server",
+    "tools": 65
+  },
+  "promotion": "Only after declared version acceptance, immutable package verification and new tag; no force update",
+  "defaultBranchUnchanged": "main"
+}

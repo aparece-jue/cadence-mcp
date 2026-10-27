@@ -1824,7 +1824,7 @@
       "module": "总线",
       "title": "bus/bus entry/Bundle成员读写",
       "required": true,
-      "queueOrder": 54,
+      "queueOrder": 71,
       "dependencies": [
         "D03",
         "H02"
@@ -1859,13 +1859,23 @@
         ".local/bus-observer-loss-v2-20261027/report.json",
         ".local/regression-bus-create-20261027.txt",
         ".local/bus-eight-pins-mcp-20261027/report.json",
-        ".local/bus-pin-query-mcp-20261027/report.json"
+        ".local/bus-pin-query-mcp-20261027/report.json",
+        ".local/branch-channels-20261027/report.json",
+        ".local/bundle-runtime-20261027/runtime.json",
+        ".local/bus-pin-multipage-20261027/report.json",
+        ".local/nested-bundle-probe-20261027/report.json",
+        ".local/nested-bundle-probe-20261027/create.json",
+        ".local/nested-bundle-probe-v2-20261027/report.json",
+        ".local/nested-bundle-trace-20261027/report.json",
+        ".local/nested-bundle-trace-20261027/create.json.phases",
+        ".local/nested-bundle-map-20261027/report.json",
+        ".local/nested-bundle-map-20261027/create.json"
       ],
       "issues": [
         "ISS-H04-native-page-3969"
       ],
       "implementationReady": false,
-      "remaining": "Fixed internal bus/8 entries/scalar alias fixtures save for ascending, descending, missing-member and detached-entry cases; every independent read fails state3969. Read-only phase probe localizes to page iterator NextPage, source/saved hashes unchanged and owned workers stopped. No member/entry/native positive or negative case accepted; no MCP bus tool. Bundle/nested/member physical pin and full H04 remain required. Batch114: fixed native editor bus/entries/scalars using original600,200→600,700 and eight20x20 entries now saves and reopens on owned initialized empty source. Original GetName reader failed1037; documented GetNetName computed names fixes that read path. Actual public216-tool MCP query accepts all9bus segments/width8/native DATA7..DATA0 order,8scalars/8exact entry links, paging/scope/session guards/empty/stale/source hashes. Old failed prototype report preserved, follow-up read-only/MCP acceptance separate. Public writer, ascending/missing/detached negatives, physical pin oracle, hierarchy and nestedBundle remain required; full H04 unaccepted. Batch115: public fixed vertical ordinary-bus create tasks now accept original descending/ascending/missing-member/detached-entry matrix; missing and detached are explicitly incomplete, not electrical passes. Existing DATA bus preserved while adding ADDR: 16 entries/scalars total, all old native links/names/geometry kept. R501.1 connects PIN0 and existing MCP_LINK preserved; deliberately wrong complete-page pin oracle rejected after real save, output unavailable, no replay. Real completion observer-loss test holds fence and blocks dispatch; fresh MCP verify-only recover preserves native files. First fault experiment used wrong fixture/expectation pair and remains failed evidence. Full eight physical-member/occurrence/nestedBundle/DRC and final joint gates still required; no H04 promotion. Alpha2: four-resistor/eight-physical-pin descending/ascending/missing/detached matrix passes native HasMember/GetPosition/GetMember pointer identity and public pin_member query. Detached named scalar remains a native member while entry link is null: not routed completeness. Full repeated-occurrence/nestedBundle/crossing and joint gates remain required."
+      "remaining": "Fixed internal bus/8 entries/scalar alias fixtures save for ascending, descending, missing-member and detached-entry cases; every independent read fails state3969. Read-only phase probe localizes to page iterator NextPage, source/saved hashes unchanged and owned workers stopped. No member/entry/native positive or negative case accepted; no MCP bus tool. Bundle/nested/member physical pin and full H04 remain required. Batch114: fixed native editor bus/entries/scalars using original600,200→600,700 and eight20x20 entries now saves and reopens on owned initialized empty source. Original GetName reader failed1037; documented GetNetName computed names fixes that read path. Actual public216-tool MCP query accepts all9bus segments/width8/native DATA7..DATA0 order,8scalars/8exact entry links, paging/scope/session guards/empty/stale/source hashes. Old failed prototype report preserved, follow-up read-only/MCP acceptance separate. Public writer, ascending/missing/detached negatives, physical pin oracle, hierarchy and nestedBundle remain required; full H04 unaccepted. Batch115: public fixed vertical ordinary-bus create tasks now accept original descending/ascending/missing-member/detached-entry matrix; missing and detached are explicitly incomplete, not electrical passes. Existing DATA bus preserved while adding ADDR: 16 entries/scalars total, all old native links/names/geometry kept. R501.1 connects PIN0 and existing MCP_LINK preserved; deliberately wrong complete-page pin oracle rejected after real save, output unavailable, no replay. Real completion observer-loss test holds fence and blocks dispatch; fresh MCP verify-only recover preserves native files. First fault experiment used wrong fixture/expectation pair and remains failed evidence. Full eight physical-member/occurrence/nestedBundle/DRC and final joint gates still required; no H04 promotion. Alpha2: four-resistor/eight-physical-pin descending/ascending/missing/detached matrix passes native HasMember/GetPosition/GetMember pointer identity and public pin_member query. Detached named scalar remains a native member while entry link is null: not routed completeness. Full repeated-occurrence/nestedBundle/crossing and joint gates remain required. Batch118: runtime Bundle enums/bool helpers confirmed; standard bool initializer is mandatory. Two templates return created=true in isolated worker, but direct child AddMember crashes natively at child_scalar. Official map AddBundleMember alternative and SaveDesign return; GetBundle read then says missing_bundle, so no accepted nested graph or root-cause claim. All failure files/original oracle retained, independent3-page43-pin no-bus reader control passes. Item moved to tail; no new public tools."
     },
     {
       "id": "V01",
@@ -3495,6 +3505,17 @@
       ],
       "resolution": "Original same-byte source passes native selection-guarded Delete with all other geometry and network names preserved. New delete plans freeze unrelated different-net wire identity and refuse original standalone corruption before verified output. Not a claim that standalone DeleteWire itself was fixed.",
       "resolutionEvidence": ".local/editor-delete-original-mcp-20261027/report.json"
+    },
+    {
+      "id": "ISS-H04-bundle-definition-write-readback",
+      "featureId": "H04",
+      "status": "open",
+      "summary": "Standalone AddMember crashes at child_scalar after templates creation. Map AddBundleMember and save return, but GetBundle cannot resolve declared name; nested graph remains unverified. Source and original graph oracle preserved.",
+      "evidence": ".local/nested-bundle-map-20261027/report.json",
+      "additionalEvidence": [
+        ".local/nested-bundle-trace-20261027/report.json",
+        ".local/nested-bundle-trace-20261027/create.json.phases"
+      ]
     }
   ],
   "excluded": [
@@ -3533,7 +3554,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Complete original hierarchy/Bundle and DRC requirements; investigate CLI product-choice startup without claiming license failure.",
+    "nextIndependentWork": "Continue independent original gates after deferring nested Bundle write/read failure; inspect official editor-context creation and preserve the declared graph oracle.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3593,7 +3614,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": true,
+    "fullRegressionRunThisBatch": false,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -3702,7 +3723,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 117,
+    "batch": 118,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4080,7 +4101,9 @@
     "alpha2InstalledEngineSmokePassed": true,
     "validatedReleaseTools": 65,
     "validatedReleaseVersion": "0.1.0",
-    "fullGoalComplete": false
+    "fullGoalComplete": false,
+    "developmentVersion": "0.1.1.dev0",
+    "branchPolicy": "develop=research; alpha=accepted-test-tag; release=accepted-scoped-release-tag"
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

@@ -4,14 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cadence-mcp"
-version = "0.1.0"
+version = "0.1.1.dev0"
 description = "Local Capture and PSpice automation MCP server"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 dependencies = ["mcp==2.3.0", "pydantic==2.14.1"]
 
 [project.scripts]
-cadence-mcp = "cadence_mcp.validated_server:main"
+cadence-mcp = "cadence_mcp.server:main"
+cadence-mcp-validated = "cadence_mcp.validated_server:main"
 cadence-mcp-development = "cadence_mcp.server:main"
 
 [tool.setuptools.packages.find]
