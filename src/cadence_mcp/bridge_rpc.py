@@ -38,6 +38,8 @@ class RpcConnection:
         self.binding_digest=None
 
     def ready_for_write(self):
+        from .native_host_fence import ensure_idle
+        ensure_idle(self.path)
         config=json.loads(self.path.read_text(encoding='utf-8'))
         require_write_ready(config['expectedPid'])
 
@@ -65,7 +67,10 @@ class RpcConnection:
             request={'protocol':2,'requestId':uuid.uuid4().hex,'token':config['token'],
                      'instanceId':config['instanceId'],'expectedDesign':str(design),
                      'operation':operation,'params':params,'deadlineMs':int(time.time()*1000)+(8000 if operation=='property.apply' else 4000)}
-            if operation in {'property.plan','property.apply'}:require_write_ready(config['expectedPid'])
+            if operation in {'property.plan','property.apply'}:
+                from .native_host_fence import ensure_idle
+                ensure_idle(self.path)
+                require_write_ready(config['expectedPid'])
             payload=json.dumps(request,ensure_ascii=False,allow_nan=False).encode('utf-8')+b'\n'
             if len(payload)>16384:raise ValueError('oversized request')
             # A new TCP connection per RPC recovers disconnects without retaining authentication state.

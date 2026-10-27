@@ -37,9 +37,24 @@ def edit_objects(objects,wire,operation,start,end,alias_moves,remove_aliases):
     return expected,native_aliases
 
 
+def unrelated_wire_nets(data,objects,page_id,excluded_net):
+    schematics={s['objectId']:s['name'] for s in data['schematic']}
+    pages={p['objectId']:(schematics[p['schematicId']],p['name']) for p in data['page']}
+    return sorted([[*pages[o['pageId']],[list(p) for p in path_key(o['attributes']['points'])],o['attributes']['net']]
+                   for o in objects if o['kind']=='wire' and not (o['pageId']==page_id and o['attributes']['net']==excluded_net)])
+
+def verify_unrelated_wire_nets(data,objects,expected):
+    actual=unrelated_wire_nets(data,objects,None,None)
+    keys={(r[0],r[1],tuple(map(tuple,r[2]))) for r in expected}
+    selected=[r for r in actual if (r[0],r[1],tuple(map(tuple,r[2]))) in keys]
+    if selected!=expected:raise CadenceError('unrelated_wire_net_changed','Unrelated saved wire network identity differs from the frozen source.','verify')
+
 class CaptureWireEdits(CapturePropertyEdits):
     kind='capture_wire_edit'
-    def plan(self,sid,wire_id,operation,expectations,start=None,end=None,alias_moves=None,remove_aliases=False,expected_paths=None,expected_wire_net=None):
+    def plan(self,sid,wire_id,operation,expectations,start=None,end=None,alias_moves=None,remove_aliases=False,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None):
+        if (gui_session_id is None)!=(host_project is None):raise CadenceError('invalid_editor_host','Provide guiSessionId and hostProject together.')
+        if gui_session_id is not None and operation!='delete':raise CadenceError('unsupported_editor_operation','The editor wire-edit backend currently accepts deletion; endpoint changes use the standalone backend.')
+        if editor_occurrence is not None and (gui_session_id is None or not isinstance(editor_occurrence,str) or not 1<=len(editor_occurrence)<=512 or any(ord(c)<32 for c in editor_occurrence)):raise CadenceError('invalid_editor_occurrence','Use a bounded explicit occurrence reference with a GUI host.')
         if operation not in ('set_endpoints','delete'):raise CadenceError('invalid_wire_edit','Use set_endpoints or delete.')
         if operation=='set_endpoints':
             if not point(start) or not point(end) or start==end:raise CadenceError('invalid_wire_geometry','Two distinct bounded endpoints are required.')
@@ -69,11 +84,33 @@ class CaptureWireEdits(CapturePropertyEdits):
                 'wireId':wire_id,'operation':operation,'oldPoints':old['points'],'oldNet':old['net'],'start':start,'end':end,'aliases':aliases,
                 'expectedWireNet':owner,'expectedConnections':expectations,'expectedWirePaths':saved_paths,'expectedDefinitionDigest':definition_baseline(expected_data),'expectedConnectionDigest':connection_digest(data,changed)}
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire edit plan exceeds durable record limit.')
-            self.capture._session(sid);return self.create_plan(payload)
-    def preview(self,p):return {k:p[k] for k in ('wireId','operation','schematicName','pageName','oldPoints','oldNet','start','end','aliases','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+            self.capture._session(sid)
+            if operation=='delete':payload['expectedUnrelatedWireNets']=unrelated_wire_nets(data,objects,page_id,old['net'])
+            if gui_session_id is not None:
+                payload['editorHost']=self.editor_host.freeze(gui_session_id,host_project);payload['editorOccurrence']=editor_occurrence
+            if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire-edit preservation proof exceeds the durable plan bound.')
+            return self.create_plan(payload)
+    def preview(self,p):
+        result={k:p[k] for k in ('wireId','operation','schematicName','pageName','oldPoints','oldNet','start','end','aliases','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+        result['unrelatedWireNetPreservationRequired']='expectedUnrelatedWireNets' in p
+        if 'editorHost' in p:result.update(executionBackend='capture_editor',temporaryOutputProjectSwitch=True,hostProjectRestorationRequired=True,outputProjectClosureRequired=True,guiSessionReattachRequired=True,cancelScope='pending_only',editorOccurrence=p.get('editorOccurrence'))
+        return result
     def preflight(self,p):
         source=checked_path(p['sourceDesign'],(self.config.workspace_root,))
         if sha256(source)!=p['sourceFingerprint']:raise CadenceError('target_changed','Wire source changed after planning.')
+        if 'editorHost' in p:self.editor_host.static(p['editorHost'])
+    def execute(self,directory,payload,cancel,on_started):
+        if 'editorHost' in payload:return self.editor_host.execute(directory,payload,cancel,on_started)
+        return super().execute(directory,payload,cancel,on_started)
+    def cancel(self,plan_id,plan_digest):
+        d,path,row=self._load(plan_id)
+        if row['digest']!=plan_digest:raise CadenceError('plan_digest_mismatch','Plan digest differs.')
+        if 'editorHost' in row['plan']['payload'] and row['state']=='started':raise CadenceError('too_late','A host delete task is pending-cancel only; observe/recover a started task.')
+        return super().cancel(plan_id,plan_digest)
+    def _verified_result(self,directory,row):
+        result=super()._verified_result(directory,row)
+        if 'editorHost' in row['plan']['payload']:self.editor_host.manifest(directory)
+        return result
     def native_command(self,directory,p):
         new=p['oldPoints'] if p['operation']=='delete' else [p['start'],p['end']]
         args=[self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'edit_wire.tcl',self.config.install_root,directory/'design.dsn',directory/'native-result.json',p['schematicName'],p['pageName'],p['operation'],*map(str,sum(p['oldPoints'],[])),p['oldNet'],*map(str,sum(new,[])),str(len(p['aliases']))]
@@ -83,7 +120,12 @@ class CaptureWireEdits(CapturePropertyEdits):
     def verify(self,directory,p,native_completed):
         target=checked_path(str(directory/'design.dsn'),(directory,));before=sha256(target)
         if target.stat().st_size>128*1024*1024:raise CadenceError('output_limit','Wire edit output exceeds limit.')
-        if native_completed:
+        if 'editorHost' in p:
+            from .gui_jobs import acquire_guard
+            guard=acquire_guard(self.editor_host.binding(p['editorHost']).parent)
+            try:self.editor_host.complete(directory,p['editorHost'])
+            finally:guard.close()
+        elif native_completed:
             receipt=directory/'native-result.json'
             if receipt.stat().st_size>4096 or json.loads(receipt.read_text(encoding='utf-8'))!={'saved':True,'operation':p['operation'],'schematicName':p['schematicName'],'pageName':p['pageName']}:raise CadenceError('invalid_worker_result','Wire edit receipt mismatch.')
         verifier=CaptureService(self.config);verifier.workspaces['output']={'directory':directory,'manifest':{'copiedFingerprint':before}};sid=verifier.open('output')['sessionId']
@@ -91,6 +133,7 @@ class CaptureWireEdits(CapturePropertyEdits):
             data=verifier.sessions[sid]['data'];objects=inventory(verifier,sid)
             if definition_baseline(data)!=p['expectedDefinitionDigest']:raise CadenceError('wire_edit_net_mismatch','Saved pin net bindings differ from the explicit edit plan.','verify')
             if connection_digest(data,objects)!=p['expectedConnectionDigest']:raise CadenceError('wire_edit_objects_mismatch','Saved wires/aliases/other connection objects differ from the plan.','verify')
+            if 'expectedUnrelatedWireNets' in p:verify_unrelated_wire_nets(data,objects,p['expectedUnrelatedWireNets'])
             wires={o['objectId']:o for o in objects if o['kind']=='wire'}
             for alias in (o for o in objects if o['kind']=='alias'):
                 if not point_on_path(alias['attributes']['location'],wires[alias['attributes']['wireId']]['attributes']['points']):raise CadenceError('invalid_alias_attachment','Saved alias is off its owning wire.','verify')
@@ -102,4 +145,10 @@ class CaptureWireEdits(CapturePropertyEdits):
         if sha256(target)!=before:raise CadenceError('target_changed','Wire output changed during verification.')
         self.preflight(p);ident=directory.name.removeprefix('plan-')
         artifact={'artifactId':'wire-edit-'+ident,'kind':'capture_edited_design','workspaceRelativePath':'design.dsn','sha256':before,'size':target.stat().st_size,'producedByJob':ident,'sourceFingerprint':p['sourceFingerprint'],'createdAt':datetime.now(timezone.utc).isoformat(),'validationState':'validated'}
-        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','operation':p['operation'],'artifact':artifact,'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'expectedDefinitionsVerified':True,'expectedConnectionObjectsVerified':True,'sourceModified':False,'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),'notChecked':['occurrence_connectivity','junction_flags','wire_only_net_identity','native_drc','rendered_layout','other_part_properties']}
+        result={'planId':ident,'state':'verified' if native_completed else 'verified_recovered','operation':p['operation'],'artifact':artifact,'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'expectedDefinitionsVerified':True,'expectedConnectionObjectsVerified':True,'sourceModified':False,'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),'notChecked':['occurrence_connectivity','junction_flags','wire_only_net_identity','native_drc','rendered_layout','other_part_properties']}
+
+        result['unrelatedWireNetIdentityPreserved']='expectedUnrelatedWireNets' in p
+        if 'editorHost' in p:
+            self.editor_host.manifest(directory,create=True)
+            result.update(executionBackend='capture_editor',hostContextPreserved=True,guiSessionReattachRequired=True,outputProjectCloseVerified=True)
+        return result

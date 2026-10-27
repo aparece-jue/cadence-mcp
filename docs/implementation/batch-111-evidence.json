@@ -1,0 +1,112 @@
+{
+  "batch": 111,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "productionBehaviorChanged": false,
+  "resume": {
+    "oldCaptureProcessesAbsent": true,
+    "oldJobsReplayed": false,
+    "newPrivateHostPid": 24360,
+    "startupRestoreCancelled": true,
+    "newBindingReady": true
+  },
+  "failedDboHypotheses": {
+    "transactionsAndCopyConstructorResolved": false,
+    "fiveIndependentNextPage3969": true,
+    "copyNewVersionSavedEmptyPageNotAccepted": true,
+    "initialWrongInspectEntryPointRetainedAndCorrectedReadOnly": true
+  },
+  "nativeEditorCommands": {
+    "manualPdfPages": [
+      117,
+      124,
+      138
+    ],
+    "PlaceWireCoordinates": [
+      1,
+      1,
+      3,
+      1
+    ],
+    "independentDbEndpoints": [
+      [
+        100,
+        100
+      ],
+      [
+        300,
+        100
+      ]
+    ],
+    "OPageAndPlaceWireAndEndPlaceSavedReopened": true,
+    "rightAngleAndTJoined": true,
+    "crossingWithoutJunctionSeparate": true,
+    "overlapJoined": true,
+    "gapSeparated": true,
+    "explicitJunctionMergesOnlyDeclaredGroups": true,
+    "fullD03Accepted": false,
+    "pinsAndAliasAndPublicAddLifecycleStillRequired": true
+  },
+  "existingMcpEdits": {
+    "endpointMoveAccepted": true,
+    "deleteTaskReportedVerifiedButStricterWireNetAuditFailed": true,
+    "unrelatedElbowWireNetsBefore": "N00005",
+    "unrelatedElbowWireNetsAfter": "",
+    "nativeDeletionReplayed": false,
+    "clientExceptionWasNotAssumedTransportFailure": true,
+    "verifiedLedgerKept": true,
+    "publicAllWireNetIdentityVerificationGapOpen": true
+  },
+  "licenseProbe": {
+    "childOnlyEnvironmentOverride": true,
+    "globalConfigurationModified": false,
+    "actualLicenseFailureReproduced": false,
+    "unexpectedNativeNumericSuccessVolts": 2.5,
+    "successCauseUnconfirmed": true
+  },
+  "latestFullRegression": {
+    "total": 647,
+    "passed": 646,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-param-step-20261027.txt"
+  },
+  "newRegressionRun": false,
+  "validation": "Native editor and typed-MCP probes plus Python compilation; no production module changes this batch. Last full regression is prior batch, not claimed rerun.",
+  "evidenceSha256": {
+    ".local/wire-transaction-20261027/report.json": "e350f8fd15d23041ea8c2d50637fb391cb2592ab2e80bd72ccfb08a777610646",
+    ".local/wire-copy-constructor-v2-20261027/report.json": "3fe2e54b115c35f524378ea4a3e2551572b59fa0d07dabae70e3cc2dece4b5af",
+    ".local/wire-probe-readonly-recheck-20261027/report.json": "8772c7e189dbd324c074933eb4e0a15dfec98ea92d74ac6ee3b5ba7821018fa6",
+    ".local/native-license-child-only-20261027/report.json": "0dd65415d5d494a7f884caf860d5ba4e0754362ddb542d45581ea08eff61538a",
+    ".local/placewire-host-ready-20261027/report.json": "61fff9e683da907a283ef7490cd72048338c5e6d70c33d4f7f36948b2be4b77d",
+    ".local/placewire-native-20261027/report.json": "755ba713073a17f4cf1ff1e24165c5d74cb71b7d14cd5e09c2b9c6d0de91cab2",
+    ".local/placewire-topology-20261027/report.json": "b7e5d429f6c12efddfbd8fc696e4cdd4f947e3d5fbf322d1bebddff6bd11aa67",
+    ".local/placewire-junction-20261027/report.json": "c705875bd4da42570227eaa518a063e795b37821ace61116f5ea9eabd45d340e",
+    ".local/editor-wire-edits-mcp-20261027/report.json": "4f590541cdac41868c8de3effbf48a9d701659d3ec875c3e18156bf92e02356e",
+    ".local/editor-wire-edits-audit-20261027/report.json": "d33f40345117dee043f4d546cd281fa34a4f8a7e2f6d50b185914d2e994fdf04"
+  },
+  "implementationSha256": {
+    "tools/probe_wire_transaction.py": "fc402f04e86998aff65846bd2932e8202ad55dca9852cbb9a88c01897ac643a2",
+    "tools/probe_wire_transaction.tcl": "6b6fe53e3f8ac3ec6f868c169e0eb6a877707db28357aaf04022a98be58f2961",
+    "tools/probe_wire_copy.py": "277929558e123440cc61dd4523d099e55ea9f77cd5cac43bbc2797b067012595",
+    "tools/probe_wire_copy.tcl": "2944a7c934e251559318913c3716b7a3435c9f0177f24568824e6f947e72ade9",
+    "tools/recheck_wire_probe_outputs.py": "ed73717f5c1fa7ce76baf3898706e8b532b6f1e5056a599ca8b3b9966adf98c3",
+    "tools/probe_native_license_failure.py": "c62537cb2fcbac942ee1e1c9e0578c2d73b444c0a8cd5ab34917d22866d832bd",
+    "tools/probe_editor_placewire.py": "a0ea8e6075976e79714db91c03e6fc99ade949e6ea805893ae4adaea6c673413",
+    "tools/probe_placewire_topology.py": "887af4c549181baf59cf4ed238f7042d99716c9d498b735018718a62b9282381",
+    "tools/probe_placewire_junction.py": "7a3d05a2d63bbb235d073b4ee59a3168ec736efbb6282064276500e27bf3132b",
+    "tools/smoke_editor_wire_edit_mcp.py": "4d8129603bc29d7253b881591c661beac6346e08a8df85bd062d9dbf3fd47d08",
+    "tools/recover_editor_wire_edit_mcp.py": "23f5f0ed462ba111215f6f9cc6441086d6efb20b6e40b6b3c1c027b0776374cd",
+    "tools/prepare_placewire_resume_fixture.py": "e6f8fced0b6a33b13f797b16dce94d00e40e9a0f9f7e98fba31ccb1f8d41c33a"
+  },
+  "next": [
+    "Package OPage/PlaceWire/EndPlace into bounded authenticated MCP add tasks, preserving host fence and verify-only recovery.",
+    "Verify placed pins/aliases and the original intentional-short oracle on the editor-command route.",
+    "Deferred: strict unrelated-wire net preservation for deletion; original standalone NewWireScalar and native license-unavailable gaps remain."
+  ],
+  "gitSyncState": "not_committed_or_pushed_this_batch"
+}

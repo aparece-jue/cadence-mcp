@@ -10,18 +10,28 @@ from .pspice_dat import PSpiceDat
 from .pspice_output import parse_out
 from .pspice_diagnostics import failure_for_output
 from .gui_jobs import durable_json
-from .pspice_model_use import prove_unused_libraries
+from .pspice_model_use import prove_unused_libraries,NUMBER
 
 ANALYSES={'dc':('DC','DC Sweep'),'ac':('AC','AC Sweep'),'transient':('TRAN','Transient Analysis')}
 RELATIVE=re.compile(r'(?:input\.cir|deps/file-\d{3}\.[a-z0-9]{1,8})')
-DIRECTIVES={'.INC','.INCLUDE','.LIB','.DC','.AC','.TRAN','.OP','.END','.MODEL','.SUBCKT','.ENDS','.PARAM','.FUNC','.GLOBAL','.OPTIONS','.TEMP','.IC','.NODESET','.PROBE','.PROBE64','.PRINT','.MEAS','.MEASURE','.FOUR','.TF','.NOISE','.ALIASES','.ENDALIASES'}
+DIRECTIVES={'.STEP','.INC','.INCLUDE','.LIB','.DC','.AC','.TRAN','.OP','.END','.MODEL','.SUBCKT','.ENDS','.PARAM','.FUNC','.GLOBAL','.OPTIONS','.TEMP','.IC','.NODESET','.PROBE','.PROBE64','.PRINT','.MEAS','.MEASURE','.FOUR','.TF','.NOISE','.ALIASES','.ENDALIASES'}
 
 def execution_preflight(text):
     """Reject unsupported file/control forms; this does not certify all SPICE syntax."""
+    step_pending=False;step_count=0
     for line in text.splitlines():
         value=line.strip()
         if not value or value.startswith('*'):continue
         first=value.split()[0].upper()
+        if step_pending and first.startswith('+'):
+            raise CadenceError('unsupported_step_form','PARAM LIST stepping currently requires one physical line.')
+        step_pending=first=='.STEP'
+        if step_pending:
+            step_count+=1
+            match=re.fullmatch(r'\.STEP\s+PARAM\s+([A-Za-z_][A-Za-z0-9_]*)\s+LIST\s+(.+)',value.split(';',1)[0].strip(),re.I)
+            values=match[2].split() if match else []
+            if step_count!=1 or not 1<=len(values)<=128 or any(len(x)>64 or not NUMBER.fullmatch(x) for x in values):
+                raise CadenceError('unsupported_step_form','Use one bounded .STEP PARAM name LIST of literal numeric values.')
         if first.startswith('.') and first not in DIRECTIVES:raise CadenceError('unsupported_execution_directive','This directive requires a dedicated execution contract.')
         checked=value
         if re.match(r'^\.MODEL\s+\S+\s+CORE\b',value,re.I):
@@ -62,6 +72,7 @@ def expectations_valid(rows):
 
 class PSpiceRuns(IsolatedJobs):
     kind='pspice_engine_run'
+    supports_param_list_steps=False
     max_record_bytes=262144
     def __init__(self,config,inputs,data):
         super().__init__(config);self.inputs=inputs;self.data=data
@@ -97,6 +108,8 @@ class PSpiceRuns(IsolatedJobs):
             if not RELATIVE.fullmatch(f['relativePath']):raise CadenceError('invalid_plan','Input path is not a generated relative name.')
             for relative,key in [(f['relativePath'],'preparedSha256'),(f['originalRelativePath'],'sourceSha256')]:
                 if sha256(checked_path(str(directory/relative),(directory,)))!=f[key]:raise CadenceError('target_changed','Prepared input bytes changed after planning.')
+        if not self.supports_param_list_steps and any(re.search(rb'(?im)^\s*\.STEP(?:\s|$)',(directory/f['relativePath']).read_bytes()) for f in p['files']):
+            raise CadenceError('parameter_step_requires_cli','The single-analysis engine does not execute full parameter sweeps; explicitly select the CLI backend.')
         if execution_closure(directory,{f['relativePath']:(directory/f['relativePath']).read_bytes() for f in p['files']},p['files'])!=p.get('modelUseProof'):raise CadenceError('model_use_changed','Execution-scope proof differs from the immutable plan.')
     def rebased_inputs(self,directory,p):
         preserve=p.get('inputEncoding')=='preserve-bytes'

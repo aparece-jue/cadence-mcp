@@ -1,0 +1,76 @@
+{
+  "batch": 110,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "fullP04Accepted": false,
+  "acceptedScope": "one_single_line_STEP_PARAM_LIST_of_1_to_128_literal_values_cli_only",
+  "nativeCli": {
+    "twoComplexBlocks": true,
+    "threeRowsPerBlock": true,
+    "resistorValuesOhm": [
+      500,
+      1000
+    ],
+    "frequenciesHz": [
+      10,
+      20,
+      30
+    ],
+    "independentRcOracle": true,
+    "bothRealImaginaryComponents": true,
+    "blockAndSamplePaging": true,
+    "endOffsetAndOutOfRangeAndMissingTrace": true,
+    "csvJsonNativeReopenAndIndependentValues": true,
+    "sourceSessionClosedBeforeExport": true,
+    "sourceRunAssociationPreserved": true,
+    "unitsAreNameConventions": true,
+    "freshServerNoReplayAndAllTaskFilesUnchanged": true
+  },
+  "independentEngine": {
+    "fullStepIterationAccepted": false,
+    "retainedFailure": "doACAN produced only one block; block1 expected samples refused.",
+    "guardBeforeTaskCreation": true,
+    "automaticBackendFallback": false,
+    "oldFailureFilesUnchanged": true
+  },
+  "originalDat10WriterResolved": false,
+  "nativeDatFormatVersionInferred": false,
+  "digitalFlagAndOpaqueFieldSemanticsResolved": false,
+  "retainedSelectorFailure": "Initial unforced V(OUT) produced ORPSIM-15090 before data acceptance. Original input retained; official forced node V([OUT]) used in new fixture. Math/oracle unchanged.",
+  "newTests": 4,
+  "latestFullRegression": {
+    "total": 647,
+    "passed": 646,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-param-step-20261027.txt"
+  },
+  "evidenceSha256": {
+    ".local/step-ac-before-20261027.json": "815aa07ed66a82c0c054d0dce55ce2020cc00fbc09b77bc4f7be809f781aae22",
+    ".local/step-ac-mcp-20261027/report.json": "7a1a290060e5819bfab213825fa291c7f8f97e10c3fba29bfb4c361d4472cd95",
+    ".local/step-ac-mcp-node-selectors-20261027/report.json": "05233daeae3f093731c2c917fec6fed9218ea89580322370c33e1da5e4871727",
+    ".local/step-ac-engine-mcp-20261027/report.json": "568d020f2e28034ac301b3714ab8f77a78ce92b3fb017bff113c5a66249efb76",
+    ".local/step-backend-guard-mcp-20261027/report.json": "30e5d04d4fb96cf823e09578a97585600f43b353bbf3b7e68b186acc539f6af9",
+    ".local/regression-param-step-20261027.txt": "c5d67277e70176b244b2764b0d13fbc93a7d0b05828c951ce5ac1b8cc8445d84"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_runs.py": "1f906c7644fb80a90c9557dd5ddf385718c52fd563830550e45451b2be8ce0b1",
+    "src/cadence_mcp/pspice_cli_runs.py": "652f67e2e27c2f0d08c75708d02888220fb247ff54e6daf2298dd1023c89e1a7",
+    "tests/test_pspice_step_preflight.py": "cff0748921f3e6a479c1feab2a281b3cf883161f94fed364f39bdb4675f75839",
+    "tests/test_pspice_runs.py": "689adcf088a355efc29c1ad1dac778df139fd7c1b11bbd58806f8f0772b94a24",
+    "tools/smoke_step_ac_mcp.py": "0d3a98204feb41977351530a7cf67eead9e4010fee8efa693c3ecd70ee0a252b",
+    "tools/smoke_step_backend_guard.py": "a5dad69f8fee3eb2ee85ac67e47fb6183e0cb4190380ea86ab26c5cffc243d18",
+    "tests/fixtures/step-ac/circuit.cir": "068c62d2d866e376f36c6bfe8bac00e275e3f045dcb55f72a22ffd027a9cd2a7",
+    "tests/fixtures/step-ac/circuit-ambiguous-probe.cir": "a4e660ce25ab83cbfd930d70a8e63142be5e559316b9c9f7b2ec343fa741a560",
+    "tests/fixtures/step-ac/expected.json": "e96883b3ea35a6077fa0e1c60e500b3a116e70f5af9d1ada7697815b9110ddec"
+  },
+  "next": [
+    "Keep original DAT10 writer, flagged digital states and remaining unit/format gates open.",
+    "Advance original independent Capture wire/hierarchy/DRC failures using official signatures and saved/reopened native graph checks."
+  ],
+  "gitSyncState": "not_attempted_this_batch"
+}

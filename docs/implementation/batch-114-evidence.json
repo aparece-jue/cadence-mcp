@@ -1,0 +1,109 @@
+{
+  "batch": 114,
+  "date": "2026-10-27",
+  "tools": 216,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "c04Audit": {
+    "originalFortyObjectScopePreserved": true,
+    "originalHypothesisBytesPreserved": true,
+    "symbolOnlyBase32ObjectsReopens": true,
+    "oldHotspotHypothesisDifferences": 24,
+    "independentSourceBoxModelCalibration": {
+      "predictionsUseOnlySourceOlbGeometry": true,
+      "nativePositiveAttachments": 16,
+      "nativeOldHypothesisNonattachments": 12,
+      "readoutValuesNotCopiedIntoOracle": true,
+      "generalPartInstOrArbitrarySymbolsNotClaimed": true
+    },
+    "fullMatrixMcpAccepted": false,
+    "firstEditorWireAliasSavedButNextPage3969": true,
+    "ReadAllPagesHypothesisAlso3969": true,
+    "productionAdapterExactlyRestored": true,
+    "rootCauseConfirmed": false,
+    "fullC04CheckerNotRunBecauseBuildFailed": true
+  },
+  "h04NativePrototype": {
+    "originalEightBitRangeAndEntryGeometryPreserved": true,
+    "nativeSavedAndIndependentReopen": true,
+    "nineBusSegmentsEightScalarBranchesEightEntries": true,
+    "allEightMembersInDeclaredNativeDescendingOrder": true,
+    "allEightEntryDirectWireLinksAccepted": true,
+    "prototypeOnlyWriteNotPublicMcpWriter": true,
+    "originalGetNameReaderStatus1037Preserved": true,
+    "GetNetNameComputedNameReaderCorrectionAccepted": true
+  },
+  "newPublicTool": "capture_query_bus",
+  "busMcpAcceptance": {
+    "originalIndependentFrozenBusOracle": true,
+    "nativeMemberNamesAndOrder": true,
+    "allBusGeometryAndEightEntryEndpointLinks": true,
+    "oneItemPagingAndSessionQueryPageSizeIsolation": true,
+    "emptyPageAndThreeAdditionalOpenReadClose": true,
+    "cachedSnapshotMutationAndClosedSessionRefused": true,
+    "sourceOracleAndEmptySourceBytesPreserved": true,
+    "fullH04Accepted": false
+  },
+  "productionLimits": {
+    "pointMemberEntryBudget": 100000,
+    "totalNameBytes": 4194304,
+    "maxRowNameChars": 4096,
+    "crossPageOrUnknownEntryReferencesRefused": true,
+    "nullReferencesPreserved": true
+  },
+  "newUnitTests": 7,
+  "latestFullRegression": {
+    "total": 668,
+    "passed": 667,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-bus-query-20261027.txt"
+  },
+  "desktopInputsUsed": false,
+  "evidenceSha256": {
+    ".local/c04-editor-matrix-base-20261027/report.json": "9643d31042efe57578a04b9aa42c8c63a88f8af3a28331c1fd83e702dbead725",
+    ".local/c04-editor-matrix-base-20261027/coordinate-frame.json": "e69e80f31e59e96841674605432c84f38b7d498d2184182faf6a9adfb6714996",
+    ".local/net-symbol-frame-calibration-20261027/expected.json": "b28c1b8865b8ff169ec921949ccfa66752b7acac25caaf66884b809c4d1cbae0",
+    ".local/net-symbol-frame-calibration-20261027/report.json": "15b8e18fbf7fa9bd7db7998634d072de743ac68c5bac68db6421787e48192c2a",
+    ".local/c04-editor-matrix-build-mcp-20261027/report.json": "4e2c36ccdda2ca88415b760980fb1ea745cfe3598dc9f942a8e6ac44269c962d",
+    ".local/c04-editor-matrix-build-mcp-20261027/page-status.json": "530a6012e6e6bc2c7f28f2d9de482888864d3c5d6c5915f7fc90363bf8143804",
+    ".local/c04-editor-matrix-readall-mcp-20261027/report.json": "bf8dd7de6240f6991840073de332e64cb34152d642dc39b4188cb5dcdacc3a30",
+    ".local/c04-editor-matrix-readall-mcp-20261027/page-status.json": "530a6012e6e6bc2c7f28f2d9de482888864d3c5d6c5915f7fc90363bf8143804",
+    ".local/c04-editor-matrix-final-20261027/expected-original-hypothesis.json": "d31c2041a595af1fb15e8af5813febf04376a0ba612bf8016c8651ebabcd4560",
+    ".local/c04-editor-matrix-final-20261027/expected.json": "7a149b2739f4a522e95fe2a0051c3bcca116c82f9c15f522e206b2e248ba2124",
+    ".local/c04-editor-matrix-final-20261027/oracle-provenance.json": "e6dc4b0e952792936244d6a7ac30ea134814570f4f58102349ad18aab8805791",
+    ".local/editor-eight-bit-bus-20261027/report.json": "d2af4801de5a858ca85417f4cbde0775c6f1544d981d499a97abffdccddaa5f0",
+    ".local/editor-eight-bit-bus-20261027/expected.json": "7122b9ad436f42ed2a5c42784df0e452ce5931ce36fb590c1c4388c51db53977",
+    ".local/editor-eight-bit-bus-20261027/bus.json.error.json": "8e10e491e63881f850cd50edac6b6c50ab18e3452bb74901d47897b104cd6cff",
+    ".local/editor-bus-netname-readonly-20261027/report.json": "e85d0b8870d6c9e5527fd7b796bce39b7ebf1532023d1b0c6fa34a54ee6db132",
+    ".local/bus-query-mcp-20261027/report.json": "e68a54b6ce4ac34e2e702c71778d3a536ff40e0e4eb69d31cea2ed797ac90fb6",
+    ".local/regression-bus-query-20261027.txt": "3427bedbd06835af870813efc39e1e033851b207571075d8b8f2de5cba551645"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_bus.py": "93809842a30ad074b4b290098bb8e3033735db493a5f40cf131556a48401aa55",
+    "src/cadence_mcp/adapters/inspect_bus.tcl": "be83145db1f778cebec3e34e1e3542236a8f52c1527d029f0ed79e5321b3b714",
+    "src/cadence_mcp/adapters/editor_wire_add_job.tcl": "f558731526ffdcfbb565cbe94ef6e4f2beb2ac6d1de6cea26037a7b75c13cb3b",
+    "src/cadence_mcp/server.py": "9e0cd3e121ec69065434dc0f4465b1ede17f8e33db737844e54617e476b53830",
+    "tests/test_capture_bus.py": "fce0fa081d05afd25f0ca440c3ad345d794b867259b40daf61c73658d0e018cb",
+    "tests/test_readonly.py": "7916a89384338dee7eb3a2fcdc2a092823c7df200483e9aa192bd95e0d47e712",
+    "contracts/tools.v0.1.json": "ed0754bc1fc253d5008f73020ecd0c01932be83cf51873d27bf09fc4976f0058",
+    "tools/prepare_c04_editor_matrix.py": "78adedb2a9d2e7a9838217aaf9936b6feb68a5a6689c3644d77154b139db1b13",
+    "tools/probe_net_symbol_coordinate_frame.tcl": "671758aa720ce9922c41c095882af3d0fbe6fbfef773d466c6c186a7d31b4a49",
+    "tools/calibrate_net_symbol_frame.py": "0e65e6db3631784a9dd9cd0aa0236bf8b594a235b609ce18b4e43819143ddd8b",
+    "tools/build_c04_matrix_over_mcp.py": "b8d3a64a52a2fde82f9dd9f8511c31da6d729068a697afb909c3b4db70de9f44",
+    "tools/build_c04_matrix_readall_mcp.py": "ecbd5381e9828eebfce46c3ada58afc91a0f3649f86aae0e74e2cb829bc5397a",
+    "tools/smoke_connection_inventory_current.py": "64b4fb5eb3729a9886de9856c3236d605484c192f3c65eed62beb86f0f0441c4",
+    "tools/native_editor_probe.py": "ce6f60a21d22b7fec3ffb67f92b83343db0134e92565e517fcbb0fbd49c9a2b4",
+    "tools/probe_editor_bus.py": "05e605e9d5116b6e4f62c19bea92c2f3032d9cba429bbed11bf3cc5706969fbb",
+    "tools/recheck_editor_bus_names.py": "1f6ce64d35fbb45f1a1b85899c34536103b610ce35ffd9231235480d81bface4",
+    "tools/smoke_bus_query_mcp.py": "2716fab1c327c1523aacbc5a5ed635bd2d638405f878e69ddf328f318085834e"
+  },
+  "next": [
+    "Implement fixed typed public bus write tasks and the original ascending/missing-member/detached-entry matrix.",
+    "Then physical pin member and hierarchy/Bundle cases; native positive graph alone does not complete H04.",
+    "C04 multi-page floating wire/alias serialization remains deferred; preserve original and source-box oracles and all failed files."
+  ],
+  "gitSyncState": "not_committed_or_pushed"
+}

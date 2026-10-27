@@ -1,0 +1,75 @@
+{
+  "batch": 107,
+  "date": "2026-10-27",
+  "tools": 209,
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "fullV04Accepted": false,
+  "fullP05Accepted": false,
+  "publicNativeGenerationMcpTasksAvailable": true,
+  "scope": "same_directory_design_single_profile@1",
+  "profileCircuitMcpTasksAvailable": false,
+  "oldFaultedHost": {
+    "pid": 5256,
+    "stoppedForFaultRecovery": true,
+    "taskCancelledClaimed": false,
+    "originalTaskReplayed": false,
+    "originalFenceRetained": true,
+    "memoryErrorCause": "unconfirmed"
+  },
+  "freshHost": {
+    "pid": 28968,
+    "privateCopyOpened": true,
+    "startupProjectRestoreCancelled": true,
+    "bridgeReady": true,
+    "sourcePreserved": true
+  },
+  "nativeLifecycle": {
+    "newNetAlsMatchIndependentOracle": true,
+    "freshServiceIdempotence": true,
+    "cancelBeforeDispatch": true,
+    "observerLossAfterRealCompletion": true,
+    "unresolvedFenceBlocksNewPlan": true,
+    "freshServiceVerifyOnlyRecovery": true,
+    "repeatedRecoveryFilesUnchanged": true
+  },
+  "mcpAcceptance": {
+    "actualStdio": true,
+    "fiveNewTools": true,
+    "pendingCancellation": true,
+    "nativeArtifactMatch": true,
+    "freshServerIdempotenceAndRecovery": true,
+    "sourcePreserved": true,
+    "initialResponseContractFailureRetained": true,
+    "responseFailureRecoveredWithoutRegeneration": true,
+    "allOriginalResponseFailedTaskFilesUnchanged": true
+  },
+  "latestFullRegression": {
+    "total": 627,
+    "passed": 626,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-native-netlist-mcp-20261027.txt"
+  },
+  "newTests": 0,
+  "contract": "contracts/tools.v0.1.json",
+  "evidenceSha256": {
+    ".local/capture-fault-recovery-20261027/report.json": "e39efbc6b0dc4ae2f800c0b3e27f51e2a65400b858f99bbe73e2a9fc0a5f9f6e",
+    ".local/native-host-binding-20261027/report.json": "76dfdabd5d51c97b330ecaa01f957446a35cc323cc5b1eed066d2b3df1c0f25b",
+    ".local/native-host-binding-ready-20261027/report.json": "9368a2d7c70be7bff66168494ba52b7bbdcd3ae2c598f4ab6408aea42984a9e2",
+    ".local/native-netlist-service-source-20261027/report.json": "513cb25d8ba9dc0977d7df03abf48d52050b5cbde7e04368808c6213ae50c898",
+    ".local/native-netlist-lifecycle-20261027/report.json": "aa25d86a3d69f015410185c0f487badb554c04a70c350e99a2aad1df22beb438",
+    ".local/native-netlist-mcp-20261027/report.json": "9d33139f0f2208588f594c18a6507eb6d3f20a74421cf1b51aec2fe14da9236f",
+    ".local/native-netlist-mcp-envelope-recovery-20261027/report.json": "6d85ca564f33cd86e2c3b19278d5a01c520ca0a29a8c3807cf4bb75c4701f63a",
+    ".local/native-netlist-mcp-final-20261027/report.json": "81c00cfd99336511bb0ac0d8761792389576718dafe29b7f7391eb77f7f3d85f",
+    ".local/regression-native-netlist-mcp-20261027.txt": "fb3f7c67b311557f0ee1fb474d37e9567d005962cd395eee1738e446a65217cb"
+  },
+  "next": [
+    "Implement persistent profile→CIR tasks around the accepted fixed Tcl; preserve explicit/private versus inherited configuration roles.",
+    "Complete MCP-only parameter edit→NET/ALS→CIR→CLI/DAT acceptance and original P05 criteria.",
+    "Original encrypted nominal model closure, hierarchy, wire and DRC failures remain in scope."
+  ],
+  "gitSyncState": "not_attempted_this_batch"
+}

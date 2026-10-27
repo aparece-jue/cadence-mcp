@@ -165,6 +165,12 @@ proc ::cmcpBridge::drc_counts {} {
     }
     return [cmcp::obj {*}$fields]
 }
+proc ::cmcpBridge::nativeFenceActive {} {
+    variable endpointFile
+    if {![info exists endpointFile] || $endpointFile eq {}} {return 0}
+    set path [file join [file dirname $endpointFile] native-netlist-lease.json]
+    return [expr {![catch {file lstat $path entry}]}]
+}
 proc ::cmcpBridge::rpcReply {request status data {code ""}} {
     variable config; variable generation
     return [cmcp::obj protocol 2 requestId [cmcp::q [dict get $request requestId]] instanceId [cmcp::q [dict get $config instanceId]] pid [pid] generation $generation status [cmcp::q $status] code [cmcp::q $code] data $data]
@@ -186,7 +192,7 @@ proc ::cmcpBridge::rpc {request} {
     lassign [observe] path dirty
     if {$operation eq "hello"} {
         if {[dict size $params]} {error "extra params"}
-        set caps [list [cmcp::q status] [cmcp::q pages] [cmcp::q selection]]
+        set caps [list [cmcp::q status] [cmcp::q pages] [cmcp::q selection] [cmcp::q native_netlist_fence_v1]]
         if {[llength [info commands ::COrDRCTclInterface_GetElectricalDRCCount]] && [llength [info commands ::COrDRCTclInterface_GetPhysicalDRCCount]] && [info exists ::COrDRCTclInterface_DRC_ERROR] && [info exists ::COrDRCTclInterface_DRC_WARNING]} {lappend caps [cmcp::q drc_counts]}
         if {[llength [info commands ::capGetDRCConfigData]] && [llength [info commands ::capIsOnlineDrcEnabled]] && [llength [info commands ::COrDRCTclInterface_sIsDRCFlowEnabled]]} {lappend caps [cmcp::q drc_configuration]}
         set writable [expr {[dict exists $config allowPropertyWrite] && [dict get $config allowPropertyWrite]}]
@@ -212,6 +218,7 @@ proc ::cmcpBridge::rpc {request} {
         dict set sessions $sid [dict create access $access generation $generation expires [expr {[clock milliseconds]+600000}]]
         return [rpcReply $request succeeded [cmcp::obj sessionId [cmcp::q $sid] readOnly [expr {$access eq "read" ? "true" : "false"}] leaseSeconds 600]]
     }
+    if {$operation in {property.plan property.apply} && [nativeFenceActive]} {return [rpcReply $request failed [cmcp::obj] bridge_busy]}
     if {$operation in {property.plan property.apply property.outcome property.abandon property.ack}} {
         set rc [catch {propertyOperation $request $path $dirty} result]
         if {$rc} {

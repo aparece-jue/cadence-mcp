@@ -1,0 +1,57 @@
+{
+  "batch": 116,
+  "date": "2026-10-27",
+  "tools": 221,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "goalComplete": false,
+  "physicalEightPinMatrixAllFourCasesAccepted": true,
+  "publicPinMemberQueryAccepted": true,
+  "newUnitTests": 6,
+  "latestFullRegression": {
+    "total": 682,
+    "passed": 681,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-alpha2-20261027.txt"
+  },
+  "fullH04Accepted": false,
+  "alpha2": {
+    "version": "0.1.0a2",
+    "wheel": {
+      "file": "cadence_mcp-0.1.0a2-py3-none-any.whl",
+      "sha256": "38c2c3b76f1b40e566be1565665c858ac2a6127b8bc4ef0cc9cdbb43cc102892"
+    },
+    "zip": {
+      "file": "cadence-mcp-0.1.0-alpha.2-windows.zip",
+      "sha256": "a89f66ddc23426c0cedf277ef50a7e71988d3b4991f8c57a686f4142fdbca2ff"
+    },
+    "packagedModuleFilesVerified": 235,
+    "regression": {
+      "total": 682,
+      "passed": 681,
+      "skipped": 1,
+      "errors": 0,
+      "status": "passed_with_skip",
+      "evidence": ".local/regression-alpha2-20261027.txt"
+    },
+    "installedDependenciesCheckPassed": true,
+    "installedCliSmokePassed": false,
+    "cliBlockingWindowObserved": "Cadence Product Choices",
+    "cliWindowControlApprovalTimedOut": true,
+    "installedCaptureEngineDatBusPassed": true,
+    "evidenceSha256": {
+      ".local/a2-engine/report.json": "48d95993cfb31b7dddb8acdccfac360808fcf025dca6c749d5898dbf807dcf38",
+      ".local/alpha2-test/bus-create/report.json": "ce99cd6ae32a1085730246de21307dcce9bdddc880a5cc2d9dd611fbbdd918ac",
+      ".local/alpha2-test/bus-pin-query/report.json": "bf823e6ac2112ea90518a86ff36721826f88675bfc29ba073315114bdfe73fed",
+      ".local/bus-eight-pins-mcp-20261027/report.json": "3ae7e8b474dd96e935942a4341cb56da882ad9c272767c42774b9c203c2d2cca",
+      ".local/bus-pin-query-mcp-20261027/report.json": "bf823e6ac2112ea90518a86ff36721826f88675bfc29ba073315114bdfe73fed",
+      ".local/regression-alpha2-20261027.txt": "8c532a0dad8d70320624e1228f54ea4fc111f0c3a5143271dfc01ed5c07009e9",
+      ".local/alpha2-test/smoke/report.json": "231306867dd53fbcc04253a7ef8c9d19d058d8c0d23d6feb6fe2488e70c27372",
+      ".local/a2-smoke/report.json": "3f15fd982af7b711f2d60bc4cac4e89b381b01340d3ae9b81a28cd0846f94d5d",
+      ".local/a2-window/report.json": "436df019be199e25100874bd4c28380c4501563051b9f054e66ba037c124aad7"
+    }
+  },
+  "gitPublishAuthorization": "User explicitly requested adding newly verified features to the test release; one alpha.2 release commit/push/tag/publication is in scope. Routine autonomous pushes remain disabled."
+}

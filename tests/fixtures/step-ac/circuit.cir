@@ -1,0 +1,10 @@
+* Own two-block RC parameter sweep
+.PARAM RV=500
+V1 IN 0 DC 0 AC 1
+Rtop IN OUT {RV}
+Rload OUT 0 1k
+Cload OUT 0 7u
+.STEP PARAM RV LIST 500 1k
+.AC LIN 3 10 30
+.PROBE64 V([OUT]) I(V1)
+.END

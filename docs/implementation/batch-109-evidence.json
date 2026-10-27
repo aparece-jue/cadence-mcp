@@ -1,0 +1,74 @@
+{
+  "batch": 109,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "fullV04Accepted": false,
+  "fullP05Accepted": false,
+  "nativeCheckedIniSelectionAccepted": true,
+  "scope": "native_checked_global_libraries_single_search_directory@1",
+  "completeGlobalConfigurationAccepted": false,
+  "selection": {
+    "sourceIniCopiedByteForByte": true,
+    "nativeBeforeGlobalLibs": [],
+    "nativeAfterGlobalLibs": [
+      "nom.lib*"
+    ],
+    "selectedLibrary": "nom.lib",
+    "profileLocalIncludeStimulusOverlaysAccepted": false,
+    "allSourceIniAndModelBytesPreserved": true,
+    "frozenModelFiles": 213,
+    "frozenModelOriginalBytes": 34548882,
+    "preparedClosureFiles": 216
+  },
+  "actualMcp": {
+    "configurationIniOption": true,
+    "nativeCirGeneration": true,
+    "freshServerIdempotenceAndRecoverNoReplay": true,
+    "allTaskFilesUnchanged": true,
+    "defaultNominalSolverAccepted": false,
+    "solverStarted": false,
+    "retainedRefusal": "unsupported_embedded_reference"
+  },
+  "retainedFailure": "Generic whole-INI parser rejected an unrelated [] empty section accepted by the native API. Strict parsing now covers only the relevant unique PSPICE NETLIST section; original bytes are unchanged.",
+  "resolvedHistoricalIssue": "ISS-V04-pspice-explorer-initialization",
+  "initializationResolution": "Original DSN SHA25677dca668.. matches successful full-MCP before case; full private OPJ/profile and authenticated host produce expected native NET/ALS. Bare DSN missing-OPJ failure remains a refusal case.",
+  "originalEncryptedModelIssue": "open",
+  "newTests": 9,
+  "latestFullRegression": {
+    "total": 643,
+    "passed": 642,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-inherited-profile-final-20261027.txt"
+  },
+  "evidenceSha256": {
+    ".local/native-inherited-configuration-20261027/report.json": "cddd83615845fa35ca22b78045ce5ffbe1f7d1d12dff3bae64387bc50b8ab3d8",
+    ".local/inherited-profile-circuit-20261027/report.json": "a2340f2767feb895d73b1727132c07606f2d1b5356f46eee305c4574f7165341",
+    ".local/inherited-profile-circuit-v2-20261027/report.json": "a3e9376f2cb4d7aef76d1bd564cb891ba31bd4fba94d995235d48e0a1611c2e6",
+    ".local/inherited-profile-mcp-20261027/report.json": "2075103ae09ee54f8c5a388084f9757e2ee0fe303cc9743f83cdb832acc0dae1",
+    ".local/regression-inherited-profile-20261027.txt": "240346c702bac05c91d498ebfe8d299229a70352d11d3aee2fa80d587fba69e4",
+    ".local/netlist-modes-20261024/report.json": "400fcf45217971c02c612759ada4046fd559789c714ed1f11a5924fb865187db",
+    ".local/p05-complete-mcp-20261027/report.json": "0fa0e900a57452b571244eb27cbc5347001a544976d8f72f127274d6de2bcc4d",
+    ".local/regression-inherited-profile-final-20261027.txt": "0b41d8914f1205380f32ab8ef255651c3605089a30394eaa70bafbf0ddf5d251"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_profile_configuration.py": "2f40e288ce6e555bfa061c8c2435ea621a4f2c67a8b59e30265c21a23b20372c",
+    "src/cadence_mcp/adapters/profile_configuration_query.tcl": "13d9178cb23d4988c54ede518353b66c44be60409f765728cb433ac1d0b464d0",
+    "src/cadence_mcp/pspice_profile_circuits.py": "4409396bc086bed0459df466bb8252f5ce29ee84118b0a70e495d715e0529ba8",
+    "tests/test_pspice_profile_configuration.py": "d965d693fa3beca603b99ed9186521ee208a6ce9671c80eb4ff78cf8a22acca6",
+    "tests/test_pspice_profile_circuits.py": "73807f39af3a6984f0bfec0fecb39fe76a4ed28ce7e2748c8358cba64ecda014",
+    "tools/probe_native_profile_configuration.py": "0ff98b09aa9b162661e549e11fc904896b42631e453aea9ba1387c6a7f440afe",
+    "tools/smoke_inherited_profile_circuit.py": "3200a292ce3cce46954384a7c4ca8fb2006ea10d572625e6470b428d822f3a74",
+    "tools/smoke_inherited_profile_mcp.py": "170b7f67235165a3af2c5d33d26c0fc0034113e5409126585e8da6934eeeb76a"
+  },
+  "next": [
+    "Keep encrypted/default nominal execution refusal and original oracle; investigate native metadata/closure support in the final repair queue.",
+    "Continue independent original P04 and Capture wire/hierarchy/DRC requirements rather than repeatedly running the same encrypted refusal."
+  ],
+  "gitSyncState": "not_attempted_this_batch",
+  "durablePayloadLimitCheckedBeforePlanCreation": true
+}

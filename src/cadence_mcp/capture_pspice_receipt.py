@@ -3,7 +3,7 @@ import re
 from .core import CadenceError
 
 
-def decode_receipt(raw, nonce, pid):
+def validate_envelope(raw, nonce, pid):
     if (not isinstance(nonce, str) or not re.fullmatch('[a-f0-9]{32}', nonce) or type(pid) is not int or not 0 < pid < 2**32
             or not isinstance(raw, dict) or set(raw) != {'jobId', 'pid', 'invocationReturned', 'phase', 'nativeReturn', 'error', 'logs'}
             or raw['jobId'] != nonce or type(raw['pid']) is not int or raw['pid'] != pid
@@ -20,6 +20,12 @@ def decode_receipt(raw, nonce, pid):
                 or type(row['readable']) is not bool or not isinstance(row['lines'], list) or len(row['lines']) > 1000
                 or any(not isinstance(line, str) or len(line) > 4096 for line in row['lines'])):
             raise CadenceError('invalid_native_receipt', 'Invalid native diagnostic shape, identity or bound.', 'verify')
+    return raw
+
+
+def decode_receipt(raw, nonce, pid):
+    raw = validate_envelope(raw, nonce, pid)
+    logs = raw['logs']
     if not raw['invocationReturned'] or raw['phase'] != 'returned' or raw['nativeReturn'] != '1' or raw['error']:
         raise CadenceError('native_netlist_failed', 'Capture did not acknowledge successful native netlist generation; retain its receipt without replay.', 'verify')
     if not all(row['readable'] for row in logs):

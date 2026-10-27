@@ -63,5 +63,7 @@
 | SIM-ALIASES | ALIASES映射及INC/LIB定义 | `doc/pspcref/01commands.html` | `0b4842419e91` |
 | SIM-CONFIGURATION | profile/design/global库与包含文件配置 | `doc/pspug/007_set_sim_Configuration_Files.html` | `3324abb736c8` |
 | SIM-ALT-INI | PSpice进程-i参数；不能直接视为CorSimSrvr_setIniFile语义 | `doc/pspcref/00intro.html` | `6725e8a86e01` |
+| SIM-CONFIG-SEARCH-ORDER | 官方profile→design→global模型搜索优先级、库列表顺序与库路径；原生合并JSON提供本机所选INI库列表证据，不外推全部INI语义。 | `doc/pspug/003_model_Configuring_Model_Libraries.html` | `5a70a565ae59` |
+| SIM-PARAM-STEP | 本机官方.STEP参数扫描LIST语法及.PROBE方括号强制节点选择；独立引擎doACAN不会自动迭代STEP的边界另由实际试验证明。 | `doc/pspcref/01commands.html` | `0b4842419e91` |
 
 完整SHA256与文件大小见原始验收清单。原创最小复现与可再分发材料可随源码提交；第三方资料有明确再分发许可后才纳入。私有原生输出留在`.local`，公开其脱敏结论、复现步骤及摘要。

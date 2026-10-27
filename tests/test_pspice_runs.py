@@ -19,6 +19,16 @@ class RunTests(unittest.TestCase):
         before=sha256(self.source);p=self.runs.plan(self.sid,'dc',[self.point()]);directory,_,row=self.runs._load(p['planId'])
         files=self.runs.rebased_inputs(directory,row['plan']['payload']);self.assertIn(str((directory/'deps/file-001.inc').as_posix()).encode(),files['input.cir'])
         self.assertNotIn(str(self.inputs.inputs[self.sid]['directory'].as_posix()).encode(),files['input.cir']);self.assertEqual(before,sha256(self.source))
+    def test_parameter_step_refuses_single_analysis_engine_but_cli_can_plan(self):
+        from cadence_mcp.pspice_cli_runs import PSpiceCliRuns
+        self.source.write_text('* step fixture\n.PARAM RV=500\nV1 IN 0 DC 0 AC 1\nR1 IN 0 {RV}\n.STEP PARAM RV LIST 500 1k\n.AC LIN 3 10 30\n.PROBE64 V([IN])\n.END\n')
+        sid=self.inputs.prepare(str(self.source))['simulationId']
+        with self.assertRaises(CadenceError) as caught:self.runs.plan(sid,'ac')
+        self.assertEqual(caught.exception.code,'parameter_step_requires_cli')
+        self.assertEqual(list(self.runs.root.glob('plan-*')),[])
+        cli=PSpiceCliRuns(self.config,self.inputs,PSpiceDat(self.config))
+        self.assertEqual(cli.plan(sid,'ac')['preview']['analysis'],'ac')
+
     def test_preserved_model_bytes_survive_job_rebase_and_policy_checks(self):
         model=self.source.parent/'legacy.lib';raw=b'* legacy\x81E\r\n.MODEL DTEST D\x81E\r\n';model.write_bytes(raw)
         self.source.write_bytes(b'* input\r\n.LIB "legacy.lib"\r\n.DC V1 5 5 1\r\n.PROBE64 V(*)\r\n.END\r\n')

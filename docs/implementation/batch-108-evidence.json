@@ -1,0 +1,81 @@
+{
+  "batch": 108,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "fullV04Accepted": false,
+  "fullP05Accepted": false,
+  "publicProfileCircuitMcpTasksAvailable": true,
+  "publicVerifiedProfilePreparationAvailable": true,
+  "configurationMode": "explicit_libraries",
+  "inheritedNominalConfigurationAccepted": false,
+  "nativeAndMcp": {
+    "twoLevelLibraryClosure": true,
+    "nativeProfileCircuitIdentityAndReferenceChecks": true,
+    "declaredAnalysisProbeOptionsVerified": true,
+    "pendingCancel": true,
+    "nativeDllLoadedWorkerCancel": true,
+    "nativeDllLoadedWorkerTimeout": true,
+    "cancelInsideUpdateCirFileIAccepted": false,
+    "missingReceiptRecoveryRefused": true,
+    "observerLossAfterRealNativeCompletionRecoverOnly": true,
+    "freshServerIdempotence": true,
+    "freshServerArtifactPreparation": true,
+    "standardAndExtendedBudgetsRetained": true,
+    "modelsAndGlobalIniPreserved": true
+  },
+  "fullMcpResistorScenario": {
+    "allBusinessStagesUseMcp": true,
+    "property500To1kWithIndependentReopen": true,
+    "bothNewNetAlsMatchIndependentOracle": true,
+    "bothNewNativeCirs": true,
+    "bothNewCliDatFourComplexSamples": true,
+    "lowFrequencyRealBefore": 0.6666652337494039,
+    "lowFrequencyRealAfter": 0.4999975819586156,
+    "oldDatRefusedBeforeWorker": true,
+    "newServerSevenWritesIdempotent": true,
+    "allPriorTaskFilesUnchanged": true,
+    "originalGateStatus": "partial_pending_original_V04_P04_joint_requirements"
+  },
+  "resolvedIssue": "ISS-P05-native-generation-not-public",
+  "newTests": 7,
+  "latestFullRegression": {
+    "total": 634,
+    "passed": 633,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-profile-circuit-final-v2-20261027.txt"
+  },
+  "retainedFailures": [
+    "Extended-budget test stub initially omitted sourceDesignRevision; fixture corrected, production checks unchanged.",
+    "Extended MCP repeat reused a prior idempotency key in the shared workspace; correctly refused before worker. Test now uses plan-specific keys; original task/report retained."
+  ],
+  "evidenceSha256": {
+    ".local/profile-circuit-service-20261027/report.json": "29ee385340cc26a29585cc9b4845f25e0f9954e6eff083dadb3595a48693cbe8",
+    ".local/profile-circuit-mcp-20261027/report.json": "b061d53123547e6b0ebeca4dd84ddb3f78a23b9d51138dafbcf831031206c02f",
+    ".local/profile-circuit-faults-20261027/report.json": "4902ae38d244848ba85811f752bddd165142a362c80b742fe8f8500386d5087a",
+    ".local/p05-complete-mcp-20261027/report.json": "0fa0e900a57452b571244eb27cbc5347001a544976d8f72f127274d6de2bcc4d",
+    ".local/profile-circuit-mcp-extended-20261027/report.json": "f9d41f7ad0f9f66c91cbc81e4db366c80466d94daebfc82bbe224f2dbff8a57c",
+    ".local/profile-circuit-mcp-extended-v2-20261027/report.json": "c48fd2ee0e41553f1df8660498adeaf1f893418d0412ea7599b966f7119255c6",
+    ".local/regression-profile-circuit-mcp-20261027.txt": "dfb46c14c7f6eabdc869e7548b0401ecb5a6a1df1c710bfbc442827b91d791dc",
+    ".local/regression-profile-circuit-final-20261027.txt": "0db6b01a2b8fa49d93c19c0cbc5242c656f001ee15a2356928fc4ad674740138",
+    ".local/regression-profile-circuit-final-v2-20261027.txt": "b7f38b36629ee2eef72ca8ec6612ee51e866b2291d11138ac2de20d095ce0f68"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/pspice_profile_circuits.py": "83ac98c4fc8bfc6a34440549938a481e585a122a24bb345f180f2bbf40762f75",
+    "src/cadence_mcp/adapters/profile_circuit_job.tcl": "6d3843623382f49b13cc02a76a95c531cd26fcbdf5e1cdf799f6743c0c153c66",
+    "tests/test_pspice_profile_circuits.py": "d71c897fdd32bafe85d6ddb5298d125e3bc897924388176d058530bdf322d231",
+    "tools/smoke_profile_circuit_service.py": "3fc398042b9c22f3e296559ec46396f7004d7a85c573324fc8946cdc7b3ef9f5",
+    "tools/smoke_profile_circuit_mcp.py": "c6b48c3a89e5b1c24cc6bd65d7188acc138cad8e343e35d51b8738f289d3a122",
+    "tools/smoke_profile_circuit_faults.py": "bbd41c6d25e732c19e427e54ff3b7ca45a9de853c816d82e2a3c2af1bab2feb8",
+    "tools/smoke_full_parameter_mcp.py": "a85cca714606a00c1d8fc95fad957ad242acd6ced9a9acce4ff9b701a819a461"
+  },
+  "next": [
+    "Complete inherited/default profile configuration provenance and original encrypted nominal model closure without dropping libraries.",
+    "Continue original P04/native-data and remaining Capture wire/hierarchy/DRC gates; keep full scope and failed evidence."
+  ],
+  "gitSyncState": "not_attempted_this_batch"
+}

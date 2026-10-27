@@ -5,6 +5,7 @@ namespace eval ::cmcpNativeNetlist {
   if {[pid] != $expectedPid} {error wrong_process}
   if {![regexp {^[a-f0-9]{32}$} $nonce]} {error invalid_job_nonce}
   if {![string equal -nocase [::cmcpBridge::activeDesign] [file normalize $active]]} {error wrong_active_design}
+  if {[info exists ::cmcpBridge::propertyPlans] && [dict size $::cmcpBridge::propertyPlans]} {error bridge_busy}
   if {[file exists $output] || [file exists $marker]} {error already_dispatched}
   if {[file exists $target] || [file exists [file rootname $target].als]} {error output_exists}
   set f [open $marker {WRONLY CREAT EXCL}];puts $f $nonce;close $f
@@ -34,7 +35,9 @@ namespace eval ::cmcpNativeNetlist {
    lappend logs [cmcp::obj category [cmcp::q $category] readable [expr {$readable?"true":"false"}] lines [cmcp::arr $values]]
   }
   set receipt [cmcp::obj jobId [cmcp::q $nonce] pid [pid] invocationReturned [expr {$caught?"false":"true"}] phase [cmcp::q $phase] nativeReturn [cmcp::q $native] error [cmcp::q [expr {$caught?[string range $message 0 2047]:{}}]] logs [cmcp::arr $logs]]
-  set f [open $output {WRONLY CREAT EXCL}]
+  set pending ${output}.pending
+  set f [open $pending {WRONLY CREAT EXCL}]
   try {fconfigure $f -encoding utf-8 -translation lf;puts $f $receipt} finally {close $f}
+  file rename $pending $output
  }
 }

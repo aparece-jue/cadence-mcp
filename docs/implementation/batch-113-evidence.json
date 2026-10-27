@@ -1,0 +1,98 @@
+{
+  "batch": 113,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "originalInteriorPinShort": {
+    "sourceSha256": "1baf1c3e652a8d806801f098b4d14dc4fc8189d5f3b2472c513529c0235063b7",
+    "originalElectricalOracleUnchanged": true,
+    "explicitOccurrence": "halfadd_A",
+    "nativeSavedReopened": true,
+    "originalNormalOraclePassPins": 2,
+    "originalNormalOracleFailPins": 2,
+    "SetPointImplementationFixed": false,
+    "resolvedBusinessRoute": "fixed_editor_wire_add"
+  },
+  "originalDeleteLoss": {
+    "sourceSha256": "38ada8311e4520129a83684d7aaf0af7621a06243fa1f90f49c18fa8b5c679b2",
+    "standaloneLossNowRefusedBeforeVerifiedOutput": true,
+    "nativeEditorDeletePreservesEntireRemainingMap": true,
+    "freshServiceNoReplayAndAllTaskFilesUnchanged": true,
+    "standaloneDeleteImplementationFixed": false
+  },
+  "connectedAliasDelete": {
+    "sourceSha256": "8f5e2b644060e80907b79201805028c58f520971d4c25e419b2d767282ae47c9",
+    "explicitAliasAcknowledgementRequired": true,
+    "wireAndAliasRemoved": true,
+    "fourOriginalPinsExplicitlyUnbound": true,
+    "sourceUnchanged": true,
+    "outputClosed": true
+  },
+  "newProductionGuards": {
+    "explicitOccurrenceValidatedAgainstNativeSchematicMapperBeforeOPage": true,
+    "missingOrInvalidOccurrenceRejectsBeforePageOpen": true,
+    "cleanRefusalRestoresHostAndClosesOutput": true,
+    "dirtyPartialOutputRetainsFenceWithoutDiscardOrHiddenRetarget": true,
+    "selectProjectManagerBeforeCloseProject": true,
+    "nativeDsnLockAbsenceRequiredForSuccessfulClosure": true,
+    "unrelatedDifferentNetWireIdentityFrozenAndVerifiedForDelete": true,
+    "sameOriginalTargetNetRemainingSegmentsNotClaimedFullyVerified": true
+  },
+  "retainedFailures": [
+    "Initial implicit OPage waited for Select Occurrence. Escape dismissed it but did not abort the Tcl flow: original job later completed. Late receipt audited/recovered without resend; old timeout report retained.",
+    "Initial optional-argument wiring error refused before native dispatch, then fixed using function-scoped edits.",
+    "Negative-case runner reused one idempotency key for two plans. First refusal passed; second refused before dispatch. Still-planned second case later executed once with a distinct key and passed its intended refusal checks."
+  ],
+  "priorBatch112ClosureAudit": "Original batch proved host restoration and unchanged files, but CloseProject return alone did not establish output project closure. Current batch focuses native project manager and requires output DSN lock removal. Old proof files are preserved, not retroactively given stronger closure claims. Legacy private project cleanup remains for the final integration cleanup.",
+  "desktopInputsUsed": [
+    "Escape once to dismiss initial Select Occurrence dialog; original native flow continued and was observed, never resent."
+  ],
+  "successfulExplicitOccurrenceRunNeededDesktopInput": false,
+  "newUnitTests": 7,
+  "latestFullRegression": {
+    "total": 661,
+    "passed": 660,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-editor-delete-final-20261027.txt"
+  },
+  "evidenceSha256": {
+    ".local/editor-interior-short-20261027/report.json": "a3b0fe57df5e8d40387876fc815ad7465422e28cf04cde9ab1782699f852e3da",
+    ".local/editor-short-late-audit-20261027/report.json": "d48808ec34def3462d730bdc5c8ca1694472b9e7b92e1d80987f43a1de5ae7db",
+    ".local/editor-interior-short-explicit-20261027/report.json": "4408a6ee15351b987ed4e45ac3e2b586845f58bcf51e4101657bee578ddd6729",
+    ".local/editor-interior-short-explicit-v2-20261027/report.json": "c0291e85df63da0cf54e818d5669ac93d581f0252bf0263481430dfa0894130b",
+    ".local/editor-delete-original-mcp-20261027/report.json": "9e8d902f54051f2b10fbe78199107fab4fa0acc3d077d1cc87d648154357d7c8",
+    ".local/editor-repeated-refusals-20261027/report.json": "329470fa71c5a1708748baa18bffd8b3323269e12d8122581145d55209c41c4f",
+    ".local/editor-refusal-final-audit-20261027/report.json": "e3f31e9429f2897b34c5681cd37e2e1304349d105f3c691988bc0ca6ce38e809",
+    ".local/editor-delete-connected-alias-20261027/report.json": "cd37983718ee0b23387b8bae08cb160a8e7e82c045c26a979ed6816b0e22d330",
+    ".local/editor-delete-connected-alias-final-20261027/report.json": "d161e98598dcfb1ac2fa49123932af5ebcbc9a730321eebf49da126b85cf28a7",
+    ".local/regression-editor-delete-final-20261027.txt": "34acd76e23542a57d0b9d8a528ad9113cf683a97e180f3fccd310928a66f426e"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_wire.py": "18392e2ceea2c46aac6fdf5c0188956d10b01d7e14a53a4ef25a5642adbc6b9c",
+    "src/cadence_mcp/capture_wire_edit.py": "66fef566b961f95143c296d2e1278372bd59da7300912720bf4085eb316e0bed",
+    "src/cadence_mcp/editor_wire_host.py": "5d9bd2cf1ad937d0db64997f34b47e11a07c9bd3ed3a060f9b98f1cc8e784615",
+    "src/cadence_mcp/adapters/editor_wire_add_job.tcl": "f558731526ffdcfbb565cbe94ef6e4f2beb2ac6d1de6cea26037a7b75c13cb3b",
+    "src/cadence_mcp/adapters/editor_wire_delete_job.tcl": "0b75abd873c059278d8f94cd2a95e1e61ec7a75d05a1020ca0e9a191cb12ea2a",
+    "src/cadence_mcp/server.py": "079ce31a412c0cff2cb35bbbb0803ec22bce99c9a297b75386bcb89ad8c7764f",
+    "tests/test_wire_net_preservation.py": "0e2554b83169ad3928ad79d8091a0fddffbbd124d98415e9ee560bdeb03e5bd3",
+    "contracts/tools.v0.1.json": "7fd22b5e7a96200610e93e3aa5b134ca9a39e5108568f831b5a5fa1516061edc",
+    "tools/smoke_editor_interior_short.py": "2aac8705d12eef08c00d6b5979fc0920c8189fd668b0d6cf1061e7a453eb4268",
+    "tools/audit_editor_short_late_completion.py": "ec46b36c35fb5d61607db28056c595f46671e61e6a6d9ea44378ec0cc051e15b",
+    "tools/smoke_editor_interior_short_explicit_v2.py": "1b230682c4f22654ceb017f4f319463ccd3db2b772cd7216312bae62e7627970",
+    "tools/smoke_editor_wire_delete_mcp.py": "04e7f7930aed36b492da7ea19132ccb6f8f06c9c5500d61c9d7b82ca0a1a68f1",
+    "tools/smoke_editor_repeated_refusals.py": "4fae202ef4b08f47e463d09a6395debabb18f4a43e434cf4e34d344458f5e637",
+    "tools/finish_editor_occurrence_refusal.py": "6138f2314b35279c39aff3383089c05052e4b17c9cd24cb71179d0e84a5b2331",
+    "tools/smoke_editor_delete_connected_alias_final.py": "9a14306abe3388db8a2fdf19f4e012ea894bc0bf7061c7e904a4acc1574265b4"
+  },
+  "fullD03Accepted": false,
+  "next": [
+    "Audit the full original D03 matrix and C04 dependencies, keeping occurrence/target-net/DRC and original standalone limitations explicit.",
+    "Advance original Capture hierarchy, port/bus and DRC gates via official fixed editor commands where Dbo serialization failed.",
+    "Finish remaining PSpice and final integration/permissions/legacy-private-project cleanup gates; original34 scope unchanged."
+  ],
+  "gitSyncState": "not_committed_or_pushed"
+}

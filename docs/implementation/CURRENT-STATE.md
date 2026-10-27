@@ -1,6 +1,103 @@
 # 当前自主执行状态
 
-2026-10-26。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按最新授权完成批次提交并推送develop，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；当前不自动提交推送，发布版保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+
+## 第一百一十六批八物理引脚成员与alpha.2（2026-10-27）
+
+- 四电阻/八物理引脚通过公开MCP放置、总线升降序/缺分支/脱离四例，独立进程HasMember/GetPosition/GetMember指针身份符合冻结预期；pin_member接入现有capture_query_bus，不新增工具。缺DATA7分支对应pin未连接；脱离入口的已命名DATA7仍是原生成员，但entry引用为空，两种语义分别报告，不把成员关系当完整布线。
+- 新增6项边界测试，完整682项681通过/1原权限skip，真实221契约同步；H04的重复层次/嵌套Bundle/交叉及联合要求未提升，仍6/34。多页与Bundle新探针此前因审批额度未执行，不算通过。
+- 用户本轮明确要求将新验证功能加入测试版，准备固定0.1.0a2/tag alpha.2、235源码文件逐字节wheel核对、ZIP/校验值/安装及桥接说明和本机独立配置。独立安装无源码PYTHONPATH，221工具合同、Capture查询、Tcl引擎新DC2.5V/DAT、原生总线写与八物理pin查询通过；pip check通过。
+- 官方CLI安装复测三新任务均60秒超时且owned进程归零；sky只读窗口列表确认Cadence Product Choices，进一步控件读取授权超时，未点选、未改许可配置。不诊断为许可证失败，不把旧CLI专项成功冒充本版安装成功；发布说明/manifest明确CLI未通过，独立引擎显式选择，不自动切换。旧失败均保留。
+- 本次授权仅覆盖alpha.2发布所需提交/推送/新tag，不覆盖旧alpha.1；发布回执另存.local/alpha2-test。主目标仍active，不改安装/真实设计。见batch-116-evidence.json与docs/releases/alpha-2-verification.json。
+
+## 第一百一十五批公开总线写入及真实引脚正反例（2026-10-27）
+
+- 继续时只读确认Capture24360、活动副本指纹/clean状态和桥接ready；未重放旧任务、未操作桌面。增加5个受限总线计划/apply/jobs/cancel/recover工具，开发契约221；旧wire任务的三适配器指纹集合保持，bus任务单独增加固定适配器，不开放任意Tcl。
+- 原八位降序/升序/缺一个分支/入口脱离四种实际MCP写入、保存独立重开、公开query_bus均符合先冻结预期。缺分支/脱离的localEntryRoutingComplete=false，designPassed=null；没有将有意不完整布线误报完整电气通过。pending取消与新服务幂等/恢复全部任务文件保持通过。
+- 在已保存DATA副本上新增ADDR[0..7]，原DATA全部命名几何/成员顺序/八入口原生引用保持，总16入口/16分支，源和控制OPJ保持，新服务apply/recover无重放。真实电阻R501.1新增PIN0连接、原MCP_LINK保持；故意错完整页pin预期在实际保存后bus_pin_mismatch拒绝，未验证产物不能开放、重复写拒绝且字节保持。这是一个真实pin切片，尚未证明完整八物理引脚成员。
+- 真实完成后注入观察丢失，围栏保留并阻止新任务、重复apply拒绝；新stdio MCP只验证恢复后释放围栏，原生文件不变。首次故障试验错误使用未连线旧源却声明MCP_LINK，恢复被pin校验拒绝；该失败报告保留，新目录使用正确已连接副本复测通过，不重放失败任务。
+- 新增8项测试，完整676项675通过/1原文件symlink权限skip，真实221工具契约与进度同步。H04仍须完整8物理引脚成员、重复层次、嵌套Bundle与联合DRC；原独立构造3969不冒称修复。原34项仍6完整通过17.6%，本批没有门禁提升。所有设计均.local私有副本，未修改安装/真实设计，未提交推送。详见batch-115-evidence.json与docs/native-bus-inventory.md。
+
+## 第一百一十四批坐标模型校准及总线正式只读MCP（2026-10-27）
+
+- 原C04四十对象要求/旧期望d31c2041..保持。去掉尚未通过的独立导线构造，32个global/offpage基础可保存重开；旧未验证旋转中心假设有24差异。只从独立OLB边界/引脚推导镜像旋转后的矩形归一框架，原生先冻结16正确点/12旧错点，独立网络身份证实16接入/12不接入，未将待测热点回填期望。结论限VCC/OFFPAGELEFT-L四方向两镜像，不推广任意PartInst/C03。
+- 完整C04首次MCP浮空wire/内部alias新增仍保存后NextPage3969；官方ReadAllPages假设也3969，未重发旧任务，精确恢复上批生产适配器f5587315..。两个失败/只读状态保留，C04移队尾；完整矩阵查询未执行，不算通过。
+- 按失败后移转H04，原生PlaceBus/PlaceBusEntry/PlaceWire/Alias按原八位/入口20x20几何生成，首次独立inspect.tcl能重开。原inspect_bus.GetName在bus_name返回1037；另进程只读对照官方GetNetName取得正确计算名称，原失败不改写。生产改为GetNetName并补数量/文本预算，保持每项状态检查。
+- 新capture_query_bus（bus/scalar/entry）共216工具：快照指纹、精确页筛选、会话/类别/页长游标、空引用、成员次序、跨页引用和预算严格验证。实际MCP通过9段总线完整几何/每段位宽8及DATA7..DATA0顺序、8分支名、8入口两端原生引用、逐条分页/空页/3次额外开关/缓存源变更拒绝/关闭会话，原源/期望保持。
+- 原H04写入仍为内部原型，公开计划/apply/recover、反序/缺成员/脱离入口、真实器件引脚成员/层次/嵌套Bundle尚未验收，不提升门禁。新增7测试，最终668项667通过/1原权限skip，216真实契约同步。本批无桌面输入、不改安装/真实设计、未提交推送；原34仍6完整通过17.6%。下一步实现受限总线写任务及原正反矩阵。见batch-114-evidence.json、docs/native-bus-inventory.md与docs/net-symbol-coordinate-frame.md。
+
+## 第一百一十三批原内部短接与删除网络丢失案例解决（2026-10-27）
+
+- 原1baf1c3e..HALFADD重复层次案例首次OPage无实例弹出Select Occurrence；Escape仅结束弹窗，原Tcl随后继续并实际保存。原超时报告保持，晚到回执只读审计/恢复且DSN字节未改，未重发。不能把取消页面选择称为取消整个业务任务。
+- 现新增editorOccurrence，原生GetOccurrencesCount/AtPos/ReferenceDesignator核对唯一实例后才OPage。显式halfadd_A的新MCP任务无需桌面输入，原四引脚短接预期/源字节不变，保存重开通过；原正常预期准确2fail/2pass。缺实例/错误实例均在OPage前拒绝，源副本保持、输出关闭、宿主恢复、无重放。负例第二计划最初键复用冲突从未派发，后用独立键完成原still-planned计划，没有重放。
+- 原38ada831..删除损坏案例：新生产校验冻结未涉及的不同网导线身份，旧独立Dbo结果明确unrelated_wire_net_changed，不再作为verified产物开放。新固定SelectObjectById/实际选择身份核对/Delete后端通过原源文件完整剩余几何/网名比对，原源/控制工程保持；新服务apply/recover全部任务文件保持。
+- 对8f5e2b64..真实两电阻连接产物删除别名导线：未明确removeAttachedAliases时拒绝，明确后导线/alias均消失，原四引脚全部解绑并比较pass。当前适配器完成最终原生复测；dirty部分输出不丢弃、不隐藏切回，围栏保持。
+- 纠正上批关闭依据：CloseProject返回不足以证明实际关闭，观察曾见旧私有输出工程仍开。本批SelectPMItem聚焦工程管理器后CloseProject，成功须确认DSN原生锁消失，当前新任务通过；历史文件不改写或追认关闭证明，最终集成仍需清理旧私有工程。工具仍215，wire_edit宿主参数现仅允许delete，GUI端点模式明确拒绝。
+- 两个具体原问题ISS-D03-interior-pin-topology和ISS-D03-delete-unrelated-wire-net-loss按已验证业务替代路径resolved；不声称旧SetPoint/DeleteWire实现修复。新增7测试，最终661项660通过/1原权限skip，真实契约同步。D03仍须原联合矩阵/依赖及目标原网/occurrence/DRC要求审计；原34仍6完整通过17.6%。下一步审计D03/C04并推进层次/端口/总线/DRC；无安装/真实设计改动，未提交推送。见batch-113-evidence.json。
+
+## 第一百一十二批原生编辑布线接入现有MCP（2026-10-27）
+
+- 纠正进程观察：普通受限查询未显示Capture，实际升级查询证明24360仍在运行；新启动入口只是单实例转发器，未建第二宿主。原宿主重新绑定成功。无桌面输入；原生项目切换由固定Tcl完成。
+- 新固定editor_wire_add_job适配器只在任务自己的DSN/PCB工程中OPage/PlaceWire/PlaceNetAlias，保存后关闭输出并恢复原宿主。确认原工程干净才重建桥接生命周期，旧GUI会话失效、须显式重新附着；原DSN/OPJ SHA保持。
+- capture_plan_wire_add增加配套可选guiSessionId/hostProject；省略两项保留旧独立Dbo路径。限定单设计PCB控制工程，源设计使用冻结副本。共用原生宿主围栏；开始后不允许通过杀Capture/转发器取消；未知回执/未恢复宿主保留围栏。现有任务/open_result流程及215工具名保持。
+- 真实MCP多网夹具新增导线/alias、全部原导线网络名保持、独立保存重开、旧会话失效/重新附着、pending取消、新服务apply/recover全部文件保持通过。首轮参数挂错位置在native派发前失败，旧报告保留；修复到正确新增接口后新目录通过。没有扩大端点/删除接口参数。
+- 原最早失败两电阻源5bf35881..与原四引脚预期不变，通过新编辑后端实际MCP保存重开；ISS-D03-new-design-wire-reopen按显式编辑后端解决。旧NewWireScalar构造失败仍保留，不冒称构造器修复。
+- 真实原生完成后注入宿主观察丢失：failed账本/进入标记/完整回执保持，围栏阻止新任务，重复apply不重放；新服务MCP只验证恢复后释放围栏，原native文件保持。新7测试，完整654项653通过/1原文件符号链接权限skip，真实215契约同步。
+- 原34仍6完整通过17.6%；原内部四引脚短接、删除未修改网名丢失、完整wire-only/occurrence身份及DRC未通过，D03不提升。下一步继续原内部短接/层次/总线/DRC，失败后移。详见batch-112-evidence.json及docs/native-editor-wire.md；未提交推送、未改安装或真实设计。
+
+## 第一百一十一批重启恢复与原生编辑命令布线（2026-10-27）
+
+- 重启后旧Capture/PSpice均未运行，未重放旧任务/围栏；新私有空白副本独立检查通过，取消启动自动恢复后，经固定Open脚本打开24.1 PCB工程，建立新宿主24360/新桥接。当前绑定指纹早于本轮布线写入，继续业务前须显式刷新绑定，不复用旧任务身份。
+- 官方手册117/124/138页的OPage→PlaceWire→EndPlace替代独立NewWireScalar实验：预先固定1,1→3,1对应DB100,100→300,100，通过真实保存和独立新进程重开。直角/T/重叠连通、普通交叉分网、断点分离矩阵通过；显式PlaceJunction仅将声明的两网合并。预期先冻结，未用观察值重写。
+- 现有公开MCP端点修改通过，完整导线几何/网络名保持。删除虽原生完成且任务标verified，额外全导线检查发现未修改直角网N00005变空；旧校验明确未检查wire-only net identity。已登记ISS-D03-delete-unrelated-wire-net-loss，失败后移、保留两个verified原账本及严格失败报告，不重放删除，不将此声明完整通过。初始客户端ExceptionGroup不是传输故障证据，后续只读展开异常确认真实网络比对失败。
+- 重启前未归档的事务/拷贝构造实验：五个保存产物NextPage3969，新版本copy1重开为空页而非有效导线。初轮错误inspect入口的失败保留，后续正确inspect.tcl只读复核；未把错误入口当数据库错误证明。仅子进程空许可证环境仍数值求解成功2.5V，实际无许可证失败未复现、原因未确认，未改全局许可配置。
+- 无生产模块/公开工具变更；仅新增固定研发探针及验收记录，脚本编译通过。最近完整回归仍上批647项646通过/1权限skip，本批不冒称重跑。215工具；原34项仍6完整通过17.6%，D03原放置器件引脚/alias/新增公开MCP任务及删除网身份问题仍未完成。
+- 下一步先将官方编辑命令封装到受限MCP新增任务，核对真实器件引脚/alias与原短接预期；按失败后移原则保留删除与独立构造问题。所有设计均为.local测试副本，未改安装或真实设计，未提交推送。详见batch-111-evidence.json。
+
+## 第一百一十批真实参数扫描的复数多块DAT（2026-10-27）
+
+- 发现原求解前检查不允许.STEP，现按本机参考手册支持一条单物理行.STEP PARAM name LIST，1..128个字面数值；表达式、其他扫描形式、续行、多STEP及越界明确拒绝。无任意命令或新工具，实际仍215；能力表明确CLI-only。
+- 自编RC电路在求解前冻结Vout=1/(1+R/1000+jωR·7uF)，500/1kΩ、10/20/30Hz。初轮V(OUT)被原生按器件解释报ORPSIM-15090，原输入保留；官方V([OUT])强制节点选择的新夹具通过，数学预期未改。
+- 真实MCP/官方CLI生成两块复数DAT，各3行；6个复数值及Frequency轴均匹配独立解析预期。块limit1分页、采样末行/恰末偏移/越界/错block/缺trace均通过。关闭原DAT后分别CSV/JSON导出，独立原生重读及导出数值/Hz/V名称约定/原求解来源通过；导出API仍不冒称新的电气预期证明。新服务器CLI与导出apply/recover全部任务文件保持，无重放。
+- 同源独立引擎doACAN只产生一块，block1预期失败，记录保留。现独立引擎在建任务前返回parameter_step_requires_cli，调用者须显式选CLI；不自动切换，不将单块当完整扫描。真实MCPguard验证未创建引擎任务、CLI能建计划且未启动worker、原失败字节保持。
+- 原DAT10第二块写入崩溃、数字flag/opaque语义与剩余单位/格式未通过，不由新原生求解多块正例覆盖，也不从本机程序版本推断DAT格式版本。P04仍deferred，原34仍6通过17.6%。新增4测试，完整647项646通过/1原权限skip；215契约已同步。
+- 证据batch-110-evidence.json；下一步继续原Capture布线/层次/DRC独立项，最后集中修复原遗留。无GUI/安装/真实设计写入，alpha.1固定。
+
+## 第一百零九批原INI的原生库选择与完整nominal图（2026-10-27）
+
+- 对照本机官方配置搜索顺序，固定查询脚本在私有OPJ/DSN/profile及原INI字节副本上执行loadProfile→readSettingsLibinc→readSettingsToJSON，不生成或求解。原生ConfigFiles前GlobalLibs为空，合并后nom.lib*且Libpath解析为实际安装库目录。来源SHA和全过程保持核对，不能把未合并的空列表误认没有全局库。
+- 现有pspice_plan_profile_circuit增加可选configurationIni，libraryPaths须空；总工具数仍215。只接受原生确认的一处库搜索目录及纯global LIB列表，profile/local/include/stimulus覆盖明确拒绝。把INI快照、原生结果和配置证明复制并绑定到最终任务产物；不默默改为自编库或漏掉nom.lib，也不宣称全部全局配置已支持。
+- 实际原默认nom.lib的213模型文件34,548,882字节完整冻结、原生CIR生成及216文件CIR/NET/ALS/模型准备通过；源INI/原模型字节保持。真实MCP及新服务apply/recover幂等、全部任务文件保持通过。原unsupported_embedded_reference加密/嵌入式模型执行拒绝保持；没有新CLI任务或求解器启动，原AC预期未改变。
+- 首次通用INI解析器遇到源文件中无关[]空节拒绝，失败保留。修复只严格解析原生确认的唯一PSPICE NETLIST段，完整INI仍原样复制；相关段重复键/重复节、覆盖配置、顺序/启用列表不符及路径拒绝均有测试。新增9项（含大参数在建计划前的持久记录上限检查），最终完整643回归642通过/1原权限skip。
+- 核对旧ISS-V04-pspice-explorer-initialization：原77dca668..DSN与全程MCP before相同字节，完整私有OPJ/profile+认证宿主已产生期望NET/ALS，因此此初始化问题resolved；缺OPJ旧失败仍保留。编码/加密执行与折行引用问题未关闭，原34项仍6通过17.6%。详见batch-109-evidence.json。
+- 下一步遵循失败后移：保留加密默认模型求解缺口，不反复重跑同一拒绝；继续原P04及Capture布线/层次/DRC独立项，最后集中修复。无桌面操作、不改安装/真实设计，alpha.1固定。
+
+## 第一百零八批profile→CIR任务与全程MCP参数迭代（2026-10-27）
+
+- 新PSpiceProfileCircuits复用固定原生Tcl，消费已验收NET/ALS任务及其profile，不重新导出。显式模型库闭包使用现有引用准备器冻结，原文与重定位后引用逐文件验证；私有INI只包含调用者声明的库与alias开关，不继承/删改全局nom.lib。生成后核对原生PID/任务号/三项返回码、准确CIR路径、独立声明的分析/PROBE/OPTIONS行及完整NET/ALS/LIB引用序列。
+- 注册五个profile任务工具及pspice_prepare_profile_circuit，共215工具。后者只接受已验收任务产物，内部仅开放其已验证任务目录给引用解析器；不允许用户任意workspace路径。标准与扩展预算由计划保持到后续prepare，七项新测试覆盖来源变更、路径、冻结库篡改、网表复制竞态和分析不符等拒绝。
+- 两层显式模型库真实原生/实际MCP准备为5文件闭包，CLI四个独立复数预期通过；新服务幂等/recover/重新prepare通过。真实DLL加载后注入等待，取消/超时仅结束自有工作进程；缺少回执拒绝恢复，原字节保持。原生完成后注入观察失败，新服务只验证恢复通过；不声明验证了updateCirFileI内部取消。
+- 原电阻500→1k场景所有业务阶段现均使用公开MCP：属性保存/独立重开→前后NET/ALS→前后CIR→两次新CLI/DAT。两套NET/ALS符合原独立预期，RC低频实部0.6666652337494039→0.4999975819586156；旧DAT在worker启动前拒绝。新服务器七个写任务重复调用返回原结果，所有任务文件保持，源/模型/预期/全局INI保持。
+- ISS-P05-native-generation-not-public已resolved。原34项仍6完整通过17.6%，完整P05/V04/P04未提升；原默认加密模型闭包、完整DAT等联合条件未通过，不能用显式标量场景替代。下一步集中处理继承配置来源/原nominal闭包，再推进原P04和Capture剩余门禁。
+- 最终634回归633通过/1原文件符号链接权限skip，215契约由真实服务生成。扩展预算测试夹具缺字段以及重用旧幂等键两次失败均保留；修正验收脚本，生产幂等/验收要求未放宽。见batch-108-evidence.json；本批未使用桌面操作、不改安装或真实设计，alpha.1固定。
+
+## 第一百零七批原生NET/ALS正式MCP任务（2026-10-27）
+
+- 故障Capture5256已按程序/设计指纹确认后结束，用于专用副本宿主恢复；旧任务/进入标记/围栏仍保留，未重放或声称取消。新宿主28968的启动恢复弹窗取消后，固定Open脚本打开新私有副本并建立新绑定。第一轮受启动弹窗阻塞的无回执记录保持，未冒充成功。
+- 修正后的单source入口在新任务生成NET/ALS，与前批冻结的独立预期同字节；源/活动宿主保持，真实回执后释放围栏。新服务幂等通过。模拟观察器在真实原生完成后丢失回执，围栏保留并拒绝新计划；新服务recover只验证原字节后释放围栏，重复恢复文件保持。派发前取消不生成输出。
+- 注册五个结构化工具capture_plan_pspice_netlist/apply_pspice_netlist/pspice_netlist_jobs/cancel_pspice_netlist/recover_pspice_netlist，实际209。首轮MCP发现产物元数据不满足Envelope契约，原生任务已成功但响应失败；修复完整artifact字段和稳定创建时间后，旧任务经MCP恢复全部文件保持，无再生成。新目录实际MCP取消/生成/列表/新服务器幂等与recover通过。
+- 真实工具契约已生成，完整627回归626通过/1原文件符号链接权限skip。原34项仍6通过17.6%；只证明单目录单设计单profile的NET/ALS任务，未证明profile→CIR正式MCP、原加密模型闭包或完整V04/P05。原内存错误原因未定，不能归因于source修正。
+- 下一步按已验证固定profile_circuit_job.tcl封装持久任务，再以实际MCP串起参数迭代与新仿真结果。原始布线/层次/DRC等失败保持并继续后移处理。证据batch-107-evidence.json，未修改安装或真实设计，alpha.1固定。
+
+## 第一百零六批原生网表任务：失败保留与入口修正（2026-10-27）
+
+- 持久NET/ALS任务服务与共享宿主围栏已编码，尚未通过原生集成验收，未注册新MCP工具；实际仍204。围栏阻止未决任务期间的新派发与属性写入，只有相同任务/宿主身份能释放。原34项仍6通过17.6%，V04/P05未提升。
+- 首次服务实测已进入原生调用，但NET为0字节、无完成回执，Capture PID5256显示ORCAP-1356 Memory exhausted。转发器退出0不是成功证据；保留原任务、围栏和失败报告，禁止重发。原因未确认，不能断言物理内存不足、路径长度或脚本入口导致。
+- 桌面工具点击取消失败（coordinate input geometry is unavailable），重新观察后取消键也未关闭弹窗；已请求用户退出故障宿主。未终止真实设计，不清除仍存活宿主的围栏。
+- 对照已验收桥接加载器，将直接多行命令文件改为单行source完整payload；产物清单同时绑定两个脚本。安装内Tcl回放实测多行拒绝处理/含特殊字符路径通过，但不能据此宣称修复原生内存错误。
+- 本批新增9测试；网表相关28测试及profile适配器3测试通过，最终完整627项、626通过/1原文件符号链接权限skip。第一次测试回放器变量冲突已修正并保留说明。详情batch-106-evidence.json；本批不改安装、真实设计或alpha.1。
+- 不依赖Capture窗口的profile→CIR业务已推进：将已验证序列整理为固定profile_circuit_job.tcl，参数只传已选私有项目/profile/INI/输出/nonce；检查原生返回码、准确CIR路径和非空输出，原子回执。两套新副本生成通过，再经真实MCP求解四复数预期、参数电压变化及旧DAT启动前拒绝通过；全局INI/源保持。原生解释器重复运行明确拒绝preexisting_profile_output，已有产物全字节保持。正式profile任务及原默认215库闭包尚未完成。
+- 下一步退出故障宿主后用新宿主/新任务验证同一固定业务脚本，再验收任务恢复与MCP封装。开发顺序按用户纠正：功能Tcl→真实业务验收→薄MCP封装；不以基础框架测试数量替代业务完成度。
 
 ## 第一百零五批原生任务的快照与回执组件（2026-10-26）
 

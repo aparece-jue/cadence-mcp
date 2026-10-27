@@ -1,0 +1,92 @@
+{
+  "batch": 115,
+  "date": "2026-10-27",
+  "tools": 221,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "publicBusWriteTaskAvailable": true,
+  "publicTools": [
+    "capture_plan_bus_create",
+    "capture_apply_bus_create",
+    "capture_bus_create_jobs",
+    "capture_cancel_bus_create",
+    "capture_recover_bus_create"
+  ],
+  "originalMatrix": {
+    "descending": true,
+    "ascending": true,
+    "missingMemberExplicitlyIncomplete": true,
+    "detachedEntryExplicitlyIncomplete": true
+  },
+  "existingBusPreservation": {
+    "oldDataGeometryMemberOrderAndEightEntryLinks": true,
+    "combinedEntries": 16,
+    "combinedScalarBranches": 16,
+    "freshServerNoReplay": true
+  },
+  "physicalPinSlice": {
+    "r501Pin1ConnectedToPIN0": true,
+    "oldMcpLinkPreserved": true,
+    "wrongPinOracleRejectedAfterRealSave": true,
+    "unverifiedOutputRefused": true,
+    "repeatWriteRefused": true,
+    "fullEightPhysicalMembersNotProven": true
+  },
+  "faultLifecycle": {
+    "pendingCancel": true,
+    "startedCancelRefused": true,
+    "realNativeCompletedBeforeObserverFault": true,
+    "fenceRetained": true,
+    "newDispatchBlocked": true,
+    "freshMcpVerifyOnlyRecovery": true,
+    "nativeFilesUnchanged": true,
+    "firstAttemptFixtureExpectationMismatchPreserved": true
+  },
+  "scope": {
+    "verticalOrdinaryBus": true,
+    "membersMin": 2,
+    "membersMax": 128,
+    "explicitBranchesAndCompletePagePinExpectations": true,
+    "fullDesignPassedNotClaimed": true
+  },
+  "remaining": [
+    "full eight physical pin member oracle",
+    "repeated hierarchy occurrence bus semantics",
+    "nested Bundle semantics",
+    "complete lifecycle and DRC integration"
+  ],
+  "originalStandaloneConstructor3969NotFixed": true,
+  "fullH04Accepted": false,
+  "newUnitTests": 8,
+  "latestFullRegression": {
+    "total": 676,
+    "passed": 675,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-bus-create-20261027.txt"
+  },
+  "desktopInputsUsed": false,
+  "installationOrRealDesignModified": false,
+  "gitCommitOrPushPerformed": false,
+  "evidenceSha256": {
+    ".local/bus-create-mcp-20261027/report.json": "179661bc4cb8241af51f5b326815bfbfb7ee62be7fd4e431cfd2f0d7999702f7",
+    ".local/bus-preservation-mcp-20261027/report.json": "1e0030139000c29ac977af402d090c34a56b0824b210181dacab05b869b81257",
+    ".local/bus-pin-mcp-20261027/report.json": "a8272191cd331b36c4e8059dc209cce3d92f520e7249c807a53f35659b55497f",
+    ".local/bus-observer-loss-v2-20261027/report.json": "aeeee25c1b58eb3eaf80ece406ef763310e069f590e2bf3e0f138ef7fa622ba4",
+    ".local/bus-create-mcp-20261027/expected.json": "54b12beae458d097da345e9d817a52556b909883f4188ea4fde099707e1440c0",
+    ".local/bus-preservation-mcp-20261027/expected.json": "c792347f746ee2bd2807df8d2c5eaedf24a0b4e99561a8bbd84a8affe53c1f35",
+    ".local/bus-pin-mcp-20261027/expected.json": "29f402359f47936018b70df5fa90764682ac6f4e8da9890a22215adcb8a16375",
+    ".local/bus-observer-loss-20261027/report.json": "1c53e7fd387d4493540b189e07e951280824f484a3434d65c62415a8ad7f7a56",
+    ".local/regression-bus-create-20261027.txt": "415b75eb228c6443ac28651838e9ee43d4908f8247440dde1b0ebe5422ef669d",
+    "src/cadence_mcp/capture_bus_create.py": "bee0f7f81d06afa51b2df21779522153eb9768e5158b39089e6a3747fdf4ae64",
+    "src/cadence_mcp/editor_wire_host.py": "f4fb24fa13251554e4fec20d289965efa81cd07085b911de36a765ce836157f0",
+    "src/cadence_mcp/adapters/editor_bus_create_job.tcl": "d4777453a21bf264cae5f1bf53b60561e545e75b0e9a68fc98701fff43e1daa0",
+    "tests/test_capture_bus_create.py": "bce091cfd339d7424ba8c03b52d3073e8f2722ce39a74a818e58c60cc79ff4c9",
+    "tools/smoke_bus_preservation.py": "f9232728381992a0c5acf3199c95ff6a21084dc21c61de24b2023985a20d642d",
+    "tools/smoke_bus_pin_mcp.py": "e7b54c7f2db62a1bda9c73e2026e6d970f2ca25d0ce11a0ce8c401787e39c7e4",
+    "tools/smoke_bus_observer_loss_v2.py": "bb7c60d0803ddf0cb454982d5654c699e4cd6c7f75a5a2bc018e31b8d7c3b163",
+    "contracts/tools.v0.1.json": "6f50fccc9e366d78b9069d8e495e8983f5a0fab23f6ecd3facf5591ee69fc7de"
+  }
+}

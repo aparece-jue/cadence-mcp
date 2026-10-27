@@ -1,0 +1,66 @@
+{
+  "batch": 106,
+  "date": "2026-10-27",
+  "tools": 204,
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "fullV04Accepted": false,
+  "fullP05Accepted": false,
+  "publicNativeGenerationMcpTasksAvailable": false,
+  "durableNativeNetlistService": "implemented_unaccepted",
+  "hostFence": "implemented_unit_tested_native_integration_pending",
+  "nativeTask": {
+    "planId": "6b5765b8d1794fb2970d6f50ac7a40d8",
+    "hostPid": 5256,
+    "entered": true,
+    "completionReceiptPresent": false,
+    "forwarderExitedZero": true,
+    "accepted": false,
+    "fenceRetained": true,
+    "replayed": false,
+    "observedDialog": "ORCAP-1356 Memory exhausted; Cancel immediately exits application",
+    "cause": "unconfirmed",
+    "guiRecovery": "click failed: coordinate input geometry is unavailable; Escape did not close dialog"
+  },
+  "dispatchChange": "Single source command sources complete multiline payload; native retry not yet performed.",
+  "testHarnessCorrection": "First replay test reused f and closed its own replay channel; corrected harness variable, not production result.",
+  "latestFullRegression": {
+    "total": 627,
+    "passed": 626,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-profile-adapter-20261027.txt"
+  },
+  "evidenceSha256": {
+    ".local/regression-native-dispatch-20261027.txt": "4e49f7c9eb1c009043e6121fb6c8c4b261bceb8b9eeaf27708a444f08729999e",
+    ".local/native-netlist-service-20261027/report.json": "e7e3b3e0f79ab70667bde24e983e268c19cadbe5063f4474252ed189c9191b81",
+    ".local/profile-adapter-native-20261027/report.json": "e0f596f74e4ed9932ee268dd53f02b55faecc19494d64222229ae9931cc81735",
+    ".local/profile-adapter-native-20261027/before-native/report.json": "73dae31da5031a347b0f413f96810cf4174819a27417f292074839c0371a05a7",
+    ".local/profile-adapter-native-20261027/after-native/report.json": "080a03023a164703b761cb37bb9644ae4f003bea157aaca3ad41bab612f90d7c",
+    ".local/profile-adapter-mcp-20261027/report.json": "5ad410ef0f68af72ccf2b5dd88a19765ae1066eecca4c698dce2cf36548c55c2",
+    ".local/profile-adapter-replay-20261027/report.json": "3623a1647e0f69703ed1d7a0b957ee793c516b79f94cf68f6d8fe3a3a905aff5",
+    ".local/profile-adapter-replay-v2-20261027/report.json": "2e423efe976d2e80f154e100a52a5a2ee1e1c6eef2e16b999ae45ce914bba0d1",
+    ".local/regression-profile-adapter-20261027.txt": "d336f4d2f6bf3a5f9d402325c31b238d6c3ead30933c489efbb8e4d24e5633a1"
+  },
+  "gitSyncState": "not_attempted_this_batch",
+  "next": [
+    "Recover faulted private Capture host without replaying entered task.",
+    "Run corrected fixed Tcl on a fresh independent project copy; compare native NET/ALS with frozen oracle.",
+    "Accept persistent task lifecycle before registering five planned MCP tools."
+  ],
+  "newTests": 9,
+  "profileCircuitAdapter": {
+    "status": "fixed_tcl_native_and_mcp_solver_accepted_for_explicit_private_ini_fixture",
+    "publicMcpTaskAvailable": false,
+    "beforeAfterCirsGenerated": true,
+    "mcpNumericalAcceptance": true,
+    "oldDatRefusedBeforeWorker": true,
+    "sameInputReplayNativeRefusal": "preexisting_profile_output",
+    "acceptedNativeArtifactsUnchanged": true,
+    "globalIniAndSourcesUnchanged": true,
+    "originalNominalLibraryClosureAccepted": false,
+    "firstReplayProof": "exit code and byte preservation only; second run added exact reason acknowledgement"
+  }
+}

@@ -29,3 +29,11 @@
 复现：`tools/smoke_native_netlist_components.py --help`。参数为全新workspace root、既有私有source root、安装根、已有认证binding、先前独立验收的expected NET和ALS。脚本校验Capture进程/可执行文件指纹，只生成私有工程副本，不切换GUI；原始设计、认证文件和原生输出不提交Git。
 
 下一步把这三个组件接入持久NET/ALS任务，特别处理原生已派发但回执未到的状态：不得杀Capture、不得把转发器结束当作调用结束、不得解除未决围栏后重复派发。之后完成独立profile/CIR任务，再从正式MCP重跑原P05。日志容器所有权/资源释放、任意工程兼容矩阵及原模型/层次等完整范围不由本批窄验收代替。
+
+## 2026-10-27 MCP任务可用范围
+
+已注册五个固定任务工具：`capture_plan_pspice_netlist`、`capture_apply_pspice_netlist`、`capture_pspice_netlist_jobs`、`capture_cancel_pspice_netlist`、`capture_recover_pspice_netlist`。plan显式要求定义sessionId、认证guiSessionId、sourceProject、sourceProfile；只支持same_directory_design_single_profile@1已声明角色。apply生成新副本NET/ALS，结果携带manifest及原生完成/宿主保持证明，不声明模型闭包、DRC或求解成功。
+
+真实原生及MCP验收包括：NET/ALS与写前冻结预期一致；源/活动宿主保持；派发前取消；真实原生完成后注入观察丢失；未决围栏拒绝新计划；新服务仅核验回执/既有产物恢复；新服务幂等。首次MCP产物响应缺字段失败已保留，并在修复后只读恢复旧任务，全部任务文件保持。实际工具数209，契约由真实服务生成。复现工具`tools/smoke_native_netlist_service.py`、`tools/smoke_native_netlist_mcp.py`接受workspace-root/source-root/binding/install-root/expected-netlist/expected-aliases参数；认证binding仅本机保存。
+
+原5256宿主的ORCAP-1356失败没有被重跑或改成功，旧围栏仍在旧绑定目录；经核对专用副本与程序指纹后结束故障进程，新宿主/新绑定/新任务单独验收。内存错误原因未确认。此恢复不能被描述为支持任意正在运行的Capture调用取消。正式profile→CIR任务及完整V04/P05仍未通过；见`docs/implementation/batch-107-evidence.json`。

@@ -105,7 +105,9 @@ def expected_definitions(data,page_id,expectations):
 class CaptureWireAdds(CapturePropertyEdits):
     kind='capture_wire_add'
 
-    def plan(self,session_id,page_id,start,end,name,expectations,alias_location=None,expected_paths=None,expected_wire_net=None):
+    def plan(self,session_id,page_id,start,end,name,expectations,alias_location=None,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None):
+        if editor_occurrence is not None and (gui_session_id is None or not isinstance(editor_occurrence,str) or not 1<=len(editor_occurrence)<=512 or any(ord(c)<32 for c in editor_occurrence)):raise CadenceError('invalid_editor_occurrence','Provide a bounded explicit occurrence reference with the GUI host.')
+        if (gui_session_id is None)!=(host_project is None):raise CadenceError('invalid_editor_host','Provide guiSessionId and hostProject together.')
         if not point(start) or not point(end) or start==end:raise CadenceError('invalid_wire_geometry','Two distinct bounded integer endpoints are required.')
         if not isinstance(name,str) or not re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]{0,63}',name):raise CadenceError('invalid_net_name','Provide a bounded scalar alias identifier; bus expressions require a dedicated operation.')
         owner_net=name if expected_wire_net is None else expected_wire_net
@@ -132,15 +134,38 @@ class CaptureWireAdds(CapturePropertyEdits):
                 'schematicName':sch['name'],'pageName':page['name'],'start':start,'end':end,'netName':name,'aliasLocation':location,'expectedWireNet':owner_net,
                 'expectedConnections':expectations,'expectedWirePaths':paths,'expectedDefinitionDigest':definition_baseline(expected),
                 'expectedConnectionDigest':connection_digest(data,objects,{'pageId':page_id,'paths':paths,'name':name,'location':location})}
+            if gui_session_id is not None:
+                if getattr(self,'editor_host',None) is None:raise CadenceError('instance_not_found','No editor host configured.')
+                payload['editorHost']=self.editor_host.freeze(gui_session_id,host_project)
+                payload['editorOccurrence']=editor_occurrence
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire plan exceeds the bounded durable-record size.')
             self.capture._session(session_id)
             return self.create_plan(payload)
 
-    def preview(self,payload):return {k:payload[k] for k in ('schematicName','pageName','start','end','netName','aliasLocation','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+    def preview(self,payload):
+        result={k:payload[k] for k in ('schematicName','pageName','start','end','netName','aliasLocation','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+        if 'editorHost' in payload:result.update(executionBackend='capture_editor',temporaryOutputProjectSwitch=True,hostProjectRestorationRequired=True,guiSessionReattachRequired=True,cancelScope='pending_only',outputProjectClosureRequired=True,editorOccurrence=payload.get('editorOccurrence'))
+        return result
 
     def preflight(self,payload):
         source=checked_path(payload['sourceDesign'],(self.config.workspace_root,))
         if source.suffix.lower()!='.dsn' or sha256(source)!=payload['sourceFingerprint']:raise CadenceError('target_changed','Source snapshot changed after wire planning.')
+        if 'editorHost' in payload:self.editor_host.static(payload['editorHost'])
+
+    def execute(self,directory,payload,cancel,on_started):
+        if 'editorHost' in payload:return self.editor_host.execute(directory,payload,cancel,on_started)
+        return super().execute(directory,payload,cancel,on_started)
+
+    def cancel(self,plan_id,plan_digest):
+        d,path,row=self._load(plan_id)
+        if row['digest']!=plan_digest:raise CadenceError('plan_digest_mismatch','Plan digest differs.')
+        if 'editorHost' in row['plan']['payload'] and row['state']=='started':raise CadenceError('too_late','A host editor task cannot be cancelled by killing Capture or its forwarder; observe/recover only.')
+        return super().cancel(plan_id,plan_digest)
+
+    def _verified_result(self,directory,row):
+        result=super()._verified_result(directory,row)
+        if 'editorHost' in row['plan']['payload']:self.editor_host.manifest(directory)
+        return result
 
     def native_command(self,directory,payload):
         return [self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'edit_wire_add.tcl',self.config.install_root,
@@ -150,7 +175,12 @@ class CaptureWireAdds(CapturePropertyEdits):
     def verify(self,directory,payload,native_completed):
         target=checked_path(str(directory/'design.dsn'),(directory,));before=sha256(target)
         if target.stat().st_size>128*1024*1024:raise CadenceError('output_limit','Wire output exceeds design limit.')
-        if native_completed:
+        if 'editorHost' in payload:
+            from .gui_jobs import acquire_guard
+            guard=acquire_guard(self.editor_host.binding(payload['editorHost']).parent)
+            try:self.editor_host.complete(directory,payload['editorHost'])
+            finally:guard.close()
+        elif native_completed:
             receipt=directory/'native-result.json'
             if receipt.stat().st_size>4096 or json.loads(receipt.read_text(encoding='utf-8'))!={'saved':True,'operation':'add_wire','schematicName':payload['schematicName'],'pageName':payload['pageName']}:
                 raise CadenceError('invalid_worker_result','Native wire save receipt mismatch.','verify')
@@ -180,9 +210,14 @@ class CaptureWireAdds(CapturePropertyEdits):
         artifact={'artifactId':'wire-'+ident,'kind':'capture_edited_design','workspaceRelativePath':'design.dsn','sha256':before,
             'size':target.stat().st_size,'producedByJob':ident,'sourceFingerprint':payload['sourceFingerprint'],
             'createdAt':datetime.now(timezone.utc).isoformat(),'validationState':'validated'}
-        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,
+        result={'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,
             'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'expectedDefinitionsVerified':True,
             'expectedConnectionObjectsVerified':True,'expectedConnections':payload['expectedConnections'],'sourceModified':False,
             'addedAliasOwnerNetVerified':True,'observedAliasOwnerNet':owner_net,'wireOnlyNetIdentityVerified':False,
             'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),
             'notChecked':['occurrence_connectivity','wire_only_net_identity','native_drc','rendered_layout','font_descriptor','other_part_properties']}
+
+        if 'editorHost' in payload:
+            self.editor_host.manifest(directory,create=True)
+            result.update(executionBackend='capture_editor',hostContextPreserved=True,guiSessionReattachRequired=True,outputProjectCloseVerified=True)
+        return result

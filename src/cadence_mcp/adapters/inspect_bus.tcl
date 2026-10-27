@@ -16,6 +16,14 @@ proc cmcp::wire_ref {entry method index} {
     if {![dict exists $index $wire]} {error missing_linked_wire}
     return [cmcp::q [dict get $index $wire]]
 }
+namespace eval cmcp {variable textBytes 0}
+proc cmcp::boundedName {value} {
+    variable textBytes
+    if {[string length $value]>4096} {error name_limit}
+    incr textBytes [string bytelength $value]
+    if {$textBytes>4194304} {error text_limit}
+    return $value
+}
 set session "";set phase open
 set rc [catch {
     load [file join $root tools bin orDb_Dll_Tcl64.dll] DboTclWriteBasic
@@ -39,7 +47,7 @@ set rc [catch {
                             set name [cmcp::cs ""];set phase wire_geometry
                             set stateWire [DboState];set np [$w GetPointCount $stateWire];cmcp::check $stateWire
                             if {$np<2 || $np>10000} {error point_limit}
-                            set points {};for {set j 0} {$j<$np} {incr j} {set pt [$w GetPoint $j $stateWire];cmcp::check $stateWire;lappend points [cmcp::point $pt]}
+                            set points {};for {set j 0} {$j<$np} {incr j} {if {[incr total]>100000} {error object_limit};set pt [$w GetPoint $j $stateWire];cmcp::check $stateWire;lappend points [cmcp::point $pt]}
                             set isBus [expr {[$w GetObjectType]==$::DboBaseObject_WIRE_BUS}]
                             set bundle false;set width 0;set members {}
                             if {$isBus} {
@@ -48,18 +56,19 @@ set rc [catch {
                                 set net [$w GetNet $stateWire];cmcp::check $stateWire
                                 if {$net eq "NULL"} {error missing_bus_net}
                                 set bus [DboNetToDboNetBus $net]
-                                set phase bus_name;cmcp::check [$bus GetName $name]
+                                set phase bus_name;cmcp::check [$bus GetNetName $name]
                                 set width [$bus GetWidth $stateWire];cmcp::check $stateWire
                                 if {$width<0 || $width>10000} {error member_limit}
                                 for {set j 0} {$j<$width} {incr j} {
+                                    if {[incr total]>100000} {error object_limit}
                                     set member [$bus GetMember $j $stateWire];cmcp::check $stateWire
                                     if {$member eq "NULL"} {error missing_bus_member}
-                                    set mn [cmcp::cs ""];cmcp::check [$member GetName $mn]
-                                    lappend members [cmcp::obj position $j name [cmcp::q [cmcp::str $mn]]]
+                                    set mn [cmcp::cs ""];cmcp::check [$member GetNetName $mn]
+                                    lappend members [cmcp::obj position $j name [cmcp::q [cmcp::boundedName [cmcp::str $mn]]]]
                                 }
                             }
                             if {!$isBus} {set phase scalar_name;cmcp::check [$w GetNetName $name]}
-                            lappend wires [cmcp::obj wireId [cmcp::q $id] pageId [cmcp::q $pid] isBus [expr {$isBus ? "true" : "false"}] isBundle $bundle name [cmcp::q [cmcp::str $name]] points [cmcp::arr $points] width $width members [cmcp::arr $members]]
+                            lappend wires [cmcp::obj wireId [cmcp::q $id] pageId [cmcp::q $pid] isBus [expr {$isBus ? "true" : "false"}] isBundle $bundle name [cmcp::q [cmcp::boundedName [cmcp::str $name]]] points [cmcp::arr $points] width $width members [cmcp::arr $members]]
                         }
                     } finally {delete_DboPageWiresIter $it}
                     set phase entries

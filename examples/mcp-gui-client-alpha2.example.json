@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "cadence-alpha2": {
+      "command": "D:/cadence-mcp-alpha2/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "cadence_mcp.server",
+        "--install-root",
+        "D:/Program Files/Cadence/SPB_24.1",
+        "--workspace-root",
+        "D:/cadence-mcp-alpha2/workspaces",
+        "--read-root",
+        "D:/cadence-mcp-alpha2/inputs",
+        "--timeout-seconds",
+        "60",
+        "--gui-bridge-root",
+        "D:/cadence-mcp-alpha2/bindings",
+        "--read-root",
+        "D:/cadence-mcp-alpha2/controls"
+      ]
+    }
+  }
+}

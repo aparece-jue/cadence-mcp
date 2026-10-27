@@ -1,0 +1,75 @@
+{
+  "batch": 112,
+  "date": "2026-10-27",
+  "tools": 215,
+  "goalComplete": false,
+  "fullyAccepted": 6,
+  "originalRequired": 34,
+  "existingToolExtended": "capture_plan_wire_add",
+  "optionalPairedArguments": [
+    "guiSessionId",
+    "hostProject"
+  ],
+  "scope": "Capture24.1 fixed native editor wire-and-alias add in isolated output; original clean single-design PCB control project restored; old GUI logical sessions explicitly invalidated",
+  "nativeContextPrototypeAccepted": true,
+  "publicMcpAndIndependentReopenAccepted": true,
+  "priorWireMapPreservedInActualFixture": true,
+  "sourceAndHostProjectUnchanged": true,
+  "oldSessionsInvalidatedAndExplicitReattachAccepted": true,
+  "freshServerIdempotenceAndAllFilesUnchanged": true,
+  "pendingOnlyCancellation": true,
+  "observerLossAfterRealNativeCompletion": {
+    "fenceRetained": true,
+    "repeatApplyRefused": true,
+    "newDispatchBlocked": true,
+    "freshMcpVerifyOnlyRecovery": true,
+    "originalNativeFilesUnchanged": true,
+    "releaseAfterRestoredHostProof": true
+  },
+  "originalTwoResistorFailure": {
+    "sourceSha256": "5bf35881070ee8bb495472030ea9e4132823f8a9d22afe0320fe38a2e4f4c80c",
+    "originalFourPinOraclePreserved": true,
+    "resolvedViaExplicitEditorBackend": true,
+    "standaloneConstructorFixed": false
+  },
+  "retainedInitialFailure": "First public smoke exposed misplaced optional parameters before any native dispatch; parameter scope fixed and tested in new directory. Old report retained.",
+  "runtimeObservationCorrection": "Restricted process query omitted the existing Capture process. Escalated process identity proved original PID24360 still running; attempted new launch was a single-instance forwarder, no second host established. Existing host rebound explicitly.",
+  "desktopInputsUsed": false,
+  "newUnitTests": 7,
+  "latestFullRegression": {
+    "total": 654,
+    "passed": 653,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-editor-wire-20261027.txt"
+  },
+  "evidenceSha256": {
+    ".local/editor-output-context-20261027/report.json": "6f3274fca4ace5cc12dd52cbbfb7cc5be6ac686a96ffb6e21110c4265bfe09d5",
+    ".local/editor-wire-add-mcp-20261027/report.json": "fcbf6d2eda6dcfef1af34f30fdef9574788210d7bcdfdde676f44bbe6a5c608d",
+    ".local/editor-wire-add-mcp-v2-20261027/report.json": "3df478fe2808d39639ec8ba5eabd7aca7aabfa4f3046e54fb3ade551c09ed336",
+    ".local/editor-wire-original-pins-mcp-20261027/report.json": "52758696462b25226529b78981fd9941cf598fbb7e07a76831b0c3a060ff3f05",
+    ".local/editor-wire-observer-loss-20261027/report.json": "479d059200329a943fc25b87e87fc5f7e7f001d4f033e4902320fc34fa3f4d4c",
+    ".local/regression-editor-wire-20261027.txt": "0d442d4fd95733bcd8c9ec00f68a64f101ab55e9af1c958e592cd7ba1e097a06"
+  },
+  "implementationSha256": {
+    "src/cadence_mcp/capture_wire.py": "1f00c4e8be57399cce99a82ca815c3cb986ed70d9bcc33545555f7adbfd5a0d3",
+    "src/cadence_mcp/editor_wire_host.py": "760a15f8d76e1134a5f682bc9a3ff6c3cf133cc5a319acc7126900c5c945be7b",
+    "src/cadence_mcp/adapters/editor_wire_add_job.tcl": "296388112dc8dcbd77f812db7cea6cd8edcd28607a507fbbe776f804eebaf589",
+    "src/cadence_mcp/server.py": "f27075d0fc0a063e97d4c38167eacae1b897986531a009fa47b77fd3cf46b023",
+    "tests/test_editor_wire_host.py": "3720cdad9354cde1490415ad5cdd10251087ebf77c7d41f2fde505a3b3fffe59",
+    "tools/probe_editor_output_context.py": "fe26e0d6a8cbdc710ae0573929c0d9ece0434610e3d9fa93fb8d38d52bc7ad3f",
+    "tools/smoke_editor_wire_add_mcp.py": "3cf646a15e77e732358c1b0e329a0aa88bb079d4cf843da69a8120ccd334bd32",
+    "tools/smoke_editor_wire_add_mcp_v2.py": "ff43aa81ea7a62169932756c6f2cf4491b8b82d4f26c3382e37e0922a940551e",
+    "tools/smoke_editor_original_pins_mcp.py": "81460db7dd4dcb3e585cb0d768d6344b4c7589503ace3fbd5c53067f3aee8b48",
+    "tools/smoke_editor_wire_observer_loss.py": "ff9bd109fa942774137a65e5383fc4c571093aff39b4ba28693354df07c3006a",
+    "contracts/tools.v0.1.json": "24e355a519849654f9dd867ce07777be7a30f43f6a12e9f1e1139b3868ed18a8"
+  },
+  "fullD03Accepted": false,
+  "next": [
+    "Original interior four-pin short using the editor route and unchanged electrical oracle.",
+    "Deferred unrelated wire-net loss on deletion and complete wire-only/occurrence identity guard.",
+    "Advance original Capture hierarchy/bus/DRC and remaining PSpice failures; original34 gate scope unchanged."
+  ],
+  "gitSyncState": "not_committed_or_pushed"
+}

@@ -7,6 +7,7 @@ from .pspice_diagnostics import failure_for_output
 
 class PSpiceCliRuns(PSpiceRuns):
     kind='pspice_cli_run'
+    supports_param_list_steps=True
     def backend_name(self):return 'official_psp_cmd_r'
     def extra_scope(self):return 'declared_trace_rows_only'
     def backend_not_checked(self):return []

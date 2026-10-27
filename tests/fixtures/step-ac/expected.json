@@ -1,0 +1,103 @@
+{
+  "formula": "Vout=1/(1+R/1000+j*2*pi*f*R*7e-6); AC source1V",
+  "blocks": [
+    {
+      "index": 0,
+      "resistanceOhm": 500,
+      "rows": [
+        {
+          "frequency": 10,
+          "real": 0.6526389717803519,
+          "imaginary": -0.095681870628939
+        },
+        {
+          "frequency": 20,
+          "real": 0.6138875492228275,
+          "imaginary": -0.18000123071174323
+        },
+        {
+          "frequency": 30,
+          "real": 0.5586072987951495,
+          "imaginary": -0.24568832205910718
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "resistanceOhm": 1000,
+      "rows": [
+        {
+          "frequency": 10,
+          "real": 0.476934920926418,
+          "imaginary": -0.10488346706760046
+        },
+        {
+          "frequency": 20,
+          "real": 0.4189554740963621,
+          "imaginary": -0.1842662415443304
+        },
+        {
+          "frequency": 30,
+          "real": 0.3483714721079991,
+          "imaginary": -0.2298326640738978
+        }
+      ]
+    }
+  ],
+  "expectedSamples": [
+    {
+      "block": 0,
+      "row": 0,
+      "traceName": "V(OUT)",
+      "real": 0.6526389717803519,
+      "imaginary": -0.095681870628939,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    },
+    {
+      "block": 0,
+      "row": 1,
+      "traceName": "V(OUT)",
+      "real": 0.6138875492228275,
+      "imaginary": -0.18000123071174323,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    },
+    {
+      "block": 0,
+      "row": 2,
+      "traceName": "V(OUT)",
+      "real": 0.5586072987951495,
+      "imaginary": -0.24568832205910718,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    },
+    {
+      "block": 1,
+      "row": 0,
+      "traceName": "V(OUT)",
+      "real": 0.476934920926418,
+      "imaginary": -0.10488346706760046,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    },
+    {
+      "block": 1,
+      "row": 1,
+      "traceName": "V(OUT)",
+      "real": 0.4189554740963621,
+      "imaginary": -0.1842662415443304,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    },
+    {
+      "block": 1,
+      "row": 2,
+      "traceName": "V(OUT)",
+      "real": 0.3483714721079991,
+      "imaginary": -0.2298326640738978,
+      "absoluteTolerance": 1e-06,
+      "relativeTolerance": 0.0001
+    }
+  ]
+}

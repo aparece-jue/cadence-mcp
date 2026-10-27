@@ -18,7 +18,7 @@ async def main():
     out=await c.call_tool(n,args)
     if out.is_error:raise AssertionError((n,out.structured_content))
     return out.structured_content['data']
-   report['toolCount']=len((await c.list_tools()).tools);assert report['toolCount']==204
+   names={x.name for x in (await c.list_tools()).tools};report['toolCount']=len(names);assert 'pspice_dat_digital_samples' in names
    for path,kind in [(legal,'six_states'),(mixed,'mixed'),(pure,'compressed')]:
     opened=await call('pspice_dat_open',{'sourceDat':str(path)});ident=opened['datId']
     traces=(await call('pspice_dat_query',{'datId':ident,'entity':'trace','block':0,'limit':1000}))['items']

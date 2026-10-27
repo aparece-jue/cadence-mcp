@@ -1,6 +1,6 @@
 # 原生仿真输入任务实施契约
 
-状态：2026-10-26，第104批运行证据支持的下一步实施设计；下述新增工具尚未注册，实际工具数仍204。沿用统一MCP Server、Capture/PSpice内部模块、现有任务账本与来源检查，不开放任意Tcl/eval或外部命令。
+状态：2026-10-27，第108批已注册并原生/MCP验收五个Capture NET/ALS任务、五个PSpice profile→CIR任务及一个已验收CIR准备入口，实际工具数215。当前profile任务支持显式库配置及声明指令验收；继承配置、原始完整V04/P05仍未通过。沿用统一MCP Server、Capture/PSpice内部模块、现有任务账本与来源检查，不开放任意Tcl/eval或外部命令。
 
 ## 证据与分层
 
@@ -35,3 +35,7 @@ verify将CIR分析设置、PROBE选择和所有LIB/INC与源profile/配置/已�
 先做项目角色/路径/指纹解析与计划拒绝，再做真实认证宿主NET/ALS任务及生命周期，随后profile/CIR任务，最后用现有property和CLI工具重跑完整P05。必须包含：缺OPJ/错误profile/root、多个同名入口、旧revision、源/输入/输出篡改、预存NET/ALS/CIR、错PID/活动项目、并发写入、派发前取消、转发超时与晚到回执、新服务器恢复/幂等，以及旧DAT拒绝。真实业务没有支持的边界明确未验收，不能用mock替代宿主完成证据。
 
 本设计不把任何原34项提前标为passed。实际工具契约只在功能实现并受影响验收通过后从运行服务生成更新，固定alpha.1不变。
+
+第108批实现/验收详见docs/implementation/batch-108-evidence.json（从仓库根解析）。原文“拟新增”描述保留设计顺序；实际工具以contracts/tools.v0.1.json为准。
+
+第109批：现有profile计划工具可选configurationIni，支持经过原生合并核对的一目录纯global LIB选择，INI字节与配置证明绑定产物。原nom.lib213模型/34,548,882字节和216文件准备闭包通过实际MCP；完整覆盖配置和加密求解仍未通过。见docs/implementation/batch-109-evidence.json。

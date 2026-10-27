@@ -19,7 +19,11 @@ from . import __version__
 from .core import CadenceError, Config, failure, result
 from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits
+from .capture_pspice_netlist import CapturePSpiceNetlists
 from .capture_wire import CaptureWireAdds
+from .capture_bus import query_bus
+from .capture_bus_create import CaptureBusCreates
+from .editor_wire_host import EditorWireHost
 from .capture_wire_edit import CaptureWireEdits
 from .capture_graphic_line import CaptureGraphicLines
 from .capture_graphic_text import CaptureGraphicTexts,GraphicTextChange
@@ -57,6 +61,7 @@ from .pspice_input_checks import PSpiceInputChecks
 from .pspice_dat import PSpiceDat
 from .pspice_runs import PSpiceRuns
 from .pspice_cli_runs import PSpiceCliRuns
+from .pspice_profile_circuits import PSpiceProfileCircuits
 from .pspice_exports import PSpiceExports
 from .pspice_measurements import PSpiceMeasurementRuns
 from .pspice_output import inspect_output
@@ -133,6 +138,14 @@ class PinExpectation(StrictModel):
     pinNumber: Annotated[str, Field(min_length=1, max_length=512)]
     connected: bool
     net: Annotated[str, Field(min_length=1, max_length=512)] | None
+
+
+class BusBranch(StrictModel):
+    index: Annotated[int, Field(ge=0, le=65535)]
+    entryPoint: Annotated[list[int], Field(min_length=2, max_length=2)]
+    endPoint: Annotated[list[int], Field(min_length=2, max_length=2)]
+    wireEnd: Annotated[list[int], Field(min_length=2, max_length=2)]
+    expectedBusAttached: bool
 
 
 class WireAliasLocation(StrictModel):
@@ -309,6 +322,11 @@ def create_server(config: Config) -> MCPServer:
     measurement_runs = PSpiceMeasurementRuns(config, simulation_inputs, simulation_data)
     gui = GuiBridgeManager((config.gui_bridge_config,) if config.gui_bridge_config else (), config.gui_bridge_roots)
     property_writer = GuiPropertyWriter(gui, config)
+    wire_adds.editor_host = EditorWireHost(config, gui)
+    wire_edits.editor_host = wire_adds.editor_host
+    bus_creates = CaptureBusCreates(config, capture, gui)
+    native_netlists = CapturePSpiceNetlists(config, capture, gui)
+    profile_circuits = PSpiceProfileCircuits(config, native_netlists, simulation_inputs)
     tools = []
 
     def register(*, readonly: bool):
@@ -339,7 +357,7 @@ def create_server(config: Config) -> MCPServer:
     async def invoke(fn, *args, coverage=(), not_checked=(), level="runtime_probed", backend="python"):
         try:
             context=contextvars.copy_context()
-            pool=diagnostic_pool if fn is diagnose or fn in (property_edits.cancel, cache_replacements.cancel, user_properties.cancel, display_properties.cancel, wire_adds.cancel, wire_edits.cancel, graphic_lines.cancel, graphic_texts.cancel, part_edits.cancel, reference_edits.cancel, hierarchy_edits.cancel, nc_edits.cancel, alias_edits.cancel, net_symbol_edits.cancel, net_symbol_creates.cancel, design_creates.cancel, placements.cancel, multiunit_placements.cancel, simulation_runs.cancel, simulation_exports.cancel, cli_runs.cancel, input_checks.cancel, measurement_runs.cancel, library_creates.cancel, library_pin_edits.cancel, library_vector_edits.cancel, library_package_edits.cancel) else work_pool
+            pool=diagnostic_pool if fn is diagnose or fn in (property_edits.cancel, cache_replacements.cancel, user_properties.cancel, display_properties.cancel, wire_adds.cancel, wire_edits.cancel, graphic_lines.cancel, graphic_texts.cancel, part_edits.cancel, reference_edits.cancel, hierarchy_edits.cancel, nc_edits.cancel, alias_edits.cancel, net_symbol_edits.cancel, net_symbol_creates.cancel, design_creates.cancel, placements.cancel, multiunit_placements.cancel, simulation_runs.cancel, simulation_exports.cancel, cli_runs.cancel, input_checks.cancel, measurement_runs.cancel, native_netlists.cancel, profile_circuits.cancel, bus_creates.cancel, library_creates.cancel, library_pin_edits.cancel, library_vector_edits.cancel, library_package_edits.cancel) else work_pool
             data = await asyncio.get_running_loop().run_in_executor(pool,context.run,fn,*args)
             row = result(data, backend=backend, level=level, coverage=coverage, not_checked=not_checked)
             if isinstance(data, dict) and (data.get("nextCursor") is not None or data.get("nextOffset") is not None):
@@ -368,9 +386,12 @@ def create_server(config: Config) -> MCPServer:
         """Describe implemented experimental features separately from runtime probes and unimplemented workflows."""
         features = {
             "environment.files": "implemented", "environment.runtime_probe": "implemented",
+            "pspice.parameter_step": "experimental_literal_param_list_cli_only",
+            "pspice.profile_circuit": "experimental_explicit_or_native_checked_global_library_selection",
+            "capture.native_pspice_netlist": "experimental_same_directory_design_single_profile_native_task",
             "capture.single_dsn_copy": "implemented", "capture.design_create": "experimental_ascii_root_and_single_empty_page", "capture.library_create": "experimental_declared_single_or_family_graph_and_basic_vectors", "capture.library_vectors": "experimental_part_bound_native_order", "capture.library_vector_edit": "experimental_inplace_fields_and_delete_modeled_preservation", "capture.library_package_edit": "experimental_fixed_fields_and_explicit_string_properties", "capture.library_pin_edit": "experimental_symbol_geometry_flags_and_device_pad_mapping", "capture.library_pin_style_query": "experimental_native_scalar_pin_flags", "capture.shared_pin_definition_query": "experimental_explicit_shared_enumeration", "capture.definition_query": "experimental", "capture.part_properties": "experimental", "capture.property_layers": "experimental", "capture.display_property_layout": "experimental_unambiguous_definitions", "capture.display_font": "experimental_existing_instance_full_descriptor_and_inheritance", "capture.user_property_lifecycle": "experimental_unambiguous_definitions", "capture.isolated_property_edit": "experimental_unambiguous_definitions", "capture.cache_binding": "experimental_source_qualified_placed_package", "capture.cache_replacement": "experimental_compatible_physical_pins_modeled_instance_preservation", "capture.part_geometry": "experimental", "capture.connection_objects": "experimental", "capture.wire_add": "experimental_explicit_definition_expectations", "capture.wire_edit": "experimental_two_point_scalar", "capture.placement": "experimental_explicit_library_and_hotspots", "capture.alternate_view_placement": "experimental_source_pin_and_basic_vector_identity", "capture.multiunit_placement": "experimental_atomic_complete_package", "capture.unit_pose_delete": "experimental_native_identity_pinid_expectations", "capture.cached_unit_add": "experimental_existing_group_missing_device", "capture.graphic_objects": "experimental", "capture.page_vectors": "experimental_typed_local_definitions_and_native_control_points", "capture.page_dimensions": "experimental_native_sizes_units_flags", "capture.page_graphic_bounds": "experimental_declared_control_points_only", "capture.graphic_line_add": "experimental_rotation_zero", "capture.graphic_text_add": "experimental_definition_anchor_and_modeled_preservation", "capture.graphic_text_edit": "experimental_bound_update_delete_and_modeled_preservation", "capture.part_edit": "experimental_explicit_definition_pose_delete", "capture.reference_map": "experimental_single_unit_definition_map", "capture.package_reference_map": "experimental_explicit_whole_package_definition_map", "capture.net_symbol_edit": "experimental_scalar_name_delete_page_membership", "capture.net_symbol_create": "experimental_source_bound_page_definition", "capture.net_symbols": "experimental_kind_name_metadata", "capture.alias_edit": "experimental_scalar_alias_preserve_page_membership", "capture.nc_edit": "experimental_single_unit_unbound_scalar_pin", "capture.hierarchy_clone": "experimental_top_level_internal_block_reuse", "capture.occurrence_structure": "experimental_revision_scoped_unit_identity", "capture.occurrence_properties": "experimental_component_and_immediate_definition_layers",
             "capture.page_query": "experimental", "capture.pin_net_definition": "experimental", "capture.compare_connections": "experimental_selected_definitions",
-            "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "unavailable",
+            "capture.editor_wire_add": "experimental_24_1_fixed_output_editor", "capture.editor_wire_delete": "experimental_24_1_selection_guarded_delete", "capture.editor_wire_occurrence": "experimental_unique_schematic_reference", "capture.bus_create": "experimental_fixed_vertical_ordinary_bus_editor", "capture.bus_inventory": "experimental_named_members_and_native_entry_links", "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "unavailable",
             "capture.olb": "experimental_read_only", "capture.cache_query": "experimental_read_only", "capture.write_save_reopen": "unavailable",
             "capture.gui_note_write_save_reopen": "experimental_fixture_only", "capture.gui_job_resolution": "experimental_fixture_only", "capture.gui_diagnose": "experimental_config_required",
             "capture.gui_status": "experimental_config_required", "capture.gui_sessions": "experimental_config_required", "capture.gui_drc_pdf": "unavailable", "pspice.prepare": "experimental_explicit_references_only", "pspice.input_check": "experimental_native_parse_setup_only", "pspice.run": "experimental_independent_engine_tcl", "pspice.cli_run": "experimental_official_psp_cmd_r", "pspice.dat": "experimental_analog_and_unflagged_digital_change_records", "pspice.dat_export": "experimental_bound_csv_json_rows", "pspice.native_measurements": "experimental_complete_analysis_named_fields", "pspice.failure_diagnostics": "experimental_stopped_job_explicit_errors", "pspice.inspect_output": "experimental_imported_out_diagnostics_bias_only",
@@ -490,8 +511,47 @@ def create_server(config: Config) -> MCPServer:
         return await invoke(input_checks.inspect,planId,planDigest,backend='pspice_native_setup',coverage=('verified_input_check_report',),not_checked=('numerical_results',))
 
     @register(readonly=False)
+    async def pspice_plan_profile_circuit(netlistPlanId: str, netlistPlanDigest: str,
+            libraryPaths: Annotated[list[str], Field(max_length=16)], includeAliases: bool,
+            expectedDirectives: Annotated[list[str], Field(min_length=1, max_length=16)],
+            inputBudget: Literal["standard", "extended"] = "standard", configurationIni: str | None = None) -> ToolResult:
+        """Freeze a verified NET/ALS task, its profile and allowed model closure. Choose explicit libraryPaths or configurationIni with an empty libraryPaths list. INI mode preserves the original bytes and checks native merged global library selection in one search directory; profile/local/include/stimulus overlays are refused. Declare expected analysis/probe/option lines independently. No global configuration writes or encrypted-model execution exemption."""
+        return await invoke(profile_circuits.plan, netlistPlanId, netlistPlanDigest, libraryPaths, includeAliases, expectedDirectives, inputBudget, configurationIni,
+                            backend="pspice_profile", coverage=("bound_netlist_profile_plan", "explicit_library_closure"), not_checked=("inherited_nominal_configuration", "complete_profile_semantics", "solver"))
+
+    @register(readonly=False)
+    async def pspice_apply_profile_circuit(planId: str, planDigest: str,
+            idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
+        """Generate a new CIR once with the fixed native CorSimSrvr Tcl script and private INI. Verify native process/receipt, declared directives, exact NET/ALS/library references and unchanged staged inputs. No solver run."""
+        return await invoke(profile_circuits.apply, planId, planDigest, idempotencyKey, backend="pspice_profile",
+                            coverage=("native_profile_circuit_generation", "explicit_configuration_verification", "declared_directives"), not_checked=("inherited_nominal_configuration", "complete_profile_semantics", "solver", "numerical_results"))
+
+    @register(readonly=True)
+    async def pspice_profile_circuit_jobs(offset: Annotated[int, Field(ge=0, le=4096)] = 0,
+                                           limit: Annotated[int, Field(ge=1, le=100)] = 50) -> ToolResult:
+        """Page persisted profile-to-CIR jobs without starting native work."""
+        return await invoke(profile_circuits.jobs, offset, limit, coverage=("durable_profile_circuit_jobs",))
+
+    @register(readonly=False)
+    async def pspice_cancel_profile_circuit(planId: str, planDigest: str) -> ToolResult:
+        """Cancel a pending plan or this server's owned profile worker. Partial CIR artifacts remain unverified; Capture is never terminated."""
+        return await invoke(profile_circuits.cancel, planId, planDigest, coverage=("owned_profile_worker_cancel",))
+
+    @register(readonly=False)
+    async def pspice_recover_profile_circuit(planId: str, planDigest: str) -> ToolResult:
+        """Verify existing profile task output after proof the original worker stopped; never regenerate the circuit."""
+        return await invoke(profile_circuits.recover, planId, planDigest, backend="pspice_profile",
+                            coverage=("existing_profile_circuit_verification", "no_mutation_replay"), not_checked=("solver", "numerical_results"))
+
+    @register(readonly=False)
+    async def pspice_prepare_profile_circuit(planId: str, planDigest: str) -> ToolResult:
+        """Prepare the CIR of a verified profile task for existing CLI tools. Read only that owned task's validated artifact closure, not arbitrary workspace paths. Does not regenerate CIR or run a solver."""
+        return await invoke(profile_circuits.open_input, planId, planDigest, backend="pspice_profile",
+                            coverage=("verified_profile_artifact_input", "explicit_reference_closure"), not_checked=("model_validity", "solver", "numerical_results"))
+
+    @register(readonly=False)
     async def pspice_plan_cli_run(simulationId: str,analysis: Literal['dc','ac','transient'],expectedSamples: list[SimulationSampleExpectation] | None = None,timeoutSeconds: Annotated[int,Field(ge=1,le=600)] | None = None) -> ToolResult:
-        """Plan the official noninteractive psp_cmd /r on an immutable prepared CIR closure. Fixed installed executable and flags, owned output only. Use backend=cli when opening DAT or inspecting OUT."""
+        """Plan official noninteractive psp_cmd /r on an immutable prepared CIR closure. Supports one bounded, single-line .STEP PARAM name LIST of literal values; other STEP forms refuse. Parameter sweeps require this CLI backend, since the single-analysis engine does not iterate them. Fixed executable/flags and owned output only. Use backend=cli when opening DAT or inspecting OUT."""
         return await invoke(cli_runs.plan,simulationId,analysis,None if expectedSamples is None else [p.model_dump() for p in expectedSamples],timeoutSeconds,backend='pspice_cli',coverage=('durable_cli_plan','frozen_closure'),not_checked=('implicit_model_lookup_closure','full_spice_syntax'))
 
     @register(readonly=False)
@@ -792,6 +852,52 @@ def create_server(config: Config) -> MCPServer:
                             not_checked=("junction_connectivity", "bus_member_connectivity", "occurrence_connectivity", "native_drc"))
 
     @register(readonly=False)
+    async def capture_query_bus(sessionId: str, entity: Literal["bus", "scalar", "entry", "pin_member"],
+                                pageId: str | None = None, cursor: str | None = None,
+                                limit: Annotated[int, Field(ge=1, le=1000)] = 100) -> ToolResult:
+        """Read bounded named bus members in native order, scalar branches and bus-entry geometry/direct wire references from a frozen DSN. Exact page filtering and session/query/page-size cursors; null entry endpoints remain explicit. pin_member additionally reads same-page definition pin/net membership using native HasMember/GetPosition/GetMember pointer identity, including false rows. Does not certify occurrence connectivity, routed completeness or nested Bundle semantics."""
+        return await invoke(query_bus, capture, sessionId, entity, pageId, cursor, limit,
+                            backend="capture_dbo", coverage=("native_named_bus_members", "native_entry_wire_references"),
+                            not_checked=("physical_pin_member_connectivity", "occurrence_bus_connectivity", "nested_bundle_semantics", "native_drc"))
+
+    @register(readonly=False)
+    async def capture_plan_bus_create(sessionId: str, guiSessionId: str, hostProject: str, pageId: str,
+                                      prefix: str, firstIndex: int, lastIndex: int,
+                                      busStart: list[int], busEnd: list[int], branches: list[BusBranch],
+                                      expectedConnections: list[PinExpectation], editorOccurrence: str | None = None) -> ToolResult:
+        """Plan a simple contiguous2..128-member vertical bus and explicitly declared orthogonal scalar branches in a new DSN. Declare every page pin result and each entry's expected native bus attachment; partial/missing/off-bus routing is explicit and never a design-pass result. Existing named wire groups, entry references, aliases and connection objects must be preserved. No implicit net retargeting or Bundle source preservation."""
+        return await invoke(bus_creates.plan, sessionId, guiSessionId, hostProject, pageId, prefix, firstIndex, lastIndex,
+                            busStart, busEnd, [row.model_dump() for row in branches], [row.model_dump() for row in expectedConnections], editorOccurrence,
+                            backend="capture_native_editor", coverage=("typed_bus_creation_plan", "explicit_pin_and_entry_expectations"),
+                            not_checked=("save_reopen", "physical_pin_member_connectivity", "occurrence_bus_connectivity", "nested_bundle_semantics", "native_drc"))
+
+    @register(readonly=False)
+    async def capture_apply_bus_create(planId: str, planDigest: str,
+                                       idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
+        """Create the planned ordinary bus in an isolated PCB output through fixed native editor commands, close output, restore clean host and independently reopen all declared pins/named geometry/member order/entry links. Never replay a started job. Routing completeness is local entry structure; designPassed remains null."""
+        return await invoke(bus_creates.apply, planId, planDigest, idempotencyKey, backend="capture_native_editor",
+                            coverage=("native_bus_create", "independent_bus_reopen", "declared_native_entry_link_verification"),
+                            not_checked=("physical_pin_member_connectivity", "occurrence_bus_connectivity", "nested_bundle_semantics", "native_drc", "rendered_layout"))
+
+    @register(readonly=True)
+    async def capture_bus_create_jobs(offset: Annotated[int, Field(ge=0, le=4096)] = 0,
+                                      limit: Annotated[int, Field(ge=1, le=100)] = 100) -> ToolResult:
+        """Page durable bus creation plans/jobs and failures; does not replay mutations."""
+        return await invoke(bus_creates.jobs, offset, limit, coverage=("durable_bus_create_jobs",))
+
+    @register(readonly=False)
+    async def capture_cancel_bus_create(planId: str, planDigest: str) -> ToolResult:
+        """Cancel only a pending bus task. Started Capture work is observe/recover only; never kill the host."""
+        return await invoke(bus_creates.cancel, planId, planDigest, coverage=("pending_bus_cancel",))
+
+    @register(readonly=False)
+    async def capture_recover_bus_create(planId: str, planDigest: str) -> ToolResult:
+        """Verify an existing bus result after proof the original forwarder stopped. No native mutation replay."""
+        return await invoke(bus_creates.recover, planId, planDigest, backend="capture_native_editor",
+                            coverage=("existing_bus_artifact_verification", "no_mutation_replay"),
+                            not_checked=("physical_pin_member_connectivity", "occurrence_bus_connectivity", "nested_bundle_semantics", "native_drc"))
+
+    @register(readonly=False)
     async def capture_query_graphics(sessionId: str, entity: Literal["part_bounds", "display_property", "graphic", "titleblock"],
                                       pageId: str | None = None, cursor: str | None = None,
                                       limit: Annotated[int, Field(ge=1, le=1000)] = 100) -> ToolResult:
@@ -1033,6 +1139,36 @@ def create_server(config: Config) -> MCPServer:
         """Only verify an existing placement output after proof the original worker stopped; no mutation replay or native completion claim."""
         return await invoke(placements.recover, planId, planDigest, backend="capture_dbo",
                             coverage=("existing_placement_artifact_verification",), not_checked=("native_completion", "embedded_cache_closure", "native_drc"))
+
+    @register(readonly=False)
+    async def capture_plan_pspice_netlist(sessionId: str, guiSessionId: str, sourceProject: str, sourceProfile: str) -> ToolResult:
+        """Freeze an allowed same-directory single-DSN/single-profile project using a definition-session DSN snapshot and an explicit authenticated clean Capture host. No export yet; unsupported hierarchy/resource paths are refused."""
+        return await invoke(native_netlists.plan, sessionId, guiSessionId, sourceProject, sourceProfile, backend="capture_gui",
+                            coverage=("frozen_project_roles", "bound_native_host_plan"), not_checked=("complete_hierarchy_model_closure", "solver", "drc"))
+
+    @register(readonly=False)
+    async def capture_apply_pspice_netlist(planId: str, planDigest: str,
+            idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
+        """Generate new private NET/ALS once with fixed Tcl. Require real host PID/nonce completion, empty native error log and unchanged inputs/active context. A missing completion retains its host fence; never resend that task."""
+        return await invoke(native_netlists.apply, planId, planDigest, idempotencyKey, backend="capture_gui",
+                            coverage=("native_net_als_generation", "native_completion_receipt", "input_and_host_preservation"), not_checked=("complete_hierarchy_model_closure", "solver", "drc"))
+
+    @register(readonly=True)
+    async def capture_pspice_netlist_jobs(offset: Annotated[int, Field(ge=0, le=4096)] = 0,
+                                          limit: Annotated[int, Field(ge=1, le=100)] = 50) -> ToolResult:
+        """Page native NET/ALS task states and failures without starting a native operation."""
+        return await invoke(native_netlists.jobs, offset, limit, coverage=("durable_native_netlist_jobs",))
+
+    @register(readonly=False)
+    async def capture_cancel_pspice_netlist(planId: str, planDigest: str) -> ToolResult:
+        """Cancel only a not-yet-dispatched native NET/ALS plan. A started host call is too late to cancel; never terminate Capture as task cancellation."""
+        return await invoke(native_netlists.cancel, planId, planDigest, coverage=("pending_native_plan_cancel",))
+
+    @register(readonly=False)
+    async def capture_recover_pspice_netlist(planId: str, planDigest: str) -> ToolResult:
+        """Verify existing native receipt/NET/ALS after proof the original forwarder stopped. Release only the matching completed host fence; no regeneration or automatic host retargeting."""
+        return await invoke(native_netlists.recover, planId, planDigest, backend="capture_gui",
+                            coverage=("existing_native_netlist_verification", "no_mutation_replay"), not_checked=("complete_hierarchy_model_closure", "solver", "drc"))
 
     @register(readonly=False)
     async def capture_plan_design_create(rootName: Annotated[str, Field(min_length=1, max_length=64)],
@@ -1387,12 +1523,12 @@ def create_server(config: Config) -> MCPServer:
                                        expectedConnections: list[PinExpectation], start: list[int] | None = None,
                                        end: list[int] | None = None, aliasLocations: list[WireAliasLocation] | None = None,
                                        removeAttachedAliases: bool = False,
-                                       expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None) -> ToolResult:
-        """Plan a two-point scalar wire endpoint edit or deletion on a new DSN. Declare every page pin's result. Endpoint changes require every attached alias's saved anchor; deletion of attached aliases needs explicit acknowledgement. Match native target by unique page/old geometry/net, not an ordinal. No junction/occurrence/DRC verdict."""
+                                       expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None, guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None) -> ToolResult:
+        """Plan a two-point scalar wire endpoint edit or deletion on a new DSN. Declare every page pin's result. Endpoint changes require every attached alias's saved anchor; deletion of attached aliases needs explicit acknowledgement. Match native target by unique page/old geometry/net, not an ordinal. For deletion only, paired guiSessionId/hostProject select the fixed native selection/Delete backend; provide editorOccurrence for a repeated schematic. Untouched different-net wires are frozen and checked after deletion. No junction/occurrence/DRC verdict."""
         return await invoke(wire_edits.plan, sessionId, wireId, operation,
                             [r.model_dump() for r in expectedConnections], start, end,
                             None if aliasLocations is None else [r.model_dump() for r in aliasLocations],
-                            removeAttachedAliases, expectedWirePaths, expectedWireNet,
+                            removeAttachedAliases, expectedWirePaths, expectedWireNet, guiSessionId, hostProject, editorOccurrence,
                             coverage=("wire_edit_plan", "explicit_alias_effects", "explicit_page_pin_expectations"),
                             not_checked=("save_reopen", "junction_semantics", "occurrence_connectivity", "native_drc"))
 
@@ -1400,7 +1536,7 @@ def create_server(config: Config) -> MCPServer:
     async def capture_apply_wire_edit(planId: str, planDigest: str,
                                        idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
         """Edit/delete one planned scalar wire, save a new DSN and independently verify full definition pin nets and connection-object geometry/aliases. Failed writes are never replayed, and source is unchanged."""
-        return await invoke(wire_edits.apply, planId, planDigest, idempotencyKey, backend="capture_dbo",
+        return await invoke(wire_edits.apply, planId, planDigest, idempotencyKey, backend="capture_native",
                             coverage=("wire_edit_save_reopen", "explicit_definition_and_geometry_verification"),
                             not_checked=("junction_flags", "occurrence_connectivity", "wire_only_net_identity", "native_drc"))
 
@@ -1412,22 +1548,23 @@ def create_server(config: Config) -> MCPServer:
 
     @register(readonly=False)
     async def capture_cancel_wire_edit(planId: str, planDigest: str) -> ToolResult:
-        """Cancel pending plans or signal this server's active owned worker; preserve output/evidence."""
+        """Cancel pending plans or signal this server's active standalone worker. Editor-host tasks are pending-only; never kill Capture or a forwarder to cancel a started task."""
         return await invoke(wire_edits.cancel, planId, planDigest, coverage=("owned_wire_edit_cancel",))
 
     @register(readonly=False)
     async def capture_recover_wire_edit(planId: str, planDigest: str) -> ToolResult:
         """Verify existing interrupted wire-edit output after proof original worker stopped. No replay or native-completion claim."""
-        return await invoke(wire_edits.recover, planId, planDigest, backend="capture_dbo",
+        return await invoke(wire_edits.recover, planId, planDigest, backend="capture_native",
                             coverage=("existing_wire_edit_artifact_verification",), not_checked=("native_completion", "junction_semantics", "native_drc"))
 
     @register(readonly=False)
     async def capture_plan_wire_add(sessionId: str, pageId: str, start: list[int], end: list[int], netName: str,
                                      expectedConnections: list[PinExpectation], aliasLocation: list[int] | None = None,
-                                     expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None) -> ToolResult:
-        """Plan one scalar segment plus an on-wire alias in a new DSN. Require explicit expectations for every page pin. Expected saved paths may declare splits/merges but must preserve the exact old-plus-new geometric union. Defaults keep each old path and add one segment. Expected alias-owner native net defaults to netName, or supply expectedWireNet when an existing canonical name must prevail. No implicit electrical/DRC inference."""
+                                     expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None,
+                                     guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None) -> ToolResult:
+        """Plan one scalar segment plus an on-wire alias in a new DSN. Require explicit expectations for every page pin. Expected saved paths may declare splits/merges but must preserve the exact old-plus-new geometric union. Defaults keep each old path and add one segment. Expected alias-owner native net defaults to netName, or supply expectedWireNet when an existing canonical name must prevail. Provide both guiSessionId and hostProject to use fixed native OPage/PlaceWire/PlaceNetAlias in the output PCB project; the clean control host is restored and old GUI sessions invalidated. For a repeated schematic provide its unique editorOccurrence reference. The native occurrence map rejects ambiguity before OPage, and output closure requires the native DSN lock to disappear. Editor cancellation is pending-only; uncertain dispatch retains its host fence. Omit both for the existing standalone Dbo backend. No implicit electrical/DRC inference."""
         return await invoke(wire_adds.plan, sessionId, pageId, start, end, netName,
-                            [row.model_dump() for row in expectedConnections], aliasLocation, expectedWirePaths, expectedWireNet,
+                            [row.model_dump() for row in expectedConnections], aliasLocation, expectedWirePaths, expectedWireNet, guiSessionId, hostProject, editorOccurrence,
                             coverage=("wire_alias_plan", "explicit_page_pin_expectations", "geometry_union_preflight"),
                             not_checked=("save_reopen", "junction_semantics", "occurrence_connectivity", "native_drc"))
 
@@ -1435,7 +1572,7 @@ def create_server(config: Config) -> MCPServer:
     async def capture_apply_wire_add(planId: str, planDigest: str,
                                       idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
         """Create the planned wire/alias in a new output, save, independently reopen and verify all definition pin nets, declared wire paths/aliases and other connection objects. Source unchanged; never replay a started job. Does not verify occurrence or wire-only net identity."""
-        return await invoke(wire_adds.apply, planId, planDigest, idempotencyKey, backend="capture_dbo",
+        return await invoke(wire_adds.apply, planId, planDigest, idempotencyKey, backend="capture_native",
                             coverage=("wire_alias_save_reopen", "explicit_definition_expectations", "connection_object_preservation"),
                             not_checked=("occurrence_connectivity", "wire_only_net_identity", "native_drc", "rendered_layout"))
 
@@ -1447,13 +1584,13 @@ def create_server(config: Config) -> MCPServer:
 
     @register(readonly=False)
     async def capture_cancel_wire_add(planId: str, planDigest: str) -> ToolResult:
-        """Cancel a pending wire plan or signal this server's owned active worker; retain partial output/evidence."""
+        """Cancel a pending wire plan or signal this server's owned standalone worker. Editor-host tasks are pending-only; retain evidence and never kill Capture."""
         return await invoke(wire_adds.cancel, planId, planDigest, coverage=("owned_wire_add_cancel",))
 
     @register(readonly=False)
     async def capture_recover_wire_add(planId: str, planDigest: str) -> ToolResult:
         """Verify an existing interrupted wire output only after its original worker is proven stopped. Never replay mutation; no native completion claim after recovery."""
-        return await invoke(wire_adds.recover, planId, planDigest, backend="capture_dbo",
+        return await invoke(wire_adds.recover, planId, planDigest, backend="capture_native",
                             coverage=("existing_wire_artifact_verification",), not_checked=("native_completion", "occurrence_connectivity", "native_drc"))
 
     @register(readonly=False)
@@ -1491,9 +1628,9 @@ def create_server(config: Config) -> MCPServer:
                             coverage=("existing_user_property_artifact_verification",), not_checked=("native_completion", "electrical_behavior"))
 
     @register(readonly=False)
-    async def capture_open_edit_result(planId: str, planDigest: str, kind: Literal["property", "cache_replace", "user_property", "display_property", "display_font", "wire_add", "wire_edit", "placement", "multiunit_placement", "graphic_line", "graphic_text", "part_edit", "design_create", "reference", "hierarchy_clone", "nc", "alias", "net_symbol_create", "net_symbol_edit"]) -> ToolResult:
+    async def capture_open_edit_result(planId: str, planDigest: str, kind: Literal["property", "cache_replace", "user_property", "display_property", "display_font", "wire_add", "wire_edit", "bus_create", "placement", "multiunit_placement", "graphic_line", "graphic_text", "part_edit", "design_create", "reference", "hierarchy_clone", "nc", "alias", "net_symbol_create", "net_symbol_edit"]) -> ToolResult:
         """Open a verified isolated edit output as a fresh immutable session for chained operations, including after server restart. No arbitrary path/root expansion; reject unverified or changed artifacts."""
-        writer = {"property": property_edits, "cache_replace": cache_replacements, "user_property": user_properties, "display_property": display_properties, "display_font": display_fonts, "wire_add": wire_adds, "wire_edit": wire_edits, "placement": placements, "multiunit_placement": multiunit_placements, "graphic_line": graphic_lines, "graphic_text": graphic_texts, "part_edit": part_edits, "design_create": design_creates, "reference": reference_edits, "hierarchy_clone": hierarchy_edits, "nc": nc_edits, "alias": alias_edits, "net_symbol_edit": net_symbol_edits, "net_symbol_create": net_symbol_creates}[kind]
+        writer = {"property": property_edits, "cache_replace": cache_replacements, "user_property": user_properties, "display_property": display_properties, "display_font": display_fonts, "wire_add": wire_adds, "wire_edit": wire_edits, "bus_create": bus_creates, "placement": placements, "multiunit_placement": multiunit_placements, "graphic_line": graphic_lines, "graphic_text": graphic_texts, "part_edit": part_edits, "design_create": design_creates, "reference": reference_edits, "hierarchy_clone": hierarchy_edits, "nc": nc_edits, "alias": alias_edits, "net_symbol_edit": net_symbol_edits, "net_symbol_create": net_symbol_creates}[kind]
         return await invoke(writer.open_output, planId, planDigest, backend="capture_dbo",
                             coverage=("verified_output_session",), not_checked=("external_dependencies", "occurrence_connectivity"))
 

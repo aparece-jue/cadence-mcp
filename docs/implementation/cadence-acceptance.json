@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -402,6 +402,20 @@
       "meaning": "PSpice进程-i参数；不能直接视为CorSimSrvr_setIniFile语义",
       "sha256": "6725e8a86e0174ca7ac28b230dca6bb403946fc0d654363ed5b93fe46111c7e2",
       "size": 61330
+    },
+    {
+      "sourceId": "SIM-CONFIG-SEARCH-ORDER",
+      "installRelativePath": "doc/pspug/003_model_Configuring_Model_Libraries.html",
+      "meaning": "官方profile→design→global模型搜索优先级、库列表顺序与库路径；原生合并JSON提供本机所选INI库列表证据，不外推全部INI语义。",
+      "sha256": "5a70a565ae5912f7ef6b9dc544d65e100cefd908dbb5db31fc50c7aa6784e0ef",
+      "size": 31079
+    },
+    {
+      "sourceId": "SIM-PARAM-STEP",
+      "installRelativePath": "doc/pspcref/01commands.html",
+      "meaning": "本机官方.STEP参数扫描LIST语法及.PROBE方括号强制节点选择；独立引擎doACAN不会自动迭代STEP的边界另由实际试验证明。",
+      "sha256": "0b4842419e912d7b4a34f2c3d9e979c800147cff10f0b899ac67e1f07dbdcb9c",
+      "size": 394310
     }
   ],
   "features": [
@@ -590,7 +604,7 @@
       "module": "查询",
       "title": "导线/alias/global/NC/端口/跨页对象",
       "required": true,
-      "queueOrder": 62,
+      "queueOrder": 70,
       "dependencies": [
         "C01"
       ],
@@ -625,14 +639,25 @@
         ".local/reference-connections-mcp-v4-20261025/report.json",
         ".local/connection-inventory-mcp-20261025/report.json",
         ".local/connection-inventory-matrix-v2-20261025/diagnostic-process.json",
-        ".local/connection-inventory-matrix-v2-20261025/diagnostic-direct-v2.log"
+        ".local/connection-inventory-matrix-v2-20261025/diagnostic-direct-v2.log",
+        ".local/c04-editor-matrix-base-20261027/report.json",
+        ".local/c04-editor-matrix-base-20261027/coordinate-frame.json",
+        ".local/net-symbol-frame-calibration-20261027/expected.json",
+        ".local/net-symbol-frame-calibration-20261027/report.json",
+        ".local/c04-editor-matrix-build-mcp-20261027/report.json",
+        ".local/c04-editor-matrix-build-mcp-20261027/page-status.json",
+        ".local/c04-editor-matrix-readall-mcp-20261027/report.json",
+        ".local/c04-editor-matrix-readall-mcp-20261027/page-status.json",
+        ".local/c04-editor-matrix-final-20261027/expected-original-hypothesis.json",
+        ".local/c04-editor-matrix-final-20261027/expected.json",
+        ".local/c04-editor-matrix-final-20261027/oracle-provenance.json"
       ],
       "issues": [
         "ISS-C04-shared-nc-enumeration",
         "ISS-C04-inventory-matrix-reopen-3969"
       ],
       "implementationReady": true,
-      "remaining": "Existing saved source now additionally passes nine exact original ports, explicit direct U1.3/CARRY_OUT hotspot consistency, shared NC owner/hotspot, page-scoped duplicate names, 1-item pagination, query/session cursor isolation, six extra open-read-close and cached source-tamper rejection. New predeclared 40-object all-pose/two-page/empty-page matrix saves but capture_open fails; independent diagnostic locates NextPage load state3969. Full C04 deferred/moved last; matrix full coordinates/pose/name/count/isolation still unaccepted, original failing fixture/oracle preserved. H02 flat connectivity and other gates remain separate and unaccepted."
+      "remaining": "Existing saved source now additionally passes nine exact original ports, explicit direct U1.3/CARRY_OUT hotspot consistency, shared NC owner/hotspot, page-scoped duplicate names, 1-item pagination, query/session cursor isolation, six extra open-read-close and cached source-tamper rejection. New predeclared 40-object all-pose/two-page/empty-page matrix saves but capture_open fails; independent diagnostic locates NextPage load state3969. Full C04 deferred/moved last; matrix full coordinates/pose/name/count/isolation still unaccepted, original failing fixture/oracle preserved. H02 flat connectivity and other gates remain separate and unaccepted. Batch114: 32-symbol base independently reopens. Old unverified rotation-about-location hotspot hypothesis has24 differences; independent source-box normalization model frozen before native attachment tests passes16 correct/12old wrong points without using target hotspot readouts. Original hypothesis bytes preserved, original40-object scope unchanged. First public editor wire/interior-alias addition saves but independent NextPage3969; documented ReadAllPages attempt also3969, exact production adapter restored and failed plans not replayed. Full C04 still unaccepted and moved to tail; root cause not established."
     },
     {
       "id": "C05",
@@ -1423,7 +1448,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "NewWireScalar及真实端点/junction接口；迭代器释放后修改",
+      "implementation": "NewWireScalar及真实端点/junction接口；迭代器释放后修改；固定OPage/PlaceWire/PlaceNetAlias编辑后端已接入原wire_add任务，显式宿主/恢复/会话失效/原生围栏；原生SelectObjectById/选择身份校验/Delete后端；删除未涉及网络身份保持校验；显式层次实例与工程关闭锁检查",
       "acceptance": "直角/交叉无连接/T结点/重叠/断点、保存重开并按人工节点全集比较",
       "status": "deferred",
       "evidence": [
@@ -1477,15 +1502,44 @@
         ".local/editor-update-wire-result-20261026/report.json",
         ".local/editor-update-wire-result-20261026/phases.txt",
         ".local/editor-update-fault-audit-20261026/report.json",
-        ".local/capture-recovery-update-fault-20261026/report.json"
+        ".local/capture-recovery-update-fault-20261026/report.json",
+        ".local/wire-transaction-20261027/report.json",
+        ".local/wire-copy-constructor-v2-20261027/report.json",
+        ".local/wire-probe-readonly-recheck-20261027/report.json",
+        ".local/native-license-child-only-20261027/report.json",
+        ".local/placewire-host-ready-20261027/report.json",
+        ".local/placewire-native-20261027/report.json",
+        ".local/placewire-topology-20261027/report.json",
+        ".local/placewire-junction-20261027/report.json",
+        ".local/editor-wire-edits-mcp-20261027/report.json",
+        ".local/editor-wire-edits-audit-20261027/report.json",
+        ".local/editor-output-context-20261027/report.json",
+        ".local/editor-wire-add-mcp-20261027/report.json",
+        ".local/editor-wire-add-mcp-v2-20261027/report.json",
+        ".local/editor-wire-original-pins-mcp-20261027/report.json",
+        ".local/editor-wire-observer-loss-20261027/report.json",
+        ".local/regression-editor-wire-20261027.txt",
+        "docs/implementation/batch-112-evidence.json",
+        ".local/editor-interior-short-20261027/report.json",
+        ".local/editor-short-late-audit-20261027/report.json",
+        ".local/editor-interior-short-explicit-20261027/report.json",
+        ".local/editor-interior-short-explicit-v2-20261027/report.json",
+        ".local/editor-delete-original-mcp-20261027/report.json",
+        ".local/editor-repeated-refusals-20261027/report.json",
+        ".local/editor-refusal-final-audit-20261027/report.json",
+        ".local/editor-delete-connected-alias-20261027/report.json",
+        ".local/editor-delete-connected-alias-final-20261027/report.json",
+        ".local/regression-editor-delete-final-20261027.txt",
+        "docs/implementation/batch-113-evidence.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
-        "ISS-D03-new-design-wire-reopen"
+        "ISS-D03-new-design-wire-reopen",
+        "ISS-D03-delete-unrelated-wire-net-loss"
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged. Batch96: default wire still3969; SetName empty/named both1021 before save. Actual initialized active-page host UpdatePageState after NewWireScalar enters method, no return/save marker; native unexpected-exit dialog observed and old20696 exited after close. Original blank source hash unchanged and independently0objects; no replay. Fresh Capture5256/private control and authenticated bridge recovered. Exact exception code not recorded; full D03 unresolved."
+      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged. Batch96: default wire still3969; SetName empty/named both1021 before save. Actual initialized active-page host UpdatePageState after NewWireScalar enters method, no return/save marker; native unexpected-exit dialog observed and old20696 exited after close. Original blank source hash unchanged and independently0objects; no replay. Fresh Capture5256/private control and authenticated bridge recovered. Exact exception code not recorded; full D03 unresolved. Batch111: after reboot fresh private Capture24360, OPage/PlaceWire/EndPlace successfully saves/reopens exact original 100,100→300,100 endpoints. Fixed pin-free right-angle/T/overlap/gap/crossing and explicit-junction net partitions pass. Public existing endpoint move preserves complete wire map. Delete task reports verified, but independent stricter audit finds unrelated elbow net N00005 becomes empty; native mutation not replayed, ledger retained. Public create integration, placed-pin/alias matrix and full wire-only identity guard still required. Transaction/copy constructor hypotheses fail; original NewWireScalar issue remains. Batch112: existing public capture_plan_wire_add optionally accepts paired guiSessionId/hostProject. Native fixed editor task edits isolated copy, restores original clean PCB control host and invalidates old GUI sessions; source/host files preserved. Actual multi-net fixture and ORIGINAL 5bf35881 two-resistor/four-pin oracle pass, including alias/native saved paths, fresh service idempotence and verify-only recovery. Real native completion followed by injected observer loss retains fence and blocks repeat/new dispatch; fresh MCP verifies existing original bytes and releases fence. Standalone constructor is still not fixed; original interior-pin short, deletion and full D03 joint coverage remain. Batch113: original same-byte interior-pin short passes fixed editor add with explicit halfadd_A and unchanged four-pin electrical oracle; original normal oracle rejects exactly two shorted pins. Original delete-loss source passes editor Delete and entire remaining wire-map preservation; standalone corrupt output is now refused by unrelated_wire_net_changed before verified/open_result. Connected aliased wire deletion requires explicit alias removal and reopens with all four pins unbound. Explicit occurrence missing/invalid refuses before OPage, clean host restored and output closed; dirty partial outputs retain fence. Native PM focus plus DSN lock absence now verifies closure; earlier CloseProject-only evidence was insufficient. Full gate remains deferred for original joint matrix/dependencies/target-net/occurrence/DRC requirements; SetPoint/NewWireScalar/standalone Delete limitations not claimed fixed."
     },
     {
       "id": "D04",
@@ -1778,7 +1832,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "区分bus与Bundle；明确成员、宽度和端点",
+      "implementation": "新增严格只读capture_query_bus：原生计算名称/成员顺序、scalar分支、入口端点和本页直接wire引用，快照/分页/资源边界；原生编辑8位写入原型已保存重开，公开写任务尚未实现",
       "acceptance": "8位成员全集、反序、缺位、交叉/入口未接、嵌套与重开",
       "status": "deferred",
       "evidence": [
@@ -1792,13 +1846,26 @@
         ".local/cross-page-root-init-20261024/report.json",
         ".local/copied-port-root-init-20261024/report.json",
         ".local/schematic-expansion-20261024/report.json",
-        ".local/design-save-order-20261024/report.json"
+        ".local/design-save-order-20261024/report.json",
+        ".local/editor-eight-bit-bus-20261027/report.json",
+        ".local/editor-eight-bit-bus-20261027/expected.json",
+        ".local/editor-eight-bit-bus-20261027/bus.json.error.json",
+        ".local/editor-bus-netname-readonly-20261027/report.json",
+        ".local/bus-query-mcp-20261027/report.json",
+        ".local/regression-bus-query-20261027.txt",
+        ".local/bus-create-mcp-20261027/report.json",
+        ".local/bus-preservation-mcp-20261027/report.json",
+        ".local/bus-pin-mcp-20261027/report.json",
+        ".local/bus-observer-loss-v2-20261027/report.json",
+        ".local/regression-bus-create-20261027.txt",
+        ".local/bus-eight-pins-mcp-20261027/report.json",
+        ".local/bus-pin-query-mcp-20261027/report.json"
       ],
       "issues": [
         "ISS-H04-native-page-3969"
       ],
       "implementationReady": false,
-      "remaining": "Fixed internal bus/8 entries/scalar alias fixtures save for ascending, descending, missing-member and detached-entry cases; every independent read fails state3969. Read-only phase probe localizes to page iterator NextPage, source/saved hashes unchanged and owned workers stopped. No member/entry/native positive or negative case accepted; no MCP bus tool. Bundle/nested/member physical pin and full H04 remain required."
+      "remaining": "Fixed internal bus/8 entries/scalar alias fixtures save for ascending, descending, missing-member and detached-entry cases; every independent read fails state3969. Read-only phase probe localizes to page iterator NextPage, source/saved hashes unchanged and owned workers stopped. No member/entry/native positive or negative case accepted; no MCP bus tool. Bundle/nested/member physical pin and full H04 remain required. Batch114: fixed native editor bus/entries/scalars using original600,200→600,700 and eight20x20 entries now saves and reopens on owned initialized empty source. Original GetName reader failed1037; documented GetNetName computed names fixes that read path. Actual public216-tool MCP query accepts all9bus segments/width8/native DATA7..DATA0 order,8scalars/8exact entry links, paging/scope/session guards/empty/stale/source hashes. Old failed prototype report preserved, follow-up read-only/MCP acceptance separate. Public writer, ascending/missing/detached negatives, physical pin oracle, hierarchy and nestedBundle remain required; full H04 unaccepted. Batch115: public fixed vertical ordinary-bus create tasks now accept original descending/ascending/missing-member/detached-entry matrix; missing and detached are explicitly incomplete, not electrical passes. Existing DATA bus preserved while adding ADDR: 16 entries/scalars total, all old native links/names/geometry kept. R501.1 connects PIN0 and existing MCP_LINK preserved; deliberately wrong complete-page pin oracle rejected after real save, output unavailable, no replay. Real completion observer-loss test holds fence and blocks dispatch; fresh MCP verify-only recover preserves native files. First fault experiment used wrong fixture/expectation pair and remains failed evidence. Full eight physical-member/occurrence/nestedBundle/DRC and final joint gates still required; no H04 promotion. Alpha2: four-resistor/eight-physical-pin descending/ascending/missing/detached matrix passes native HasMember/GetPosition/GetMember pointer identity and public pin_member query. Detached named scalar remains a native member while entry link is null: not routed completeness. Full repeated-occurrence/nestedBundle/crossing and joint gates remain required."
     },
     {
       "id": "V01",
@@ -2028,13 +2095,27 @@
         ".local/native-components-portable-20261026/report.json",
         ".local/native-components-final-20261026/report.json",
         ".local/regression-618-native-project-components-20261026.txt",
-        ".local/regression-618-native-project-components-final-20261026.txt"
+        ".local/regression-618-native-project-components-final-20261026.txt",
+        "docs/implementation/batch-107-evidence.json",
+        "docs/implementation/batch-108-evidence.json",
+        ".local/profile-circuit-service-20261027/report.json",
+        ".local/profile-circuit-mcp-20261027/report.json",
+        ".local/profile-circuit-faults-20261027/report.json",
+        ".local/p05-complete-mcp-20261027/report.json",
+        ".local/profile-circuit-mcp-extended-v2-20261027/report.json",
+        ".local/regression-profile-circuit-final-v2-20261027.txt",
+        "docs/implementation/batch-109-evidence.json",
+        ".local/native-inherited-configuration-20261027/report.json",
+        ".local/inherited-profile-circuit-20261027/report.json",
+        ".local/inherited-profile-circuit-v2-20261027/report.json",
+        ".local/inherited-profile-mcp-20261027/report.json",
+        ".local/regression-inherited-profile-20261027.txt"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch104: different complete private projects exported in the existing authenticated host without GUI switching; sourceOPJ andDSN/active binding preserved. Bare DSN failsORNET1165, missing same-stemOPJ now refused before dispatch in the prototype. Formal MCP input-generation tasks and original nominal/folded-reference scope remain open. Batch105: internal bounded project snapshots, removal of UI restoration state, PID/nonce receipts and fixed native adapter accepted on real Capture with same-byte prior NET/ALS and acknowledged replay refusal. No new public MCP native-generation tasks; durable lifecycle/fence and original full scope remain."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch104: different complete private projects exported in the existing authenticated host without GUI switching; sourceOPJ andDSN/active binding preserved. Bare DSN failsORNET1165, missing same-stemOPJ now refused before dispatch in the prototype. Formal MCP input-generation tasks and original nominal/folded-reference scope remain open. Batch105: internal bounded project snapshots, removal of UI restoration state, PID/nonce receipts and fixed native adapter accepted on real Capture with same-byte prior NET/ALS and acknowledged replay refusal. No new public MCP native-generation tasks; durable lifecycle/fence and original full scope remain. Batch109: explicit configurationIni now uses native merged library selection with whole-INI byte provenance; original nom.lib213-model/34,548,882-byte graph and216-file prepared circuit closure accepted for generation, fresh-server MCP idempotence/recover. Full global overlays and encrypted model execution remain unaccepted; no solver was started or model omitted."
     },
     {
       "id": "P01",
@@ -2175,7 +2256,14 @@
         ".local/profile-private-ini-portable-20261026/report.json",
         ".local/private-profile-alias-portable-audit-20261026/report.json",
         ".local/private-ini-portable-ac-mcp-20261026/report.json",
-        ".local/regression-595-native-profile-aliases-20261026.txt"
+        ".local/regression-595-native-profile-aliases-20261026.txt",
+        "docs/implementation/batch-110-evidence.json",
+        ".local/step-ac-before-20261027.json",
+        ".local/step-ac-mcp-20261027/report.json",
+        ".local/step-ac-mcp-node-selectors-20261027/report.json",
+        ".local/step-ac-engine-mcp-20261027/report.json",
+        ".local/step-backend-guard-mcp-20261027/report.json",
+        ".local/regression-param-step-20261027.txt"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -2290,7 +2378,14 @@
         ".local/pio-digital-legal-six-states-20261026/report.json",
         ".local/pio-digital-multitrace-20261026/report.json",
         ".local/digital-records-mcp-20261026/report.json",
-        ".local/regression-592-digital-records-20261026.txt"
+        ".local/regression-592-digital-records-20261026.txt",
+        "docs/implementation/batch-110-evidence.json",
+        ".local/step-ac-before-20261027.json",
+        ".local/step-ac-mcp-20261027/report.json",
+        ".local/step-ac-mcp-node-selectors-20261027/report.json",
+        ".local/step-ac-engine-mcp-20261027/report.json",
+        ".local/step-backend-guard-mcp-20261027/report.json",
+        ".local/regression-param-step-20261027.txt"
       ],
       "issues": [
         "ISS-P04-complex-fixture-native-crash",
@@ -2298,7 +2393,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion."
+      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved."
     },
     {
       "id": "P05",
@@ -2316,7 +2411,7 @@
         "SIM-CLI",
         "SIM-ENGINE"
       ],
-      "implementation": "Existing MCP property/CLI tasks plus authenticated fixed native generation prototype; complete formal native-generation MCP task contracts are next.",
+      "implementation": "Public typed MCP property, native NET/ALS, profile/CIR, verified artifact preparation and CLI/DAT tasks. Full original resistor scenario now uses MCP for every business stage.",
       "acceptance": "副本电阻值修改后预期电压变化，独立重开、旧结果不能复用",
       "status": "implemented_partial",
       "evidence": [
@@ -2354,13 +2449,27 @@
         ".local/native-components-portable-20261026/report.json",
         ".local/native-components-final-20261026/report.json",
         ".local/regression-618-native-project-components-20261026.txt",
-        ".local/regression-618-native-project-components-final-20261026.txt"
+        ".local/regression-618-native-project-components-final-20261026.txt",
+        "docs/implementation/batch-107-evidence.json",
+        "docs/implementation/batch-108-evidence.json",
+        ".local/profile-circuit-service-20261027/report.json",
+        ".local/profile-circuit-mcp-20261027/report.json",
+        ".local/profile-circuit-faults-20261027/report.json",
+        ".local/p05-complete-mcp-20261027/report.json",
+        ".local/profile-circuit-mcp-extended-v2-20261027/report.json",
+        ".local/regression-profile-circuit-final-v2-20261027.txt",
+        "docs/implementation/batch-109-evidence.json",
+        ".local/native-inherited-configuration-20261027/report.json",
+        ".local/inherited-profile-circuit-20261027/report.json",
+        ".local/inherited-profile-circuit-v2-20261027/report.json",
+        ".local/inherited-profile-mcp-20261027/report.json",
+        ".local/regression-inherited-profile-20261027.txt"
       ],
       "issues": [
         "ISS-P05-native-generation-not-public"
       ],
       "implementationReady": true,
-      "remaining": "Original resistor500ohm→1kohm iteration now passes real property write/reopen, fresh NET/ALS and native profile CIR, two MCP CLI solves with frozen complex expectations, explicit source provenance, old-DAT prestart refusal and fresh-server idempotence. Native-generation phases remain controlled development scripts rather than formal MCP tasks. Task lifecycle/fault/path acceptance and remaining original V04/P04 joint gates remain; full P05 not promoted. Batch105: internal bounded project snapshots, removal of UI restoration state, PID/nonce receipts and fixed native adapter accepted on real Capture with same-byte prior NET/ALS and acknowledged replay refusal. No new public MCP native-generation tasks; durable lifecycle/fence and original full scope remain."
+      "remaining": "Original resistor500ohm to1kohm scenario passes public MCP property write/independent reopen, before/after native NET/ALS and CIR, two fresh CLI/DAT solves with frozen complex expectations, source provenance, old-DAT prestart refusal and fresh-server seven-write idempotence. Native-generation-not-public issue is resolved. Original full V04/P04 joint requirements remain unaccepted; this scalar explicit-library scenario does not certify inherited default encrypted model closure or all native DAT formats/flags. Full gate not promoted. Batch109: explicit configurationIni now uses native merged library selection with whole-INI byte provenance; original nom.lib213-model/34,548,882-byte graph and216-file prepared circuit closure accepted for generation, fresh-server MCP idempotence/recover. Full global overlays and encrypted model execution remain unaccepted; no solver was started or model omitted."
     },
     {
       "id": "A01",
@@ -2551,10 +2660,11 @@
         ".local/dat-writer-variants-20261024/report.json",
         ".local/custom-complex-dat-mcp-20261024/report.json"
       ],
-      "latestObservation": "Original DAT10 native writer trace localizes AV to second-block first addTimePoint, after successful first block and second headers/names. Lifecycle/metadata/object variants fail; documented DAT9 fully matches unchanged original2-block oracle via fresh native generation and actual MCP twice. This is a compatible fixture route; DAT10 write failure remains open.",
+      "latestObservation": "Original DAT10 native writer trace localizes AV to second-block first addTimePoint, after successful first block and second headers/names. Lifecycle/metadata/object variants fail; documented DAT9 fully matches unchanged original2-block oracle via fresh native generation and actual MCP twice. This is a compatible fixture route; DAT10 write failure remains open. Batch110: official CLI creates a new two-block complex parametric RC DAT; native read/export matches all6independent complex values and block boundaries. This is a separate native solver data path, not a fix of the original DAT10 writer or an inferred file format version. Original crash remains open.",
       "workaroundEvidence": ".local/custom-complex-dat-mcp-20261024/report.json",
       "dat9FixtureCompatibilityAccepted": true,
-      "dat10WriterResolved": false
+      "dat10WriterResolved": false,
+      "latestEvidence": "docs/implementation/batch-110-evidence.json"
     },
     {
       "id": "ISS-E03-reference-unit-identity",
@@ -2623,10 +2733,12 @@
     {
       "id": "ISS-D03-interior-pin-topology",
       "featureId": "D03",
-      "status": "open",
+      "status": "resolved",
       "summary": "SetPoint span over four pins saved but only outer endpoint pins bound; explicit four-pin short oracle rejected on independent reopen. Interior-pin/junction topology unresolved.",
       "evidence": ".local/short-via-edit-20261023/report.json",
-      "nativeError": "wire_edit_net_mismatch"
+      "nativeError": "wire_edit_net_mismatch",
+      "resolutionEvidence": ".local/editor-interior-short-explicit-v2-20261027/report.json",
+      "resolution": "Original same-byte source and unchanged four-pin short oracle pass using fixed editor PlaceWire with explicit occurrence. Normal original design comparison fails exactly two pins, as intended. Original standalone SetPoint only-endpoint behavior remains a limitation; not claimed repaired."
     },
     {
       "id": "ISS-D05-comment-text-coordinate-frame",
@@ -2723,8 +2835,8 @@
     {
       "id": "ISS-D03-new-design-wire-reopen",
       "featureId": "D03",
-      "status": "open",
-      "summary": "Fresh CORE/MAIN DSN plus two created-library resistors: native scalar-wire/alias add receipt saved=true and process exited0/owned0, but verification dbo_error. Top-level client ExceptionGroup alone is not evidence of transport failure; durable ledger proves terminal failure. No retry/replay.",
+      "status": "resolved",
+      "summary": "Fresh CORE/MAIN DSN plus two created-library resistors: native scalar-wire/alias add receipt saved=true and process exited0/owned0, but verification dbo_error. Top-level client ExceptionGroup alone is not evidence of transport failure; durable ledger proves terminal failure. No retry/replay. Batch111: official editor PlaceWire provides a saved/reopened pin-free workaround; original failing standalone constructor/placed-resistor case not fixed or reclassified.",
       "evidence": ".local/design-create-mcp-20261023/work/isolated-jobs/capture_wire_add/plan-4c588c62149c485491006523e9b80218/plan.json",
       "chainEvidence": ".local/design-create-mcp-20261023/report.json",
       "additionalEvidence": [
@@ -2776,16 +2888,21 @@
         ".local/editor-update-wire-result-20261026/report.json",
         ".local/editor-update-wire-result-20261026/phases.txt",
         ".local/editor-update-fault-audit-20261026/report.json",
-        ".local/capture-recovery-update-fault-20261026/report.json"
+        ".local/capture-recovery-update-fault-20261026/report.json",
+        ".local/placewire-native-20261027/report.json",
+        ".local/placewire-topology-20261027/report.json",
+        ".local/placewire-junction-20261027/report.json"
       ],
       "latestObservation": "Named initialization1021 and actual-editor UpdatePageState native unexpected exit do not fix fresh-wire persistence. No saved mutation from fault, blank independently0objects; old20696 exit/new5256 recovery verified. Exact native exception code unavailable. Failure moved to queue tail.",
-      "latestEvidence": ".local/editor-update-fault-audit-20261026/report.json"
+      "latestEvidence": ".local/editor-update-fault-audit-20261026/report.json",
+      "resolution": "Original same-byte two-resistor source and original four-pin oracle pass through explicit fixed native editor backend in existing public MCP wire_add workflow; original failed standalone constructor kept as unsupported failing path, not claimed repaired.",
+      "resolutionEvidence": ".local/editor-wire-original-pins-mcp-20261027/report.json"
     },
     {
       "id": "ISS-H04-native-page-3969",
       "featureId": "H04",
       "status": "open",
-      "summary": "Four owned bus fixtures save successfully but none can complete independent bus reading; phase instrumentation locates NextPage state3969 before member/entry verification. No blanket ignore or accepted member claims.",
+      "summary": "Four owned bus fixtures save successfully but none can complete independent bus reading; phase instrumentation locates NextPage state3969 before member/entry verification. No blanket ignore or accepted member claims. Batch114 native editor descending positive now reopens and passes original8-bit geometry/member/direct-link MCP read oracle. Original standalone constructor path and remaining cases still unaccepted; keep issue open pending complete required matrix.",
       "evidence": ".local/bus-fixtures-20261023/report.json",
       "phaseEvidence": ".local/bus-fixtures-20261023/descending/phase.json.error.json",
       "additionalEvidence": [
@@ -2796,7 +2913,12 @@
         ".local/cross-page-root-init-20261024/report.json",
         ".local/copied-port-root-init-20261024/report.json",
         ".local/schematic-expansion-20261024/report.json",
-        ".local/design-save-order-20261024/report.json"
+        ".local/design-save-order-20261024/report.json",
+        ".local/editor-eight-bit-bus-20261027/report.json",
+        ".local/editor-eight-bit-bus-20261027/expected.json",
+        ".local/editor-eight-bit-bus-20261027/bus.json.error.json",
+        ".local/editor-bus-netname-readonly-20261027/report.json",
+        ".local/bus-query-mcp-20261027/report.json"
       ],
       "latestObservation": "Minimal single-wire new-design case also fails independent definition/object reading despite5save-order variants; empty control passes. No root cause claim from this differential."
     },
@@ -2907,7 +3029,7 @@
     {
       "id": "ISS-V04-pspice-explorer-initialization",
       "featureId": "V04",
-      "status": "open",
+      "status": "resolved",
       "summary": "Native orTclNetlist9-argument DSN->NET accepts private official LOWPASSFILTERS input but returns0 and creates empty NET. Native error vector reports ORNET-1165 Unable to initialize pspice explorer. Legacy and none/STA/MTA COM differential all empty; missing input also returns0 but no file. No netlist or pipeline accepted.",
       "evidence": ".local/netlist-modes-20261024/report.json",
       "additionalEvidence": [
@@ -2917,8 +3039,11 @@
         ".local/owned-capture-host-20261024/report.json",
         ".local/desktop-capture-host-20261024/observation.json"
       ],
-      "nextAction": "Deferred after bounded diagnostics. Verify initialized Capture/PSpice host/project context using existing authenticated bridge and owned project only; investigate actual native dependencies. Do not infer license absence or replace generated NET with historical file.",
-      "latestObservation": "Private project Open observed Simulation Manager Product Choices in separate simmgr.exe. Tool app approval timed out before inspection/action, so selected PSpice A/D has not been confirmed and no authenticated private bridge/netlist acceptance achieved."
+      "nextAction": "Resolved for the declared complete-private-project authenticated-host workflow. Remaining nominal model and folded-reference issues stay separate.",
+      "latestObservation": "Original source77dca668.. matches the full MCP before case; expected native NET/ALS and new solver numeric evidence are available. Missing-project and old modal failures remain preserved; no complete V04 claim.",
+      "resolvedDate": "2026-10-27",
+      "resolution": "Initialized authenticated Capture host plus matching private OPJ/profile produces verified native NET/ALS for the same original DSN bytes and changed resistor copy. Full MCP parameter scenario passes. Bare DSN without project retains its failure/preflight refusal; initialization is not inferred from a loaded DLL.",
+      "latestEvidence": ".local/p05-complete-mcp-20261027/report.json"
     },
     {
       "id": "ISS-L03-native-swap-id-range",
@@ -3201,12 +3326,18 @@
       "id": "ISS-C04-inventory-matrix-reopen-3969",
       "featureId": "C04",
       "status": "open",
-      "summary": "Predeclared independent 40-object connection inventory fixture reports saved but cannot reopen via CaptureService; page NextPage returns state3969 before inventory comparison.",
+      "summary": "Predeclared independent 40-object connection inventory fixture reports saved but cannot reopen via CaptureService; page NextPage returns state3969 before inventory comparison. Batch114: alternate native editor add on readable32-symbol multi-page base still yields3969; ReadAllPages fails and was rolled back. Source-box hotspot model separately electrically calibrated, not counted as full matrix acceptance.",
       "evidence": ".local/connection-inventory-mcp-20261025/report.json",
       "diagnosticEvidence": ".local/connection-inventory-matrix-v2-20261025/diagnostic-direct-v2.log",
       "expected": "Reopen two populated pages and an empty page; exact declared global/offpage/wire/alias counts/locations/poses and page isolation",
       "observed": "Creation save receipt true; capture_open dbo_error, NextPage load3969; expected and DSN retained unchanged",
-      "nextAction": "After independent work investigate page serialization/root context and fixture construction against other3969 evidence; do not assume common root cause or relax state checks."
+      "nextAction": "After independent work investigate page serialization/root context and fixture construction against other3969 evidence; do not assume common root cause or relax state checks.",
+      "additionalEvidence": [
+        ".local/c04-editor-matrix-build-mcp-20261027/report.json",
+        ".local/c04-editor-matrix-build-mcp-20261027/page-status.json",
+        ".local/c04-editor-matrix-readall-mcp-20261027/report.json",
+        ".local/c04-editor-matrix-readall-mcp-20261027/page-status.json"
+      ]
     },
     {
       "id": "ISS-H01-root-property-native-access-violation",
@@ -3306,8 +3437,8 @@
         ".local/native-model-byte-audit-20261026/report.json"
       ],
       "expected": "Resolve actual original model closure with explicit verified decoding and provenance before isolated solver execution.",
-      "latestEvidence": ".local/native-model-byte-audit-20261026/report.json",
-      "latestObservation": "Original opaque bytes retained with explicit policy; full215-file prepared closure source/byte audit passes. No charset guess/transcoding. Native model execution remains unaccepted due embedded FILE templates in4library files."
+      "latestEvidence": "docs/implementation/batch-109-evidence.json",
+      "latestObservation": "Native-checked original global INI selection,213-model/34,548,882-byte frozen graph and216-file CIR/NET/ALS/model closure preserve original opaque bytes. No encoding guess/transcoding or library omission. Original encrypted embedded-reference execution remains refused; full semantic interpretation/solver acceptance not claimed."
     },
     {
       "id": "ISS-V04-nominal-model-embedded-files",
@@ -3344,10 +3475,26 @@
     {
       "id": "ISS-P05-native-generation-not-public",
       "featureId": "P05",
-      "status": "open",
+      "status": "resolved",
       "summary": "Actual resistor iteration prototype passes, but NET/ALS and profile-CIR generation are not yet registered as typed durable MCP tasks.",
-      "evidence": ".local/p05-portable-cycle-audit-v3-20261026/report.json",
-      "remaining": "Implement the two native-generation task phases and their original lifecycle/source/path/fault acceptance; then rerun P05 through MCP only."
+      "evidence": "docs/implementation/batch-108-evidence.json",
+      "remaining": "No remaining public-generation gap for the declared single-profile explicit-library scope; original full V04/P04 requirements remain tracked separately.",
+      "resolvedDate": "2026-10-27",
+      "resolution": "Five native NET/ALS and six profile/CIR/preparation MCP tools accepted with native lifecycle/fault/source/path checks; complete resistor iteration rerun through public MCP only. Original full V04/P04 joint gates remain."
+    },
+    {
+      "id": "ISS-D03-delete-unrelated-wire-net-loss",
+      "featureId": "D03",
+      "status": "resolved",
+      "summary": "Deleting isolated N00001 using standalone DeleteWire saves/reopens, but unrelated two-segment elbow loses N00005 and both names become empty. Existing typed edit verifier checks geometry/pins and explicitly excludes wire-only net identity, so returned verified. Stricter independent entire-wire audit fails; no native replay and no oracle rewrite.",
+      "evidence": ".local/editor-wire-edits-audit-20261027/report.json",
+      "additionalEvidence": [
+        ".local/editor-wire-edits-audit-20261027/delete.json",
+        ".local/placewire-junction-20261027/connections.json",
+        ".local/editor-wire-edits-mcp-20261027/report.json"
+      ],
+      "resolution": "Original same-byte source passes native selection-guarded Delete with all other geometry and network names preserved. New delete plans freeze unrelated different-net wire identity and refuse original standalone corruption before verified output. Not a claim that standalone DeleteWire itself was fixed.",
+      "resolutionEvidence": ".local/editor-delete-original-mcp-20261027/report.json"
     }
   ],
   "excluded": [
@@ -3369,16 +3516,16 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-10-26",
-    "tools": 204,
+    "date": "2026-10-27",
+    "tools": 221,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 618,
-      "passed": 617,
-      "errors": 0,
+      "total": 682,
+      "passed": 681,
       "skipped": 1,
+      "errors": 0,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-618-native-project-components-final-20261026.txt"
+      "evidence": ".local/regression-alpha2-20261027.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3386,7 +3533,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Implement durable native NET/ALS task lifecycle and host unresolved-dispatch fence with these accepted snapshot/receipt components, register typed MCP tools only after real lifecycle/fault acceptance; then profile/CIR tasks and MCP-only P05.",
+    "nextIndependentWork": "Complete original hierarchy/Bundle and DRC requirements; investigate CLI product-choice startup without claiming license failure.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3403,12 +3550,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 526,
-      "passed": 525,
-      "errors": 0,
+      "total": 682,
+      "passed": 681,
       "skipped": 1,
+      "errors": 0,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-526-pin-style-final-20261026.txt"
+      "evidence": ".local/regression-alpha2-20261027.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3555,7 +3702,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 101,
+    "batch": 116,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -3827,7 +3974,7 @@
     "privateRuleEnableObserved": false,
     "privateRuleConfigRestored": true,
     "privateRuleEvidence": ".local/drc-private-rule-20261026/report.json",
-    "privateCaptureActiveDesign": ".local/capture-host-design-20261024/lowpassfilters.dsn",
+    "privateCaptureActiveDesign": ".local/placewire-resume-v2-20261027/MCP_PLACE_WIRE.dsn",
     "lateOpenAudit": ".local/blank-app-wire-open-audit-20261026/report.json",
     "editorInitializationAccepted": true,
     "editorInitializationEvidence": ".local/editor-page-initialization-20261026/report.json",
@@ -3836,7 +3983,7 @@
     "editorInitializedWireStatus": ".local/editor-session-wire-audit-20261026/report.json",
     "gitSyncPending": true,
     "lastSuccessfulImplementationCommit": "5598e8a",
-    "privateCapturePid": 5256,
+    "privateCapturePid": 24360,
     "editorUpdatePageStateAccepted": false,
     "editorUpdateFaultAudit": ".local/editor-update-fault-audit-20261026/report.json",
     "wireNameInitializationEvidence": ".local/wire-name-initialization-20261026/report.json",
@@ -3880,10 +4027,63 @@
     "parameterIterationAuditEvidence": ".local/p05-portable-cycle-audit-v3-20261026/report.json",
     "nativeNetlistDifferentPrivateProjectAccepted": true,
     "nativeNetlistMissingProjectGuardAccepted": true,
-    "nativeNetlistGenerationMcpAvailable": false,
+    "nativeNetlistGenerationMcpAvailable": true,
     "nativeProjectSnapshotComponentsAccepted": true,
     "nativeNetlistReceiptComponentsAccepted": true,
-    "nativeNetlistComponentsEvidence": ".local/native-components-final-20261026/report.json"
+    "nativeNetlistComponentsEvidence": ".local/native-components-final-20261026/report.json",
+    "nativeNetlistTaskEvidence": "docs/implementation/batch-107-evidence.json",
+    "publicNativeGenerationMcpTasksAvailable": true,
+    "nativeNetlistServiceStatus": "experimental_native_and_mcp_lifecycle_accepted",
+    "profileCircuitFixedAdapterEvidence": "docs/implementation/batch-106-evidence.json",
+    "profileCircuitMcpTasksAvailable": true,
+    "profileCircuitTaskEvidence": "docs/implementation/batch-108-evidence.json",
+    "fullMcpParameterScenarioPassed": true,
+    "fullMcpParameterScenarioEvidence": ".local/p05-complete-mcp-20261027/report.json",
+    "nativeCheckedGlobalIniSelectionAccepted": true,
+    "inheritedIniSelectionEvidence": "docs/implementation/batch-109-evidence.json",
+    "defaultNominalSolverAccepted": false,
+    "literalParamStepCliAccepted": true,
+    "paramStepEvidence": "docs/implementation/batch-110-evidence.json",
+    "singleAnalysisEngineStepAccepted": false,
+    "editorPlaceWireSavedReopened": true,
+    "editorPlaceWireTopologyEvidence": "docs/implementation/batch-111-evidence.json",
+    "editorPlaceWirePublicTaskAvailable": true,
+    "wireDeleteUntouchedNetPreservationAccepted": true,
+    "privateCaptureBindingRefreshRequired": false,
+    "nativeLicenseUnavailableAccepted": false,
+    "editorWireMcpEvidence": "docs/implementation/batch-112-evidence.json",
+    "editorWireObserverLossRecoveryAccepted": true,
+    "editorWireOriginalPlacedPinsAccepted": true,
+    "privateCaptureOldLogicalSessionsInvalidated": true,
+    "editorWireOriginalInteriorShortAccepted": true,
+    "editorWireDeleteMcpAvailable": true,
+    "editorWireDeleteConnectedAliasAccepted": true,
+    "editorOccurrenceExplicitSelectionAccepted": true,
+    "editorOutputProjectCloseVerified": true,
+    "editorWireLatestEvidence": "docs/implementation/batch-113-evidence.json",
+    "legacyPrivateOutputProjectCleanupStillRequired": true,
+    "busInventoryMcpAvailable": true,
+    "busInventoryMcpEvidence": ".local/bus-query-mcp-20261027/report.json",
+    "nativeEditorEightBitBusPositiveAccepted": true,
+    "publicBusWriteTaskAvailable": true,
+    "fullH04Accepted": false,
+    "sourceBoxNetSymbolModelElectricallyCalibrated": true,
+    "c04FortyObjectMatrixAccepted": false,
+    "c04ReadAllPagesFixed": false,
+    "busCreateMcpEvidence": ".local/bus-create-mcp-20261027/report.json",
+    "busPreservationMcpEvidence": ".local/bus-preservation-mcp-20261027/report.json",
+    "busPinMcpEvidence": ".local/bus-pin-mcp-20261027/report.json",
+    "busObserverLossMcpEvidence": ".local/bus-observer-loss-v2-20261027/report.json",
+    "publicBusPinMemberQueryAvailable": true,
+    "alpha2ReleasePrepared": true,
+    "alpha2InstalledCliSmokePassed": false,
+    "alpha2InstalledEngineSmokePassed": true
   },
-  "lastResumeVerification": "docs/implementation/resume-final-verification-2026-10-24.json"
+  "lastResumeVerification": {
+    "date": "2026-10-27",
+    "capturePid": 24360,
+    "bridgeReadOnlyDiagnosis": "ready",
+    "oldMutationReplayed": false,
+    "desktopInputsUsed": false
+  }
 }
