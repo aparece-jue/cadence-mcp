@@ -1,0 +1,80 @@
+{
+  "batch": 121,
+  "date": "2026-10-27",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "tools": 221,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "nativeWirePageIsolationAccepted": true,
+  "fullV02Accepted": false,
+  "automaticClearanceAccepted": false,
+  "matrix": {
+    "pages": 2,
+    "wires": 6,
+    "realCrossings": 2,
+    "eachPageCrossings": 1,
+    "falseCrossPageDiagonalCrossings": 0,
+    "sameCoordinateGridVerticesPerPage": 6
+  },
+  "boundsQualification": {
+    "scope": "one zero-pose artificially overridden definition fixture; not arbitrary rendered-symbol certification",
+    "cachedRaw": [
+      [
+        284,
+        185
+      ],
+      [
+        375,
+        295
+      ]
+    ],
+    "nativeOffset": [
+      [
+        600,
+        400
+      ],
+      [
+        670,
+        450
+      ]
+    ],
+    "declarationCornersOnPage": [
+      [
+        590,
+        410
+      ],
+      [
+        670,
+        410
+      ],
+      [
+        670,
+        450
+      ],
+      [
+        590,
+        450
+      ]
+    ],
+    "nextAction": "Separate defining graphic extents from manually assigned declaration and qualify display font/render bounds; do not assert a native API bug."
+  },
+  "fullRegressionNotRerun": true,
+  "latestFullRegressionEvidence": ".local/regression-native-ports-20261027.txt",
+  "targetedRegressionNotRerun": "No production changes; batch120 wiring14 and readonly12+1skip retained as prior evidence, not fresh tests. Actual native/MCP matrices above ran this batch.",
+  "priorBatchDevelopSyncVerified": "b94ecce3ba5273c6bc4ead527520a44f91f5a442",
+  "evidenceSha256": {
+    ".local/native-wire-page-isolation-20261027/expected.json": "2dfbe3775a634e7ea7d9304129d60b8d8efb638fa981c9e978b983450895c36c",
+    ".local/native-wire-page-isolation-20261027/report.json": "d4003bcdb3f0a9f483e6ce241a6c1c8d64187b00ea695fcbaaed45cba9ef27d7",
+    ".local/native-wire-page-isolation-20261027/geometry.json": "3b0f223427642007540ec8c8a729754a79439475bfaa5aa49784fc8c101dae0f",
+    ".local/wire-page-isolation-mcp-20261027/expected.json": "f339404059123d92172fea1447b8e42634f41c2cd6d645b89c33943062a61151",
+    ".local/wire-page-isolation-mcp-20261027/report.json": "12ed8911bb4be1e1cfab9b956a3e6b16cf07a871e73f1771f0c0128d6b4355ab",
+    ".local/clearance-bound-frames-20261027/expected.json": "e6d3a96def8e4b44bdf5a9993b458a2e08026f6da711f12f853ef900effeba16",
+    ".local/clearance-bound-frames-20261027/report.json": "3a27c92add96b86faf881fc72e9880cc097e9d5984b2227e24206f8452b7ecd4",
+    ".local/clearance-bound-frames-20261027/frames.json": "573f1197f45b74c1713a14eeafe83ef50474d34f3ffbf27bd2772d9028ac649d",
+    "tools/probe_native_wire_page_isolation.py": "f3476b8c48f4127df304d091efc7bcf40578020eb9f950c5991f0e3a0ee66f59",
+    "tools/smoke_wire_page_isolation_mcp.py": "7c6857210db392bea18cf998d4d33844592a42cee15e8d1583a0a73653644dec",
+    "tools/audit_clearance_bound_frames.py": "54bc37e8fbd3274c949d84338c5ee960d3e4b8b818b412aacc90f6bfcc687e8f"
+  }
+}

@@ -2,6 +2,13 @@
 
 2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十一批原生跨页几何隔离与边界资格（2026-10-27）
+
+- TOP/MAIN和CHILD/CHILD_PAGE各三线，调用前冻结六段；真实原生保存和独立重开逐段比对通过。MCP同坐标每页一次真实交叉，互补跨页斜线不误报；全部提示objectId/页归属、栅格每页6个顶点、关闭会话拒绝均通过。源/原oracle保持，宿主clean/桥接ready/无写锁，无GUI输入。
+- 一份旧零姿态副本独立只读复核：GetBoundingBox缓存仍旧位置，offset框和官方转换后的人工定义框不同。仅定位三类数据差异，不推断API缺陷或渲染边界正确。ISS-V02-clearance-bound-coordinate-qualification保留待定义图形/字体与显示边界资格验证；避让不冒称通过。
+- 三固定研发脚本编译通过，实际原生/MCP本批执行；无生产代码/契约变化，历史698回归及上批相关回归不重复冒称。本批只补V02原生跨页几何隔离，原34仍6/34；下一步实际符号/文字边界和原独立队列，层次失败仍保留。
+- 上批develop b94ecce远端核对通过；本批研发资料/进度同步develop，alpha/release保持。证据batch-121-evidence.json、wire-page-isolation-validation.md。
+
 ## 第一百二十批原生斜线几何矩阵（2026-10-27）
 
 - 依据官方PlaceWire/EndPlace，在私有空白副本冻结10线/9斜线交叉、重叠、T、共同端点及留缝矩阵。真实原生保存、独立进程重开，所有原线段准确保持；宿主恢复clean/桥接ready/无遗留锁，无GUI输入。
