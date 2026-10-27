@@ -12,13 +12,13 @@ def control_point_count(v):
     if v[0] in ('text','bitmap'):return 5
     raise ValueError('Unsupported page vector')
 
-def normalize_page_vectors(rows,page_id):
+def normalize_page_vectors(rows,page_id,*,require_native_id=True):
     try:
         if not isinstance(rows,list) or len(rows)>4096:raise ValueError('count')
         points=0;text=0;result=[]
         for index,row in enumerate(rows):
             if not isinstance(row,dict) or set(row)!={'index','nativeId','nativeTypeCode','kind','location','rotationCode','mirrorCode','localDescriptor','pageControlPoints'}:raise ValueError('shape')
-            if type(row['index']) is not int or row['index']!=index or any(type(row[k]) is not int for k in ('nativeId','nativeTypeCode','rotationCode','mirrorCode')) or row['rotationCode'] not in range(4) or row['mirrorCode'] not in (0,1):raise ValueError('identity/pose')
+            if type(row['index']) is not int or row['index']!=index or any(type(row[k]) is not int for k in ('nativeTypeCode','rotationCode','mirrorCode')) or (type(row['nativeId']) is not int if require_native_id else row['nativeId'] is not None) or row['rotationCode'] not in range(4) or row['mirrorCode'] not in (0,1):raise ValueError('identity/pose')
             def point(p):return isinstance(p,list) and len(p)==2 and all(type(v) is int and -2147483648<=v<=2147483647 for v in p)
             if not point(row['location']) or not isinstance(row['pageControlPoints'],list) or any(not point(p) for p in row['pageControlPoints']):raise ValueError('points')
             v=row['localDescriptor']

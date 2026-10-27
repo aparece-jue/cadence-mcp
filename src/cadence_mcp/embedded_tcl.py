@@ -11,7 +11,7 @@ import sys
 
 from .bitmap_dib import DibDigests
 
-READERS = frozenset({'inspect_page_vectors.tcl', 'inspect_library_vectors.tcl', 'inspect_library_create.tcl', 'inspect_placed_view.tcl'})
+READERS = frozenset({'inspect_part_vectors.tcl', 'inspect_page_vectors.tcl', 'inspect_library_vectors.tcl', 'inspect_library_create.tcl', 'inspect_placed_view.tcl'})
 SCRIPTS = READERS | frozenset({'edit_place.tcl', 'edit_multiunit_place.tcl', 'edit_library_vector.tcl'})
 
 

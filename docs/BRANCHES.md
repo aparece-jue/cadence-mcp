@@ -4,7 +4,7 @@
 
 | 分支 | 内容与用途 | 初始化基线 | 默认入口 |
 |---|---|---|---|
-| develop | 源码、原创研发资料、计划/进度、问题、复现和验收摘要；按完成批次持续提交推送 | 已有研发历史继续推进，版本0.1.1.dev0 | cadence-mcp / cadence_mcp.server，221个开发工具 |
+| develop | 源码、原创研发资料、计划/进度、问题、复现和验收摘要；按完成批次持续提交推送 | 已有研发历史继续推进，版本0.1.1.dev0 | cadence-mcp / cadence_mcp.server，222个开发工具 |
 | alpha | 已完成该次测试验收的固定测试版本源码 | v0.1.0-alpha.2 / 64e7ca9bb61bb04d80575d7289104405a2c2afe9 | 该tag的开发/扩展入口，221工具 |
 | release | 已完成明确支持范围验收的固定发行源码 | v0.1.0 / e59f888607bdc647c3dbcec1a235663fc3b3eeb4 | cadence_mcp.validated_server，65工具 |
 | main | 现有默认分支暂保留 | 0a31dda | 历史alpha.1基线，当前发行请选release/tag |

@@ -180,7 +180,7 @@ class Fixture(unittest.TestCase):
         async def exercise():
             async with Client(create_server(self.config), raise_exceptions=True) as client:
                 tools = (await client.list_tools()).tools
-                self.assertEqual(len(tools), 221)
+                self.assertEqual(len(tools), 222)
                 style_tool=next(t for t in tools if t.name=='capture_get_library_pin_style')
                 self.assertTrue(style_tool.model_dump(mode='json',by_alias=True)['annotations']['readOnlyHint'])
                 binding_tool=next(t for t in tools if t.name=='capture_query_cache_binding')

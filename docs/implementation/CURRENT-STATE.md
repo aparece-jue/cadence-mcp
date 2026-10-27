@@ -2,6 +2,13 @@
 
 2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十二批元件实际定义图形只读MCP（2026-10-27）
+
+- 新capture_query_part_vectors固定worker读取实际定义向量、typed descriptor及原生页面控制点，分页/不可变revision/part定位与预算约束。定义vector GetId返回1002的首次失败保留，最终nativeId=null、只用revision/part/vector顺序身份，不吞错误/不造ID。遗漏shapePoint辅助函数失败保留后补齐。
+- 公开真实MCP八姿态三线实际三角形/预先冻结源模型通过，24条页面线段准确；单项分页、cursor大小/跨会话隔离、错误目标、缓存后source tamper、关闭会话与所有源/oracle hash通过。实际图形与旧人工框/缓存框区分。
+- 新6测试，完整704/703通过/1原symlink权限skip。开发工具222、实际契约同步；发行65白名单保持。新入口本批原生仅line三角形八姿态，不外推全部kind/位图/字体/渲染；完整显示/引脚/嵌套/occurrence及文字器件避让仍未验收，C05/V02不提升，原34仍6/34。
+- 上批develop281b7af远端核对通过，本批源码/研发资料/进度继续同步develop；alpha/release不变。见part-vector-query.md、batch-122-evidence.json。下一步实际多类定义图形及显示文字边界资格，继续独立队列，原层次失败保留后移。
+
 ## 第一百二十一批原生跨页几何隔离与边界资格（2026-10-27）
 
 - TOP/MAIN和CHILD/CHILD_PAGE各三线，调用前冻结六段；真实原生保存和独立重开逐段比对通过。MCP同坐标每页一次真实交叉，互补跨页斜线不误报；全部提示objectId/页归属、栅格每页6个顶点、关闭会话拒绝均通过。源/原oracle保持，宿主clean/桥接ready/无写锁，无GUI输入。

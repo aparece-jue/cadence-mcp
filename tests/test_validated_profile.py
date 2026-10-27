@@ -34,7 +34,7 @@ class ReleaseRegistration(unittest.IsolatedAsyncioTestCase):
   async with Client(create_server(self.config,profile='validated'),mode='legacy') as client:
    names={t.name for t in (await client.list_tools()).tools};self.assertEqual(names,TOOLS)
    caps=(await client.call_tool('cadence_get_capabilities',{})).structured_content['data'];self.assertEqual(set(caps['tools']),TOOLS);self.assertFalse(caps['fullProjectComplete']);self.assertNotIn('pspice.cli_run',caps['features'])
-  async with Client(create_server(self.config),mode='legacy') as client:self.assertEqual(len((await client.list_tools()).tools),221)
+  async with Client(create_server(self.config),mode='legacy') as client:self.assertEqual(len((await client.list_tools()).tools),222)
  async def test_schema_requires_editor_host_and_limits_operation_and_backends(self):
   async with Client(create_server(self.config,profile='validated'),mode='legacy') as client:
    tools={t.name:t for t in (await client.list_tools()).tools}

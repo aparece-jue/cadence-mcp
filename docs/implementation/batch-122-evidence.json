@@ -1,0 +1,45 @@
+{
+  "batch": 122,
+  "date": "2026-10-27",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "tools": 222,
+  "newPublicTools": [
+    "capture_query_part_vectors"
+  ],
+  "nativePartVectorReadAccepted": true,
+  "acceptedNativeScope": "Three actual defining-part line vectors; eight rotations/mirrors on the existing noncentered owned fixtures. No full rendered or arbitrary-kind certification.",
+  "nativeIdentity": "null; revision/part/vector index only; tested GetId path returned1002 and was removed, not masked",
+  "fullV02Accepted": false,
+  "fullC05Accepted": false,
+  "renderedClearanceAccepted": false,
+  "nativeLifecycleChecks": [
+    "one-item paging",
+    "cursor limit and cross-session isolation",
+    "wrong part refusal",
+    "immutable source tamper refusal even after cached query",
+    "closed session refusal",
+    "source/oracle hashes unchanged"
+  ],
+  "latestFullRegression": {
+    "total": 704,
+    "passed": 703,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-part-vectors-20261027.txt"
+  },
+  "priorBatchDevelopSyncVerified": "281b7af02a7b0be152637e3e5ff88a009f97ce7c",
+  "evidenceSha256": {
+    ".local/part-vectors-mcp-20261027/expected.json": "122ccbe94e46c58438b7fdb64a643fbfdcd0585067e568b0145594416e4edbac",
+    ".local/part-vectors-mcp-20261027/report.json": "5ee03f5554e553fe6b588e2a013a511735f9a8bf0aa3cb0c60de3277e31c0577",
+    ".local/part-vectors-initial-20261027/failure-diagnostic-v5.txt": "e3d9ca14fc2f5c3af9edfc158438a7f086232c8124a4a3544a5fba0d3e6645a2",
+    ".local/part-vectors-initial-20261027/failure-without-id.txt": "109cdf5e34f658291aaab05f97dbf6c5df9fc4c2c84cc59e35601bbd2e5075e7",
+    ".local/part-vectors-initial-20261027/vectors-fixed.json": "86360dca95c5eb49f935aa4404ef07eb45e20d5f65e86cf5ffd0cc833a0a4cc9",
+    ".local/regression-part-vectors-20261027.txt": "0e04f5c4cfb77cbf1fc00ae2dc5d6adc1bbe85e492d4e885ba812c2ed735f127",
+    "src/cadence_mcp/adapters/inspect_part_vectors.tcl": "9ebdc81d78a60195539d2ca0086f8f5ab88c35a0bebc2daf74f0955dc87fca49",
+    "src/cadence_mcp/capture_part_vectors.py": "2cf53ed0616ffa3a13b6647383f1034102a94f843de676672235168cd8339591",
+    "tests/test_part_vectors.py": "d05dda3a42569c39d53ca5dbd2da86c212be680a9e1068a660c3ccc96bdec7f4"
+  }
+}

@@ -27,6 +27,7 @@ from .editor_wire_host import EditorWireHost
 from .capture_wire_edit import CaptureWireEdits
 from .capture_graphic_line import CaptureGraphicLines
 from .capture_graphic_text import CaptureGraphicTexts,GraphicTextChange
+from .capture_part_vectors import query_part_vectors
 from .capture_page_bounds import query_page_dimensions,check_page_graphic_bounds
 from .capture_part_edit import CapturePartEdits
 from .capture_alias_edit import CaptureAliasEdits
@@ -928,6 +929,14 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
         return await invoke(query_page_vectors, capture, sessionId, pageId, cursor, limit, backend="capture_dbo",
                             coverage=("typed_page_comment_vectors", "local_descriptor_and_native_page_control_points", "explicit_unsupported_inventory"),
                             not_checked=("rendered_text_bounds", "symbol_and_titleblock_vectors", "electrical_connectivity", "native_drc"))
+
+    @register(readonly=True)
+    async def capture_query_part_vectors(sessionId: str, partId: str, cursor: str | None = None,
+            limit: Annotated[int, Field(strict=True, ge=1, le=1000)] = 100) -> ToolResult:
+        """Read actual defining-part vectors in native order and native-transformed page control points. IDs use revision/part/vector index; nativeId is null because defining vectors have no accepted native ID. Includes typed text/font and bitmap identity; unsupported graphics remain explicit. Cached instance boxes are not used as actual vector extents. Does not certify rendered clearance, display properties, pin graphics or occurrence geometry."""
+        return await invoke(query_part_vectors,capture,sessionId,partId,cursor,limit,backend="capture_dbo",
+                            coverage=("typed_defining_part_vectors","native_page_control_points","explicit_unsupported_inventory"),
+                            not_checked=("rendered_clearance","display_properties_and_pin_graphics","occurrence_geometry","native_drc"))
 
     @register(readonly=True)
     async def capture_get_page_dimensions(sessionId: str, pageId: str) -> ToolResult:

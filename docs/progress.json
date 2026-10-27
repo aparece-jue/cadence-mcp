@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 221,
+  "toolCount": 222,
   "latestFullRegression": {
-    "total": 698,
-    "passed": 697,
+    "total": 704,
+    "passed": 703,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-native-ports-20261027.txt"
+    "evidence": ".local/regression-part-vectors-20261027.txt"
   },
-  "acceptanceCanonicalSha256": "1c3df6da790ab48d9c3ddafdc9f11f90fa5d20a11a038131faba74f1038ac99f"
+  "acceptanceCanonicalSha256": "bf4d45efb1c5007635c7608654fee7b3442e505d62fdc690636ebea598077a41"
 }
