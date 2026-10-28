@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 223,
+  "toolCount": 224,
   "latestFullRegression": {
-    "total": 723,
-    "passed": 722,
+    "total": 729,
+    "passed": 728,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-user-string-savefix-20261028.txt"
+    "evidence": ".local/regression-titleblock-vectors-final-20261028.txt"
   },
-  "acceptanceCanonicalSha256": "d1259d1c4ff3a6f58aca792454b81bbff37c60c031de065fa2f4fd5c6400f58f"
+  "acceptanceCanonicalSha256": "bad6578264dea00f1a6329c32caedd7e5359469efb7834ac3855cfa2216e9297"
 }

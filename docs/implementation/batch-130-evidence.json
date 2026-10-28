@@ -1,0 +1,63 @@
+{
+  "batch": 130,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 1,
+  "newPublicTool": "capture_query_titleblock_vectors",
+  "productionCodeChanged": true,
+  "fullC05Accepted": false,
+  "nativeTitleblockVectorReadAccepted": true,
+  "nativeKindsAccepted": [
+    "line",
+    "box",
+    "text"
+  ],
+  "nativeTitleblocks": 9,
+  "eightPoseLineControlPointsAccepted": true,
+  "unicodeAndMultilineAccepted": true,
+  "orderedPagingAndIdentityGuardsAccepted": true,
+  "sourceAndOracleUnchanged": true,
+  "oldPoseHypothesisAndEncodingFailurePreserved": true,
+  "old223ContractsUnchanged": true,
+  "validatedReleaseTools": 65,
+  "fullRegressionRerunThisBatch": true,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-titleblock-vectors-final-20261028.txt"
+  },
+  "initialFullRegression": {
+    "total": 729,
+    "errors": 2,
+    "skipped": 1,
+    "cause": "Two development tool-count assertions still223; updated to224 after sole new contract addition. No runtime or schema error hidden.",
+    "evidence": ".local/regression-titleblock-vectors-20261028.txt"
+  },
+  "acceptedGateIds": [],
+  "desktopInputsUsed": false,
+  "priorBatchDevelopSyncVerified": "f3f6bd16934979de3d39b5a7c05da041e8410f41",
+  "evidenceSha256": {
+    "src/cadence_mcp/capture_titleblock_vectors.py": "0502eef1f3ee87d3f2959a36ad7c4e11eb3ca9a665f133fe65fa21c4178e23c3",
+    "src/cadence_mcp/adapters/inspect_titleblock_vectors.tcl": "a44576de31b1f5a49a320fb70e51a52c583626a351f6d00f3e3d223d6933a6c5",
+    "tests/test_titleblock_vectors.py": "21c4f112c6dc5b03f2316cf4fb0a6f07700cfe3d156236231946a09ff7db0e1b",
+    "tools/probe_titleblock_vectors.py": "1e71b8fcd15a2e1c02300c2d85cadce114cfb621eb3624130c76036507c60fc1",
+    "tools/probe_titleblock_vectors_v2.py": "39ac69df0564df5180f17cdd5c0c83ddf470b4edb49aa544a2817b5335a09ea2",
+    "tools/smoke_titleblock_vectors.py": "8ffef5ecb99f67c3b054e8d10bf4e4556ba9c7fdef20793711b4044c76fd1b50",
+    ".local/titleblock-vectors-20261028/expected.json": "69f12a96fc080fe2bfbbdc98e6e0656ddd375156a0fbf0c804955ee19c93bcb8",
+    ".local/titleblock-vectors-20261028/report.json": "b101b8b12868377ab550fdebd384c48463197a9ead8568470d75115ba2c17dfe",
+    ".local/titleblock-vectors-20261028/vectors.json": "6243cdb17740d84574da6626d99ea26cf7ae69017ce2f445bf5092c2a176e4a1",
+    ".local/titleblock-vectors-20261028/failure-audit.json": "7a715ce975f7cdc4dd7a556e8faaa27751e49fe660ed74a6fb7821b3b9c56eba",
+    ".local/titleblock-vectors-v2-20261028/expected.json": "860ad92a925b77097ad38548dad4b57cd3e3d0027192edf0023c66f60b7f730d",
+    ".local/titleblock-vectors-v2-20261028/report.json": "53de68e6f748e7932459fcd2cff021ed5b8d988e6005bf1226ec209b6a88f588",
+    ".local/titleblock-vector-mcp-20261028/report.json": "18650c38380d39bab1924de7c34c818a7ce19dd051b1698fde8cdee92235c353",
+    ".local/titleblock-vector-mcp-final-20261028/report.json": "036ed8afb12e462d16221330847ae33f9548f2adbd2cc082c5a2706fad484288",
+    ".local/regression-titleblock-vectors-20261028.txt": "acb89663699470d3dd08c576bbc1ceea14fd330d942dd93f2cc80ef0da39a343",
+    ".local/regression-titleblock-vectors-final-20261028.txt": "da6ad74b600fd7d8439fdda9439bb6fcb1c048cc1a4ff35c345c83bfd758e802"
+  }
+}

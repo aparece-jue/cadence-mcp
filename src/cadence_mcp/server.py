@@ -28,6 +28,7 @@ from .capture_wire_edit import CaptureWireEdits
 from .capture_graphic_line import CaptureGraphicLines
 from .capture_graphic_text import CaptureGraphicTexts,GraphicTextChange
 from .capture_part_vectors import query_part_vectors
+from .capture_titleblock_vectors import query_titleblock_vectors
 from .capture_symbol_contacts import check_symbol_contacts
 from .capture_page_bounds import query_page_dimensions,check_page_graphic_bounds
 from .capture_part_edit import CapturePartEdits
@@ -930,6 +931,14 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
         return await invoke(query_page_vectors, capture, sessionId, pageId, cursor, limit, backend="capture_dbo",
                             coverage=("typed_page_comment_vectors", "local_descriptor_and_native_page_control_points", "explicit_unsupported_inventory"),
                             not_checked=("rendered_text_bounds", "symbol_and_titleblock_vectors", "electrical_connectivity", "native_drc"))
+
+    @register(readonly=True)
+    async def capture_query_titleblock_vectors(sessionId: str, titleblockId: Annotated[str, Field(min_length=1, max_length=256)],
+                                               cursor: str | None = None, limit: Annotated[int, Field(ge=1, le=1000)] = 100) -> ToolResult:
+        """Read one titleblock ID from capture_query_graphics: ordered local symbol vectors, full literal text/font, instance pose and native page control points. Unsupported nested/OLE vectors remain explicit. Effective occurrence/display text and rendered glyph/stroke bounds are unverified."""
+        return await invoke(query_titleblock_vectors,capture,sessionId,titleblockId,cursor,limit,backend="capture_dbo",
+                            coverage=("titleblock_definition_vectors","native_page_control_points"),
+                            not_checked=("rendered_bounds","effective_occurrence_text","native_drc"))
 
     @register(readonly=True)
     async def capture_query_part_vectors(sessionId: str, partId: str, cursor: str | None = None,

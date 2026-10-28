@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十批标题栏定义图形MCP（2026-10-28）
+
+- 新capture_query_titleblock_vectors读取指定标题栏的有序局部定义/完整文字字体与原生页面控制点，预算、不可变revision/ID和分页隔离保持；不计算渲染/电气通过结论。
+- 首次Tcl源编码损坏及框归一化假说失败保留；新负偏移/不同框holdout、Unicode转义与直接旋转/位移预期冻结。9标题栏含8姿态/跨页同名/空页，line/box/text、中文多行、1项分页与目标/会话/cursor/source/关闭保护通过两次实际MCP。
+- 新6测试，首次两工具计数断言223未更新失败保留；旧223契约逐项保持，仅新增1工具后更新224，最终完整729/728通过/1原权限skip。C05仍partial，动态显示/occurrence/其他类型/字体渲染等原要求保留，原34仍8/34（23.5%）。
+- 见[titleblock-vector-query](../titleblock-vector-query.md)、batch-130-evidence.json。源码/资料/管理同步develop；alpha/release、65发行工具及已发布tag固定。
+
 ## 第一百二十九批C04原40对象读取完整验收（2026-10-28）
 
 - 先四根editor导线/alias保存重开，再按同源同名同位置/8姿态加入32符号；原40对象预期和旧错误假说指纹保持。完整文件独立重开及实际公开MCP逐字段通过。

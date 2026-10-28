@@ -4,7 +4,7 @@
     "branch": "develop",
     "version": "0.1.1.dev0",
     "entryPoint": "cadence_mcp.server",
-    "tools": 223
+    "tools": 224
   },
   "alpha": {
     "branch": "alpha",
