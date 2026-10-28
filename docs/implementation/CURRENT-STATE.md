@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十五批简单封闭轮廓整段包含（2026-10-28）
+
+- 已有symbol-contact工具增强至profile0.2，精确简单环/绕数/整段边界交验补足“无边界交叉但完全位于轮廓内部”的候选。自交/自触/折返/退化环明确skip包含；全局简单性配对预算、原配对/finding预算保持，无渲染/电气/设计通过结论。
+- 原生box内1/外0、凹轮廓两端在内中途穿出缺口只2crossing/0包含及外0严格矩阵通过，28原线几何/native net保持、页面控制点/产物hash符合冻结预期。原0/5接触与混合5skip生命周期在新目录复验通过。
+- 首次凹脚本残留未检查的旧global boundaryContacts0，原passed报告单独审计为不完整，原文件/hash保留，不追认。新v2场景级0/2与零包含逐项校验通过。新增9测试，完整721/720通过/1原symlink权限skip；工具仍223，仅增强已有契约说明，旧其他222保持。
+- 完整文字/笔宽/显示/引脚/曲线填充/嵌套/occurrence及V02未通过，原34仍6/34。上批developbb9aa6a核对已推；本批研发/验收/进度继续同步develop，alpha/release不动。见symbol-contact-check.md补验、batch-125-evidence.json。
+
 ## 第一百二十四批线性元件/导线接触MCP（2026-10-28）
 
 - 官方display alignment脚本定位/hash确认：元件display property缓存框加owner location是坐标转换，不能当字体重测证明。原文字/笔宽边界仍未验收。

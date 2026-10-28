@@ -941,9 +941,9 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
 
     @register(readonly=True)
     async def capture_check_symbol_contacts(sessionId: str, partId: str) -> ToolResult:
-        """Find exact crossing/T/overlap candidates between one part's actual linear defining vectors and same-page wires. Curves/text/bitmap/fill are explicit skipped rows. Does not measure glyph/stroke clearance, shared endpoints, closed-shape containment, pin connectivity or DRC; never reports a design pass. Source revision, traversal and pair/finding budgets are enforced."""
+        """Find exact crossing/T/overlap and strictly-contained-segment candidates between one part's actual linear defining vectors and same-page wires. Simple closed box/polygon outlines are checked; non-simple containment is explicit skipped. Curves/text/bitmap/fill are explicit skipped rows. Does not measure glyph/stroke clearance, shared endpoints, non-simple closed-shape containment, pin connectivity or DRC; never reports a design pass. Source revision, traversal and pair/finding budgets are enforced."""
         return await invoke(check_symbol_contacts,capture,sessionId,partId,backend="capture_dbo",
-                            coverage=("exact_linear_symbol_wire_contacts","page_isolation","explicit_skipped_geometry"),
+                            coverage=("exact_linear_symbol_wire_contacts","simple_closed_outline_containment","page_isolation","explicit_skipped_geometry"),
                             not_checked=("rendered_clearance","electrical_connectivity","native_drc"))
 
     @register(readonly=True)

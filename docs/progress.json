@@ -34,12 +34,12 @@
   },
   "toolCount": 223,
   "latestFullRegression": {
-    "total": 712,
-    "passed": 711,
+    "total": 721,
+    "passed": 720,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-symbol-contacts-20261028.txt"
+    "evidence": ".local/regression-closed-outline-20261028.txt"
   },
-  "acceptanceCanonicalSha256": "8646b49ddea6697f21b2ab311f8656bbb0139bbdfa37984c0177291ffcbfdef7"
+  "acceptanceCanonicalSha256": "40ac448924a99d03a8ec377c8b7e428082b33a0214e75b5dfe71856531fd4178"
 }

@@ -1,0 +1,52 @@
+{
+  "batch": 125,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "tools": 223,
+  "newPublicTools": 0,
+  "enhancedPublicTools": [
+    "capture_check_symbol_contacts"
+  ],
+  "profile": "symbol-wire-linear-contacts@0.2.0",
+  "nativeSimpleClosedContainmentAccepted": true,
+  "nativeCases": {
+    "rectangleOutside": 0,
+    "rectangleContainedSegments": 1,
+    "concaveOutside": 0,
+    "concaveInsideEndpointsButExitsCrossings": 2,
+    "concaveContainedSegments": 0
+  },
+  "originalZeroFiveContactMatrixReaccepted": true,
+  "original28WireGeometryAndNetIdentityPreserved": true,
+  "harnessOracleAuditFailurePreserved": true,
+  "originalPassedConcaveReportNotAccepted": true,
+  "strictNewConcaveOracleChecksAccepted": true,
+  "newExactGeometryTests": 9,
+  "fullV02Accepted": false,
+  "renderedClearanceAccepted": false,
+  "latestFullRegression": {
+    "total": 721,
+    "passed": 720,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-closed-outline-20261028.txt"
+  },
+  "priorBatchDevelopSyncVerified": "bb9aa6ac2fc3ddbb5bcb39673c7dcb3df76cac66",
+  "evidenceSha256": {
+    ".local/closed-outline-mcp-20261028/expected.json": "7a948c720ab492b367babf9e05434af03e455989ee2f1d28286a4575497c780d",
+    ".local/closed-outline-mcp-20261028/report.json": "a2c25eed27b7d31a2729a6f3ba0855e3e1bfdaacd03b0f870eec0cf6e18e53d4",
+    ".local/closed-outline-concave-mcp-20261028/expected.json": "d103318f44b86a675896ea4dd6bebdb1eb9bda6858b46539c4e31e8878e59d8c",
+    ".local/closed-outline-concave-mcp-20261028/report.json": "566a261d745bdd00dc04ea1b627b003e93f45a3a6e3f24ed2e7195f419cbbe40",
+    ".local/closed-outline-concave-mcp-20261028/oracle-audit.json": "a80d550a3b2d31f5c63c956737e6f9633479f86556cda5b36bf01e678e310f9f",
+    ".local/closed-outline-concave-mcp-v2-20261028/expected.json": "d78ff5e92c95613627e5aad4fb969fbec7ec28afc92e902600f08aaaa06e90e0",
+    ".local/closed-outline-concave-mcp-v2-20261028/report.json": "71930367a747676ffaa463e973c9e996cb583b60f67c850a6fe52453dab4f7d5",
+    ".local/symbol-contacts-mcp-v2-20261028/report.json": "a4740173294877a938152389cc41789e168d516fb4a211807cbcd9ac7b5994e8",
+    ".local/regression-closed-outline-20261028.txt": "967ce9dc49394b809508a7d94954a97a54fc6e6a221d4be5754038ffbd5946b7",
+    "src/cadence_mcp/closed_outline.py": "efa34e6bf569007b85aa05db620efa5a5caae4b79313bcfc2e51408bfd895c20",
+    "src/cadence_mcp/capture_symbol_contacts.py": "2d8ccd5a72e19410fa5ab277e2151450f0d5ff28bad97b1d85fb653022c00ddc",
+    "tests/test_closed_outline.py": "a6538af8d69f9e67232ed07c3991ae49404a88bfdc9edbd5ee61942e0130c099"
+  }
+}
