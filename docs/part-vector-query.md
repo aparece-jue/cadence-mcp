@@ -9,3 +9,13 @@
 查询具备既有描述器的text/font和bitmap读取路径，但本批原生验收只覆盖三条line的八姿态；其他图形/位图/文本的本新入口矩阵尚未验收。controlPoints是几何控制点，不是实际曲线、笔宽或字形渲染边界。显示属性、引脚图形、嵌套/OLE、occurrence、完整文字器件避让和DRC仍未认证，不会自动返回避让通过。ISS-V02-clearance-bound-coordinate-qualification仍open，接下来需验证其他实际图形及显示/字体边界。
 
 新增6个有效身份/归属/姿态/控制点/unsupported测试。完整704项703通过/1原symlink权限skip。开发222工具契约来自真实stdio，发行65白名单保持；alpha/release及已有包/tag未动。仅develop研发，不改安装或真实设计；原34仍6/34=17.6%。
+
+## 混合图形与位图补验（batch123，2026-10-28）
+
+本轮仅只读验收扩大，不改生产接口。审批服务上次额度不足的检查未执行；当前恢复后已重新核对干净worktree，从原始公开建库规格构造预期。首次脚本误把公开text规格当内部descriptor，缺location在原生派发前失败，记录保留；新目录v2明确从bounds左上角和完整LOGFONT对象构造预期。未从本轮观察值回填。
+
+原Normal/Convert两份实际放置DSN各13向量，8类已支持line/box/ellipse/arc/polygon/polyline/bezier/text的geometry/style/fill/hatch/完整文字字体及原生页面控制点均匹配原规格。原生顺序在2项分页与整批读取一致；Fill仍一条unsupported、supportedGeometryComplete=false，未静默遗漏。实例为零旋转/镜像，Convert的文字LOGFONT含900方向及加粗/斜体/下划线，与实例姿态分开核对。
+
+四个位图实际放置DSN覆盖RGB24/RGB32及Normal/Convert。原冻结descriptor、bitmap bounds/location/dimensions/DIB size/SHA256与页面5控制点均通过；更用原BMP字节剥离14字节文件头后独立核对DIB大小和SHA，不只比较两个同源API。两份不同内容均56字节但摘要不同，查询正确保留区别。源DSN/BMP/原oracle hash均保持。未验证本新入口的位图/曲线全姿态组合、实际像素旋转渲染或字形/笔宽边界，不把控制点称为完整避让。
+
+三个研发脚本编译通过；无生产代码/契约变化，本轮未重复完整回归，最近完整仍batch122的704项703通过/1原权限skip。开发222工具、发行65及alpha/release固定；原34仍6/34。证据见implementation/batch-123-evidence.json，私有设计和原始日志仍留.local。

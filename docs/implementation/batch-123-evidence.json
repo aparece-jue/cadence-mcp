@@ -1,0 +1,42 @@
+{
+  "batch": 123,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "tools": 222,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "nativeMixedPartVectorReadAccepted": true,
+  "nativeBitmapPartVectorReadAccepted": true,
+  "acceptedNativeScope": "Normal/Convert mixed8 supported vector kinds plus explicit unsupported fill, zero instance pose; four RGB24/RGB32 bitmap placements with independent original BMP/DIB identities and page points. Prior line-only eight-pose matrix remains separate.",
+  "mixedCases": 2,
+  "mixedVectorsPerCase": 13,
+  "unsupportedFillPerCase": 1,
+  "bitmapCases": 4,
+  "bitmapDistinctPayloadHashes": 2,
+  "fullC05Accepted": false,
+  "fullV02Accepted": false,
+  "renderedClearanceAccepted": false,
+  "preparationFailurePreserved": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 704,
+    "passed": 703,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-part-vectors-20261027.txt"
+  },
+  "priorBatchDevelopSyncVerified": "a6ee8f141847dc6ed619c4c64bd1fc8c1c5de641",
+  "evidenceSha256": {
+    ".local/mixed-part-vectors-mcp-20261028/preparation-failure.json": "6ad5379f29258f5ff74778ee47982240ca30e55470c039c707f7993c606a6442",
+    ".local/mixed-part-vectors-mcp-v2-20261028/expected.json": "661a19b3c09976a261384668d051b2e1cfb6ddb420be2fee9dd07a1224762fcc",
+    ".local/mixed-part-vectors-mcp-v2-20261028/report.json": "32c588dede9aa642a23dcb890be48be4028c9689d8c1bfacfb41ce36e9a1fed5",
+    ".local/bitmap-part-vectors-mcp-20261028/expected.json": "4139e95a06589e8a853e84d6bcfd86a20a4fe5e0917f017da8ba3cbe94477d9e",
+    ".local/bitmap-part-vectors-mcp-20261028/report.json": "56e5cb93d38da93ddaa298fbcf05ac8e65ac1c6b8bb593ea947ca1904f559800",
+    "tools/smoke_mixed_part_vectors_mcp.py": "6a850124784e9331396beb7339d50e9fac98ace743c8cbd5d8ac6e80fd30aa1d",
+    "tools/smoke_mixed_part_vectors_mcp_v2.py": "d4aedfa41e8af5bce145f2049e0c27bda9c964e8139492ee02fe0cf9215f25ba",
+    "tools/smoke_bitmap_part_vectors_mcp.py": "ce2588dfa1a433641e1dd85147c1e26ecc98a21f5d80059796b26a066c57129a"
+  }
+}

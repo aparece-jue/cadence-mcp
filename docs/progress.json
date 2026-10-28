@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-27",
+  "asOf": "2026-10-28",
   "metric": "required_gates_fully_accepted",
   "passed": 6,
   "total": 34,
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-part-vectors-20261027.txt"
   },
-  "acceptanceCanonicalSha256": "bf4d45efb1c5007635c7608654fee7b3442e505d62fdc690636ebea598077a41"
+  "acceptanceCanonicalSha256": "4cf659f31b0faef6bf2a08266ffbad238caccc6c9df2035a75ac4f0e5a482433"
 }

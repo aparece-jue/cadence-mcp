@@ -1,6 +1,13 @@
 # 当前自主执行状态
 
-2026-10-27。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
+
+## 第一百二十三批混合定义图形与位图只读验收（2026-10-28）
+
+- 审批服务额度恢复后核对干净worktree，继续新part-vectors入口的实际多类图形。第一次测试把公开text规格错当内部location/LOGFONT数组，在原生派发前失败，保留记录后新v2目录修正预期构造，不改原oracle。
+- Normal/Convert两份13向量实际DSN，源规格独立预期的8种支持类型、样式/完整文字字体与页面控制点通过，分页/整批原生顺序保持；Fill一条unsupported明确保留。四个位图放置覆盖RGB24/32、Normal/Convert，原BMP去14字节文件头后的DIB字节独立比对、大小/SHA/页面控制点通过，两种同56字节内容保持不同摘要。源/原oracle均未改。
+- 本批实例零姿态；前批仅line八姿态矩阵分开，不能外推所有曲线/位图姿态或实际渲染边界。完整字体/笔宽/显示属性/引脚/嵌套/occurrence及避让仍未验收，原34仍6/34。无生产/契约变化，最近完整704/703+1skip沿用batch122、不冒称重跑；三脚本编译通过。
+- 上批developa6ee8f1远端核对通过；本批原创研发/验收资料和进度同步develop，alpha/release不动。见part-vector-query.md补验段和batch-123-evidence.json；下一步图形与显示文字实际边界及原独立队列。
 
 ## 第一百二十二批元件实际定义图形只读MCP（2026-10-27）
 
