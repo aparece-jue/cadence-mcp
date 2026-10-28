@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十九批C04原40对象读取完整验收（2026-10-28）
+
+- 先四根editor导线/alias保存重开，再按同源同名同位置/8姿态加入32符号；原40对象预期和旧错误假说指纹保持。完整文件独立重开及实际公开MCP逐字段通过。
+- 两页/空页/同名隔离/分页/归属，原9端口和共享NC，6次打开关闭、跨会话cursor、来源tamper及关闭后拒绝均通过。旧损坏源新探针仍3969/Failed1，历史失败未重放、未追认。
+- 按原C04定义级读取范围完整结案，8/34（23.5%），剩26，目标active；D03独立导线/顺序依赖/层次平坦等原失败继续保留。专属21项20通过/1原权限skip，无生产/契约变更，沿用batch128完整723/722+1skip。
+- 见[c04-completion-audit](../c04-completion-audit.md)、batch-129-evidence.json。研发资料/管理/进度推develop；alpha/release固定。继续原独立队列的C05图形/边界与原未完成范围。
+
 ## 第一百二十八批UserProp模型澄清与纯属性保存修复（2026-10-28）
 
 - 官方CAP-MODEL证明UserProp.Value仅StringT，typed DBProp另属模型；保留原类型实验失败，关闭未知约束调查，不宣称非字符串持久化成功。

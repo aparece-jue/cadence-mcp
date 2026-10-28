@@ -626,7 +626,7 @@
       ],
       "implementation": "分对象迭代、绑定page/objectId，保持原生网络身份和几何分离",
       "acceptance": "对象计数、坐标、名称、空页及同名局部对象隔离",
-      "status": "deferred",
+      "status": "passed",
       "evidence": [
         ".local/objects-display-stdio-20261023/objects-metadata-report.json",
         ".local/object-samples-2366284703/report.json",
@@ -663,14 +663,19 @@
         ".local/c04-editor-matrix-readall-mcp-20261027/page-status.json",
         ".local/c04-editor-matrix-final-20261027/expected-original-hypothesis.json",
         ".local/c04-editor-matrix-final-20261027/expected.json",
-        ".local/c04-editor-matrix-final-20261027/oracle-provenance.json"
+        ".local/c04-editor-matrix-final-20261027/oracle-provenance.json",
+        "docs/c04-completion-audit.md",
+        "docs/implementation/batch-129-evidence.json",
+        ".local/c04-wire-first-20261028/report.json",
+        ".local/c04-wire-first-mcp-20261028/report.json",
+        ".local/c04-completion-audit-20261028/audit.json"
       ],
       "issues": [
         "ISS-C04-shared-nc-enumeration",
         "ISS-C04-inventory-matrix-reopen-3969"
       ],
       "implementationReady": true,
-      "remaining": "Existing saved source now additionally passes nine exact original ports, explicit direct U1.3/CARRY_OUT hotspot consistency, shared NC owner/hotspot, page-scoped duplicate names, 1-item pagination, query/session cursor isolation, six extra open-read-close and cached source-tamper rejection. New predeclared 40-object all-pose/two-page/empty-page matrix saves but capture_open fails; independent diagnostic locates NextPage load state3969. Full C04 deferred/moved last; matrix full coordinates/pose/name/count/isolation still unaccepted, original failing fixture/oracle preserved. H02 flat connectivity and other gates remain separate and unaccepted. Batch114: 32-symbol base independently reopens. Old unverified rotation-about-location hotspot hypothesis has24 differences; independent source-box normalization model frozen before native attachment tests passes16 correct/12old wrong points without using target hotspot readouts. Original hypothesis bytes preserved, original40-object scope unchanged. First public editor wire/interior-alias addition saves but independent NextPage3969; documented ReadAllPages attempt also3969, exact production adapter restored and failed plans not replayed. Full C04 still unaccepted and moved to tail; root cause not established."
+      "remaining": "Existing saved source now additionally passes nine exact original ports, explicit direct U1.3/CARRY_OUT hotspot consistency, shared NC owner/hotspot, page-scoped duplicate names, 1-item pagination, query/session cursor isolation, six extra open-read-close and cached source-tamper rejection. New predeclared 40-object all-pose/two-page/empty-page matrix saves but capture_open fails; independent diagnostic locates NextPage load state3969. Full C04 deferred/moved last; matrix full coordinates/pose/name/count/isolation still unaccepted, original failing fixture/oracle preserved. H02 flat connectivity and other gates remain separate and unaccepted. Batch114: 32-symbol base independently reopens. Old unverified rotation-about-location hotspot hypothesis has24 differences; independent source-box normalization model frozen before native attachment tests passes16 correct/12old wrong points without using target hotspot readouts. Original hypothesis bytes preserved, original40-object scope unchanged. First public editor wire/interior-alias addition saves but independent NextPage3969; documented ReadAllPages attempt also3969, exact production adapter restored and failed plans not replayed. Full C04 still unaccepted and moved to tail; root cause not established. Batch129 completes the original C04 read-only inventory gate: same immutable calibrated forty-object oracle, two populated pages plus empty page, all eight symbol poses, exact coordinates/names/counts/page isolation, nine original ports and shared NC, paging/session/revision guards all pass actual public MCP. Reversing only fixture construction order (four editor wires/aliases first, then original32 symbols via documented database constructors) yields a readable complete fixture. Original failed DSN still returns3969 in a fresh read-only probe; original oracle/reports remain unchanged. Standalone wire creation/arbitrary edit order and flat/electrical semantics remain in D03/H02/H03/H04, not certified by C04. No unmet requirement remains within original C04 definition-read inventory scope."
     },
     {
       "id": "C05",
@@ -3423,19 +3428,22 @@
     {
       "id": "ISS-C04-inventory-matrix-reopen-3969",
       "featureId": "C04",
-      "status": "open",
+      "status": "resolved",
       "summary": "Predeclared independent 40-object connection inventory fixture reports saved but cannot reopen via CaptureService; page NextPage returns state3969 before inventory comparison. Batch114: alternate native editor add on readable32-symbol multi-page base still yields3969; ReadAllPages fails and was rolled back. Source-box hotspot model separately electrically calibrated, not counted as full matrix acceptance.",
       "evidence": ".local/connection-inventory-mcp-20261025/report.json",
       "diagnosticEvidence": ".local/connection-inventory-matrix-v2-20261025/diagnostic-direct-v2.log",
       "expected": "Reopen two populated pages and an empty page; exact declared global/offpage/wire/alias counts/locations/poses and page isolation",
       "observed": "Creation save receipt true; capture_open dbo_error, NextPage load3969; expected and DSN retained unchanged",
-      "nextAction": "After independent work investigate page serialization/root context and fixture construction against other3969 evidence; do not assume common root cause or relax state checks.",
+      "nextAction": "C04 gate complete. Retain standalone and order-dependent wire serialization research under the existing D03 write gate; do not replay failed jobs or accept corrupt old outputs.",
       "additionalEvidence": [
         ".local/c04-editor-matrix-build-mcp-20261027/report.json",
         ".local/c04-editor-matrix-build-mcp-20261027/page-status.json",
         ".local/c04-editor-matrix-readall-mcp-20261027/report.json",
         ".local/c04-editor-matrix-readall-mcp-20261027/page-status.json"
-      ]
+      ],
+      "resolutionType": "original_read_gate_verified_on_full_scope_fixture",
+      "resolution": "Full original40-object scope now readable and passes public C04 inventory using wire-first construction order. No reader/status changes. Original faulty source still fails3969 and all historical evidence is preserved. Resolves C04 test-construction blocker only; does not establish exact serialization root cause or repair arbitrary wire construction.",
+      "resolutionEvidence": "docs/implementation/batch-129-evidence.json"
     },
     {
       "id": "ISS-H01-root-property-native-access-violation",
@@ -3841,7 +3849,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 128,
+    "batch": 129,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4018,7 +4026,7 @@
     "connectionInventoryMatrixEvidence": ".local/connection-inventory-mcp-20261025/report.json",
     "connectionInventoryMatrixAccepted": false,
     "connectionInventoryMatrixIssue": "ISS-C04-inventory-matrix-reopen-3969",
-    "fullC04Accepted": false,
+    "fullC04Accepted": true,
     "pageVectorQueryAvailable": true,
     "pageVectorMcpEvidence": ".local/page-vector-mcp-20261025/report.json",
     "pageVectorDeclaredAuditEvidence": ".local/page-vector-declared-audit-20261025/report.json",
@@ -4207,7 +4215,7 @@
     "publicBusWriteTaskAvailable": true,
     "fullH04Accepted": false,
     "sourceBoxNetSymbolModelElectricallyCalibrated": true,
-    "c04FortyObjectMatrixAccepted": false,
+    "c04FortyObjectMatrixAccepted": true,
     "c04ReadAllPagesFixed": false,
     "busCreateMcpEvidence": ".local/bus-create-mcp-20261027/report.json",
     "busPreservationMcpEvidence": ".local/bus-preservation-mcp-20261027/report.json",
@@ -4225,21 +4233,20 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-128-evidence.json",
+    "evidence": "docs/implementation/batch-129-evidence.json",
     "targetedRegression": {
-      "wiring": {
-        "total": 14,
-        "passed": 14,
-        "skipped": 0
-      },
       "readonly": {
         "total": 13,
         "passed": 12,
         "skipped": 1
       },
-      "source": "actual unittest terminal output; original file-symlink privilege skip retained"
+      "connections": {
+        "total": 8,
+        "passed": 8,
+        "skipped": 0
+      }
     },
-    "fullRegressionRerunThisBatch": true,
+    "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4249,12 +4256,14 @@
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
-    "acceptedGateIds": [],
+    "acceptedGateIds": [
+      "C04"
+    ],
     "nativeC03Complete": true,
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
-    "fullyAccepted": 7,
-    "productionCodeChanged": true,
+    "fullyAccepted": 8,
+    "productionCodeChanged": false,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4265,7 +4274,17 @@
     "deleteOnlyAccepted": true,
     "freshServerVerifyOnlyRecoveryAccepted": true,
     "nativeOutputsUnchangedAcrossRecovery": true,
-    "contractSchemasUnchanged": true
+    "contractSchemasUnchanged": true,
+    "standaloneNewWireScalarFixed": false,
+    "arbitraryEditorOrderFixed": false,
+    "originalHypothesisAndFailuresPreserved": true,
+    "oldSourceStillReturns3969": true,
+    "completePublicMcpMatrixAccepted": true,
+    "originalPortsAndSharedNcAccepted": true,
+    "desktopInputsUsed": false,
+    "sourceAndHostUnchanged": true,
+    "priorBatchDevelopSyncVerified": "ff20dc8b16b679a1d6a33f5ae0ef14a6b0f1bb6c",
+    "nativeC04Complete": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

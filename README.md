@@ -6,7 +6,7 @@
 
 [![完整验收进度](docs/progress.svg)](docs/PROGRESS.md)
 
-[当前进度：7/34（20.6%）](docs/PROGRESS.md) · [研发同步规则](docs/DEVELOPMENT.md) · [参考资料](docs/references/INDEX.md)
+[当前进度：8/34（23.5%）](docs/PROGRESS.md) · [研发同步规则](docs/DEVELOPMENT.md) · [参考资料](docs/references/INDEX.md)
 
 <!-- progress:end -->
 
