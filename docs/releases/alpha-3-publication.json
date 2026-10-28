@@ -1,0 +1,22 @@
+{
+  "releaseUrl": "https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.1-alpha.1",
+  "commit": "eebb8ca6bd5aaea5a2aebf99a025e036578a66ae",
+  "tag": "v0.1.1-alpha.1",
+  "prerelease": true,
+  "publicDownloadsSha256Verified": {
+    "cadence-mcp-0.1.1-alpha.1-windows.zip": "39a1b1db5154c4bf47a7b61eb8923bd485f088f2ad36f3fb1d5895d33f3c586a",
+    "cadence_mcp-0.1.1a1-py3-none-any.whl": "58f3d23abb5958a93399b2af5353a3ec4166215734f74f5136cd69db72a88748",
+    "SHA256SUMS.txt": "4c23eca4432675f3423bc32a0476cad40035d30181cfd3fe42d621829043ec0b"
+  },
+  "installedCliSmokePassed": null,
+  "cliKnownLimitation": "Cadence Product Choices requires local product selection",
+  "alphaBranchCommit": "eebb8ca6bd5aaea5a2aebf99a025e036578a66ae",
+  "alphaTagObject": "56aed3148ab2378045853175e83f43fb9ab6e8d5",
+  "developResearchCommit": "930fce0af83b8030784f7dd1ea3a5e1647e102b7",
+  "releaseBranchUnchanged": "e59f888607bdc647c3dbcec1a235663fc3b3eeb4",
+  "oldTagsUnchanged": true,
+  "codeIdentity": "244 wheel files match source stage byte for byte; canonical Git source comparison additionally applies standard CRLF checkout normalization only",
+  "gitCanonicalSourceVerified": true,
+  "initialGitSourceProofFailures": "Raw Git LF versus checkout CRLF comparison stopped before any tag/branch publication. Second comparison retained CRLF in explicitly hashed version blob; final candidate uses Git path filters and strict normalized text comparison. Failed indexes retained locally.",
+  "fullGoalComplete": false
+}

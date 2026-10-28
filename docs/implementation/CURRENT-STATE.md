@@ -4,6 +4,8 @@
 
 ## 第一百三十一批0.1.1-alpha.1独立安装与发布准备（2026-10-28）
 
+发布补记：alpha已非强制前移至`eebb8ca6bd5aaea5a2aebf99a025e036578a66ae`，固定tag与GitHub预发布完成；wheel/ZIP/SHA256SUMS三项公开下载逐字节SHA256一致。develop保留0.1.1.dev0研发入口，release/main与旧tags不变。见docs/releases/alpha-3-publication.json。
+
 - 在975001d固定源码快照仅更改包版本0.1.1a1构建wheel，244个源码/Tcl逐字节核对。新独立环境安装固定依赖、pip check，实际224契约、Capture查询、引擎新DC2.5V及本次关联DAT通过，无源码PYTHONPATH。
 - 安装后元件八姿态向量、原生5接触候选、9标题栏/八姿态、仅用户属性新增保存重开、原40对象/9端口/共享NC全套通过。首轮旧历史计数222失败保留；只调整新安装测试的期望工具数为224，原oracle不改。候选完整729/728+1原权限skip。
 - ZIP/wheel/校验值、安装/桥接指南、版本说明与合法文件检查完成；CLI本版未复测，旧产品选择限制保留。准备新tag/alpha非强制晋级和GitHub预发布，远端完成回执另行补记；release/main/旧tags与环境不动。原34仍8/34，目标active。
