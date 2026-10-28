@@ -113,8 +113,15 @@
     "tools/probe_c03_general_frames.py": "da926005f358628802bba19f552a7fcd642bb38f8b625c2b0fdc738a566e798f",
     "tools/probe_c03_general_frames_v2.py": "fa92fe7c4936c15072356de85da8372acbb28df98e85db3683d3bb499e23f83f",
     "tools/smoke_c03_general_frames_mcp.py": "acde4a008daad61e229ffffeca9f409329e2315c519d0f41e5d7ffa26e7793bc",
-    "tools/smoke_shared_pin_reads_current.py": "f3f7974740edc2408768a171a975da8d882bc1c3346306325c6849e8f6a799c5",
+    "tools/smoke_shared_pin_reads_current.py": "d5e3e7a712bfe4c44b27bab0723b2666d6dc613d0c5118032d121d250235707a",
     "tools/smoke_c03_drawn_geometry.py": "5a28ec90ca92701e3893821f87dae2658690942f5c1a8b39f1becac716db65c8",
     "tools/audit_c03_completion.py": "7ed78fe3347721203f3bf91fdbf61bb2e1c37d07c6093d68cc3076022c16717c"
+  },
+  "formatOnlyFingerprintRepair": {
+    "path": "tools/smoke_shared_pin_reads_current.py",
+    "beforeFormattingSha256": "f3f7974740edc2408768a171a975da8d882bc1c3346306325c6849e8f6a799c5",
+    "currentSha256": "d5e3e7a712bfe4c44b27bab0723b2666d6dc613d0c5118032d121d250235707a",
+    "reason": "Commit diff check removed an extra EOF blank line after original evidence hashing. Update that one fingerprint; native test logic/results and old oracles remain unchanged.",
+    "logicEquivalentToOriginalCurrentCountHarness": true
   }
 }
