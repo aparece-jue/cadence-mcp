@@ -59,6 +59,11 @@ set rc [catch {
    }
   } else {error invalid_user_operation}
  }
+ # NewUserProp alone may not dirty the containing package. Mark both levels
+ # explicitly; the package overload on DboLib is void, not a DboState.
+ set phase marking_modified;cmcp::check [$pkg MarkModified]
+ $lib MarkModified $pkg
+ cmcp::check [$lib MarkModified]
  set phase save;cmcp::check [$session MarkAllLibForSave $lib];cmcp::check [$session SaveLib $lib]
  set result [cmcp::obj saved true packageId [cmcp::q [dict get $spec packageId]]]
 } message]

@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十八批UserProp模型澄清与纯属性保存修复（2026-10-28）
+
+- 官方CAP-MODEL证明UserProp.Value仅StringT，typed DBProp另属模型；保留原类型实验失败，关闭未知约束调查，不宣称非字符串持久化成功。
+- 纯新增五项属性首次saved=true但重开丢失，被严格图验证拒绝；原失败plan/oracle保留。补齐package/library修改标记后，新计划五文本、纯修改、纯删除、幂等和新服务恢复通过，源与产物指纹保持。
+- 完整回归723项、722通过、1原symlink权限skip；工具223，schema保持。L04仍partial，原34仍7/34（20.6%），剩27；目标active。源码、复现、原创资料和管理同步develop，alpha/release保持固定。
+- 见[native-user-property-model](../native-user-property-model.md)、batch-128-evidence.json。继续原队列与L04其他原要求审计，不以局部成功提升整项。
+
 ## 第一百二十七批E03原生编号范围诊断与失败后移（2026-10-28）
 
 - 原R?源只读复核：R? primitive1、drawn0，IncludeNonPrimitive真实回读0；原R?未编号/两个非目标被改原因仍未解决。文档IsRefDesValid方法在当前对象/静态绑定缺失，首次失败保留，新诊断明确null。

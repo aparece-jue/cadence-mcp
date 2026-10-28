@@ -1469,7 +1469,7 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
 
     @register(readonly=True)
     async def capture_query_library_package_properties(libraryId: str, packageId: str) -> ToolResult:
-        """Read fixed package template/designator, PCB library/footprint names and explicit user property text/type/editability flags from an immutable library snapshot. No external footprint or DSN cache verdict."""
+        """Read fixed package template/designator, PCB library/footprint names and explicit user property text/type/editability flags from an immutable library snapshot. The Capture information model defines UserProp values as strings; built-in DBProps are separate typed attributes. Numeric and Boolean-looking user text is never auto-parsed. No external footprint or DSN cache verdict."""
         return await invoke(query_package_properties, library, libraryId, packageId, backend="capture_dbo",
                             coverage=("library_package_fields", "explicit_package_user_properties"), not_checked=("external_footprint", "dsn_cache"))
 
@@ -1477,7 +1477,7 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
     async def capture_plan_library_package_edit(libraryId: str, packageId: str,
             changes: LibraryPackageChanges | None = None,
             userProperties: Annotated[list[LibraryPackageUserChange], Field(max_length=64)] | None = None) -> ToolResult:
-        """Plan fixed package field changes and explicit string user-property set/empty/delete on a new OLB copy. Freeze all package properties and modeled definitions/vectors/template/pin starts. Package names, devices and pin mappings do not change; built-in property shadowing and typed/locked user edits are refused."""
+        """Plan fixed package field changes and explicit string user-property set/empty/delete on a new OLB copy. Native Capture UserProps are string storage by the information model, not a generic typed-property channel. Freeze all package properties and modeled definitions/vectors/template/pin starts. Package names, devices and pin mappings do not change; built-in property shadowing and typed/locked user edits are refused."""
         return await invoke(library_package_edits.plan, libraryId, packageId, changes.model_dump() if changes else {},
                             [v.model_dump() for v in userProperties] if userProperties else [], backend="capture_dbo",
                             coverage=("bound_library_package_edit_plan", "modeled_preservation_expectation"), not_checked=("external_footprint", "dsn_cache", "typed_user_property_edit"))

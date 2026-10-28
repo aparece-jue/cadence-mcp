@@ -1,0 +1,62 @@
+{
+  "batch": 128,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 7,
+  "tools": 223,
+  "newPublicTools": 0,
+  "productionCodeChanged": true,
+  "fullL04Accepted": false,
+  "nativeStringPropertySaveAccepted": true,
+  "nativeNonStringUserPropsAccepted": false,
+  "officialUserPropStringConstraintProven": true,
+  "officialSource": {
+    "sourceId": "CAP-MODEL",
+    "installRelativePath": "doc/capinfomodel/dboimnew.html",
+    "sha256": "81b856bb511a363c56e617b8f598a47fb1ebd606b57c23373a6d93e92cadd6c2",
+    "anchors": [
+      "pgfId-1000517",
+      "pgfId-1000520",
+      "pgfId-1000640"
+    ]
+  },
+  "originalAddOnlyPlanFailed": "af3a2c52e88a4048a36a41dac0b228c9",
+  "originalFailedPlanNotReplayed": true,
+  "saveFix": "Explicit package MarkModified, library/package void overload, library MarkModified before MarkAllLibForSave/SaveLib",
+  "literalStringCases": [
+    "00123",
+    "1e3",
+    "False",
+    "",
+    "器件 00123"
+  ],
+  "setOnlyAccepted": true,
+  "deleteOnlyAccepted": true,
+  "freshServerVerifyOnlyRecoveryAccepted": true,
+  "nativeOutputsUnchangedAcrossRecovery": true,
+  "contractSchemasUnchanged": true,
+  "fullRegressionRerunThisBatch": true,
+  "latestFullRegression": {
+    "total": 723,
+    "passed": 722,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-user-string-savefix-20261028.txt"
+  },
+  "evidenceSha256": {
+    ".local/native-user-string-contract-20261028/expected.json": "1c2f6d1a065b2542b70c3348231344b1b806e40b23c83936c6cf699a0d31d566",
+    ".local/native-user-string-contract-20261028/failure-audit.json": "94b7a0cc7f058a478a00a1b8a8357afb520dc97fada490ac8f0a0b7850a97086",
+    ".local/native-user-string-contract-v2-20261028/expected.json": "1c2f6d1a065b2542b70c3348231344b1b806e40b23c83936c6cf699a0d31d566",
+    ".local/native-user-string-contract-v2-20261028/report.json": "8f23285165518642165903a2398ea90cfe3c8e0759b9a05361629db1378537fa",
+    ".local/user-string-lifecycle-20261028/expected.json": "21578ba416f23e5864ae2c252c80cac4f54f15b9bf0fa112c6bb2a5aadcec4ed",
+    ".local/user-string-lifecycle-20261028/report.json": "fb5be206f6661d7321f057bb93dfc98d68ad553f1550e9ba0dc58a20f8c10af5",
+    ".local/user-string-test-preparation-20261028/failure.json": "397e08995c4b37d237ee46647a48a1196951cb76555965de20a1ef727b14f5e5",
+    ".local/regression-user-string-savefix-20261028.txt": "54f2a7cf478f6fa039aa6a0d6322ebef90b71b9249cca4a80da33512ad1ec14c",
+    "src/cadence_mcp/adapters/edit_library_package.tcl": "2f11935f81f6c68dfcf1deaa579ef6ce813e84ba276ad884618f4d11118cd5ad",
+    "tools/smoke_native_user_string_contract.py": "b85b27ddd53dcd48ae3d5621873cd8ded1d9de33eba370ee8d4a8d7a0a3b6e75",
+    "tools/smoke_native_user_string_contract_v2.py": "1f4cf6b932e4fc94717b09fb6c46cdc9fd637f43940244629bf33fd49d3e962c",
+    "tools/smoke_user_string_lifecycle.py": "66b5422af50bab9c950bf5975b4e897a2f090dc7fd581b34194c3aa787143ea1"
+  }
+}

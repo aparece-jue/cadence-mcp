@@ -55,6 +55,7 @@ def query_package_properties(library,library_id,package_id):
         library._session(library_id)
         return {'libraryId':library_id,'packageId':package_id,'revision':session['revision'],'properties':copy.deepcopy(row),
                 'scope':'library_package_fields_and_explicit_user_properties','readOnly':True,
+                'userPropertyValueContract':{'storage':'native_string','automaticNumberOrBooleanParsing':False,'builtInDBProperties':'separate_typed_attributes'},
                 'externalFootprintVerified':False,'designCacheUpdated':False}
 
 def expected_package_edit(graph,name,changes,user_changes):
@@ -93,7 +94,7 @@ def expected_package_edit(graph,name,changes,user_changes):
             if not old['deletable']:raise CadenceError('property_not_deletable','Native property is not deletable.')
             del props[folded]
         elif op=='set':
-            if not isinstance(value,str) or len(value)>4096 or '\x00' in value:raise CadenceError('invalid_package_edit','Set requires bounded literal text; empty text differs from deletion.')
+            if not isinstance(value,str) or len(value)>4096 or '\x00' in value:raise CadenceError('invalid_package_edit','Capture native UserProps store strings. Set requires bounded literal text; empty text differs from deletion. Typed built-in DBProps use separate operations.')
             if old and (old['nativeType']!=0 or not old['editable']):raise CadenceError('property_type_or_lock','Only editable native string user properties may be set.')
             if old and old['value']==value:continue
             if not old and not target['userPropsPermitted']:raise CadenceError('user_properties_not_permitted','Native package does not permit explicit user properties.')

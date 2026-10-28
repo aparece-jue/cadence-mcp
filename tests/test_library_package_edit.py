@@ -14,6 +14,19 @@ def graph():return {'library':vector_graph(inspection()),'packageProperties':[pa
 def prop(name,value):return {'name':name,'value':value,'nativeType':0,'editable':1,'deletable':1}
 
 class PackageEditTests(unittest.TestCase):
+    def test_native_user_strings_preserve_numeric_boolean_and_empty_literals(self):
+        values=['00123','1e3','False','','器件 00123']
+        users=[{'name':'LITERAL_'+str(i),'operation':'set','value':value} for i,value in enumerate(values)]
+        expected=expected_package_edit(graph(),'TEST',{},users)[0]
+        props=expected['packageProperties'][0]['userProperties']
+        self.assertEqual([p['value'] for p in props],values)
+        self.assertTrue(all(p['nativeType']==0 for p in props))
+
+    def test_non_string_user_values_not_silently_coerced(self):
+        for value in (123,False,1.5,[],{},None):
+            with self.subTest(value=value),self.assertRaises(CadenceError):
+                expected_package_edit(graph(),'TEST',{},[{'name':'P','operation':'set','value':value}])
+
     def test_fixed_fields_update_both_independent_getter_views_and_preserve_symbols(self):
         source=graph();before=copy.deepcopy(source)
         expected,fields,operations,old=expected_package_edit(source,'TEST',{'referenceTemplate':'J?','footprint':'NEW_FP','pcbLibrary':'NEW_LIB'},[])

@@ -45977,7 +45977,7 @@
   {
     "name": "capture_query_library_package_properties",
     "title": null,
-    "description": "Read fixed package template/designator, PCB library/footprint names and explicit user property text/type/editability flags from an immutable library snapshot. No external footprint or DSN cache verdict.",
+    "description": "Read fixed package template/designator, PCB library/footprint names and explicit user property text/type/editability flags from an immutable library snapshot. The Capture information model defines UserProp values as strings; built-in DBProps are separate typed attributes. Numeric and Boolean-looking user text is never auto-parsed. No external footprint or DSN cache verdict.",
     "inputSchema": {
       "properties": {
         "libraryId": {
@@ -46245,7 +46245,7 @@
   {
     "name": "capture_plan_library_package_edit",
     "title": null,
-    "description": "Plan fixed package field changes and explicit string user-property set/empty/delete on a new OLB copy. Freeze all package properties and modeled definitions/vectors/template/pin starts. Package names, devices and pin mappings do not change; built-in property shadowing and typed/locked user edits are refused.",
+    "description": "Plan fixed package field changes and explicit string user-property set/empty/delete on a new OLB copy. Native Capture UserProps are string storage by the information model, not a generic typed-property channel. Freeze all package properties and modeled definitions/vectors/template/pin starts. Package names, devices and pin mappings do not change; built-in property shadowing and typed/locked user edits are refused.",
     "inputSchema": {
       "properties": {
         "libraryId": {
