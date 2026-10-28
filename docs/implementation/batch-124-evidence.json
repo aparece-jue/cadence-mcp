@@ -1,0 +1,49 @@
+{
+  "batch": 124,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 6,
+  "tools": 223,
+  "newPublicTools": [
+    "capture_check_symbol_contacts"
+  ],
+  "nativeLinearSymbolContactCheckAccepted": true,
+  "baselineNativeContacts": 0,
+  "movedNativeContacts": 5,
+  "nativeContactKinds": {
+    "crossing": 3,
+    "t_contact": 2
+  },
+  "crossPageObjectOwnershipAccepted": true,
+  "mixedExplicitSkippedVectors": 5,
+  "exactFractionsAndResourceGuardsUnitTests": 8,
+  "fullV02Accepted": false,
+  "renderedClearanceAccepted": false,
+  "officialDisplayFrameReference": {
+    "installRelativePath": "tools/capture/tclscripts/capAlignObject/capObjectAlignment.tcl",
+    "sha256": "bccb4b1183796e4336a381494a6e16e195a835ec1eb860c6e3229143ba4beb4d",
+    "function": "GetDisPlayPropAbsCoord",
+    "line": 367,
+    "observation": "For part display properties the cached rectangle is owner-relative and the helper adds owner location; this is coordinate conversion, not evidence of font remeasurement or valid rendered extents."
+  },
+  "latestFullRegression": {
+    "total": 712,
+    "passed": 711,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-symbol-contacts-20261028.txt"
+  },
+  "priorBatchDevelopSyncVerified": "7f9a81424fb8f3b1ea20adc56ec44cabbbf7ece6",
+  "evidenceSha256": {
+    ".local/symbol-contacts-mcp-20261028/expected.json": "815c01876970f9a8a7effe680bf3189615fbdbfb83347a1f23b20250181fe05c",
+    ".local/symbol-contacts-mcp-20261028/report.json": "33cdaa0f54428272168ad7090e45143cb32bdb2f473244175d4fcc164baac816",
+    ".local/symbol-contacts-mcp-20261028/before-wires.json": "18324c42e0b0f205be0cd690e2d8873e36005c0d79cc0db5a463311bb17aced0",
+    ".local/symbol-contacts-mcp-20261028/after-wires.json": "18324c42e0b0f205be0cd690e2d8873e36005c0d79cc0db5a463311bb17aced0",
+    ".local/regression-symbol-contacts-20261028.txt": "20928ee888b52c572e66595509dd303704fb31097a3873b1f6ed2bdd84648095",
+    "src/cadence_mcp/capture_symbol_contacts.py": "d1d0ffccd1efc1f5a486c1a1bb1ee03a5342a55da0260c439e8da25526d99017",
+    "tests/test_symbol_contacts.py": "33d3700256381c488bc76598ad723a826488b30aae8fb44574418e200acbbd01",
+    "tools/smoke_symbol_contacts_mcp.py": "9f48a8c9128d3899f78ce4c386c370ade42713f10e2db12598f4d6ac4c17069d"
+  }
+}

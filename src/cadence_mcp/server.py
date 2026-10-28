@@ -28,6 +28,7 @@ from .capture_wire_edit import CaptureWireEdits
 from .capture_graphic_line import CaptureGraphicLines
 from .capture_graphic_text import CaptureGraphicTexts,GraphicTextChange
 from .capture_part_vectors import query_part_vectors
+from .capture_symbol_contacts import check_symbol_contacts
 from .capture_page_bounds import query_page_dimensions,check_page_graphic_bounds
 from .capture_part_edit import CapturePartEdits
 from .capture_alias_edit import CaptureAliasEdits
@@ -937,6 +938,13 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
         return await invoke(query_part_vectors,capture,sessionId,partId,cursor,limit,backend="capture_dbo",
                             coverage=("typed_defining_part_vectors","native_page_control_points","explicit_unsupported_inventory"),
                             not_checked=("rendered_clearance","display_properties_and_pin_graphics","occurrence_geometry","native_drc"))
+
+    @register(readonly=True)
+    async def capture_check_symbol_contacts(sessionId: str, partId: str) -> ToolResult:
+        """Find exact crossing/T/overlap candidates between one part's actual linear defining vectors and same-page wires. Curves/text/bitmap/fill are explicit skipped rows. Does not measure glyph/stroke clearance, shared endpoints, closed-shape containment, pin connectivity or DRC; never reports a design pass. Source revision, traversal and pair/finding budgets are enforced."""
+        return await invoke(check_symbol_contacts,capture,sessionId,partId,backend="capture_dbo",
+                            coverage=("exact_linear_symbol_wire_contacts","page_isolation","explicit_skipped_geometry"),
+                            not_checked=("rendered_clearance","electrical_connectivity","native_drc"))
 
     @register(readonly=True)
     async def capture_get_page_dimensions(sessionId: str, pageId: str) -> ToolResult:

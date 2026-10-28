@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十四批线性元件/导线接触MCP（2026-10-28）
+
+- 官方display alignment脚本定位/hash确认：元件display property缓存框加owner location是坐标转换，不能当字体重测证明。原文字/笔宽边界仍未验收。
+- 新capture_check_symbol_contacts用实际定义线条/折线/多边形/矩形与同页wire做精确分数交叉/T/重叠候选；非线性/文字/位图/Fill明确skip，预算超限失败，始终无设计/渲染/电气通过结论。不是替代原完整避让范围。
+- 原私有三角形600,400对照0，移动副本330,300独立手工预期5（3crossing/2T）通过实际MCP；原28线全部几何/native net保持，目标页15段、另一页不误计，混合5skips、产物hash、错误目标/缓存后tamper/关闭会话拒绝通过。全源/oracle保持，无GUI/安装/真实设计写入。
+- 新8测试；完整712/711通过/1原symlink权限skip，开发223契约同步、65发行白名单保持。原V02完整字形/笔宽/显示/引脚/曲线填充/嵌套/包含/occurrence及其他联合要求未通过，原34仍6/34。上批develop7f9a814已同步；本批研发推develop、alpha/release不动。见symbol-contact-check.md、batch-124-evidence.json。
+
 ## 第一百二十三批混合定义图形与位图只读验收（2026-10-28）
 
 - 审批服务额度恢复后核对干净worktree，继续新part-vectors入口的实际多类图形。第一次测试把公开text规格错当内部location/LOGFONT数组，在原生派发前失败，保留记录后新v2目录修正预期构造，不改原oracle。
