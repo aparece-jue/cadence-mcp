@@ -1,0 +1,30 @@
+# 0.1.1-alpha.1 的 Capture 桥接
+
+仅原生编辑布线/总线及部分 Capture 原生任务需要这个步骤。普通 DSN/OLB 查询和独立 CIR 仿真可先使用基础配置。
+
+在解压目录运行以下命令，把路径替换为本机绝对路径。辅助脚本从已安装 wheel 导入实现，不依赖研发源码，也不修改 Cadence 安装。
+
+```powershell
+.\.venv\Scripts\python.exe .\tools\prepare_write_fixture.py --source D:\my-inputs\sample.dsn --output-root D:\cadence-mcp-0.1.1-alpha.1\controls
+```
+
+脚本输出新副本 DSN 路径。用 Capture 打开这个副本，作为 PCB 项目保存；首次 DSN 工程类型确认可能需要手动完成。编辑布线/总线的宿主限制为单 DSN、同目录同文件名前缀的 PCB OPJ，不含其他资源引用。不要使用真实工作工程作为测试宿主。记录实际 DSN 路径、OPJ 路径和 Capture PID；保存后确保无未保存修改或模态弹窗。
+
+```powershell
+.\.venv\Scripts\python.exe .\tools\prepare_gui_bridge.py --private-root D:\cadence-mcp-0.1.1-alpha.1\bindings --copied-design D:\实际副本目录\write_fixture.dsn --capture-pid 12345
+```
+
+输出本地 binding.json 路径。使用该实际路径加载桥接：
+
+```powershell
+.\.venv\Scripts\python.exe .\tools\load_gui_bridge.py --binding D:\实际私有绑定目录\binding.json
+.\.venv\Scripts\python.exe .\tools\bridge_doctor.py --binding D:\实际私有绑定目录\binding.json
+```
+
+诊断为 ready 后，把 `mcp-gui-client.example.json` 中所有路径替换为实际值，合并到客户端配置。`--gui-bridge-root` 指向含私有绑定子目录的注册根；`--read-root` 还须允许读取副本宿主目录和测试输入。认证文件只能保留本地，不能上传反馈或 Git。
+
+客户端调用 `capture_gui_instances`、`capture_gui_attach`，以新 guiSessionId 配合 hostProject 计划编辑任务。正常任务不需要逐次桌面点击。宿主编辑任务完成会恢复控制工程并使旧 GUI 会话失效；下一任务重新 attach。重复层次子页必须明确 editorOccurrence。
+
+启动/崩溃恢复或工程类型弹窗可能仍需人工处理；不能承诺所有 GUI 故障均可无桌面恢复。进程重启或控制工程改变时准备新绑定；不重发旧写任务，不随意删除锁/围栏，不杀 Capture 取消已开始任务。旧客户端/进程仍占用同一绑定时应先停止其业务，避免两个客户端并行派发。
+
+固定备注写入另需 `--allow-property-write` 和原始隔离副本标记；它不是任意设计写权限。完整规则、恢复与业务范围见仓库 docs/gui-bridge.md、docs/native-editor-wire.md 和 docs/native-bus-inventory.md。

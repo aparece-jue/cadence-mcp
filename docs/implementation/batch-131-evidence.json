@@ -1,0 +1,53 @@
+{
+  "batch": 131,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "alphaCandidate": "v0.1.1-alpha.1",
+  "pythonPackageVersion": "0.1.1a1",
+  "alphaPrepared": true,
+  "alphaPublished": false,
+  "releaseUnchanged": true,
+  "installedContractCaptureEngineDcDatAccepted": true,
+  "installedNewFeaturesAccepted": [
+    "parts",
+    "contacts",
+    "titleblocks",
+    "user-strings",
+    "inventory"
+  ],
+  "packagedSourceFilesVerified": 244,
+  "fullRegressionRerunThisBatch": true,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/alpha311/candidate-regression.txt"
+  },
+  "acceptedGateIds": [],
+  "initialBuildAttempt": "Research interpreter lacks pip; build used existing build tool without installing into old environments. New isolated environment only.",
+  "initialInstalledHarnessFailure": "Historical part count222 rejected actual224 before native feature queries; old report retained. New fixed suite updates historical part/contact count only, keeps oracles, excludes source PYTHONPATH.",
+  "evidenceSha256": {
+    ".local/alpha311/core/report.json": "dc848ace9d493445df24298d92de338020a5156459bfd4225772cf483d55ac84",
+    ".local/alpha311/new-features-v2/report.json": "daf16788beb39f71229a0859d690471ef8fab201ca06bc97da7ece8953a134a8",
+    ".local/alpha311/new-features/parts/report.json": "8cd7a40ad19e7708208e345a811eddcf12e6783e3338f9ce00db3239b7872886",
+    ".local/alpha311/wheel-proof.json": "aed22df7b7b1364996862dd1a69e108a9384b5507a9c26de7cc13cff3a01d75f",
+    ".local/alpha311/candidate-regression.txt": "4c3406a581cc14e4831cf5dee4ac3bf808d4ace5263242a1267a4f17f7481894",
+    ".local/alpha311/pip-check.txt": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    ".local/alpha311/new-features-v2/parts/report.json": "51a6068fdb9de2795603b0c8cb5704f9c7189088a28d41072e6deba940879ca4",
+    ".local/alpha311/new-features-v2/contacts/report.json": "c0e09f2bb8d1530cfce0262efb4551339a28cc33466e15f4dd733fb097982014",
+    ".local/alpha311/new-features-v2/titleblocks/report.json": "b9c8c6de210a53ea8782ae374de49f4a40f1655eb6be4025af499ddee714887f",
+    ".local/alpha311/new-features-v2/user-strings/report.json": "3a376058efece70e05da10d2e35ee2ada784ef4b3fbf1598af742f28cd5a7f68",
+    ".local/alpha311/new-features-v2/inventory/report.json": "0d92c43479a4d613ec0890252f097714b89c531ab26d617464ad82e3b9ef8ce6",
+    "docs/releases/alpha-3-verification.json": "d66516bb9a520c26e9ef7ffb2b6bb645f438a83cd9001a434331801ad73f5e27",
+    "tools/smoke_alpha3_installed_features.py": "aee257443c4c4bd85c40d98912b3fe78d8368fa4d0ebb6a053040aecca6f6010",
+    "tools/package_alpha311_candidate.py": "80fd59758cbab51a70b6373a6c1a32073b59fa430e2ffa2c8ae38eeb15cb6d1a",
+    "tools/prepare_alpha311_candidate.py": "f996a80d4590b8ef01cf1127ebea7e5084b470301697ad64d2590a9736d1e841"
+  }
+}

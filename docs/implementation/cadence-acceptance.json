@@ -3683,10 +3683,10 @@
     "latestFullRegression": {
       "total": 729,
       "passed": 728,
-      "errors": 0,
       "skipped": 1,
+      "errors": 0,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-titleblock-vectors-final-20261028.txt"
+      "evidence": ".local/alpha311/candidate-regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3863,7 +3863,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 130,
+    "batch": 131,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4247,7 +4247,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-130-evidence.json",
+    "evidence": "docs/implementation/batch-131-evidence.json",
     "targetedRegression": {
       "readonly": {
         "total": 13,
@@ -4263,7 +4263,7 @@
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 1,
+    "newPublicTools": 0,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
@@ -4275,7 +4275,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 8,
-    "productionCodeChanged": true,
+    "productionCodeChanged": false,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4310,7 +4310,21 @@
     "orderedPagingAndIdentityGuardsAccepted": true,
     "sourceAndOracleUnchanged": true,
     "oldPoseHypothesisAndEncodingFailurePreserved": true,
-    "old223ContractsUnchanged": true
+    "old223ContractsUnchanged": true,
+    "alphaCandidate": "v0.1.1-alpha.1",
+    "pythonPackageVersion": "0.1.1a1",
+    "alphaPrepared": true,
+    "alphaPublished": false,
+    "releaseUnchanged": true,
+    "installedContractCaptureEngineDcDatAccepted": true,
+    "installedNewFeaturesAccepted": [
+      "parts",
+      "contacts",
+      "titleblocks",
+      "user-strings",
+      "inventory"
+    ],
+    "packagedSourceFilesVerified": 244
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

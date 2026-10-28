@@ -36,10 +36,10 @@
   "latestFullRegression": {
     "total": 729,
     "passed": 728,
-    "errors": 0,
     "skipped": 1,
+    "errors": 0,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-titleblock-vectors-final-20261028.txt"
+    "evidence": ".local/alpha311/candidate-regression.txt"
   },
-  "acceptanceCanonicalSha256": "bad6578264dea00f1a6329c32caedd7e5359469efb7834ac3855cfa2216e9297"
+  "acceptanceCanonicalSha256": "2c5f224d95dcf314658725b27d6b8445ed61a48bbe79bcd74f86003415f17f3a"
 }

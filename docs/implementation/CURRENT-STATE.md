@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十一批0.1.1-alpha.1独立安装与发布准备（2026-10-28）
+
+- 在975001d固定源码快照仅更改包版本0.1.1a1构建wheel，244个源码/Tcl逐字节核对。新独立环境安装固定依赖、pip check，实际224契约、Capture查询、引擎新DC2.5V及本次关联DAT通过，无源码PYTHONPATH。
+- 安装后元件八姿态向量、原生5接触候选、9标题栏/八姿态、仅用户属性新增保存重开、原40对象/9端口/共享NC全套通过。首轮旧历史计数222失败保留；只调整新安装测试的期望工具数为224，原oracle不改。候选完整729/728+1原权限skip。
+- ZIP/wheel/校验值、安装/桥接指南、版本说明与合法文件检查完成；CLI本版未复测，旧产品选择限制保留。准备新tag/alpha非强制晋级和GitHub预发布，远端完成回执另行补记；release/main/旧tags与环境不动。原34仍8/34，目标active。
+- 见docs/releases/alpha-3-verification.json、batch-131-evidence.json。研发与管理先同步develop，alpha仅接受已验证候选固定版本。
+
 ## 第一百三十批标题栏定义图形MCP（2026-10-28）
 
 - 新capture_query_titleblock_vectors读取指定标题栏的有序局部定义/完整文字字体与原生页面控制点，预算、不可变revision/ID和分页隔离保持；不计算渲染/电气通过结论。
