@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十七批E03原生编号范围诊断与失败后移（2026-10-28）
+
+- 原R?源只读复核：R? primitive1、drawn0，IncludeNonPrimitive真实回读0；原R?未编号/两个非目标被改原因仍未解决。文档IsRefDesValid方法在当前对象/静态绑定缺失，首次失败保留，新诊断明确null。
+- 官方AssignRefDesToList注册但要求typed对象列表；有限命令检索未发现构造入口。原nativeId2502/R?在新副本传Tcl选定对象列表，overload转换拒绝，savedfalse，输出与原源字节相同，原oracle/hash保持，worker归零。没有强制类型转换或新自动编号工具；不是根因已定/全部接口不可用结论。
+- E03保持deferred并移队尾，保留原显式映射与全部自动/occurrence要求。下一步推进原独立队列，后续再研究支持的应用命令/typed-list来源。无生产/契约改动，最近完整721/720+1权限skip沿用，不冒称重跑；固定研究脚本编译通过。
+- 原34仍7/34=20.6%，整体active；C03已通过保持。上批develop38a9833已核对；本批研究/问题/进度同步develop，alpha/release不动。见annotation-scope-research.md、batch-127-evidence.json。
+
 ## 第一百二十六批C03原位置/姿态/热点读取完整结案（2026-10-28）
 
 - 原C03逐要求审计通过：原失败源、实际电阻和导入混合符号三来源各8姿态，24原生保存重开+24实际公开MCP热点/姿态/身份/revision通过；源定义框与local pins在新修改前冻结，旧观测/预期/失败报告保持。新source宽高0/20/40、原非方偏置100x60 holdout共同覆盖此前泛化疑问。

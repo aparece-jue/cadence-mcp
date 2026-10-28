@@ -1,0 +1,54 @@
+{
+  "batch": 127,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 7,
+  "tools": 223,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "fullE03Accepted": false,
+  "nativeAnnotationAccepted": false,
+  "readonlyPrimitiveDiagnosticsAccepted": true,
+  "targetPrimitive": 1,
+  "drawnPrimitives": [
+    0,
+    0
+  ],
+  "includeNonPrimitiveReadback": 0,
+  "documentedIsRefDesValidUnavailable": true,
+  "explicitTclListRejectedBeforeSave": true,
+  "sourceOutputAndOriginalOracleUnchanged": true,
+  "ownedWorkersStopped": true,
+  "queueMoved": {
+    "feature": "E03",
+    "before": 60,
+    "after": 73
+  },
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 721,
+    "passed": 720,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-closed-outline-20261028.txt"
+  },
+  "priorBatchDevelopSyncVerified": "38a9833117c4500ee7952a7153621cbed82cd75d",
+  "evidenceSha256": {
+    ".local/annotation-validity-20261028/report.json": "9bbbbe871880b2748cabdcfd3a0d3a066b222e5666cd0a78617a2a6835fad19e",
+    ".local/annotation-validity-20261028/native.json": "26a4b31d4bd05992fb4b27fda7ae48ea152d847e3d7f7b3124cb68bc1a04a470",
+    ".local/annotation-validity-v2-20261028/report.json": "8a898b5bc6ef2a7358067854a7a4ae59b248abab4a39ae81f088a59335ac4a5e",
+    ".local/annotation-scope-runtime-20261028/runtime.json": "2445b1659299261a7fbbeee570d17b3c1d04524e6f00f005c36f73bbf8a2652e",
+    ".local/explicit-annotation-list-20261028/report.json": "ac7d824ff0b371a21059a7c623bd4f36d5ad5baa7c7450342ab174fdc9dc0c5d",
+    ".local/explicit-annotation-list-20261028/native-receipt.json": "2e798da7e3591152eb4672fac82fe5aa661c3e8d4b45ab9c71e39b55854b75e6",
+    ".local/native-incremental-annotation-v2-20261025/expected.json": "c03286b5370fbef4e5922978cf99c51b1deb9cc9f54bafc3ece0bd50a23febcf",
+    ".local/native-incremental-annotation-v2-20261025/report.json": "0591ebf1158c77c049cc514189471e1cec8459fe00c94de5215e24b8791f002e",
+    "tools/probe_annotation_validity.py": "0d43fde0f451dc3acb4ba6c215be549bc6add301d21afc7d09a308c55a628f4b",
+    "tools/probe_annotation_validity_v2.py": "485652903526cd4185441f3d94bc2e4d225788746e9e120b6ae9450897613ce8",
+    "tools/probe_annotation_scope_runtime.tcl": "07e4938ca1fc31110815c7afe3a814134bff694ec0e1f771be8e60e0bf91e95d",
+    "tools/probe_annotation_scope_runtime.py": "c114f9f83013a3dbee6212fb5b991820132c86bbca7123a5670538746f6794f3",
+    "tools/fixture_explicit_annotation_list.tcl": "78d39e618c9f7975a9b9400356afa5dfadebbb24b2d14f47c6c5507333d10e57",
+    "tools/probe_explicit_annotation_list.py": "8398dd42f15f3397383e5d7328f01930a273b00190dd9a74b2934730498b07c6"
+  }
+}

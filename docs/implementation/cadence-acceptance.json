@@ -1220,7 +1220,7 @@
       "module": "编号",
       "title": "位号映射/交换/冲突预检/多单元归属",
       "required": true,
-      "queueOrder": 60,
+      "queueOrder": 73,
       "dependencies": [
         "E01",
         "L01"
@@ -1246,7 +1246,14 @@
         ".local/package-reference-crosspage-20261025/report.json",
         ".local/package-reference-crosspage-mcp-20261025/report.json",
         ".local/native-incremental-annotation-v2-20261025/report.json",
-        ".local/native-incremental-annotation-v2-20261025/failure-audit.json"
+        ".local/native-incremental-annotation-v2-20261025/failure-audit.json",
+        ".local/annotation-validity-20261028/report.json",
+        ".local/annotation-validity-20261028/native.json",
+        ".local/annotation-validity-v2-20261028/report.json",
+        ".local/annotation-scope-runtime-20261028/runtime.json",
+        ".local/explicit-annotation-list-20261028/report.json",
+        ".local/explicit-annotation-list-20261028/native-receipt.json",
+        "docs/implementation/batch-127-evidence.json"
       ],
       "issues": [
         "ISS-E03-reference-unit-identity",
@@ -1254,7 +1261,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Explicit package maps now additionally pass native cross-page and three nondefault display fields with literal Chinese/free-text preservation, two actual MCP representatives, conflict/cancel/fresh/no-replay/output-tamper checks. Native incremental annotation experiment failed the frozen R?->R1 map: R? stayed and two non-target drawn hierarchy references gained digits; connection objects/cache unchanged. Full E03 deferred and moved last. Occurrence maps, automatic allocation/scope semantics and render/font matrix remain unaccepted; no automatic annotation tool published."
+      "remaining": "Explicit package maps now additionally pass native cross-page and three nondefault display fields with literal Chinese/free-text preservation, two actual MCP representatives, conflict/cancel/fresh/no-replay/output-tamper checks. Native incremental annotation experiment failed the frozen R?->R1 map: R? stayed and two non-target drawn hierarchy references gained digits; connection objects/cache unchanged. Full E03 deferred and moved last. Occurrence maps, automatic allocation/scope semantics and render/font matrix remain unaccepted; no automatic annotation tool published. Batch127: original failed source read-only native diagnostics confirm R? isPrimitive1, drawn blocks0, IncludeNonPrimitive option really0. Documentation IsRefDesValid has neither object method nor static binding; first probe failure retained, v2 uses null availability. Documented AssignRefDesToList exists but Tcl selected-pointer list is rejected by overload conversion before save; no exposed DboBaseObjectList constructor found in bounded runtime discovery. New output and source/original oracle bytes unchanged; owned worker stopped. No automatic annotation tool, no scope/root-cause acceptance; move E03 to tail. Investigate supported native app command or verified typed-list source later; explicit package-map/occurrence requirements retained."
     },
     {
       "id": "E04",
@@ -3387,7 +3394,13 @@
       "expected": "R?->R1; all other references, units, modeled state and connectivity/cache preserved",
       "observed": "R? unchanged; halfadd_A->halfadd_A1 and halfadd_B->halfadd_B1; connection objects and cache graphs unchanged",
       "originalExpectedUnchanged": true,
-      "nextAction": "Investigate native query-option/primitive/occurrence scope after independent queued work; keep original failing oracle and output."
+      "nextAction": "After independent queued items, verify supported native Capture annotation app command/typed-list source and original instance/occurrence scope. Preserve R?->R1 and unrelated-reference freeze; do not coerce native pointer types or expose unverified automatic annotation.",
+      "latestObservation": "Batch127: primitive classification/IncludeNonPrimitive readback are correct in original reset source; documented IsRefDesValid is not bound. Explicit AssignRefDesToList rejects a Tcl object list before save, output remains original bytes. This does not identify the incremental annotator root cause or certify an alternative.",
+      "additionalEvidence": [
+        ".local/annotation-validity-v2-20261028/report.json",
+        ".local/annotation-scope-runtime-20261028/runtime.json",
+        ".local/explicit-annotation-list-20261028/report.json"
+      ]
     },
     {
       "id": "ISS-E02-display-font-quality-persistence",
@@ -3812,7 +3825,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 126,
+    "batch": 127,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4196,7 +4209,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-126-evidence.json",
+    "evidence": "docs/implementation/batch-127-evidence.json",
     "targetedRegression": {
       "wiring": {
         "total": 14,
@@ -4220,10 +4233,9 @@
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
-    "acceptedGateIds": [
-      "C03"
-    ],
-    "nativeC03Complete": true
+    "acceptedGateIds": [],
+    "nativeC03Complete": true,
+    "nativeAnnotationAccepted": false
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

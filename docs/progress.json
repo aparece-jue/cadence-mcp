@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-closed-outline-20261028.txt"
   },
-  "acceptanceCanonicalSha256": "622c37de4062d9f230c6267eb1d48622f3db4cf810ecc7e67b1f2555ee106f13"
+  "acceptanceCanonicalSha256": "efcd72d2a9168b858b7ce1fc3bcefe5abd210d80de8afb873c1802c2c29d92a8"
 }

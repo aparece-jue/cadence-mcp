@@ -1,0 +1,11 @@
+# 原生增量编号范围与绑定诊断（2026-10-28）
+
+对应原E03，自动分配/occurrence与增量目标范围仍未通过。本轮固定原native-incremental-annotation-v2源、原R?->R1且其他状态不变的oracle，不改旧失败报告。依据本机Tcl/Tk Extensions PDF823–825的RefDesManager/QueryHandler/Annotate类，517页IsPrimitive，158页有效属性读取。
+
+只读复核R? IsPrimitive=1、有效Primitive=DEFAULT，两个drawn块IsPrimitive=0、有效Primitive=NO；同一原选项SetIncludeNonPrimitive0的getter回读0。不能把旧改错层次块的原因说成这些标志未设置，也未证明内部编号函数真正采用了该选项。
+
+第一次调用文档IsRefDesValid发现当前QueryHandler对象方法未绑定；原诊断失败保留。后续固定命令发现也没有DboRefDesQueryHandler_IsRefDesValid，结果refDesValid明确null，未将缺失API当false或true。RefDesQueryObject有构造/字段命令，但32参数签名探针只得到overload不匹配；没有构造任意指针或扩大MCP接口。
+
+文档AssignRefDesToList要求DboBaseObjectListT*，注册了该方法，但当前有限命令搜索没有提供该列表构造入口。新副本明确选中原nativeId2502/R?，传入Tcl目标对象列表时绑定返回No matching function for overloaded DboRefDesQueryHandler_AssignRefDesToList，停在native_explicit_list、saved=false。新输出DSN SHA与原reset源相同，原R?->R1预期与源hash保持，独立worker归零。只证明这条Tcl列表转换路径被拒绝，不宣称所有原生编号接口不可用或原增量bug根因已定。
+
+按失败后移，E03保留deferred并移到队尾。下一次考虑官方Capture应用命令或已验证类型列表来源；显式单单元/package映射现有能力保持，自动分配/occurrence/完整E03标准不删减。没有新MCP工具或生产改动，本批只新增固定研究探针、原创解释及证据；研究Python语法检查通过。最近完整721项720通过/1原权限skip沿用前批，不冒称重跑。开发223工具、原34仍7通过20.6%，alpha/release不变。
