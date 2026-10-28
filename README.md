@@ -12,7 +12,7 @@
 
 > **发行版 v0.1.0（已验证能力）**：[下载](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0) · [安装](docs/testing/v0.1.0.md) · [65工具支持范围](docs/releases/v0.1.0-supported.md)。发行安装包默认使用validated_server；当前develop入口224工具，当前完整研发8/34，不将本发行声明为全部功能完成。
 
-> **测试版 v0.1.0-alpha.2**（Python 包版本 `0.1.0a2`）：[下载预发布版](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0-alpha.2) · [安装与试用指南](docs/testing/alpha-2.md) · [版本说明](docs/releases/v0.1.0-alpha.2.md)。Windows x64 / 本机验证 Cadence 24.1，221个工具；原34项门禁仍6项完整通过。新增原生编辑布线、普通总线/物理成员查询及受限PSpice联动。未完成范围见指南。[旧alpha.1](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.0-alpha.1)保留。
+> **测试版 v0.1.1-alpha.1**（Python包版本`0.1.1a1`）：[下载](https://github.com/aparece-jue/cadence-mcp/releases/tag/v0.1.1-alpha.1) · [安装](docs/testing/alpha-3.md) · [版本说明](docs/releases/v0.1.1-alpha.1.md)。224个扩展工具，完整业务验收8/34；新增图形/标题栏查询及库属性保存修复，未完成范围继续研发。
 
 
 面向 Windows 本机 Cadence OrCAD Capture 与 PSpice 的统一 MCP 服务。
