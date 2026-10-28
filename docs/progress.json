@@ -1,15 +1,15 @@
 {
   "asOf": "2026-10-28",
   "metric": "required_gates_fully_accepted",
-  "passed": 6,
+  "passed": 7,
   "total": 34,
-  "percent": 17.6,
-  "remaining": 28,
+  "percent": 20.6,
+  "remaining": 27,
   "statusCounts": {
-    "passed": 6,
+    "passed": 7,
     "baseline_passed": 1,
     "implemented_partial": 8,
-    "deferred": 18,
+    "deferred": 17,
     "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
@@ -17,9 +17,9 @@
   },
   "groups": {
     "Capture": {
-      "passed": 4,
+      "passed": 5,
       "total": 28,
-      "percent": 14.3
+      "percent": 17.9
     },
     "PSpice": {
       "passed": 2,
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-closed-outline-20261028.txt"
   },
-  "acceptanceCanonicalSha256": "40ac448924a99d03a8ec377c8b7e428082b33a0214e75b5dfe71856531fd4178"
+  "acceptanceCanonicalSha256": "622c37de4062d9f230c6267eb1d48622f3db4cf810ecc7e67b1f2555ee106f13"
 }

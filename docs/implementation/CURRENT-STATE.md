@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百二十六批C03原位置/姿态/热点读取完整结案（2026-10-28）
+
+- 原C03逐要求审计通过：原失败源、实际电阻和导入混合符号三来源各8姿态，24原生保存重开+24实际公开MCP热点/姿态/身份/revision通过；源定义框与local pins在新修改前冻结，旧观测/预期/失败报告保持。新source宽高0/20/40、原非方偏置100x60 holdout共同覆盖此前泛化疑问。
+- 当前同构/异构2/3单元6/8共享pin行与手工层次块几何复验通过；重复U3按partId隔离，错误目标/源tamper/关闭/新服务旧session拒绝；专属5geometry测试全通过。首次位号歧义测试在修改前拒绝并保留，v2显式原失败partId完成。
+- 旧r1 observed按位置归一化与当前热点相同；原local-zero预测遗漏宽高补偿，旧错误oracle仍false，不追认。现在有原源、广泛实际源、独立holdout和完整公开API集成，关闭ISS-C03-pose-matrix-1fc81bf46d，C03按原定义级读取范围passed。电气/放置/缓存/occurrence/渲染相关失败仍留各原门禁，未随C03抹去。
+- 原34完整通过从6增至7（20.6%），剩27；整体目标active。无生产变化，最近完整721/720+1权限skip沿用上批、不冒称重跑；工具223不变。上批developbb37cd4已核对；本批审计/源码探针/管理与进度同步develop，alpha/release不变。见c03-completion-audit.md及batch-126-evidence.json。
+
 ## 第一百二十五批简单封闭轮廓整段包含（2026-10-28）
 
 - 已有symbol-contact工具增强至profile0.2，精确简单环/绕数/整段边界交验补足“无边界交叉但完全位于轮廓内部”的候选。自交/自触/折返/退化环明确skip包含；全局简单性配对预算、原配对/finding预算保持，无渲染/电气/设计通过结论。

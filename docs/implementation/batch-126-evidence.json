@@ -1,0 +1,120 @@
+{
+  "batch": 126,
+  "date": "2026-10-28",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 7,
+  "acceptedGateIds": [
+    "C03"
+  ],
+  "tools": 223,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "nativeIndependentPoseCases": 24,
+  "publicPoseCases": 24,
+  "currentSharedReadCases": 2,
+  "currentDrawnReadCases": 1,
+  "dedicatedGeometryTests": {
+    "total": 5,
+    "passed": 5,
+    "skipped": 0
+  },
+  "originalFailedSourceAndOraclesPreserved": true,
+  "C03ScopeUnchanged": "Design-definition location/rotation/mirror and native actual pin hotspots. Electrical writes, flat occurrence connectivity and rendering gates retain all requirements.",
+  "previousC03RemainingPreserved": "原姿态通过，90度出现固定参考帧偏移；八姿态仅1通过，不能用观察值改预期。 Centered owned two-pin fixture passes all 8 poses through typed edit backend; original noncentered affine mismatch is not resolved or replaced. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch87: original40x40 center hypothesis8poses pass but predeclared80x40 offset rectangle rejects center6/8. New independent100x60 offset rectangle predeclared width/height-compensated model passes8native and8real MCP read/closed-session cases. Native GetOffsetGraphicPoint agrees with pin hotspots; read-only audit explains all24rows under size model without modifying old failed origin/center oracles. General arbitrary-source frames, full original gate/integration remain unaccepted.",
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 721,
+    "passed": 720,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-closed-outline-20261028.txt"
+  },
+  "priorBatchDevelopSyncVerified": "bb37cd43dae7724545c34b608ba0ab7641b7f8e5",
+  "requirementAudit": {
+    "gate": "C03",
+    "accepted": true,
+    "scopeUnchanged": "Design-definition position/rotation/mirror/native physical pin hotspot read API. This does not accept writes/electrical behavior or occurrence/render geometry.",
+    "criteria": [
+      {
+        "requirement": "Original C03: position/rotation/mirror plus actual pin hotspots, original four directions and mirror fixtures",
+        "proof": "24 independent source-frozen/native save-reopen cases and actual public API reads across original failed source, real resistor and imported mixed symbol; all pin numbers/names/hotspots and poses match. Native graphic point agrees independently.",
+        "accepted": true
+      },
+      {
+        "requirement": "Broader original source/frame integration, without replacing old failures with only a centered small fixture",
+        "proof": "Actual original first failed object re-tested in all8 poses; separate100x60 offset holdout/native/MCP retained; 0/20/40 source definition-box sizes, drawn hierarchy block manual hotspots, and current shared2/3-unit6/8-pin queries.",
+        "accepted": true
+      },
+      {
+        "requirement": "Target/source/revision/identity/lifecycle guards and dependency",
+        "proof": "C01 passed; duplicateU3 correctly separated by partId, all pinIds source-bound, wrong target/stale/closed/fresh-server refused. Five dedicated malformed-output/pin/parent/source-during-worker tests passed; every source and old oracle retained.",
+        "accepted": true
+      },
+      {
+        "requirement": "Explain and preserve old failed local-zero/center hypotheses",
+        "proof": "Original r1 native normalized observed coordinates exactly match fresh public output; old wrong expectedPins remain unequal. Width/height source dimensions and defining local pins are frozen before new mutations; older non-square holdout falsified center model. Old reports are not changed to passed.",
+        "accepted": true
+      }
+    ],
+    "sharedReadCases": [
+      {
+        "case": "c03-shared-homogeneous-20261028",
+        "units": 2,
+        "pinDefinitionRows": 6,
+        "sourceUnchanged": true,
+        "geometryVerified": true
+      },
+      {
+        "case": "c03-shared-heterogeneous-20261028",
+        "units": 3,
+        "pinDefinitionRows": 8,
+        "sourceUnchanged": true,
+        "geometryVerified": true
+      }
+    ],
+    "oldFailedOracleStillFalse": true,
+    "oldObservedBehaviorStillMatches": true,
+    "notPromoted": [
+      "L03/D04/L05 shared-power wiring/cache-copy acceptance",
+      "D02 pose-write electrical preservation",
+      "H02/H03 occurrence and cross-boundary connectivity",
+      "C05/V02 rendered glyph/stroke clearance"
+    ],
+    "evidenceSha256": {
+      "docs/implementation/cadence-plan.md": "9752656e2e2931effe7fbaf20a8dba2e4ba4c02264b560b9ffeae274fb321cb3",
+      "src/cadence_mcp/capture_geometry.py": "a66579bceb552d1c840634bb93707552e9e21cf5f0d2d44decadf2b1aaaf007d",
+      "src/cadence_mcp/adapters/inspect_part_geometry.tcl": "c11e59b9b1d59e15b188950f0971b331ac75ef349a2592ff42547044ad7b679c",
+      "tests/test_part_geometry.py": "049d92d39575cb246fb7eee757e59d625270e4fd91154f75df9dc43da033f68b",
+      ".local/c03-general-frames-v2-20261028/expected.json": "63f6c226637c087504d53331c9b39ba6698dfbafe194eebc64c8567b724d3fbe",
+      ".local/c03-general-frames-v2-20261028/report.json": "5f83a3a55f44ea792e04051edccc2fba646385bcb0a9055736a12be22da52712",
+      ".local/c03-general-frames-mcp-20261028/report.json": "0b4e99fb94842f0f6fa6c27418236c6b78e6b1f7f3fb71ff9582c5967d404ed7",
+      ".local/c03-shared-homogeneous-20261028/report.json": "414cf55b65803772aab7ef3200472afb0a0ffa1fc29ccb9e2a9de7d9f87e8a28",
+      ".local/c03-shared-heterogeneous-20261028/report.json": "adcef9d7a7f189f26b0073bac4a02ebedea239724cff438cd25abe2c70f3c7d3",
+      ".local/c03-drawn-geometry-20261028/report.json": "ad4f7b091aab5a07d8e944b9644e1e909133ed1f3c92e24914fdd718fbbc7d57",
+      ".local/regression-c03-geometry-20261028.txt": "e069f89a7a91d7d0a337a26a35e648aece30ed8af1d6c44beb4d09b30bf4ae6a",
+      ".local/pose-matrix-1fc81bf46d/report.json": "6d56df6203d5ce4928162e1e1e90e6fee9ab4191a959e0771801c4cff47c5f4d",
+      ".local/noncentered-pose-rectangle-a-20261026/report.json": "b929b41d00cae9060441e0cc177c39a00d7320c906438af842cdfe93e627d0fa",
+      ".local/noncentered-pose-rectangle-b-20261026/report.json": "4dfe31e0db462a69beaca536698fc0b597808bba67ea6bd87977bcc84394b3b2",
+      ".local/pose-frame-mcp-20261026/report.json": "8dec41d3c7148109aa2cb722a828259142f0071aeb8530f6319d51e2f83982a8"
+    }
+  },
+  "evidenceSha256": {
+    ".local/c03-general-frames-20261028/preparation-failure.json": "e50ad826ebcc5113b13bc88981280b078826238c892319eb9073b5acbf2c8978",
+    ".local/c03-general-frames-v2-20261028/expected.json": "63f6c226637c087504d53331c9b39ba6698dfbafe194eebc64c8567b724d3fbe",
+    ".local/c03-general-frames-v2-20261028/report.json": "5f83a3a55f44ea792e04051edccc2fba646385bcb0a9055736a12be22da52712",
+    ".local/c03-general-frames-mcp-20261028/report.json": "0b4e99fb94842f0f6fa6c27418236c6b78e6b1f7f3fb71ff9582c5967d404ed7",
+    ".local/c03-shared-homogeneous-20261028/report.json": "414cf55b65803772aab7ef3200472afb0a0ffa1fc29ccb9e2a9de7d9f87e8a28",
+    ".local/c03-shared-heterogeneous-20261028/report.json": "adcef9d7a7f189f26b0073bac4a02ebedea239724cff438cd25abe2c70f3c7d3",
+    ".local/c03-drawn-geometry-20261028/report.json": "ad4f7b091aab5a07d8e944b9644e1e909133ed1f3c92e24914fdd718fbbc7d57",
+    ".local/c03-completion-audit-20261028/audit.json": "ae86aa9b24c0e73e4a7801c6dde191f72bf6c29fc40ad2e2be3db8b3a2327f32",
+    ".local/regression-c03-geometry-20261028.txt": "e069f89a7a91d7d0a337a26a35e648aece30ed8af1d6c44beb4d09b30bf4ae6a",
+    "tools/probe_c03_general_frames.py": "da926005f358628802bba19f552a7fcd642bb38f8b625c2b0fdc738a566e798f",
+    "tools/probe_c03_general_frames_v2.py": "fa92fe7c4936c15072356de85da8372acbb28df98e85db3683d3bb499e23f83f",
+    "tools/smoke_c03_general_frames_mcp.py": "acde4a008daad61e229ffffeca9f409329e2315c519d0f41e5d7ffa26e7793bc",
+    "tools/smoke_shared_pin_reads_current.py": "f3f7974740edc2408768a171a975da8d882bc1c3346306325c6849e8f6a799c5",
+    "tools/smoke_c03_drawn_geometry.py": "5a28ec90ca92701e3893821f87dae2658690942f5c1a8b39f1becac716db65c8",
+    "tools/audit_c03_completion.py": "7ed78fe3347721203f3bf91fdbf61bb2e1c37d07c6093d68cc3076022c16717c"
+  }
+}

@@ -571,7 +571,7 @@
       ],
       "implementation": "GetLocation/GetRotation及已查明的镜像/热点方法；不以显示坐标替代热点",
       "acceptance": "四方向与镜像人工fixture；热点核对原生数据",
-      "status": "deferred",
+      "status": "passed",
       "evidence": [
         "D:\\workspace\\git\\cadence-mcp\\.local\\autonomous-query-20261023\\query-extensions-report.json",
         ".local/pose-matrix-1fc81bf46d/report.json",
@@ -590,14 +590,27 @@
         ".local/noncentered-pose-rectangle-a-20261026/report.json",
         ".local/noncentered-pose-rectangle-b-20261026/report.json",
         ".local/pose-frame-mcp-20261026/report.json",
-        ".local/pose-frame-audit-20261026/audit.json"
+        ".local/pose-frame-audit-20261026/audit.json",
+        ".local/c03-general-frames-20261028/preparation-failure.json",
+        ".local/c03-general-frames-v2-20261028/expected.json",
+        ".local/c03-general-frames-v2-20261028/report.json",
+        ".local/c03-general-frames-mcp-20261028/report.json",
+        ".local/c03-shared-homogeneous-20261028/report.json",
+        ".local/c03-shared-heterogeneous-20261028/report.json",
+        ".local/c03-drawn-geometry-20261028/report.json",
+        ".local/c03-completion-audit-20261028/audit.json",
+        ".local/regression-c03-geometry-20261028.txt",
+        "docs/implementation/batch-126-evidence.json",
+        "docs/implementation/c03-completion-audit.md"
       ],
       "issues": [
         "ISS-C03-pose-matrix-ee5c6266a1",
         "ISS-C03-pose-matrix-1fc81bf46d"
       ],
       "implementationReady": true,
-      "remaining": "原姿态通过，90度出现固定参考帧偏移；八姿态仅1通过，不能用观察值改预期。 Centered owned two-pin fixture passes all 8 poses through typed edit backend; original noncentered affine mismatch is not resolved or replaced. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch87: original40x40 center hypothesis8poses pass but predeclared80x40 offset rectangle rejects center6/8. New independent100x60 offset rectangle predeclared width/height-compensated model passes8native and8real MCP read/closed-session cases. Native GetOffsetGraphicPoint agrees with pin hotspots; read-only audit explains all24rows under size model without modifying old failed origin/center oracles. General arbitrary-source frames, full original gate/integration remain unaccepted."
+      "remaining": "",
+      "completedAt": "2026-10-28",
+      "completionEvidence": "docs/implementation/c03-completion-audit.md"
     },
     {
       "id": "C04",
@@ -2760,7 +2773,7 @@
     {
       "id": "ISS-C03-pose-matrix-1fc81bf46d",
       "featureId": "C03",
-      "status": "open",
+      "status": "resolved",
       "summary": "r0/m0 passes after reader fix; r1/m0 native hotspots differ by Y+40 from unchanged simple affine oracle; frame model unresolved",
       "evidence": "D:\\workspace\\git\\cadence-mcp\\.local\\pose-matrix-1fc81bf46d\\report.json",
       "phase": "geometry_oracle",
@@ -2773,7 +2786,10 @@
         ".local/pose-frame-mcp-20261026/report.json",
         ".local/pose-frame-audit-20261026/audit.json"
       ],
-      "latestObservation": "Original local-zero oracle remains false. Center-based candidate fails the non-square holdout; new predeclared width/height compensation passes independent100x60 all8poses and actual MCP. Native transformed graphic points agree with hotspots. Fixed-fixture mismatch is explained, but general frame/source integration not certified; issue remains open pending broader original gate."
+      "latestObservation": "Original local-zero oracle remains false. Center-based candidate fails the non-square holdout; new predeclared width/height compensation passes independent100x60 all8poses and actual MCP. Native transformed graphic points agree with hotspots. Fixed-fixture mismatch is explained, but general frame/source integration not certified; issue remains open pending broader original gate.",
+      "resolvedAtBatch": 126,
+      "resolution": "The historical zero-local-origin affine assumption omitted defining-box width/height compensation. Original r1 observed coordinates normalize exactly to fresh public output; old wrong expectedPins and failed report remain unchanged. Independent predeclared non-square holdout plus original/resistor/imported sources now pass all24native and24public pose cases, shared2/3-unit and drawn manual geometry reads, and all identity/session guards. No product hotspot behavior was rewritten; verification-model cause and broader source integration are now accepted.",
+      "resolutionEvidence": "docs/implementation/c03-completion-audit.md"
     },
     {
       "id": "ISS-C01-status-owner-candidate",
@@ -3796,7 +3812,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 125,
+    "batch": 126,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4180,7 +4196,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-125-evidence.json",
+    "evidence": "docs/implementation/batch-126-evidence.json",
     "targetedRegression": {
       "wiring": {
         "total": 14,
@@ -4194,7 +4210,7 @@
       },
       "source": "actual unittest terminal output; original file-symlink privilege skip retained"
     },
-    "fullRegressionRerunThisBatch": true,
+    "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4203,7 +4219,11 @@
     "nativeBitmapPartVectorReadAccepted": true,
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
-    "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0"
+    "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
+    "acceptedGateIds": [
+      "C03"
+    ],
+    "nativeC03Complete": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
