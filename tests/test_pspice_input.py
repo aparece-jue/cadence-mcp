@@ -25,6 +25,31 @@ class InputTests(unittest.TestCase):
         self.config = Config(install, self.root / "work", (self.inputs,))
         self.service = PSpiceInputs(self.config)
 
+    def test_folded_nested_references_keep_originals_and_remove_consumed_plus(self):
+        (self.inputs/'one.lib').write_text('.INC\n+ "two.inc"\n',encoding='utf-8')
+        (self.inputs/'two.inc').write_text('.PARAM R=1k\n',encoding='utf-8')
+        raw=b'* title\r\n.INCLUDE\r\n* retained comment\r\n+ "one.lib"\r\n.OP\r\n.END\r\n'
+        self.source.write_bytes(raw)
+        for policy in ('utf-8','preserve-bytes'):
+            result=self.service.prepare(str(self.source),policy)
+            self.assertEqual(result['fileCount'],3)
+            directory=self.service.inputs[result['simulationId']]['directory']
+            self.assertEqual((directory/'originals/source-000.bin').read_bytes(),raw)
+            text=(directory/'input.cir').read_text();self.assertIn('* retained comment',text)
+            self.assertFalse(any(line.lstrip().startswith('+') for line in text.splitlines()))
+            self.assertEqual(self.source.read_bytes(),raw)
+
+    def test_folded_extra_reference_argument_still_refused(self):
+        self.source.write_text('* title\n.INC "one.lib"\n+ "two.lib"\n.OP\n.END\n',encoding='utf-8')
+        with self.assertRaises(CadenceError) as error:self.service.prepare(str(self.source))
+        self.assertEqual(error.exception.code,'unsupported_reference')
+
+    def test_folded_reference_cycle_still_refused(self):
+        self.source.write_text('* title\n.INC\n+ "one.lib"\n.OP\n.END\n',encoding='utf-8')
+        (self.inputs/'one.lib').write_text('.INC\n+ "divider.cir"\n',encoding='utf-8')
+        with self.assertRaises(CadenceError) as error:self.service.prepare(str(self.source))
+        self.assertEqual(error.exception.code,'reference_cycle')
+
     def test_basic_snapshot_keeps_original_and_does_not_claim_solver(self):
         before = sha256(self.source)
         prepared = self.service.prepare(str(self.source))

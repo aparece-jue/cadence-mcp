@@ -16,6 +16,26 @@ ARGUMENT = re.compile(r'''^\s*(?:"([^"\r\n]+)"|'([^'\r\n]+)'|([^\s;$]+))\s*(?:[;
 FILE_DIRECTIVES = {".STMLIB", ".STIMULUS", ".LOADBIAS", ".SAVEBIAS", ".VECTOR", ".TEXT"}
 
 
+def logical_lines(text):
+    """Yield physical indexes and SPICE plus-continuation text; retain source bytes separately."""
+    indexes, parts = [], []
+    for number, line in enumerate(text.splitlines()):
+        stripped = line.lstrip()
+        if not stripped or stripped.startswith('*'):
+            continue
+        if stripped.startswith('+'):
+            if not indexes:
+                raise CadenceError('unsupported_reference', 'Orphan continuation before an input statement.')
+            indexes.append(number)
+            parts.append(stripped[1:].strip())
+        else:
+            if indexes:
+                yield indexes, ' '.join(parts)
+            indexes, parts = [number], [line]
+    if indexes:
+        yield indexes, ' '.join(parts)
+
+
 class PSpiceInputs:
     def __init__(self, config):
         self.config = config
@@ -87,7 +107,8 @@ class PSpiceInputs:
                        "opaqueByteCount": sum(0xDC80 <= ord(char) <= 0xDCFF for char in text)}
                 files[path] = row
                 stack.add(path)
-                for number, line in enumerate(text.splitlines()):
+                for line_indexes, line in logical_lines(text):
+                    number = line_indexes[0]
                     stripped = line.strip()
                     if not stripped or stripped.startswith("*"):
                         continue
@@ -104,7 +125,7 @@ class PSpiceInputs:
                         raise CadenceError("unsupported_reference", "Explicit single-file .INC/.INCLUDE/.LIB references are required.")
                     name = next(value for value in argument.groups() if value is not None)
                     child = self._reference(path, name)
-                    row["references"].append({"lineIndex": number, "directive": match.group(1).upper(), "target": child})
+                    row["references"].append({"lineIndex": number, "continuationIndexes": line_indexes[1:], "directive": match.group(1).upper(), "target": child})
                     visit(child, depth + 1)
                 stack.remove(path)
 
@@ -137,6 +158,9 @@ class PSpiceInputs:
                     old_line = lines[ref["lineIndex"]]
                     ending = "\r\n" if old_line.endswith("\r\n") else "\n" if old_line.endswith("\n") else "\r" if old_line.endswith("\r") else ""
                     lines[ref["lineIndex"]] = f'.{ref["directive"]} "{resolved}"' + (ending if input_encoding == "preserve-bytes" else "")
+                    for continued in ref.get("continuationIndexes", []):
+                        old = lines[continued]
+                        lines[continued] = ("\r\n" if old.endswith("\r\n") else "\n" if old.endswith("\n") else "\r" if old.endswith("\r") else "") if input_encoding == "preserve-bytes" else ""
                     references.append({"line": ref["lineIndex"] + 1, "directive": ref["directive"], "targetRelativePath": target})
                 output = directory / row["relativePath"]
                 output.parent.mkdir(exist_ok=True)

@@ -2212,13 +2212,14 @@
         ".local/inherited-profile-circuit-20261027/report.json",
         ".local/inherited-profile-circuit-v2-20261027/report.json",
         ".local/inherited-profile-mcp-20261027/report.json",
-        ".local/regression-inherited-profile-20261027.txt"
+        ".local/regression-inherited-profile-20261027.txt",
+        "docs/implementation/batch-136-evidence.json"
       ],
       "issues": [
         "ISS-V04-pspice-explorer-initialization"
       ],
       "implementationReady": false,
-      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch104: different complete private projects exported in the existing authenticated host without GUI switching; sourceOPJ andDSN/active binding preserved. Bare DSN failsORNET1165, missing same-stemOPJ now refused before dispatch in the prototype. Formal MCP input-generation tasks and original nominal/folded-reference scope remain open. Batch105: internal bounded project snapshots, removal of UI restoration state, PID/nonce receipts and fixed native adapter accepted on real Capture with same-byte prior NET/ALS and acknowledged replay refusal. No new public MCP native-generation tasks; durable lifecycle/fence and original full scope remain. Batch109: explicit configurationIni now uses native merged library selection with whole-INI byte provenance; original nom.lib213-model/34,548,882-byte graph and216-file prepared circuit closure accepted for generation, fresh-server MCP idempotence/recover. Full global overlays and encrypted model execution remain unaccepted; no solver was started or model omitted."
+      "remaining": "Native DLL load/command visibility/signature discovery done; actual standalone source-bound generation failed with ORNET-1165/empty NET. Correct Capture/PSpice explorer host initialization, profile/dependency closure, native DSN->NET/CIR node mapping, positive and negative production task lifecycle and full original V04 gate all remain. No public generator. Batch91: actual local host OrTclNetlist_sCreatePSpiceNetList generated fresh294-byte NET; frozen original DSN7 components/14pins/values/voltage polarity match. Four negative corruptions rejected. Local NET generation prerequisite accepted only; native CIR/profile/model closure and public structured task lifecycle still absent. Remote ASP wrapper was inspected, never invoked. Batch92: standalone local CorSimSrvr loadProfile/readSettingsLibinc/updateCirFileI actually creates fresh CIR after required AC profile subdirectory exists. Original missing-directory update=-1 retained; fresh positive update=0. Independent original profile AC100points0.1..200 and source-audited NET references plus4negative corruptions pass. Nominal model dependency closure fails original semicolon parsing then nonUTF8; no solver, full closure/task gates still open. Batch93: explicit preserve-bytes and extended budget prepare all215 default-library inputs34549814bytes; independent byte/provenance audit passes,1649opaque bytes preserved. Native AC solve still refused at execution planning because nominal libraries contain external FILE templates; original failures/oracles retained. PROBE64 and numeric CORE PATH false-positive compatibility repaired, not full native library/model closure acceptance. Batch97: native top-level library metadata prerequisite available via actual MCP; does not resolve previously refused ROM/PAL external dependencies or accept original native AC loop. Complete V04 still deferred. Batch98: conservative flat literal R/C/L/V/I no-model-use proof added and revalidated in immutable plan and rebased bytes. Own unused digital FILE-template library passes actual CLI/DAT2.5V; original default closure still refused at encrypted $CDNENCSTART in deps/file-033.lib line2775, solver not launched for that case. Original AC oracle unchanged; no general dependency closure or public Capture generator acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch104: different complete private projects exported in the existing authenticated host without GUI switching; sourceOPJ andDSN/active binding preserved. Bare DSN failsORNET1165, missing same-stemOPJ now refused before dispatch in the prototype. Formal MCP input-generation tasks and original nominal/folded-reference scope remain open. Batch105: internal bounded project snapshots, removal of UI restoration state, PID/nonce receipts and fixed native adapter accepted on real Capture with same-byte prior NET/ALS and acknowledged replay refusal. No new public MCP native-generation tasks; durable lifecycle/fence and original full scope remain. Batch109: explicit configurationIni now uses native merged library selection with whole-INI byte provenance; original nom.lib213-model/34,548,882-byte graph and216-file prepared circuit closure accepted for generation, fresh-server MCP idempotence/recover. Full global overlays and encrypted model execution remain unaccepted; no solver was started or model omitted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates."
     },
     {
       "id": "P01",
@@ -2266,13 +2267,14 @@
         ".local/native-library-parser-20261026/report.json",
         ".local/library-metadata-mcp-20261026/report.json",
         ".local/library-metadata-mcp-v2-20261026/report.json",
-        ".local/regression-560-native-library-metadata-20261026.txt"
+        ".local/regression-560-native-library-metadata-20261026.txt",
+        "docs/implementation/batch-136-evidence.json"
       ],
       "issues": [
         "ISS-P01-named-output-selectors"
       ],
       "implementationReady": true,
-      "remaining": " Batch92: accept documented semicolon end-of-line comments on explicit .LIB/.INC references, preserving single-file refusal and dollar comments; original nominal-library failure then advances to explicit nonUTF8 refusal. UTF8 policy/limits unchanged; this is not complete native default-library acceptance. Batch93: opt-in preserve-bytes and extended256files/64MiB added; default strictUTF8/64files32MiB unchanged. Original/opaque bytes/BOM/line endings and reference rebasing verified; binary/invalid-reference/invalid-policy and extended-budget bounds refuse. Not engine syntax/model acceptance. Batch97: readonly native parseLib MCP tool returns bounded top-level model/subcircuit metadata, ordered formal ports and AKO names, with local-definition count and strict source/header/native coverage checks. Actual own4definitions/filter/paging/negative calls and officialbreakout75top+32locals pass; first incorrect all-scope expectation refusal retained. Not model/AKO reachability, external-file closure or solver acceptance.",
+      "remaining": " Batch92: accept documented semicolon end-of-line comments on explicit .LIB/.INC references, preserving single-file refusal and dollar comments; original nominal-library failure then advances to explicit nonUTF8 refusal. UTF8 policy/limits unchanged; this is not complete native default-library acceptance. Batch93: opt-in preserve-bytes and extended256files/64MiB added; default strictUTF8/64files32MiB unchanged. Original/opaque bytes/BOM/line endings and reference rebasing verified; binary/invalid-reference/invalid-policy and extended-budget bounds refuse. Not engine syntax/model acceptance. Batch97: readonly native parseLib MCP tool returns bounded top-level model/subcircuit metadata, ordered formal ports and AKO names, with local-definition count and strict source/header/native coverage checks. Actual own4definitions/filter/paging/negative calls and officialbreakout75top+32locals pass; first incorrect all-scope expectation refusal retained. Not model/AKO reachability, external-file closure or solver acceptance. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates.",
       "previousRemainingBeforeAcceptance": "Native parser/setup durable checks now verify frozen explicit closure identity; real nested/relative parameter and model OP setup positives, no-ground/undefined-parameter/bad-analysis/missing-model negatives, separate5/3V parameter solve and fault matrix pass. Original named IN/OUT output-selector issue remains open; compare documented bracket-forced node forms with original oracles. Remaining original explicit reference/syntax criteria need closure audit; implicit/embedded/dynamic files and all SPICE dialects remain unsupported.",
       "acceptedAt": "2026-10-25",
       "acceptanceReport": "docs/implementation/batch-65-P01-input-acceptance-2026-10-25.md",
@@ -2366,7 +2368,8 @@
         ".local/step-ac-mcp-node-selectors-20261027/report.json",
         ".local/step-ac-engine-mcp-20261027/report.json",
         ".local/step-backend-guard-mcp-20261027/report.json",
-        ".local/regression-param-step-20261027.txt"
+        ".local/regression-param-step-20261027.txt",
+        "docs/implementation/batch-136-evidence.json"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -2374,7 +2377,7 @@
         "ISS-P02-native-license-unavailable-unverified"
       ],
       "implementationReady": true,
-      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted.",
+      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates.",
       "previousQueueOrderBeforeLicenseDeferral": 40
     },
     {
@@ -3706,12 +3709,12 @@
     "tools": 224,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 729,
-      "passed": 728,
-      "skipped": 1,
+      "total": 732,
+      "passed": 731,
       "errors": 0,
+      "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/alpha311/candidate-regression.txt"
+      "evidence": ".local/regression-folded-references-20261029.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3888,7 +3891,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 135,
+    "batch": 136,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4272,13 +4275,13 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-135-evidence.json",
+    "evidence": "docs/implementation/batch-136-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
       "skipped": 0
     },
-    "fullRegressionRerunThisBatch": false,
+    "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4293,7 +4296,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 8,
-    "productionCodeChanged": false,
+    "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4373,7 +4376,14 @@
     "initialGlobalAliasUnavailable": true,
     "actualOfficialCommand": "XMATIC_OLB2XML",
     "xmlQualityElementsOrAttributesFound": false,
-    "xmlIsLosslessFontRouteAccepted": false
+    "xmlIsLosslessFontRouteAccepted": false,
+    "foldedReferencePreparationAccepted": true,
+    "nativeRawFoldedIncludeSetupAccepted": true,
+    "freshEngineDc2_5VAccepted": true,
+    "idempotenceAccepted": true,
+    "fullP02Accepted": false,
+    "cliFoldedReferencesAccepted": false,
+    "newUnitTests": 3
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

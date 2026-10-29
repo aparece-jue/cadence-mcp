@@ -1,0 +1,42 @@
+{
+  "batch": 136,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": true,
+  "foldedReferencePreparationAccepted": true,
+  "nativeRawFoldedIncludeSetupAccepted": true,
+  "freshEngineDc2_5VAccepted": true,
+  "idempotenceAccepted": true,
+  "fullP02Accepted": false,
+  "cliFoldedReferencesAccepted": false,
+  "fullRegressionRerunThisBatch": true,
+  "latestFullRegression": {
+    "total": 732,
+    "passed": 731,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-folded-references-20261029.txt"
+  },
+  "acceptedGateIds": [],
+  "newUnitTests": 3,
+  "sourceAndOracleUnchanged": true,
+  "officialReference": {
+    "installRelativePath": "doc/pspcref/01commands.html",
+    "anchor": "14057",
+    "sha256": "0b4842419e912d7b4a34f2c3d9e979c800147cff10f0b899ac67e1f07dbdcb9c"
+  },
+  "evidenceSha256": {
+    "src/cadence_mcp/pspice_input.py": "a1102ea735526a64ee261652aba6a43d09548faa1ab5b1bf7fde3106df22ecb2",
+    "tests/test_pspice_input.py": "4f7555d2456256382753e7ab6ca5ff0db57372e72106fa30c5e95bb22796fc68",
+    "tools/smoke_folded_references.py": "4f30e3cd1785936268dba818354bf4a04e3373d7b8b8fff84f8580f76ae053d7",
+    ".local/folded-references-20261029/expected.json": "c0118565984da4744a1844fb62c9792ab7207dbda21e5bd1eff107687cb96743",
+    ".local/folded-references-20261029/report.json": "83418a67c0cadf038e9fecf24e23409e85e75fade7cf8feb27ebe14c51655240",
+    ".local/folded-references-20261029/raw-native/receipt.json": "89529d8960559d70713aaa9d1eb525f9267cc37465931757edc45ca0b9edbdbf",
+    ".local/regression-folded-references-20261029.txt": "f1d402a16e73d507849af195334807ea1da6e64862ef92116c8114b915c12c16"
+  }
+}

@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十六批折行引用准备修复（2026-10-29）
+
+- 原逐物理行解析拒绝折行INC/INCLUDE；新增逻辑语句/物理索引收集，只重写引用并清空其续行，保留原字节/注释/行映射。新增3测试覆盖两策略、嵌套、额外参数和循环。
+- 原始三文件折行直接native setup成功，公开MCP闭包及新引擎DC2.5V、关联与幂等通过。完整732/731通过/1原权限skip。原始源/oracle保持，CLI/nominal加密和完整P02/V04不提升。
+- 生产修复/测试/官方依据与验收同步develop，工具224，原34仍8/34；已发布版本不变。见folded-reference-preparation.md、batch-136-evidence.json。
+
 ## 第一百三十五批字体quality与XML表示诊断（2026-10-29）
 
 - 字体构造与保存阶段的已有证据核对后，按官方XML handler实际入口XMATIC_OLB2XML在新私有副本导出成功；旧无前缀别名缺失失败保持。
