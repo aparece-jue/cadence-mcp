@@ -1,0 +1,117 @@
+{
+  "batch": 135,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fontQualityPersistenceAccepted": false,
+  "nativePrivateXmlExportAccepted": true,
+  "initialGlobalAliasUnavailable": true,
+  "actualOfficialCommand": "XMATIC_OLB2XML",
+  "xmlTextFontDefinitions": [
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    },
+    {
+      "charset": "1",
+      "escapement": "0",
+      "height": "8",
+      "italic": "0",
+      "name": "Arial",
+      "orientation": "0",
+      "weight": "500",
+      "width": "1"
+    }
+  ],
+  "xmlQualityElementsOrAttributesFound": false,
+  "xmlIsLosslessFontRouteAccepted": false,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/alpha311/candidate-regression.txt"
+  },
+  "acceptedGateIds": [],
+  "sourceAndOracleUnchanged": true,
+  "officialReference": {
+    "installRelativePath": "tools/capture/tclscripts/capXMLImportExport/tcl/OrHandlerXMLImportExport.tcl",
+    "sha256": "09f8969dfab36fb068d1f4cecff53b0a4c2c6bfbb77a8c112c730239903072a6",
+    "apiPages": [
+      768,
+      770,
+      771
+    ]
+  },
+  "evidenceSha256": {
+    "tools/probe_font_xml.py": "f43318f3996e4ee2f868b04da757e883cc487398049a85165f912c317bee7707",
+    "tools/probe_font_xml_v2.py": "c9fd162b7fca19f7b0bad1ff52d28f2bcde3fd5831e6ff2e28c513762aebcea3",
+    ".local/font-xml-20261029/expected.json": "b32b6b99fec41eac91dd799416ae1e3a92c6235144c486d44211243e73e0f59f",
+    ".local/font-xml-20261029/report.json": "df13c9cd9afdf112dd4b6e03475df78c6722bd9672fe9a086564681716c65934",
+    ".local/font-xml-v2-20261029/expected.json": "b32b6b99fec41eac91dd799416ae1e3a92c6235144c486d44211243e73e0f59f",
+    ".local/font-xml-v2-20261029/report.json": "7dfe662fc23b6d0087f9e69e6db5de7d3287174c510c97659832b23b0a063259",
+    ".local/font-xml-v2-20261029/library.xml": "5abdfb2372ec4bbb1d0c708756cc8978298d62df64f30e62d490f5f3048f4f93"
+  }
+}

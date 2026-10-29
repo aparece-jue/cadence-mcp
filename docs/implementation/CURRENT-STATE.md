@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十五批字体quality与XML表示诊断（2026-10-29）
+
+- 字体构造与保存阶段的已有证据核对后，按官方XML handler实际入口XMATIC_OLB2XML在新私有副本导出成功；旧无前缀别名缺失失败保持。
+- 七个TextFont Defn没有quality节点/属性，且未保留完整LOGFONT字段；不推荐XML无损绕过，不宣称全部原生存储限制已证明。quality2原失败继续拒绝，L02/L03/E02不提升。
+- 无生产/契约变化、工具224，原34仍8/34，最近729回归沿用；两脚本编译/真实转换通过，源和oracle保持。研究同步develop，alpha/release不变。见font-quality-serialization-research.md、batch-135-evidence.json。
+
 ## 第一百三十四批L03跨页单元现状审计与复验（2026-10-29）
 
 - 原清单“跨页未实现”历史描述由batch82部分取代；本轮全新目录普通B.Convert跨页实际MCP、完整源状态/保存重开、非法目标/预期、跨服务恢复不重放和终末篡改拒绝通过，8专项测试通过。

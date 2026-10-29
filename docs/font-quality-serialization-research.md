@@ -1,0 +1,9 @@
+# 字体quality与XML格式诊断
+
+2026-10-29，batch135。原quality0..6在LOGFONT构造、库字体注册、文本创建及边界设置后保持，保存重开全部为1；原quality2失败与严格验证继续保留。参数顺序与官方CAP-REF761/766页一致，不能当作调用顺序错误修复。
+
+本轮在原用户自建七字体OLB的新私有副本尝试CAP-REF770–771页交换接口。未加前缀的OLB2XML在当前基础DLL未注册，首次失败保留。官方安装capXMLImportExport/tcl/OrHandlerXMLImportExport.tcl的capOLBToXML实际调用XMATIC_OLB2XML。新目录按此入口成功，返回state0，worker退出且owned0；原源、复制源及冻结预期hash不变。
+
+XML中7个TextFont的Defn均只有charset、escapement、height、italic、name、orientation、weight、width字段；全部XML节点名和属性名中未见quality。它也不包含完整LOGFONT的其他字段，不能据此推荐XML往返作为无损字体保存路径。该结果只说明本次导出表示，不证明全部OLB序列化格式必然不能存quality，更不追认旧quality2失败。
+
+L02/L03/E02及其原问题状态不提升，原34仍8/34。无生产或契约变化、工具224；最近729回归沿用，本轮仅两研究脚本编译及实际原生转换。官方脚本仅引用位置和hash，不复制全文；OLB/XML与原始运行结果留.local，公开原创诊断及指纹见batch-135-evidence.json。后续继续独立可验收项，字体问题保留最终集中复核。
