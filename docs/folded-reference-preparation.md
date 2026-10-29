@@ -5,3 +5,9 @@
 新增3测试覆盖含注释的嵌套折行、两种编码策略、额外参数和循环引用。实际私有三文件原始INCLUDE/INC折行直接经原生setup成功，再经公开MCP准备三文件闭包并新求解DC，V(OUT)第5行2.5V、绝对误差1e-6V通过，关联与幂等不重放通过。源和oracle不变。完整732项731通过、1原符号链接权限skip。
 
 该fixture证明显式INCLUDE/INC的准备和引擎执行；通用匹配器同时处理LIB语法，但本批未宣称折行LIB原生矩阵、CLI、默认nom.lib加密闭包或完整P02/V04通过。旧失败和门禁保留，原34仍8/34。工具224和既有参数/manifest对外形状不变；已发布alpha/release固定，修复/测试/原生证据摘要同步develop。私有CIR/原生输出留.local，公开原创代码与指纹见batch-136-evidence.json。
+
+## 2026-10-29：嵌套LIB失败对照（batch137）
+
+官方同章96441的语法为`.LIB [file_name]`，库内允许再引用LIB。以三文件、带空格的引号文件名和RHALF子电路预先冻结DC2.5V/1e-6V预期。折行原始输入setup-only返回0，准备器解析3文件闭包；新引擎任务初始化阶段退出3221226356，phases最后为setup_analysis，未进入run_analysis，无原生完成回执。普通不折行的同结构新对照也在相同阶段/代码退出，不能归因于折行处理。两失败plan原样保留、没有重放，source/oracle不变，owned进程均0；不诊断为许可证失败。
+
+因此LIB求解不通过，不能把setup成功当数值成功。P02按失败后移转deferred并放到队尾，原成功DC/INC/INCLUDE证据保留，工具/生产代码未变。后续在独立项后检查直接/嵌套库、准备路径/索引与引擎运行上下文，保留原数值要求。最近732回归沿用，两个研究脚本编译通过，不重跑完整套件；alpha/release和旧tags不变。见batch-137-evidence.json。

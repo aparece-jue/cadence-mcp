@@ -1,0 +1,86 @@
+{
+  "batch": 137,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "nativeNestedLibSolveAccepted": false,
+  "nativeRawSetupOnlyAccepted": true,
+  "nonfoldedControlAlsoFailed": true,
+  "foldingRootCauseEstablished": false,
+  "cases": [
+    {
+      "case": "folded-libraries",
+      "rawSetupAccepted": true,
+      "numericalSolveAccepted": false,
+      "planId": "481db0ad0cfb4fde9106a4019d0cb091",
+      "state": "failed",
+      "process": {
+        "state": "exited",
+        "pid": 33056,
+        "returnCode": 3221226356,
+        "durationSeconds": 2.828,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "lastPhase": "setup_analysis",
+      "noOriginalMutationReplay": true
+    },
+    {
+      "case": "flat-libraries-control",
+      "rawSetupAccepted": true,
+      "numericalSolveAccepted": false,
+      "planId": "bf50826996af4fb08f2c799e1f1dd6f5",
+      "state": "failed",
+      "process": {
+        "state": "exited",
+        "pid": 29612,
+        "returnCode": 3221226356,
+        "durationSeconds": 2.781,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "lastPhase": "setup_analysis",
+      "noOriginalMutationReplay": true
+    }
+  ],
+  "sourceAndOraclesUnchanged": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 732,
+    "passed": 731,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-folded-references-20261029.txt"
+  },
+  "acceptedGateIds": [],
+  "queueMoved": {
+    "feature": "P02",
+    "before": 57,
+    "after": 75
+  },
+  "evidenceSha256": {
+    "tools/smoke_folded_libraries.py": "fd4d24517d88e5481f8ff758363db4dedda474e4570015484fe3bd4a0066e7be",
+    "tools/smoke_unfolded_libraries_control.py": "29f49524fd0bad227c17dee66dcf7a15466e1630a1f9b682c571e0aa311dbd1c",
+    ".local/folded-libraries-20261029/expected.json": "7436210dbe8fadf57e4149dae4be172b1f2090b2453d67238a5d2ffc781570de",
+    ".local/folded-libraries-20261029/report.json": "234fad3db7ad38fc338d3ba11602a5851d13575aca9a2215873b8d8d2e4a78ad",
+    ".local/folded-libraries-20261029/raw-native/receipt.json": "89529d8960559d70713aaa9d1eb525f9267cc37465931757edc45ca0b9edbdbf",
+    ".local/folded-libraries-20261029/work/isolated-jobs/pspice_engine_run/plan-481db0ad0cfb4fde9106a4019d0cb091/plan.json": "feecb459567673866320d04579cfd9c32effba74c77a55a65283a8b91f20d3b3",
+    ".local/folded-libraries-20261029/work/isolated-jobs/pspice_engine_run/plan-481db0ad0cfb4fde9106a4019d0cb091/phases.log": "356ea09bd91a81ce04d499eb0c01e619c834031e92df339b51c2752b4790fbc6",
+    ".local/flat-libraries-control-20261029/expected.json": "f96aa0a102edb044ade72ce0a170e206ef4b4c5c168c2a3d69cbf901b917c9dd",
+    ".local/flat-libraries-control-20261029/report.json": "c2ab57abf65bbfbc34942f05972fd01187c99b79052beb4b4450b11f0899ccb0",
+    ".local/flat-libraries-control-20261029/raw-native/receipt.json": "89529d8960559d70713aaa9d1eb525f9267cc37465931757edc45ca0b9edbdbf",
+    ".local/flat-libraries-control-20261029/work/isolated-jobs/pspice_engine_run/plan-bf50826996af4fb08f2c799e1f1dd6f5/plan.json": "b8ed0a5b473da2b5c22bd6a2a9dce4babc515ea25883171b0be8a3b6610f2eab",
+    ".local/flat-libraries-control-20261029/work/isolated-jobs/pspice_engine_run/plan-bf50826996af4fb08f2c799e1f1dd6f5/phases.log": "356ea09bd91a81ce04d499eb0c01e619c834031e92df339b51c2752b4790fbc6"
+  }
+}

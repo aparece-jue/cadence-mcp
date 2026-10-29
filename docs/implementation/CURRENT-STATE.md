@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十七批嵌套LIB原生失败与不折行对照（2026-10-29）
+
+- 官方LIB单文件/嵌套语法样例冻结三文件/2.5V；原始setup-only通过，准备后引擎初始化退出3221226356、未到run_analysis。新不折行同结构对照同阶段/代码失败，不认定折行为根因。
+- 两失败任务/原数值oracle/source保持，owned0，不重放、不吞错误、不认定许可证失败。P02后移队尾；已通过INC/INCLUDE修复保留。无生产/契约变化，沿用732/731+1回归，脚本编译通过。
+- 原34仍8/34，目标active；研发同步develop，alpha/release固定。见folded-reference-preparation.md补验、batch-137-evidence.json。后续按独立队列继续。
+
 ## 第一百三十六批折行引用准备修复（2026-10-29）
 
 - 原逐物理行解析拒绝折行INC/INCLUDE；新增逻辑语句/物理索引收集，只重写引用并清空其续行，保留原字节/注释/行映射。新增3测试覆盖两策略、嵌套、额外参数和循环。
