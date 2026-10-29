@@ -19,3 +19,9 @@
 本批实际原生覆盖line/box/text，字体仅核对族与字号，完整字体质量/字形边界不在通过范围。其他typed类别虽共用已有描述器，未据本样例宣称标题栏曲线/位图等原生验收。动态标题栏字段、effective occurrence文字、display property、嵌套/OLE、字形/笔宽/打印边界及标题栏编辑等原要求仍待验收。C05仍partial，原34项仍8/34（23.5%），目标active。
 
 本机CAP-REF依据：285–291页图形定义/创建、300–302页坐标转换及姿态、443页NewTitleBlock、668–669页GetSymbol及source name。只公开原创总结与源码，不上传手册/原生设计；批次证据和SHA256见[batch130](implementation/batch-130-evidence.json)。复现为`tools/probe_titleblock_vectors_v2.py`、`tools/smoke_titleblock_vectors.py`，数据目录必须全新且位于私有.local。
+
+## 2026-10-29：椭圆与圆弧补验（batch132）
+
+以CAP-REF287–289页NewArc/NewEllipse签名在全新私有fixture中加入椭圆[0,20,80,70]与圆弧框[-20,20,100,80]、起点[-20,50]、终点[40,20]；原line/box/text保持。预期在构造前冻结，未从读回重写。九个标题栏共45向量，八姿态及另一页同名实例的原局部曲线数据、四角控制点和圆弧端点逐项符合独立旋转/镜像+location预期；1项分页/原生顺序、空页、非法目标、跨目标/页大小/会话cursor、缓存后来源改变及关闭后拒绝通过公开MCP。源/预期和旧失败证据hash保持。
+
+新增18个曲线实例原生验收，不是曲线实际渲染边界、填充/笔宽或字体/动态字段验收。C05仍partial，原34仍8/34；生产代码和契约未改变，最近完整729/728+1权限skip沿用batch131，未重跑完整回归。两份固定研究脚本编译通过。测试版/发行版及旧tag保持固定，研究资料同步develop。证据见batch-132-evidence.json。

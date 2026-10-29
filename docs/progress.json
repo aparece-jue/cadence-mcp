@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-28",
+  "asOf": "2026-10-29",
   "metric": "required_gates_fully_accepted",
   "passed": 8,
   "total": 34,
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/alpha311/candidate-regression.txt"
   },
-  "acceptanceCanonicalSha256": "93ad467d06901ce4bc96b526205608c746ca506d2ef7824cf06e913e9005f290"
+  "acceptanceCanonicalSha256": "d4b7e16df53b81e8a6de5fcb77104ed2c18eda92a35d309c75aae199ea2b079e"
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -734,13 +734,15 @@
         "docs/implementation/batch-123-evidence.json",
         "docs/titleblock-vector-query.md",
         "docs/implementation/batch-130-evidence.json",
-        ".local/titleblock-vector-mcp-final-20261028/report.json"
+        ".local/titleblock-vector-mcp-final-20261028/report.json",
+        "docs/implementation/batch-132-evidence.json",
+        ".local/titleblock-curves-mcp-20261029/report.json"
       ],
       "issues": [
         "ISS-C05-titleblock-probe-encoding-and-pose"
       ],
       "implementationReady": true,
-      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained. Batch122: public capture_query_part_vectors reads actual cached defining-part typed vectors and native page control points, explicit unsupported rows, revision/part/order identities with nativeId=null. Eight-pose actual triangle3-line matrix, strict independent width80/height40 source model, paging/session/cursor/tamper/closed guards pass. Initial vector GetId1002 and missing helper failures retained; native ID not fabricated or error ignored. Actual defining geometry prerequisite accepted; all-kind placement, rendered font/stroke/display/pin/nested/occurrence geometry and full original clearance requirements still unaccepted. Batch123: actual new part-vector MCP on prior Normal/Convert mixed13-vector placed sources passes all original source-spec geometry/styles, full text/LOGFONT and page points for8 supported kinds, preserving one explicit unsupported Fill row and stable native order across paging. Four RGB24/RGB32 Normal/Convert placements pass original frozen descriptor/page points and SHA256 of original BMP bytes after14-byte file header; two payload hashes remain distinct. Zero-pose mixed/bitmap validation only; prior8-pose line validation is separate. First public/internal text-spec mismatch failed before native dispatch and is preserved. No rendered glyph/stroke/display/pin/nested/occurrence or full avoidance acceptance. Batch130 adds bounded public titleblock definition-vector query selected by existing graphics titleblock ID. Nine native titleblocks, all eight poses plus cross-page duplicate name/empty page, line direct-rotation page points, local line/box/text descriptors, literal Chinese/Omega/multiline text, one-item ordered paging and target/cursor/session/source guards pass actual MCP. First UTF8 script/system-encoding corruption and wrong normalized-box hypothesis remain failed; changed nonzero/negative-offset source holdout uses frozen direct transform and Unicode escapes. Complete titleblock other vector classes, dynamic effective/display/occurrence text, fonts/render/stroke/print bounds and remaining original C05 requirements remain unaccepted. No full gate promotion."
+      "remaining": "New capture_query_page_vectors exposes bounded typed comment-graphic local descriptors, full text/font, instance pose and native page control points; 28 declared nontext instances across four rotations and alternating mirrors pass independent local/world-point oracles. Actual MCP32 inventory, legacy identity match, order/paging/empty/page-cursor/session lifecycle and input tamper pass. Four text requested instance locations do not persist; readContractPassed does not certify text creation. Full C05 remains partial: rendered glyph/clearance, full symbol/titleblock/page-bitmap/embedded/native matrices and original criteria remain unaccepted. Batch88: public5-task page-text addition uses definition Location/BoundingBox and inverse pose to retain explicit page anchor;8native poses and3actual MCP fonts/Unicode/multiline/rotations verified with ordered modeled graphics on every supported page and original instance/property/connection preservation. Receipt-loss verify-only recovery, start cancellation, loaded-DLL timeout and unrelated extra native graphic rejection accepted, with original helper/cancel-harness failures retained. Instance SetLocation still0; old oracle not changed. Full edit/delete/render/clipping/font-quality/titleblock/original gate requirements remain. Batch89: one additional edit planner reuses existing graphic_text task family for full text/pose/font replacement or delete. Eight update poses and first/middle/last text deletion among32mixed graphics with4identical literals pass actual MCP; complete ordered other modeled graphics/instances/connections preserved. Each operation passes receipt-loss recovery/startcancel/DLL-marker timeout/unrelated graphic refusal, plus3new-add regressions and3old199-tool plan/receipt verify-only compatibility audits. Full page bounds/render/titleblock/font-quality and remaining original D05/C05 still unaccepted. Batch90: readonly native page physical/doc dimensions/scale/flags and declared comment-control-point bounds now public. Imperial970x720 and metric500x400 native fixtures, exact edges/outside/margin10/other-page/empty/zero-dimension refusal/invalid/closed/cached-revision guards pass actual MCP. Real traversal with injected page/view iterator end errors produces no result; bounds candidates do not certify glyph/arc/curve/print clipping or parts/wires/titleblock. Full original gates retained. Batch122: public capture_query_part_vectors reads actual cached defining-part typed vectors and native page control points, explicit unsupported rows, revision/part/order identities with nativeId=null. Eight-pose actual triangle3-line matrix, strict independent width80/height40 source model, paging/session/cursor/tamper/closed guards pass. Initial vector GetId1002 and missing helper failures retained; native ID not fabricated or error ignored. Actual defining geometry prerequisite accepted; all-kind placement, rendered font/stroke/display/pin/nested/occurrence geometry and full original clearance requirements still unaccepted. Batch123: actual new part-vector MCP on prior Normal/Convert mixed13-vector placed sources passes all original source-spec geometry/styles, full text/LOGFONT and page points for8 supported kinds, preserving one explicit unsupported Fill row and stable native order across paging. Four RGB24/RGB32 Normal/Convert placements pass original frozen descriptor/page points and SHA256 of original BMP bytes after14-byte file header; two payload hashes remain distinct. Zero-pose mixed/bitmap validation only; prior8-pose line validation is separate. First public/internal text-spec mismatch failed before native dispatch and is preserved. No rendered glyph/stroke/display/pin/nested/occurrence or full avoidance acceptance. Batch130 adds bounded public titleblock definition-vector query selected by existing graphics titleblock ID. Nine native titleblocks, all eight poses plus cross-page duplicate name/empty page, line direct-rotation page points, local line/box/text descriptors, literal Chinese/Omega/multiline text, one-item ordered paging and target/cursor/session/source guards pass actual MCP. First UTF8 script/system-encoding corruption and wrong normalized-box hypothesis remain failed; changed nonzero/negative-offset source holdout uses frozen direct transform and Unicode escapes. Complete titleblock other vector classes, dynamic effective/display/occurrence text, fonts/render/stroke/print bounds and remaining original C05 requirements remain unaccepted. No full gate promotion. Batch132 extends actual titleblock read acceptance to ellipse and arc: nine instances/five vectors each, independent local rectangles/start/end and transformed corners/endpoints across eight poses plus cross-page duplicate/empty page, ordered paging and all prior guards pass public MCP. Curve rendered extrema/stroke/fill, dynamic title fields, other geometry/bitmap/nested/OLE and original C05 gate remain unaccepted."
     },
     {
       "id": "L01",
@@ -3677,7 +3679,7 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "tools": 224,
     "goalComplete": false,
     "latestFullRegression": {
@@ -3863,7 +3865,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 131,
+    "batch": 132,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4247,7 +4249,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-131-evidence.json",
+    "evidence": "docs/implementation/batch-132-evidence.json",
     "targetedRegression": {
       "readonly": {
         "total": 13,
@@ -4260,7 +4262,7 @@
         "skipped": 0
       }
     },
-    "fullRegressionRerunThisBatch": true,
+    "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4327,7 +4329,14 @@
     "packagedSourceFilesVerified": 244,
     "alphaCommit": "eebb8ca6bd5aaea5a2aebf99a025e036578a66ae",
     "alphaTag": "v0.1.1-alpha.1",
-    "publicDownloadsSha256Verified": true
+    "publicDownloadsSha256Verified": true,
+    "nativeTitleblockCurvesAccepted": true,
+    "titleblocks": 9,
+    "vectors": 45,
+    "curveInstances": 18,
+    "eightPoseEllipseCornersAndArcEndsAccepted": true,
+    "pagingTargetCursorAndSourceGuardsAccepted": true,
+    "sourceOracleAndOldFailuresUnchanged": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

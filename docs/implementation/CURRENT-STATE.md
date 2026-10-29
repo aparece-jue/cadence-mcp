@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十二批标题栏椭圆/圆弧补验（2026-10-29）
+
+- 官方287–289页依据，新私有fixture冻结椭圆框/圆弧框及两端点，9标题栏45向量，八姿态/另一页同名的18曲线实例通过实际MCP局部描述与独立控制点转换、分页和会话/来源保护。旧失败及预期hash保持。
+- 无生产/契约变化，工具224；最近完整729/728+1权限skip沿用batch131，两固定脚本编译通过。C05渲染/笔宽/填充、动态字段及其他原要求未完成，原34仍8/34，目标active。alpha0.1.1-alpha.1和release0.1.0不变。
+- 见titleblock-vector-query.md补验、batch-132-evidence.json；研究资料/验收/进度同步develop。
+
 ## 第一百三十一批0.1.1-alpha.1独立安装与发布准备（2026-10-28）
 
 发布补记：alpha已非强制前移至`eebb8ca6bd5aaea5a2aebf99a025e036578a66ae`，固定tag与GitHub预发布完成；wheel/ZIP/SHA256SUMS三项公开下载逐字节SHA256一致。develop保留0.1.1.dev0研发入口，release/main与旧tags不变。见docs/releases/alpha-3-publication.json。

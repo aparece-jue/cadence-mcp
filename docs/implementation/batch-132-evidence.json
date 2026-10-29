@@ -1,0 +1,43 @@
+{
+  "batch": 132,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fullC05Accepted": false,
+  "nativeTitleblockCurvesAccepted": true,
+  "titleblocks": 9,
+  "vectors": 45,
+  "curveInstances": 18,
+  "eightPoseEllipseCornersAndArcEndsAccepted": true,
+  "pagingTargetCursorAndSourceGuardsAccepted": true,
+  "sourceOracleAndOldFailuresUnchanged": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/alpha311/candidate-regression.txt"
+  },
+  "acceptedGateIds": [],
+  "evidenceSha256": {
+    "tools/probe_titleblock_curves.py": "3349f8bf5434168c2f07c9e0acfceeb726a708f2f64b54a8c89ac279f2e90af1",
+    "tools/smoke_titleblock_curves.py": "f6a2cc579b9fdfa76eac0c8220bd7507b4159b5f454e006cec9a37fdc43d2a4d",
+    ".local/titleblock-curves-20261029/expected.json": "0d76572777fd88d0fca26a00915225cd26af385dc5f798562a06f768511ab4cf",
+    ".local/titleblock-curves-20261029/report.json": "d308c9cbc085919fd79401fc1bb44ec54f2bbf182925cb4cd2e9f9ad1fc4836a",
+    ".local/titleblock-curves-mcp-20261029/report.json": "2a56714606d849d4cd5bb4f3ac533ccf9dfa1088e68fcf7fd5a558f0482ef7db"
+  },
+  "preservedHistoricalSha256": {
+    ".local/titleblock-vectors-20261028/expected.json": "69f12a96fc080fe2bfbbdc98e6e0656ddd375156a0fbf0c804955ee19c93bcb8",
+    ".local/titleblock-vectors-20261028/report.json": "b101b8b12868377ab550fdebd384c48463197a9ead8568470d75115ba2c17dfe",
+    ".local/titleblock-vectors-20261028/vectors.json": "6243cdb17740d84574da6626d99ea26cf7ae69017ce2f445bf5092c2a176e4a1",
+    ".local/titleblock-vectors-20261028/failure-audit.json": "7a715ce975f7cdc4dd7a556e8faaa27751e49fe660ed74a6fb7821b3b9c56eba",
+    ".local/titleblock-vectors-v2-20261028/expected.json": "860ad92a925b77097ad38548dad4b57cd3e3d0027192edf0023c66f60b7f730d",
+    ".local/titleblock-vectors-v2-20261028/report.json": "53de68e6f748e7932459fcd2cff021ed5b8d988e6005bf1226ec209b6a88f588"
+  }
+}
