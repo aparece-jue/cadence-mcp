@@ -1,0 +1,40 @@
+{
+  "batch": 134,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fullL03Accepted": false,
+  "nativeCrossPageBRefreshAccepted": true,
+  "powerPCrossStillFailed": true,
+  "oldFailureAndOraclePreserved": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/alpha311/candidate-regression.txt"
+  },
+  "targetedRegression": {
+    "total": 8,
+    "passed": 8,
+    "skipped": 0
+  },
+  "acceptedGateIds": [],
+  "priorBatchRemoteAndOldTagsVerified": true,
+  "evidenceSha256": {
+    ".local/l03-crosspage-refresh-20261029/report.json": "d514526222a8e4dd5864257be31c59b9be14b0016a383a4e3549a1a26327bcce",
+    ".local/l03-crosspage-refresh-20261029/expected.json": "cc4bb4fe23977ce38b4260bfdee7ff1685cc893f055b255aa40df9a6c898cfc9",
+    ".local/l03-crosspage-tests-20261029.txt": "aef6e7ba72b54608bca25142178ea2ef50e24e2db543408d3b6468ad30ac8c3e",
+    ".local/titleblock-fields-batch133/push-receipt.json": "5384424d118fc11015b60639eb7c2b87c8464c71ed366d0e9b22a902e49764ef"
+  },
+  "preservedHistoricalSha256": {
+    ".local/crosspage-cached-unit-native-20261025/report.json": "4fa03680b16f833233832ac20d285935e645e8facef827efcb7ef21987ea1954",
+    ".local/crosspage-cached-power-audit-v2-20261025/report.json": "aac9ea047f9b2a2d0503a297c525da48355ed550f20552061890a07554ed1ca6"
+  }
+}

@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/alpha311/candidate-regression.txt"
   },
-  "acceptanceCanonicalSha256": "3ed8ba30a12f0381fb41b9876d9cc5fe0fe5bd0a1d3304cd7cbee385d2af7d96"
+  "acceptanceCanonicalSha256": "98795781d6c066f86b6b5550717b0218b32d9b10a6494bd99c4269a6ba2157b5"
 }

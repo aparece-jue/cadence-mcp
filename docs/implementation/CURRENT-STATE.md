@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十四批L03跨页单元现状审计与复验（2026-10-29）
+
+- 原清单“跨页未实现”历史描述由batch82部分取代；本轮全新目录普通B.Convert跨页实际MCP、完整源状态/保存重开、非法目标/预期、跨服务恢复不重放和终末篡改拒绝通过，8专项测试通过。
+- 原P跨页VCC未绑定失败与oracle/hash保持，L02依赖未过，L03仍partial，其他隐藏/flat/occurrence/变体等原要求不缩减。原34仍8/34；无生产改动，沿用729/728+1完整回归，未重跑。
+- 上批e595db2及冻结分支/旧tags只读复核已完成。研发资料继续同步develop，alpha/release保持固定。见l03-crosspage-status.md、batch-134-evidence.json。
+
 ## 第一百三十三批标题栏动态字段失败后移（2026-10-29）
 
 - 原三页/九标题栏源只读GetDesignName/FileName/SourceSymbol及pageCount/number/size，状态均0，但页数/页码0、尺寸空；冻结count3不符，原报告false保留。没有新动态字段MCP，也未把0改成成功或推断所有环境不支持。

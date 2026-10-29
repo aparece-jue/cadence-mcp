@@ -973,7 +973,10 @@
         ".local/library-family-faults-20261025/report.json",
         ".local/library-family-placement-v2-20261025/report.json",
         ".local/regression-508-library-family-20261025.txt",
-        "docs/implementation/batch-81-library-package-families-2026-10-25.md"
+        "docs/implementation/batch-81-library-package-families-2026-10-25.md",
+        "docs/l03-crosspage-status.md",
+        "docs/implementation/batch-134-evidence.json",
+        ".local/l03-crosspage-refresh-20261029/report.json"
       ],
       "issues": [
         "ISS-L03-native-swap-id-range",
@@ -981,7 +984,7 @@
         "ISS-L03-heterogeneous-cache-copy"
       ],
       "implementationReady": true,
-      "remaining": "Public single-package creation now supports multiple exact-cellName/distinct-partName alternate views with identical logical position/name/electrical-type functions and individually declared geometry/visibility. Native3fixtures and real MCP3fixtures pass full variant-aware semantic graph, shared physical maps, unit/pad counts independent of view rows, wrong-oracle/schema/tamper refusal and fresh lifecycle. Variant receipt-loss/cancel/timeout accepted. Footprint variant/package-level behavior beyond one declared package footprint, remaining complex boundaries and multiunit DSN unit/package instance integration remain. No actual physical pin-swap operation or rendered glyph certification claimed. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch43 explicit visible A/B/P VCC/GND disjoint native networks pass; deliberately shorted/open fixtures rejected by frozen full definition and native-object oracle. Real MCP full pin/net/hotspot read passes. Public shared-reference group writer, hidden/flat/occurrence and other original requirements remain. Batch44 source-qualified alternate pin/line views supported by existing public single-reference placement; six real MCP positive cases, saved-instance fresh source comparison, wrong hotspot refusal, fresh no-replay and receipt-loss/cancel/timeout pass. Same-package group lifecycle, non-line vector coverage and remaining original requirements are not complete. Batch45 atomic complete same-page package writer (2..16 source devices) is public and accepted on homogeneous, heterogeneous, connected and second-group fixtures; complete pinId coverage, unit ownership/source pin-line views/native page net objects/original geometry, wrong-oracle and lifecycle/fault/tamper guards pass. Incremental unit operations, cross-page/flat/occurrence, non-line sources, arbitrary heterogeneous import, package variants and other original criteria remain incomplete. Batch46 existing part-edit supports unit-aware pinId pose/delete and native identity/cache metadata preservation. Five positive operations, wrong-hotspot negative, receipt-loss/cancel/timeout, shared NC read/refusal and final targeted3 pass; connected shared-power move fails and remains deferred. Unit-add/cross-page/full flat/cache/graphic and original criteria remain. Batch47 existing-cache missing-device planning is public (one new plan, shared multiunit task family). Native/MCP B.Convert and connected P.Normal restore, prior identity/pose/Value/FP/cache mapping preservation, actual cached view, native page nets, guards and receipt-loss/cancel/timeout pass. Cross-page unit assignment, non-default override matrix, full graphics/closure, arbitrary heterogeneous import, footprint variants and original requirements remain. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion."
+      "remaining": "Public single-package creation now supports multiple exact-cellName/distinct-partName alternate views with identical logical position/name/electrical-type functions and individually declared geometry/visibility. Native3fixtures and real MCP3fixtures pass full variant-aware semantic graph, shared physical maps, unit/pad counts independent of view rows, wrong-oracle/schema/tamper refusal and fresh lifecycle. Variant receipt-loss/cancel/timeout accepted. Footprint variant/package-level behavior beyond one declared package footprint, remaining complex boundaries and multiunit DSN unit/package instance integration remain. No actual physical pin-swap operation or rendered glyph certification claimed. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch43 explicit visible A/B/P VCC/GND disjoint native networks pass; deliberately shorted/open fixtures rejected by frozen full definition and native-object oracle. Real MCP full pin/net/hotspot read passes. Public shared-reference group writer, hidden/flat/occurrence and other original requirements remain. Batch44 source-qualified alternate pin/line views supported by existing public single-reference placement; six real MCP positive cases, saved-instance fresh source comparison, wrong hotspot refusal, fresh no-replay and receipt-loss/cancel/timeout pass. Same-package group lifecycle, non-line vector coverage and remaining original requirements are not complete. Batch45 atomic complete same-page package writer (2..16 source devices) is public and accepted on homogeneous, heterogeneous, connected and second-group fixtures; complete pinId coverage, unit ownership/source pin-line views/native page net objects/original geometry, wrong-oracle and lifecycle/fault/tamper guards pass. Incremental unit operations, cross-page/flat/occurrence, non-line sources, arbitrary heterogeneous import, package variants and other original criteria remain incomplete. Batch46 existing part-edit supports unit-aware pinId pose/delete and native identity/cache metadata preservation. Five positive operations, wrong-hotspot negative, receipt-loss/cancel/timeout, shared NC read/refusal and final targeted3 pass; connected shared-power move fails and remains deferred. Unit-add/cross-page/full flat/cache/graphic and original criteria remain. Batch47 existing-cache missing-device planning is public (one new plan, shared multiunit task family). Native/MCP B.Convert and connected P.Normal restore, prior identity/pose/Value/FP/cache mapping preservation, actual cached view, native page nets, guards and receipt-loss/cancel/timeout pass. Cross-page unit assignment, non-default override matrix, full graphics/closure, arbitrary heterogeneous import, footprint variants and original requirements remain. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion. Batch134 corrects stale cross-page-unavailable wording using original batch82 and fresh current MCP: B.Convert cached missing-unit assignment across pages in same schematic is implemented and again passes complete source-state/reopen, foreign-schematic/stale/incomplete-target guards, fresh recovery/no replay and post-verification artifact-tamper refusal. Original P-cross pad8 expected VCC but unbound failure remains unchanged under ISS-D01-crosspage-shared-vcc-unbound. Arbitrary power/hidden/flat/occurrence and other original requirements remain; L02 dependency is still not passed. Full L03 remains partial."
     },
     {
       "id": "L04",
@@ -3877,7 +3880,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 133,
+    "batch": 134,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4261,18 +4264,11 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-133-evidence.json",
+    "evidence": "docs/implementation/batch-134-evidence.json",
     "targetedRegression": {
-      "readonly": {
-        "total": 13,
-        "passed": 12,
-        "skipped": 1
-      },
-      "connections": {
-        "total": 8,
-        "passed": 8,
-        "skipped": 0
-      }
+      "total": 8,
+      "passed": 8,
+      "skipped": 0
     },
     "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
@@ -4359,7 +4355,11 @@
       "feature": "C05",
       "before": 5,
       "after": 74
-    }
+    },
+    "nativeCrossPageBRefreshAccepted": true,
+    "powerPCrossStillFailed": true,
+    "oldFailureAndOraclePreserved": true,
+    "priorBatchRemoteAndOldTagsVerified": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
