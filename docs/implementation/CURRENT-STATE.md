@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十九批显示属性创建/删除原生往返（2026-10-29）
+
+- 私有DSN上新增PCB Footprint显示项、完整保存独立重开，再仅删除显示项保存重开；固定owner-local位置/姿态/type/color、14字段Arial-11 quality1通过。数据属性本身不删除，所有实例其他显示/字体和定义网络保持，原源/oracle不变，worker0。
+- 当前只为固定原生原型，公开计划/任务及durable故障矩阵未接入；原质量2/默认重置/渲染等不提升。E02仍deferred，原34仍8/34。无生产/契约变化，沿用732回归；研究脚本编译通过。
+- 下一步将已验证的原生操作接入受限计划/保存重开/恢复链，兼容旧layout计划并补负例。研究与证据同步develop，alpha/release固定。见display-property-lifecycle.md、batch-139-evidence.json。
+
 ## 第一百三十八批跨页补放的非默认属性继承（2026-10-29）
 
 - 原B缺失源经现有属性任务设置Unicode/前导零Value和CUSTOM_00123封装名，预期先冻结。实际MCP跨页B.Convert补放后，原owner/新B均精确读回两属性，全部原已建模状态和引脚/库保护通过。

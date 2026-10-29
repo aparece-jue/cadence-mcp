@@ -1231,13 +1231,14 @@
         ".local/display-font-mcp-v2-20261025/terminal-hash-report.json",
         ".local/display-font-quality-audit-20261025/report.json",
         ".local/display-font-mcp-v2-20261025/report.json",
-        ".local/regression-473-display-fonts-v2-20261025.txt"
+        ".local/regression-473-display-fonts-v2-20261025.txt",
+        "docs/implementation/batch-139-evidence.json"
       ],
       "issues": [
         "ISS-E02-display-font-quality-persistence"
       ],
       "implementationReady": true,
-      "remaining": "Existing metadata set/empty/delete and inherited fallback, display layout, and new native-id-bound explicit font tasks implemented. Three native/actual MCP font positives include cross-page multiunit references, literal font face, and confirmed default-font true->false on a drawn hierarchy field. Complete all-instance fonts/default flags, modeled state, definition/connections and six failure cases verified. Declared quality2 saves as1 and is strictly rejected; full E02 deferred/moved last. Remaining quality persistence/default-reset/create-delete display lifecycle, occurrence and rendering/font matrix require completion; source/failed oracle retained."
+      "remaining": "Existing metadata set/empty/delete and inherited fallback, display layout, and new native-id-bound explicit font tasks implemented. Three native/actual MCP font positives include cross-page multiunit references, literal font face, and confirmed default-font true->false on a drawn hierarchy field. Complete all-instance fonts/default flags, modeled state, definition/connections and six failure cases verified. Declared quality2 saves as1 and is strictly rejected; full E02 deferred/moved last. Remaining quality persistence/default-reset/create-delete display lifecycle, occurrence and rendering/font matrix require completion; source/failed oracle retained. Batch139 native prototype creates PCB Footprint display at owner-local[-40,60]/rotation1/type2 with explicit Arial-11 quality1, saves and independently reopens, deletes only display and reopens again. All instance user/effective data, other displays/fonts and definition/pin-net baseline return to original modeled state. Native missing-display lookup accepts only NULL with state0 or known1002. No public create/delete planner or durable lifecycle yet; explicit quality1 does not resolve arbitrary font quality/default reset/rendering/occurrence requirements."
     },
     {
       "id": "E03",
@@ -3906,7 +3907,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 138,
+    "batch": 139,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4290,7 +4291,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-138-evidence.json",
+    "evidence": "docs/implementation/batch-139-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
@@ -4412,7 +4413,12 @@
     "nativeScenario": "B.Convert same-schematic cross-page addition; owner and new unit retain both explicit overrides",
     "freshServiceRecoveryNoReplayAccepted": true,
     "terminalTamperRefused": true,
-    "originalPowerFailurePreserved": true
+    "originalPowerFailurePreserved": true,
+    "nativeDisplayLifecyclePrototypeAccepted": true,
+    "publicDisplayLifecycleAvailable": false,
+    "createAndDeleteIndependentReopenAccepted": true,
+    "allInstanceDataOtherDisplaysAndFontsPreserved": true,
+    "explicitNewFontQuality": 1
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

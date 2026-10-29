@@ -1,0 +1,37 @@
+{
+  "batch": 139,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fullE02Accepted": false,
+  "nativeDisplayLifecyclePrototypeAccepted": true,
+  "publicDisplayLifecycleAvailable": false,
+  "createAndDeleteIndependentReopenAccepted": true,
+  "allInstanceDataOtherDisplaysAndFontsPreserved": true,
+  "explicitNewFontQuality": 1,
+  "sourceAndOracleUnchanged": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 732,
+    "passed": 731,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-folded-references-20261029.txt"
+  },
+  "acceptedGateIds": [],
+  "evidenceSha256": {
+    "tools/probe_display_lifecycle.py": "de56be4b696e3d0748ad4dcff9d3c775941a5b48b6cd7d7f320fc89f0bff2734",
+    ".local/display-lifecycle-20261029/expected.json": "07b2adee264df23d9fb3c0371f5c694df605be7c8124d314cabfc430923bde16",
+    ".local/display-lifecycle-20261029/report.json": "d42f0d7fc93db160fdf3cc2fc2f14e141c50ca874d228489ea4c4a2c06f0b82f",
+    ".local/display-lifecycle-20261029/before.json": "36d578863bb60d492afe865e58df3926bc760bc5b8d6a86aa835dab45b4d38ca",
+    ".local/display-lifecycle-20261029/create-reopened.json": "39f78552d362d2236a3b23508c2e7ebb5f5f077d82719f7f306301db4f07a2e5",
+    ".local/display-lifecycle-20261029/delete-reopened.json": "36d578863bb60d492afe865e58df3926bc760bc5b8d6a86aa835dab45b4d38ca",
+    ".local/display-lifecycle-20261029/create/receipt.json": "1861c570f5139875ae795e82f04dfae53de1e92ef817893aca3a455f90cdb1b6",
+    ".local/display-lifecycle-20261029/delete/receipt.json": "af33169c286f391af2fe460acccca0bf860b205f9d3c69ad9a3272bee9467f04"
+  }
+}

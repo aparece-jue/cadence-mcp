@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/regression-folded-references-20261029.txt"
   },
-  "acceptanceCanonicalSha256": "6da363025787ff6c112810b45b8ed0e66e3c565205473e230475d9d6392a0774"
+  "acceptanceCanonicalSha256": "36e6f44564015b254a0811b8e354019d6f224607b71aaea6a52594bbb9c2e068"
 }
