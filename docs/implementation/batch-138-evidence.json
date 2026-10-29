@@ -1,0 +1,49 @@
+{
+  "batch": 138,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fullL03Accepted": false,
+  "nondefaultCrossPageInheritanceAccepted": true,
+  "overrides": {
+    "Value": "USER OVERRIDE 00123 Ω",
+    "PCB Footprint": "CUSTOM_00123"
+  },
+  "nativeScenario": "B.Convert same-schematic cross-page addition; owner and new unit retain both explicit overrides",
+  "freshServiceRecoveryNoReplayAccepted": true,
+  "terminalTamperRefused": true,
+  "originalPowerFailurePreserved": true,
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 732,
+    "passed": 731,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/regression-folded-references-20261029.txt"
+  },
+  "targetedRegression": {
+    "total": 8,
+    "passed": 8,
+    "skipped": 0
+  },
+  "acceptedGateIds": [],
+  "evidenceSha256": {
+    "tools/prepare_crosspage_overrides.py": "5fffa34e6d69f119983954ba9ae3f5761769ff22b5c2293f4edda8716b908f56",
+    "tools/smoke_crosspage_overrides.py": "90779abaad41028d30d6f7144be1875102d0c800c11a37cc75da667edb3c559d",
+    ".local/crosspage-overrides-source-20261029/oracle.json": "7e5229110bbf024be0200a5ec994a12581773d63b4011cf3956b1a1cad17b654",
+    ".local/crosspage-overrides-source-20261029/expected.json": "de456bcb2325447996259fda247655efd5e38e18cd4cc79aa825883f666f1aab",
+    ".local/crosspage-overrides-source-20261029/report.json": "571a6829b9fd64d786bb3e859a33be478aead97ed17b622fced93a766e4aff6b",
+    ".local/crosspage-overrides-mcp-20261029/expected.json": "b333a92b8e8637c8a27689beb0f4399d6ca29cf14b3d00e0b5c5391c3c948e41",
+    ".local/crosspage-overrides-mcp-20261029/report.json": "db4f89c08e779d2938f9a67e72b9540320d436e766a9ec1fca9289c9f322e97d",
+    ".local/crosspage-overrides-tests-20261029.txt": "aef6e7ba72b54608bca25142178ea2ef50e24e2db543408d3b6468ad30ac8c3e"
+  },
+  "preservedHistoricalSha256": {
+    ".local/crosspage-cached-unit-native-20261025/report.json": "4fa03680b16f833233832ac20d285935e645e8facef827efcb7ef21987ea1954",
+    ".local/crosspage-cached-power-audit-v2-20261025/report.json": "aac9ea047f9b2a2d0503a297c525da48355ed550f20552061890a07554ed1ca6"
+  }
+}

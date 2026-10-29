@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十八批跨页补放的非默认属性继承（2026-10-29）
+
+- 原B缺失源经现有属性任务设置Unicode/前导零Value和CUSTOM_00123封装名，预期先冻结。实际MCP跨页B.Convert补放后，原owner/新B均精确读回两属性，全部原已建模状态和引脚/库保护通过。
+- 新服务恢复/不重放、错误目标/不完整预期、终末篡改拒绝通过；取证副本hash符合原artifact，原P供电失败/oracle保持。8专项测试及两脚本编译通过，无生产改变，沿用最近732回归。
+- 原34仍8/34；L03/D01/D04不提升，完整变体/供电等缺口保留。研发同步develop，alpha/release固定。见l03-crosspage-status.md补验、batch-138-evidence.json。
+
 ## 第一百三十七批嵌套LIB原生失败与不折行对照（2026-10-29）
 
 - 官方LIB单文件/嵌套语法样例冻结三文件/2.5V；原始setup-only通过，准备后引擎初始化退出3221226356、未到run_analysis。新不折行同结构对照同阶段/代码失败，不认定折行为根因。
