@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百三十三批标题栏动态字段失败后移（2026-10-29）
+
+- 原三页/九标题栏源只读GetDesignName/FileName/SourceSymbol及pageCount/number/size，状态均0，但页数/页码0、尺寸空；冻结count3不符，原报告false保留。没有新动态字段MCP，也未把0改成成功或推断所有环境不支持。
+- 原源/oracle不变、worker归零；C05转deferred移队尾，原图形正例保留。下一步按原独立队列推进L03等，稍后研究显式page metadata/标题栏字段和原生更新生命周期；不重放曾崩溃方法。
+- 无生产/契约变化，工具224，原34仍8/34（23.5%）；最近729/728+1权限skip沿用，不冒称重跑。研发证据/问题同步develop，alpha/release固定。见batch-133-evidence.json。
+
 ## 第一百三十二批标题栏椭圆/圆弧补验（2026-10-29）
 
 - 官方287–289页依据，新私有fixture冻结椭圆框/圆弧框及两端点，9标题栏45向量，八姿态/另一页同名的18曲线实例通过实际MCP局部描述与独立控制点转换、分页和会话/来源保护。旧失败及预期hash保持。

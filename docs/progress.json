@@ -8,8 +8,8 @@
   "statusCounts": {
     "passed": 8,
     "baseline_passed": 1,
-    "implemented_partial": 8,
-    "deferred": 16,
+    "implemented_partial": 7,
+    "deferred": 17,
     "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/alpha311/candidate-regression.txt"
   },
-  "acceptanceCanonicalSha256": "d4b7e16df53b81e8a6de5fcb77104ed2c18eda92a35d309c75aae199ea2b079e"
+  "acceptanceCanonicalSha256": "3ed8ba30a12f0381fb41b9876d9cc5fe0fe5bd0a1d3304cd7cbee385d2af7d96"
 }

@@ -1,0 +1,39 @@
+{
+  "batch": 133,
+  "date": "2026-10-29",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "tools": 224,
+  "newPublicTools": 0,
+  "productionCodeChanged": false,
+  "fullC05Accepted": false,
+  "dynamicFieldSemanticsAccepted": false,
+  "nativeGetterStatesSucceeded": true,
+  "nativePageCountAccepted": false,
+  "observedPageCount": 0,
+  "frozenExpectedPageCount": 3,
+  "sourceAndOracleUnchanged": true,
+  "ownedWorkersStopped": true,
+  "queueMoved": {
+    "feature": "C05",
+    "before": 5,
+    "after": 74
+  },
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 729,
+    "passed": 728,
+    "skipped": 1,
+    "errors": 0,
+    "status": "passed_with_skip",
+    "evidence": ".local/alpha311/candidate-regression.txt"
+  },
+  "acceptedGateIds": [],
+  "evidenceSha256": {
+    "tools/probe_titleblock_fields.py": "c60220deb819fba49e63bc8ae978bddddb39419aeca2b014291c9374a63a0240",
+    ".local/titleblock-fields-20261029/expected.json": "a83504a0a15020dd92f0e2f5b7e5d0ad0cfe3aa851382c8d1c2ef6d46551bf83",
+    ".local/titleblock-fields-20261029/native.json": "83344dceac710677ecb141cce7cfd36208463a4d19e9ba48d377dba90e8721ae",
+    ".local/titleblock-fields-20261029/report.json": "5181c02ec9f428a28b9fd6f0d4a9769c1931adb3b39fd4acded3eeeda6b66eef"
+  }
+}
