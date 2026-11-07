@@ -1,7 +1,9 @@
 # Fixed read-only placement/package/device identities for reference operations.
 source [file join [file dirname [info script]] json.tcl]
-if {$argc != 3} {exit 2}
-lassign $argv root design output
+if {$argc ni {3 4}} {exit 2}
+lassign $argv root design output detail
+if {$argc == 4 && $detail ne "contents"} {exit 2}
+set includeContents [expr {$detail eq "contents"}]
 proc cmcp::cs {v} {return [DboTclHelper_sMakeCString $v]}
 proc cmcp::str {v} {return [DboTclHelper_sGetConstCharPtr $v]}
 proc cmcp::check {s} {if {[$s Failed]} {error dbo_error}}
@@ -49,12 +51,24 @@ set rc [catch {
                                     set n [cmcp::cs ""];cmcp::check [$placed $method $n];set $key [cmcp::str $n]
                                 }
                             }
-                            lappend rows [cmcp::obj partId [cmcp::q $oid] nativeId $native schematicName [cmcp::q [cmcp::str $sn]] pageName [cmcp::q [cmcp::str $page]] reference [cmcp::q [cmcp::str $ref]] kind [cmcp::q $kind] isExternalDesignPart [expr {[$part IsExternalDesignPart] ? "true" : "false"}] packageName [cmcp::q $packageName] packageSize $size deviceDesignator [cmcp::q $designator] referenceDesignator [cmcp::q $refDes] sourceLib [cmcp::q $sourceLib] sourcePart [cmcp::q $sourcePart]]
+                            set contents {}
+                            if {$includeContents} {
+                                set phase contents
+                                set viewType [$part GetContentsViewType $state]; cmcp::check $state
+                                set view [cmcp::cs ""]; cmcp::check [$part GetContentsViewName $view]
+                                set lib [cmcp::cs ""]; cmcp::check [$part GetContentsLibName $lib]
+                                set primitive [$part GetIsPrimitive $state]; cmcp::check $state
+                                set contents [list contents [cmcp::obj viewType $viewType viewName [cmcp::q [cmcp::str $view]] libraryName [cmcp::q [cmcp::str $lib]] primitive $primitive]]
+                            }
+                            lappend rows [cmcp::obj partId [cmcp::q $oid] nativeId $native schematicName [cmcp::q [cmcp::str $sn]] pageName [cmcp::q [cmcp::str $page]] reference [cmcp::q [cmcp::str $ref]] kind [cmcp::q $kind] isExternalDesignPart [expr {[$part IsExternalDesignPart] ? "true" : "false"}] packageName [cmcp::q $packageName] packageSize $size deviceDesignator [cmcp::q $designator] referenceDesignator [cmcp::q $refDes] sourceLib [cmcp::q $sourceLib] sourcePart [cmcp::q $sourcePart] {*}$contents]
                         }
                     } finally {delete_DboPagePartInstsIter $it}
+                    if {$includeContents && [$state Failed] && [$state Code] != 1022} {error unexpected_part_iterator_end}
                 }
+                if {$includeContents && [$state Failed] && [$state Code] != 1022} {error unexpected_page_iterator_end}
             } finally {delete_DboSchematicPagesIter $pi}
         }
+        if {$includeContents && [$state Failed] && [$state Code] != 1022} {error unexpected_view_iterator_end}
     } finally {delete_DboLibViewsIter $vi}
     set f [open $output {WRONLY CREAT EXCL}]
     try {fconfigure $f -encoding utf-8 -translation lf;puts -nonewline $f [cmcp::arr $rows]} finally {close $f}

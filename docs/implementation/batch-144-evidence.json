@@ -1,0 +1,56 @@
+{
+  "batch": 144,
+  "date": "2026-11-07",
+  "feature": "E04",
+  "baseline": "0b7d1a462a8e7c59181bba06fb28f549b0038789",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "fullE04Accepted": false,
+  "tools": 229,
+  "newPublicTools": 0,
+  "contractSchemasUnchanged": true,
+  "internalCodeChanged": true,
+  "nativeDependencyGuardAcceptance": {
+    "passed": true,
+    "localIncomingReferences": 2,
+    "nativeRawRefCount": 0,
+    "referencedGuardRejected": true,
+    "privateUnreferencedCreateRenameDeleteReopened": true,
+    "sourceUnchanged": true,
+    "publicSchematicWriteAccepted": false
+  },
+  "queueAudit": {
+    "remaining": 26,
+    "allDeclaredPrerequisitesPassed": 12,
+    "atLeastOneUpstreamGateNotPassed": 14,
+    "priorityUnlockGates": [
+      "D03",
+      "H01",
+      "L02",
+      "C05"
+    ]
+  },
+  "latestFullRegression": {
+    "total": 738,
+    "passed": 737,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "remaining": [
+    "public durable schematic edits",
+    "root and populated target guards",
+    "native external/unresolved binding matrix",
+    "Unicode",
+    "DSN SaveAs/delete"
+  ],
+  "evidenceSha256": {
+    ".local/batch-144-schematic-dependencies/report.json": "ec82854977e2b85ed48ef20e2740d7fb0ba43e3ebd9eeef0c00370d04bfabf63",
+    ".local/batch-144-schematic-dependencies/regression.txt": "860d264bd54ac232c01886d9643268e8b0498ae9a81e2380a1e3653e1996bc2c",
+    "tools/smoke_schematic_dependencies.py": "09843fe3876e9a954505fc52da94eef5772b81dd161d84195f82d41b8e4baf35"
+  }
+}

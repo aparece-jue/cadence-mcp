@@ -41,18 +41,36 @@ def reference_map(data,mappings):
         value=prefix+str(number);temporary[identity]=value;reserved.add(value.casefold())
     return selected,temporary,expected
 
-def read_units(capture,sid):
+def read_units(capture,sid, *, include_contents=False):
     session=capture._session(sid);out=session['design'].parent/(new_id('reference-units')+'.json')
-    run_tcl(capture.config,'inspect_reference_units.tcl',[str(session['design']),str(out)],out.parent)
+    args=[str(session['design']),str(out)]
+    if include_contents:
+        args.append('contents')
+    run_tcl(capture.config,'inspect_reference_units.tcl',args,out.parent)
     capture._session(sid)
     try:
         if out.stat().st_size>16*1024*1024:raise ValueError()
         rows=json.loads(out.read_text(encoding='utf-8'));parts={p['objectId']:p for p in session['data']['part']}
         if not isinstance(rows,list) or len(rows)!=len(parts):raise ValueError()
         seen=set()
+        if include_contents:
+            schematics = {row['objectId']: row['name'] for row in session['data']['schematic']}
+            pages = {row['objectId']: (schematics[row['schematicId']], row['name']) for row in session['data']['page']}
         for row in rows:
             if not isinstance(row,dict) or row.get('partId') not in parts or row['partId'] in seen or row.get('reference')!=parts[row['partId']]['reference'] or row.get('kind') not in ('placed','drawn') or type(row.get('nativeId')) is not int or type(row.get('packageSize')) is not int or type(row.get('isExternalDesignPart')) is not bool:raise ValueError()
             if any(not isinstance(row.get(k),str) for k in ('schematicName','pageName','packageName','deviceDesignator','referenceDesignator','sourceLib','sourcePart')):raise ValueError()
+            if include_contents:
+                part = parts[row['partId']]
+                if (row['schematicName'], row['pageName']) != pages[part['pageId']]:
+                    raise ValueError('contents owner')
+                contents = row['contents']
+                if set(contents) != {'viewType', 'viewName', 'libraryName', 'primitive'}:
+                    raise ValueError('contents fields')
+                if type(contents['viewType']) is not int or type(contents['primitive']) is not int or contents['primitive'] not in (0, 1):
+                    raise ValueError('contents codes')
+                if any(not isinstance(contents[key], str) or len(contents[key]) > 4096 or '\x00' in contents[key]
+                       for key in ('viewName', 'libraryName')):
+                    raise ValueError('contents text')
             seen.add(row['partId'])
     except (OSError,ValueError,TypeError,KeyError) as e:raise CadenceError('invalid_worker_result','Invalid native reference identity document.','decode') from e
     out.unlink();return {r['partId']:r for r in rows}

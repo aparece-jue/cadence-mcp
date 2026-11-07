@@ -1317,7 +1317,8 @@
         ".local/design-create-faults-20261023/report.json",
         ".local/design-save-order-20261024/report.json",
         "docs/implementation/batch-142-evidence.json",
-        "docs/implementation/batch-143-evidence.json"
+        "docs/implementation/batch-143-evidence.json",
+        "docs/implementation/batch-144-evidence.json"
       ],
       "issues": [
         "ISS-E04-page-rename",
@@ -1325,7 +1326,7 @@
         "ISS-E04-page-content-baseline"
       ],
       "implementationReady": true,
-      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle."
+      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain."
     },
     {
       "id": "D01",
@@ -3733,12 +3734,12 @@
     "tools": 229,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 735,
-      "passed": 734,
+      "total": 738,
+      "passed": 737,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-143-page-edit/regression.txt"
+      "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3746,7 +3747,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "Continue E04 schematic lifecycle with a proven incoming dependency oracle and investigate independent Unicode reopen failures before closing the gate.",
+    "nextIndependentWork": "E04: integrate the native definition dependency guard into public durable ASCII schematic create/rename/delete. Apply the audited queue when a reproducible native blocker is reached.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3763,12 +3764,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 735,
-      "passed": 734,
+      "total": 738,
+      "passed": 737,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-143-page-edit/regression.txt"
+      "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4299,7 +4300,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-143-evidence.json",
+    "evidence": "docs/implementation/batch-144-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
@@ -4308,7 +4309,7 @@
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 5,
+    "newPublicTools": 0,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
@@ -4331,7 +4332,7 @@
     "deleteOnlyAccepted": true,
     "freshServerVerifyOnlyRecoveryAccepted": true,
     "nativeOutputsUnchangedAcrossRecovery": true,
-    "contractSchemasUnchanged": false,
+    "contractSchemasUnchanged": true,
     "standaloneNewWireScalarFixed": false,
     "arbitraryEditorOrderFixed": false,
     "originalHypothesisAndFailuresPreserved": true,
@@ -4431,7 +4432,8 @@
     "displayLifecycleLegacyPlanCompatible": true,
     "datTemperatureAxisAccepted": true,
     "pageGraphicMismatchLocalized": true,
-    "pageGraphicMismatchResolved": true
+    "pageGraphicMismatchResolved": true,
+    "schematicIncomingDependencyGuardAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
