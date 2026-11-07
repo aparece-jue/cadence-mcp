@@ -1318,7 +1318,8 @@
         ".local/design-save-order-20261024/report.json",
         "docs/implementation/batch-142-evidence.json",
         "docs/implementation/batch-143-evidence.json",
-        "docs/implementation/batch-144-evidence.json"
+        "docs/implementation/batch-144-evidence.json",
+        "docs/implementation/batch-145-evidence.json"
       ],
       "issues": [
         "ISS-E04-page-rename",
@@ -1326,7 +1327,7 @@
         "ISS-E04-page-content-baseline"
       ],
       "implementationReady": true,
-      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain."
+      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain. Batch145 publishes durable schematic create and empty, unreferenced non-root rename/delete. Actual MCP on populated FULLADD preserves all definitions, graphics, connection objects, document counts and dependency graphs. Root/referenced/populated/duplicate/Unicode/cancelled guards pass; simulated receipt loss recovers by independent verification without mutation replay. Native SaveDesignAs to a new owned file preserves source bytes and definition reopen; native RemoveDesign leaves the DSN file on disk. Durable SaveAs, owned design deletion, non-ASCII reopening and remaining scope are not yet accepted."
     },
     {
       "id": "D01",
@@ -3730,8 +3731,8 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-11-07",
-    "tools": 229,
+    "date": "2026-11-08",
+    "tools": 234,
     "goalComplete": false,
     "latestFullRegression": {
       "total": 738,
@@ -3739,7 +3740,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
+      "evidence": ".local/batch-145-schematic-edit/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3747,7 +3748,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "E04: integrate the native definition dependency guard into public durable ASCII schematic create/rename/delete. Apply the audited queue when a reproducible native blocker is reached.",
+    "nextIndependentWork": "E04: turn verified SaveDesignAs into a durable isolated task with content and provenance acceptance; design deletion must be scoped to verified owned outputs.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3769,7 +3770,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
+      "evidence": ".local/batch-145-schematic-edit/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4300,7 +4301,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-144-evidence.json",
+    "evidence": "docs/implementation/batch-145-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
@@ -4309,7 +4310,7 @@
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 0,
+    "newPublicTools": 5,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
@@ -4332,7 +4333,7 @@
     "deleteOnlyAccepted": true,
     "freshServerVerifyOnlyRecoveryAccepted": true,
     "nativeOutputsUnchangedAcrossRecovery": true,
-    "contractSchemasUnchanged": true,
+    "contractSchemasUnchanged": false,
     "standaloneNewWireScalarFixed": false,
     "arbitraryEditorOrderFixed": false,
     "originalHypothesisAndFailuresPreserved": true,
@@ -4433,7 +4434,9 @@
     "datTemperatureAxisAccepted": true,
     "pageGraphicMismatchLocalized": true,
     "pageGraphicMismatchResolved": true,
-    "schematicIncomingDependencyGuardAccepted": true
+    "schematicIncomingDependencyGuardAccepted": true,
+    "schematicEditMcpAvailable": true,
+    "saveAsNativeDefinitionProbePassed": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

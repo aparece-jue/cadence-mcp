@@ -1,0 +1,69 @@
+{
+  "batch": 145,
+  "date": "2026-11-08",
+  "feature": "E04",
+  "baseline": "cfcea26fbed87c49fa9492cddcab1010fc744c35",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "fullE04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 234,
+  "newPublicTools": [
+    "capture_plan_schematic_edit",
+    "capture_apply_schematic_edit",
+    "capture_schematic_edit_jobs",
+    "capture_cancel_schematic_edit",
+    "capture_recover_schematic_edit"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "tools": 234,
+    "operations": [
+      "create",
+      "rename",
+      "delete"
+    ],
+    "rootReferencedPopulatedRefused": true,
+    "duplicateUnicodeAndCancelledRefused": true,
+    "restartNoReplayAndVerifyOnlyRecovery": true,
+    "sourceUnchanged": true
+  },
+  "saveAsAndRemoveNativeProbe": {
+    "save_as": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "ownedFileStillExists": true
+    },
+    "remove": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "ownedFileStillExists": true
+    },
+    "ownedSourceUnchanged": true,
+    "saveAsReopenDefinitionsMatch": true
+  },
+  "firstSmokeFailure": "Test harness used create-only write_json on the existing owned journal while simulating recovery. The initial create/rename/delete and guards had already passed. The corrected fresh run verified recovery.",
+  "latestFullRegression": {
+    "total": 738,
+    "passed": 737,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-145-schematic-edit/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "remaining": [
+    "DSN SaveAs durable artifact and ownership-safe deletion",
+    "Unicode native reopen",
+    "broader schematic write and fault cases"
+  ],
+  "evidenceSha256": {
+    ".local/batch-145-schematic-edit/report.json": "e7a37b2a31104d5616cbdb7335d1761c754e16f33de2655b09b79e79e3734d51",
+    ".local/batch-145-schematic-edit/regression.txt": "30a2fcac87a55b962384ddd0ee191c1d8ca9a1e1c5e7610d215f3ae31467e6a2",
+    ".local/batch-145-schematic-edit/save-as-probe.json": "48523bde3a2d0099b0efeb88235c3683a56d2b7ca309f36bbea8f48a1ecb2cdb",
+    "tools/smoke_schematic_edit_mcp.py": "d7171ee19783e588daabf47f4663c8b946565c303e31c6447abdd89f4de7a3ea"
+  }
+}

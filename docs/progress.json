@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 229,
+  "toolCount": 234,
   "latestFullRegression": {
     "total": 738,
     "passed": 737,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-144-schematic-dependencies/regression.txt"
+    "evidence": ".local/batch-145-schematic-edit/regression.txt"
   },
-  "acceptanceCanonicalSha256": "8edab0d78010fac2e34204e05cfd0df6b6964db5788377a08f795752fea7b64e"
+  "acceptanceCanonicalSha256": "a195e54e46ade421f46d1eee68fabc94cc9135d6a56fc090d2603ca598986c85"
 }

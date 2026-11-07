@@ -257,3 +257,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 开发入口的 capture_plan_page_edit 支持 create、rename 和 delete。新建只传 schematicId 与 ASCII pageName；重命名另传 pageId；删除只传 schematicId、pageId，要求目标为空且同一原理图仍有其他页。删除预检同时核对原生页面计数、连接对象、图形及定义中的元件。随后调用 capture_apply_page_edit，持久作业支持查询、取消和验证式恢复。已通过的产物用 capture_open_edit_result(kind=page_edit) 打开继续操作。
 
 独立重开核对定义级连接和文档内容。标题栏用户属性及其原生类型保持，自动文件名按打开路径核验，自动页名按目标页核验，自动修改日期和时间值不作为持久用户属性比对。适用范围及负例见 [第 143 批证据](../implementation/batch-143-evidence.json)。
+
+
+## 隔离原理图定义操作
+
+开发入口的 capture_plan_schematic_edit 支持 create、rename、delete。创建声明 ASCII 原理图名和首张空页名；重命名和删除绑定当前设计快照中的 schematicId，只允许非根、无引用且各页为空的目标。外部或无法解析的实现路径会阻止执行。检查从所有定义实例读取原生实现信息，包含不在根 occurrence 树下的定义。
+
+计划冻结源指纹、预期定义、依赖图、连接对象、图形及页面计数。capture_apply_schematic_edit 只写新的隔离副本，独立重开验证。已验收的产物可通过 capture_open_edit_result(kind=schematic_edit) 继续查询或操作。任务支持查询、取消及验证式恢复。

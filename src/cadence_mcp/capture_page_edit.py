@@ -89,10 +89,13 @@ class CapturePageEdits(CapturePages):
                 expected_meta['pages'].remove(target)
             else:
                 target['name'] = payload['name']
+        return self.freeze_content(sid, session, data, expected, payload, connections, graphics, expected_meta)
+
+    def freeze_content(self, sid, session, data, expected, payload, connections, graphics, expected_meta):
         payload.update(expectedConnectionDigest=connection_digest(expected,connections),
                        expectedGraphicDigest=graphic_digest(expected, graphics, titleblock_design=session['design'], original=data),
                        graphicBaselineProfile=TITLEBLOCK_CONTEXT_PROFILE, expectedMetaDigest=meta_digest(expected_meta))
-        if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Page baseline exceeds durable record bound.')
+        if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Document baseline exceeds durable record bound.')
         self.capture._session(sid);return payload
     def verify_content(self,verifier,sid,p):
         if not all(k in p for k in ('expectedConnectionDigest','expectedGraphicDigest','expectedMetaDigest')):
