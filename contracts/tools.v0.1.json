@@ -35757,6 +35757,1357 @@
     "_meta": null
   },
   {
+    "name": "capture_plan_design_save_as",
+    "title": null,
+    "description": "Plan native Save As from an immutable DSN session to a new owned DSN. fileName is a simple ASCII basename with a .dsn extension. External or unresolved schematic implementations are refused.",
+    "inputSchema": {
+      "properties": {
+        "sessionId": {
+          "title": "Sessionid",
+          "type": "string"
+        },
+        "fileName": {
+          "maxLength": 68,
+          "minLength": 5,
+          "title": "Filename",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sessionId",
+        "fileName"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_plan_design_save_asArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
+    "name": "capture_apply_design_save_as",
+    "title": null,
+    "description": "Save As with no replacement in an isolated directory and independently verify definitions, dependencies, graphics and effective instance properties. The verified output retains the requested basename.",
+    "inputSchema": {
+      "properties": {
+        "planId": {
+          "title": "Planid",
+          "type": "string"
+        },
+        "planDigest": {
+          "title": "Plandigest",
+          "type": "string"
+        },
+        "idempotencyKey": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Idempotencykey",
+          "type": "string"
+        }
+      },
+      "required": [
+        "planId",
+        "planDigest",
+        "idempotencyKey"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_apply_design_save_asArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
+    "name": "capture_design_save_as_jobs",
+    "title": null,
+    "description": "List durable isolated design Save As jobs.",
+    "inputSchema": {
+      "properties": {
+        "offset": {
+          "default": 0,
+          "maximum": 4096,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 50,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_design_save_as_jobsArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
+    "name": "capture_cancel_design_save_as",
+    "title": null,
+    "description": "Cancel a pending or currently owned Save As job.",
+    "inputSchema": {
+      "properties": {
+        "planId": {
+          "title": "Planid",
+          "type": "string"
+        },
+        "planDigest": {
+          "title": "Plandigest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "planId",
+        "planDigest"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_cancel_design_save_asArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
+    "name": "capture_recover_design_save_as",
+    "title": null,
+    "description": "Verify an already saved owned artifact without repeating the Save As mutation.",
+    "inputSchema": {
+      "properties": {
+        "planId": {
+          "title": "Planid",
+          "type": "string"
+        },
+        "planDigest": {
+          "title": "Plandigest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "planId",
+        "planDigest"
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "title": "capture_recover_design_save_asArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
     "name": "capture_plan_page_edit",
     "title": null,
     "description": "Plan an isolated page edit. Create takes an ASCII pageName and no pageId. Rename takes both. Delete takes a pageId and no pageName, requires another page in the schematic, and checks native content counts, connections and graphics for emptiness.",
@@ -57784,6 +59135,7 @@
             "graphic_text",
             "part_edit",
             "design_create",
+            "design_save_as",
             "page_edit",
             "schematic_edit",
             "reference",

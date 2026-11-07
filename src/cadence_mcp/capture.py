@@ -60,7 +60,12 @@ class CaptureService:
         with self.lock:
             workspace = self._workspace(workspace_id)
             directory = checked_path(str(workspace["directory"]), (self.config.workspace_root,))
-            design = checked_path(str(directory / "design.dsn"), (directory,))
+            relative = workspace["manifest"].get("designRelativePath", "design.dsn")
+            if not isinstance(relative, str) or Path(relative).name != relative or Path(relative).suffix.lower() != ".dsn":
+                raise CadenceError("invalid_workspace", "Workspace design must be a DSN directly inside the workspace.")
+            design = checked_path(str(directory / relative), (directory,))
+            if design.parent != directory:
+                raise CadenceError("invalid_workspace", "Workspace design cannot resolve outside its direct directory.")
             if sha256(design) != workspace["manifest"]["copiedFingerprint"]:
                 raise CadenceError("target_changed", "The workspace design changed; create a new workspace.")
             before = sha256(design)

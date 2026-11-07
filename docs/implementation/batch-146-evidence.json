@@ -1,0 +1,74 @@
+{
+  "batch": 146,
+  "date": "2026-11-08",
+  "feature": "E04",
+  "baseline": "bb0ddc3048edfc20a03184e2f6cd99d7a355520d",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "fullE04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 239,
+  "newPublicTools": [
+    "capture_plan_design_save_as",
+    "capture_apply_design_save_as",
+    "capture_design_save_as_jobs",
+    "capture_cancel_design_save_as",
+    "capture_recover_design_save_as"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "tools": 239,
+    "nativeNamedSaveAsReopened": true,
+    "sourceBytesUnchanged": true,
+    "effectivePropertiesAndDependenciesVerified": true,
+    "unsafeBasenameCancellationAndCollisionRefused": true,
+    "subsequentPageEditSucceeded": true,
+    "verifyOnlyRecoveryAndTamperRefusal": true
+  },
+  "firstSaveAsFailure": "The original strict graphic digest rejected the generated Design Name change. Fresh named copies show unchanged non-titleblock graphics, titleblock IDs, and user property values/types. The named context profile independently checks the actual file stem and retains user overrides.",
+  "unicodeControlledLauncherProbe": {
+    "default": {
+      "returnCode": 0,
+      "names": {
+        "schematic": [],
+        "page": []
+      }
+    },
+    "hidden": {
+      "returnCode": 0,
+      "names": {
+        "schematic": [
+          "电路"
+        ],
+        "page": [
+          "原理图"
+        ]
+      }
+    }
+  },
+  "unicodeScope": "Same self-built Unicode DSN bytes and formal Tcl inspector. Changing only the Windows console creation flag in the launcher changes empty enumeration to exact Chinese names. No production Unicode policy changed in this batch.",
+  "latestFullRegression": {
+    "total": 741,
+    "passed": 740,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-146-save-as/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "remaining": [
+    "native Unicode read/write acceptance and client guards",
+    "ownership-safe DSN artifact deletion",
+    "remaining E04 fault and broader scope checks"
+  ],
+  "evidenceSha256": {
+    ".local/batch-146-save-as/report.json": "59479446842316def83d5e4b1eedc3e008e98787c061da237cfb0fbcddbf10de",
+    ".local/batch-146-save-as/regression.txt": "001abe007f72d5a0cf3893fbacd93cf8e38976c0e129c57fb4bd6c8d42f0b82d",
+    ".local/batch-146-save-as/titleblock-delta.json": "d8b7a54059b70b671423c4996bb6d396b5fce04c6553b874c49958b19b5622b5",
+    ".local/batch-146-save-as/unicode-launch.json": "8b5b6ae4513801f632d9bb499f75b7a91b6c942ccaa6129b592cd570a7a31a1d",
+    "tools/smoke_design_save_as_mcp.py": "67931ddd72b19f3648546809bfbfa2faf36ea67f3900ae1e0cf57711a3189cfc"
+  }
+}

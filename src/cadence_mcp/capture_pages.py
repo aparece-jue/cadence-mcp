@@ -64,13 +64,20 @@ class CapturePages(CapturePropertyEdits):
         return [self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'edit_page.tcl',self.config.install_root,
                 directory/'design.dsn',directory/'native-result.json',payload['operation'],payload['schematicName'],payload['oldName'],payload['name']]
 
+    def design_relative_path(self, payload):
+        return 'design.dsn'
+
     def verify(self,directory,payload,native_completed):
-        target=checked_path(str(directory/'design.dsn'),(directory,));before=sha256(target)
+        relative = self.design_relative_path(payload)
+        target=checked_path(str(directory/relative),(directory,))
+        if target.stat().st_size > 128 * 1024 * 1024:
+            raise CadenceError('output_limit', 'Isolated design exceeds the 128 MiB limit.')
+        before=sha256(target)
         if native_completed:
             receipt=directory/'native-result.json'
             if receipt.stat().st_size>4096 or json.loads(receipt.read_text(encoding='utf-8'))!={'saved':True,'operation':payload['operation'],'schematicName':payload['schematicName'],'name':payload['name']}:
                 raise CadenceError('invalid_worker_result','Native page save receipt mismatch.','verify')
-        verifier=CaptureService(self.config);verifier.workspaces['verify']={'directory':directory,'manifest':{'copiedFingerprint':before}}
+        verifier=CaptureService(self.config);verifier.workspaces['verify']={'directory':directory,'manifest':{'copiedFingerprint':before,'designRelativePath':relative}}
         opened=verifier.open('verify');sid=opened['sessionId']
         try:
             if definition_baseline(verifier.sessions[sid]['data'])!=payload['expectedDefinitionDigest']:
@@ -80,7 +87,7 @@ class CapturePages(CapturePropertyEdits):
         self.preflight(payload)
         if sha256(target)!=before:raise CadenceError('target_changed','Output changed during page verification.')
         ident=directory.name.removeprefix('plan-')
-        artifact={'artifactId':'page-'+ident,'kind':'capture_edited_design','workspaceRelativePath':'design.dsn','sha256':before,
+        artifact={'artifactId':'page-'+ident,'kind':'capture_edited_design','workspaceRelativePath':relative,'sha256':before,
                   'size':target.stat().st_size,'producedByJob':ident,'sourceFingerprint':payload['sourceFingerprint'],
                   'createdAt':datetime.now(timezone.utc).isoformat(),'validationState':'validated'}
         return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,

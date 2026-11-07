@@ -1319,7 +1319,8 @@
         "docs/implementation/batch-142-evidence.json",
         "docs/implementation/batch-143-evidence.json",
         "docs/implementation/batch-144-evidence.json",
-        "docs/implementation/batch-145-evidence.json"
+        "docs/implementation/batch-145-evidence.json",
+        "docs/implementation/batch-146-evidence.json"
       ],
       "issues": [
         "ISS-E04-page-rename",
@@ -1327,7 +1328,7 @@
         "ISS-E04-page-content-baseline"
       ],
       "implementationReady": true,
-      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain. Batch145 publishes durable schematic create and empty, unreferenced non-root rename/delete. Actual MCP on populated FULLADD preserves all definitions, graphics, connection objects, document counts and dependency graphs. Root/referenced/populated/duplicate/Unicode/cancelled guards pass; simulated receipt loss recovers by independent verification without mutation replay. Native SaveDesignAs to a new owned file preserves source bytes and definition reopen; native RemoveDesign leaves the DSN file on disk. Durable SaveAs, owned design deletion, non-ASCII reopening and remaining scope are not yet accepted."
+      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain. Batch145 publishes durable schematic create and empty, unreferenced non-root rename/delete. Actual MCP on populated FULLADD preserves all definitions, graphics, connection objects, document counts and dependency graphs. Root/referenced/populated/duplicate/Unicode/cancelled guards pass; simulated receipt loss recovers by independent verification without mutation replay. Native SaveDesignAs to a new owned file preserves source bytes and definition reopen; native RemoveDesign leaves the DSN file on disk. Durable SaveAs, owned design deletion, non-ASCII reopening and remaining scope are not yet accepted. Batch146 publishes native SaveDesignAs to an explicitly named, non-overwriting isolated DSN. Actual MCP verified source/staged hashes, definitions, connections, graphic and titleblock context, effective instance properties, page counts, dependency identity, subsequent page editing, pending cancel, preexisting collision, verify-only recovery and output tamper refusal. Controlled Unicode retest on unchanged self-built bytes shows default Windows subprocess enumeration returns empty, while CREATE_NO_WINDOW returns the exact Chinese root and page. No Unicode policy promotion or design-file deletion yet."
     },
     {
       "id": "D01",
@@ -2945,8 +2946,8 @@
       "summary": "New non-ASCII root/page DSN saves but independent definition reader returns no schematic/page rows; direct argv and UTF-8 JSON declaration both fail. Startup-argument encoding alone is not an established cause. Public new-design plans reject non-ASCII pending a real fix.",
       "evidence": ".local/design-create-v2-20261023/report.json",
       "firstEvidence": ".local/design-create-20261023/report.json",
-      "latestEvidence": "docs/implementation/batch-143-evidence.json",
-      "latestObservation": "ASCII root/page reopens exactly. Root-only non-ASCII loses schematic and page enumeration; page-only non-ASCII retains the ASCII root but enumerates no pages. Both non-ASCII loses both. All four native workers reported save completion; root cause is still unproven."
+      "latestEvidence": "docs/implementation/batch-146-evidence.json",
+      "latestObservation": "The previously saved CP936 Chinese names are readable by direct native lookup. Same source bytes and formal inspect.tcl under subprocess differ by Windows CREATE_NO_WINDOW: default returns no definitions; hidden returns exact root/page names. Broader fresh read/write matrix and regression are required before lifting ASCII guards."
     },
     {
       "id": "ISS-E04-page-content-baseline",
@@ -3732,15 +3733,15 @@
   ],
   "lastBatch": {
     "date": "2026-11-08",
-    "tools": 234,
+    "tools": 239,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 738,
-      "passed": 737,
+      "total": 741,
+      "passed": 740,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-145-schematic-edit/regression.txt"
+      "evidence": ".local/batch-146-save-as/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3748,7 +3749,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "E04: turn verified SaveDesignAs into a durable isolated task with content and provenance acceptance; design deletion must be scoped to verified owned outputs.",
+    "nextIndependentWork": "E04: verify and apply the no-console Windows reader startup fix to native Unicode round trips, then complete ownership-safe design-file deletion.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3765,12 +3766,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 738,
-      "passed": 737,
+      "total": 741,
+      "passed": 740,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-145-schematic-edit/regression.txt"
+      "evidence": ".local/batch-146-save-as/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4301,7 +4302,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-145-evidence.json",
+    "evidence": "docs/implementation/batch-146-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
@@ -4436,7 +4437,9 @@
     "pageGraphicMismatchResolved": true,
     "schematicIncomingDependencyGuardAccepted": true,
     "schematicEditMcpAvailable": true,
-    "saveAsNativeDefinitionProbePassed": true
+    "saveAsNativeDefinitionProbePassed": true,
+    "designSaveAsMcpAvailable": true,
+    "unicodeConsoleLaunchDifferenceVerified": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

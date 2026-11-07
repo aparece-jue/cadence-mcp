@@ -8,6 +8,7 @@ from .isolated_jobs import digest
 from .core import CadenceError
 
 TITLEBLOCK_CONTEXT_PROFILE = "titleblock-context-v1"
+TITLEBLOCK_NAMED_CONTEXT_PROFILE = "titleblock-named-context-v1"
 GENERATED_MODIFICATION_FIELDS = {
     f"{owner} Modify {field}"
     for owner in ("Design", "Schematic", "Page")
@@ -15,7 +16,7 @@ GENERATED_MODIFICATION_FIELDS = {
 }
 
 
-def titleblock_content(attrs, actual_page, expected_page, design):
+def titleblock_content(attrs, actual_page, expected_page, design, *, named_context=False):
     users = sorted(attrs["userProperties"], key=lambda prop: prop["name"])
     user_names = {prop["name"].casefold() for prop in users}
     content = []
@@ -25,6 +26,11 @@ def titleblock_content(attrs, actual_page, expected_page, design):
             if name == "Design File Name":
                 if ntpath.normcase(ntpath.normpath(value)) != ntpath.normcase(ntpath.normpath(str(design))):
                     raise CadenceError("page_titleblock_context_mismatch", "Titleblock file name does not identify the opened design.")
+                value = None
+            elif named_context and name == "Design Name":
+                stem = ntpath.splitext(ntpath.basename(str(design)))[0]
+                if value.casefold() != stem.casefold():
+                    raise CadenceError("page_titleblock_context_mismatch", "Titleblock design name does not match the opened filename.")
                 value = None
             elif name == "Page Name":
                 if value != actual_page:
@@ -37,7 +43,7 @@ def titleblock_content(attrs, actual_page, expected_page, design):
     return {**attrs, "userProperties": users, "properties": sorted(content, key=lambda prop: prop["name"])}
 
 
-def graphic_digest(data,objects, *, titleblock_design=None, original=None):
+def graphic_digest(data,objects, *, titleblock_design=None, original=None, named_context=False):
     sch={s['objectId']:s['name'] for s in data['schematic']}
     pages={p['objectId']:[sch[p['schematicId']],p['name']] for p in data['page']}
     parts={p['objectId']:p['reference'] for p in data['part']}
@@ -48,7 +54,8 @@ def graphic_digest(data,objects, *, titleblock_design=None, original=None):
         if owner is not None:attrs['ownerReference']=parts[owner]
         if titleblock_design is not None and obj['kind']=='titleblock':
             page_id = obj['pageId']
-            attrs = titleblock_content(attrs, original_pages[page_id], pages[page_id][1], titleblock_design)
+            attrs = titleblock_content(attrs, original_pages[page_id], pages[page_id][1], titleblock_design,
+                                       named_context=named_context)
             attrs['nativeId'] = obj['nativeId']
         rows.append([obj['kind'],pages[obj['pageId']],attrs])
     return digest(sorted(rows,key=lambda r:json.dumps(r,sort_keys=True,ensure_ascii=False)))
@@ -92,9 +99,12 @@ class CapturePageEdits(CapturePages):
         return self.freeze_content(sid, session, data, expected, payload, connections, graphics, expected_meta)
 
     def freeze_content(self, sid, session, data, expected, payload, connections, graphics, expected_meta):
+        named_context = session['design'].name.casefold() != 'design.dsn' or self.design_relative_path(payload).casefold() != 'design.dsn'
+        profile = TITLEBLOCK_NAMED_CONTEXT_PROFILE if named_context else TITLEBLOCK_CONTEXT_PROFILE
         payload.update(expectedConnectionDigest=connection_digest(expected,connections),
-                       expectedGraphicDigest=graphic_digest(expected, graphics, titleblock_design=session['design'], original=data),
-                       graphicBaselineProfile=TITLEBLOCK_CONTEXT_PROFILE, expectedMetaDigest=meta_digest(expected_meta))
+                       expectedGraphicDigest=graphic_digest(expected, graphics, titleblock_design=session['design'],
+                                                            original=data, named_context=named_context),
+                       graphicBaselineProfile=profile, expectedMetaDigest=meta_digest(expected_meta))
         if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Document baseline exceeds durable record bound.')
         self.capture._session(sid);return payload
     def verify_content(self,verifier,sid,p):
@@ -102,9 +112,11 @@ class CapturePageEdits(CapturePages):
             raise CadenceError('invalid_plan','Legacy internal page plans lack the required content baselines.')
         session=verifier._session(sid);data=session['data']
         if connection_digest(data,inventory(verifier,sid))!=p['expectedConnectionDigest']:raise CadenceError('page_connection_mismatch','Page operation changed connection-object baseline.','verify')
-        if p.get('graphicBaselineProfile') == TITLEBLOCK_CONTEXT_PROFILE:
+        profile = p.get('graphicBaselineProfile')
+        if profile in (TITLEBLOCK_CONTEXT_PROFILE, TITLEBLOCK_NAMED_CONTEXT_PROFILE):
             graphics = read_inventory(verifier, sid, 'graphics', titleblock_users=True)
-            actual_graphic_digest = graphic_digest(data, graphics, titleblock_design=session['design'])
+            actual_graphic_digest = graphic_digest(data, graphics, titleblock_design=session['design'],
+                                                   named_context=profile == TITLEBLOCK_NAMED_CONTEXT_PROFILE)
         else:
             # Retain the original digest for pre-profile internal plans.
             query_objects(verifier,sid,'graphics','graphic',None,None,1)

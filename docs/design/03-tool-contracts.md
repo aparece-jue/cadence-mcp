@@ -264,3 +264,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 开发入口的 capture_plan_schematic_edit 支持 create、rename、delete。创建声明 ASCII 原理图名和首张空页名；重命名和删除绑定当前设计快照中的 schematicId，只允许非根、无引用且各页为空的目标。外部或无法解析的实现路径会阻止执行。检查从所有定义实例读取原生实现信息，包含不在根 occurrence 树下的定义。
 
 计划冻结源指纹、预期定义、依赖图、连接对象、图形及页面计数。capture_apply_schematic_edit 只写新的隔离副本，独立重开验证。已验收的产物可通过 capture_open_edit_result(kind=schematic_edit) 继续查询或操作。任务支持查询、取消及验证式恢复。
+
+
+## 隔离设计另存为
+
+开发入口的 capture_plan_design_save_as 接收当前只读 DSN 会话及简单 ASCII DSN 文件名。执行时原生另存为使用独立暂存源和新作业目录，以禁止覆盖的方式产生请求名称的 DSN。正式工程路径不会传给写入适配器。独立重开核对定义、连线、图形、标题栏、页面计数、有效属性和本地依赖。命名产物可经 capture_open_edit_result(kind=design_save_as) 继续操作。
+
+遇到外部或未解析的原理图依赖会拒绝执行。OPJ、外部库及仿真资源不随此任务复制。详见 [第 146 批证据](../implementation/batch-146-evidence.json)。

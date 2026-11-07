@@ -146,7 +146,7 @@ class CapturePropertyEdits(IsolatedJobs):
             workspace_id = f"edit-output-{self.kind}-{plan_id}"
             manifest = {"workspaceId": workspace_id, "copiedFingerprint": result["artifact"]["sha256"],
                         "sourceFingerprint": result["artifact"]["sourceFingerprint"], "copyMode": "isolated_output",
-                        "designRelativePath": "design.dsn", "dependencyClosureVerified": False}
+                        "designRelativePath": result["artifact"]["workspaceRelativePath"], "dependencyClosureVerified": False}
         finally:
             guard.close()
         with self.capture.lock:
