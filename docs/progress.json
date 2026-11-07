@@ -34,12 +34,12 @@
   },
   "toolCount": 224,
   "latestFullRegression": {
-    "total": 732,
-    "passed": 731,
+    "total": 733,
+    "passed": 732,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-140-display-lifecycle/regression.txt"
+    "evidence": ".local/batch-141-dat-temperature/regression.txt"
   },
-  "acceptanceCanonicalSha256": "5c9172bee3460bf73122c35f88fb01a54415b81f3c09aa61520c93549a7c6eb3"
+  "acceptanceCanonicalSha256": "ad26f0e1e0884f5316616096311b644285923cd66761dfe19bed3ac862442d01"
 }

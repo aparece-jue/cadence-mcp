@@ -1,0 +1,67 @@
+{
+  "batch": 141,
+  "date": "2026-11-07",
+  "feature": "P04",
+  "baseline": "94eecff05ef661f35fb0087be63e65b7a7ed773a",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "productionCodeChanged": true,
+  "tools": 224,
+  "newPublicTools": 0,
+  "contractSchemasUnchanged": true,
+  "officialSources": [
+    {
+      "path": "doc/pspcref/01commands.html",
+      "topics": [
+        ".DC temperature sweep keyword TEMP",
+        ".TEMP degrees Centigrade"
+      ]
+    }
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "temperatureAxis": [
+      -10,
+      20,
+      50
+    ],
+    "temperatureUnit": {
+      "unit": "degC",
+      "unitSource": "axis_name_convention"
+    },
+    "genericParameterRemainsUnknown": true,
+    "samplesAndMeasurementAccepted": true,
+    "csvAndJsonVerifiedAfterRestart": true,
+    "sourceAndOracleUnchanged": true
+  },
+  "nativeNegative": {
+    "scope": "redefine TEMP as a user parameter",
+    "diagnostic": "ORPSIM-15089",
+    "remainingOwnedProcesses": 0
+  },
+  "initialCliAttempt": {
+    "scope": "standalone psp_cmd /r for the temperature fixture",
+    "state": "timeout",
+    "timeoutSeconds": 45,
+    "remainingOwnedProcesses": 0,
+    "outProduced": false,
+    "causeEstablished": false
+  },
+  "legacyPlanCompatibility": "A plan frozen with unknown units and no unitProfile independently verifies and reproduces the original export bytes.",
+  "fullP04Accepted": false,
+  "latestFullRegression": {
+    "total": 733,
+    "passed": 732,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-141-dat-temperature/regression.txt"
+  },
+  "evidenceSha256": {
+    ".local/batch-141-dat-temperature/report.json": "c89dc7f0f3cae6dd9d3f09d260a48793757429fd8283e63b4d7b4aea7a85acc1",
+    ".local/batch-141-dat-temperature/regression.txt": "9075d42b250a7144938d08bdd6ed312d0d9eb86f3a2d2684b62046790d8ea319",
+    "tools/smoke_dat_temperature_units.py": "2b2222e8030dd12457c1eb585d6f173aac20c53b3735ccd722af3d02c8321612"
+  }
+}

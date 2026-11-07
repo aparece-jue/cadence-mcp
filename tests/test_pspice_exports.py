@@ -1,24 +1,30 @@
 import copy,csv,io,json,math,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
-from cadence_mcp.core import Config,CadenceError,sha256
+from cadence_mcp.core import Config,CadenceError,sha256,write_json
 from cadence_mcp.pspice_dat import PSpiceDat
-from cadence_mcp.pspice_exports import PSpiceExports
+from cadence_mcp.pspice_exports import PSpiceExports,collect_table
+from cadence_mcp.isolated_jobs import digest
 from cadence_mcp.pspice_export_format import render_data,validate_table,COLUMNS
 
 def table():
  return {'metadata':{'offset':2,'rowCount':1,'canonicalTrace':'=UNTRUSTED_LABEL'},'samples':[{'index':2,'axisReal':20.0,'axisImaginary':0.0,'real':1e-200,'imaginary':-1.2345678901234567}]}
 
 class ExportTests(unittest.TestCase):
- def setup_service(self,digital=False):
+ def setup_service(self,digital=False,temperature=False):
   temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup);root=Path(temporary.name)
   install=root/'install';(install/'tcltk/bin').mkdir(parents=True);(install/'tcltk/bin/tclsh.exe').touch()
   source=root/'input.dat';source.write_bytes(b'owned mock DAT');cfg=Config(install,root/'work',(root,));data=PSpiceDat(cfg)
   header={'Number':0,'AnalysisName':'AC Sweep','PrimaryParamName':'Frequency','ComplexFlag':2,'DataType':0,'NumberofAnalogRows':3,'NumberofAnalogColumns':2,'Trace Names':{'Analog Names':['Frequency',{'Gain':['V(out)']}]}}
+  if temperature:
+   header.update(AnalysisName='DC Sweep',PrimaryParamName='TEMP',ComplexFlag=1,
+                 **{'Trace Names':{'Analog Names':['TEMP','V(OUT)']}})
   if digital:header.update(DataType=1,ComplexFlag=1,PrimaryParamName='Time',NumberofAnalogRows=0,NumberofAnalogColumns=0,NumberofDigitalRows=3,NumberofDigitalColumns=1,**{'Trace Names':{'Analog Names':[],'Digital Names':['DIN']}})
   def worker(directory,mode,block=0,trace=''):
    if mode=='headers':return {'blockCount':1,'headerJSON':json.dumps([header])}
    self.assertFalse(digital)
+   if temperature:
+    return {'block':0,'trace':trace,'rows':3,'valuesCSV':'-10,20,50' if trace=='TEMP' else '3,3,3'}
    return {'block':0,'trace':trace,'rows':3,'valuesCSV':'10,0,20,0,30,0' if trace=='Frequency' else '10,-1,20,-2,30,-3'}
   mocked=patch.object(data,'_worker',side_effect=worker);native=mocked.start();self.addCleanup(mocked.stop)
   ident=data.open(str(source))['datId'];return root,cfg,data,ident,PSpiceExports(cfg,data),native
@@ -46,6 +52,27 @@ class ExportTests(unittest.TestCase):
   _,_,row=exports._load(plan['planId']);frozen=json.loads(Path(row['plan']['payload']['tablePath']).read_text())
   self.assertEqual(frozen['samples'],[{'index':1,'axisReal':20,'axisImaginary':0,'real':20,'imaginary':-2},{'index':2,'axisReal':30,'axisImaginary':0,'real':30,'imaginary':-3}])
   data.close(ident);exports.preflight(row['plan']['payload'])
+ def test_temperature_unit_profile_preserves_legacy_frozen_exports(self):
+  root,cfg,data,ident,exports,native=self.setup_service(temperature=True)
+  plan=exports.plan(ident,0,'TEMP','json')
+  self.assertEqual(plan['preview']['axisUnits'],{'unit':'degC','unitSource':'axis_name_convention'})
+  _,_,record=exports._load(plan['planId'])
+  payload={**record['plan']['payload']}
+  payload.pop('unitProfile')
+  origin=payload['metadata']['sourceProvenance']
+  frozen=collect_table(data,ident,0,'TEMP',0,3,origin)
+  for key in ('axisUnits','valueUnits'):
+   self.assertEqual(frozen['metadata'][key],{'unit':None,'unitSource':'unknown'})
+  self.assertIsNone(frozen['metadata']['traceMetadata']['unit'])
+  path=root/'work'/'legacy-temperature.json'
+  write_json(path,frozen)
+  payload.update(tablePath=str(path),tableSha256=sha256(path),tableDigest=digest(frozen),metadata=frozen['metadata'])
+  legacy=exports.create_plan(payload)
+  data.close(ident)
+  with patch.object(PSpiceDat,'_worker',side_effect=native.side_effect):
+   result=exports.apply(legacy['planId'],legacy['planDigest'],'legacy-temperature')
+  self.assertTrue(result['nativeReopenVerified'])
+  self.assertEqual((root/'work'/result['outputWorkspaceRelativePath']/'samples.json').read_bytes(),render_data(frozen,'json'))
  def test_range_block_and_digital_targets_refused(self):
   _,_,_,ident,exports,_=self.setup_service()
   for args in [(0,'Gain','csv',3,None),(0,'Gain','csv',0,4),(0,'Gain','csv',0,True),(0,'Gain','csv',-1,1),(0,'MISSING','csv',0,1),(1,'Gain','csv',0,1)]:

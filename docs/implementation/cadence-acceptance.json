@@ -2498,7 +2498,8 @@
         ".local/step-ac-mcp-node-selectors-20261027/report.json",
         ".local/step-ac-engine-mcp-20261027/report.json",
         ".local/step-backend-guard-mcp-20261027/report.json",
-        ".local/regression-param-step-20261027.txt"
+        ".local/regression-param-step-20261027.txt",
+        "docs/implementation/batch-141-evidence.json"
       ],
       "issues": [
         "ISS-P04-complex-fixture-native-crash",
@@ -2506,7 +2507,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved."
+      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved. Batch141 verifies DC Sweep/TEMP in genuine SPB24.1 engine-generated DAT: Celsius on exact axis, page/measure and durable CSV/JSON, an unknown ordinary parameter control and compatibility with old frozen unknown-unit plans. Initial standalone CLI timeout retained. Digital flags, opaque state, DAT10 writer and the remaining format/unit scope stay open."
     },
     {
       "id": "P05",
@@ -3726,12 +3727,12 @@
     "tools": 224,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 732,
-      "passed": 731,
+      "total": 733,
+      "passed": 732,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-140-display-lifecycle/regression.txt"
+      "evidence": ".local/batch-141-dat-temperature/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3739,7 +3740,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Continue independent Capture/PSpice work in the existing queue. Retain E02 default reset, arbitrary font quality persistence, rendering and occurrence for separately evidenced acceptance.",
+    "nextIndependentWork": "Continue the next dependency-ready original gate; retain P04 digital and format failure evidence.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3756,12 +3757,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 732,
-      "passed": 731,
+      "total": 733,
+      "passed": 732,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-140-display-lifecycle/regression.txt"
+      "evidence": ".local/batch-141-dat-temperature/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4292,7 +4293,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-140-evidence.json",
+    "evidence": "docs/implementation/batch-141-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
@@ -4324,7 +4325,7 @@
     "deleteOnlyAccepted": true,
     "freshServerVerifyOnlyRecoveryAccepted": true,
     "nativeOutputsUnchangedAcrossRecovery": true,
-    "contractSchemasUnchanged": false,
+    "contractSchemasUnchanged": true,
     "standaloneNewWireScalarFixed": false,
     "arbitraryEditorOrderFixed": false,
     "originalHypothesisAndFailuresPreserved": true,
@@ -4421,7 +4422,8 @@
     "allInstanceDataOtherDisplaysAndFontsPreserved": true,
     "explicitNewFontQuality": 1,
     "displayLifecycleRecoveryAccepted": true,
-    "displayLifecycleLegacyPlanCompatible": true
+    "displayLifecycleLegacyPlanCompatible": true,
+    "datTemperatureAxisAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

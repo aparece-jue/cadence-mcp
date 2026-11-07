@@ -11,7 +11,13 @@ from .environment import process_env, ADAPTERS, FILES
 from .process_tree import run_owned_process
 
 
-def unit_for(name, axis):
+def is_temperature_axis(axis, analysis):
+    return axis == 'TEMP' and analysis == 'DC Sweep'
+
+
+def unit_for(name, axis, analysis=None):
+    if name == axis and is_temperature_axis(axis, analysis):
+        return {'unit':'degC', 'unitSource':'axis_name_convention'}
     if name == axis and name in ('Time', 'Frequency'):
         return {'unit': {'Time':'s', 'Frequency':'Hz'}[name], 'unitSource':'axis_name_convention'}
     for prefix, unit in [('V(', 'V'), ('I(', 'A'), ('W(', 'W')]:
@@ -62,7 +68,7 @@ def decode_headers(raw):
                         if not token or len(token)>512 or any(c in token for c in '\x00\r\n'): raise ValueError('alias')
                         if token in ownership: raise ValueError('ambiguous trace')
                         ownership[token]=name
-                    trace={'name':name,'aliases':aliases,**(unit_for(name,axis) if kind=='analog' else {'unit':None,'unitSource':'digital_logic_not_physical_quantity'})}
+                    trace={'name':name,'aliases':aliases,**(unit_for(name,axis,analysis) if kind=='analog' else {'unit':None,'unitSource':'digital_logic_not_physical_quantity'})}
                     if row['DataType']!=0:
                         trace.update(signalType=kind,sampleReadSupported=analog_supported if kind=='analog' else digital_supported,rowCount=row['NumberofAnalogRows'] if kind=='analog' else digital_rows)
                     if kind=='digital':trace.update(rowCountSource='block_header_not_per_trace_record_count',digitalReadScope='unflagged_getDigital_change_records_v1' if digital_supported else None)
@@ -209,7 +215,7 @@ class PSpiceDat:
             self._page(range(selected['rowCount']),offset,limit)
             session,selected,canonical,rows=self._all_samples(ident,block,trace)
             return {**self._page(rows,offset,limit),'block':block,'trace':canonical,'requestedTrace':trace,
-                    'complex':selected['complex'],**unit_for(canonical,selected['axis']),
+                    'complex':selected['complex'],**unit_for(canonical,selected['axis'],selected['analysisName']),
                     'revision':session['manifest']['revision'],'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan')}
 
     def digital_samples(self,ident,block,trace,offset=0,limit=1000):
@@ -244,7 +250,7 @@ class PSpiceDat:
             result=measure_samples(axis,values,measurement,component,at_axis,threshold,direction)
             self._session(ident)
             return {**result,'datId':ident,'block':block,'trace':canonical,'axis':selected['axis'],
-                    'valueUnits':unit_for(canonical,selected['axis']),'axisUnits':unit_for(selected['axis'],selected['axis']),
+                    'valueUnits':unit_for(canonical,selected['axis'],selected['analysisName']),'axisUnits':unit_for(selected['axis'],selected['axis'],selected['analysisName']),
                     'revision':session['manifest']['revision'],'provenance':session['manifest']['provenance'],
                     'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan'),
                     'notChecked':['between_sample_behavior','discontinuities','native_measure_directives','electrical_design_safety']}

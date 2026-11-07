@@ -7,14 +7,14 @@ from .core import CadenceError, Config, checked_path, new_id, sha256, write_json
 from .isolated_jobs import IsolatedJobs, digest
 from .environment import process_env
 from .process_tree import run_owned_process
-from .pspice_dat import PSpiceDat, unit_for
+from .pspice_dat import PSpiceDat, is_temperature_axis, unit_for
 from .pspice_export_format import render_data, validate_table, MAX_BYTES
 
 ORIGIN_KEYS = ('provenance', 'jobAssociationVerified', 'solverSuccessVerified',
                'producedByPlan', 'runManifestSha256', 'numericalAcceptanceVerified')
 
 
-def collect_table(data, ident, block, requested, offset, count, origin):
+def collect_table(data, ident, block, requested, offset, count, origin, *, temperature_units=False):
     session, selected, canonical, values = data._all_samples(ident, block, requested)
     if canonical == selected['axis']:
         axis = values
@@ -25,11 +25,13 @@ def collect_table(data, ident, block, requested, offset, count, origin):
     if type(offset) is not int or type(count) is not int or not 0 <= offset < len(values) or not 1 <= count <= 100000 or offset + count > len(values):
         raise CadenceError('invalid_export_range', 'Choose a nonempty range within the native trace rows.')
     trace = next(t for t in session['traces'][block] if t['name'] == canonical)
+    analysis = selected['analysisName'] if temperature_units else None
+    value_units = unit_for(canonical, selected['axis'], analysis)
     metadata = {'schemaVersion': '1.0', 'sourceDatSha256': session['manifest']['revision'],
-                'block': block, 'blockMetadata': selected, 'traceMetadata': trace,
+                'block': block, 'blockMetadata': selected, 'traceMetadata': {**trace, **value_units},
                 'requestedTrace': requested, 'canonicalTrace': canonical, 'axis': selected['axis'],
-                'axisUnits': unit_for(selected['axis'], selected['axis']),
-                'valueUnits': unit_for(canonical, selected['axis']), 'offset': offset,
+                'axisUnits': unit_for(selected['axis'], selected['axis'], analysis),
+                'valueUnits': value_units, 'offset': offset,
                 'rowCount': count, 'totalRows': len(values), 'sourceProvenance': origin,
                 'exportedRowsNumericalOracleVerified': False}
     rows = [{'index': i, 'axisReal': axis[i]['real'], 'axisImaginary': axis[i]['imaginary'],
@@ -57,7 +59,9 @@ class PSpiceExports(IsolatedJobs):
             if count is None:
                 count = selected['rowCount'] - offset
             origin = {k: session['manifest'].get(k) for k in ORIGIN_KEYS}
-            table = collect_table(self.data, ident, block, trace, offset, count, origin)
+            temperature_units = is_temperature_axis(selected['axis'], selected['analysisName'])
+            table = collect_table(self.data, ident, block, trace, offset, count, origin,
+                                  temperature_units=temperature_units)
             render_data(table, format)
             source = session['directory'] / 'imported.dat'
             manifest = session['directory'] / 'manifest.json'
@@ -75,6 +79,8 @@ class PSpiceExports(IsolatedJobs):
                        'sourceManifest': str(manifest), 'sourceManifestHash': sha256(manifest),
                        'tablePath': str(frozen), 'tableSha256': sha256(frozen),
                        'tableDigest': digest(table), 'metadata': table['metadata'], 'format': format}
+            if temperature_units:
+                payload['unitProfile'] = 'dc_temperature_axis'
             return self.create_plan(payload)
 
     def preview(self, p):
@@ -122,7 +128,8 @@ class PSpiceExports(IsolatedJobs):
         ident = reader.open(str(source))['datId']
         try:
             table = collect_table(reader, ident, meta['block'], meta['requestedTrace'],
-                                  meta['offset'], meta['rowCount'], meta['sourceProvenance'])
+                                  meta['offset'], meta['rowCount'], meta['sourceProvenance'],
+                                  temperature_units=p.get('unitProfile') == 'dc_temperature_axis')
         finally:
             reader.close(ident)
         if digest(table) != p['tableDigest'] or datafile.read_bytes() != render_data(table, p['format']):

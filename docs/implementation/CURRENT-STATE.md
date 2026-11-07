@@ -2,6 +2,12 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百四十一批 DAT 温度扫轴单位（2026-11-07）
+
+- SPB 24.1 的 .DC TEMP 在原生 DAT 中以 DC Sweep / TEMP 标识，按摄氏度约定标注 degC。查询、采样、测量和 CSV/JSON 导出统一。普通扫参仍保留未知单位，旧持久导出按原单位和冻结字节核验。
+- 自建分压温度扫由独立 Tcl 引擎生成 DAT，实际 stdio MCP 验证 −10、20、50 与 3 V 输出，分页、CSV/JSON 及重启后复用通过。普通 TempScale 参数为对照，原生引擎明确拒绝将 TEMP 重定义为参数。独立 psp_cmd /r 首次超时无 OUT，原失败保留，未确认原因。
+- 完整回归 733 项，732 通过、1 项符号链接权限跳过。工具仍 224，P04 保持 deferred，原 34 项仍 8/34。数字状态标志、其他格式/单位边界和 DAT10 写入异常继续保留。见 [批次证据](batch-141-evidence.json)。
+
 ## 第一百四十批显示属性创建/删除接入 MCP（2026-11-07）
 
 - 现有显示属性计划支持本地已放置器件的 PCB Footprint 显示项创建与删除。创建采用显式 owner-local 布局和固定 Arial-11 quality1；删除保留数据属性。原布局请求、持久计划和原生回执兼容。
