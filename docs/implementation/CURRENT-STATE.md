@@ -2,6 +2,13 @@
 
 2026-10-28。目标active：34项必需Capture/OLB/原理图/PSpice业务全部实现并原生验收后集中交用户评审。Allegro排除，PDF自动输出延期，Skills/规范引擎整合暂缓；不改安装或真实设计；按2026-10-27新授权按批次提交推送develop，alpha/release仅验收晋级，已发布版本保持固定。每项失败留证据后移，其余独立项继续。AGENTS.md、cadence-plan.md及cadence-acceptance.json是约束/计划/机器状态主档。
 
+## 第一百四十批显示属性创建/删除接入 MCP（2026-11-07）
+
+- 现有显示属性计划支持本地已放置器件的 PCB Footprint 显示项创建与删除。创建采用显式 owner-local 布局和固定 Arial-11 quality1；删除保留数据属性。原布局请求、持久计划和原生回执兼容。
+- SPB 24.1 真实 stdio 通过创建/删除/保存/独立重开，核对全部已建模实例、字体、定义引脚网络及连接对象。通过原计划取消、非法参数、重启幂等、模拟中断恢复及终态篡改负例；所有自有 worker 退出，源 fixture 指纹保持。
+- 首次接入错误地将 NULL 时的原生状态数字直接当作失败；实际返回了状态 1021。修正后按 DboState.Failed 判断，并保留已知 1002 缺失处理，保存链通过。
+- 工具仍 224，E02 保持 deferred，原 34 项仍 8/34。后续按队列推进独立项；E02 尚有默认字体重置、字体质量持久化、渲染和 occurrence 场景。见 [批次证据](batch-140-evidence.json) 与 [MCP 使用范围](../display-property-lifecycle.md)。
+
 ## 第一百三十九批显示属性创建/删除原生往返（2026-10-29）
 
 - 私有DSN上新增PCB Footprint显示项、完整保存独立重开，再仅删除显示项保存重开；固定owner-local位置/姿态/type/color、14字段Arial-11 quality1通过。数据属性本身不删除，所有实例其他显示/字体和定义网络保持，原源/oracle不变，worker0。

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-10-29",
+  "date": "2026-11-07",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -1232,13 +1232,14 @@
         ".local/display-font-quality-audit-20261025/report.json",
         ".local/display-font-mcp-v2-20261025/report.json",
         ".local/regression-473-display-fonts-v2-20261025.txt",
-        "docs/implementation/batch-139-evidence.json"
+        "docs/implementation/batch-139-evidence.json",
+        "docs/implementation/batch-140-evidence.json"
       ],
       "issues": [
         "ISS-E02-display-font-quality-persistence"
       ],
       "implementationReady": true,
-      "remaining": "Existing metadata set/empty/delete and inherited fallback, display layout, and new native-id-bound explicit font tasks implemented. Three native/actual MCP font positives include cross-page multiunit references, literal font face, and confirmed default-font true->false on a drawn hierarchy field. Complete all-instance fonts/default flags, modeled state, definition/connections and six failure cases verified. Declared quality2 saves as1 and is strictly rejected; full E02 deferred/moved last. Remaining quality persistence/default-reset/create-delete display lifecycle, occurrence and rendering/font matrix require completion; source/failed oracle retained. Batch139 native prototype creates PCB Footprint display at owner-local[-40,60]/rotation1/type2 with explicit Arial-11 quality1, saves and independently reopens, deletes only display and reopens again. All instance user/effective data, other displays/fonts and definition/pin-net baseline return to original modeled state. Native missing-display lookup accepts only NULL with state0 or known1002. No public create/delete planner or durable lifecycle yet; explicit quality1 does not resolve arbitrary font quality/default reset/rendering/occurrence requirements."
+      "remaining": "Existing metadata set/empty/delete and inherited fallback, layout, and explicit font tasks remain available. Batch140 adds public PCB Footprint display creation and deletion on a local placed instance, with the fixed Arial-11 quality1 descriptor on creation. Verified actual MCP save/reopen, legacy layout, all modeled instance state/other fonts, definition nets and connection objects, cancellation, idempotence, simulated post-save interruption recovery without mutation replay, and terminal artifact tamper rejection. Quality2 still saves as1 in the original fixture and is rejected. Full E02 remains deferred for default-reset, arbitrary quality persistence, occurrence, rendering and broader lifecycle coverage."
     },
     {
       "id": "E03",
@@ -3721,7 +3722,7 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-10-29",
+    "date": "2026-11-07",
     "tools": 224,
     "goalComplete": false,
     "latestFullRegression": {
@@ -3730,7 +3731,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-folded-references-20261029.txt"
+      "evidence": ".local/batch-140-display-lifecycle/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3738,7 +3739,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Preserve parent-boundary flat-null failure at tail; continue independent original gates, then native hierarchy/net cache mapping with original graph oracle. Public typed port write lifecycle still required.",
+    "nextIndependentWork": "Continue independent Capture/PSpice work in the existing queue. Retain E02 default reset, arbitrary font quality persistence, rendering and occurrence for separately evidenced acceptance.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3755,12 +3756,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 698,
-      "passed": 697,
+      "total": 732,
+      "passed": 731,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/regression-native-ports-20261027.txt"
+      "evidence": ".local/batch-140-display-lifecycle/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4291,13 +4292,13 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-139-evidence.json",
+    "evidence": "docs/implementation/batch-140-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
       "skipped": 0
     },
-    "fullRegressionRerunThisBatch": false,
+    "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4312,7 +4313,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 8,
-    "productionCodeChanged": false,
+    "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4323,7 +4324,7 @@
     "deleteOnlyAccepted": true,
     "freshServerVerifyOnlyRecoveryAccepted": true,
     "nativeOutputsUnchangedAcrossRecovery": true,
-    "contractSchemasUnchanged": true,
+    "contractSchemasUnchanged": false,
     "standaloneNewWireScalarFixed": false,
     "arbitraryEditorOrderFixed": false,
     "originalHypothesisAndFailuresPreserved": true,
@@ -4415,10 +4416,12 @@
     "terminalTamperRefused": true,
     "originalPowerFailurePreserved": true,
     "nativeDisplayLifecyclePrototypeAccepted": true,
-    "publicDisplayLifecycleAvailable": false,
+    "publicDisplayLifecycleAvailable": true,
     "createAndDeleteIndependentReopenAccepted": true,
     "allInstanceDataOtherDisplaysAndFontsPreserved": true,
-    "explicitNewFontQuality": 1
+    "explicitNewFontQuality": 1,
+    "displayLifecycleRecoveryAccepted": true,
+    "displayLifecycleLegacyPlanCompatible": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

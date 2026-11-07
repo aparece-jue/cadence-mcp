@@ -1,4 +1,4 @@
-# Existing display-property layout edits on a new isolated output copy only.
+# Display-property edits on a new isolated output copy only.
 # argv: root DSN receipt partId maxObjects property oldX oldY oldRot oldType newX newY newRot newType schematic page ref
 source [file join [file dirname [info script]] json.tcl]
 proc cmcp::cs {value} {return [DboTclHelper_sMakeCString $value]}
@@ -9,9 +9,14 @@ proc cmcp::tick {} {
     global count maxObjects
     if {[incr count] > $maxObjects} {error "object_limit"}
 }
-if {$argc != 17} {exit 2}
-lassign $argv root design output partId maxObjects propertyName oldX oldY oldRotation oldType newX newY newRotation newType expectedSchematic expectedPage expectedReference
-if {$newRotation < 0 || $newRotation > 3 || $newType < 0 || $newType > 4} {exit 2}
+if {$argc ni {17 19}} {exit 2}
+lassign $argv root design output partId maxObjects propertyName oldX oldY oldRotation oldType newX newY newRotation newType expectedSchematic expectedPage expectedReference operation nativeId
+if {$argc == 17} {
+    set operation layout
+} elseif {$operation ni {create delete} || $propertyName ne "PCB Footprint" || ![string is integer -strict $nativeId]} {
+    exit 2
+}
+if {$operation ne "delete" && ($newRotation < 0 || $newRotation > 3 || $newType < 0 || $newType > 4)} {exit 2}
 set phase opening
 if {![regexp {^schematic-[1-9][0-9]*/page-[1-9][0-9]*/part-[1-9][0-9]*$} $partId]} {exit 2}
 set session ""
@@ -47,18 +52,42 @@ set rc [catch {
                             set phase checking_identity
                             if {[cmcp::str $sn] ne $expectedSchematic || [cmcp::str $pageName] ne $expectedPage || [cmcp::str $ref] ne $expectedReference} {error "identity_mismatch"}
                             set phase resolving_display_property
-                            set display [$part GetDisplayProp [cmcp::cs $propertyName] $state]; cmcp::check $state
-                            if {$display eq "NULL"} {error "display_property_missing"}
-                            set current [$display GetLocation $state]; cmcp::check $state
-                            set rotation [$display GetRotation $state]; cmcp::check $state
-                            set type [$display GetDisplayType $state]; cmcp::check $state
-                            if {[DboTclHelper_sGetCPointX $current] != $oldX || [DboTclHelper_sGetCPointY $current] != $oldY || $rotation != $oldRotation || $type != $oldType} {error "display_precondition_changed"}
+                            if {$operation ne "layout"} {
+                                set id [$part GetId $state]; cmcp::check $state
+                                if {$id != $nativeId} {error "identity_mismatch"}
+                            }
+                            set lookup [DboState]
+                            set display [$part GetDisplayProp [cmcp::cs $propertyName] $lookup]
+                            if {$operation eq "create"} {
+                                if {$display ne "NULL"} {error "display_already_exists"}
+                                # The native lookup can return a non-failing status with NULL.
+                                if {[$lookup Failed] && [$lookup Code] != 1002} {error "unexpected_missing_display_[$lookup Code]"}
+                                set phase creating_display_property
+                                # Fixed SPB 24.1 lifecycle descriptor; arbitrary fonts use the font task.
+                                set font [DboTclHelper_sMakeLOGFONT Arial -11 0 0 0 400 0 0 0 0 7 0 1 16]
+                                set display [$part NewDisplayProp $state [cmcp::cs $propertyName] [DboTclHelper_sMakeCPoint $newX $newY] $newRotation $font 0]
+                                cmcp::check $state
+                                if {$display eq "NULL"} {error "display_creation_failed"}
+                            } else {
+                                cmcp::check $lookup
+                                if {$display eq "NULL"} {error "display_property_missing"}
+                                set current [$display GetLocation $state]; cmcp::check $state
+                                set rotation [$display GetRotation $state]; cmcp::check $state
+                                set type [$display GetDisplayType $state]; cmcp::check $state
+                                if {[DboTclHelper_sGetCPointX $current] != $oldX || [DboTclHelper_sGetCPointY $current] != $oldY || $rotation != $oldRotation || $type != $oldType} {error "display_precondition_changed"}
+                            }
                             set phase setting_display_property
-                            cmcp::check [$display SetLocation [DboTclHelper_sMakeCPoint $newX $newY]]
-                            cmcp::check [$display SetRotation $newRotation]
-                            cmcp::check [$display SetDisplayType $newType]
-                            $display SetBoundingBoxDirty 1
-                            $display SetOwnerBoundingBoxDirty 1
+                            if {$operation eq "delete"} {
+                                cmcp::check [$part DeleteDisplayProp $display]
+                            } else {
+                                if {$operation eq "layout"} {
+                                    cmcp::check [$display SetLocation [DboTclHelper_sMakeCPoint $newX $newY]]
+                                    cmcp::check [$display SetRotation $newRotation]
+                                }
+                                cmcp::check [$display SetDisplayType $newType]
+                                $display SetBoundingBoxDirty 1
+                                $display SetOwnerBoundingBoxDirty 1
+                            }
                             set phase marking_page
                             cmcp::check [$p MarkModified]
                             cmcp::check [$s MarkModified $p]
@@ -70,7 +99,7 @@ set rc [catch {
                             cmcp::check [$session MarkAllLibForSave $d]
                             cmcp::check [$session SaveDesign $d]
                             set phase saved
-                            set found [cmcp::obj saved true partId [cmcp::q $partId] property [cmcp::q $propertyName] operation [cmcp::q display_layout]]
+                            set found [cmcp::obj saved true partId [cmcp::q $partId] property [cmcp::q $propertyName] operation [cmcp::q display_$operation]]
                             break
                         }
                     } finally {delete_DboPagePartInstsIter $it}

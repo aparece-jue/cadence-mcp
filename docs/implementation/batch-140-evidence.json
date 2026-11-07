@@ -1,0 +1,56 @@
+{
+  "batch": 140,
+  "date": "2026-11-07",
+  "baseline": "c3558b6ea27ff2289bcef5657d9ecfab3130e384",
+  "feature": "E02",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "fullE02Accepted": false,
+  "acceptedGateIds": [],
+  "productionCodeChanged": true,
+  "tools": 224,
+  "newPublicTools": 0,
+  "publicDisplayLifecycleAvailable": true,
+  "scope": "PCB Footprint display on a local placed instance; fixed Arial-11 quality 1 and color 0 on create",
+  "nativeChecks": {
+    "passed": true,
+    "toolCount": 224,
+    "createDeleteSaveReopen": true,
+    "legacyLayout": true,
+    "nativeInstanceStateAndFonts": true,
+    "sourceUnchanged": true,
+    "restartIdempotence": true,
+    "pendingCancelAndInvalidInputs": true,
+    "interruptedRecordRecovery": true,
+    "terminalTamperRejected": true,
+    "remainingOwnedWorkers": 0
+  },
+  "interruptionMethod": "Re-seeded the owned test job at the post-save, pre-verification state, retained saved bytes, hid the receipt, and recovered through a new stdio server.",
+  "firstNativeFailure": {
+    "phase": "resolving_display_property",
+    "code": 1021,
+    "disposition": "Use DboState.Failed for NULL lookup, allowing known missing error 1002."
+  },
+  "latestFullRegression": {
+    "total": 732,
+    "passed": 731,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-140-display-lifecycle/regression.txt"
+  },
+  "regressionSkipReason": "Windows file symlink privilege unavailable.",
+  "remainingE02": [
+    "default font reset",
+    "quality persistence outside the verified descriptor",
+    "rendering",
+    "occurrence coverage"
+  ],
+  "evidenceSha256": {
+    "tools/smoke_display_lifecycle.py": "dba4bf54f68a555df53f31bdb24ebe8925a7afeb1e67ec81465552fcbc5b7d3c",
+    "contracts/tools.v0.1.json": "81997b17fcce4e277c4f0b4b5de4f6f81b177d637c070a503ac64024f87f87ab",
+    ".local/batch-140-display-lifecycle/report.json": "77dd0cae637973b2e1b48e13c6e651d4af47a8e1beb0672750b29ccc25331639",
+    ".local/batch-140-display-lifecycle/regression.txt": "eb56e9d54a435cfabda2989a3d2754def6d234a77e123a37b1c973fbf0df9311"
+  }
+}

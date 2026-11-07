@@ -1,4 +1,18 @@
-# 显示属性创建/删除原生原型
+# 显示属性创建与删除
+
+## MCP 支持范围（2026-11-07，第 140 批）
+
+在现有 capture_plan_display_property 中指定 operation=create 或 delete，随后调用 capture_apply_display_property。省略 operation 时仍执行已有显示项布局编辑。此前保存的布局计划及原生回执格式继续有效。
+
+- 创建仅支持本地已放置器件的 PCB Footprint 显示项。已有有效属性值必须非空且显示项尚不存在。调用方显式给出 owner-local location、rotationCode、displayTypeCode。使用固定 Arial-11（quality 1）、原生颜色 0，独立重开核对完整字体描述及默认字体标记。
+- 删除同名显示项时仅提供目标和 operation，不传布局字段。底层 PCB Footprint 属性及其他实例的显示项、字体、属性、几何和连接保持。目标同时绑定设计快照、部件 ID、原生 ID、页和位号。
+- 计划、执行、取消与恢复沿用现有隔离作业。恢复只对已经保存的字节做独立核验，验证工作进程已停止后才执行。原生产物、日志及独立期望不进入 Git。
+
+用自建 fixture 通过 tools/smoke_display_lifecycle.py 执行真实 SPB 24.1 stdio MCP 验收。需要指定安装目录、fixture、独立输出目录、目标位号及预期的 footprint 字符串。覆盖创建、删除、旧布局、重启后幂等、挂起任务取消、非法输入、模拟保存后中断和终态产物篡改。E02 的字体默认重置、任意字体质量、渲染与 occurrence 仍待验收。
+
+## 第 139 批原生原型（历史记录）
+
+以下是接入 MCP 之前的原型记录。原型脚本依赖当时的原生适配器文本，复现该历史批次请使用 c3558b6；当前版本请使用上述 MCP 验收脚本。
 
 2026-10-29，batch139。现有公开capture_plan_display_property只修改已有显示项布局；创建/删除尚未接入公开计划/任务。依据CAP-REF303页NewDisplayProp及170页DeleteDisplayProp，在用户自建库实例的私有DSN副本上先完成原生完整往返，不宣称MCP生命周期已完成。
 

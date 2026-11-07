@@ -26171,7 +26171,7 @@
   {
     "name": "capture_plan_display_property",
     "title": null,
-    "description": "Plan existing display-property owner-local position, native rotation and display type changes. Type codes: 0 hidden, 1 value, 2 name/value, 3 name, 4 both-if-valued. Data/reference values and unrelated displays must stay intact. Font editing is not yet available.",
+    "description": "Plan an owner-local layout edit or create/delete a PCB Footprint display on a local placed instance. Creation requires a nonempty data value, all three layout fields, and uses a fixed Arial font and color 0. Deletion takes no layout fields and preserves the underlying data. Type codes: 0 hidden, 1 value, 2 name/value, 3 name, 4 both-if-valued.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -26232,6 +26232,16 @@
           ],
           "default": null,
           "title": "Displaytypecode"
+        },
+        "operation": {
+          "default": "layout",
+          "enum": [
+            "layout",
+            "create",
+            "delete"
+          ],
+          "title": "Operation",
+          "type": "string"
         }
       },
       "required": [
@@ -26491,7 +26501,7 @@
   {
     "name": "capture_apply_display_property",
     "title": null,
-    "description": "Save planned display layout in a new isolated DSN and independently read it back; preserve data properties, unrelated displays and definition pin nets. Mark cached bounds dirty; no rendered-clearance/font verdict.",
+    "description": "Apply a display plan to a new isolated DSN and independently verify it. Create/delete also verify modeled instance state, connection objects and all display fonts. Rendered clearance is outside the verified scope.",
     "inputSchema": {
       "properties": {
         "planId": {
@@ -26766,7 +26776,7 @@
   {
     "name": "capture_display_property_jobs",
     "title": null,
-    "description": "Page durable isolated display-layout plans/jobs without replay.",
+    "description": "Page durable isolated display-property plans/jobs without replay.",
     "inputSchema": {
       "properties": {
         "offset": {
@@ -27036,7 +27046,7 @@
   {
     "name": "capture_cancel_display_property",
     "title": null,
-    "description": "Cancel a pending display-layout plan or signal this server's active owned worker; source is unchanged and partial output retained.",
+    "description": "Cancel a pending display-property plan or signal this server's active owned worker; source is unchanged and partial output retained.",
     "inputSchema": {
       "properties": {
         "planId": {
@@ -27304,7 +27314,7 @@
   {
     "name": "capture_recover_display_property",
     "title": null,
-    "description": "Verify an existing interrupted display-layout output after proof its worker stopped. Never replay; native completion remains unverified after recovery.",
+    "description": "Verify an existing interrupted display-property output after proof its worker stopped. Never replay; native completion remains unverified after recovery.",
     "inputSchema": {
       "properties": {
         "planId": {

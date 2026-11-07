@@ -1012,35 +1012,37 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
                                              propertyName: Annotated[str, Field(min_length=1, max_length=128)],
                                              location: Annotated[list[int], Field(min_length=2, max_length=2)] | None = None,
                                              rotationCode: Annotated[int, Field(ge=0, le=3)] | None = None,
-                                             displayTypeCode: Annotated[int, Field(ge=0, le=4)] | None = None) -> ToolResult:
-        """Plan existing display-property owner-local position, native rotation and display type changes. Type codes: 0 hidden, 1 value, 2 name/value, 3 name, 4 both-if-valued. Data/reference values and unrelated displays must stay intact. Font editing is not yet available."""
-        return await invoke(display_properties.plan, sessionId, partId, propertyName, location, rotationCode, displayTypeCode,
-                            coverage=("display_layout_plan",), not_checked=("save_reopen", "font_descriptor", "rendered_text_bounds"))
+                                             displayTypeCode: Annotated[int, Field(ge=0, le=4)] | None = None,
+                                             operation: Literal["layout", "create", "delete"] = "layout") -> ToolResult:
+        """Plan an owner-local layout edit or create/delete a PCB Footprint display on a local placed instance. Creation requires a nonempty data value, all three layout fields, and uses a fixed Arial font and color 0. Deletion takes no layout fields and preserves the underlying data. Type codes: 0 hidden, 1 value, 2 name/value, 3 name, 4 both-if-valued."""
+        return await invoke(display_properties.plan, sessionId, partId, propertyName, location, rotationCode, displayTypeCode, operation,
+                            coverage=("display_layout_plan" if operation == "layout" else "display_lifecycle_plan",),
+                            not_checked=("save_reopen", "rendered_text_bounds"))
 
     @register(readonly=False)
     async def capture_apply_display_property(planId: str, planDigest: str,
                                               idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
-        """Save planned display layout in a new isolated DSN and independently read it back; preserve data properties, unrelated displays and definition pin nets. Mark cached bounds dirty; no rendered-clearance/font verdict."""
+        """Apply a display plan to a new isolated DSN and independently verify it. Create/delete also verify modeled instance state, connection objects and all display fonts. Rendered clearance is outside the verified scope."""
         return await invoke(display_properties.apply, planId, planDigest, idempotencyKey, backend="capture_dbo",
                             coverage=("display_layout_save_reopen", "data_property_preservation", "definition_baseline_preservation"),
-                            not_checked=("font_descriptor", "rendered_text_bounds", "occurrence_connectivity", "native_drc"))
+                            not_checked=("rendered_text_bounds", "occurrence_connectivity", "native_drc"))
 
     @register(readonly=True)
     async def capture_display_property_jobs(offset: Annotated[int, Field(ge=0, le=4096)] = 0,
                                              limit: Annotated[int, Field(ge=1, le=100)] = 100) -> ToolResult:
-        """Page durable isolated display-layout plans/jobs without replay."""
+        """Page durable isolated display-property plans/jobs without replay."""
         return await invoke(display_properties.jobs, offset, limit, coverage=("durable_display_property_jobs",))
 
     @register(readonly=False)
     async def capture_cancel_display_property(planId: str, planDigest: str) -> ToolResult:
-        """Cancel a pending display-layout plan or signal this server's active owned worker; source is unchanged and partial output retained."""
+        """Cancel a pending display-property plan or signal this server's active owned worker; source is unchanged and partial output retained."""
         return await invoke(display_properties.cancel, planId, planDigest, coverage=("owned_display_property_cancel",))
 
     @register(readonly=False)
     async def capture_recover_display_property(planId: str, planDigest: str) -> ToolResult:
-        """Verify an existing interrupted display-layout output after proof its worker stopped. Never replay; native completion remains unverified after recovery."""
+        """Verify an existing interrupted display-property output after proof its worker stopped. Never replay; native completion remains unverified after recovery."""
         return await invoke(display_properties.recover, planId, planDigest, backend="capture_dbo",
-                            coverage=("existing_display_artifact_verification",), not_checked=("native_completion", "font_descriptor", "rendered_text_bounds"))
+                            coverage=("existing_display_artifact_verification",), not_checked=("native_completion", "rendered_text_bounds"))
 
     @register(readonly=False)
     async def capture_plan_cache_replace(sessionId: str, partId: str, libraryId: str, packageId: str,

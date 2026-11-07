@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-29",
+  "asOf": "2026-11-07",
   "metric": "required_gates_fully_accepted",
   "passed": 8,
   "total": 34,
@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/regression-folded-references-20261029.txt"
+    "evidence": ".local/batch-140-display-lifecycle/regression.txt"
   },
-  "acceptanceCanonicalSha256": "36e6f44564015b254a0811b8e354019d6f224607b71aaea6a52594bbb9c2e068"
+  "acceptanceCanonicalSha256": "5c9172bee3460bf73122c35f88fb01a54415b81f3c09aa61520c93549a7c6eb3"
 }
