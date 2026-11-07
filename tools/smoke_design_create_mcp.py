@@ -29,7 +29,7 @@ async def main():
                 if error:assert r.is_error and r.structured_content['error']['code']==error,r
                 else:assert not r.is_error,r
                 return r.structured_content['data']
-            for values,code in [({'rootName':'../bad','pageName':'PAGE'},'invalid_document_name'),({'rootName':'根图','pageName':'PAGE'},'unsupported_design_encoding')]:
+            for values,code in [({'rootName':'../bad','pageName':'PAGE'},'invalid_document_name'),({'rootName':'根图/错误','pageName':'PAGE'},'invalid_document_name')]:
                 await call('capture_plan_design_create',values,code)
             assert (await client.call_tool('capture_plan_design_create',{'rootName':'CORE','pageName':'MAIN','eval':'x'})).is_error
             plan=await call('capture_plan_design_create',{'rootName':'CORE','pageName':'MAIN'});key={k:plan[k] for k in ('planId','planDigest')};report['plan']=plan

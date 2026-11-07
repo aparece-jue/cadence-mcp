@@ -42,7 +42,7 @@ async def run(install, source, output):
         imported = await call(client, "cadence_create_workspace", {"sourceDesign": str(source)})
         opened = await call(client, "capture_open", {"workspaceId": imported["workspaceId"]})
         arguments = {"sessionId": opened["sessionId"], "fileName": name}
-        for unsafe in ("../foreign.dsn", "CON.data.dsn", "图纸.dsn"):
+        for unsafe in ("../foreign.dsn", "CON.data.dsn", "图纸/名称.dsn"):
             await reject(client, planner, {**arguments, "fileName": unsafe}, "invalid_design_file_name")
         cancelled = key(await call(client, planner, arguments))
         assert (await call(client, "capture_cancel_design_save_as", cancelled))["state"] == "cancelled"

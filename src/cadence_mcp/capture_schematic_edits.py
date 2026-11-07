@@ -25,13 +25,6 @@ def dependency_digest(graph):
                    "unresolved": stable(graph["unresolved"])})
 
 
-def ascii_name(name):
-    name = design_name(name)
-    if not name.isascii():
-        raise CadenceError("unsupported_design_encoding", "Non-ASCII document writes have not passed native save/reopen.")
-    return name
-
-
 class CaptureSchematicEdits(CapturePageEdits):
     kind = "capture_schematic_edit"
 
@@ -41,14 +34,14 @@ class CaptureSchematicEdits(CapturePageEdits):
         if operation == "create":
             if schematic_id is not None:
                 raise CadenceError("invalid_schematic_change", "Creation takes a new schematic and page name.")
-            page_name = ascii_name(page_name)
+            page_name = design_name(page_name)
         elif page_name is not None:
             raise CadenceError("invalid_schematic_change", "Only creation takes a page name.")
         if operation == "delete":
             if name is not None:
                 raise CadenceError("invalid_schematic_change", "Deletion takes a schematic ID and no new name.")
         else:
-            name = ascii_name(name)
+            name = design_name(name)
 
         with self.capture.lock:
             session = self.capture._session(sid)

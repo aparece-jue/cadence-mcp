@@ -13,7 +13,7 @@ class SaveAsFileNameTests(unittest.TestCase):
     def test_rejects_windows_paths_devices_and_unsafe_suffixes(self):
         for value in ("../file.dsn", r"sub\file.dsn", r"C:\file.dsn", "C:file.dsn",
                       "NUL.dsn", "AUX.extra.dsn", "LPT1.dsn", "con .bak.dsn",
-                      "foo.dsn:alternate", "foo..dsn", "foo .dsn", "图纸.dsn", "file.dsn "):
+                      "foo.dsn:alternate", "foo..dsn", "foo .dsn", "LPT\u00b9.dsn", "file.d\u017fn", "file.dsn "):
             with self.subTest(value=value), self.assertRaises(CadenceError) as caught:
                 design_file_name(value)
             self.assertEqual(caught.exception.code, "invalid_design_file_name")

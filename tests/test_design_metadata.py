@@ -25,9 +25,13 @@ class DesignMetadataTests(unittest.TestCase):
             def worker(config,script,args,cwd):Path(args[1]).write_text(json.dumps(bad),encoding='utf-8')
             with patch('cadence_mcp.capture_design_create.run_tcl',worker):
                 with self.assertRaises(CadenceError):read_document_meta(self.config,self.design,self.root)
-    def test_unverified_unicode_names_are_refused_before_a_plan_is_created(self):
+    def test_unrepresentable_native_names_are_refused_before_a_plan_is_created(self):
+        class UnrepresentableName(str):
+            def encode(self, encoding, errors):
+                raise UnicodeEncodeError(encoding, self, 0, 1, "not representable")
+
         writer=CaptureDesignCreates(self.config,CaptureService(self.config))
-        with self.assertRaises(CadenceError) as e:writer.plan('根图','PAGE')
+        with self.assertRaises(CadenceError) as e:writer.plan(UnrepresentableName('根图'),'PAGE')
         self.assertEqual(e.exception.code,'unsupported_design_encoding');self.assertFalse(list(writer.root.glob('plan-*')))
     def test_cancelled_new_design_plan_never_launches_native_creation(self):
         writer=CaptureDesignCreates(self.config,CaptureService(self.config));plan=writer.plan('ROOT','PAGE');writer.cancel(plan['planId'],plan['planDigest'])

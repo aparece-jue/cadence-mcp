@@ -77,7 +77,7 @@ async def run(install, source, output):
             await reject(client, planner, {**referenced, "operation": operation, **extra}, "schematic_referenced")
         create = {"sessionId": sid, "operation": "create", "schematicName": "AUX", "pageName": "AUX_PAGE"}
         await reject(client, planner, {**create, "schematicName": "fulladd"}, "schematic_name_conflict")
-        await reject(client, planner, {**create, "schematicName": "电路"}, "unsupported_design_encoding")
+        await reject(client, planner, {**create, "schematicName": "电路/错误"}, "invalid_document_name")
         cancelled = key(await call(client, planner, create))
         assert (await call(client, "capture_cancel_schematic_edit", cancelled))["state"] == "cancelled"
         await reject(client, applier, {**cancelled, "idempotencyKey": "cancelled"}, "write_not_replayed")
@@ -117,7 +117,7 @@ async def run(install, source, output):
             assert result["artifact"]["sha256"] == original["sha256"] and result["mutationReplayed"] is False
     assert sha256(source) == source_hash
     report = {"passed": True, "tools": len(tools), "operations": [row[0] for row in jobs],
-              "rootReferencedPopulatedRefused": True, "duplicateUnicodeAndCancelledRefused": True,
+              "rootReferencedPopulatedRefused": True, "duplicateInvalidNameAndCancelledRefused": True,
               "restartNoReplayAndVerifyOnlyRecovery": True, "sourceUnchanged": True}
     write_json(output / "report.json", report)
     print(json.dumps(report))

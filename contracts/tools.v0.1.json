@@ -34406,7 +34406,7 @@
   {
     "name": "capture_plan_design_create",
     "title": null,
-    "description": "Plan a new empty DSN with one declared root schematic and page, with no existing source design. ASCII names only until non-ASCII native save/reopen is verified. Does not create an OPJ, overwrite an existing design, or imply design/DRC approval.",
+    "description": "Plan a new empty DSN with one declared root schematic and page, with no existing source design. Names must round-trip through the Windows native code page. Does not create an OPJ, overwrite an existing design, or imply design/DRC approval.",
     "inputSchema": {
       "properties": {
         "rootName": {
@@ -35759,7 +35759,7 @@
   {
     "name": "capture_plan_design_save_as",
     "title": null,
-    "description": "Plan native Save As from an immutable DSN session to a new owned DSN. fileName is a simple ASCII basename with a .dsn extension. External or unresolved schematic implementations are refused.",
+    "description": "Plan native Save As from an immutable DSN session to a new owned DSN. fileName is a simple basename with a .dsn extension and must round-trip through the Windows native code page. External or unresolved schematic implementations are refused.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -37110,7 +37110,7 @@
   {
     "name": "capture_plan_page_edit",
     "title": null,
-    "description": "Plan an isolated page edit. Create takes an ASCII pageName and no pageId. Rename takes both. Delete takes a pageId and no pageName, requires another page in the schematic, and checks native content counts, connections and graphics for emptiness.",
+    "description": "Plan an isolated page edit. Create takes a pageName and no pageId. Names must round-trip through the Windows native code page. Rename takes both. Delete takes a pageId and no pageName, requires another page in the schematic, and checks native content counts, connections and graphics for emptiness.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -38495,7 +38495,7 @@
   {
     "name": "capture_plan_schematic_edit",
     "title": null,
-    "description": "Plan an isolated schematic edit. Create takes an ASCII schematicName and initial empty pageName. Rename and delete take the immutable schematicId and require an empty, unreferenced non-root schematic. Rename also takes the new ASCII schematicName. External and unresolved bindings are refused.",
+    "description": "Plan an isolated schematic edit. Create takes a schematicName and initial empty pageName. Names must round-trip through the Windows native code page. Rename and delete take the immutable schematicId and require an empty, unreferenced non-root schematic. Rename also takes the new schematicName. External and unresolved bindings are refused.",
     "inputSchema": {
       "properties": {
         "sessionId": {

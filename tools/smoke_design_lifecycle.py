@@ -29,7 +29,7 @@ async def main():
                 rows=(await call('capture_query',{'sessionId':opened['sessionId'],'entity':entity,'scope':{'kind':'design'}}))['items'];assert len(rows)==1 and rows[0]['name']==expected
             await call('capture_apply_design_create',{**key,'idempotencyKey':'different-key'},'idempotency_conflict')
             recovered=await call('capture_recover_design_create',key);assert recovered['artifact']['sha256']==result['artifact']['sha256']
-            await call('capture_plan_design_create',{'rootName':'根图','pageName':'PAGE'},'unsupported_design_encoding')
+            await call('capture_plan_design_create',{'rootName':'根图/错误','pageName':'PAGE'},'invalid_document_name')
             await call('capture_plan_design_create',{'rootName':'../bad','pageName':'PAGE'},'invalid_document_name')
             assert (await client.call_tool('capture_plan_design_create',{'rootName':'ROOT','pageName':'PAGE','eval':'x'})).is_error
             pending=await call('capture_plan_design_create',{'rootName':'PENDING','pageName':'PAGE'});pk={k:pending[k] for k in ('planId','planDigest')}

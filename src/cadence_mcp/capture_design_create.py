@@ -9,9 +9,23 @@ from .isolated_jobs import digest
 from .process_tree import run_owned_process
 
 COUNT_KEYS={'part','wire','busEntry','port','global','offpage','graphic','titleblock','erc','bookmark'}
+
+
+def require_native_document_encoding(value):
+    if value.isascii():
+        return
+    try:
+        if value.encode("mbcs", errors="strict").decode("mbcs", errors="strict") == value:
+            return
+    except (UnicodeError, LookupError):
+        pass
+    raise CadenceError("unsupported_design_encoding", "Name must round-trip through the Windows native code page.")
+
+
 def design_name(value):
     if not isinstance(value,str) or not re.fullmatch(r'\w[\w .-]{0,63}',value) or value.strip(' .')!=value:
         raise CadenceError('invalid_document_name','Use a bounded database name without paths or control characters.')
+    require_native_document_encoding(value)
     return value
 
 def read_document_meta(config,design,directory):
@@ -44,7 +58,6 @@ class CaptureDesignCreates(CapturePropertyEdits):
     kind='capture_design_create'
     def plan(self,root_name,page_name):
         spec={'rootName':design_name(root_name),'pageName':design_name(page_name)}
-        if any(not n.isascii() for n in spec.values()):raise CadenceError('unsupported_design_encoding','Non-ASCII new design names have not passed native save/reopen acceptance.')
         return self.create_plan({'spec':spec,'specDigest':digest(spec),'expectedDefinitionDigest':definition_baseline(empty_definition(root_name,page_name))})
     def preview(self,p):return {'operation':'create_design','spec':p['spec'],'specDigest':p['specDigest'],'sourceKind':'new_design_spec'}
     def preflight(self,p):

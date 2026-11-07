@@ -3,7 +3,7 @@ import copy,json,ntpath
 from .capture_pages import CapturePages
 from .capture_wire import inventory,connection_digest
 from .capture_objects import query_objects, read_inventory
-from .capture_design_create import read_document_meta,COUNT_KEYS
+from .capture_design_create import read_document_meta,COUNT_KEYS,require_native_document_encoding
 from .isolated_jobs import digest
 from .core import CadenceError
 
@@ -68,8 +68,8 @@ class CapturePageEdits(CapturePages):
     operations = ('create', 'rename', 'delete')
 
     def plan(self, session_id, operation, schematic_id, page_id, name):
-        if isinstance(name, str) and not name.isascii():
-            raise CadenceError('unsupported_design_encoding', 'Non-ASCII page writes have not passed native save/reopen.')
+        if operation in ('create', 'rename') and isinstance(name, str):
+            require_native_document_encoding(name)
         return super().plan(session_id, operation, schematic_id, page_id, name)
 
     # Same persistent kind as existing native-tested page plans; older plans

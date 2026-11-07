@@ -1,0 +1,70 @@
+{
+  "batch": 147,
+  "date": "2026-11-08",
+  "feature": "E04",
+  "baseline": "636ee5114cabaee52caf94b82a627939c1fbf637",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "fullE04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 239,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "changedDevelopmentToolDescriptions": [
+    "capture_plan_design_create",
+    "capture_plan_design_save_as",
+    "capture_plan_page_edit",
+    "capture_plan_schematic_edit"
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "tools": 239,
+    "unicodeRootAndPageExact": true,
+    "operations": [
+      "create-unicode",
+      "create-page",
+      "rename-page",
+      "delete-page",
+      "create-schematic",
+      "rename-schematic",
+      "delete-schematic",
+      "save-as-unicode",
+      "save-as-titleblocks"
+    ],
+    "unicodeNamedTitleblockDesignVerified": true,
+    "sourceUnchanged": true
+  },
+  "nativeAsciiSaveAsRegression": {
+    "passed": true,
+    "tools": 239,
+    "nativeNamedSaveAsReopened": true,
+    "sourceBytesUnchanged": true,
+    "effectivePropertiesAndDependenciesVerified": true,
+    "unsafeBasenameCancellationAndCollisionRefused": true,
+    "subsequentPageEditSucceeded": true,
+    "verifyOnlyRecoveryAndTamperRefusal": true
+  },
+  "hostWindowsCodePage": 936,
+  "scope": "Windows reader launches without a console. Native document and DSN names must pass bounded name rules and round-trip in the Windows active code page. The native matrix verifies CP936 Chinese names.",
+  "latestFullRegression": {
+    "total": 741,
+    "passed": 740,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-147-unicode-documents/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "remaining": [
+    "ownership-safe DSN artifact deletion",
+    "remaining E04 broader scope and fault checks"
+  ],
+  "evidenceSha256": {
+    ".local/batch-147-unicode-documents/report.json": "4152e392abb2898e1028f4a3f233255eb359423418542fe65298a18fbefd0c41",
+    ".local/batch-147-unicode-documents/regression.txt": "6dbfead120531bd2721174fc2bfee4c3d2b976bffa68a96cb9d11f0b8d594d86",
+    ".local/batch-147-unicode-documents/ascii-report.json": "59479446842316def83d5e4b1eedc3e008e98787c061da237cfb0fbcddbf10de",
+    "tools/smoke_unicode_documents_mcp.py": "56a462088221aea9e6be04b3cd8dd6cd2e0b47672f7a7c9d296d3477aa41d907"
+  }
+}

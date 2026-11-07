@@ -32,8 +32,11 @@ def run_tcl(config: Config, script: str, args: list[str], cwd: Path) -> tuple[st
     # Tcl native DLL faults cannot be caught inside the interpreter.
     with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err:
         try:
+            # Match the owned native worker. In SPB 24.1, inheriting a
+            # Windows console can make Unicode design iterators return empty.
+            creationflags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
             child = subprocess.run(argv, cwd=cwd, env=process_env(config), stdout=out, stderr=err,
-                                   timeout=config.timeout_seconds, check=False)
+                                   timeout=config.timeout_seconds, check=False, creationflags=creationflags)
         except subprocess.TimeoutExpired as e:
             raise CadenceError("timeout", "Read-only Tcl worker timed out; its process was stopped.", "worker") from e
         except OSError as e:

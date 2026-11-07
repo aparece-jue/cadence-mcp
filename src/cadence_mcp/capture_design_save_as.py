@@ -2,7 +2,7 @@
 import re
 import shutil
 
-from .capture_design_create import read_document_meta
+from .capture_design_create import read_document_meta, require_native_document_encoding
 from .capture_edit import definition_baseline, read_design_properties
 from .capture_objects import read_inventory
 from .capture_page_edit import CapturePageEdits
@@ -16,12 +16,13 @@ from .schematic_dependencies import schematic_dependencies
 
 
 def design_file_name(value):
-    if not isinstance(value, str) or not re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_. -]{0,63}\.dsn", value, re.ASCII | re.IGNORECASE):
-        raise CadenceError("invalid_design_file_name", "Use a simple ASCII DSN basename, including the .dsn extension.")
+    if not isinstance(value, str) or not re.fullmatch(r"\w[\w. -]{0,63}(?ai:\.dsn)", value):
+        raise CadenceError("invalid_design_file_name", "Use a simple DSN basename, including the .dsn extension.")
     stem = value[:-4]
     device = stem.split(".", 1)[0].rstrip().upper()
-    if stem.endswith((".", " ")) or re.fullmatch(r"CON|PRN|AUX|NUL|COM[0-9]|LPT[0-9]", device):
+    if stem.endswith((".", " ")) or re.fullmatch(r"CON|PRN|AUX|NUL|COM[0-9\u00b9\u00b2\u00b3]|LPT[0-9\u00b9\u00b2\u00b3]", device):
         raise CadenceError("invalid_design_file_name", "Windows reserved basenames and trailing spaces or dots are refused.")
+    require_native_document_encoding(value)
     return value
 
 

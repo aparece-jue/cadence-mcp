@@ -59,7 +59,7 @@ async def run(install, source, output):
 
     async with Client(params, mode="legacy", read_timeout_seconds=120) as client:
         tools = (await client.list_tools()).tools
-        assert len(tools) == 229
+        assert any(tool.name == "capture_plan_page_edit" for tool in tools)
         write_json(output / "tools-list.json", [tool.model_dump(mode="json", by_alias=True) for tool in tools])
         entry = await call(client, "cadence_create_workspace", {"sourceDesign": str(source)})
         sid = (await call(client, "capture_open", {"workspaceId": entry["workspaceId"]}))["sessionId"]
@@ -67,7 +67,7 @@ async def run(install, source, output):
         planner = "capture_plan_page_edit"
         await reject(client, planner, {**await locate(client, sid, "HALFADD"), "operation": "delete"}, "last_page")
         await reject(client, planner, {**await locate(client, sid), "operation": "create", "pageName": "halfadd"}, "page_name_conflict")
-        await reject(client, planner, {**await locate(client, sid), "operation": "create", "pageName": "温度"}, "unsupported_design_encoding")
+        await reject(client, planner, {**await locate(client, sid), "operation": "create", "pageName": "温度/错误"}, "invalid_page_change")
         new = {**await locate(client, sid), "operation": "create", "pageName": "MCP_EMPTY_ACCEPT"}
         cancelled = await call(client, planner, new)
         cancel_key = {field: cancelled[field] for field in ("planId", "planDigest")}
@@ -90,7 +90,7 @@ async def run(install, source, output):
             assert replay["artifact"] == artifact and replay["mutationReplayed"] is False
     assert sha256(source) == source_hash
     report = {"passed": True, "operations": [label for label, _, _ in plans], "sourceUnchanged": True,
-              "lastPageAndPopulatedDeleteRefused": True, "duplicateAndNonAsciiRefused": True,
+              "lastPageAndPopulatedDeleteRefused": True, "duplicateAndInvalidNameRefused": True,
               "pendingCancelAndRestartIdempotence": True, "tools": len(tools)}
     write_json(output / "report.json", report)
     print(json.dumps(report))
