@@ -5,6 +5,7 @@ from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits,definition_baseline
 from .capture_wire import point,path_key,paths_valid,point_on_path,geometry_union,expected_definitions,inventory,connection_digest
 from .core import CadenceError,checked_path,sha256
+from .page_net_partition import include_net_groups, verify_optional_net_groups
 from .environment import ADAPTERS
 
 
@@ -51,7 +52,7 @@ def verify_unrelated_wire_nets(data,objects,expected):
 
 class CaptureWireEdits(CapturePropertyEdits):
     kind='capture_wire_edit'
-    def plan(self,sid,wire_id,operation,expectations,start=None,end=None,alias_moves=None,remove_aliases=False,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None):
+    def plan(self,sid,wire_id,operation,expectations,start=None,end=None,alias_moves=None,remove_aliases=False,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None,expected_page_net_groups=None):
         if (gui_session_id is None)!=(host_project is None):raise CadenceError('invalid_editor_host','Provide guiSessionId and hostProject together.')
         if gui_session_id is not None and operation!='delete':raise CadenceError('unsupported_editor_operation','The editor wire-edit backend currently accepts deletion; endpoint changes use the standalone backend.')
         if editor_occurrence is not None and (gui_session_id is None or not isinstance(editor_occurrence,str) or not 1<=len(editor_occurrence)<=512 or any(ord(c)<32 for c in editor_occurrence)):raise CadenceError('invalid_editor_occurrence','Use a bounded explicit occurrence reference with a GUI host.')
@@ -83,6 +84,7 @@ class CaptureWireEdits(CapturePropertyEdits):
             payload={'sourceDesign':str(session['design']),'sourceFingerprint':session['revision'],'schematicName':sch['name'],'pageName':page['name'],
                 'wireId':wire_id,'operation':operation,'oldPoints':old['points'],'oldNet':old['net'],'start':start,'end':end,'aliases':aliases,
                 'expectedWireNet':owner,'expectedConnections':expectations,'expectedWirePaths':saved_paths,'expectedDefinitionDigest':definition_baseline(expected_data),'expectedConnectionDigest':connection_digest(data,changed)}
+            include_net_groups(payload, expected_page_net_groups)
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire edit plan exceeds durable record limit.')
             self.capture._session(sid)
             if operation=='delete':payload['expectedUnrelatedWireNets']=unrelated_wire_nets(data,objects,page_id,old['net'])
@@ -93,6 +95,7 @@ class CaptureWireEdits(CapturePropertyEdits):
     def preview(self,p):
         result={k:p[k] for k in ('wireId','operation','schematicName','pageName','oldPoints','oldNet','start','end','aliases','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
         result['unrelatedWireNetPreservationRequired']='expectedUnrelatedWireNets' in p
+        if 'expectedPageNetGroups' in p:result['expectedPageNetGroups']=p['expectedPageNetGroups']
         if 'editorHost' in p:result.update(executionBackend='capture_editor',temporaryOutputProjectSwitch=True,hostProjectRestorationRequired=True,outputProjectClosureRequired=True,guiSessionReattachRequired=True,cancelScope='pending_only',editorOccurrence=p.get('editorOccurrence'))
         return result
     def preflight(self,p):
@@ -141,6 +144,7 @@ class CaptureWireEdits(CapturePropertyEdits):
                 sch={s['objectId']:s['name'] for s in data['schematic']};pages={r['objectId'] for r in data['page'] if r['name']==p['pageName'] and sch[r['schematicId']]==p['schematicName']}
                 candidates=[o for o in wires.values() if o['pageId'] in pages and path_key(o['attributes']['points'])==path_key([p['start'],p['end']])]
                 if len(candidates)!=1 or candidates[0]['attributes']['net']!=p['expectedWireNet']:raise CadenceError('wire_edit_owner_net_mismatch','Edited wire native net name differs from the explicit expectation.','verify')
+            verify_optional_net_groups(verifier, sid, p)
         finally:verifier.close(sid)
         if sha256(target)!=before:raise CadenceError('target_changed','Wire output changed during verification.')
         self.preflight(p);ident=directory.name.removeprefix('plan-')
@@ -148,6 +152,8 @@ class CaptureWireEdits(CapturePropertyEdits):
         result={'planId':ident,'state':'verified' if native_completed else 'verified_recovered','operation':p['operation'],'artifact':artifact,'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'expectedDefinitionsVerified':True,'expectedConnectionObjectsVerified':True,'sourceModified':False,'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),'notChecked':['occurrence_connectivity','junction_flags','wire_only_net_identity','native_drc','rendered_layout','other_part_properties']}
 
         result['unrelatedWireNetIdentityPreserved']='expectedUnrelatedWireNets' in p
+        if 'expectedPageNetGroups' in p:
+            result['nativePageNetPartitionVerified']=True
         if 'editorHost' in p:
             self.editor_host.manifest(directory,create=True)
             result.update(executionBackend='capture_editor',hostContextPreserved=True,guiSessionReattachRequired=True,outputProjectCloseVerified=True)

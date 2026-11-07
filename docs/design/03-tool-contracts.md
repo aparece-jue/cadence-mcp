@@ -280,3 +280,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 开发入口 `capture_delete_owned_design` 要求 `planId`、`planDigest`、`kind`（`design_create` 或 `design_save_as`）及 `expectedSha256`。目标由已独立重开的生产任务确定。删除范围是该任务目录内的单个原 DSN，保留原生回执、作业记录、另存为暂存源及其他产物。输入没有文件路径。正式工程、导入副本和其他编辑作业的 DSN 无法作为此工具的删除目标。
 
 同一工作区的活动 MCP 会话、Capture 锁、尚可执行或恢复的下游作业、非普通文件和指纹不符都会拒绝删除。删除意图先持久化，再移除文件并确认路径消失。中断时，使用相同身份再次调用以核对原文件或确认它已经删除。已退休的任务拒绝生产重放和重新打开。如果路径出现了新文件，重试也会保留它。设计文件更名可通过另存为、验证新文件并关闭原会话，然后用原任务身份删除旧产物。两个调用各自保留回执。
+
+
+## 布线计划的原生页面节点预期
+
+开发入口的 `capture_plan_wire_add` 和 `capture_plan_wire_edit` 可传 `expectedPageNetGroups`。每组给出 `wireIndexes` 和 `pinIndexes`，分别按计划中 `expectedWirePaths` 与 `expectedConnections` 的零基索引填写。可显式传入有序的 `expectedWirePaths`，便于复核索引。每条保存后的导线和每个预计已连接的引脚恰好出现一次，未连接引脚不进入分组。删完且没有连接引脚时传空数组。重复路径、空组、缺项和重复索引在写入前拒绝。
+
+保存后独立重开，通过 Dbo `GetNet` 对象比对选定页的完整节点分组，包含导线与引脚共同归属。相同网名和几何交点都不能替代原生节点身份。核验成功的结果包含 `nativePageNetPartitionVerified=true`。不匹配的隔离产物保留排查，拒绝从 MCP 作为已验证结果打开。已有不带分组的作业继续按原契约验收。该字段属于开发入口，发行契约保持原范围。

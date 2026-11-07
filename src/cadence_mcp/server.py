@@ -160,6 +160,11 @@ class WireAliasLocation(StrictModel):
     location: Annotated[list[int], Field(min_length=2, max_length=2)]
 
 
+class PageNetGroupExpectation(StrictModel):
+    wireIndexes: Annotated[list[int], Field(max_length=500)]
+    pinIndexes: Annotated[list[int], Field(max_length=500)]
+
+
 class ReferenceChange(StrictModel):
     partId: str
     newReference: Annotated[str, Field(min_length=1, max_length=64)]
@@ -1673,12 +1678,14 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
                                        expectedConnections: list[PinExpectation], start: list[int] | None = None,
                                        end: list[int] | None = None, aliasLocations: list[WireAliasLocation] | None = None,
                                        removeAttachedAliases: bool = False,
-                                       expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None, guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None) -> ToolResult:
+                                       expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None, guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None,
+                                     expectedPageNetGroups: Annotated[list[PageNetGroupExpectation] | None, Field(max_length=1000, description="Native groups after save/reopen. Zero-based indexes into expectedWirePaths and expectedConnections. Cover every saved wire and connected pin once.")] = None) -> ToolResult:
         """Plan a two-point scalar wire endpoint edit or deletion on a new DSN. Declare every page pin's result. Endpoint changes require every attached alias's saved anchor; deletion of attached aliases needs explicit acknowledgement. Match native target by unique page/old geometry/net, not an ordinal. For deletion only, paired guiSessionId/hostProject select the fixed native selection/Delete backend; provide editorOccurrence for a repeated schematic. Untouched different-net wires are frozen and checked after deletion. No junction/occurrence/DRC verdict."""
         return await invoke(wire_edits.plan, sessionId, wireId, operation,
                             [r.model_dump() for r in expectedConnections], start, end,
                             None if aliasLocations is None else [r.model_dump() for r in aliasLocations],
                             removeAttachedAliases, expectedWirePaths, expectedWireNet, guiSessionId, hostProject, editorOccurrence,
+                            None if expectedPageNetGroups is None else [group.model_dump() for group in expectedPageNetGroups],
                             coverage=("wire_edit_plan", "explicit_alias_effects", "explicit_page_pin_expectations"),
                             not_checked=("save_reopen", "junction_semantics", "occurrence_connectivity", "native_drc"))
 
@@ -1711,10 +1718,12 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
     async def capture_plan_wire_add(sessionId: str, pageId: str, start: list[int], end: list[int], netName: str,
                                      expectedConnections: list[PinExpectation], aliasLocation: list[int] | None = None,
                                      expectedWirePaths: list[list[list[int]]] | None = None, expectedWireNet: str | None = None,
-                                     guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None) -> ToolResult:
+                                     guiSessionId: str | None = None, hostProject: str | None = None, editorOccurrence: str | None = None,
+                                     expectedPageNetGroups: Annotated[list[PageNetGroupExpectation] | None, Field(max_length=1000, description="Native groups after save/reopen. Zero-based indexes into expectedWirePaths and expectedConnections. Cover every saved wire and connected pin once.")] = None) -> ToolResult:
         """Plan one scalar segment plus an on-wire alias in a new DSN. Require explicit expectations for every page pin. Expected saved paths may declare splits/merges but must preserve the exact old-plus-new geometric union. Defaults keep each old path and add one segment. Expected alias-owner native net defaults to netName, or supply expectedWireNet when an existing canonical name must prevail. Provide both guiSessionId and hostProject to use fixed native OPage/PlaceWire/PlaceNetAlias in the output PCB project; the clean control host is restored and old GUI sessions invalidated. For a repeated schematic provide its unique editorOccurrence reference. The native occurrence map rejects ambiguity before OPage, and output closure requires the native DSN lock to disappear. Editor cancellation is pending-only; uncertain dispatch retains its host fence. Omit both for the existing standalone Dbo backend. No implicit electrical/DRC inference."""
         return await invoke(wire_adds.plan, sessionId, pageId, start, end, netName,
                             [row.model_dump() for row in expectedConnections], aliasLocation, expectedWirePaths, expectedWireNet, guiSessionId, hostProject, editorOccurrence,
+                            None if expectedPageNetGroups is None else [group.model_dump() for group in expectedPageNetGroups],
                             coverage=("wire_alias_plan", "explicit_page_pin_expectations", "geometry_union_preflight"),
                             not_checked=("save_reopen", "junction_semantics", "occurrence_connectivity", "native_drc"))
 

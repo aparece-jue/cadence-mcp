@@ -1,0 +1,78 @@
+{
+  "batch": 149,
+  "date": "2026-11-08",
+  "feature": "D03",
+  "baseline": "0cb16a8f636f4b069566477aa4d63b4e8bbbf72c",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 9,
+  "acceptedGateIds": [],
+  "fullD03Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 240,
+  "newPublicTools": 0,
+  "changedDevelopmentTools": [
+    "capture_plan_wire_add",
+    "capture_plan_wire_edit"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeReadOnlyTopologyReaudit": {
+    "passed": true,
+    "basis": "fresh Dbo GetNet object identities",
+    "cases": {
+      "crossing": {
+        "sourceSha256": "5d852a7683bb3d8b60d20a2505d856fa7c4adcd9d2de2f91b29dada242b926fe",
+        "nodeCount": 8,
+        "wireCount": 11,
+        "nativeEvidenceSha256": "fb0cccb7353e63d973982588a6c08727329ee73fa820c6e1f86454fe462926f6",
+        "allWireNodesMatched": true
+      },
+      "junction": {
+        "sourceSha256": "8184f7f92848f536e9bc7a7969b5b597fe62515b1dfe5fef1bcb814b5e599397",
+        "nodeCount": 7,
+        "wireCount": 13,
+        "nativeEvidenceSha256": "e28ae9c948d04727edc7744e27f2f677060f1c8270acd5c8cc00cdfa86c64e0e",
+        "allWireNodesMatched": true
+      }
+    }
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "tools": 240,
+    "resistorWireAndTwoPinsVerified": true,
+    "wireDeletedAndFourPinsUnbound": true,
+    "endpointEditAllSevenNodesVerified": true,
+    "falseGapMergeRejectedAfterNativeSave": true,
+    "connectedJunctionBranchDeletePreservedRemainingNodes": true,
+    "freshServiceDoesNotReplayVerifiedPlans": true,
+    "sourcesUnchanged": true
+  },
+  "scope": [
+    "Explicit native GetNet grouping compares the entire selected definition page wire/connected-pin membership and verifies unbound pins.",
+    "The original manual geometry groups are independently compared against fresh native object memberships in the no-junction and junction fixtures.",
+    "The MCP negative deliberately merges two physically separated gap groups in the oracle while keeping the expected geometry intact. Verification rejects the retained native output.",
+    "Saved wire topology and pin membership are tested. Occurrence, cross-page/global connectivity and DRC remain their own gates."
+  ],
+  "remaining": [
+    "Turn the proved private PlaceJunction experiment into a bounded typed editor workflow, with explicit crossing identity, output verification and restart/no-replay acceptance.",
+    "Run the native junction mutation, then audit D03 against all original criteria."
+  ],
+  "latestFullRegression": {
+    "total": 744,
+    "passed": 743,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-149-wire-net-groups/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-149-wire-net-groups/native-topology.json": "2f92014d0187d28fe1d853c06d9b8f2890249043956b3ec44a4480ec531e96f5",
+    ".local/batch-149-wire-net-groups/mcp-wire-groups.json": "3abf379308ae202bd5425485a571b2bb0bb311851b727d82060e985ab541d572",
+    ".local/batch-149-wire-net-groups/regression.txt": "ae44234428cc26c0620483ac10669e7def717ec5e0e0804b34696ddc7584329e"
+  },
+  "reproducerGitBlobSha256": {
+    "tools/audit_native_wire_partition.py": "4d9799a23b0f9c3c781f9ae7b72654a470e8b8069defd63efe7cd1c1ba60b391",
+    "tools/smoke_wire_partition_mcp.py": "1cca6e15898c6f56815628da8e8f70826afd53ebf1cc83004fc6d259e05a7df7"
+  }
+}

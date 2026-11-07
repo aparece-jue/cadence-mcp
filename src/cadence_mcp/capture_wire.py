@@ -6,6 +6,7 @@ from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits,definition_baseline
 from .capture_objects import query_objects
 from .core import CadenceError,checked_path,sha256
+from .page_net_partition import include_net_groups, verify_optional_net_groups
 from .environment import ADAPTERS
 from .isolated_jobs import digest
 
@@ -105,7 +106,7 @@ def expected_definitions(data,page_id,expectations):
 class CaptureWireAdds(CapturePropertyEdits):
     kind='capture_wire_add'
 
-    def plan(self,session_id,page_id,start,end,name,expectations,alias_location=None,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None):
+    def plan(self,session_id,page_id,start,end,name,expectations,alias_location=None,expected_paths=None,expected_wire_net=None,gui_session_id=None,host_project=None,editor_occurrence=None,expected_page_net_groups=None):
         if editor_occurrence is not None and (gui_session_id is None or not isinstance(editor_occurrence,str) or not 1<=len(editor_occurrence)<=512 or any(ord(c)<32 for c in editor_occurrence)):raise CadenceError('invalid_editor_occurrence','Provide a bounded explicit occurrence reference with the GUI host.')
         if (gui_session_id is None)!=(host_project is None):raise CadenceError('invalid_editor_host','Provide guiSessionId and hostProject together.')
         if not point(start) or not point(end) or start==end:raise CadenceError('invalid_wire_geometry','Two distinct bounded integer endpoints are required.')
@@ -138,12 +139,14 @@ class CaptureWireAdds(CapturePropertyEdits):
                 if getattr(self,'editor_host',None) is None:raise CadenceError('instance_not_found','No editor host configured.')
                 payload['editorHost']=self.editor_host.freeze(gui_session_id,host_project)
                 payload['editorOccurrence']=editor_occurrence
+            include_net_groups(payload, expected_page_net_groups)
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire plan exceeds the bounded durable-record size.')
             self.capture._session(session_id)
             return self.create_plan(payload)
 
     def preview(self,payload):
         result={k:payload[k] for k in ('schematicName','pageName','start','end','netName','aliasLocation','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+        if 'expectedPageNetGroups' in payload:result['expectedPageNetGroups']=payload['expectedPageNetGroups']
         if 'editorHost' in payload:result.update(executionBackend='capture_editor',temporaryOutputProjectSwitch=True,hostProjectRestorationRequired=True,guiSessionReattachRequired=True,cancelScope='pending_only',outputProjectClosureRequired=True,editorOccurrence=payload.get('editorOccurrence'))
         return result
 
@@ -203,6 +206,7 @@ class CaptureWireAdds(CapturePropertyEdits):
             owner_net=wires[added[0]['attributes']['wireId']]['attributes']['net']
             if owner_net!=payload.get('expectedWireNet',payload['netName']):
                 raise CadenceError('unexpected_alias_owner_net','New alias owner wire net differs from the explicit expectation.','verify')
+            verify_optional_net_groups(verifier, sid, payload)
         finally:verifier.close(sid)
         if sha256(target)!=before:raise CadenceError('target_changed','Output changed during wire verification.')
         self.preflight(payload)
@@ -217,6 +221,8 @@ class CaptureWireAdds(CapturePropertyEdits):
             'outputWorkspaceRelativePath':directory.relative_to(self.config.workspace_root).as_posix(),
             'notChecked':['occurrence_connectivity','wire_only_net_identity','native_drc','rendered_layout','font_descriptor','other_part_properties']}
 
+        if 'expectedPageNetGroups' in payload:
+            result['nativePageNetPartitionVerified']=True
         if 'editorHost' in payload:
             self.editor_host.manifest(directory,create=True)
             result.update(executionBackend='capture_editor',hostContextPreserved=True,guiSessionReattachRequired=True,outputProjectCloseVerified=True)

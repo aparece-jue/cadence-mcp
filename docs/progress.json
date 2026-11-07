@@ -34,12 +34,12 @@
   },
   "toolCount": 240,
   "latestFullRegression": {
-    "total": 741,
-    "passed": 740,
+    "total": 744,
+    "passed": 743,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-148-owned-design-delete/regression.txt"
+    "evidence": ".local/batch-149-wire-net-groups/regression.txt"
   },
-  "acceptanceCanonicalSha256": "1785eb38455d2a189b0833d61ee12b626cf18a3d1d205810c86968aca4f89230"
+  "acceptanceCanonicalSha256": "c3bf0d3f9c518aa67c43a6a0a02a2fccf182b9d1ab0b5967fe50fd03ec8f2bea"
 }

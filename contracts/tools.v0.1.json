@@ -55057,6 +55057,23 @@
           ],
           "default": null,
           "title": "Editoroccurrence"
+        },
+        "expectedPageNetGroups": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PageNetGroupExpectation"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Native groups after save/reopen. Zero-based indexes into expectedWirePaths and expectedConnections. Cover every saved wire and connected pin once.",
+          "title": "Expectedpagenetgroups"
         }
       },
       "required": [
@@ -55067,6 +55084,33 @@
       ],
       "type": "object",
       "$defs": {
+        "PageNetGroupExpectation": {
+          "additionalProperties": false,
+          "properties": {
+            "wireIndexes": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 500,
+              "title": "Wireindexes",
+              "type": "array"
+            },
+            "pinIndexes": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 500,
+              "title": "Pinindexes",
+              "type": "array"
+            }
+          },
+          "required": [
+            "wireIndexes",
+            "pinIndexes"
+          ],
+          "title": "PageNetGroupExpectation",
+          "type": "object"
+        },
         "PinExpectation": {
           "additionalProperties": false,
           "properties": {
@@ -56599,6 +56643,23 @@
           ],
           "default": null,
           "title": "Editoroccurrence"
+        },
+        "expectedPageNetGroups": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PageNetGroupExpectation"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Native groups after save/reopen. Zero-based indexes into expectedWirePaths and expectedConnections. Cover every saved wire and connected pin once.",
+          "title": "Expectedpagenetgroups"
         }
       },
       "required": [
@@ -56611,6 +56672,33 @@
       ],
       "type": "object",
       "$defs": {
+        "PageNetGroupExpectation": {
+          "additionalProperties": false,
+          "properties": {
+            "wireIndexes": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 500,
+              "title": "Wireindexes",
+              "type": "array"
+            },
+            "pinIndexes": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 500,
+              "title": "Pinindexes",
+              "type": "array"
+            }
+          },
+          "required": [
+            "wireIndexes",
+            "pinIndexes"
+          ],
+          "title": "PageNetGroupExpectation",
+          "type": "object"
+        },
         "PinExpectation": {
           "additionalProperties": false,
           "properties": {

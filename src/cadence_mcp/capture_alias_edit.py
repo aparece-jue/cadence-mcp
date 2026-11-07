@@ -5,21 +5,15 @@ from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits,definition_baseline
 from .capture_part_edit import page_geometry
 from .capture_wire import inventory,connection_digest,point,point_on_path
-from .core import CadenceError,checked_path,sha256,new_id,write_json
-from .environment import ADAPTERS,run_tcl
-from .page_net_partition import page_partition
+from .core import CadenceError,checked_path,sha256,write_json
+from .environment import ADAPTERS
+from .page_net_partition import native_partition,page_partition
 from .isolated_jobs import digest
 
 def definition_structure(data):
     rows=copy.deepcopy(data)
     for p in rows['pin']:p['net']=''
     return definition_baseline(rows)
-
-def native_partition(capture,sid):
-    session=capture._session(sid);directory=capture._workspace(session['workspaceId'])['directory'];out=directory/(new_id('page-partition')+'.json')
-    run_tcl(capture.config,'inspect_page_net_partition.tcl',[str(session['design']),str(out)],directory);capture._session(sid)
-    if out.stat().st_size>32*1024*1024:raise CadenceError('output_limit','Native page net evidence exceeds limit.')
-    rows=json.loads(out.read_text(encoding='utf-8'));page_partition(rows);out.unlink();return rows
 
 def alias_changes(objects,target,operation,name,location):
     if operation not in ('set','delete'):raise CadenceError('invalid_alias_edit','Use set or delete.')

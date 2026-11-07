@@ -51,6 +51,7 @@ def guard(name,args,tasks):
         if kind not in ('property','wire_add','wire_edit','bus_create'):raise CadenceError('release_scope_unavailable','This edit kind is outside the validated profile.')
     if kind in ('wire_add','wire_edit'):
         _,_,row=tasks[kind]._load(args['planId']);payload=row['plan']['payload']
+        if 'expectedPageNetGroups' in payload:raise CadenceError('release_scope_unavailable','Explicit native page net groups are a development feature.')
         if not payload.get('editorHost') or (kind=='wire_edit' and payload.get('operation')!='delete'):raise CadenceError('release_scope_unavailable','Legacy standalone wire plans cannot be applied, recovered or opened in this profile.')
 
 def protect(fn,tasks,packed):
@@ -61,6 +62,11 @@ def protect(fn,tasks,packed):
             bound=signature.bind(*args,**kwargs);bound.apply_defaults();guard(fn.__name__,bound.arguments,tasks)
         except CadenceError as error:return packed(failure(error))
         return await fn(*args,**kwargs)
+    if "expectedPageNetGroups" in signature.parameters:
+        public_signature = inspect.signature(fn, eval_str=True)
+        validated.__signature__ = public_signature.replace(parameters=[
+            parameter for parameter in public_signature.parameters.values() if parameter.name != "expectedPageNetGroups"
+        ])
     validated.__doc__=(fn.__doc__ or '')+' '+NOTES.get(fn.__name__,'Scope-limited validated release profile; occurrence/Bundle/DRC and CLI completeness are not certified.')
     return validated
 
