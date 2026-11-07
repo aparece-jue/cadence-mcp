@@ -1,0 +1,121 @@
+{
+  "batch": 143,
+  "date": "2026-11-07",
+  "feature": "E04",
+  "baseline": "8cccaab1e8e3723244df30d6b939551ab1c87d86",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "fullE04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 229,
+  "newPublicTools": [
+    "capture_plan_page_edit",
+    "capture_apply_page_edit",
+    "capture_page_edit_jobs",
+    "capture_cancel_page_edit",
+    "capture_recover_page_edit"
+  ],
+  "developmentContractChangedOnlyExistingTool": "capture_open_edit_result",
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "operations": [
+      "create",
+      "rename-empty",
+      "rename-populated",
+      "delete-empty"
+    ],
+    "sourceUnchanged": true,
+    "lastPageAndPopulatedDeleteRefused": true,
+    "duplicateAndNonAsciiRefused": true,
+    "pendingCancelAndRestartIdempotence": true,
+    "tools": 229
+  },
+  "unicodeReopenControl": {
+    "ascii": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "receipt": {
+        "saved": true,
+        "operation": "create_design"
+      },
+      "observedNames": {
+        "schematic": [
+          "ROOT"
+        ],
+        "page": [
+          "PAGE_ONE"
+        ]
+      },
+      "nativeRoot": "ROOT",
+      "nativePages": [
+        "PAGE_ONE"
+      ]
+    },
+    "root": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "receipt": {
+        "saved": true,
+        "operation": "create_design"
+      },
+      "observedNames": {
+        "schematic": [],
+        "page": []
+      },
+      "metadataError": "dbo_error"
+    },
+    "page": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "receipt": {
+        "saved": true,
+        "operation": "create_design"
+      },
+      "observedNames": {
+        "schematic": [
+          "ROOT"
+        ],
+        "page": []
+      },
+      "nativeRoot": "ROOT",
+      "nativePages": []
+    },
+    "both": {
+      "returnCode": 0,
+      "remainingOwnedProcesses": 0,
+      "receipt": {
+        "saved": true,
+        "operation": "create_design"
+      },
+      "observedNames": {
+        "schematic": [],
+        "page": []
+      },
+      "metadataError": "dbo_error"
+    }
+  },
+  "latestFullRegression": {
+    "total": 735,
+    "passed": 734,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-143-page-edit/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "scope": "ASCII page create/rename and deletion of an empty non-last page on a new isolated DSN copy.",
+  "remaining": [
+    "schematic create/rename/delete and incoming dependencies",
+    "Unicode design/schematic/page reopen",
+    "DSN SaveAs/delete and remaining fault matrix"
+  ],
+  "evidenceSha256": {
+    ".local/batch-143-page-edit/report.json": "fe0d0a75857825fa6d8b22769677b75851c2d57d52d8b2f112095c5dcd192811",
+    ".local/batch-143-page-edit/encoding.json": "edf2c0cec7f2b2c9d17c7db1f88e366ba92d6c72eac83d0b82533d98c30b8081",
+    ".local/batch-143-page-edit/regression.txt": "ef211de23d5b626c42083e8fd8aab3797cbb211e518bf16b7f8ebf0ba481d09a",
+    "tools/smoke_page_edit_mcp.py": "8aa388ab6a4138a8458b43c570d96bc29378c897967c93e902d26a743081b139"
+  }
+}

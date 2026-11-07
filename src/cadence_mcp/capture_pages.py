@@ -9,16 +9,24 @@ from .environment import ADAPTERS
 
 class CapturePages(CapturePropertyEdits):
     kind='capture_page'
+    operations = ('create', 'rename')
+
     def plan(self,session_id,operation,schematic_id,page_id,name):
-        if operation not in ('create','rename') or not isinstance(name,str) or not re.fullmatch(r'\w[\w .-]{0,63}',name) or name.strip(' .')!=name:
-            raise CadenceError('invalid_page_change','Provide create/rename and a bounded page name without path/control characters.')
+        if operation not in self.operations:
+            raise CadenceError('invalid_page_change', 'Unsupported page operation.')
+        if operation == 'delete':
+            if name is not None:
+                raise CadenceError('invalid_page_change', 'Deletion takes a target page and no new name.')
+            name = ''
+        elif not isinstance(name,str) or not re.fullmatch(r'\w[\w .-]{0,63}',name) or name.strip(' .')!=name:
+            raise CadenceError('invalid_page_change','Provide a bounded page name without path/control characters.')
         with self.capture.lock:
             session=self.capture._session(session_id);data=session['data']
             schematic=next((s for s in data['schematic'] if s['objectId']==schematic_id),None)
             if schematic is None:raise CadenceError('object_not_found','Schematic is outside this session.')
             if sum(s['name']==schematic['name'] for s in data['schematic'])!=1:raise CadenceError('ambiguous_target','Schematic name is not unique.')
             siblings=[p for p in data['page'] if p['schematicId']==schematic_id]
-            if any(p['name'].casefold()==name.casefold() for p in siblings):raise CadenceError('page_name_conflict','Page name already exists, ignoring case.')
+            if operation != 'delete' and any(p['name'].casefold()==name.casefold() for p in siblings):raise CadenceError('page_name_conflict','Page name already exists, ignoring case.')
             expected=copy.deepcopy(data);old_name=''
             if operation=='create':
                 if page_id is not None:raise CadenceError('invalid_page_change','Creation does not accept an existing page ID.')
@@ -28,7 +36,14 @@ class CapturePages(CapturePropertyEdits):
                 if page is None:raise CadenceError('object_not_found','Page does not belong to the selected schematic.')
                 old_name=page['name']
                 if sum(p['name']==old_name for p in siblings)!=1:raise CadenceError('ambiguous_target','Old page name is not unique.')
-                next(p for p in expected['page'] if p['objectId']==page_id)['name']=name
+                if operation == 'delete':
+                    if len(siblings) <= 1:
+                        raise CadenceError('last_page', 'Deletion requires another page in the schematic.')
+                    if any(row['pageId'] == page_id for row in data['part']):
+                        raise CadenceError('page_not_empty', 'Deletion requires an empty page.')
+                    expected['page'] = [row for row in expected['page'] if row['objectId'] != page_id]
+                else:
+                    next(p for p in expected['page'] if p['objectId']==page_id)['name']=name
             payload={'sourceDesign':str(session['design']),'sourceFingerprint':session['revision'],
                 'operation':operation,'schematicName':schematic['name'],'oldName':old_name,'name':name,
                 'expectedDefinitionDigest':definition_baseline(expected),'beforeDefinitionDigest':definition_baseline(data)}
@@ -43,7 +58,7 @@ class CapturePages(CapturePropertyEdits):
     def preflight(self,payload):
         source=checked_path(payload['sourceDesign'],(self.config.workspace_root,))
         if source.suffix.lower()!='.dsn' or sha256(source)!=payload['sourceFingerprint']:raise CadenceError('target_changed','Source design changed after planning.')
-        if payload['operation'] not in ('create','rename'):raise CadenceError('invalid_plan','Unsupported page operation.')
+        if payload['operation'] not in self.operations:raise CadenceError('invalid_plan','Unsupported page operation.')
 
     def native_command(self,directory,payload):
         return [self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'edit_page.tcl',self.config.install_root,

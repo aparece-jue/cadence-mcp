@@ -35,15 +35,20 @@ def value_valid(value, rule):
         return isinstance(value, list) and 2 <= len(value) <= 10000 and all(point(v) for v in value)
     if rule == "nullable_text":
         return value is None or isinstance(value, str)
-    if rule == "properties":
+    if rule in ("properties", "user_properties"):
+        fields = {"name", "value"}
+        if rule == "user_properties":
+            fields.add("nativeType")
         return isinstance(value, list) and len(value) <= 512 and all(
-            isinstance(prop, dict) and set(prop) == {"name", "value"} and isinstance(prop["name"], str)
-            and prop["name"] and isinstance(prop["value"], str) for prop in value
+            isinstance(prop, dict) and set(prop) == fields and isinstance(prop["name"], str)
+            and prop["name"] and isinstance(prop["value"], str)
+            and (rule == "properties" or type(prop["nativeType"]) is int and 0 <= prop["nativeType"] <= 255)
+            for prop in value
         ) and len({prop["name"] for prop in value}) == len(value)
     return False
 
 
-def validate_inventory(data, baseline, mode):
+def validate_inventory(data, baseline, mode, *, titleblock_users=False):
     try:
         if mode not in MODES or not isinstance(data, dict) or set(data) != {"schematic", "page", "objects"}:
             raise ValueError("Invalid inventory document shape")
@@ -67,6 +72,8 @@ def validate_inventory(data, baseline, mode):
                 raise ValueError("Invalid inventory parent/native attributes")
             attrs = row["attributes"]
             schema = ATTRIBUTES[row["kind"]]
+            if titleblock_users and row["kind"] == "titleblock":
+                schema = {**schema, "userProperties": "user_properties"}
             if not isinstance(attrs, dict) or set(attrs) != set(schema) or any(not value_valid(attrs[key], rule) for key, rule in schema.items()):
                 raise ValueError("Invalid inventory attributes")
             if "partId" in attrs:
@@ -87,6 +94,26 @@ def validate_inventory(data, baseline, mode):
         raise CadenceError("invalid_worker_result", "Invalid page object inventory.", "decode") from error
 
 
+def read_inventory(capture, session_id, mode, *, titleblock_users=False):
+    session = capture._session(session_id)
+    directory = checked_path(str(capture._workspace(session["workspaceId"])["directory"]), (capture.config.workspace_root,))
+    output = directory / f"{new_id('page-objects')}.json"
+    args = [str(session["design"]), str(output), mode]
+    if titleblock_users:
+        args.append("titleblock-users")
+    run_tcl(capture.config, "inspect_page_objects.tcl", args, directory)
+    capture._session(session_id)
+    try:
+        if not output.is_file() or output.stat().st_size > 32 * 1024 * 1024:
+            raise ValueError("Missing or oversized object inventory")
+        data = json.loads(output.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        raise CadenceError("invalid_worker_result", "Invalid page inventory output.", "decode") from error
+    validate_inventory(data, session["data"], mode, titleblock_users=titleblock_users)
+    output.unlink()
+    return data["objects"]
+
+
 def query_objects(capture, session_id, mode, entity, page_id, cursor, limit):
     with capture.lock:
         session = capture._session(session_id)
@@ -96,19 +123,7 @@ def query_objects(capture, session_id, mode, entity, page_id, cursor, limit):
             raise CadenceError("invalid_scope", "Page does not belong to this immutable session.")
         cache = session.setdefault("objectInventories", {})
         if mode not in cache:
-            directory = checked_path(str(capture._workspace(session["workspaceId"])["directory"]), (capture.config.workspace_root,))
-            output = directory / f"{new_id('page-objects')}.json"
-            run_tcl(capture.config, "inspect_page_objects.tcl", [str(session["design"]), str(output), mode], directory)
-            capture._session(session_id)
-            try:
-                if not output.is_file() or output.stat().st_size > 32 * 1024 * 1024:
-                    raise ValueError("Missing or oversized object inventory")
-                data = json.loads(output.read_text(encoding="utf-8"))
-            except (OSError, ValueError) as error:
-                raise CadenceError("invalid_worker_result", "Invalid page inventory output.", "decode") from error
-            validate_inventory(data, session["data"], mode)
-            output.unlink()
-            cache[mode] = data["objects"]
+            cache[mode] = read_inventory(capture, session_id, mode)
         cursors = session.setdefault("objectInventoryCursors", {})
         signature = (mode, entity, page_id, limit)
         offset = 0

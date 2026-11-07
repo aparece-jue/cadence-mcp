@@ -250,3 +250,10 @@ capture_query_library_vectors(libraryId,partId,cursor?,limit=100)返回revision�
 capture_query_library_package_properties(libraryId,packageId)按revision读取固定字段和显式用户属性的值/原生类型/权限。capture_plan_library_package_edit(libraryId,packageId,changes?,userProperties?)仅固定referenceTemplate/footprint/pcbLibrary；null不变，后两者空串清空。userProperties至多64条name/operation(set|delete)/value，set可为空，delete value必须null，当前set认证editable native string(type0)，拒绝内置影射、重复/别名及无变化。计划冻结全体package属性和已建模库图，≤48KB/账本128KB；不认证外部footprint、实例自定义继承、自动编号、已有缓存、任意类型或其他库对象属性。
 
 配套capture_apply_library_package_edit、capture_library_package_edit_jobs、capture_cancel_library_package_edit、capture_recover_library_package_edit，保存重开，恢复只验不重放；capture_open_edited_library支持kind=package，默认pin兼容。进程结果新增rootExitSignalConfirmed、observedProcessExitSignalsConfirmed、observedOwnedProcessCount：Job排空后还等待根及所观测所属后代句柄退出。预取消仍pid=null/owned0，不声称枚举全部极短寿命进程。
+
+
+## 隔离页面操作
+
+开发入口的 capture_plan_page_edit 支持 create、rename 和 delete。新建只传 schematicId 与 ASCII pageName；重命名另传 pageId；删除只传 schematicId、pageId，要求目标为空且同一原理图仍有其他页。删除预检同时核对原生页面计数、连接对象、图形及定义中的元件。随后调用 capture_apply_page_edit，持久作业支持查询、取消和验证式恢复。已通过的产物用 capture_open_edit_result(kind=page_edit) 打开继续操作。
+
+独立重开核对定义级连接和文档内容。标题栏用户属性及其原生类型保持，自动文件名按打开路径核验，自动页名按目标页核验，自动修改日期和时间值不作为持久用户属性比对。适用范围及负例见 [第 143 批证据](../implementation/batch-143-evidence.json)。

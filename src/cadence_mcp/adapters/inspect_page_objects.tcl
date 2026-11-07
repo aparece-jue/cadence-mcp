@@ -18,7 +18,7 @@ proc cmcp::emit {kind object id page attributes} {
     set state [DboState]; set native [$object GetId $state]; cmcp::check $state
     lappend objects [cmcp::obj kind [cmcp::q $kind] objectId [cmcp::q $id] pageId [cmcp::q $page] nativeId $native objectType [$object GetObjectType] attributes $attributes]
 }
-proc cmcp::properties {object} {
+proc cmcp::properties {object strictEnd} {
     set state [DboState]; set result {}
     set it [$object NewEffectivePropsIter $state]; cmcp::check $state
     try {
@@ -26,12 +26,31 @@ proc cmcp::properties {object} {
         set t [DboTclHelper_sMakeDboValueType]; set edit [DboTclHelper_sMakeInt]
         while {1} {
             set next [$it NextEffectiveProp $name $value $t $edit]
-            if {[$next OK] != 1} {break}
+            if {[$next OK] != 1} {
+                if {$strictEnd && [$next Code] != 1022} {error "unexpected_effective_property_iterator_end"}
+                break
+            }
             cmcp::tick
             if {[llength $result] >= 512} {error "property_limit"}
             lappend result [cmcp::obj name [cmcp::q [cmcp::str $name]] value [cmcp::q [cmcp::str $value]]]
         }
     } finally {delete_DboEffectivePropsIter $it}
+    return [cmcp::arr $result]
+}
+proc cmcp::titleblockUserProperties {object} {
+    set state [DboState]; set result {}
+    set it [$object NewUserPropsIter $state]; cmcp::check $state
+    try {
+        for {set prop [$it NextUserProp $state]} {$prop ne "NULL"} {set prop [$it NextUserProp $state]} {
+            cmcp::check $state; cmcp::tick
+            if {[llength $result] >= 512} {error "property_limit"}
+            set name [cmcp::cs ""]; set value [cmcp::cs ""]
+            cmcp::check [$prop GetName $name]; cmcp::check [$prop GetStringValue $value]
+            set nativeType [$prop GetType $state]; cmcp::check $state
+            lappend result [cmcp::obj name [cmcp::q [cmcp::str $name]] value [cmcp::q [cmcp::str $value]] nativeType $nativeType]
+        }
+    } finally {delete_DboUserPropsIter $it}
+    if {[$state Failed] && [$state Code] != 1022} {error "unexpected_user_property_iterator_end"}
     return [cmcp::arr $result]
 }
 proc cmcp::graphic {object} {
@@ -137,7 +156,7 @@ proc cmcp::parts {page pageId mode} {
         }
     } finally {delete_DboPagePartInstsIter $it}
 }
-proc cmcp::graphics {page pageId} {
+proc cmcp::graphics {page pageId includeTitleblockUsers} {
     set state [DboState]
     foreach {kind make next remove} {
         graphic NewCommentGraphicsIter NextCommentGraphic delete_DboPageCommentGraphicsIter
@@ -156,15 +175,19 @@ proc cmcp::graphics {page pageId} {
                     set value [cmcp::cs ""]; cmcp::check [$native GetText $value]
                     set text [cmcp::q [cmcp::str $value]]
                 }
-                if {$kind eq "titleblock"} {lappend attrs properties [cmcp::properties $object]}
+                if {$kind eq "titleblock"} {
+                    lappend attrs properties [cmcp::properties $object $includeTitleblockUsers]
+                    if {$includeTitleblockUsers} {lappend attrs userProperties [cmcp::titleblockUserProperties $object]}
+                }
                 cmcp::emit $kind $object "$pageId/$kind-[incr n]" $pageId [cmcp::obj {*}$attrs text $text]
             }
         } finally {$remove $it}
     }
 }
-if {$argc != 4} {exit 2}
-lassign $argv root design output mode
-if {$mode ni {connections graphics}} {exit 2}
+if {$argc ni {4 5}} {exit 2}
+lassign $argv root design output mode detail
+if {$mode ni {connections graphics} || ($argc == 5 && ($mode ne "graphics" || $detail ne "titleblock-users"))} {exit 2}
+set includeTitleblockUsers [expr {$detail eq "titleblock-users"}]
 set session ""; set phase opening
 set rc [catch {
     load [file join $root tools bin orDb_Dll_Tcl64.dll] DboTclWriteBasic
@@ -189,7 +212,7 @@ set rc [catch {
                     lappend pages [cmcp::obj objectId [cmcp::q $pageId] schematicId [cmcp::q $sid] name [cmcp::q [cmcp::str $name]]]
                     set phase "parts_$mode"; cmcp::parts $page $pageId $mode
                     set phase $mode
-                    if {$mode eq "connections"} {cmcp::connections $page $pageId} else {cmcp::graphics $page $pageId}
+                    if {$mode eq "connections"} {cmcp::connections $page $pageId} else {cmcp::graphics $page $pageId $includeTitleblockUsers}
                 }
             } finally {delete_DboSchematicPagesIter $pi}
         }
