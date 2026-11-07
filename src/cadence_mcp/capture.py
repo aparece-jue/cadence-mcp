@@ -1,6 +1,7 @@
 """Immutable, read-only design-definition sessions over isolated Tcl workers."""
 from __future__ import annotations
 
+from contextlib import ExitStack
 from datetime import datetime, timezone
 from pathlib import Path
 import json
@@ -9,6 +10,7 @@ import threading
 
 from .core import CadenceError, Config, checked_path, new_id, sha256, write_json
 from .environment import run_tcl
+from .owned_design import guard_verified_design, owned_design_path
 
 FIELDS = {
     "schematic": {"objectId", "name", "generation"},
@@ -57,7 +59,7 @@ class CaptureService:
         return self.workspaces[workspace_id]
 
     def open(self, workspace_id: str) -> dict:
-        with self.lock:
+        with self.lock, ExitStack() as locks, ExitStack() as lease:
             workspace = self._workspace(workspace_id)
             directory = checked_path(str(workspace["directory"]), (self.config.workspace_root,))
             relative = workspace["manifest"].get("designRelativePath", "design.dsn")
@@ -66,6 +68,11 @@ class CaptureService:
             design = checked_path(str(directory / relative), (directory,))
             if design.parent != directory:
                 raise CadenceError("invalid_workspace", "Workspace design cannot resolve outside its direct directory.")
+            if (workspace["manifest"].get("copyMode") == "isolated_output"
+                    and owned_design_path(self.config.workspace_root, directory / relative) is not None):
+                locks.enter_context(guard_verified_design(self.config.workspace_root, directory / relative))
+                # The Windows file handle prevents a different server process from unlinking this DSN.
+                lease.enter_context(design.open("rb"))
             if sha256(design) != workspace["manifest"]["copiedFingerprint"]:
                 raise CadenceError("target_changed", "The workspace design changed; create a new workspace.")
             before = sha256(design)
@@ -98,7 +105,7 @@ class CaptureService:
                 raise CadenceError("invalid_worker_result", "Worker returned an invalid inspection document.", "decode") from e
             session_id = new_id("s")
             self.sessions[session_id] = {"workspaceId": workspace_id, "design": design,
-                                         "revision": before, "data": data, "cursors": {}}
+                                         "revision": before, "data": data, "cursors": {}, "lease": lease.pop_all()}
             return {"sessionId": session_id, "workspaceId": workspace_id, "generation": 1,
                     "revision": before, "readOnly": True, "backend": "standalone",
                     "scope": "design_definitions", "counts": {k: len(v) for k, v in data.items()},
@@ -232,5 +239,7 @@ class CaptureService:
             # Closing a stale session must still release its cached data.
             if session_id not in self.sessions:
                 raise CadenceError("session_lost", "Session is already closed or unknown.")
-            del self.sessions[session_id]
+            session = self.sessions.pop(session_id)
+            if "lease" in session:
+                session["lease"].close()
             return {"sessionId": session_id, "closed": True, "saved": False}

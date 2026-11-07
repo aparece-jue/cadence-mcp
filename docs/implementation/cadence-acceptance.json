@@ -1303,7 +1303,7 @@
       ],
       "implementation": "副本内显式层级操作；禁止删除隐含依赖",
       "acceptance": "空工程/多页、重复命名、已有依赖拒绝、保存重开",
-      "status": "deferred",
+      "status": "passed",
       "evidence": [
         ".local/page-edit-fd681cbf5c/report.json",
         ".local/page-rename-retest-20261023/report.json",
@@ -1321,7 +1321,8 @@
         "docs/implementation/batch-144-evidence.json",
         "docs/implementation/batch-145-evidence.json",
         "docs/implementation/batch-146-evidence.json",
-        "docs/implementation/batch-147-evidence.json"
+        "docs/implementation/batch-147-evidence.json",
+        "docs/implementation/batch-148-evidence.json"
       ],
       "issues": [
         "ISS-E04-page-rename",
@@ -1329,7 +1330,7 @@
         "ISS-E04-page-content-baseline"
       ],
       "implementationReady": true,
-      "remaining": "ASCII new empty DSN creation with a declared root/page remains accepted. Batch143 exposes durable ASCII page create and rename, plus non-last empty-page deletion, on isolated design copies. Four real MCP save/reopen cases preserve the full modeled definition, connection, graphic and native document-count baseline. Titleblock persisted names, values and native types are bound separately; generated paths and page names are checked against their actual context, generated modification field membership is preserved, and timestamp values are outside the verified scope. Duplicate names, non-ASCII requests, deletion of populated/last pages and cancelled plan replay are refused. Unicode root-only and page-only creation controls independently reproduce loss of the corresponding objects on reopen. Schematic create/rename/delete with dependency guards, Unicode, SaveAs/design-delete and the remaining original fault cases keep E04 deferred. The old GetRefCount=0 result is still unsuitable as an incoming-reference oracle. Batch144 reads native definition contents on every instance, detects both HALFADD references despite native GetRefCount=0, and rejects the referenced schematic. Private AUX create/rename/delete each reopens to the declared definition and root. Unreachable definitions, ambiguity and uncertain bindings are covered by host guard tests; public durable schematic mutation and native external cases remain. Batch145 publishes durable schematic create and empty, unreferenced non-root rename/delete. Actual MCP on populated FULLADD preserves all definitions, graphics, connection objects, document counts and dependency graphs. Root/referenced/populated/duplicate/Unicode/cancelled guards pass; simulated receipt loss recovers by independent verification without mutation replay. Native SaveDesignAs to a new owned file preserves source bytes and definition reopen; native RemoveDesign leaves the DSN file on disk. Durable SaveAs, owned design deletion, non-ASCII reopening and remaining scope are not yet accepted. Batch146 publishes native SaveDesignAs to an explicitly named, non-overwriting isolated DSN. Actual MCP verified source/staged hashes, definitions, connections, graphic and titleblock context, effective instance properties, page counts, dependency identity, subsequent page editing, pending cancel, preexisting collision, verify-only recovery and output tamper refusal. Controlled Unicode retest on unchanged self-built bytes shows default Windows subprocess enumeration returns empty, while CREATE_NO_WINDOW returns the exact Chinese root and page. No Unicode policy promotion or design-file deletion yet. Batch147 resolves the Unicode reopen defect on SPB24.1 / Windows CP936 with CREATE_NO_WINDOW for read-only workers. Actual stdio MCP passed Chinese root/first page creation, page and schematic create/rename/delete, and Chinese DSN SaveAs with exact names and titleblock checks. Host round-trip validation refuses names unrepresentable in the active Windows code page, and the prior ASCII SaveAs chain/recovery passes again. Other code pages were not independently tested. Owned design-file deletion and remaining E04 scope are still open."
+      "remaining": "原定正反例已在 SPB 24.1 隔离样例上通过。设计文件更名采用验证另存为后显式退休原自有产物。原理图重命名和删除限于无引用的非根空原理图，页面删除限于非最后一张空页。正式工程、导入副本、OPJ 与外部资源排除；中文原生测试代码页为 936。"
     },
     {
       "id": "D01",
@@ -3734,7 +3735,7 @@
   ],
   "lastBatch": {
     "date": "2026-11-08",
-    "tools": 239,
+    "tools": 240,
     "goalComplete": false,
     "latestFullRegression": {
       "total": 741,
@@ -3742,7 +3743,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-147-unicode-documents/regression.txt"
+      "evidence": ".local/batch-148-owned-design-delete/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3750,7 +3751,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "E04: implement and verify ownership-safe deletion of explicitly identified job-owned DSN artifacts, then audit all original E04 cases.",
+    "nextIndependentWork": "D03: audit C01/C04 prerequisites, then verify the complete page-wire geometry and independent node partition matrix from the original gate; move reproducible blockers to the tail.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3772,7 +3773,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-147-unicode-documents/regression.txt"
+      "evidence": ".local/batch-148-owned-design-delete/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4303,27 +4304,24 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-147-evidence.json",
-    "targetedRegression": {
-      "total": 8,
-      "passed": 8,
-      "skipped": 0
-    },
+    "evidence": "docs/implementation/batch-148-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 0,
+    "newPublicTools": 1,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
-    "acceptedGateIds": [],
+    "acceptedGateIds": [
+      "E04"
+    ],
     "nativeC03Complete": true,
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
-    "fullyAccepted": 8,
+    "fullyAccepted": 9,
     "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
@@ -4442,7 +4440,9 @@
     "designSaveAsMcpAvailable": true,
     "unicodeConsoleLaunchDifferenceVerified": true,
     "unicodeDocumentRoundTripMcpAccepted": true,
-    "unicodeVerifiedWindowsCodePage": 936
+    "unicodeVerifiedWindowsCodePage": 936,
+    "fullE04Accepted": true,
+    "ownedDesignDeleteMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

@@ -3,6 +3,7 @@
 Never mutates a source workspace, never replays a started operation. Native
 workers use kill-on-close process trees; recovery only verifies existing bytes.
 """
+from contextlib import ExitStack
 import hashlib
 import json
 import os
@@ -15,6 +16,7 @@ import uuid
 from .bridge_diagnostics import process_status
 from .core import CadenceError, checked_path, sha256
 from .gui_jobs import acquire_guard, durable_json
+from .owned_design import guard_verified_design, owned_design_path, plan_design_source
 
 
 def digest(value):
@@ -44,7 +46,10 @@ class IsolatedJobs:
         return acquire_guard(self.root)
 
     def create_plan(self, payload):
-        with self.apply_lock:
+        with self.apply_lock, ExitStack() as locks:
+            source = owned_design_path(self.config.workspace_root, plan_design_source(payload))
+            if source is not None:
+                locks.enter_context(guard_verified_design(self.config.workspace_root, source))
             guard = self._guard()
             try:
                 if sum(1 for _ in self.root.glob("plan-*")) >= 4096:

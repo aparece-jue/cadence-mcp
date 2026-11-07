@@ -1,0 +1,127 @@
+{
+  "batch": 148,
+  "date": "2026-11-08",
+  "feature": "E04",
+  "baseline": "c2786a967da3e60fb50e3fd08fdec1c68fe2647f",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 9,
+  "acceptedGateIds": [
+    "E04"
+  ],
+  "fullE04Accepted": true,
+  "productionCodeChanged": true,
+  "tools": 240,
+  "newPublicTools": [
+    "capture_delete_owned_design"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "owned_design_delete": {
+      "passed": true,
+      "tools": 240,
+      "createdDsnDeleted": true,
+      "namedSaveAsDsnDeleted": true,
+      "ownedRenameBySaveAsAndRetirement": true,
+      "nativeProducerArtifactsReopened": true,
+      "foreignPlanAndFingerprintRefused": true,
+      "sameAndCrossProcessLiveSessionsRefused": true,
+      "pendingDependencyAndNativeLockRefused": true,
+      "tamperHardlinkAndReappearanceRefused": true,
+      "retryAfterBothInterruptionBoundaries": true,
+      "producerApplyRecoverAndOpenRefused": true,
+      "sourcesAndNativeReceiptsPreserved": true
+    },
+    "page_edit": {
+      "passed": true,
+      "operations": [
+        "create",
+        "rename-empty",
+        "rename-populated",
+        "delete-empty"
+      ],
+      "sourceUnchanged": true,
+      "lastPageAndPopulatedDeleteRefused": true,
+      "duplicateAndInvalidNameRefused": true,
+      "pendingCancelAndRestartIdempotence": true,
+      "tools": 240
+    },
+    "schematic_edit": {
+      "passed": true,
+      "tools": 240,
+      "operations": [
+        "create",
+        "rename",
+        "delete"
+      ],
+      "rootReferencedPopulatedRefused": true,
+      "duplicateInvalidNameAndCancelledRefused": true,
+      "restartNoReplayAndVerifyOnlyRecovery": true,
+      "sourceUnchanged": true
+    },
+    "design_save_as": {
+      "passed": true,
+      "tools": 240,
+      "nativeNamedSaveAsReopened": true,
+      "sourceBytesUnchanged": true,
+      "effectivePropertiesAndDependenciesVerified": true,
+      "unsafeBasenameCancellationAndCollisionRefused": true,
+      "subsequentPageEditSucceeded": true,
+      "verifyOnlyRecoveryAndTamperRefusal": true
+    },
+    "unicode_documents": {
+      "passed": true,
+      "tools": 240,
+      "unicodeRootAndPageExact": true,
+      "operations": [
+        "create-unicode",
+        "create-page",
+        "rename-page",
+        "delete-page",
+        "create-schematic",
+        "rename-schematic",
+        "delete-schematic",
+        "save-as-unicode",
+        "save-as-titleblocks"
+      ],
+      "unicodeNamedTitleblockDesignVerified": true,
+      "sourceUnchanged": true
+    }
+  },
+  "acceptanceMatrix": {
+    "blankAndMultipage": "Native blank DSN with declared root/page. Create, rename and delete pages on FULLADD copies and on CP936-created designs.",
+    "duplicateNames": "Same-name page and schematic plans refuse before writing, including ASCII case variants.",
+    "existingDependenciesRefused": "Original two incoming references, unresolved definition safeguards, active/recoverable job use and native lock refusal.",
+    "saveReopen": "Separate SPB 24.1 processes verify the new definition, page, Save As and rename outputs before retiring any predecessor.",
+    "interruption": "Original job recovery and cancellation plus restart before unlink and after unlink with the intent persisted."
+  },
+  "scope": [
+    "Owned DSN create, verified Save As and explicit retirement. File rename composes Save As and retirement in two calls.",
+    "Schematic rename/delete is limited to an empty, unreferenced non-root target. Page delete is limited to an empty non-last page.",
+    "Native Unicode coverage is Windows code page 936. OPJ/external resources and occurrence/DRC are tracked outside this DSN lifecycle gate.",
+    "Delete relies on local isolated job records, Windows open-file sharing protection and Capture sidecars. Failed downstream jobs that can still recover retain their source."
+  ],
+  "firstRunFindings": [
+    "Relative test harness output had to be resolved before starting the server.",
+    "Capture wrote DESIGN.DSN while the receipt used design.dsn; matching now uses native Windows path equality.",
+    "First full regression detected one stale development tool count assertion in the validated profile tests; corrected and rerun."
+  ],
+  "latestFullRegression": {
+    "total": 741,
+    "passed": 740,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-148-owned-design-delete/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-148-owned-design-delete/owned_design_delete.json": "0a764b0df9592a5a425284cc88f4ea39b6f1fd56dfdf474cf7d14231d28c0c4e",
+    ".local/batch-148-owned-design-delete/page_edit.json": "1bc5aecece7760723c9260de7e627b30cf7d00558ed0e1f5d70a06fb7b25003d",
+    ".local/batch-148-owned-design-delete/schematic_edit.json": "760da4c6f3d5fc788c389bb0638db84c87a2fa46ac0f48c875a985193f7df9f4",
+    ".local/batch-148-owned-design-delete/design_save_as.json": "37144744a12c2f4a70d505b9bf4c9f7d41e95dce4a029b2bb7800253c969ad0c",
+    ".local/batch-148-owned-design-delete/unicode_documents.json": "842bfd1b4afb8508d64c49b682efa6634cce1591307f7c14266e26c5afecff7a",
+    ".local/batch-148-owned-design-delete/regression.txt": "dee4b3399273cfa019a3a30ecbef86ffe86a125e4090f96f1644c3eab8779ac1",
+    "tools/smoke_owned_design_delete_mcp.py": "e8e2b6b9a8fdab74fabbc74e909ebd8d97b1e14b78448a18975ea9edd42469c8"
+  }
+}
