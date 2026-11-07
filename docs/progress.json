@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/batch-141-dat-temperature/regression.txt"
   },
-  "acceptanceCanonicalSha256": "ad26f0e1e0884f5316616096311b644285923cd66761dfe19bed3ac862442d01"
+  "acceptanceCanonicalSha256": "2144408b9f420fa34972be2ecb493bd56e350c549a5bb19367cf41a4c68412be"
 }

@@ -1,0 +1,63 @@
+{
+  "batch": 142,
+  "date": "2026-11-07",
+  "feature": "E04",
+  "baseline": "383ed21ec0957bbe84e12a8446246cab5753433f",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 8,
+  "acceptedGateIds": [],
+  "productionCodeChanged": false,
+  "tools": 224,
+  "newPublicTools": 0,
+  "contractSchemasUnchanged": true,
+  "originalAcceptancePassed": false,
+  "publicPageTasksAvailable": false,
+  "nativeDiagnostic": {
+    "diagnosticComplete": true,
+    "originalFailurePreserved": true,
+    "cases": {
+      "rename": {
+        "graphicRowsExact": 27,
+        "titleblocks": 2,
+        "changedTitleblockPropertyNames": [
+          "Design File Name",
+          "Design Modify Date",
+          "Design Modify Time",
+          "Page Modify Date",
+          "Page Modify Time",
+          "Page Name",
+          "Schematic Modify Date",
+          "Schematic Modify Time"
+        ]
+      },
+      "create": {
+        "graphicRowsExact": 27,
+        "titleblocks": 2,
+        "changedTitleblockPropertyNames": [
+          "Design File Name",
+          "Design Modify Date",
+          "Design Modify Time",
+          "Page Modify Date",
+          "Page Modify Time",
+          "Schematic Modify Date",
+          "Schematic Modify Time"
+        ]
+      }
+    }
+  },
+  "fullRegressionRerunThisBatch": false,
+  "latestFullRegression": {
+    "total": 733,
+    "passed": 732,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-141-dat-temperature/regression.txt"
+  },
+  "nextAcceptance": "Separate generated titleblock context from persisted user attributes, independently verify the expected renamed Page Name, and keep unexpected titleblock, geometry, count or connection changes rejected.",
+  "evidenceSha256": {
+    ".local/batch-142-page-graphic-audit/report.json": "3e13560daf34d78a21e04a7e24458d1eca4a6dc0f8731d9e992561ba7a75c8d9",
+    "tools/audit_page_graphic_baseline.py": "9ddaac5ca513c61b39b4bfc05d2fd131654b74937137da6a41e3fa50587a6871"
+  }
+}

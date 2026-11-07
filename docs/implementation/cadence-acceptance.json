@@ -1315,7 +1315,8 @@
         ".local/design-create-mcp-20261023/report.json",
         ".local/design-create-lifecycle-20261023/report.json",
         ".local/design-create-faults-20261023/report.json",
-        ".local/design-save-order-20261024/report.json"
+        ".local/design-save-order-20261024/report.json",
+        "docs/implementation/batch-142-evidence.json"
       ],
       "issues": [
         "ISS-E04-page-rename",
@@ -1323,7 +1324,7 @@
         "ISS-E04-page-content-baseline"
       ],
       "implementationReady": true,
-      "remaining": "Public typed creation of one ASCII-named root/empty-page DSN with declaration sourceKind, independent root/10 object-category counts, real MCP lifecycle and receipt-loss/start-cancel/timeout passes. New DSN -> two created-library resistor placements also passes. Non-ASCII DSN creation fails definition reopen even with UTF-8 declaration (explicitly refused before public plan); stronger page create/rename content verification fails graphics baseline, so page tools stay unpublished. Schematic/page deletion dependency/content guards, SaveAs/design-delete and full E04 remain required. GetRefCount returned 0 for actual twice-referenced HALFADD, so it is not used as incoming-reference oracle."
+      "remaining": "Public typed creation of one ASCII-named root/empty-page DSN with declaration sourceKind, independent root/10 object-category counts, real MCP lifecycle and receipt-loss/start-cancel/timeout passes. New DSN -> two created-library resistor placements also passes. Non-ASCII DSN creation fails definition reopen even with UTF-8 declaration (explicitly refused before public plan); stronger page create/rename content verification fails graphics baseline, so page tools stay unpublished. Schematic/page deletion dependency/content guards, SaveAs/design-delete and full E04 remain required. GetRefCount returned 0 for actual twice-referenced HALFADD, so it is not used as incoming-reference oracle. Batch142 independently reopened the original fixture and both saved failed outputs. All 27 non-titleblock graphic/part/display rows and two titleblock identities and poses match. Only effective titleblock file-path and modification date/time fields differ in both cases, with the intended Page Name change in the rename case. Original failed plans retained. A persisted-user-property versus generated-context oracle and public page lifecycle are still required."
     },
     {
       "id": "D01",
@@ -2947,7 +2948,9 @@
       "featureId": "E04",
       "status": "open",
       "summary": "Strengthened page creation and populated-page rename preserve checked definitions/connections but reject saved graphic/part/display baseline. Exact differing fields/cause not yet localized. Internal only, no weakened oracle or published page tools.",
-      "evidence": ".local/page-content-20261023/report.json"
+      "evidence": ".local/page-content-20261023/report.json",
+      "latestEvidence": "docs/implementation/batch-142-evidence.json",
+      "latestObservation": "Original failures localized to titleblock effective properties. Both cases preserve all 27 non-titleblock rows and both titleblock identities and poses. The affected fields are the design file path, design/schematic/page modification date/time and the intended Page Name on rename. Independent separation of generated context and persisted overrides remains required."
     },
     {
       "id": "ISS-D03-new-design-wire-reopen",
@@ -3740,7 +3743,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": false,
     "cliRunVerified": false,
-    "nextIndependentWork": "Continue the next dependency-ready original gate; retain P04 digital and format failure evidence.",
+    "nextIndependentWork": "E04: establish a generated titleblock context vs persisted user properties oracle and rerun new private create/rename plans with original guards.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3800,7 +3803,7 @@
     "hierarchyWriteMcpEvidence": ".local/hierarchy-clone-write-mcp-d-20261023/report.json",
     "hierarchyWriteFaultEvidence": ".local/hierarchy-clone-faults-20261023/report.json",
     "hierarchyBadOracleEvidence": ".local/hierarchy-clone-bad-oracle-20261023/report.json",
-    "fullRegressionRunThisBatch": true,
+    "fullRegressionRunThisBatch": false,
     "freshHierarchyPortsEvidence": ".local/hierarchy-fresh-ports-v2-20261023/report.json",
     "freshHierarchyPortsMcpAvailable": false,
     "ncNativeLifecycleEvidence": ".local/nc-lifecycle-20261023/report.json",
@@ -4293,13 +4296,13 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-141-evidence.json",
+    "evidence": "docs/implementation/batch-142-evidence.json",
     "targetedRegression": {
       "total": 8,
       "passed": 8,
       "skipped": 0
     },
-    "fullRegressionRerunThisBatch": true,
+    "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4314,7 +4317,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 8,
-    "productionCodeChanged": true,
+    "productionCodeChanged": false,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4423,7 +4426,8 @@
     "explicitNewFontQuality": 1,
     "displayLifecycleRecoveryAccepted": true,
     "displayLifecycleLegacyPlanCompatible": true,
-    "datTemperatureAxisAccepted": true
+    "datTemperatureAxisAccepted": true,
+    "pageGraphicMismatchLocalized": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
