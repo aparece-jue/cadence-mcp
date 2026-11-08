@@ -1,15 +1,15 @@
 {
   "asOf": "2026-11-07",
   "metric": "required_gates_fully_accepted",
-  "passed": 9,
+  "passed": 10,
   "total": 34,
-  "percent": 26.5,
-  "remaining": 25,
+  "percent": 29.4,
+  "remaining": 24,
   "statusCounts": {
-    "passed": 9,
+    "passed": 10,
     "baseline_passed": 1,
     "implemented_partial": 6,
-    "deferred": 17,
+    "deferred": 16,
     "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
@@ -17,9 +17,9 @@
   },
   "groups": {
     "Capture": {
-      "passed": 7,
+      "passed": 8,
       "total": 28,
-      "percent": 25.0
+      "percent": 28.6
     },
     "PSpice": {
       "passed": 2,
@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 240,
+  "toolCount": 241,
   "latestFullRegression": {
-    "total": 744,
-    "passed": 743,
+    "total": 748,
+    "passed": 747,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-149-wire-net-groups/regression.txt"
+    "evidence": ".local/batch-150-native-junction/regression.txt"
   },
-  "acceptanceCanonicalSha256": "c3bf0d3f9c518aa67c43a6a0a02a2fccf182b9d1ab0b5967fe50fd03ec8f2bea"
+  "acceptanceCanonicalSha256": "1674d7f32ac3d96d9a1debd1e702efa367b616f0664229d3741fba7dca1cba7a"
 }

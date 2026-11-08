@@ -1510,9 +1510,9 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "NewWireScalar及真实端点/junction接口；迭代器释放后修改；固定OPage/PlaceWire/PlaceNetAlias编辑后端已接入原wire_add任务，显式宿主/恢复/会话失效/原生围栏；原生SelectObjectById/选择身份校验/Delete后端；删除未涉及网络身份保持校验；显式层次实例与工程关闭锁检查；开发入口可冻结并验证完整所选页面导线/引脚的原生节点分组",
+      "implementation": "NewWireScalar及真实端点/junction接口；迭代器释放后修改；固定OPage/PlaceWire/PlaceNetAlias编辑后端已接入原wire_add任务，显式宿主/恢复/会话失效/原生围栏；原生SelectObjectById/选择身份校验/Delete后端；删除未涉及网络身份保持校验；显式层次实例与工程关闭锁检查；开发入口可冻结并验证完整所选页面导线/引脚的原生节点分组；显式同页标量正交交叉的结点计划复用布线编辑持久任务和原生节点全集验收",
       "acceptance": "直角/交叉无连接/T结点/重叠/断点、保存重开并按人工节点全集比较",
-      "status": "deferred",
+      "status": "passed",
       "evidence": [
         ".local/wire-alias-0666b70746/report.json",
         ".local/wire-add-stdio-owner-20261023/report.json",
@@ -1593,7 +1593,8 @@
         ".local/editor-delete-connected-alias-final-20261027/report.json",
         ".local/regression-editor-delete-final-20261027.txt",
         "docs/implementation/batch-113-evidence.json",
-        "docs/implementation/batch-149-evidence.json"
+        "docs/implementation/batch-149-evidence.json",
+        "docs/implementation/batch-150-evidence.json"
       ],
       "issues": [
         "ISS-D03-interior-pin-topology",
@@ -1602,7 +1603,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged. Batch96: default wire still3969; SetName empty/named both1021 before save. Actual initialized active-page host UpdatePageState after NewWireScalar enters method, no return/save marker; native unexpected-exit dialog observed and old20696 exited after close. Original blank source hash unchanged and independently0objects; no replay. Fresh Capture5256/private control and authenticated bridge recovered. Exact exception code not recorded; full D03 unresolved. Batch111: after reboot fresh private Capture24360, OPage/PlaceWire/EndPlace successfully saves/reopens exact original 100,100→300,100 endpoints. Fixed pin-free right-angle/T/overlap/gap/crossing and explicit-junction net partitions pass. Public existing endpoint move preserves complete wire map. Delete task reports verified, but independent stricter audit finds unrelated elbow net N00005 becomes empty; native mutation not replayed, ledger retained. Public create integration, placed-pin/alias matrix and full wire-only identity guard still required. Transaction/copy constructor hypotheses fail; original NewWireScalar issue remains. Batch112: existing public capture_plan_wire_add optionally accepts paired guiSessionId/hostProject. Native fixed editor task edits isolated copy, restores original clean PCB control host and invalidates old GUI sessions; source/host files preserved. Actual multi-net fixture and ORIGINAL 5bf35881 two-resistor/four-pin oracle pass, including alias/native saved paths, fresh service idempotence and verify-only recovery. Real native completion followed by injected observer loss retains fence and blocks repeat/new dispatch; fresh MCP verifies existing original bytes and releases fence. Standalone constructor is still not fixed; original interior-pin short, deletion and full D03 joint coverage remain. Batch113: original same-byte interior-pin short passes fixed editor add with explicit halfadd_A and unchanged four-pin electrical oracle; original normal oracle rejects exactly two shorted pins. Original delete-loss source passes editor Delete and entire remaining wire-map preservation; standalone corrupt output is now refused by unrelated_wire_net_changed before verified/open_result. Connected aliased wire deletion requires explicit alias removal and reopens with all four pins unbound. Explicit occurrence missing/invalid refuses before OPage, clean host restored and output closed; dirty partial outputs retain fence. Native PM focus plus DSN lock absence now verifies closure; earlier CloseProject-only evidence was insufficient. Full gate remains deferred for original joint matrix/dependencies/target-net/occurrence/DRC requirements; SetPoint/NewWireScalar/standalone Delete limitations not claimed fixed. 第149批重新以原生 GetNet 对象核对原直角、无连接交叉、有结点交叉、T、重叠、断点，人工组分别为8/7，几何和逐线节点全通过。公开创建、端点修改、删除可声明整个页面的导线和引脚原生分组。两电阻创建与清空、七节点全图端点移动、删除已连接交叉的一条支路后剩余同网节点保持均保存重开通过；故意合并断点两侧的预期触发拒绝且不可打开、不重放。尚需把经私有探测的原生 PlaceJunction 接入定型编辑任务，验证宿主围栏、显式交叉身份和任务级保存重开。"
+      "remaining": "5个typed wire_add工具及verified输出衔接、完整page pin/定义/几何/alias/新增owner-net核验、真实MCP重启幂等/错误预期拒绝/回执丢失恢复/native-start取消通过；修改/删除、交叉/T/重叠/断点矩阵及完整wire-only/occurrence网络身份、DRC仍待完成。 Batch10: two-point scalar endpoint move/delete and explicit attached-alias handling pass; full original scope remains required. Interior-pin intentional-short oracle failed; retained and moved to tail, no oracle rewrite. New empty DSN -> two placed resistors -> wire save exited0, but independent verification returned dbo_error. Worker tree terminal/owned0, failed ledger retained; no replay or wire acceptance. Batch91: delayed old dispatch completed after modal recovery; no replay. Same fresh-wire saved design still fails independent reopen NextPage3969. Original unacknowledged report retained, late audit separate. Batch94: genuinely new blank DSN independently readable before wire; opened in Capture after old-project modal None. Actual app-owned DboSession_s_pDboSession (not separate own session) creates/saves fixed wire with acknowledged receipt; independent new-process NextPage still3969. Original geometry oracle unchanged, failure retained. Separate-session-only explanation rejected; editor-view initialization still untested. Batch95: actual private MAIN editor opened; Capture marks blank dirty on view initialization. Fixed empty-page init save independently reopens with0objects; same initialized bytes then used with GetActivePage/View identity guard for fixed wire creation. Save acknowledged, independent NextPage still3969. Editor-initialization-only hypothesis disproved; original geometry oracle remains unchanged. Batch96: default wire still3969; SetName empty/named both1021 before save. Actual initialized active-page host UpdatePageState after NewWireScalar enters method, no return/save marker; native unexpected-exit dialog observed and old20696 exited after close. Original blank source hash unchanged and independently0objects; no replay. Fresh Capture5256/private control and authenticated bridge recovered. Exact exception code not recorded; full D03 unresolved. Batch111: after reboot fresh private Capture24360, OPage/PlaceWire/EndPlace successfully saves/reopens exact original 100,100→300,100 endpoints. Fixed pin-free right-angle/T/overlap/gap/crossing and explicit-junction net partitions pass. Public existing endpoint move preserves complete wire map. Delete task reports verified, but independent stricter audit finds unrelated elbow net N00005 becomes empty; native mutation not replayed, ledger retained. Public create integration, placed-pin/alias matrix and full wire-only identity guard still required. Transaction/copy constructor hypotheses fail; original NewWireScalar issue remains. Batch112: existing public capture_plan_wire_add optionally accepts paired guiSessionId/hostProject. Native fixed editor task edits isolated copy, restores original clean PCB control host and invalidates old GUI sessions; source/host files preserved. Actual multi-net fixture and ORIGINAL 5bf35881 two-resistor/four-pin oracle pass, including alias/native saved paths, fresh service idempotence and verify-only recovery. Real native completion followed by injected observer loss retains fence and blocks repeat/new dispatch; fresh MCP verifies existing original bytes and releases fence. Standalone constructor is still not fixed; original interior-pin short, deletion and full D03 joint coverage remain. Batch113: original same-byte interior-pin short passes fixed editor add with explicit halfadd_A and unchanged four-pin electrical oracle; original normal oracle rejects exactly two shorted pins. Original delete-loss source passes editor Delete and entire remaining wire-map preservation; standalone corrupt output is now refused by unrelated_wire_net_changed before verified/open_result. Connected aliased wire deletion requires explicit alias removal and reopens with all four pins unbound. Explicit occurrence missing/invalid refuses before OPage, clean host restored and output closed; dirty partial outputs retain fence. Native PM focus plus DSN lock absence now verifies closure; earlier CloseProject-only evidence was insufficient. Full gate remains deferred for original joint matrix/dependencies/target-net/occurrence/DRC requirements; SetPoint/NewWireScalar/standalone Delete limitations not claimed fixed. 第149批重新以原生 GetNet 对象核对原直角、无连接交叉、有结点交叉、T、重叠、断点，人工组分别为8/7，几何和逐线节点全通过。公开创建、端点修改、删除可声明整个页面的导线和引脚原生分组。两电阻创建与清空、七节点全图端点移动、删除已连接交叉的一条支路后剩余同网节点保持均保存重开通过；故意合并断点两侧的预期触发拒绝且不可打开、不重放。尚需把经私有探测的原生 PlaceJunction 接入定型编辑任务，验证宿主围栏、显式交叉身份和任务级保存重开。 第150批通过定型显式结点任务，Capture 原生检查两条线的 ID 和标量类型，在新隔离 DSN 用 PlaceJunction 保存并独立重开。源样例无结点八组、产物有结点七组，逐线几何及人工节点全集一致。取消、非交叉和外部 ID 拒绝；模拟最终验证记录丢失后仅核验原字节，不重放。原创建、端点、删除和错误断点预期矩阵复跑通过。独立 Dbo 在全新文档的 NewWireScalar 历史限制保持，原生编辑器路径已实测。"
     },
     {
       "id": "D04",
@@ -3736,15 +3737,15 @@
   ],
   "lastBatch": {
     "date": "2026-11-08",
-    "tools": 240,
+    "tools": 241,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 744,
-      "passed": 743,
+      "total": 748,
+      "passed": 747,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-149-wire-net-groups/regression.txt"
+      "evidence": ".local/batch-150-native-junction/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3752,7 +3753,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "D03: implement and verify a bounded explicit junction editor job, reuse the now-verified native partition oracle, and independently advance H01 if the native editor cannot proceed.",
+    "nextIndependentWork": "H01: audit native repeated occurrence identity and property scope, then verify explicit incomplete results for empty, cyclic and bounded traversal.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3769,12 +3770,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 744,
-      "passed": 743,
+      "total": 748,
+      "passed": 747,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-149-wire-net-groups/regression.txt"
+      "evidence": ".local/batch-150-native-junction/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4141,7 +4142,7 @@
     "libraryPinGlobalMatrixEvidence": ".local/pin-visibility-global-matrix-v5-20261026/report.json",
     "fullL04Accepted": false,
     "wirePageStateEvidence": ".local/wire-page-state-v2-20261026/report.json",
-    "fullD03Accepted": false,
+    "fullD03Accepted": true,
     "wirePointConstructionEvidence": ".local/wire-point-construction-20261026/report.json",
     "wirePointConstructionAudit": ".local/wire-point-construction-20261026/audit.json",
     "wireCaptureHostEvidence": ".local/wire-capture-context-v2-20261026/report.json",
@@ -4305,22 +4306,24 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-149-evidence.json",
+    "evidence": "docs/implementation/batch-150-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 0,
+    "newPublicTools": 1,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
-    "acceptedGateIds": [],
+    "acceptedGateIds": [
+      "D03"
+    ],
     "nativeC03Complete": true,
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
-    "fullyAccepted": 9,
+    "fullyAccepted": 10,
     "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
@@ -4442,7 +4445,8 @@
     "unicodeVerifiedWindowsCodePage": 936,
     "fullE04Accepted": true,
     "ownedDesignDeleteMcpAccepted": true,
-    "nativePageWireGroupsMcpAccepted": true
+    "nativePageWireGroupsMcpAccepted": true,
+    "nativeJunctionMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

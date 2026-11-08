@@ -11,6 +11,7 @@ from .environment import ADAPTERS,process_env
 from .process_tree import run_owned_process
 
 ADAPTER_NAMES=('json.tcl','editor_wire_add_job.tcl','editor_wire_delete_job.tcl')
+JUNCTION_ADAPTER = 'editor_junction_job.tcl'
 
 class EditorWireHost:
     adapter_names=ADAPTER_NAMES
@@ -26,7 +27,7 @@ class EditorWireHost:
         if sha256(path)!=h['bindingSha256']:raise CadenceError('instance_replaced','Editor binding changed after planning.')
         return path
 
-    def freeze(self,sid,host_project):
+    def freeze(self,sid,host_project,*,junction=False):
         if self.gui is None:raise CadenceError('instance_not_found','Configure a GUI host for editor wire addition.')
         with self.gui.lock:
             if sid not in self.gui.sessions:raise CadenceError('session_lost','Attach an explicit GUI session first.')
@@ -41,17 +42,20 @@ class EditorWireHost:
             files=re.findall(r'\(File\s+"([^"\r\n]+)"\s+\(Type\s+"Schematic Design"\)\)',text)
             if '(ProjectType "PCB")' not in text or len(files)!=1 or len(re.findall(r'\(File\s',text))!=1 or (project.parent/files[0].replace('\\','/')).resolve()!=active:
                 raise CadenceError('unsupported_editor_host','Use a single-design PCB control project; other host resources need separate validation.')
+            adapter_names = (*self.adapter_names, JUNCTION_ADAPTER) if junction else self.adapter_names
             h={'bindingPath':str(binding),'bindingSha256':sha256(binding),'pid':s['pid'],'instanceId':s['instanceId'],
                'generation':s['generation'],'sessionId':sid,'activeDesign':str(active),'activeFingerprint':b['sourceFingerprint'],
                'hostProject':str(project),'hostProjectSha256':sha256(project),'executableFingerprint':b['executableFingerprint'],
-               'adapterHashes':{name:sha256(ADAPTERS/name) for name in self.adapter_names}}
+               'adapterHashes':{name:sha256(ADAPTERS/name) for name in adapter_names}}
             self.context(h,True);return h
 
     def static(self,h):
         self.binding(h)
         for path,key in [('activeDesign','activeFingerprint'),('hostProject','hostProjectSha256')]:
             if sha256(Path(h[path]))!=h[key]:raise CadenceError('target_changed','Frozen editor host files changed.')
-        if h['adapterHashes']!={name:sha256(ADAPTERS/name) for name in self.adapter_names}:raise CadenceError('target_changed','Fixed editor adapter changed.')
+        names = (*self.adapter_names, JUNCTION_ADAPTER) if JUNCTION_ADAPTER in h['adapterHashes'] else self.adapter_names
+        if h['adapterHashes'] != {name: sha256(ADAPTERS / name) for name in names}:
+            raise CadenceError('target_changed', 'Fixed editor adapter changed.')
 
     def context(self,h,before):
         self.static(h);exe=(self.config.install_root/'tools/bin/Capture.exe').resolve(strict=True)
@@ -89,6 +93,13 @@ class EditorWireHost:
 
     def invocation(self,d,p,project,target,owner):
         h=p['editorHost']
+        if p.get('operation') == 'place_junction':
+            if JUNCTION_ADAPTER not in h['adapterHashes']:
+                raise CadenceError('invalid_plan', 'The junction adapter fingerprint is missing.')
+            args = [h['pid'], h['activeDesign'], h['hostProject'], project.as_posix(), target.as_posix(),
+                    p['schematicName'], p['pageName'], p.get('editorOccurrence') or '', *p['location'], *p['nativeWireIds'],
+                    (d/'native-result.json').as_posix(), (d/'entered.txt').as_posix(), owner['jobId']]
+            return JUNCTION_ADAPTER, '::cmcpEditorJunction::run', args
         deleting=p.get('operation')=='delete'
         points=p['oldPoints'] if deleting else [p['start'],p['end']]
         net=p['oldNet'] if deleting else p['netName'];anchor=[0,0] if deleting else p['aliasLocation']

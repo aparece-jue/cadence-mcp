@@ -3,9 +3,10 @@ from datetime import datetime,timezone
 import copy,json,subprocess
 from .capture import CaptureService
 from .capture_edit import CapturePropertyEdits,definition_baseline
+from .capture_junction import junction_crossing, junction_groups
 from .capture_wire import point,path_key,paths_valid,point_on_path,geometry_union,expected_definitions,inventory,connection_digest
 from .core import CadenceError,checked_path,sha256
-from .page_net_partition import include_net_groups, verify_optional_net_groups
+from .page_net_partition import include_net_groups, native_partition, verify_optional_net_groups
 from .environment import ADAPTERS
 
 
@@ -92,8 +93,54 @@ class CaptureWireEdits(CapturePropertyEdits):
                 payload['editorHost']=self.editor_host.freeze(gui_session_id,host_project);payload['editorOccurrence']=editor_occurrence
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Wire-edit preservation proof exceeds the durable plan bound.')
             return self.create_plan(payload)
+    def plan_junction(self, sid, page_id, wire_ids, location, expectations, gui_session_id, host_project,
+                      editor_occurrence=None):
+        if editor_occurrence is not None and (not 1 <= len(editor_occurrence) <= 512
+                                              or any(ord(c) < 32 for c in editor_occurrence)):
+            raise CadenceError("invalid_editor_occurrence", "Use a bounded explicit occurrence reference.")
+        with self.capture.lock:
+            session = self.capture._session(sid)
+            data = session["data"]
+            page = next((page for page in data["page"] if page["objectId"] == page_id), None)
+            if page is None:
+                raise CadenceError("object_not_found", "Page is outside this immutable session.")
+            schematic = next(row["name"] for row in data["schematic"] if row["objectId"] == page["schematicId"])
+            name = page["name"]
+            if (sum(row["name"] == schematic for row in data["schematic"]) != 1
+                    or sum(row["name"] == name and row["schematicId"] == page["schematicId"] for row in data["page"]) != 1):
+                raise CadenceError("ambiguous_target", "Page semantic identity is not unique.")
+            expected = expected_definitions(data, page_id, expectations)
+            objects = inventory(self.capture, sid)
+            paths = junction_crossing(objects, page_id, wire_ids, location)
+            changed = [row for row in objects if row["kind"] != "wire" or row["pageId"] != page_id]
+            changed.extend({"kind": "wire", "pageId": page_id, "attributes": {"points": path}} for path in paths)
+            selected = [row for row in objects if row["kind"] == "wire" and row["pageId"] == page_id
+                        and row["objectId"] in wire_ids]
+            native_ids = [row["nativeId"] for row in selected]
+            if len(set(native_ids)) != 2:
+                raise CadenceError("ambiguous_junction_crossing", "Crossing wires must have distinct native IDs.")
+            groups = junction_groups(native_partition(self.capture, sid), (schematic, name),
+                                     [row["attributes"]["points"] for row in selected], location, paths, expectations)
+            payload = {
+                "operation": "place_junction", "sourceDesign": str(session["design"]),
+                "sourceFingerprint": session["revision"], "schematicName": schematic, "pageName": name,
+                "location": location, "wireIds": wire_ids, "nativeWireIds": native_ids,
+                "editorOccurrence": editor_occurrence,
+                "expectedWirePaths": paths, "expectedConnections": expectations,
+                "expectedDefinitionDigest": definition_baseline(expected),
+                "expectedConnectionDigest": connection_digest(data, changed),
+                "editorHost": self.editor_host.freeze(gui_session_id, host_project, junction=True),
+            }
+            include_net_groups(payload, groups)
+            if len(json.dumps(payload, ensure_ascii=False).encode("utf-8")) > 48000:
+                raise CadenceError("plan_limit", "Junction preservation proof exceeds the durable plan bound.")
+            return self.create_plan(payload)
+
     def preview(self,p):
-        result={k:p[k] for k in ('wireId','operation','schematicName','pageName','oldPoints','oldNet','start','end','aliases','expectedWireNet','expectedConnections','expectedWirePaths','sourceFingerprint')}
+        common = ('operation', 'schematicName', 'pageName', 'expectedConnections', 'expectedWirePaths', 'sourceFingerprint')
+        detail = (('wireIds', 'location') if p['operation'] == 'place_junction'
+                  else ('wireId', 'oldPoints', 'oldNet', 'start', 'end', 'aliases', 'expectedWireNet'))
+        result = {key: p[key] for key in common + detail}
         result['unrelatedWireNetPreservationRequired']='expectedUnrelatedWireNets' in p
         if 'expectedPageNetGroups' in p:result['expectedPageNetGroups']=p['expectedPageNetGroups']
         if 'editorHost' in p:result.update(executionBackend='capture_editor',temporaryOutputProjectSwitch=True,hostProjectRestorationRequired=True,outputProjectClosureRequired=True,guiSessionReattachRequired=True,cancelScope='pending_only',editorOccurrence=p.get('editorOccurrence'))
@@ -108,7 +155,7 @@ class CaptureWireEdits(CapturePropertyEdits):
     def cancel(self,plan_id,plan_digest):
         d,path,row=self._load(plan_id)
         if row['digest']!=plan_digest:raise CadenceError('plan_digest_mismatch','Plan digest differs.')
-        if 'editorHost' in row['plan']['payload'] and row['state']=='started':raise CadenceError('too_late','A host delete task is pending-cancel only; observe/recover a started task.')
+        if 'editorHost' in row['plan']['payload'] and row['state']=='started':raise CadenceError('too_late','A host editor task is pending-cancel only; observe/recover a started task.')
         return super().cancel(plan_id,plan_digest)
     def _verified_result(self,directory,row):
         result=super()._verified_result(directory,row)

@@ -1,0 +1,67 @@
+{
+  "batch": 150,
+  "date": "2026-11-08",
+  "feature": "D03",
+  "baseline": "6c8ffebfd6a22752548d3b0fb183f0db28b1427f",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 10,
+  "acceptedGateIds": [
+    "D03"
+  ],
+  "fullD03Accepted": true,
+  "productionCodeChanged": true,
+  "tools": 241,
+  "newPublicTools": [
+    "capture_plan_wire_junction"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeJunctionMcpAcceptance": {
+    "passed": true,
+    "tools": 241,
+    "nativeEditorSaveReopenAndHostRestored": true,
+    "manualAllSevenNodesMatch": true,
+    "verifyOnlyRecoveryAfterJournalLoss": true,
+    "freshServiceNoReplay": true,
+    "invalidAndCancelledRefused": true,
+    "sourceAndHostUnchanged": true
+  },
+  "nativeWireWriteMatrix": {
+    "passed": true,
+    "tools": 241,
+    "resistorWireAndTwoPinsVerified": true,
+    "wireDeletedAndFourPinsUnbound": true,
+    "endpointEditAllSevenNodesVerified": true,
+    "falseGapMergeRejectedAfterNativeSave": true,
+    "connectedJunctionBranchDeletePreservedRemainingNodes": true,
+    "freshServiceDoesNotReplayVerifiedPlans": true,
+    "sourcesUnchanged": true
+  },
+  "sourceTopologyEvidence": "docs/implementation/batch-149-evidence.json",
+  "originalAcceptance": {
+    "wireCreationEndpointAndDelete": "The live stdio MCP matrix verifies creation, endpoint changes, deletion to four unbound pins, and deletion of one arm while all other nodes remain correct.",
+    "rightAngleCrossingTOverlapGap": "Independently reopened original fixtures match the manual geometry groups and native objects, including eight groups without a junction and seven after the explicit junction.",
+    "explicitJunction": "The same original no-junction bytes were used by the public typed planner, which froze the original groups, validated native scalar wire IDs in Capture, and compared the entire saved page to the manual seven-group expectation.",
+    "failureAndRecovery": "Wrong page members, off-crossing coordinates and pending cancellation refuse; a false gap merge cannot open; losing the final verification journal acknowledgement yields verify-only recovery and no replay."
+  },
+  "scope": [
+    "Fixed Capture 24.1 editor execution on an isolated DSN; only a proper orthogonal crossing of two distinct scalar wires is eligible for explicit junction creation.",
+    "The proof is selected page definition geometry, native node membership, explicit pin bindings, preservation checks and no replay. Occurrence, bus and native DRC have their own gates.",
+    "The historical standalone fresh NewWireScalar failure remains documented; the editor route is the proved fresh-construction path."
+  ],
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-150-native-junction/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-150-native-junction/junction-mcp.json": "56ad21f12a365660488f2fc33ed117373028f7d3df46d3db619a080d479d8a97",
+    ".local/batch-150-native-junction/junction-native-rows.json": "58b0fdaea1a63fa96317a8af9cddf1529085c18ab9e8431aac342745d07a9aec",
+    ".local/batch-150-native-junction/wire-write-matrix.json": "4882258981b7e2f8a03875b9e28b99bb813bf0142b9edc5240fb85da864193b2",
+    ".local/batch-150-native-junction/regression.txt": "02e3111c106aa4f663dabad4de99527b5505fdf741f8a5122b80764f8c14a60e"
+  }
+}

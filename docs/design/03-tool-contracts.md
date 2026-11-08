@@ -287,3 +287,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 开发入口的 `capture_plan_wire_add` 和 `capture_plan_wire_edit` 可传 `expectedPageNetGroups`。每组给出 `wireIndexes` 和 `pinIndexes`，分别按计划中 `expectedWirePaths` 与 `expectedConnections` 的零基索引填写。可显式传入有序的 `expectedWirePaths`，便于复核索引。每条保存后的导线和每个预计已连接的引脚恰好出现一次，未连接引脚不进入分组。删完且没有连接引脚时传空数组。重复路径、空组、缺项和重复索引在写入前拒绝。
 
 保存后独立重开，通过 Dbo `GetNet` 对象比对选定页的完整节点分组，包含导线与引脚共同归属。相同网名和几何交点都不能替代原生节点身份。核验成功的结果包含 `nativePageNetPartitionVerified=true`。不匹配的隔离产物保留排查，拒绝从 MCP 作为已验证结果打开。已有不带分组的作业继续按原契约验收。该字段属于开发入口，发行契约保持原范围。
+
+
+## 显式添加原生结点
+
+`capture_plan_wire_junction` 接收只读会话的页面、两条导线 ID、交叉坐标、每个引脚的预期和显式私有编辑器宿主。目标为同页两条标量导线的正交内交叉。计划读取 Dbo 节点成员，冻结两组的合并和其余组的保留。原有已连接或未连接的引脚状态保持，由调用者声明保存后的网名。其他导线同时接触交叉点会拒绝。
+
+复用 `capture_apply_wire_edit`、`capture_cancel_wire_edit`、`capture_recover_wire_edit` 与 `capture_open_edit_result(kind=wire_edit)`。Capture 打开隔离输出，核对两条原生导线 ID 与标量类型，执行固定 `PlaceJunction`，保存、关闭产物并恢复控制工程。独立重开核对分段路径、页面节点全集和定义引脚。开始后的作业只能观察或复验。发行入口不含此开发功能。
