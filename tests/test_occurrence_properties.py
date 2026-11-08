@@ -27,12 +27,11 @@ class OccurrenceLayerTests(unittest.TestCase):
   with self.assertRaises(CadenceError):validate_layers(data,False)
  def test_valid_literal_values_and_layer_order_preserved(self):
   data=fixture();data['user']=[{'name':'Z','value':'中文[x]$;\nEND'},{'name':'A','value':''}];result=validate_layers(data,False);self.assertEqual(result['user'],[{'name':'A','value':''},{'name':'Z','value':'中文[x]$;\nEND'}])
- def test_unsafe_root_and_unknown_occurrence_refused_before_worker(self):
+ def test_unknown_occurrence_refused_before_worker(self):
   class Capture:
    lock=threading.RLock()
    def _session(self,sid):return {'hierarchy':[{'occurrenceId':'occ-1','parentId':None}]}
   with patch('cadence_mcp.capture_occurrence_properties.get_hierarchy'),patch('cadence_mcp.capture_occurrence_properties.run_tcl') as worker:
-   for ident,code in [('occ-1','capability_unavailable'),('occ-999','object_not_found')]:
-    with self.assertRaises(CadenceError) as error:query_occurrence_properties(Capture(),'sid',ident)
-    self.assertEqual(error.exception.code,code)
+   with self.assertRaises(CadenceError) as error:query_occurrence_properties(Capture(),'sid','occ-999')
+   self.assertEqual(error.exception.code,'object_not_found')
    worker.assert_not_called()

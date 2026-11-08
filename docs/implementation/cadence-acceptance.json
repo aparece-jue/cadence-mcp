@@ -1772,9 +1772,9 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "root/children迭代、路径、循环/深度/数量限制",
+      "implementation": "root/children迭代、路径、循环/深度/数量限制；原生定义依赖在 occurrence 前检查可达循环、深度及展开数量；根上下文用 DboDesign 查询",
       "acceptance": "重复子模块路径独立；空/循环/超限明确不完整",
-      "status": "deferred",
+      "status": "passed",
       "evidence": [
         ".local/hierarchy-identity-20261023/report.json",
         ".local/hierarchy-identity-v2-20261023/report.json",
@@ -1789,7 +1789,8 @@
         ".local/hierarchy-iterator-integrity-20261025/hierarchy-after80/report.json",
         ".local/hierarchy-integrity-mcp-20261025/report.json",
         ".local/regression-500-hierarchy-integrity-20261025.txt",
-        "docs/implementation/batch-80-hierarchy-iterator-integrity-2026-10-25.md"
+        "docs/implementation/batch-80-hierarchy-iterator-integrity-2026-10-25.md",
+        "docs/implementation/batch-151-evidence.json"
       ],
       "issues": [
         "ISS-H01-native-path-identity",
@@ -1797,7 +1798,7 @@
         "ISS-H01-iterator-errors-published-partial"
       ],
       "implementationReady": true,
-      "remaining": "Component occurrence property reader now verifies complete unit-path selection, separate native occurrence effective/direct-user and immediate definition layers plus definition base/full/device identity. Two repeated schematic occurrences share one definition yet retain distinct literal overrides; one-sided Value override and shared definition inheritance pass native reopen and actual MCP lifecycle. Root-layer prototype access violation3221225477 retained; root now refused before unsafe binding. Full H01 deferred/moved last: root correct context/property entry, empty/recursive native fixtures, complete resource/typed-property/full inheritance-source gates remain unaccepted. No occurrence connectivity or writing certification. Batch80 fixes reproduced silent partial publication on effective-property/child iterator errors. Frozen legacy real-Dbo fault runs returned truncated property/14-of-24-node documents as success; identical repaired faults fail without output, normal24-node document unchanged. Native/Python text limits and5 boundary tests plus real MCP lifecycle pass. This closes only the iterator error-handling defect; original root/empty/recursive/resource/inheritance gates remain unaccepted."
+      "remaining": "Component occurrence property reader now verifies complete unit-path selection, separate native occurrence effective/direct-user and immediate definition layers plus definition base/full/device identity. Two repeated schematic occurrences share one definition yet retain distinct literal overrides; one-sided Value override and shared definition inheritance pass native reopen and actual MCP lifecycle. Root-layer prototype access violation3221225477 retained; root now refused before unsafe binding. Full H01 deferred/moved last: root correct context/property entry, empty/recursive native fixtures, complete resource/typed-property/full inheritance-source gates remain unaccepted. No occurrence connectivity or writing certification. Batch80 fixes reproduced silent partial publication on effective-property/child iterator errors. Frozen legacy real-Dbo fault runs returned truncated property/14-of-24-node documents as success; identical repaired faults fail without output, normal24-node document unchanged. Native/Python text limits and5 boundary tests plus real MCP lifecycle pass. This closes only the iterator error-handling defect; original root/empty/recursive/resource/inheritance gates remain unaccepted. 第151批完成原门禁。已定位 root occurrence effective iterator 的 NextEffectiveProp 访问异常；根设计上下文从 DboDesign 读取。真实 MCP 核对根有效属性和两个重复子模块的独立中文覆盖、原始定义以及会话边界。两种原生循环写法旧读取器曾仅返回14个节点并成功，现在前置检查拒绝。原生空设计显式partial，65层深链及15层高扇出各自明确超限，无缓存成功。完整外部继承链、根自定义用户属性持久化、H02 展平连接仍各按其范围记录。"
     },
     {
       "id": "H02",
@@ -3492,13 +3493,14 @@
     {
       "id": "ISS-H01-root-property-native-access-violation",
       "featureId": "H01",
-      "status": "open",
+      "status": "resolved",
       "summary": "Read-only root occurrence effective/user property path crashed the isolated Tcl worker with3221225477; component occurrence paths succeeded. Exact failing root native method unresolved.",
       "evidence": ".local/occurrence-property-probe-20261025/report.json",
       "componentPositiveEvidence": ".local/occurrence-properties-mcp-20261025/report.json",
       "originalRootRequest": ".local/batch79-probe-sources/original-failed-root-request.json",
       "mitigation": "Component-only public reader rejects root before request/worker; native fixed adapter also rejects empty path. No empty root-property success fabricated.",
-      "nextAction": "After independent work identify correct root design-context property owner and inspect root method failure; retain original source/request/report and do not infer SDK impossibility."
+      "resolution": "定位到根 occurrence 的 NextEffectiveProp。根上下文通过经过原生验收的 DboDesign 有效属性和直接用户属性入口查询，组件仍使用 occurrence 与即时定义。",
+      "resolutionEvidence": "docs/implementation/batch-151-evidence.json"
     },
     {
       "id": "ISS-H01-iterator-errors-published-partial",
@@ -3745,7 +3747,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-150-native-junction/regression.txt"
+      "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3753,7 +3755,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "H01: audit native repeated occurrence identity and property scope, then verify explicit incomplete results for empty, cyclic and bounded traversal.",
+    "nextIndependentWork": "H02 now has its original prerequisites C04 and H01 passed. Audit native flat occurrence pin nets against the repeated, local, cross-layer global and hidden-pin oracle. Continue L02/C05 if the native route blocks.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3775,7 +3777,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-150-native-junction/regression.txt"
+      "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4118,7 +4120,7 @@
     "occurrencePropertyMcpEvidence": ".local/occurrence-properties-mcp-20261025/report.json",
     "rootOccurrencePropertiesAccepted": false,
     "rootOccurrencePropertyIssue": "ISS-H01-root-property-native-access-violation",
-    "fullH01Accepted": false,
+    "fullH01Accepted": true,
     "hierarchyIteratorIntegrityEvidence": ".local/hierarchy-iterator-integrity-20261025/audit.json",
     "hierarchyIteratorErrorsRefused": true,
     "libraryPackageFamilyAvailable": true,
@@ -4306,11 +4308,11 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-150-evidence.json",
+    "evidence": "docs/implementation/batch-151-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 1,
+    "newPublicTools": 0,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
@@ -4318,12 +4320,12 @@
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
     "acceptedGateIds": [
-      "D03"
+      "H01"
     ],
     "nativeC03Complete": true,
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
-    "fullyAccepted": 10,
+    "fullyAccepted": 11,
     "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
@@ -4446,7 +4448,8 @@
     "fullE04Accepted": true,
     "ownedDesignDeleteMcpAccepted": true,
     "nativePageWireGroupsMcpAccepted": true,
-    "nativeJunctionMcpAccepted": true
+    "nativeJunctionMcpAccepted": true,
+    "hierarchyBoundariesMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

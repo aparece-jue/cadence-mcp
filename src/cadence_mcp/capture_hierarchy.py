@@ -100,9 +100,12 @@ def get_hierarchy(capture, session_id, cursor, limit):
                 raise CadenceError("cursor_limit", "Too many hierarchy cursors; open a fresh session.")
             next_cursor = new_id("hierarchy-cursor")
             session["hierarchyCursors"][next_cursor] = (limit, offset + limit)
+        hierarchy_complete = len(rows) > 1
         return {"sessionId": session_id, "revision": session["revision"], "items": items,
-                "total": len(rows), "nextCursor": next_cursor, "complete": next_cursor is None,
+                "total": len(rows), "nextCursor": next_cursor, "complete": hierarchy_complete and next_cursor is None,
+                "hierarchyComplete": hierarchy_complete,
+                "incompleteReason": None if hierarchy_complete else "empty_hierarchy",
                 "scope": "occurrence_structure", "occurrenceConnectivityVerified": False,
                 "identityScope": "session_revision",
                 "rawPathsUnique": False,
-                "notChecked": ["occurrence_pin_net_connectivity", "root_component_properties", "external_design_closure"]}
+                "notChecked": ["occurrence_pin_net_connectivity", "root_design_properties", "external_design_closure"]}

@@ -5,7 +5,7 @@ proc cmcp::cs {s} {DboTclHelper_sMakeCString $s}
 proc cmcp::str {s} {DboTclHelper_sGetConstCharPtr $s}
 proc cmcp::check {s} {if {[$s Failed]} {error "dbo_[$s Code]"}}
 proc cmcp::effective {object} {
- set st [DboState];set it [$object NewEffectivePropsIter $st];cmcp::check $st;set rows {}
+ set st [DboState];set it [$object NewEffectivePropsIter $st];cmcp::check $st;if {$it eq "NULL"} {error missing_effective_iterator};set rows {}
  try {
   set name [cmcp::cs ""];set value [cmcp::cs ""];set type [DboTclHelper_sMakeDboValueType];set editable [DboTclHelper_sMakeInt]
   while {1} {
@@ -18,7 +18,7 @@ proc cmcp::effective {object} {
  return [cmcp::arr $rows]
 }
 proc cmcp::user {object} {
- set st [DboState];set it [$object NewUserPropsIter $st];cmcp::check $st;set rows {}
+ set st [DboState];set it [$object NewUserPropsIter $st];cmcp::check $st;if {$it eq "NULL"} {error missing_user_iterator};set rows {}
  try {
   for {set prop [$it NextUserProp $st]} {$prop ne "NULL"} {set prop [$it NextUserProp $st]} {
    cmcp::check $st;if {[llength $rows]>=512} {error property_limit}
@@ -30,12 +30,13 @@ proc cmcp::user {object} {
  if {[$st Failed] && [$st Code]!=1022} {error unexpected_user_iterator_end}
  return [cmcp::arr $rows]
 }
+if {$argc != 4} {exit 2}
 lassign $argv install design request output
 set session "";set phase request
 set rc [catch {
  if {[file size $request]>32768} {error request_limit}
  set f [open $request];try {fconfigure $f -encoding utf-8;set spec [json::json2dict [read $f 32769]]} finally {close $f}
- set segments [dict get $spec segments];if {[llength $segments]>64} {error depth_limit};if {![llength $segments]} {error root_properties_unverified}
+ set segments [dict get $spec segments];if {[llength $segments]>64} {error depth_limit}
  load [file join $install tools bin orDb_Dll_Tcl64.dll] DboTclWriteBasic
  set session [DboTclHelper_sCreateSession];set st [DboState];set d [$session GetDesignAndSchematics [cmcp::cs $design] $st];cmcp::check $st
  set phase root;set occurrence [$d GetRootOccurrence $st];cmcp::check $st;if {$occurrence eq "NULL"} {error missing_root}
@@ -56,8 +57,9 @@ set rc [catch {
  }
  set phase verify_identity;set raw [cmcp::cs ""];cmcp::check [$occurrence GetPathName $raw];set hier [cmcp::cs ""];cmcp::check [$occurrence GetHierPathName $hier]
  if {[cmcp::str $raw] ne [dict get $spec path] || [cmcp::str $hier] ne [dict get $spec hierarchicalPath]} {error occurrence_identity_changed}
- set phase layers;set effective [cmcp::effective $occurrence];set user [cmcp::user $occurrence];set definition null
+ set phase layers;set definition null
  if {[llength $segments]} {
+  set effective [cmcp::effective $occurrence];set user [cmcp::user $occurrence]
   set part [$occurrence GetPartInst $st];cmcp::check $st;if {$part eq "NULL"} {error missing_definition}
   set id [$part GetId $st];cmcp::check $st;set ref [cmcp::cs ""];cmcp::check [$part GetReference $ref]
   set full [cmcp::cs ""];set device [cmcp::cs ""]
@@ -65,6 +67,10 @@ set rc [catch {
    set kind placed;set placed [DboPartInstToDboPlacedInst $part];cmcp::check [$placed GetReferenceDesignator $full];cmcp::check [$placed GetDeviceDesignator $device]
   } elseif {[$part GetObjectType]==$::DboBaseObject_DRAWN_INSTANCE} {set kind drawn;cmcp::check [$part GetReferenceDesignator $full]} else {error unsupported_definition_type}
   set definition [cmcp::obj nativeId $id reference [cmcp::q [cmcp::str $ref]] fullReference [cmcp::q [cmcp::str $full]] deviceDesignator [cmcp::q [cmcp::str $device]] kind [cmcp::q $kind] effective [cmcp::effective $part] user [cmcp::user $part]]
+ } else {
+  # The root is a design context. The occurrence effective iterator crashes
+  # on NextEffectiveProp here in 24.1, so read the owning DboDesign.
+  set effective [cmcp::effective $d];set user [cmcp::user $d]
  }
  set result [cmcp::obj effective $effective user $user definition $definition]
  set f [open $output {WRONLY CREAT EXCL}];try {fconfigure $f -encoding utf-8 -translation lf;puts -nonewline $f $result} finally {close $f}

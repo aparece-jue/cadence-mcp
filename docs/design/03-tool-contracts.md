@@ -294,3 +294,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 `capture_plan_wire_junction` 接收只读会话的页面、两条导线 ID、交叉坐标、每个引脚的预期和显式私有编辑器宿主。目标为同页两条标量导线的正交内交叉。计划读取 Dbo 节点成员，冻结两组的合并和其余组的保留。原有已连接或未连接的引脚状态保持，由调用者声明保存后的网名。其他导线同时接触交叉点会拒绝。
 
 复用 `capture_apply_wire_edit`、`capture_cancel_wire_edit`、`capture_recover_wire_edit` 与 `capture_open_edit_result(kind=wire_edit)`。Capture 打开隔离输出，核对两条原生导线 ID 与标量类型，执行固定 `PlaceJunction`，保存、关闭产物并恢复控制工程。独立重开核对分段路径、页面节点全集和定义引脚。开始后的作业只能观察或复验。发行入口不含此开发功能。
+
+
+## 层次完整性与根设计属性
+
+`capture_get_hierarchy` 的 `hierarchyComplete` 表示整棵实例树是否具备可用的遍历结果，`complete` 还受分页约束。只有根上下文的空设计返回 `partial` 与 `incompleteReason=empty_hierarchy`，仍可用该根 ID 读取属性。可达本地递归返回 `hierarchy_cycle`，深度或节点资源超限返回 `hierarchy_limit`，均不发布或缓存截断的树。相同子定义被不同路径引用仍是独立实例。
+
+`capture_get_occurrence_properties` 对根 ID 返回 `context=root_design_context`、`scope=native_root_design_layers` 和 `definition=null`，属性取自原生 DboDesign。组件仍分别返回实例有效、直接用户属性和即时定义层。此查询的验证范围是这些原生层；完整外部继承链与展平电气网络另行验收。

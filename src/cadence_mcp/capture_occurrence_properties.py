@@ -28,10 +28,10 @@ def query_occurrence_properties(capture,sid,occurrence_id):
         s=capture._session(sid);get_hierarchy(capture,sid,None,1000)
         target=next((r for r in s['hierarchy'] if r['occurrenceId']==occurrence_id),None)
         if target is None:raise CadenceError('object_not_found','Occurrence is outside this session/revision hierarchy.')
-        if target['parentId'] is None:raise CadenceError('capability_unavailable','Root occurrence property binding is unverified after a native access violation; root is a design context, not a component occurrence.')
+        root = target['parentId'] is None
         directory=s['design'].parent;request=directory/(new_id('occurrence-props-request')+'.json');output=directory/(new_id('occurrence-props')+'.json')
         write_json(request,{'segments':target['instancePathSegments'],'path':target['path'],'hierarchicalPath':target['hierarchicalPath']})
         run_tcl(capture.config,'inspect_occurrence_properties.tcl',[str(s['design']),str(request),str(output)],directory);capture._session(sid)
         if output.stat().st_size>16*1024*1024:raise CadenceError('output_limit','Occurrence properties exceed16MiB.')
-        data=validate_layers(json.loads(output.read_text(encoding='utf-8')),target['parentId'] is None);request.unlink();output.unlink()
-        return {'sessionId':sid,'revision':s['revision'],'occurrenceId':occurrence_id,'instancePathSegments':list(target['instancePathSegments']),'reference':target['reference'],'context':'root_design_context' if target['parentId'] is None else 'component_occurrence',**data,'readOnly':True,'counts':{layer:len(data[layer]) for layer in ('effective','user')},'scope':'native_occurrence_and_immediate_definition_layers','propertySourceResolutionVerified':False,'notChecked':['complete_library_inheritance_chain','display_property_layers','external_design_closure','occurrence_pin_net_connectivity']}
+        data=validate_layers(json.loads(output.read_text(encoding='utf-8')),root);request.unlink();output.unlink()
+        return {'sessionId':sid,'revision':s['revision'],'occurrenceId':occurrence_id,'instancePathSegments':list(target['instancePathSegments']),'reference':target['reference'],'context':'root_design_context' if root else 'component_occurrence',**data,'readOnly':True,'counts':{layer:len(data[layer]) for layer in ('effective','user')},'scope':'native_root_design_layers' if root else 'native_occurrence_and_immediate_definition_layers','propertySourceResolutionVerified':False,'notChecked':['complete_library_inheritance_chain','display_property_layers','external_design_closure','occurrence_pin_net_connectivity']}

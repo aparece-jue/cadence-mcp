@@ -1,0 +1,79 @@
+{
+  "batch": 151,
+  "date": "2026-11-08",
+  "feature": "H01",
+  "baseline": "a4ab5d95ff1ea7cfb826fed3bbc731928f308cb4",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [
+    "H01"
+  ],
+  "fullH01Accepted": true,
+  "productionCodeChanged": true,
+  "tools": 241,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "nativeBoundaryMcp": {
+    "passed": true,
+    "fixtureSha256": {
+      "empty": "3a089f568ecb96485a621282b5be47ff40dc285c65ecc50a8cda2405412ab784",
+      "cycle": "9ea0be85df175046527925175720fcfe673b23e35a29cada23f5bc8fc921f926",
+      "depth": "61793b3aa41209e5fc3b558636b6d213dad61a8b76eb1243f378d2f0b061cc3e",
+      "fanout": "9cbe3f2916c2bf8649cbc344800f6e0f5cd8c3eec8a4bbf5f7ce0d9653319a3f"
+    },
+    "independentDefinitionEdgesMatch": true,
+    "tools": 241,
+    "emptyRootContextAndExplicitPartial": true,
+    "cycleExplicitlyIncomplete": true,
+    "depthExplicitlyIncomplete": true,
+    "fanoutExplicitlyIncomplete": true,
+    "sourcesUnchanged": true
+  },
+  "nativeOccurrenceMcpChecks": {
+    "root_design_properties_and_unknown_refusal": true,
+    "shared_definition_distinct_occurrences": true,
+    "per_occurrence_unicode_and_value_isolation": true,
+    "definition_inheritance_separate": true,
+    "repeated_stable_reads": true,
+    "independent_reopen": true,
+    "changed_source_refused": true,
+    "closed_session_refused": true
+  },
+  "rootNativeDiagnosis": {
+    "rootOccurrenceEffectiveIteratorCreated": true,
+    "rootOccurrenceEffectiveNextAccessViolation": 3221225477,
+    "nativeOwningDesignEffectiveAndUserRead": true,
+    "nativeRootSchematicEffectiveAndUserRead": true,
+    "customDesignUserPropertyPersistenceEstablished": false
+  },
+  "legacyRecursiveTreeDiagnosis": {
+    "twoIndependentNativeSetterRoutesSavedCycle": true,
+    "oldReaderReturnedTreeWithFourteenNodes": true,
+    "cleanControlNodes": 24,
+    "oldReaderPresentedPartialTreeAsSuccess": true
+  },
+  "scope": [
+    "H01 verifies the root design context and the component occurrence effective/direct-user and immediate definition layers, with independent repeated unit identities.",
+    "The original empty, reachable local cycle, depth and count cases use real DSN bytes and explicit incomplete tool outcomes. External implementation closure and full property-source inheritance are outside the verified layers.",
+    "No occurrence flat connectivity result is inferred. H02 keeps its own original acceptance."
+  ],
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-151-hierarchy-boundaries/boundaries-mcp.json": "0f64f6f89da44b01c7719884217b9f50f351a68cb021c98b7406e756c2ae409b",
+    ".local/batch-151-hierarchy-boundaries/occurrence-mcp.json": "f9988cb136b1464e7845ec50d06ba5771ad54354f26c5cb54091d5acd9fb990a",
+    ".local/batch-151-hierarchy-boundaries/root-native-probe.json": "c97330af81391c6e5cff9b3aeeb485e078c76f595a248c150955374d82d6bc75",
+    ".local/batch-151-hierarchy-boundaries/legacy-cycle-probe.json": "34d2b6307664b4412b07ea30c0c591d8eef6808c7ab0e09e4b4c33f29a03f2ed",
+    ".local/batch-151-hierarchy-boundaries/depth-probe.json": "d2ae47b032e33f1ee4dbb7a377df3a221dcf9b9955debcea39d8e530f8224d92",
+    ".local/batch-151-hierarchy-boundaries/count-probe.json": "b580119ad241b6fcee838d21f09ce188d48dddf4bcfc3220d6c869aa8d57bbc0",
+    ".local/batch-151-hierarchy-boundaries/regression.txt": "b6c869de02f2116d66ae8c476de6473e999a73e03d388fd7662196d4c3857c37"
+  }
+}

@@ -49,6 +49,16 @@ def run_tcl(config: Config, script: str, args: list[str], cwd: Path) -> tuple[st
     if child.returncode:
         # Avoid exposing raw paths, design contents or environment in tool errors.
         message = stderr.decode("utf-8", errors="replace")
+        if script == "inspect_hierarchy.tcl":
+            first = message.partition("\n")[0].rstrip("\r")
+            known = {
+                "CADENCE_HIERARCHY_INCOMPLETE:cycle": ("hierarchy_cycle", "The copied design has a reachable recursive hierarchy."),
+                "CADENCE_HIERARCHY_INCOMPLETE:missing_root": ("hierarchy_root_unavailable", "No native hierarchy root is available."),
+                "CADENCE_HIERARCHY_INCOMPLETE:resource_limit": ("hierarchy_limit", "The copied design exceeds the hierarchy traversal budget."),
+            }
+            if first in known:
+                code, detail = known[first]
+                raise CadenceError(code, detail, "worker")
         if "CADENCE_DBO_ERROR" in message:
             raise CadenceError("dbo_error", "Dbo could not inspect the copied design.", "worker")
         raise CadenceError("worker_crashed", f"Tcl worker exited with code {child.returncode}.", "worker")

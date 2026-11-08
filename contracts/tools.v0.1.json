@@ -22223,7 +22223,7 @@
   {
     "name": "capture_get_occurrence_properties",
     "title": null,
-    "description": "Read one component occurrence's native effective/direct-user properties and its immediate definition's separate property layers and base/full device identity. Select by session/revision hierarchy occurrence ID and full unit path segments. Repeated schematic occurrences remain distinct. Root context properties are explicitly unavailable after a native crash; complete inheritance-source, display layers and connectivity remain unverified.",
+    "description": "Read one component occurrence's native effective/direct-user properties and its immediate definition's separate property layers and base/full device identity. Select by session/revision hierarchy occurrence ID and full unit path segments. Repeated schematic occurrences remain distinct. The root reads the owning DboDesign's effective/direct-user properties as a separate design context. Complete inheritance-source, display layers and connectivity remain unverified.",
     "inputSchema": {
       "properties": {
         "sessionId": {

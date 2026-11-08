@@ -12,9 +12,84 @@ proc cmcp::boundedText {value limit} {
     if {$textBytes > 8388608} {error "hierarchy_text_limit"}
     return $value
 }
+proc cmcp::definitionBudget {name edges ancestors memoName} {
+    upvar 1 $memoName memo
+    if {$name in $ancestors} {error recursive_hierarchy}
+    if {[llength $ancestors] > 64} {error hierarchy_depth_limit}
+    if {[dict exists $memo $name]} {return [dict get $memo $name]}
+    set height 0
+    set occurrences 1
+    foreach child [dict get $edges $name] {
+        if {![dict exists $edges $child]} {continue}
+        lassign [cmcp::definitionBudget $child $edges [linsert $ancestors end $name] memo] childHeight childCount
+        set height [expr {max($height, 1 + $childHeight)}]
+        incr occurrences $childCount
+        if {$occurrences > 10000} {error hierarchy_occurrence_limit}
+    }
+    set value [list $height $occurrences]
+    dict set memo $name $value
+    return $value
+}
+proc cmcp::checkIteratorEnd {state} {
+    if {[$state Failed] && [$state Code] != 1022} {error "unexpected_definition_iterator_end_[$state Code]"}
+}
+proc cmcp::checkLocalDefinitions {design} {
+    set st [DboState];set root [$design GetRootSchematic $st];cmcp::check $st
+    if {$root eq "NULL"} {error no_hierarchy_root}
+    set rootName [cmcp::cs ""];cmcp::check [$root GetName $rootName]
+    set edges {};set definitions 0
+    set ts [DboState];set name [cmcp::cs ""];set lib [cmcp::cs ""];set target [cmcp::cs ""]
+    set vi [$design NewViewsIter $st $::IterDefs_SCHEMATICS];cmcp::check $st
+    if {$vi eq "NULL"} {error missing_definition_iterator}
+    try {
+        for {set view [$vi NextView $st]} {$view ne "NULL"} {set view [$vi NextView $st]} {
+            cmcp::check $st
+            set s [DboViewToDboSchematic $view]
+            cmcp::check [$s GetName $name]
+            set key [string tolower [cmcp::str $name]]
+            if {[dict exists $edges $key]} {error ambiguous_schematic_definition}
+            if {[incr definitions] > 100000} {error hierarchy_definition_limit}
+            dict set edges $key {}
+            set ps [DboState];set pi [$s NewPagesIter $ps];cmcp::check $ps
+            if {$pi eq "NULL"} {error missing_definition_page_iterator}
+            try {
+                for {set p [$pi NextPage $ps]} {$p ne "NULL"} {set p [$pi NextPage $ps]} {
+                    cmcp::check $ps
+                    if {[incr definitions] > 100000} {error hierarchy_definition_limit}
+                    set os [DboState];set oi [$p NewPartInstsIter $os];cmcp::check $os
+                    if {$oi eq "NULL"} {error missing_definition_part_iterator}
+                    try {
+                        for {set part [$oi NextPartInst $os]} {$part ne "NULL"} {set part [$oi NextPartInst $os]} {
+                            cmcp::check $os
+                            if {[incr definitions] > 100000} {error hierarchy_definition_limit}
+                            set type [$part GetContentsViewType $ts];cmcp::check $ts
+                            # SPB 24.1 local schematic implementation code.
+                            if {$type != 1 || [$part IsExternalDesignPart]} {continue}
+                            cmcp::check [$part GetContentsLibName $lib]
+                            if {[cmcp::str $lib] ne ""} {continue}
+                            cmcp::check [$part GetContentsViewName $target]
+                            dict lappend edges $key [string tolower [cmcp::str $target]]
+                        }
+                    } finally {delete_DboPagePartInstsIter $oi}
+                    cmcp::checkIteratorEnd $os
+                }
+            } finally {delete_DboSchematicPagesIter $pi}
+            cmcp::checkIteratorEnd $ps
+        }
+    } finally {delete_DboLibViewsIter $vi}
+    cmcp::checkIteratorEnd $st
+    set key [string tolower [cmcp::str $rootName]]
+    if {![dict exists $edges $key]} {error no_hierarchy_root}
+    set memo {}
+    lassign [cmcp::definitionBudget $key $edges {} memo] height _
+    if {$height > 64} {error hierarchy_depth_limit}
+}
 proc cmcp::walk {occ parent depth ancestors} {
     variable rows; variable count; variable totalProperties
-    if {$occ eq "NULL" || $depth > 64 || $occ in $ancestors || $count >= 10000} {error "hierarchy_limit_or_cycle"}
+    if {$occ eq "NULL"} {error missing_native_occurrence}
+    if {$occ in $ancestors} {error recursive_hierarchy}
+    if {$depth > 64} {error hierarchy_depth_limit}
+    if {$count >= 10000} {error hierarchy_occurrence_limit}
     set state [DboState]
     set recursive [$occ IsRecursive $state]; cmcp::check $state
     if {$recursive} {error "recursive_hierarchy"}
@@ -69,6 +144,7 @@ set rc [catch {
     set state [DboState]
     set d [$session GetDesignAndSchematics [cmcp::cs $design] $state]; cmcp::check $state
     if {$d eq "NULL"} {error "no_design"}
+    cmcp::checkLocalDefinitions $d
     set rootOccurrence [$d GetRootOccurrence $state]; cmcp::check $state
     if {$rootOccurrence eq "NULL"} {error "no_hierarchy_root"}
     cmcp::walk $rootOccurrence "" 0 {}
@@ -76,4 +152,15 @@ set rc [catch {
     try {fconfigure $stream -encoding utf-8 -translation lf; puts -nonewline $stream [cmcp::arr $cmcp::rows]} finally {close $stream}
 } message]
 if {$session ne ""} {catch {delete_DboSession $session}}
-if {$rc} {puts stderr "CADENCE_DBO_ERROR: hierarchy inspection failed: $message"; exit 1}
+if {$rc} {
+    switch -- $message {
+        recursive_hierarchy {puts stderr "CADENCE_HIERARCHY_INCOMPLETE:cycle"}
+        no_hierarchy_root {puts stderr "CADENCE_HIERARCHY_INCOMPLETE:missing_root"}
+        hierarchy_depth_limit - hierarchy_occurrence_limit - hierarchy_definition_limit -
+        hierarchy_string_limit - hierarchy_text_limit - property_limit {
+            puts stderr "CADENCE_HIERARCHY_INCOMPLETE:resource_limit"
+        }
+    }
+    puts stderr "CADENCE_DBO_ERROR: hierarchy inspection failed: $message"
+    exit 1
+}
