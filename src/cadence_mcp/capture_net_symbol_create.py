@@ -44,6 +44,10 @@ class CaptureNetSymbolCreates(CapturePartEdits):
                 if len(candidates)!=1:raise CadenceError('ambiguous_lead_target','Lead must end at exactly one existing scalar pin hotspot.')
                 part,pin=candidates[0];matches=[p for p in data['pin'] if p['partId']==part['objectId'] and (p['number'],p['name'])==(pin['number'],pin['name'])]
                 if not pin['number'] or len(matches)!=1 or matches[0]['connected']:raise CadenceError('unsupported_lead_target','Lead creation currently supports an unbound physical pin only.')
+                if any(obj['kind']=='nc' and obj['pageId']==page_id
+                       and obj['attributes']['partId']==part['objectId']
+                       and obj['attributes']['number']==pin['number'] for obj in objects):
+                    raise CadenceError('nc_lead_target_refused','Remove the explicit NC marker before planning a lead to this pin.')
                 unit=read_units(self.capture,sid)[part['objectId']]
                 if unit['kind']!='placed' or unit['packageSize']!=1 or unit['isExternalDesignPart']:raise CadenceError('unsupported_lead_target','Lead target must be an internal single-unit placed pin.')
                 lead_pin={'reference':part['reference'],'number':pin['number'],'name':pin['name']}

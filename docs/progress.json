@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-154-titleblock-context/regression.txt"
+    "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
   },
-  "acceptanceCanonicalSha256": "52cc8d4f901b60f6ce74ec9297bb3a41390e13421bdc6f2baac8ccbc4da16b02"
+  "acceptanceCanonicalSha256": "4f1a8afa77e4a72871f6bfda9cc43186cb50d570f920fe5335ac8af0fc3505dc"
 }

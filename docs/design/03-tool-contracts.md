@@ -317,3 +317,8 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 `capture_get_titleblock_fields` 用不可变会话的标题栏 ID 读取原生字段。所属页码和尺寸名来自 DboPage，同原理图的页数来自已绑定设计定义。各字段返回 `matches_context`、`differs_from_context`、`unavailable` 或 `uncorroborated`。原生零页码、零页数和空尺寸不被页面值覆盖，打印分页单独验收。
 
 `capture_check_page_graphic_bounds` 可用 `includeTitleblocks=true` 将同页图框定义矢量的原生变换控制点纳入检查。图框发现同时标识所属标题栏。零尺寸、未知矢量或超预算会明确拒绝。控制点检查的边界是设计页范围，实际字形、笔宽、曲线裁切和打印范围未包含在结论内。
+
+
+## 网符号引线与显式 NC
+
+`capture_plan_net_symbol_create` 的可选引线必须接到选定页内唯一、未连接的内部单单元器件物理脚。目标脚已标记显式 NC 时，规划返回 `nc_lead_target_refused`。如需连线，先用 `capture_plan_nc_edit` 和 `capture_apply_nc_edit` 移除标记，再打开该次编辑结果重新规划。

@@ -1612,14 +1612,14 @@
       "module": "布线",
       "title": "alias/global/power/ground/NC",
       "required": true,
-      "queueOrder": 18,
+      "queueOrder": 79,
       "dependencies": [
         "D03"
       ],
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "符号热点、锚点与网络语义；名称不是连通证明",
+      "implementation": "符号热点、锚点与网络语义；名称不是连通证明；网符号引线计划按限定页的器件和脚号拒绝显式 NC",
       "acceptance": "旋转global、alias在/离线、显式NC、同名局部与全局隔离/合并边界",
       "status": "implemented_partial",
       "evidence": [
@@ -1693,7 +1693,8 @@
         ".local/regression-307-multiunit-placement-20261024.txt",
         ".local/regression-310-multiunit-final-20261024.txt",
         "contracts/tools.v0.1.json",
-        "docs/implementation/batch-138-evidence.json"
+        "docs/implementation/batch-138-evidence.json",
+        "docs/implementation/batch-155-evidence.json"
       ],
       "issues": [
         "ISS-D04-symbol-pose-retained-net",
@@ -1702,7 +1703,7 @@
         "ISS-D04-shared-power-binding"
       ],
       "implementationReady": true,
-      "remaining": "Public source-bound creation and attached scalar global/offpage name/delete tasks accepted in declared page-definition scope. Name/delete4 real MCP jobs pass full definitions/object/geometry/native page partitions; rename additionally preserves symbol-wire native binding. Durable fresh apply/recover/open, pending cancel, wrong-wire-name oracle refusal/no replay, receipt-loss/startcancel/timeout and tamper refusal accepted. Original first/second harness failures retained; second4write jobs remain accepted slices, separate completion passed without replaying them. Pose residual-net/hotspot/offpage-state1 issues remain open and deferred. Cross-page/global-flat, broader lead/unit/occurrence/orientation/Unicode/closure/node0/fault/render/DRC and full original gate remain. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch43 explicit visible A/B/P VCC/GND disjoint native networks pass; deliberately shorted/open fixtures rejected by frozen full definition and native-object oracle. Real MCP full pin/net/hotspot read passes. Public shared-reference group writer, hidden/flat/occurrence and other original requirements remain. Batch45 atomic complete same-page package writer (2..16 source devices) is public and accepted on homogeneous, heterogeneous, connected and second-group fixtures; complete pinId coverage, unit ownership/source pin-line views/native page net objects/original geometry, wrong-oracle and lifecycle/fault/tamper guards pass. Incremental unit operations, cross-page/flat/occurrence, non-line sources, arbitrary heterogeneous import, package variants and other original criteria remain incomplete. Batch138 verifies explicit nondefault Value/PCB Footprint inheritance on the original B.Convert cross-page pattern: existing property tasks produce private USER OVERRIDE00123/Omega and CUSTOM_00123 source; new cached B and original owner both read back exact values through public MCP. Complete original modeled state, pins, recovery/no replay and post-verification tamper refusal pass. This certifies one declared override case, not all variant/default matrices or the unresolved P-cross power binding. Original P failure/oracle preserved."
+      "remaining": "Public source-bound creation and attached scalar global/offpage name/delete tasks accepted in declared page-definition scope. Name/delete4 real MCP jobs pass full definitions/object/geometry/native page partitions; rename additionally preserves symbol-wire native binding. Durable fresh apply/recover/open, pending cancel, wrong-wire-name oracle refusal/no replay, receipt-loss/startcancel/timeout and tamper refusal accepted. Original first/second harness failures retained; second4write jobs remain accepted slices, separate completion passed without replaying them. Pose residual-net/hotspot/offpage-state1 issues remain open and deferred. Cross-page/global-flat, broader lead/unit/occurrence/orientation/Unicode/closure/node0/fault/render/DRC and full original gate remain. Batch41: explicit shared-pin definition and geometry MCP reads pass; homogeneous unbound DSN units pass bounded integration. Wired hidden shared-power binding and heterogeneous package copy fail; full gate remains incomplete. Batch42: canonical prefix naming eliminates copy failure in new native fixtures; visible homogeneous VCC wiring passes; heterogeneous VCC binds but full definition fails on unexpected unwired GND net. No arbitrary-source multiunit public writer or full electrical certification. Batch43 explicit visible A/B/P VCC/GND disjoint native networks pass; deliberately shorted/open fixtures rejected by frozen full definition and native-object oracle. Real MCP full pin/net/hotspot read passes. Public shared-reference group writer, hidden/flat/occurrence and other original requirements remain. Batch45 atomic complete same-page package writer (2..16 source devices) is public and accepted on homogeneous, heterogeneous, connected and second-group fixtures; complete pinId coverage, unit ownership/source pin-line views/native page net objects/original geometry, wrong-oracle and lifecycle/fault/tamper guards pass. Incremental unit operations, cross-page/flat/occurrence, non-line sources, arbitrary heterogeneous import, package variants and other original criteria remain incomplete. Batch138 verifies explicit nondefault Value/PCB Footprint inheritance on the original B.Convert cross-page pattern: existing property tasks produce private USER OVERRIDE00123/Omega and CUSTOM_00123 source; new cached B and original owner both read back exact values through public MCP. Complete original modeled state, pins, recovery/no replay and post-verification tamper refusal pass. This certifies one declared override case, not all variant/default matrices or the unresolved P-cross power binding. Original P failure/oracle preserved. 第155批实际 MCP 完成12种连接创建，其中 VCC 四种旋转各含镜像和非镜像，符号/引线/脚共享同一个原生页内节点。显式 NC 同时拒绝 global/offpage 接入。独立编辑器样例的两页同名 LOCAL_DUP 分成两个原生展平组；另一编辑器样例的8条 global 引线和8条 offpage 引线分别在同页合并，12个旧热点负例保持独立。原跨页样例 plain/update 均缺 schematic net。跨页同名全局线合并、原共享电源和已连符号位姿写入仍未完成，后移。"
     },
     {
       "id": "D05",
@@ -3753,7 +3754,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-154-titleblock-context/regression.txt"
+      "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3761,7 +3762,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "D04: complete native global rotation, on/off-wire aliases, explicit NC and local/global same-name isolation/merge matrix. C05 actual render/refresh remains deferred.",
+    "nextIndependentWork": "P04: verify remaining native digital DAT state and trace semantics on isolated simulator outputs. D04 shared global across pages and already-bound pose remain deferred.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3783,7 +3784,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-154-titleblock-context/regression.txt"
+      "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4314,11 +4315,11 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-154-evidence.json",
+    "evidence": "docs/implementation/batch-155-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 1,
+    "newPublicTools": 0,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
@@ -4456,7 +4457,9 @@
     "hierarchyBoundariesMcpAccepted": true,
     "fullH02Accepted": false,
     "publicOccurrenceFlatMcpAccepted": true,
-    "titleblockFieldContextMcpAccepted": true
+    "titleblockFieldContextMcpAccepted": true,
+    "fullD04Accepted": false,
+    "netSymbolNcAndPoseMatrixAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

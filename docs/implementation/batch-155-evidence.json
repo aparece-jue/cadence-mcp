@@ -1,0 +1,98 @@
+{
+  "batch": 155,
+  "date": "2026-11-09",
+  "feature": "D04",
+  "baseline": "ec5a9ccf24ede9495329ab2b327fcd8c05d13383",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullD04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": [],
+  "validatedContractExactMatch": true,
+  "changedDevelopmentTools": [
+    "capture_plan_net_symbol_create"
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "poseCases": 12,
+    "vccOrientationCases": 8,
+    "physicalPinLeadBindings": 12,
+    "explicitNcTargetsRefused": [
+      "global",
+      "offpage"
+    ],
+    "wrongOriginRefused": true,
+    "wrongRotationRefused": true,
+    "freshServerNoReplayAndTamperRefused": true,
+    "sourcesUnchanged": true
+  },
+  "nativeScope": {
+    "passed": true,
+    "inputSha256": {
+      "local": "d7b6e3c7208529985da11527e23b62dd53d6af6b40b29d19e56202d62925bc6e",
+      "leads": "76ef310ff0cb713f0bd8676ddcc0120b6e40c0effbbea3b200276cfa5ca54b94",
+      "legacy": "44cc70deecb57f5d951a33ce6f43ce9e66fdb7266b71a10fbbdb9cbcd0593b35",
+      "oracle": "b28c1b8865b8ff169ec921949ccfa66752b7acac25caaf66884b809c4d1cbae0"
+    },
+    "local": {
+      "plain": {
+        "definitionLabel": "LOCAL_DUP",
+        "wires": 4,
+        "isolatedPageGroups": 2
+      },
+      "update": {
+        "definitionLabel": "LOCAL_DUP",
+        "wires": 4,
+        "isolatedPageGroups": 2
+      }
+    },
+    "leads": {
+      "plain": {
+        "boundGlobalLeads": 8,
+        "boundOffpageLeads": 8,
+        "isolatedWrongHotspots": 12,
+        "flatGroups": 14
+      },
+      "update": {
+        "boundGlobalLeads": 8,
+        "boundOffpageLeads": 8,
+        "isolatedWrongHotspots": 12,
+        "flatGroups": 14
+      }
+    },
+    "legacy": {
+      "plain": {
+        "phase": "schematic_net",
+        "message": "missing_schematic_net"
+      },
+      "update": {
+        "phase": "schematic_net",
+        "message": "missing_schematic_net"
+      }
+    },
+    "inputsUnchanged": true
+  },
+  "scope": [
+    "A physical pin with a saved explicit NC marker refuses global and off-page lead plans before durable plan creation.",
+    "The existing source-bound creation workflow attaches VCC at four rotations with and without mirroring, keeping a fixed lead endpoint and comparing native symbol/wire/pin identity after fresh reopen.",
+    "Two editor fixtures verify local alias isolation between pages and native flat joining of explicit same-name leads on one page. The historical standalone two-page fixture still has no schematic net for a lead.",
+    "Cross-page shared global attachment and mutation of already-bound symbol poses remain open."
+  ],
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-155-net-symbol-scope/mcp-create.json": "00892f3715b19e03c505e668e8dd0db5a5d9d0967389dfe3b1bcb51083c08bd7",
+    ".local/batch-155-net-symbol-scope/native-scope.json": "bb70656711d7a94d6290e086a29ad74e20aa842f6e6f1bbd0e9f2a1fa78f616e",
+    ".local/batch-155-net-symbol-scope/regression.txt": "88276162d2cb6a3e32d4d11bdf216e326c71f9bae504b6fb8140ac2ca785d2d0"
+  }
+}
