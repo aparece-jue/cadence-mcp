@@ -21,16 +21,21 @@ def normalize_titleblock_vectors(data,target):
         return rows
     except (ValueError,TypeError,KeyError) as error:raise CadenceError('invalid_worker_result','Invalid titleblock vector document.','decode') from error
 
+def titleblock_target(capture,sid,target_id):
+    session=capture._session(sid)
+    query_objects(capture,sid,'graphics','titleblock',None,None,1)
+    target=next((x for x in session['objectInventories']['graphics'] if x['kind']=='titleblock' and x['objectId']==target_id),None)
+    if target is None:raise CadenceError('object_not_found','Titleblock is outside this immutable session.')
+    page=next(p for p in session['data']['page'] if p['objectId']==target['pageId'])
+    sch=next(s for s in session['data']['schematic'] if s['objectId']==page['schematicId'])
+    if sum(s['name']==sch['name'] for s in session['data']['schematic'])!=1 or sum(p['name']==page['name'] and p['schematicId']==page['schematicId'] for p in session['data']['page'])!=1:raise CadenceError('ambiguous_target','Page locator must be unique.')
+    return target,page,sch
+
 def query_titleblock_vectors(capture,sid,target_id,cursor=None,limit=100):
     with capture.lock:
         session=capture._session(sid)
         if type(limit) is not int or not 1<=limit<=1000:raise CadenceError('invalid_query','Use a page size from1 to1000.')
-        query_objects(capture,sid,'graphics','titleblock',None,None,1)
-        target=next((x for x in session['objectInventories']['graphics'] if x['kind']=='titleblock' and x['objectId']==target_id),None)
-        if target is None:raise CadenceError('object_not_found','Titleblock is outside this immutable session.')
-        page=next(p for p in session['data']['page'] if p['objectId']==target['pageId'])
-        sch=next(s for s in session['data']['schematic'] if s['objectId']==page['schematicId'])
-        if sum(s['name']==sch['name'] for s in session['data']['schematic'])!=1 or sum(p['name']==page['name'] and p['schematicId']==page['schematicId'] for p in session['data']['page'])!=1:raise CadenceError('ambiguous_target','Page locator must be unique.')
+        target,page,sch=titleblock_target(capture,sid,target_id)
         signature=(target_id,limit,session['revision']);cursors=session.setdefault('titleblockVectorCursors',{});offset=0
         if cursor is not None:
             saved=cursors.get(cursor)

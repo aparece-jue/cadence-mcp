@@ -310,3 +310,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 `capture_compare_occurrence_nets` 绑定明确的源修订，接受完整的 `expectedGroups` 和 `expectedUnbound`。节点用实例路径、脚名和物理脚号匹配，比较所有成员、全局属性、显式名称及可选可见性。全局组须给出名称，局部组可省略名称。拒绝重复预期，报告缺脚、多脚、节点差异和可见性差异。
 
 未解析的外部实现或页级已连但缺少原生展平绑定会返回 `occurrence_connectivity_incomplete`，此时没有可用的完整节点快照。混合/总线成员另行验收，发行入口保持已验收的工具集合。
+
+
+## 标题栏字段与所属页上下文
+
+`capture_get_titleblock_fields` 用不可变会话的标题栏 ID 读取原生字段。所属页码和尺寸名来自 DboPage，同原理图的页数来自已绑定设计定义。各字段返回 `matches_context`、`differs_from_context`、`unavailable` 或 `uncorroborated`。原生零页码、零页数和空尺寸不被页面值覆盖，打印分页单独验收。
+
+`capture_check_page_graphic_bounds` 可用 `includeTitleblocks=true` 将同页图框定义矢量的原生变换控制点纳入检查。图框发现同时标识所属标题栏。零尺寸、未知矢量或超预算会明确拒绝。控制点检查的边界是设计页范围，实际字形、笔宽、曲线裁切和打印范围未包含在结论内。

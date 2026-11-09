@@ -1,0 +1,60 @@
+{
+  "batch": 154,
+  "date": "2026-11-09",
+  "feature": "C05",
+  "baseline": "c2275a7323e4f9f4261e02fa3b0542be53270f95",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullC05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": [
+    "capture_get_titleblock_fields"
+  ],
+  "changedDevelopmentTools": [
+    "capture_check_page_graphic_bounds"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "tools": 244,
+    "originalRawZeroAndIndependentPageContextVerified": true,
+    "savedMatchingAndStaleFieldsKeptSeparate": true,
+    "knownPageAndTitleblockLineBoundariesVerified": true,
+    "standardPageSizeNameVerified": true,
+    "sourcesAndOracleUnchanged": true
+  },
+  "nativeProvenance": {
+    "originalSchematicDefinitionPageCount": 3,
+    "originalNativePageNumbers": [
+      1,
+      2,
+      3
+    ],
+    "originalGeneratedPageCountAndNumberStillZero": true,
+    "rootTitleblockOccurrenceEffectiveFieldsAlsoZero": true,
+    "fulladdNativeTitleblockAndOwnerSizeName": "A",
+    "explicitMatchingAndMismatchedValuesPersist": true
+  },
+  "scope": [
+    "The API exposes native titleblock fields, separately read owner page context and explicit per-field comparison status.",
+    "Optional titleblock control points use native transformed coordinates and the full owner page bounds. A fixed 500×400 fixture independently compares eight rotated/mirrored titleblock line endpoints.",
+    "The original uninitialized titleblock fields remain unavailable. No application refresh or actual rendered glyph/stroke/print-clipping acceptance is inferred."
+  ],
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-154-titleblock-context/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-154-titleblock-context/native-titleblock-and-owner.json": "acc5e1785da23c625a4d773b7ef3449c21538caf9e434d57f87ba12be94887e0",
+    ".local/batch-154-titleblock-context/mcp-titleblock-context.json": "4093a2ef0e6965066b43a0222bde6e4ee4bc7f91f82a3994404c0183d6120cf3",
+    ".local/batch-154-titleblock-context/regression.txt": "357219a1545efc7fe2cd79a7f80d78e6dba96e63bb35931fa3e84fd1fd5a97ec"
+  }
+}

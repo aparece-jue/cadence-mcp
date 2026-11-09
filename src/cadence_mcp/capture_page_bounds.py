@@ -3,6 +3,8 @@ import copy,json,math
 from .core import CadenceError,new_id
 from .environment import run_tcl
 from .capture_page_vectors import query_page_vectors
+from .capture_objects import query_objects
+from .capture_titleblock_vectors import query_titleblock_vectors
 
 FLAGS=('isMetric','borderDisplayed','borderPrinted','gridRefDisplayed','gridRefPrinted','titleBlockDisplayed','titleBlockPrinted','ansiGridRefs')
 PAIRS=('size','docUnits','drawableDocUnits','outerBorderMargin','innerBorderMargin')
@@ -50,10 +52,14 @@ def classify_control_points(rows,bounds,margin=0):
             sides=[s for s,test in [('left',p[0]<x0),('top',p[1]<y0),('right',p[0]>x1),('bottom',p[1]>y1)] if test]
             if sides:
                 if len(findings)>=1000:raise CadenceError('finding_limit','More than1000 out-of-bounds control points; no partial success is returned.')
-                findings.append({'objectId':row['objectId'],'kind':row['kind'],'controlPointIndex':index,'point':copy.deepcopy(p),'sides':sides,'ruleId':'PAGE-CONTROL-POINT-OUTSIDE'})
+                finding = {'objectId':row['objectId'],'kind':row['kind'],'controlPointIndex':index,
+                           'point':copy.deepcopy(p),'sides':sides,'ruleId':'PAGE-CONTROL-POINT-OUTSIDE'}
+                if 'titleblockId' in row:
+                    finding['titleblockId'] = row['titleblockId']
+                findings.append(finding)
     return {'checkedBounds':[x0,y0,x1,y1],'margin':margin,'objectsChecked':len(rows),'controlPointsChecked':points,'findings':findings,'allSupportedControlPointsInBounds':not findings,'complete':True,'designPassed':None}
 
-def check_page_graphic_bounds(capture,sid,page_id,margin=0):
+def check_page_graphic_bounds(capture,sid,page_id,margin=0,include_titleblocks=False):
     with capture.lock:
         dimensions=query_page_dimensions(capture,sid,page_id)
         if not dimensions['dimensionsKnown']:raise CadenceError('page_dimensions_unknown','Native page size is zero; no clipping or in-bounds verdict is available.')
@@ -61,5 +67,26 @@ def check_page_graphic_bounds(capture,sid,page_id,margin=0):
         while True:
             result=query_page_vectors(capture,sid,page_id,cursor,1000);rows.extend(result['items']);cursor=result['nextCursor']
             if cursor is None:break
+        scope = 'page_comment_graphic_declared_control_points'
+        omitted = 'parts_wires_titleblocks_nested_symbols'
+        if include_titleblocks:
+            query_objects(capture, sid, 'graphics', 'titleblock', page_id, None, 1)
+            session = capture._session(sid)
+            targets = [row['objectId'] for row in session['objectInventories']['graphics']
+                       if row['kind'] == 'titleblock' and row['pageId'] == page_id]
+            for target_id in targets:
+                cursor = None
+                while True:
+                    page = query_titleblock_vectors(capture, sid, target_id, cursor, 1000)
+                    rows.extend(page['items'])
+                    if len(rows) > 4096:
+                        raise CadenceError('geometry_limit', 'At most4096 comment and titleblock vectors are supported.')
+                    cursor = page['nextCursor']
+                    if cursor is None:
+                        break
+            scope = 'page_comment_and_titleblock_declared_control_points'
+            omitted = 'parts_wires_nested_symbols'
         checked=classify_control_points(rows,dimensions['fullPageBounds'],margin);capture._session(sid)
-        return {**checked,'sessionId':sid,'revision':dimensions['revision'],'pageId':page_id,'readOnly':True,'scope':'page_comment_graphic_declared_control_points','notChecked':['actual_glyph_bounds','curve_or_arc_clipping','parts_wires_titleblocks_nested_symbols','physical_printable_area','electrical_connectivity','native_drc']}
+        return {**checked,'sessionId':sid,'revision':dimensions['revision'],'pageId':page_id,'readOnly':True,
+                'scope':scope,'notChecked':['actual_glyph_bounds','curve_or_arc_clipping',omitted,
+                                            'physical_printable_area','electrical_connectivity','native_drc']}
