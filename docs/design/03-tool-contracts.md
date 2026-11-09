@@ -301,3 +301,12 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 `capture_get_hierarchy` 的 `hierarchyComplete` 表示整棵实例树是否具备可用的遍历结果，`complete` 还受分页约束。只有根上下文的空设计返回 `partial` 与 `incompleteReason=empty_hierarchy`，仍可用该根 ID 读取属性。可达本地递归返回 `hierarchy_cycle`，深度或节点资源超限返回 `hierarchy_limit`，均不发布或缓存截断的树。相同子定义被不同路径引用仍是独立实例。
 
 `capture_get_occurrence_properties` 对根 ID 返回 `context=root_design_context`、`scope=native_root_design_layers` 和 `definition=null`，属性取自原生 DboDesign。组件仍分别返回实例有效、直接用户属性和即时定义层。此查询的验证范围是这些原生层；完整外部继承链与展平电气网络另行验收。
+
+
+## 原生 occurrence 展平节点
+
+`capture_query_occurrence_nets` 在不可变 DSN 会话中分页返回完整实例路径、原生物理脚号、可见性、定义网名及原生展平对象 ID。对象 ID 仅用于本次快照，定义名称相同的局部网可以属于不同展平对象。
+
+`capture_compare_occurrence_nets` 绑定明确的源修订，接受完整的 `expectedGroups` 和 `expectedUnbound`。节点用实例路径、脚名和物理脚号匹配，比较所有成员、全局属性、显式名称及可选可见性。全局组须给出名称，局部组可省略名称。拒绝重复预期，报告缺脚、多脚、节点差异和可见性差异。
+
+未解析的外部实现或页级已连但缺少原生展平绑定会返回 `occurrence_connectivity_incomplete`，此时没有可用的完整节点快照。混合/总线成员另行验收，发行入口保持已验收的工具集合。

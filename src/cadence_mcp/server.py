@@ -51,6 +51,7 @@ from .capture_user_properties import CaptureUserProperties
 from .capture_display_properties import CaptureDisplayProperties
 from .capture_display_fonts import CaptureDisplayFonts,query_font
 from .capture_page_vectors import query_page_vectors
+from .capture_occurrence_nets import compare_occurrence_nets, query_occurrence_nets
 from .capture_occurrence_properties import query_occurrence_properties
 from .library_vectors import VectorFont
 from .capture_net_symbol_create import CaptureNetSymbolCreates
@@ -145,6 +146,20 @@ class PinExpectation(StrictModel):
     pinNumber: Annotated[str, Field(min_length=1, max_length=512)]
     connected: bool
     net: Annotated[str, Field(min_length=1, max_length=512)] | None
+
+
+class FlatPinExpectation(StrictModel):
+    instancePathSegments: Annotated[list[Annotated[str, Field(min_length=1, max_length=512)]],
+                                    Field(min_length=1, max_length=64)]
+    name: Annotated[str, Field(max_length=512)]
+    occurrencePhysicalNumber: Annotated[str, Field(min_length=1, max_length=512)] | None
+    isVisible: bool | None = None
+
+
+class FlatGroupExpectation(StrictModel):
+    pins: Annotated[list[FlatPinExpectation], Field(min_length=1, max_length=10000)]
+    isGlobal: bool
+    name: Annotated[str, Field(min_length=1, max_length=512)] | None = None
 
 
 class BusBranch(StrictModel):
@@ -413,7 +428,7 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
             "capture.native_pspice_netlist": "experimental_same_directory_design_single_profile_native_task",
             "capture.single_dsn_copy": "implemented", "capture.design_create": "experimental_native_codepage_root_and_single_empty_page", "capture.design_save_as": "experimental_owned_named_dsn_with_content_verification", "capture.design_delete": "experimental_exact_owned_dsn_with_durable_receipt", "capture.page_edit": "experimental_native_codepage_create_rename_delete_empty_page", "capture.schematic_edit": "experimental_native_codepage_unreferenced_empty_schematic", "capture.library_create": "experimental_declared_single_or_family_graph_and_basic_vectors", "capture.library_vectors": "experimental_part_bound_native_order", "capture.library_vector_edit": "experimental_inplace_fields_and_delete_modeled_preservation", "capture.library_package_edit": "experimental_fixed_fields_and_explicit_string_properties", "capture.library_pin_edit": "experimental_symbol_geometry_flags_and_device_pad_mapping", "capture.library_pin_style_query": "experimental_native_scalar_pin_flags", "capture.shared_pin_definition_query": "experimental_explicit_shared_enumeration", "capture.definition_query": "experimental", "capture.part_properties": "experimental", "capture.property_layers": "experimental", "capture.display_property_layout": "experimental_unambiguous_definitions", "capture.display_font": "experimental_existing_instance_full_descriptor_and_inheritance", "capture.user_property_lifecycle": "experimental_unambiguous_definitions", "capture.isolated_property_edit": "experimental_unambiguous_definitions", "capture.cache_binding": "experimental_source_qualified_placed_package", "capture.cache_replacement": "experimental_compatible_physical_pins_modeled_instance_preservation", "capture.part_geometry": "experimental", "capture.connection_objects": "experimental", "capture.wire_add": "experimental_explicit_definition_expectations", "capture.wire_edit": "experimental_two_point_scalar", "capture.placement": "experimental_explicit_library_and_hotspots", "capture.alternate_view_placement": "experimental_source_pin_and_basic_vector_identity", "capture.multiunit_placement": "experimental_atomic_complete_package", "capture.unit_pose_delete": "experimental_native_identity_pinid_expectations", "capture.cached_unit_add": "experimental_existing_group_missing_device", "capture.graphic_objects": "experimental", "capture.page_vectors": "experimental_typed_local_definitions_and_native_control_points", "capture.page_dimensions": "experimental_native_sizes_units_flags", "capture.page_graphic_bounds": "experimental_declared_control_points_only", "capture.graphic_line_add": "experimental_rotation_zero", "capture.graphic_text_add": "experimental_definition_anchor_and_modeled_preservation", "capture.graphic_text_edit": "experimental_bound_update_delete_and_modeled_preservation", "capture.part_edit": "experimental_explicit_definition_pose_delete", "capture.reference_map": "experimental_single_unit_definition_map", "capture.package_reference_map": "experimental_explicit_whole_package_definition_map", "capture.net_symbol_edit": "experimental_scalar_name_delete_page_membership", "capture.net_symbol_create": "experimental_source_bound_page_definition", "capture.net_symbols": "experimental_kind_name_metadata", "capture.alias_edit": "experimental_scalar_alias_preserve_page_membership", "capture.nc_edit": "experimental_single_unit_unbound_scalar_pin", "capture.hierarchy_clone": "experimental_top_level_internal_block_reuse", "capture.occurrence_structure": "experimental_revision_scoped_unit_identity", "capture.occurrence_properties": "experimental_root_design_and_component_definition_layers",
             "capture.page_query": "experimental", "capture.pin_net_definition": "experimental", "capture.compare_connections": "experimental_selected_definitions",
-            "capture.editor_wire_add": "experimental_24_1_fixed_output_editor", "capture.editor_wire_delete": "experimental_24_1_selection_guarded_delete", "capture.editor_wire_junction": "experimental_24_1_explicit_crossing_native_node_merge", "capture.editor_wire_occurrence": "experimental_unique_schematic_reference", "capture.bus_create": "experimental_fixed_vertical_ordinary_bus_editor", "capture.bus_inventory": "experimental_named_members_and_native_entry_links", "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "unavailable",
+            "capture.editor_wire_add": "experimental_24_1_fixed_output_editor", "capture.editor_wire_delete": "experimental_24_1_selection_guarded_delete", "capture.editor_wire_junction": "experimental_24_1_explicit_crossing_native_node_merge", "capture.editor_wire_occurrence": "experimental_unique_schematic_reference", "capture.bus_create": "experimental_fixed_vertical_ordinary_bus_editor", "capture.bus_inventory": "experimental_named_members_and_native_entry_links", "capture.snapshot": "experimental", "capture.wire_geometry": "experimental", "capture.occurrence_connectivity": "experimental_native_flat_pin_partitions_with_explicit_incomplete_failures",
             "capture.olb": "experimental_read_only", "capture.cache_query": "experimental_read_only", "capture.write_save_reopen": "unavailable",
             "capture.gui_note_write_save_reopen": "experimental_fixture_only", "capture.gui_job_resolution": "experimental_fixture_only", "capture.gui_diagnose": "experimental_config_required",
             "capture.gui_status": "experimental_config_required", "capture.gui_sessions": "experimental_config_required", "capture.gui_drc_pdf": "unavailable", "pspice.prepare": "experimental_explicit_references_only", "pspice.input_check": "experimental_native_parse_setup_only", "pspice.run": "experimental_independent_engine_tcl", "pspice.cli_run": "experimental_official_psp_cmd_r", "pspice.dat": "experimental_analog_and_unflagged_digital_change_records", "pspice.dat_export": "experimental_bound_csv_json_rows", "pspice.native_measurements": "experimental_complete_analysis_named_fields", "pspice.failure_diagnostics": "experimental_stopped_job_explicit_errors", "pspice.inspect_output": "experimental_imported_out_diagnostics_bias_only",
@@ -927,6 +942,28 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
         return await invoke(query_objects, capture, sessionId, "graphics", entity, pageId, cursor, limit,
                             backend="capture_dbo", coverage=("graphic_object_definitions", "native_cached_bounds"),
                             not_checked=("rendered_bounds_validity", "display_bounds_coordinate_space", "automatic_clearance_verdict"))
+
+    @register(readonly=True)
+    async def capture_query_occurrence_nets(sessionId: str,
+                                           offset: Annotated[int, Field(ge=0, le=100000)] = 0,
+                                           limit: Annotated[int, Field(ge=1, le=1000)] = 100) -> ToolResult:
+        """Read the native flat memberships of occurrence pins in a copied design, including physical numbers and visibility. Native flat IDs are valid within this session snapshot."""
+        return await invoke(query_occurrence_nets, capture, sessionId, offset, limit, backend="capture_dbo",
+                            coverage=("native_pin_flat_object_membership", "occurrence_physical_pin_identity"),
+                            not_checked=("independent_expected_nodes", "native_drc", "bus_members"))
+
+    @register(readonly=True)
+    async def capture_compare_occurrence_nets(
+        sessionId: str, expectedRevision: str,
+        expectedGroups: Annotated[list[FlatGroupExpectation], Field(max_length=10000)],
+        expectedUnbound: Annotated[list[FlatPinExpectation], Field(max_length=10000)],
+    ) -> ToolResult:
+        """Compare a complete independent oracle against native flat object membership, global names, optional visibility and every unbound pin."""
+        return await invoke(compare_occurrence_nets, capture, sessionId, expectedRevision,
+                            [row.model_dump() for row in expectedGroups],
+                            [row.model_dump() for row in expectedUnbound], backend="capture_dbo",
+                            coverage=("explicit_full_occurrence_pin_partition_comparison",),
+                            not_checked=("oracle_provenance", "native_drc", "bus_members"))
 
     @register(readonly=True)
     async def capture_get_occurrence_properties(sessionId: str,

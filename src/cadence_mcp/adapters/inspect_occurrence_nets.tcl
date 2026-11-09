@@ -29,6 +29,7 @@ proc cmcp::walk {occ parent segments depth ancestors} {
         }
         set phase port_iterator
         set it [$occ NewChildrenIter $state $::IterDefs_PORTS];cmcp::check $state
+        if {$it eq "NULL"} {error missing_port_iterator}
         try {
             for {set raw [$it NextOccurrence $state]} {$raw ne "NULL"} {set raw [$it NextOccurrence $state]} {
                 cmcp::check $state
@@ -47,14 +48,17 @@ proc cmcp::walk {occ parent segments depth ancestors} {
                     set mapped [cmcp::cs ""];cmcp::check [$device GetPinNumber $position $mapped]
                     set occurrencePhysicalNumber [cmcp::q [cmcp::str $mapped]]
                 }
+                set visibility [$pin GetIsVisible $state];cmcp::check $state
+                if {$visibility ni {0 1}} {error invalid_pin_visibility}
                 set phase pin_net
                 # A missing native net is permitted only for the known unbound code.
                 set ns [DboState];set net [$pin GetNet $ns]
-                set flatId "null";set flatName "";set global "null";set netPath ""
+                set flatId "null";set flatName "";set global "null";set netPath "";set definitionName ""
                 if {$net eq "NULL"} {
                     if {[$ns Failed] && [$ns Code]!=1021} {error "unbound_status_[$ns Code]"}
                 } else {
                     cmcp::check $ns
+                    set pn [cmcp::cs ""];cmcp::check [$net GetNetName $pn];set definitionName [cmcp::str $pn]
                     set phase schematic_net
                     set sn [$net GetSchematicNet]
                     if {$sn eq "NULL"} {error "missing_schematic_net"}
@@ -71,18 +75,22 @@ proc cmcp::walk {occ parent segments depth ancestors} {
                     set global [$flat GetIsGlobal $state];cmcp::check $state
                 }
                 set parts {};foreach s $segments {lappend parts [cmcp::q $s]}
-                lappend rows [cmcp::obj occurrenceId [cmcp::q $id] instancePathSegments [cmcp::arr $parts] reference [cmcp::q [cmcp::str $reference]] number [cmcp::q [cmcp::str $number]] numberStatusCode $numberCode occurrencePhysicalNumber $occurrencePhysicalNumber occurrenceNumberPath [cmcp::q [cmcp::str $occurrenceNumberPath]] occurrenceNumberStatusCode $occurrenceNumberCode name [cmcp::q [cmcp::str $name]] flatNetId $flatId flatNetName [cmcp::q $flatName] isGlobal $global nativeNetPath [cmcp::q $netPath]]
+                lappend rows [cmcp::obj occurrenceId [cmcp::q $id] instancePathSegments [cmcp::arr $parts] reference [cmcp::q [cmcp::str $reference]] number [cmcp::q [cmcp::str $number]] numberStatusCode $numberCode occurrencePhysicalNumber $occurrencePhysicalNumber occurrenceNumberPath [cmcp::q [cmcp::str $occurrenceNumberPath]] occurrenceNumberStatusCode $occurrenceNumberCode name [cmcp::q [cmcp::str $name]] flatNetId $flatId flatNetName [cmcp::q $flatName] isGlobal $global isVisible [expr {$visibility ? "true" : "false"}] definitionNetName [cmcp::q $definitionName] nativeNetPath [cmcp::q $netPath]]
             }
         } finally {delete_DboOccurrenceChildrenIter $it}
+        if {[$state Failed] && [$state Code]!=1022} {error unexpected_port_iterator_end}
     }
     set phase child_iterator
+    set state [DboState]
     set it [$occ NewChildrenIter $state $::IterDefs_INSTS];cmcp::check $state
+    if {$it eq "NULL"} {error missing_child_iterator}
     try {
         for {set raw [$it NextOccurrence $state]} {$raw ne "NULL"} {set raw [$it NextOccurrence $state]} {
             cmcp::check $state
             cmcp::walk [DboOccurrenceToDboInstOccurrence $raw] $occ $segments [expr {$depth+1}] [linsert $ancestors end $occ]
         }
     } finally {delete_DboOccurrenceChildrenIter $it}
+    if {[$state Failed] && [$state Code]!=1022} {error unexpected_child_iterator_end}
 }
 if {$argc!=3} {exit 2}
 lassign $argv root design output
@@ -101,5 +109,8 @@ if {$session ne ""} {catch {delete_DboSession $session}}
 if {$rc} {
     set f [open "$output.error.json" {WRONLY CREAT EXCL}]
     try {fconfigure $f -encoding utf-8 -translation lf;puts -nonewline $f [cmcp::obj phase [cmcp::q $cmcp::phase] message [cmcp::q $message]]} finally {close $f}
+    if {$message in {missing_schematic_net missing_net_occurrence missing_flat_net}} {
+        puts stderr "CADENCE_FLAT_INCOMPLETE:unresolved_binding"
+    }
     puts stderr "CADENCE_DBO_ERROR: phase=$cmcp::phase $message";exit 1
 }

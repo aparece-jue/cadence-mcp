@@ -59,6 +59,10 @@ def run_tcl(config: Config, script: str, args: list[str], cwd: Path) -> tuple[st
             if first in known:
                 code, detail = known[first]
                 raise CadenceError(code, detail, "worker")
+        if (script == "inspect_occurrence_nets.tcl"
+                and message.partition("\n")[0].rstrip("\r") == "CADENCE_FLAT_INCOMPLETE:unresolved_binding"):
+            raise CadenceError("occurrence_connectivity_incomplete",
+                               "A connected page pin has no complete native flat binding.", "worker")
         if "CADENCE_DBO_ERROR" in message:
             raise CadenceError("dbo_error", "Dbo could not inspect the copied design.", "worker")
         raise CadenceError("worker_crashed", f"Tcl worker exited with code {child.returncode}.", "worker")

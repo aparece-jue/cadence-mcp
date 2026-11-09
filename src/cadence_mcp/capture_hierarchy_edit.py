@@ -23,13 +23,21 @@ def tree_digest(rows):
 
 def read_flat(capture,sid):
     session=capture._session(sid);directory=capture._workspace(session['workspaceId'])['directory'];out=directory/(new_id('hierarchy-flat')+'.json')
+    tree = tree_rows(capture, sid)
     run_tcl(capture.config,'inspect_occurrence_nets.tcl',[str(session['design']),str(out)],directory);capture._session(sid)
     if out.stat().st_size>32*1024*1024:raise CadenceError('output_limit','Native flat pin evidence exceeds limit.')
     try:
         raw=json.loads(out.read_text(encoding='utf-8'))
         if not isinstance(raw,dict) or set(raw)!={'occurrenceCount','flatNetCount','pins'} or type(raw['occurrenceCount']) is not int or type(raw['flatNetCount']) is not int:raise ValueError('shape')
         rows=native_partition_rows(raw['pins'])
-        if raw['occurrenceCount']!=len(tree_rows(capture,sid)) or raw['flatNetCount']!=len({p['flatNetId'] for p in rows if p['flatNetId'] is not None}):raise ValueError('counts')
+        if raw['occurrenceCount']!=len(tree) or raw['flatNetCount']!=len({p['flatNetId'] for p in rows if p['flatNetId'] is not None}):raise ValueError('counts')
+        by_id = {row['occurrenceId']: row for row in tree if row['parentId'] is not None}
+        for row in rows:
+            owner = by_id[row['occurrenceId']]
+            if (row['instancePathSegments'] != owner['instancePathSegments'] or row['reference'] != owner['reference']
+                    or type(row['isVisible']) is not bool or type(row['definitionNetName']) is not str
+                    or len(row['definitionNetName']) > 512):
+                raise ValueError('pin owner or metadata')
     except (ValueError,TypeError,KeyError) as e:raise CadenceError('invalid_worker_result','Incomplete native flat partition document.','decode') from e
     out.unlink();return rows
 

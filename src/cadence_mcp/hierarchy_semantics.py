@@ -2,6 +2,11 @@
 import json
 from .core import CadenceError
 
+def flat_pin_key(pin):
+    return json.dumps([pin['instancePathSegments'], pin['name'], pin['occurrencePhysicalNumber']],
+                      ensure_ascii=False, separators=(',', ':'))
+
+
 def native_partition_rows(pins):
     """Decode the fixed Tcl reader's native integer GetIsGlobal flag explicitly."""
     if not isinstance(pins,list) or len(pins)>100000:raise CadenceError('invalid_flat_partition','Invalid native pin table.')
@@ -25,7 +30,7 @@ def net_partition(pins, *, include_private_names=True):
         if not isinstance(path,list) or not 1<=len(path)<=64 or any(type(s) is not str or not s or len(s)>512 or '\x00' in s for s in path):raise CadenceError('invalid_flat_partition','Invalid occurrence segments.')
         if type(name) is not str or len(name)>512 or '\x00' in name or (number is not None and (type(number) is not str or len(number)>512 or '\x00' in number)) or type(netname) is not str:
             raise CadenceError('invalid_flat_partition','Invalid pin or net identity.')
-        key=json.dumps([path,name,number],ensure_ascii=False,separators=(',',':'))
+        key=flat_pin_key(pin)
         if key in identities:raise CadenceError('ambiguous_flat_pin','Duplicate occurrence physical pin identity.')
         identities.add(key)
         if flat is None:

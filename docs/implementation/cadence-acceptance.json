@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-11-07",
+  "date": "2026-11-09",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -1805,7 +1805,7 @@
       "module": "层次",
       "title": "平坦网络/occurrence引脚与预期连通验证",
       "required": true,
-      "queueOrder": 51,
+      "queueOrder": 76,
       "dependencies": [
         "H01",
         "C04"
@@ -1813,7 +1813,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "原生flat net/occurrence身份 + 独立预期节点partition",
+      "implementation": "原生flat net/occurrence身份 + 独立预期节点partition；开发入口发布原生 occurrence pin flat 分页与修订绑定的全节点比较，缺失原生绑定显式不完整",
       "acceptance": "同名局部网不误合并、跨层全局与隐藏脚、重复子模块隔离",
       "status": "deferred",
       "evidence": [
@@ -1832,13 +1832,14 @@
         ".local/copied-port-read-trace-20261024/report.json",
         ".local/cross-page-root-init-20261024/report.json",
         ".local/copied-port-root-init-20261024/report.json",
-        ".local/schematic-expansion-20261024/report.json"
+        ".local/schematic-expansion-20261024/report.json",
+        "docs/implementation/batch-152-evidence.json"
       ],
       "issues": [
         "ISS-H02-null-schematic-net"
       ],
       "implementationReady": false,
-      "remaining": "Internal standalone native chain reads FULLADD 16 occurrences/69 port rows/18 flat objects without saving. GetPinNumber is definition-level and may disagree with occurrence unit; GetDesignator -> Package.GetDevice -> logical pin position resolves selected LS32 A/B/C physical pads against independent TI datasheet. Full native connected-resistor fixture fails at DboNet.GetSchematicNet returning NULL; complete flat connectivity oracle, buses/heterogeneous/shared conflicts, resource/error gates and public MCP tool remain unimplemented/unaccepted. Batch26 FULLADD cloned-context flat partitions and physical identity audit pass only on that saved fixture; original connected-resistor NULL schematic net issue stays open and H02 deferred."
+      "remaining": "Internal standalone native chain reads FULLADD 16 occurrences/69 port rows/18 flat objects without saving. GetPinNumber is definition-level and may disagree with occurrence unit; GetDesignator -> Package.GetDevice -> logical pin position resolves selected LS32 A/B/C physical pads against independent TI datasheet. Full native connected-resistor fixture fails at DboNet.GetSchematicNet returning NULL; complete flat connectivity oracle, buses/heterogeneous/shared conflicts, resource/error gates and public MCP tool remain unimplemented/unaccepted. Batch26 FULLADD cloned-context flat partitions and physical identity audit pass only on that saved fixture; original connected-resistor NULL schematic net issue stays open and H02 deferred. 第152批已在真实 MCP 验收 FULLADD 69 脚/18节点、同名 X_BAR 局部隔离、跨层 VCC/GND、26隐藏脚、错误合并/可见性拒绝、两电阻编辑器正例。人工节点表另与原生定义页投影逐组核对。历史 connected 1baf… 仍在 GetSchematicNet 返回 NULL。端口直取错误报告已连脚为空；ExpandOccurrences、ExpandSubTreeOccurrences、UpdatePageState 在隔离进程触发访问异常；schematic 更新无效，port 处理仍缺 flat。私有编辑器启动模态导致桥接无法加载，本次未执行 app 上下文探针。保留原故障并后移，后续先证实旧副本的原生安全重建或等价可复验路由。"
     },
     {
       "id": "H03",
@@ -2931,7 +2932,9 @@
         ".local/copied-port-root-init-20261024/report.json",
         ".local/schematic-expansion-20261024/report.json"
       ],
-      "latestObservation": "ReadAllPages prerequisite fails3969 before Expand; no flat-net restoration proved. Source hashes unchanged."
+      "latestObservation": "ReadAllPages prerequisite fails3969 before Expand; no flat-net restoration proved. Source hashes unchanged.",
+      "latestEvidence": "docs/implementation/batch-152-evidence.json",
+      "nextAction": "Retain original fixture and oracle. Compare the same legacy DSN in a verified private editor context and investigate a supported in-memory native connectivity rebuild. Keep incomplete native bindings explicit."
     },
     {
       "id": "ISS-D02-native-page-name-lookup",
@@ -3738,8 +3741,8 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-11-08",
-    "tools": 241,
+    "date": "2026-11-09",
+    "tools": 243,
     "goalComplete": false,
     "latestFullRegression": {
       "total": 748,
@@ -3747,7 +3750,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
+      "evidence": ".local/batch-152-occurrence-flat/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3755,7 +3758,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "H02 now has its original prerequisites C04 and H01 passed. Audit native flat occurrence pin nets against the repeated, local, cross-layer global and hidden-pin oracle. Continue L02/C05 if the native route blocks.",
+    "nextIndependentWork": "L02: finish native library lifecycle acceptance on verified fixtures while H02 legacy native schematic-net binding remains deferred. C05 remains an independent priority.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3777,7 +3780,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
+      "evidence": ".local/batch-152-occurrence-flat/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4308,20 +4311,18 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-151-evidence.json",
+    "evidence": "docs/implementation/batch-152-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
-    "newPublicTools": 0,
+    "newPublicTools": 2,
     "nativePartVectorReadAccepted": true,
     "nativeMixedPartVectorReadAccepted": true,
     "nativeBitmapPartVectorReadAccepted": true,
     "nativeLinearSymbolContactCheckAccepted": true,
     "nativeSimpleClosedContainmentAccepted": true,
     "symbolContactsProfile": "symbol-wire-linear-contacts@0.2.0",
-    "acceptedGateIds": [
-      "H01"
-    ],
+    "acceptedGateIds": [],
     "nativeC03Complete": true,
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
@@ -4449,7 +4450,9 @@
     "ownedDesignDeleteMcpAccepted": true,
     "nativePageWireGroupsMcpAccepted": true,
     "nativeJunctionMcpAccepted": true,
-    "hierarchyBoundariesMcpAccepted": true
+    "hierarchyBoundariesMcpAccepted": true,
+    "fullH02Accepted": false,
+    "publicOccurrenceFlatMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-07",
+  "asOf": "2026-11-09",
   "metric": "required_gates_fully_accepted",
   "passed": 11,
   "total": 34,
@@ -32,14 +32,14 @@
       "percent": 0.0
     }
   },
-  "toolCount": 241,
+  "toolCount": 243,
   "latestFullRegression": {
     "total": 748,
     "passed": 747,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-151-hierarchy-boundaries/regression.txt"
+    "evidence": ".local/batch-152-occurrence-flat/regression.txt"
   },
-  "acceptanceCanonicalSha256": "1290d63c1266616f61dccdc2a3d713625462c696713f2dcf5a82222048126566"
+  "acceptanceCanonicalSha256": "0eb2da8a549365a6f41d699879682d144404e28e34e0020efaee13f4a9e1815f"
 }

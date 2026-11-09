@@ -1,0 +1,64 @@
+{
+  "batch": 152,
+  "date": "2026-11-09",
+  "feature": "H02",
+  "baseline": "4ee49fd72dfb8a4b4404b40365990151c0ee7c1d",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullH02Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 243,
+  "newPublicTools": [
+    "capture_query_occurrence_nets",
+    "capture_compare_occurrence_nets"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "independentDefinitionNodeProjectionsMatched": true,
+    "tools": 243,
+    "completeFulladdOraclePassed": true,
+    "sameDefinitionLabelAndDistinctNativeNodes": true,
+    "falseLocalMergeAndVisibilityRefused": true,
+    "editorConnectedResistorsPassed": true,
+    "originalUnresolvedNativeInputFailsClosed": true,
+    "sourcesUnchanged": true
+  },
+  "nativeBaseline": {
+    "fulladdOccurrenceCount": 16,
+    "fulladdPinCount": 69,
+    "fulladdFlatGroups": 18,
+    "verifiedHiddenPowerPins": 26,
+    "legacyConnectedSchematicNetNullReproduced": true,
+    "directPortAccessorMisclassifiesKnownConnectedPins": true,
+    "editorSavedResistorsWithNativeBinding": true,
+    "standaloneInitializersDidNotResolveLegacy": true,
+    "privateAppProbeExecuted": false,
+    "privateAppProbeBlocker": "Capture Custom Launch modal. Bridge load and Computer Use approval timed out."
+  },
+  "scope": [
+    "Supported evidence is a closed local definition design with native flat membership for its occurrence pins, with every pin accounted for by the explicit oracle when comparing.",
+    "Same-name local X_BAR nodes in two contexts remain distinct. Both VCC and GND native globals join across hierarchy and all 26 expected hidden pins retain visibility metadata.",
+    "The historical connected FULLADD resistor copy still has a missing native schematic-net binding. The published query refuses the incomplete data and does not report the connected pins as unbound.",
+    "The editor-saved two-resistor control is a separate fixture. It does not close the original legacy input or verify mixed/bus member handling."
+  ],
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-152-occurrence-flat/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-152-occurrence-flat/native-mcp.json": "c98d18c3223fe5634fbaba8b6e9f821b358f00ee27db7b0514fa256428eb8ecc",
+    ".local/batch-152-occurrence-flat/manual-fulladd-oracle.json": "9650659f6275adc188885be56181a4bf726a131d5e75e8c74a90025b31cfdeab",
+    ".local/batch-152-occurrence-flat/native-definition-projection.json": "d400468d75b055251081546483e72f19230bc6cd8eb537f2e5497d73909ab9ea",
+    ".local/batch-152-occurrence-flat/legacy-vs-direct.json": "3f3e794c91df8bcb2dcdb06293e9079c5f5815da600641732ca19fc0755e563d",
+    ".local/batch-152-occurrence-flat/native-initializers.json": "566b3b5e23bc5ce981ae6c2afa8ab2a952fedaf9c5ab8b6b2dea534b0ae6c316",
+    ".local/batch-152-occurrence-flat/regression.txt": "e73a9c244ac9d5a0b087b4f0915279ce8540fa911259ae6746187b888105ba55"
+  }
+}
