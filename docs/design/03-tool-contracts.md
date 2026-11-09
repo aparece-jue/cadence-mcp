@@ -322,3 +322,10 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 ## 网符号引线与显式 NC
 
 `capture_plan_net_symbol_create` 的可选引线必须接到选定页内唯一、未连接的内部单单元器件物理脚。目标脚已标记显式 NC 时，规划返回 `nc_lead_target_refused`。如需连线，先用 `capture_plan_nc_edit` 和 `capture_apply_nc_edit` 移除标记，再打开该次编辑结果重新规划。
+
+
+## 多单元器件位姿与终端线端
+
+`capture_plan_part_edit` 的 `set_pose` 可通过 `wireEnds` 显式配对已连接的本单元 `pinId` 与同页 `wireId`。同时提供完整 `expectedUnitConnections` 和所有目标脚热点。每个线端从原热点移到声明的新热点，另一端固定。原线段与新线段均须为非零的两点正交线段，原热点处不能同时接另一条线。已有别名的锚点须落在新线段上。
+
+器件和线端在同一隔离副本内保存。重新打开后核对原生线段身份、别名归属与锚点、完整定义层脚和线分组，以及器件位姿和缓存。用户声明的引脚网络须保持原样。省略 `wireEnds` 时，工具沿用原有编辑行为。带分支的线端、多折线重新布线、连接符触点变更和 occurrence 展平需独立处理。

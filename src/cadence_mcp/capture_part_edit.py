@@ -36,10 +36,12 @@ def declared_pose(old,location,rotation,mirror,pins):
 class CapturePartEdits(CapturePropertyEdits):
     kind='capture_part_edit'
     max_record_bytes=262144
-    def plan(self,sid,part_id,operation,expectations,location=None,rotation=None,mirror=None,expected_pins=None,unit_expectations=None):
+    def plan(self,sid,part_id,operation,expectations,location=None,rotation=None,mirror=None,expected_pins=None,unit_expectations=None,wire_ends=None):
         if unit_expectations is not None:
             from .capture_unit_edit import plan_unit_edit
-            return plan_unit_edit(self,sid,part_id,operation,expectations,location,rotation,mirror,expected_pins,unit_expectations)
+            return plan_unit_edit(self,sid,part_id,operation,expectations,location,rotation,mirror,expected_pins,unit_expectations,wire_ends)
+        if wire_ends is not None:
+            raise CadenceError('invalid_unit_wire_ends','Terminal wire edits require unit-aware pin expectations.')
         if operation not in ('set_pose','delete'):raise CadenceError('invalid_part_edit','Use set_pose or delete.')
         if operation=='delete' and (any(v is not None for v in (location,rotation,mirror)) or expected_pins not in (None,[])):
             raise CadenceError('invalid_part_edit','Deletion has no new pose or target pins.')
@@ -70,7 +72,9 @@ class CapturePartEdits(CapturePropertyEdits):
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>48000:raise CadenceError('plan_limit','Part edit baseline exceeds durable plan bounds.')
             self.capture._session(sid);return self.create_plan(payload)
     def preview(self,p):
-        if p.get('unitAware'):return {k:p[k] for k in ('unitAware','unit','operation','schematicName','pageName','oldGeometry','newGeometry','expectedNativePins','sourceFingerprint')}
+        if p.get('unitAware'):
+            keys=('unitAware','unit','operation','schematicName','pageName','oldGeometry','newGeometry','expectedNativePins','sourceFingerprint')
+            return {k:p[k] for k in (*keys,'wireEndMoves') if k in p}
         return {k:p[k] for k in ('operation','partId','schematicName','pageName','reference','oldPose','newPose','expectedGeometry','expectedConnections','sourceFingerprint')}
     def preflight(self,p):
         source=checked_path(p['sourceDesign'],(self.config.workspace_root,))

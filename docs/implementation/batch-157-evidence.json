@@ -1,0 +1,128 @@
+{
+  "batch": 157,
+  "date": "2026-11-09",
+  "feature": "D02",
+  "baseline": "63a5d4778194c125c2b8350eefc29b97f386db5b",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullD02Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": [],
+  "validatedContractExactMatch": true,
+  "changedDevelopmentTools": [
+    "capture_plan_part_edit"
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "poseCases": [
+      "translate",
+      "rotate",
+      "mirror"
+    ],
+    "originalSourceSha256": "eac30125399ab21837bba639092dd1c3b8ec59fa111249687c58f9c2898f8c14",
+    "threeSharedPinsRemainOnNativeVcc": true,
+    "oldNativeWireId": 2804,
+    "unchangedAliasAnchor": [
+      1000,
+      680
+    ],
+    "nonPreservingNetOracleRefused": true,
+    "originalUnroutedMoveStillRejected": true,
+    "freshNoReplayVerified": true,
+    "sourceAndOracleUnchanged": true
+  },
+  "independentNoncenteredWriter": {
+    "passed": true,
+    "sourceSha256": "70bd19168376b2ba92aaec5ec81ae4eefaeceb2ff3c004f142e4d2b1685adab1",
+    "oracleSha256": "08a83c8f2ac6e858601b85e92e1e804a4458d24b729ccae8c917a96f734234c3",
+    "cases": [
+      {
+        "pose": "r0-m0",
+        "passed": true,
+        "verifiedLedgerReused": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r1-m0",
+        "passed": true,
+        "verifiedLedgerReused": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r2-m0",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r3-m0",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r0-m1",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r1-m1",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r2-m1",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      },
+      {
+        "pose": "r3-m1",
+        "passed": true,
+        "identity": true,
+        "geometry": true,
+        "nativeNetworks": true
+      }
+    ],
+    "inputsUnchanged": true
+  },
+  "nativeCandidates": {
+    "defaultSettersAndNativeMoveLeaveTerminalBehind": true,
+    "explicitWireSetPointPreservesPageGroup": true,
+    "originalSourceUnchanged": true
+  },
+  "scope": [
+    "Explicit wireEnds atomically moves a declared scalar terminal endpoint with its selected unit pin. The other endpoint, saved wire ID, alias ownership and anchor, and native pin/wire groups are checked after reopen.",
+    "The original unextended move still loses U501A pad 8 and is refused. In the repaired transaction U501A, B and P pad 8 share the actual native VCC group.",
+    "Occurrence flat wiring, attached NC lifecycle, multi-segment or branched rewiring and the remaining D02 acceptance are separate work."
+  ],
+  "latestFullRegression": {
+    "total": 750,
+    "passed": 749,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-157-unit-terminal-wire/native-mcp.json": "fdad2dbc789d9f910049e0f66897df561296e1826f614545ca665efc55c51d40",
+    ".local/batch-157-unit-terminal-wire/native-candidates.json": "f5153f939afa369bca2fc349d1220b1a5545a63ab6024195234b4f06f7e8c3a3",
+    ".local/batch-157-unit-terminal-wire/noncentered-writer.json": "dfb41c4ed9d0a69cb001a5dede6308f8e0a573dd3de91aa0ca4ed025a73e8667",
+    ".local/batch-157-unit-terminal-wire/regression.txt": "24bf1fb76077d7d517d5ca9675f41c73afa2cdb4b4fa76f9774e7f05b030111d"
+  }
+}

@@ -1459,7 +1459,7 @@
       "module": "放置",
       "title": "移动/旋转/镜像与删除器件",
       "required": true,
-      "queueOrder": 56,
+      "queueOrder": 81,
       "dependencies": [
         "C03",
         "C01"
@@ -1467,7 +1467,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "先姿态后热点/连线；移动连接策略显式声明",
+      "implementation": "先姿态后热点/连线；移动连接策略显式声明。多单元 set_pose 支持按 pinId 和 wireId 声明终端线端联动，重开按原生分组核对。",
       "acceptance": "四姿态/镜像、删除连接影响、多单元选择、非预期网络变化拒绝",
       "status": "deferred",
       "evidence": [
@@ -1489,7 +1489,8 @@
         ".local/regression-318-unit-edit-record-guards-20261024.txt",
         "contracts/tools.v0.1.json",
         ".local/bitmap-public-placement-v2-20261024/report.json",
-        ".local/bitmap-public-group-20261024/report.json"
+        ".local/bitmap-public-group-20261024/report.json",
+        "docs/implementation/batch-157-evidence.json"
       ],
       "issues": [
         "ISS-D02-native-page-name-lookup",
@@ -1497,7 +1498,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Five public MCP plan/apply/jobs/cancel/recover tools plus verified open_output now support uniquely referenced part definitions with explicit complete remaining-page pin/net and target hotspot expectations. Unbound/connected move and deletion, wrong hotspot rejection/no replay, all 8 centered owned-symbol poses, fresh-server idempotency/open, pending cancel/tamper and receipt-loss recovery/native-start cancel/real timeout pass. Original noncentered C03 pose-frame mismatch, multiunit/package/hierarchy/attached NC lifecycle, broader geometry/properties and all fault/resource gates remain required. Batch46 existing part-edit supports unit-aware pinId pose/delete and native identity/cache metadata preservation. Five positive operations, wrong-hotspot negative, receipt-loss/cancel/timeout, shared NC read/refusal and final targeted3 pass; connected shared-power move fails and remains deferred. Unit-add/cross-page/full flat/cache/graphic and original criteria remain."
+      "remaining": "Five public MCP plan/apply/jobs/cancel/recover tools plus verified open_output now support uniquely referenced part definitions with explicit complete remaining-page pin/net and target hotspot expectations. Unbound/connected move and deletion, wrong hotspot rejection/no replay, all 8 centered owned-symbol poses, fresh-server idempotency/open, pending cancel/tamper and receipt-loss recovery/native-start cancel/real timeout pass. Original noncentered C03 pose-frame mismatch, multiunit/package/hierarchy/attached NC lifecycle, broader geometry/properties and all fault/resource gates remain required. Batch46 existing part-edit supports unit-aware pinId pose/delete and native identity/cache metadata preservation. Five positive operations, wrong-hotspot negative, receipt-loss/cancel/timeout, shared NC read/refusal and final targeted3 pass; connected shared-power move fails and remains deferred. Unit-add/cross-page/full flat/cache/graphic and original criteria remain. 第157批在原 U501A 副本通过显式位姿和线端的单次隔离保存。移动、旋转、镜像均保留 VCC 共享三脚、原生线段 ID、别名锚点、缓存和 Value/PCB Footprint。原不延伸移动保持失败并拒绝交付，反向网络预期也拒绝。偏心 U3A 的独立坐标预期在生产编辑服务上通过 8/8 个姿态，原样例及预期不变。 附着 NC 写入、复杂线端、展平和其余原验收矩阵保持后移。"
     },
     {
       "id": "D03",
@@ -3266,13 +3267,15 @@
     {
       "id": "ISS-D02-unit-shared-power-move",
       "featureId": "D02",
-      "status": "open",
+      "status": "resolved",
       "summary": "Moving connected U501A while its shared physical8 is expected to remain VCC fails saved native pin-net expectation; after move that unit8 reads unbound. Other declared pins unchanged. Do not replace oracle with observation.",
       "evidence": ".local/unit-edits-mcp-20261024/report.json",
       "additionalEvidence": [
-        ".local/unit-connected-move-audit-20261024/report.json"
+        ".local/unit-connected-move-audit-20261024/report.json",
+        "docs/implementation/batch-157-evidence.json"
       ],
-      "nextAction": "Deferred: verify documented shared physical/hidden-power/flat-instance semantics and original/new native connectivity. Preserve original ledger/output and fix or explicitly qualify operation with real independent electrical evidence."
+      "resolution": "The original part pose setter and native Move leave the terminal at the old hotspot. The explicit isolated wireEnds transaction preserves native VCC membership of all three shared pad-8 definitions in three real MCP poses. The original no-route operation still fails closed.",
+      "resolutionEvidence": "docs/implementation/batch-157-evidence.json"
     },
     {
       "id": "ISS-C04-shared-nc-enumeration",
@@ -3756,7 +3759,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-156-digital-state-26/regression.txt"
+      "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3764,7 +3767,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "D02: isolate connected shared-power placement and native preservation during part motion and rotation. P04 remaining format/flags stay deferred.",
+    "nextIndependentWork": "L04: qualify typed property values on native OLB package and part owners, then preserve old type and reopen through public tools. Remaining D02 stays deferred.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3786,7 +3789,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-156-digital-state-26/regression.txt"
+      "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4317,7 +4320,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-156-evidence.json",
+    "evidence": "docs/implementation/batch-157-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4462,7 +4465,9 @@
     "titleblockFieldContextMcpAccepted": true,
     "fullD04Accepted": false,
     "netSymbolNcAndPoseMatrixAccepted": true,
-    "digitalNativeCode26McpAccepted": true
+    "digitalNativeCode26McpAccepted": true,
+    "fullD02Accepted": false,
+    "unitTerminalWireMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

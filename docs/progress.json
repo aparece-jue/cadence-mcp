@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-156-digital-state-26/regression.txt"
+    "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
   },
-  "acceptanceCanonicalSha256": "1fe6274a22585d6fe1a2e8d16c8de0be94abd780926003ee63d94b875ca38a6e"
+  "acceptanceCanonicalSha256": "893637ff88d0d4775d2a100014d8a27f9290bf9357802b084793dddeb94190d0"
 }

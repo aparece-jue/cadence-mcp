@@ -220,6 +220,11 @@ class ExistingUnitPin(StrictModel):
     net: Annotated[str, Field(min_length=1, max_length=512)] | None
 
 
+class UnitWireEnd(StrictModel):
+    wireId: str
+    pinId: str
+
+
 Scope = Annotated[DesignScope | PageScope, Field(discriminator="kind")]
 ToolResult = Annotated[CallToolResult, Envelope]
 
@@ -1455,12 +1460,14 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
                                      rotation: Annotated[int, Field(ge=0, le=3)] | None = None,
                                      mirror: Annotated[int, Field(ge=0, le=1)] | None = None,
                                      expectedPins: list[PartHotSpot] | None = None,
-                                     expectedUnitConnections: Annotated[list[ExistingUnitPin], Field(max_length=2048)] | None = None) -> ToolResult:
-        """Plan a definition-level part pose or deletion in a new copy. Declare all remaining page pin-net expectations and, for pose, every target global hotspot. Preserves wires and other connection objects, checks all page part poses. For a multiunit target, pass expectedConnections=[] and expectedUnitConnections covering remaining page pinIds; native ID/full unit ownership, cache pin metadata, Value/footprint and native page networks are additionally checked. Attached NC, implicit wire dragging and flat/occurrence certification remain unavailable. Rotation/mirror need explicit validated hotspots; no automatic affine oracle."""
+                                     expectedUnitConnections: Annotated[list[ExistingUnitPin], Field(max_length=2048)] | None = None,
+                                     wireEnds: Annotated[list[UnitWireEnd], Field(min_length=1, max_length=32)] | None = None) -> ToolResult:
+        """Plan a definition-level part pose or deletion in a new copy. Declare all remaining page pin-net expectations and, for pose, every target global hotspot. Preserves wires and other connection objects, checks all page part poses. For a multiunit target, pass expectedConnections=[] and expectedUnitConnections covering remaining page pinIds; native ID/full unit ownership, cache pin metadata, Value/footprint and native page networks are additionally checked. For a unit pose, wireEnds can explicitly pair terminal wire IDs with moved pin IDs. Each straight scalar segment keeps its other endpoint, aliases and original native pin/wire partition. Rotation and mirror require explicit hotspots. Attached NC and flat occurrence membership have separate verification."""
         return await invoke(part_edits.plan, sessionId, partId, operation,
                             [p.model_dump() for p in expectedConnections], location, rotation, mirror,
                             None if expectedPins is None else [p.model_dump() for p in expectedPins],
                             None if expectedUnitConnections is None else [p.model_dump() for p in expectedUnitConnections],
+                            None if wireEnds is None else [row.model_dump() for row in wireEnds],
                             backend="capture_dbo", coverage=("part_edit_plan", "explicit_page_pin_and_hotspot_expectations"),
                             not_checked=("occurrence_connectivity", "native_drc", "rendered_layout"))
 

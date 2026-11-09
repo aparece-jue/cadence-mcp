@@ -50,6 +50,30 @@ set rc [catch {
         cmcp::check [$target SetMirror [dict get $pose mirrorCode]]
         cmcp::check [$target SetRotation [dict get $pose rotationCode]]
         cmcp::check [$target SetLocation [DboTclHelper_sMakeCPoint {*}[dict get $pose location]]]
+        if {[dict exists $spec wireEndMoves]} {
+            set phase set_terminal_endpoints
+            foreach move [dict get $spec wireEndMoves] {
+                set state [DboState]
+                set wire [$page GetWire [dict get $move nativeId] $state];cmcp::check $state
+                if {$wire eq "NULL"} {error missing_terminal_wire}
+                set scalar [DboWireToDboWireScalar $wire]
+                if {$scalar eq "NULL"} {error terminal_wire_not_scalar}
+                set count [$wire GetPointCount $state];cmcp::check $state
+                if {$count!=2} {error terminal_wire_not_segment}
+                set actual {}
+                for {set index 0} {$index<2} {incr index} {
+                    set point [$wire GetPoint $index $state];cmcp::check $state
+                    lappend actual [list [DboTclHelper_sGetCPointX $point] [DboTclHelper_sGetCPointY $point]]
+                }
+                set name [cmcp::cs ""];cmcp::check [$wire GetNetName $name]
+                if {$actual ne [dict get $move oldPoints] || [cmcp::str $name] ne [dict get $move net]} {
+                    error old_terminal_wire_mismatch
+                }
+                set index [dict get $move endpointIndex]
+                set point [DboTclHelper_sMakeCPoint {*}[lindex [dict get $move newPoints] $index]]
+                cmcp::check [$scalar SetPoint $index $point]
+            }
+        }
     } else {error invalid_operation}
     set phase save
     cmcp::check [$page MarkModified];cmcp::check [$schematic MarkModified $page]

@@ -42781,7 +42781,7 @@
   {
     "name": "capture_plan_part_edit",
     "title": null,
-    "description": "Plan a definition-level part pose or deletion in a new copy. Declare all remaining page pin-net expectations and, for pose, every target global hotspot. Preserves wires and other connection objects, checks all page part poses. For a multiunit target, pass expectedConnections=[] and expectedUnitConnections covering remaining page pinIds; native ID/full unit ownership, cache pin metadata, Value/footprint and native page networks are additionally checked. Attached NC, implicit wire dragging and flat/occurrence certification remain unavailable. Rotation/mirror need explicit validated hotspots; no automatic affine oracle.",
+    "description": "Plan a definition-level part pose or deletion in a new copy. Declare all remaining page pin-net expectations and, for pose, every target global hotspot. Preserves wires and other connection objects, checks all page part poses. For a multiunit target, pass expectedConnections=[] and expectedUnitConnections covering remaining page pinIds; native ID/full unit ownership, cache pin metadata, Value/footprint and native page networks are additionally checked. For a unit pose, wireEnds can explicitly pair terminal wire IDs with moved pin IDs. Each straight scalar segment keeps its other endpoint, aliases and original native pin/wire partition. Rotation and mirror require explicit hotspots. Attached NC and flat occurrence membership have separate verification.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -42880,6 +42880,23 @@
           ],
           "default": null,
           "title": "Expectedunitconnections"
+        },
+        "wireEnds": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/UnitWireEnd"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wireends"
         }
       },
       "required": [
@@ -43008,6 +43025,25 @@
             "net"
           ],
           "title": "PinExpectation",
+          "type": "object"
+        },
+        "UnitWireEnd": {
+          "additionalProperties": false,
+          "properties": {
+            "wireId": {
+              "title": "Wireid",
+              "type": "string"
+            },
+            "pinId": {
+              "title": "Pinid",
+              "type": "string"
+            }
+          },
+          "required": [
+            "wireId",
+            "pinId"
+          ],
+          "title": "UnitWireEnd",
           "type": "object"
         }
       },
