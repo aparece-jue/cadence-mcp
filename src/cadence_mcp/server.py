@@ -757,11 +757,13 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
     @register(readonly=True)
     async def pspice_dat_digital_samples(datId: str, block: Annotated[int, Field(strict=True, ge=0, le=127)], traceName: str,
                                        offset: Annotated[int, Field(strict=True, ge=0)] = 0,
-                                       limit: Annotated[int, Field(strict=True, ge=1, le=1000)] = 1000) -> ToolResult:
-        """Read unflagged native digital transient change records with time, six enum states and strength codes. Resolve exact catalog aliases before invoking getDigital; axes/missing names never reach it. Pagination uses per-trace records, not block header rows. Unknown native state flags reject the full trace; opaque tail words are retained privately and never returned. No voltage, resistance, hazard or fresh solver-success claim."""
-        return await invoke(simulation_data.digital_samples, datId, block, traceName, offset, limit, backend="pspice_data",
-                            coverage=("unflagged_digital_change_records", "digital_catalog_binding", "record_pagination"),
-                            not_checked=("native_flagged_state_semantics", "strength_resistance_mapping", "opaque_tail_semantics", "fresh_solver_run"))
+                                       limit: Annotated[int, Field(strict=True, ge=1, le=1000)] = 1000,
+                                       includeVerifiedFlaggedStates: Annotated[bool, Field(strict=True)] = False) -> ToolResult:
+        """Read native digital transient changes by exact catalog name or alias. Default scope accepts six unflagged states. Opt in to preserve nativeStateCode on each row and read native code 26 as X, verified against PSpice digital print output. Other flagged codes reject the full trace before pagination. Opaque tail words stay private. Time and native strength are separate fields."""
+        return await invoke(simulation_data.digital_samples, datId, block, traceName, offset, limit,
+                            includeVerifiedFlaggedStates, backend="pspice_data",
+                            coverage=("digital_change_records", "digital_catalog_binding", "record_pagination"),
+                            not_checked=("other_flagged_state_semantics", "hazard_classification", "strength_resistance_mapping", "opaque_tail_semantics", "fresh_solver_run"))
 
     @register(readonly=True)
     async def pspice_dat_measure(datId: str, block: Annotated[int, Field(strict=True, ge=0, le=127)], traceName: str,

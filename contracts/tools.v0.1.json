@@ -14933,7 +14933,7 @@
   {
     "name": "pspice_dat_digital_samples",
     "title": null,
-    "description": "Read unflagged native digital transient change records with time, six enum states and strength codes. Resolve exact catalog aliases before invoking getDigital; axes/missing names never reach it. Pagination uses per-trace records, not block header rows. Unknown native state flags reject the full trace; opaque tail words are retained privately and never returned. No voltage, resistance, hazard or fresh solver-success claim.",
+    "description": "Read native digital transient changes by exact catalog name or alias. Default scope accepts six unflagged states. Opt in to preserve nativeStateCode on each row and read native code 26 as X, verified against PSpice digital print output. Other flagged codes reject the full trace before pagination. Opaque tail words stay private. Time and native strength are separate fields.",
     "inputSchema": {
       "properties": {
         "datId": {
@@ -14962,6 +14962,11 @@
           "minimum": 1,
           "title": "Limit",
           "type": "integer"
+        },
+        "includeVerifiedFlaggedStates": {
+          "default": false,
+          "title": "Includeverifiedflaggedstates",
+          "type": "boolean"
         }
       },
       "required": [

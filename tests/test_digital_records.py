@@ -23,6 +23,17 @@ class DigitalRecordsTests(unittest.TestCase):
   raw=dict(self.raw,nativeDigitalData="INIT'2,0,25,0,0,1,0,26,0")
   with self.assertRaises(CadenceError) as c:decode_digital_records(raw,self.block,'INIT')
   self.assertEqual(c.exception.code,'unsupported_digital_state_flags')
+ def test_opt_in_decodes_only_verified_flagged_code_and_preserves_raw_code(self):
+  raw=dict(self.raw,nativeDigitalData="INIT'3,0,25,0,0,1,41,2,0,2,0,26,0")
+  rows=decode_digital_records(raw,self.block,'INIT',include_verified_flagged_states=True)
+  self.assertEqual([(r['state'],r['stateCode'],r['nativeStateCode']) for r in rows],
+                   [('0',0,0),('X',2,2),('X',2,26)])
+  for code in (6,10,18,27,34,4294967295):
+   bad=dict(raw,nativeDigitalData=f"INIT'2,0,25,0,0,1,0,{code},0")
+   with self.subTest(code=code),self.assertRaises(CadenceError) as caught:
+    decode_digital_records(bad,self.block,'INIT',include_verified_flagged_states=True)
+   self.assertEqual(caught.exception.code,'unsupported_digital_state_flags')
+
  def test_bad_frames_bounds_and_nonfinite(self):
   for text in ["INIT'1,0,64,0,0","INIT'1,0,-1,0,0","INIT'1,NaN,0,0,0","INIT'1,1e999,0,0,0","INIT'1,-1,0,0,0","INIT'2,1,0,0,0,0,0,0,0","INIT'1,0,0,0,4294967296","INIT'1,0,0,-1,0","INIT'1,0,0,0","INIT'7091", "OTHER'0,", "INIT'01,0,0,0,0,extra"]:
    with self.subTest(text=text),self.assertRaises(CadenceError):decode_digital_records(dict(self.raw,nativeDigitalData=text),self.block,'INIT')
@@ -48,6 +59,25 @@ class DigitalRecordsTests(unittest.TestCase):
     self.assertEqual(worker.call_args.args[1:],('digital_trace',0,'INIT'));self.assertFalse(result['nativeOpaqueTailReturned'])
     with self.assertRaises(CadenceError) as caught:service.digital_samples(ident,0,'INIT',5)
     self.assertEqual(caught.exception.code,'invalid_query')
+ def test_verified_flag_mode_rejects_unknown_code_beyond_requested_page(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   service,ident=self.service(Path(tmp))
+   raw=dict(self.raw,nativeDigitalData="INIT'2,0,25,0,0,1,0,26,0")
+   with patch.object(service,'_worker',return_value=raw) as worker:
+    result=service.digital_samples(ident,0,'INIT',1,1,True)
+    self.assertEqual(result['items'][0]['nativeStateCode'],26)
+    self.assertEqual(result['supportedNativeFlaggedStateCodes'],[26])
+    self.assertFalse(result['nativeOpaqueTailReturned'])
+    worker.return_value=dict(raw,nativeDigitalData=raw['nativeDigitalData'].replace(',26,',',34,'))
+    with self.assertRaises(CadenceError) as caught:
+     service.digital_samples(ident,0,'INIT',0,1,True)
+    self.assertEqual(caught.exception.code,'unsupported_digital_state_flags')
+    worker.reset_mock()
+    with self.assertRaises(CadenceError) as caught:
+     service.digital_samples(ident,0,'INIT',0,1,1)
+    self.assertEqual(caught.exception.code,'invalid_query')
+    worker.assert_not_called()
+
  def test_unsafe_names_and_queries_never_reach_worker(self):
   with tempfile.TemporaryDirectory() as tmp:
    service,ident=self.service(Path(tmp))

@@ -34,12 +34,12 @@
   },
   "toolCount": 244,
   "latestFullRegression": {
-    "total": 748,
-    "passed": 747,
+    "total": 750,
+    "passed": 749,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
+    "evidence": ".local/batch-156-digital-state-26/regression.txt"
   },
-  "acceptanceCanonicalSha256": "4f1a8afa77e4a72871f6bfda9cc43186cb50d570f920fe5335ac8af0fc3505dc"
+  "acceptanceCanonicalSha256": "1fe6274a22585d6fe1a2e8d16c8de0be94abd780926003ee63d94b875ca38a6e"
 }

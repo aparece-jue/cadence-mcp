@@ -1,0 +1,303 @@
+{
+  "batch": 156,
+  "date": "2026-11-09",
+  "feature": "P04",
+  "baseline": "79886456329e8b762f13d3d600a14e9f0aa1453d",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullP04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": [],
+  "validatedContractExactMatch": true,
+  "changedDevelopmentTools": [
+    "pspice_dat_digital_samples"
+  ],
+  "officialSources": [
+    "SPB 24.1 doc/pspcref/01commands.html, PRINT/DGTLCHG syntax",
+    "SPB 24.1 doc/pspug/019output_file_Generating_Tables_of_Digital_State_Changes.html",
+    "https://resources.pcb.cadence.com/i/1180526-pspice-user-guide/646"
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "cases": [
+      {
+        "case": "legal-x-low",
+        "codeSequence": [
+          0,
+          3,
+          2,
+          0,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "0"
+          ],
+          [
+            1e-06,
+            "R"
+          ],
+          [
+            2e-06,
+            "X"
+          ],
+          [
+            3e-06,
+            "0"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": null,
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      },
+      {
+        "case": "legal-x-high",
+        "codeSequence": [
+          1,
+          4,
+          2,
+          1,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "1"
+          ],
+          [
+            1e-06,
+            "F"
+          ],
+          [
+            2e-06,
+            "X"
+          ],
+          [
+            3e-06,
+            "1"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": null,
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      },
+      {
+        "case": "invalid-rf",
+        "codeSequence": [
+          0,
+          3,
+          26,
+          0,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "0"
+          ],
+          [
+            1e-06,
+            "R"
+          ],
+          [
+            2e-06,
+            "X"
+          ],
+          [
+            3e-06,
+            "0"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": "R -> F",
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      },
+      {
+        "case": "invalid-fr",
+        "codeSequence": [
+          1,
+          4,
+          26,
+          1,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "1"
+          ],
+          [
+            1e-06,
+            "F"
+          ],
+          [
+            2e-06,
+            "X"
+          ],
+          [
+            3e-06,
+            "1"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": "F -> R",
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      },
+      {
+        "case": "opposed-drivers",
+        "codeSequence": [
+          0,
+          2,
+          2,
+          1,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "0"
+          ],
+          [
+            1e-06,
+            "X"
+          ],
+          [
+            3e-06,
+            "1"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": null,
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      },
+      {
+        "case": "opposed-release",
+        "codeSequence": [
+          0,
+          2,
+          1,
+          2,
+          5,
+          5
+        ],
+        "printRows": [
+          [
+            0.0,
+            "0"
+          ],
+          [
+            1e-06,
+            "X"
+          ],
+          [
+            2e-06,
+            "1"
+          ],
+          [
+            3e-06,
+            "X"
+          ],
+          [
+            4e-06,
+            "Z"
+          ],
+          [
+            5e-06,
+            "Z"
+          ]
+        ],
+        "hazard": null,
+        "distinctTailSequences": 3,
+        "threeNativeReadsStableExceptTail": true,
+        "inputsUnchanged": true
+      }
+    ],
+    "legacyInputSha256": [
+      "bf87b283ea3fa8d9d6e95f2012c92062810b1f233cd63dcc99e98a4f9080c3ae",
+      "1f677d9068d769da27208e970d4e436a17612117609878ea96ffe84724f0ad42"
+    ],
+    "tools": 244,
+    "originalFailureStillRefusedByDefaultAndOptInMatchesOut": true,
+    "legacyInputsUnchanged": true
+  },
+  "defaultCompatibility": {
+    "six_states": true,
+    "mixed": true,
+    "compressed": true,
+    "flagged_full_trace_refusal": true
+  },
+  "scope": [
+    "The optional extended scope decodes exactly native state word 26 as X with a distinct retained nativeStateCode. Default mode and unknown flagged words still reject the whole trace before pagination.",
+    "Independent state tables and OUT diagnostics agree with fresh DAT data for illegal R-to-F and F-to-R. Intentional X and equal-driver contention use state code 2.",
+    "Three fresh-process reads of each identical DAT produced stable times, strengths and states but three different tail sequences in all six cases. Tail data stays private and no semantic mapping is published.",
+    "Other native state words, Probe display, DAT10 writer behavior, and remaining unit and format boundaries are not closed by this matrix."
+  ],
+  "latestFullRegression": {
+    "total": 750,
+    "passed": 749,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-156-digital-state-26/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-156-digital-state-26/native-mcp.json": "2e32956c1c0a40ec6e39fa45572c81dcf0257d2696e9b58319f5a5985a6ce41e",
+    ".local/batch-156-digital-state-26/compatibility.json": "697f228a400995acee1655b03b7ecc3cd9012cba31f0eedcb400f02cbb371966",
+    ".local/batch-156-digital-state-26/regression.txt": "a2577fd7b609cbe01a100985eea3fe046080813cca3a755d7e7213f9632b2b3d"
+  }
+}

@@ -2458,7 +2458,7 @@
       "module": "仿真数据",
       "title": "DAT block/trace/采样/复数/单位导出",
       "required": true,
-      "queueOrder": 41,
+      "queueOrder": 80,
       "dependencies": [],
       "sources": [
         "SIM-DATA",
@@ -2467,7 +2467,7 @@
         "SIM-DIG-CONCEPTS",
         "SIM-DIG-STIM"
       ],
-      "implementation": "固定原生DAT适配器，不能把DAT当CSV；数据量限制与分页",
+      "implementation": "固定原生DAT适配器，不能把DAT当CSV；数据量限制与分页；数字样本可显式读取经 PSpice 独立状态表核实的原生字 26，并保留原生码",
       "acceptance": "命名/块/单位、复数、缺trace、分块边界与原生/解析值比对",
       "status": "deferred",
       "evidence": [
@@ -2513,7 +2513,8 @@
         ".local/step-ac-engine-mcp-20261027/report.json",
         ".local/step-backend-guard-mcp-20261027/report.json",
         ".local/regression-param-step-20261027.txt",
-        "docs/implementation/batch-141-evidence.json"
+        "docs/implementation/batch-141-evidence.json",
+        "docs/implementation/batch-156-evidence.json"
       ],
       "issues": [
         "ISS-P04-complex-fixture-native-crash",
@@ -2521,7 +2522,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved. Batch141 verifies DC Sweep/TEMP in genuine SPB24.1 engine-generated DAT: Celsius on exact axis, page/measure and durable CSV/JSON, an unknown ordinary parameter control and compatibility with old frozen unknown-unit plans. Initial standalone CLI timeout retained. Digital flags, opaque state, DAT10 writer and the remaining format/unit scope stay open."
+      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved. Batch141 verifies DC Sweep/TEMP in genuine SPB24.1 engine-generated DAT: Celsius on exact axis, page/measure and durable CSV/JSON, an unknown ordinary parameter control and compatibility with old frozen unknown-unit plans. Initial standalone CLI timeout retained. Digital flags, opaque state, DAT10 writer and the remaining format/unit scope stay open. 第156批补齐状态字26的选用模式。原 OUT 的4 µs X与旧DAT匹配；新 R→F 与 F→R 的2 µs X由求解打印表、OUT告警及原生DAT三路匹配。两组显式X与两组对驱控制仍是原生2。每个DAT三次独立读的时间、强度和状态相同，未解释末字段变化。默认整轨拒绝保持，其他标志、Probe界面、DAT10和剩余格式/单位仍后移。"
     },
     {
       "id": "P05",
@@ -3384,11 +3385,12 @@
         ".local/pio-digital-legal-six-states-20261026/report.json",
         ".local/pio-digital-multitrace-20261026/report.json",
         ".local/digital-records-mcp-20261026/report.json",
-        ".local/regression-592-digital-records-20261026.txt"
+        ".local/regression-592-digital-records-20261026.txt",
+        "docs/implementation/batch-156-evidence.json"
       ],
-      "remaining": "Validate native flagged-state and remaining digital format semantics; only bounded unflagged transient records currently available.",
-      "latestEvidence": ".local/digital-records-mcp-20261026/report.json",
-      "latestObservation": "Dedicated getDigital canonical names returns native per-trace change records; legal six-state/time/relative-strength and compressed aliases pass actual MCP. Original numeric-reader/combined-axis crash failures retained. Flagged26 safely refused."
+      "remaining": "Verify other flagged codes, Probe display, and remaining digital format semantics. The current extended scope covers exactly code26; opaque tails are excluded.",
+      "latestEvidence": "docs/implementation/batch-156-evidence.json",
+      "latestObservation": "Six fresh 24.1 transient solves compare PRINT/DGTLCHG and native DAT. Both illegal edge reversals print X and return raw26. Normal explicit X and contention return raw2. The opt-in retains nativeStateCode and default refusal remains unchanged. Opaque tails vary between processes reopening the same file."
     },
     {
       "id": "ISS-P03-uncoded-native-error",
@@ -3749,12 +3751,12 @@
     "tools": 244,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 748,
-      "passed": 747,
+      "total": 750,
+      "passed": 749,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
+      "evidence": ".local/batch-156-digital-state-26/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3762,7 +3764,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "P04: verify remaining native digital DAT state and trace semantics on isolated simulator outputs. D04 shared global across pages and already-bound pose remain deferred.",
+    "nextIndependentWork": "D02: isolate connected shared-power placement and native preservation during part motion and rotation. P04 remaining format/flags stay deferred.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3779,12 +3781,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 748,
-      "passed": 747,
+      "total": 750,
+      "passed": 749,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-155-net-symbol-scope/regression.txt"
+      "evidence": ".local/batch-156-digital-state-26/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4315,7 +4317,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-155-evidence.json",
+    "evidence": "docs/implementation/batch-156-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4459,7 +4461,8 @@
     "publicOccurrenceFlatMcpAccepted": true,
     "titleblockFieldContextMcpAccepted": true,
     "fullD04Accepted": false,
-    "netSymbolNcAndPoseMatrixAccepted": true
+    "netSymbolNcAndPoseMatrixAccepted": true,
+    "digitalNativeCode26McpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

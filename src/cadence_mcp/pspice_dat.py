@@ -218,8 +218,10 @@ class PSpiceDat:
                     'complex':selected['complex'],**unit_for(canonical,selected['axis'],selected['analysisName']),
                     'revision':session['manifest']['revision'],'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan')}
 
-    def digital_samples(self,ident,block,trace,offset=0,limit=1000):
-        from .pspice_digital import decode_digital_records,SCOPE
+    def digital_samples(self,ident,block,trace,offset=0,limit=1000,include_verified_flagged_states=False):
+        from .pspice_digital import SCOPE, VERIFIED_FLAGS_SCOPE, VERIFIED_FLAGGED_STATES, decode_digital_records
+        if type(include_verified_flagged_states) is not bool:
+            raise CadenceError('invalid_query','includeVerifiedFlaggedStates must be a strict boolean.')
         with self.lock:
             session=self._session(ident);selected=self._block(session,block)
             if not selected.get('digitalReadSupported'):raise CadenceError('capability_unavailable','Dedicated digital records require complete positive-row transient metadata.')
@@ -227,13 +229,17 @@ class PSpiceDat:
             matches=[t for t in session['traces'][block] if t.get('signalType')=='digital' and (trace==t['name'] or trace in t['aliases'])]
             if len(matches)!=1:raise CadenceError('trace_not_found','Exact digital canonical name or alias is missing; axes and analog names are not sent to the digital reader.')
             canonical=matches[0]['name'];raw=self._worker(session['directory'],'digital_trace',block,canonical)
-            self._session(ident);rows=decode_digital_records(raw,selected,canonical)
+            self._session(ident);rows=decode_digital_records(raw,selected,canonical,include_verified_flagged_states)
+            flagged_metadata=({'supportedNativeFlaggedStateCodes':sorted(VERIFIED_FLAGGED_STATES)}
+                              if include_verified_flagged_states else {})
             return {**self._page(rows,offset,limit),'block':block,'trace':canonical,'requestedTrace':trace,
                     'blockDigitalRows':selected['digitalRowCount'],'rowCountSource':'native_per_trace_change_records',
-                    'timeUnit':'s','timeUnitSource':'axis_name_convention','signalType':'digital','digitalReadScope':SCOPE,
+                    'timeUnit':'s','timeUnitSource':'axis_name_convention','signalType':'digital',
+                    'digitalReadScope':VERIFIED_FLAGS_SCOPE if include_verified_flagged_states else SCOPE,
                     'strengthEncoding':'native_integer_0_to_63','strengthResistanceMappingVerified':False,
                     'nativeOpaqueTailReturned':False,'nativeOpaqueTailSemanticsVerified':False,
-                    'nativeFlaggedStatesSupported':False,'probeDisplayInterpretationVerified':False,
+                    'nativeFlaggedStatesSupported':include_verified_flagged_states,**flagged_metadata,
+                    'probeDisplayInterpretationVerified':False,
                     'revision':session['manifest']['revision'],'provenance':session['manifest']['provenance'],
                     'jobAssociationVerified':session['manifest'].get('jobAssociationVerified',False),'producedByPlan':session['manifest'].get('producedByPlan')}
 

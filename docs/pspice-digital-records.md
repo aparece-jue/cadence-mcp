@@ -1,16 +1,24 @@
 # 数字瞬态变更记录
 
-新增只读工具 `pspice_dat_digital_samples(datId, block, traceName, offset=0, limit=1000)`。先用 `pspice_dat_open` 导入允许读取的 DAT，再通过 `pspice_dat_query` 取得数字信号的准确名称或别名。导入数据仍属于文件来源；不能据此认定求解成功或关联到某个任务。
+新增只读工具 `pspice_dat_digital_samples(datId, block, traceName, offset=0, limit=1000, includeVerifiedFlaggedStates=false)`。先用 `pspice_dat_open` 导入允许读取的 DAT，再通过 `pspice_dat_query` 取得数字信号的准确名称或别名。导入数据仍属于文件来源；不能据此认定求解成功或关联到某个任务。
 
 适用于本机24.1实测的完整数字/混合瞬态块：Time轴、完整数字目录、正数数字行列。返回逐条 `index/time/state/stateCode/strengthCode`，状态0..5对应0、1、X、R、F、Z。时间单位秒来自Time轴约定；强度返回原生0..63整数，不换算电压或电阻。字段明确标注这一有限范围。
 
 固定原生工作进程使用 `reader getDigital <canonical>`。服务先按数字目录解析别名；工作进程再次枚举数字目录，只接受唯一准确名称。轴、模拟信号、缺失名称不得传给getDigital。曾在组合读取Time与DIN时发生独立进程异常，具体触发调用未能证明，原失败保留；后续仅读取真实数字目录成员通过。旧get/getR得到的模拟网格不能解释为数字值。
 
-每条记录观察到四个原生字段：时间、强度码、状态字、未解释整数。最后一项只存于私有原始回执，既不返回也不解释。负数尾字段在官方示例快照中出现，因此验证其有符号32位/无符号32位范围。原生记录格式的通用性尚未证明。状态字超过5时，整条信号报 `unsupported_digital_state_flags`，即使请求的第一页不包含异常记录，也不截断返回。没有根据SDK的位掩码猜测getDigital标志含义。
+每条记录观察到四个原生字段：时间、强度码、状态字、未解释整数。最后一项只存于私有原始回执，既不返回也不解释。负数尾字段在官方示例快照中出现，因此验证其有符号32位/无符号32位范围。原生记录格式的通用性尚未证明。默认模式下，状态字超过5时整条信号报 `unsupported_digital_state_flags`，即使请求的第一页不包含异常记录，也不截断返回。没有根据SDK的位掩码猜测getDigital标志含义。
 
 分页依据每条信号自己的变更记录数。实测文件头7090行、212条数字信号，而INIT和RUN各只有4条变更记录。元数据的header行数保持原义，新增rowCountSource说明；样本接口的total来自实际记录。偏移超过单信号记录数报错。每次读取前后核验不可变快照；关闭会话后拒绝访问。原生reader关闭只调用一次，失败不重试。
 
-## 已验收与保留问题
+## 已核实的原生状态字 26
+
+将 `includeVerifiedFlaggedStates` 设为 `true` 可读取 SPB 24.1 实测的状态字 26。此时每条记录增加 `nativeStateCode`。状态字 26 返回 `state="X"`、`stateCode=2`、`nativeStateCode=26`。普通 X 的 `nativeStateCode` 仍为 2。返回的 `supportedNativeFlaggedStateCodes` 为 `[26]`。未核实的状态字会在分页前拒绝整条信号。
+
+新生成的 R→F、F→R 电路均由 PSpice 的 `.PRINT/DGTLCHG` 输出在 2 µs 打印 X，同次求解的 OUT 告警也指出该节点改为 X。两种显式 X 和两种等强驱动对照均保留原生状态字 2。相同 DAT 分别由三个新进程读取得到相同的时间、强度和状态字，末尾字段在这些读取间变化，因此 API 继续省略该字段。状态字 26 的其他位与告警类型的对应关系仍待验证。[Cadence 数字仿真告警说明](https://resources.pcb.cadence.com/i/1180526-pspice-user-guide/646)
+
+`tools/accept_digital_state_flags.py` 用六份新建电路及原 4 µs 非法跃迁的隔离 OUT/DAT 验证此范围。原样例在默认模式仍被拒绝，在选用该模式后按新证据返回 X。其余原生状态字、Probe 界面、DAT10 写入和 P04 的剩余单位及格式边界继续单独验收。
+
+## 第 102 批历史验收
 
 - 自建合法激励0→R→1→F→0→X→Z，在7us停止时共8记录；时间、六状态、500Ω与50Ω驱动的相对强弱、Z强度0通过独立预期及真实MCP复核。实测强度25/41，不声明一般换算公式。
 - 原混合DIN的0→1→0→Z及末尾Z，共5记录通过。纯数字快照INIT别名U4:INIT及RUN各4记录、分页、重复读取、关闭和错误名称拒绝通过。所有源DAT字节未变。
