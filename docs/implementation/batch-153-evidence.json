@@ -1,0 +1,107 @@
+{
+  "batch": 153,
+  "date": "2026-11-09",
+  "feature": "L02",
+  "baseline": "3a4efa2df766300d1bb581335d218ebf63c00c97",
+  "goalComplete": false,
+  "originalRequired": 34,
+  "fullyAccepted": 11,
+  "acceptedGateIds": [],
+  "fullL02Accepted": false,
+  "productionCodeChanged": false,
+  "tools": 243,
+  "newPublicTools": 0,
+  "nativeExactEmpty": {
+    "originalOracleUnchanged": true,
+    "normalizesAtConstructorBeforeSave": true,
+    "nativeGetPinNameAndGetNameAgree": true,
+    "positions": [
+      [
+        0,
+        "$PIN0"
+      ],
+      [
+        7,
+        "$PIN7"
+      ]
+    ],
+    "retainedAfterSaveAndIndependentReopen": true
+  },
+  "xmlControlAndVariants": {
+    "nativeOriginalMatchesDeclaration": true,
+    "sourceUnchanged": true,
+    "cases": {
+      "control": {
+        "returnCode": 0,
+        "artifactProduced": true,
+        "exactDeclaredGraph": true,
+        "observedNames": [
+          [
+            0,
+            "PIN_SLOT"
+          ],
+          [
+            1,
+            "CONTROL"
+          ]
+        ]
+      },
+      "explicit-empty": {
+        "returnCode": 0,
+        "artifactProduced": true,
+        "exactDeclaredGraph": false,
+        "observedNames": [
+          [
+            0,
+            "$PIN0"
+          ],
+          [
+            1,
+            "CONTROL"
+          ]
+        ],
+        "matchesNativePlaceholderGraph": true
+      },
+      "absent-name": {
+        "returnCode": 1,
+        "artifactProduced": false,
+        "exactDeclaredGraph": false
+      }
+    },
+    "sourceSha256": "64fbef58604e7f8aeca86859ca34b1ebdda4b20fecc8243467cc80082a57bfde",
+    "exportSha256": "20874f9c45abf870921ca00cd602d4c0cc93d14cd99f93d872dc8ea57a280130"
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "cases": [
+      "sparse_positions",
+      "independent_declaration_order",
+      "explicit_pin_name_boundaries",
+      "opaque_literal_name_boundaries"
+    ],
+    "checks": {
+      "out_of_contract_positions_and_names_refused": true,
+      "unsupported_empty_name_refused_before_durable_plan": true,
+      "accepted_outputs_fresh_reopen_no_replay": true,
+      "oracle_unchanged": true
+    }
+  },
+  "latestFullRegression": {
+    "total": 748,
+    "passed": 747,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-152-occurrence-flat/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "remaining": [
+    "The original exact empty literal name still has no verified native route.",
+    "Other font-quality and pixel-replacement issues retain their own existing evidence and scope."
+  ],
+  "evidenceSha256": {
+    ".local/batch-153-library-pin-names/pin-native-stages.json": "d1a3e6bde8a77aa8eafc20aaf7bea37eb79608a12863f62bcee6850e64548200",
+    ".local/batch-153-library-pin-names/xml-name-route.json": "0ea33f05094e032de5faa30d3fd5490dcc1bd08236cfb6447a5554c6275eac06",
+    ".local/batch-153-library-pin-names/mcp-pin-boundaries.json": "65112716fa2c204eeadde1d8b838dcb7ec7000b18cee1fb555f5c98602f334ef"
+  }
+}

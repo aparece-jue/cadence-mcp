@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/batch-152-occurrence-flat/regression.txt"
   },
-  "acceptanceCanonicalSha256": "0eb2da8a549365a6f41d699879682d144404e28e34e0020efaee13f4a9e1815f"
+  "acceptanceCanonicalSha256": "58aca2150646501c92fe3738cb15a98a2dc7ca0b71d605814c1f5849dcf35452"
 }
