@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-160-default-font/regression.txt"
+    "evidence": ".local/batch-161-graphic-stroke/regression.txt"
   },
-  "acceptanceCanonicalSha256": "cc4b17daaae78d984ebd286501a1b12870c66fc18591b3dbcdd39ade4ed9806f"
+  "acceptanceCanonicalSha256": "65b9bce73533c396baf335b24366eccbbdef56a092dff9329dfae7f0cebb93a3"
 }

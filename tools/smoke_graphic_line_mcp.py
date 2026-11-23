@@ -14,7 +14,7 @@ async def main():
     report={'passed':False,'phase':'open','sourceHashBefore':sha256(source),'checks':{}}
     try:
         async with Client(params,mode='legacy',read_timeout_seconds=90) as client:
-            tools=(await client.list_tools()).tools;assert len(tools)==75
+            tools=(await client.list_tools()).tools;assert len(tools)==244
             schemas={t.name:t.output_schema for t in tools}
             for t in tools:Draft202012Validator.check_schema(t.input_schema);Draft202012Validator.check_schema(t.output_schema)
             (root/'tools-list.json').write_text(json.dumps([t.model_dump(mode='json',by_alias=True) for t in tools],indent=2),encoding='utf-8')
@@ -23,12 +23,12 @@ async def main():
                 Draft202012Validator(schemas[name]).validate(r.structured_content);return r.structured_content['data']
             ws=await call('cadence_create_workspace',{'sourceDesign':str(source)});opened=await call('capture_open',{'workspaceId':ws['workspaceId']});sid=opened['sessionId']
             page=next(p for p in (await call('capture_query',{'sessionId':sid,'entity':'page','scope':{'kind':'design'}}))['items'] if p['name']=='MCP_PLACE')
-            base={'sessionId':sid,'pageId':page['objectId'],'start':[330,310],'end':[490,310]}
-            for change in [{'end':[330,310]},{'eval':'unsafe'}]:assert (await client.call_tool('capture_plan_graphic_line_add',{**base,**change})).is_error
+            base={'sessionId':sid,'pageId':page['objectId'],'start':[330,310],'end':[490,310],'lineStyle':1,'lineWidth':1}
+            for change in [{'end':[330,310]},{'eval':'unsafe'},{'lineWidth':None},{'lineStyle':True}]:assert (await client.call_tool('capture_plan_graphic_line_add',{**base,**change})).is_error
             report['checks']['degenerate_and_extra_parameters_rejected']=True;report['phase']='apply'
             plan=await call('capture_plan_graphic_line_add',base);key={k:plan[k] for k in ('planId','planDigest')};report['plan']=plan
             result=await call('capture_apply_graphic_line_add',{**key,'idempotencyKey':'graphic-happy'});report['result']=result
-            assert result['independentReopenVerified'] and result['definitionAndConnectionBaselinePreserved'] and result['designPassed'] is None
+            assert result['nativeStrokeVerified'] and result['independentReopenVerified'] and result['definitionAndConnectionBaselinePreserved'] and result['designPassed'] is None
             output=await call('capture_open_edit_result',{**key,'kind':'graphic_line'});assert output['producedByPlan']==key['planId']
             report['checks']['save_reopen_output']=True
             pending=await call('capture_plan_graphic_line_add',base);pending_key={k:pending[k] for k in ('planId','planDigest')}
@@ -37,7 +37,7 @@ async def main():
             report['checks']['pending_cancel']=True
             report['jobs']=await call('capture_graphic_line_jobs',{'offset':0,'limit':1})
             # A second saved artifact exercises success recheck on a fresh server.
-            recovery=await call('capture_plan_graphic_line_add',{**base,'start':[330,410],'end':[490,410]});recover_key={k:recovery[k] for k in ('planId','planDigest')};report['recoveryPlan']=recovery
+            recovery=await call('capture_plan_graphic_line_add',{**base,'sessionId':output['sessionId'],'start':[330,410],'end':[490,410],'lineStyle':2,'lineWidth':2});recover_key={k:recovery[k] for k in ('planId','planDigest')};report['recoveryPlan']=recovery
             recover_result=await call('capture_apply_graphic_line_add',{**recover_key,'idempotencyKey':'graphic-recover'});report['initialRecoveryResult']=recover_result
         report['phase']='fresh_server'
         async with Client(params,mode='legacy',read_timeout_seconds=90) as fresh:
@@ -50,7 +50,7 @@ async def main():
             assert recovered['artifact']['sha256']==recover_result['artifact']['sha256']
             assert not (await fresh.call_tool('capture_open_edit_result',{**recover_key,'kind':'graphic_line'})).is_error
             report['checks']['fresh_server_idempotency_and_success_recheck']=True
-        report.update(passed=True,toolCount=75)
+        report.update(passed=True,toolCount=244)
     except BaseException as error:
         import traceback
         report['error']=str(error);report['traceback']=traceback.format_exc()
@@ -59,4 +59,5 @@ async def main():
         if report['sourceHashBefore']!=report['sourceHashAfter']:report['passed']=False
         (root/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'passed':report['passed'],'phase':report['phase'],'error':report.get('error'),'report':str(root/'report.json')}))
+    if not report['passed']:raise SystemExit(1)
 asyncio.run(main())

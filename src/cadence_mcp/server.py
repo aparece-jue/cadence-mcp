@@ -1498,9 +1498,11 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
                             coverage=("existing_part_edit_verification",), not_checked=("native_completion", "native_drc"))
 
     @register(readonly=False)
-    async def capture_plan_graphic_line_add(sessionId: str, pageId: str, start: list[int], end: list[int]) -> ToolResult:
-        """Plan one decorative graphic line with explicit global endpoints and zero rotation on a new DSN. Does not create an electrical wire. Verify all definition pin nets and connection objects, plus existing target-page line geometry. Style/width/color, other graphic types, page bounds and DRC are not checked."""
-        return await invoke(graphic_lines.plan, sessionId, pageId, start, end, backend="capture_dbo",
+    async def capture_plan_graphic_line_add(sessionId: str, pageId: str, start: list[int], end: list[int],
+                                            lineStyle: Annotated[int, Field(strict=True, ge=0, le=5)] | None = None,
+                                            lineWidth: Annotated[int, Field(strict=True, ge=0, le=3)] | None = None) -> ToolResult:
+        """Plan one decorative graphic line with explicit global endpoints and zero rotation on a new DSN. Does not create an electrical wire. Verify all definition pin nets and connection objects, plus existing target-page line geometry. Declare both lineStyle and lineWidth to verify native stroke values on all target-page lines. Color, other graphic types, page bounds and DRC require separate checks."""
+        return await invoke(graphic_lines.plan, sessionId, pageId, start, end, lineStyle, lineWidth, backend="capture_dbo",
                             coverage=("graphic_line_plan", "explicit_endpoints"), not_checked=("rendered_layout", "other_graphic_types", "native_drc"))
 
     @register(readonly=False)

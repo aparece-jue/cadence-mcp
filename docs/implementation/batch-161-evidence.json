@@ -1,0 +1,54 @@
+{
+  "batch": 161,
+  "date": "2026-11-24",
+  "feature": "D05",
+  "baseline": "bb96c876cbf4c02d6acdd758251aa1dfd73e8380",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullD05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "changedDevelopmentTools": [
+    "capture_plan_graphic_line_add"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "strokePairs": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "secondEditUsesFirstVerifiedOutput": true,
+    "allTargetPageStrokeValuesReopened": true,
+    "pinAndConnectionBaselinePreserved": true,
+    "pendingCancelAndInputGuards": true,
+    "freshIdempotenceAndRecovery": true,
+    "sourceUnchanged": true
+  },
+  "latestFullRegression": {
+    "total": 750,
+    "passed": 749,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-161-graphic-stroke/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "scope": [
+    "Explicit stroke plans verify all target-page decorative line geometry, style and width, retaining duplicate lines as a multiset.",
+    "Old plans and requests omit the optional stroke fields and retain their previous verification path.",
+    "Color, general graphic lifecycle, titleblock editing, rendered text and full D05 remain incomplete."
+  ],
+  "evidenceSha256": {
+    ".local/batch-161-graphic-stroke/native-mcp.json": "700a56b646cbe753c74b0b5bdb292fe35e9c47ec94c6d55b20c32d5c70db79c1",
+    ".local/batch-161-graphic-stroke/regression.txt": "4e4665e76e45d5be763d446784d717a833be6666c5e434e121bb0f523551f5f9"
+  }
+}

@@ -334,3 +334,8 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 ## 显示属性恢复默认字体
 
 `capture_plan_display_font` 支持 `resetToDefault=true`，`font` 提供所属设计默认字体的独立预期。原生工作进程先核对默认字体，再重建同名显示属性以恢复继承，保留位置、旋转、颜色和显示方式。保存后独立重开核对所有实例字体、显示状态、属性、几何和定义连接。错误默认字体会在修改前拒绝。已有未包含该选项的计划沿用显式字体写入。
+
+
+## 装饰线笔画
+
+`capture_plan_graphic_line_add` 可同时声明 `lineStyle`（0..5）与 `lineWidth`（0..3）。新计划保存目标页完整装饰线的端点、姿态、线型和线宽，重开后按多重集合核对。省略两项时采用已有默认路径，旧计划仍可重开及恢复。已原生验收的组合包括虚线加第二档线宽，以及点线加第三档线宽。页面边界、颜色、其他图形和渲染另行验收。
