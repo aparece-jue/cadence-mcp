@@ -1,0 +1,67 @@
+{
+  "batch": 165,
+  "date": "2026-11-24",
+  "feature": "H02",
+  "baseline": "09dffc69354aec69d7008424032b0ee5ac0a0ae2",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullH02Accepted": false,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "tools": 244,
+  "nativeObservation": {
+    "sourceSha256": "1baf1c3e652a8d806801f098b4d14dc4fc8189d5f3b2472c513529c0235063b7",
+    "saveCalled": false,
+    "cases": {
+      "pages-only": {
+        "process": {
+          "state": "exited",
+          "pid": 2544,
+          "returnCode": 1,
+          "durationSeconds": 2.234,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "phases": "iterate_schematics\nload_pages:HALFADD\npage:HALFADD\npage:MCP_PLACE\nload_pages:FULLADD\npage:FULLADD\noccurrence_reader\n",
+        "sourceAndCopyUnchanged": true,
+        "nativeError": {
+          "phase": "schematic_net",
+          "message": "missing_schematic_net"
+        }
+      },
+      "expand-after-pages": {
+        "process": {
+          "state": "exited",
+          "pid": 38552,
+          "returnCode": 1,
+          "durationSeconds": 2.234,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "phases": "iterate_schematics\nload_pages:HALFADD\npage:HALFADD\npage:MCP_PLACE\nload_pages:FULLADD\npage:FULLADD\nexpand:1\n",
+        "sourceAndCopyUnchanged": true,
+        "nativeError": {
+          "phase": "init",
+          "message": "dbo_status_1022"
+        }
+      }
+    },
+    "sourceUnchanged": true
+  },
+  "scope": [
+    "Direct page iteration loads HALFADD/HALFADD, HALFADD/MCP_PLACE and FULLADD/FULLADD without the old ReadAllPages3969 prerequisite failure. Original incomplete schematic binding persists in the pages-only native reader.",
+    "After loading, DboSchematic.IsExpanded is 1; documented Expand returns DboState1022 before occurrence traversal. No expansion success or graph restoration is claimed.",
+    "Neither copied DSN nor original source bytes change; no Save call, no Capture GUI host, and no owned workers remain. Original flat oracle remains unchanged and incomplete native data continues to fail closed."
+  ],
+  "fullRegressionRerunThisBatch": false,
+  "evidenceSha256": {
+    ".local/batch-165-schematic-expansion/native.json": "84e344a29df9aacc79c1b9cd2fd7225f4b58ab91379e840c78b94d0cc9a93715"
+  }
+}

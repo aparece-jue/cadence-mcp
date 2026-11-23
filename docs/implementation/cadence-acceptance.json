@@ -1814,7 +1814,7 @@
       "module": "层次",
       "title": "平坦网络/occurrence引脚与预期连通验证",
       "required": true,
-      "queueOrder": 76,
+      "queueOrder": 89,
       "dependencies": [
         "H01",
         "C04"
@@ -1842,13 +1842,14 @@
         ".local/cross-page-root-init-20261024/report.json",
         ".local/copied-port-root-init-20261024/report.json",
         ".local/schematic-expansion-20261024/report.json",
-        "docs/implementation/batch-152-evidence.json"
+        "docs/implementation/batch-152-evidence.json",
+        "docs/implementation/batch-165-evidence.json"
       ],
       "issues": [
         "ISS-H02-null-schematic-net"
       ],
       "implementationReady": false,
-      "remaining": "Internal standalone native chain reads FULLADD 16 occurrences/69 port rows/18 flat objects without saving. GetPinNumber is definition-level and may disagree with occurrence unit; GetDesignator -> Package.GetDevice -> logical pin position resolves selected LS32 A/B/C physical pads against independent TI datasheet. Full native connected-resistor fixture fails at DboNet.GetSchematicNet returning NULL; complete flat connectivity oracle, buses/heterogeneous/shared conflicts, resource/error gates and public MCP tool remain unimplemented/unaccepted. Batch26 FULLADD cloned-context flat partitions and physical identity audit pass only on that saved fixture; original connected-resistor NULL schematic net issue stays open and H02 deferred. 第152批已在真实 MCP 验收 FULLADD 69 脚/18节点、同名 X_BAR 局部隔离、跨层 VCC/GND、26隐藏脚、错误合并/可见性拒绝、两电阻编辑器正例。人工节点表另与原生定义页投影逐组核对。历史 connected 1baf… 仍在 GetSchematicNet 返回 NULL。端口直取错误报告已连脚为空；ExpandOccurrences、ExpandSubTreeOccurrences、UpdatePageState 在隔离进程触发访问异常；schematic 更新无效，port 处理仍缺 flat。私有编辑器启动模态导致桥接无法加载，本次未执行 app 上下文探针。保留原故障并后移，后续先证实旧副本的原生安全重建或等价可复验路由。"
+      "remaining": "Internal standalone native chain reads FULLADD 16 occurrences/69 port rows/18 flat objects without saving. GetPinNumber is definition-level and may disagree with occurrence unit; GetDesignator -> Package.GetDevice -> logical pin position resolves selected LS32 A/B/C physical pads against independent TI datasheet. Full native connected-resistor fixture fails at DboNet.GetSchematicNet returning NULL; complete flat connectivity oracle, buses/heterogeneous/shared conflicts, resource/error gates and public MCP tool remain unimplemented/unaccepted. Batch26 FULLADD cloned-context flat partitions and physical identity audit pass only on that saved fixture; original connected-resistor NULL schematic net issue stays open and H02 deferred. 第152批已在真实 MCP 验收 FULLADD 69 脚/18节点、同名 X_BAR 局部隔离、跨层 VCC/GND、26隐藏脚、错误合并/可见性拒绝、两电阻编辑器正例。人工节点表另与原生定义页投影逐组核对。历史 connected 1baf… 仍在 GetSchematicNet 返回 NULL。端口直取错误报告已连脚为空；ExpandOccurrences、ExpandSubTreeOccurrences、UpdatePageState 在隔离进程触发访问异常；schematic 更新无效，port 处理仍缺 flat。私有编辑器启动模态导致桥接无法加载，本次未执行 app 上下文探针。保留原故障并后移，后续先证实旧副本的原生安全重建或等价可复验路由。 Batch165: iterator-based loading passes all three pages without the old ReadAllPages3969 failure, but native pages-only traversal still reports missing_schematic_net. IsExpanded is1 and Expand returns DboState1022 before traversal; no in-memory restoration proved. Source and both private copies are byte-identical, no save/host/remaining workers. H02 deferred; future editor-context or supported invalidation/rebuild route still required."
     },
     {
       "id": "H03",
@@ -2944,9 +2945,9 @@
         ".local/copied-port-root-init-20261024/report.json",
         ".local/schematic-expansion-20261024/report.json"
       ],
-      "latestObservation": "ReadAllPages prerequisite fails3969 before Expand; no flat-net restoration proved. Source hashes unchanged.",
-      "latestEvidence": "docs/implementation/batch-152-evidence.json",
-      "nextAction": "Retain original fixture and oracle. Compare the same legacy DSN in a verified private editor context and investigate a supported in-memory native connectivity rebuild. Keep incomplete native bindings explicit."
+      "latestObservation": "Direct iterator loads all three pages; original NULL binding persists. Expand after page loading returns1022 with IsExpanded1, before flat traversal. No save or restoration, original hash unchanged.",
+      "latestEvidence": "docs/implementation/batch-165-evidence.json",
+      "nextAction": "Compare the same legacy DSN in an authenticated private editor context, or locate a supported invalidation/rebuild route. Avoid repeating ReadAllPages/Expand without a new lifecycle prerequisite; never fabricate schematic/flat bindings from names."
     },
     {
       "id": "ISS-D02-native-page-name-lookup",
@@ -3791,7 +3792,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "H02: revisit original NULL schematic-net fixture using isolated native reconstruction or a verified equivalent route.",
+    "nextIndependentWork": "L02: complete an independent library vector lifecycle slice while preserving empty-name/font-quality native failures.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3960,7 +3961,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 164,
+    "batch": 165,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4344,7 +4345,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-164-evidence.json",
+    "evidence": "docs/implementation/batch-165-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4360,7 +4361,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 11,
-    "productionCodeChanged": true,
+    "productionCodeChanged": false,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4427,9 +4428,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "P02",
-      "before": 75,
-      "after": 88
+      "feature": "H02",
+      "before": 76,
+      "after": 89
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4496,7 +4497,7 @@
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
     "cacheAllDisplayFontsAccepted": true,
-    "feature": "P02",
+    "feature": "H02",
     "explicitUnnumberedSingleUnitMapAccepted": true,
     "foldedLibEngineMcpAccepted": true
   },
