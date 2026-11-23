@@ -2055,7 +2055,7 @@
       "module": "原生",
       "title": "真实DRC执行/本次报告/定位",
       "required": true,
-      "queueOrder": 69,
+      "queueOrder": 83,
       "dependencies": [
         "C00",
         "D03"
@@ -2124,13 +2124,14 @@
         ".local/online-native-drc-all-rules-audit-20261026/report.json",
         ".local/drc-counts-mcp-20261026/report.json",
         ".local/drc-counts-mcp-v2-20261026/report.json",
-        ".local/regression-580-native-drc-counts-20261026.txt"
+        ".local/regression-580-native-drc-counts-20261026.txt",
+        "docs/implementation/batch-159-evidence.json"
       ],
       "issues": [
         "ISS-V03-capture-runtime-inventory-timeout"
       ],
       "implementationReady": false,
-      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending. Batch92: actual read-only capGetDRCConfigData proves online electrical rule flags all0 while overall online flow1 and OUT/OUT ERC severity E. Per-design GetDRCSettings queried candidate internal keys returns default unknown, so no guessed EnableDRC or global config write executed. Prior error oracle remains failed; explicit rule coverage/enablement still required. Batch94: private per-design EnableDRC(\"DRC_Check_Unconnected_Nets_Online\",true) returns1, but config readback unchanged0; DRC execution intentionally refused, finally restorefalse returns1 and full config/source/OPJ hashes unchanged. Return value alone does not prove rule enabled. Batch99: authenticated generation-bound capture_gui_query entity=drc_configuration reads source-checked flags and16x16ERC matrix. Actual MCP repeat stable/detached rejection passes; all7online electrical flags remain0 despite flow/master1. GetDRCSettings on actual config field names returns unknown, so no new rule-ID mapping proven. First overlong response refusal retained, compact selected data fits unchanged16KiB transport. Configuration query is not rule execution and original conflict-not-detected oracle remains failed. Exact rule enabling/run/report classification/full V03 still pending. Batch100: actual24.1 PCB::Design Rules Check with explicit DSN selection and fixed transient configuration-return callback detects all original four output/output pin conflicts. Fresh native report13errors,7ORCAP1628; independent saved-copy14definition pin-nets and pin types preserved, callback restored and configuration unchanged. Native run auto-saves private DSN/OPJ and asks to view log; original immutable-source/timeout report retained, separate late receipt and independent audit accept only conflict-detection prerequisite. Old Tools menu fails before callback. Original online-zero failure is not erased. Clean fixture, structured MCP lifecycle and end-to-end automation remain open. Copied24.1-bundled legacy OPJ still triggers upgrade; direct24.1-resaved DSN without OPJ prepared but not yet opened, prompt macro trial unverified. Batch101: native24.1 direct DSN open creates fresh PCB OPJ; native-generated copies reopen without old-upgrade dialog. MessageBox-in-Tcl, separate queued macro, and ShowDRCOutput0 do not complete menu run without user answering log question; retained/deferred. Seven exact project online flags now read back1, original14pin/nets/types preserved; immediate normalized-path counters0 are not authoritative. Late raw GetName key query yields2 electrical errors versus normalized0 on same file, late log2electrical+5physical. Read-only MCP drc_counts now uses native raw GetName and explicitly disclaims completion/coverage; actual stable reader and detached rejection pass. First reader manually miscounted physical4 retained, corrected from prior independently dumped5line log only, no original four-pin coverage oracle change. Original four-conflict coverage, complete async completion signal, clean fixture and structured execution remain open; V03 still deferred."
+      "remaining": "Official config callback confirmed only returns config/closes dialog. One owned Capture official CLI-script runtime inventory attempt, no explicit design open/DRC, timed out45s without inventory; owned0 afterward. Startup/modal/license cause unknown; no DRC command signature/execution/report proven. No public DRC tool; original native clean/error fixture/report-origin gates unchanged. Batch91: native CleanAndRunOnlineDRC/Dump calls acknowledged with fresh source-bound log. Clean copy0/0; saved/reopened deliberate four-output-pin conflict also0/0, so error-detection oracle FAILED. Native invocation does not prove electrical rule coverage/configuration. Instance SetPinType no-op failure retained; shared definition fixture changes exactly predeclared4pins. Full config/rule scope/report parsing/public task lifecycle pending. Batch92: actual read-only capGetDRCConfigData proves online electrical rule flags all0 while overall online flow1 and OUT/OUT ERC severity E. Per-design GetDRCSettings queried candidate internal keys returns default unknown, so no guessed EnableDRC or global config write executed. Prior error oracle remains failed; explicit rule coverage/enablement still required. Batch94: private per-design EnableDRC(\"DRC_Check_Unconnected_Nets_Online\",true) returns1, but config readback unchanged0; DRC execution intentionally refused, finally restorefalse returns1 and full config/source/OPJ hashes unchanged. Return value alone does not prove rule enabled. Batch99: authenticated generation-bound capture_gui_query entity=drc_configuration reads source-checked flags and16x16ERC matrix. Actual MCP repeat stable/detached rejection passes; all7online electrical flags remain0 despite flow/master1. GetDRCSettings on actual config field names returns unknown, so no new rule-ID mapping proven. First overlong response refusal retained, compact selected data fits unchanged16KiB transport. Configuration query is not rule execution and original conflict-not-detected oracle remains failed. Exact rule enabling/run/report classification/full V03 still pending. Batch100: actual24.1 PCB::Design Rules Check with explicit DSN selection and fixed transient configuration-return callback detects all original four output/output pin conflicts. Fresh native report13errors,7ORCAP1628; independent saved-copy14definition pin-nets and pin types preserved, callback restored and configuration unchanged. Native run auto-saves private DSN/OPJ and asks to view log; original immutable-source/timeout report retained, separate late receipt and independent audit accept only conflict-detection prerequisite. Old Tools menu fails before callback. Original online-zero failure is not erased. Clean fixture, structured MCP lifecycle and end-to-end automation remain open. Copied24.1-bundled legacy OPJ still triggers upgrade; direct24.1-resaved DSN without OPJ prepared but not yet opened, prompt macro trial unverified. Batch101: native24.1 direct DSN open creates fresh PCB OPJ; native-generated copies reopen without old-upgrade dialog. MessageBox-in-Tcl, separate queued macro, and ShowDRCOutput0 do not complete menu run without user answering log question; retained/deferred. Seven exact project online flags now read back1, original14pin/nets/types preserved; immediate normalized-path counters0 are not authoritative. Late raw GetName key query yields2 electrical errors versus normalized0 on same file, late log2electrical+5physical. Read-only MCP drc_counts now uses native raw GetName and explicitly disclaims completion/coverage; actual stable reader and detached rejection pass. First reader manually miscounted physical4 retained, corrected from prior independently dumped5line log only, no original four-pin coverage oracle change. Original four-conflict coverage, complete async completion signal, clean fixture and structured execution remain open; V03 still deferred. Batch159 reestablished authenticated native host on a fresh private OPJ/DSN. Inherited report path points to the old directory and is refused. Explicit transient report relocation reaches callback, then host PID38224 exits with Windows Application Error1000/0xc0000374. No new report or native completion receipt. Root cause unproven; V03 remains deferred."
     },
     {
       "id": "V04",
@@ -3738,6 +3739,14 @@
       "summary": "Native symbol pin label Boolean setters succeed in memory but save/reopen restores True.",
       "evidence": "docs/implementation/batch-158-evidence.json",
       "nextAction": "Verify owner serialization and independent XML or editor path before adding a public writer."
+    },
+    {
+      "id": "ISS-V03-native-menu-host-exit",
+      "featureId": "V03",
+      "status": "open",
+      "summary": "Private Capture exits after offline menu configuration callback with heap corruption event; no report.",
+      "evidence": "docs/implementation/batch-159-evidence.json",
+      "nextAction": "Compare byte-preserving report-path substitution and a short-path fixture on separate private hosts, then reverify original conflict and clean cases."
     }
   ],
   "excluded": [
@@ -3776,7 +3785,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "V03: continue original native DRC report completion and four-conflict coverage.",
+    "nextIndependentWork": "E02: complete original native library export/roundtrip acceptance. V03 host-exit diagnosis remains deferred.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -4329,7 +4338,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-158-evidence.json",
+    "evidence": "docs/implementation/batch-159-evidence.json",
     "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,

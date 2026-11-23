@@ -1,0 +1,44 @@
+{
+  "batch": 159,
+  "date": "2026-11-23",
+  "feature": "V03",
+  "baseline": "83a2efef1a9a2387e1a57b3efcb9c09ca9c9f5ec",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullV03Accepted": false,
+  "productionCodeChanged": false,
+  "tools": 244,
+  "nativeObservation": {
+    "privateHostPid": 38224,
+    "authenticatedBridgeOpened": true,
+    "directDsnProjectTypeModalObserved": true,
+    "existingOpjCopyOpened": true,
+    "inheritedReportPathRefused": true,
+    "explicitTransientReportPathEnteredCallback": true,
+    "reportProduced": false,
+    "completionReceipt": false,
+    "sourceUnchanged": true,
+    "matchingWindowsEvent": {
+      "time": "2026-11-23T23:54:00.1223671+08:00",
+      "eventId": 1000,
+      "exception": "0xc0000374",
+      "pid": 38224,
+      "application": "Capture.exe",
+      "module": "ntdll.dll",
+      "recordId": 26665
+    },
+    "causeEstablished": false
+  },
+  "targetedRegression": {
+    "total": 17,
+    "passed": 17
+  },
+  "fullRegressionRerunThisBatch": false,
+  "evidenceSha256": {
+    ".local/batch-159-native-drc/native.json": "6a296720d888cd030da877cc1a94a1c34d7cfd77553a41fd5daffd1ce8d7dbd9",
+    ".local/batch-159-native-drc/open.json": "58f60be711d504282d32e6765359096a766d421d96d64445c5da23fb39a4f956",
+    ".local/batch-159-native-drc/crash.json": "6ed171c953a65f40ff9c350dafd750ff6a3a0640202e9122fdb58f436e724575",
+    ".local/batch-159-native-drc/regression.txt": "70d8c7f09a0f39bb3902398abdae72673a041540fd02341f497e0cc9f0bf1042"
+  }
+}

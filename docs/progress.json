@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
   },
-  "acceptanceCanonicalSha256": "861462e5450df07fbf81e832cb795b723cb15a3b67a7d98c83bc12c522e9856e"
+  "acceptanceCanonicalSha256": "3c23a2f42c262719ac96f0acd149088c754b993dbb4c4fb07c1e3ca434259ba5"
 }
