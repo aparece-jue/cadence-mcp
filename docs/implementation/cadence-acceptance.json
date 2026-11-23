@@ -1213,7 +1213,7 @@
       "module": "属性",
       "title": "属性新增/删除/显示状态与文字位置",
       "required": true,
-      "queueOrder": 61,
+      "queueOrder": 84,
       "dependencies": [
         "E01",
         "C05"
@@ -1221,7 +1221,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "显式属性来源与删除语义；显示与有效值分开计划",
+      "implementation": "显式属性来源与删除语义；显示与有效值分开计划；显示字体任务可显式恢复默认字体继承",
       "acceptance": "继承回退、空值与删除区别、显示位置/字体及独立重开",
       "status": "deferred",
       "evidence": [
@@ -1236,13 +1236,14 @@
         ".local/display-font-mcp-v2-20261025/report.json",
         ".local/regression-473-display-fonts-v2-20261025.txt",
         "docs/implementation/batch-139-evidence.json",
-        "docs/implementation/batch-140-evidence.json"
+        "docs/implementation/batch-140-evidence.json",
+        "docs/implementation/batch-160-evidence.json"
       ],
       "issues": [
         "ISS-E02-display-font-quality-persistence"
       ],
       "implementationReady": true,
-      "remaining": "Existing metadata set/empty/delete and inherited fallback, layout, and explicit font tasks remain available. Batch140 adds public PCB Footprint display creation and deletion on a local placed instance, with the fixed Arial-11 quality1 descriptor on creation. Verified actual MCP save/reopen, legacy layout, all modeled instance state/other fonts, definition nets and connection objects, cancellation, idempotence, simulated post-save interruption recovery without mutation replay, and terminal artifact tamper rejection. Quality2 still saves as1 in the original fixture and is rejected. Full E02 remains deferred for default-reset, arbitrary quality persistence, occurrence, rendering and broader lifecycle coverage."
+      "remaining": "Existing metadata set/empty/delete and inherited fallback, layout, and explicit font tasks remain available. Batch140 adds public PCB Footprint display creation and deletion on a local placed instance, with the fixed Arial-11 quality1 descriptor on creation. Verified actual MCP save/reopen, legacy layout, all modeled instance state/other fonts, definition nets and connection objects, cancellation, idempotence, simulated post-save interruption recovery without mutation replay, and terminal artifact tamper rejection. Quality2 still saves as1 in the original fixture and is rejected. Full E02 remains deferred for default-reset, arbitrary quality persistence, occurrence, rendering and broader lifecycle coverage. Batch160 actual MCP default-explicit-default reset passes via native same-name display recreation, preserving all modeled layouts/colors/fonts/instance state and definition connections. Wrong design-default descriptor refuses before mutation, failed outputs and replay refuse, fresh-server recovery passes. Default reset is verified. Arbitrary quality, occurrence and rendered bounds remain deferred."
     },
     {
       "id": "E03",
@@ -3777,7 +3778,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
+      "evidence": ".local/batch-160-default-font/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3785,7 +3786,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "E02: complete original native library export/roundtrip acceptance. V03 host-exit diagnosis remains deferred.",
+    "nextIndependentWork": "D05: continue original object layout, spacing, alignment and source-aware geometry acceptance. E02 rendering and occurrence remain deferred.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3807,7 +3808,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
+      "evidence": ".local/batch-160-default-font/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4338,8 +4339,8 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-159-evidence.json",
-    "fullRegressionRerunThisBatch": false,
+    "evidence": "docs/implementation/batch-160-evidence.json",
+    "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4485,7 +4486,8 @@
     "netSymbolNcAndPoseMatrixAccepted": true,
     "digitalNativeCode26McpAccepted": true,
     "fullD02Accepted": false,
-    "unitTerminalWireMcpAccepted": true
+    "unitTerminalWireMcpAccepted": true,
+    "defaultFontResetAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

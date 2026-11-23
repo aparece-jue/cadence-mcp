@@ -1,0 +1,45 @@
+{
+  "batch": 160,
+  "date": "2026-11-24",
+  "feature": "E02",
+  "baseline": "627c68b0cfba7219eadc85ea44f906ad144811bb",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullE02Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "changedDevelopmentTools": [
+    "capture_plan_display_font"
+  ],
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "defaultExplicitResetChain": true,
+    "allFontsAndModeledStateVerified": true,
+    "freshRecoveryNoReplay": true,
+    "wrongDefaultRejectedBeforeMutation": true,
+    "failedOpenAndReplayRefused": true,
+    "sourceUnchanged": true
+  },
+  "latestFullRegression": {
+    "total": 750,
+    "passed": 749,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-160-default-font/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "scope": [
+    "Recreating the existing instance display property restores native default inheritance while the original layout, color, display type and all modeled instance state remain verified.",
+    "Setting an empty LOGFONT leaves the explicit font. Copying the design default descriptor changes its shape but keeps explicit inheritance. Both original observations are retained.",
+    "Other font quality persistence, occurrence display overrides and actual rendering remain unverified."
+  ],
+  "evidenceSha256": {
+    ".local/batch-160-default-font/native-mcp.json": "fc9c46de2c3b4f32e84b8ac31a7c5e59585ceffc31fac8b78f1b8536e7ae10ec",
+    ".local/batch-160-default-font/negative.json": "767538b4bcefb2a117cde5561573f6dc978ed424856940fa04d931696a492f92",
+    ".local/batch-160-default-font/regression.txt": "d96c923f6bfded694b332572d94488a2d95bcca083e585c2d5079692ed8bf056",
+    ".local/batch-160-default-font/native-candidates.json": "f4f556d359d7b7052f8f44fca4168b48c5f7f467609a238a21ba3f040c87cb16"
+  }
+}

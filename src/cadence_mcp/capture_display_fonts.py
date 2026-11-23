@@ -57,7 +57,9 @@ def query_font(capture,sid,part_id,name):
 
 class CaptureDisplayFonts(CapturePropertyEdits):
     kind='capture_display_font'
-    def plan(self,sid,part_id,name,font):
+    def plan(self,sid,part_id,name,font,reset_to_default=False):
+        if type(reset_to_default) is not bool:
+            raise CadenceError('invalid_display_font','resetToDefault must be a strict boolean.')
         new=font_fields(font)
         with self.capture.lock:
             cap=self.capture;s=cap._session(sid);units=read_units(cap,sid);unit=units.get(part_id)
@@ -66,23 +68,26 @@ class CaptureDisplayFonts(CapturePropertyEdits):
             if sum(row['name']==unit['schematicName'] for row in data['schematic'])!=1 or sum(p['schematicId']==part['schematicId'] and p['name']==unit['pageName'] for p in data['page'])!=1:raise CadenceError('ambiguous_target','Target schematic and page must have unique semantic names.')
             fonts=read_fonts(self.config,s['design'],s['design'].parent,units);old=target_font(fonts,unit,name)
             old_prop=next(p for row in fonts if row['nativeId']==unit['nativeId'] for p in row['fonts'] if p['name']==name)
-            if old==new and old_prop['fontDefault']==0:raise CadenceError('no_change','Requested explicit font already matches.')
+            if old==new and old_prop['fontDefault']==int(reset_to_default):raise CadenceError('no_change','Requested explicit font already matches.')
             expected=copy.deepcopy(fonts)
             for row in expected:
                 if row['nativeId']==unit['nativeId']:
                     for p in row['fonts']:
-                        if p['name']==name:p.update(font=new,fontDefault=0)
+                        if p['name']==name:p.update(font=new,fontDefault=int(reset_to_default))
             evidence={'state':read_state(self.config,s['design'],s['design'].parent,units),'units':unit_graph(units),'fonts':expected}
             path=s['design'].parent/(new_id('expected-display-font')+'.json');write_json(path,evidence)
             payload={k:unit[k] for k in ('nativeId','schematicName','pageName','reference')}
             payload.update(sourceDesign=str(s['design']),sourceFingerprint=s['revision'],partId=part_id,property=name,oldFont=old,newFont=new,oldFontDefault=old_prop['fontDefault'],oldDefaultFontType=old_prop['defaultFontType'],expectedEvidence=str(path),expectedEvidenceHash=sha256(path),definitionDigest=definition_baseline(data),connectionDigest=connection_digest(data,inventory(cap,sid)))
+            if reset_to_default:payload['resetToDefault']=True
             cap._session(sid);return self.create_plan(payload)
-    def preview(self,p):return {k:p[k] for k in ('partId','nativeId','schematicName','pageName','reference','property','oldFont','newFont','sourceFingerprint')}
+    def preview(self,p):return {k:p[k] for k in ('partId','nativeId','schematicName','pageName','reference','property','oldFont','newFont','sourceFingerprint','resetToDefault') if k in p}
     def preflight(self,p):
         for path,key in (('sourceDesign','sourceFingerprint'),('expectedEvidence','expectedEvidenceHash')):
             if sha256(checked_path(p[path],(self.config.workspace_root,)))!=p[key]:raise CadenceError('target_changed','Frozen display-font source or expected state changed.')
     def execute(self,d,p,cancel,on_started):
-        write_json(d/'font-request.json',{k:p[k] for k in ('nativeId','schematicName','pageName','reference','property','oldFont','newFont','oldFontDefault','oldDefaultFontType')})
+        request={k:p[k] for k in ('nativeId','schematicName','pageName','reference','property','oldFont','newFont','oldFontDefault','oldDefaultFontType')}
+        if p.get('resetToDefault'):request['resetToDefault']=True
+        write_json(d/'font-request.json',request)
         return super().execute(d,p,cancel,on_started)
     def native_command(self,d,p):return [self.config.install_root/'tcltk/bin/tclsh.exe',ADAPTERS/'edit_display_font.tcl',self.config.install_root,d/'design.dsn',d/'font-request.json',d/'native-result.json']
     def verify(self,d,p,native_completed):

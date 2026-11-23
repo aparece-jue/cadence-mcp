@@ -30,7 +30,21 @@ set rc [catch {
  if {[cmcp::vectorFont $old] ne [dict get $spec oldFont]} {error changed_font}
  set isDefault [$prop IsFontDefault $st];cmcp::check $st;set defaultType [$prop GetDefaultFontType $st];cmcp::check $st
  if {$isDefault!=[dict get $spec oldFontDefault] || $defaultType!=[dict get $spec oldDefaultFontType]} {error changed_font_inheritance}
- set phase font;set font [DboTclHelper_sMakeLOGFONT {*}[dict get $spec newFont]];cmcp::check [$prop SetFont $font]
+ set phase font
+ if {[dict exists $spec resetToDefault] && [dict get $spec resetToDefault]} {
+  set font [$d GetDefaultFont $defaultType $st];cmcp::check $st
+  if {[cmcp::vectorFont $font] ne [dict get $spec newFont]} {error default_font_expectation_mismatch}
+  set location [$prop GetLocation $st];cmcp::check $st
+  set rotation [$prop GetRotation $st];cmcp::check $st
+  set color [$prop GetColor $st];cmcp::check $st
+  set dtype [$prop GetDisplayType $st];cmcp::check $st
+  cmcp::check [$instance DeleteDisplayProp $prop]
+  set prop [$instance NewDisplayProp $st [cmcp::cs [dict get $spec property]] $location $rotation [DboTclHelper_sMakeLOGFONT] $color];cmcp::check $st
+  if {$prop eq "NULL"} {error missing_recreated_display}
+  cmcp::check [$prop SetDisplayType $dtype]
+ } else {
+  set font [DboTclHelper_sMakeLOGFONT {*}[dict get $spec newFont]];cmcp::check [$prop SetFont $font]
+ }
  $prop SetBoundingBoxDirty 1;$prop SetOwnerBoundingBoxDirty 1
  set phase save;cmcp::check [$page MarkModified];cmcp::check [$s MarkModified $page];cmcp::check [$s SavePage $page];cmcp::check [$d SaveSchematic $s];cmcp::check [$session MarkAllLibForSave $d];cmcp::check [$session SaveDesign $d]
 } message]

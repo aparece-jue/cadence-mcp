@@ -329,3 +329,8 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 `capture_plan_part_edit` 的 `set_pose` 可通过 `wireEnds` 显式配对已连接的本单元 `pinId` 与同页 `wireId`。同时提供完整 `expectedUnitConnections` 和所有目标脚热点。每个线端从原热点移到声明的新热点，另一端固定。原线段与新线段均须为非零的两点正交线段，原热点处不能同时接另一条线。已有别名的锚点须落在新线段上。
 
 器件和线端在同一隔离副本内保存。重新打开后核对原生线段身份、别名归属与锚点、完整定义层脚和线分组，以及器件位姿和缓存。用户声明的引脚网络须保持原样。省略 `wireEnds` 时，工具沿用原有编辑行为。带分支的线端、多折线重新布线、连接符触点变更和 occurrence 展平需独立处理。
+
+
+## 显示属性恢复默认字体
+
+`capture_plan_display_font` 支持 `resetToDefault=true`，`font` 提供所属设计默认字体的独立预期。原生工作进程先核对默认字体，再重建同名显示属性以恢复继承，保留位置、旋转、颜色和显示方式。保存后独立重开核对所有实例字体、显示状态、属性、几何和定义连接。错误默认字体会在修改前拒绝。已有未包含该选项的计划沿用显式字体写入。

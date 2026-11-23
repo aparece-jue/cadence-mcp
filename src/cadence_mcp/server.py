@@ -1049,9 +1049,10 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
 
     @register(readonly=False)
     async def capture_plan_display_font(sessionId: str, partId: str,
-                                       property: Annotated[str, Field(min_length=1, max_length=128)], font: VectorFont) -> ToolResult:
-        """Plan a complete explicit font replacement on an existing display property. Unspecified font fields take schema defaults. Require native identity, source and frozen state; verify all instance fonts/default flags and modeled geometry/properties/connections after independent reopen. Cadence-normalized values are rejected rather than silently accepted. No font rendering guarantee."""
-        return await invoke(display_fonts.plan, sessionId, partId, property, font.model_dump(), backend="capture_dbo", coverage=("explicit_display_font_plan", "all_display_font_baseline"))
+                                       property: Annotated[str, Field(min_length=1, max_length=128)], font: VectorFont,
+                                       resetToDefault: Annotated[bool, Field(strict=True)] = False) -> ToolResult:
+        """Plan an existing display font edit. resetToDefault recreates the display with inherited font while preserving its layout and color. Supply the expected design default descriptor in font. Unspecified font fields take schema defaults. Require native identity, source and frozen state; verify all instance fonts/default flags and modeled geometry/properties/connections after independent reopen. Cadence-normalized values are rejected rather than silently accepted. No font rendering guarantee."""
+        return await invoke(display_fonts.plan, sessionId, partId, property, font.model_dump(), resetToDefault, backend="capture_dbo", coverage=("explicit_display_font_plan", "all_display_font_baseline"))
 
     @register(readonly=False)
     async def capture_apply_display_font(planId: str, planDigest: str,

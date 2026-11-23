@@ -13,7 +13,27 @@ async def main():
    async def call(name,args):
     response=await client.call_tool(name,args);assert not response.is_error,(name,response.structured_content);return response.structured_content['data']
    sid=(await call('capture_open',{'workspaceId':(await call('cadence_create_workspace',{'sourceDesign':str(source)}))['workspaceId']}))['sessionId'];parts=(await call('capture_query',{'sessionId':sid,'entity':'part','scope':{'kind':'design'},'limit':1000}))['items'];target=next(p for p in parts if p['reference']=='halfadd_A');before=await call('capture_get_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference'});report['before']=before;assert before['fontDefault'] is True
-   request={**before['font'],'height':-19,'weight':600,'quality':1};report['declared']=request;plan=await call('capture_plan_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference','font':request});report['plan']=plan;(root/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8');key={k:plan[k] for k in ('planId','planDigest')};await call('capture_close',{'sessionId':sid});result=await call('capture_apply_display_font',{**key,'idempotencyKey':'default-font'});report['result']=result;sid=(await call('capture_open_edit_result',{**key,'kind':'display_font'}))['sessionId'];parts=(await call('capture_query',{'sessionId':sid,'entity':'part','scope':{'kind':'design'},'limit':1000}))['items'];target=next(p for p in parts if p['reference']=='halfadd_A');after=await call('capture_get_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference'});report['after']=after;assert after['fontDefault'] is False and after['font']==request;await call('capture_close',{'sessionId':sid});report['passed']=True
+   request={**before['font'],'height':-19,'weight':600,'quality':1};report['declared']=request;plan=await call('capture_plan_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference','font':request});report['plan']=plan;(root/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8');key={k:plan[k] for k in ('planId','planDigest')};await call('capture_close',{'sessionId':sid});result=await call('capture_apply_display_font',{**key,'idempotencyKey':'default-font'});report['result']=result;sid=(await call('capture_open_edit_result',{**key,'kind':'display_font'}))['sessionId'];parts=(await call('capture_query',{'sessionId':sid,'entity':'part','scope':{'kind':'design'},'limit':1000}))['items'];target=next(p for p in parts if p['reference']=='halfadd_A');after=await call('capture_get_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference'});report['after']=after;assert after['fontDefault'] is False and after['font']==request
+   reset=await call('capture_plan_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Reference','font':before['font'],'resetToDefault':True})
+   report['resetPlan']=reset
+   reset_key={k:reset[k] for k in ('planId','planDigest')}
+   reset_result=await call('capture_apply_display_font',{**reset_key,'idempotencyKey':'restore-default'})
+   report['resetResult']=reset_result
+   reset_sid=(await call('capture_open_edit_result',{**reset_key,'kind':'display_font'}))['sessionId']
+   reset_parts=(await call('capture_query',{'sessionId':reset_sid,'entity':'part','scope':{'kind':'design'},'limit':1000}))['items']
+   reset_target=next(p for p in reset_parts if p['reference']=='halfadd_A')
+   restored=await call('capture_get_display_font',{'sessionId':reset_sid,'partId':reset_target['objectId'],'property':'Reference'})
+   assert restored['fontDefault'] is True and restored['font']==before['font']
+   report['restored']=restored
+   report['resetKey']=reset_key
+   await call('capture_close',{'sessionId':reset_sid})
+   await call('capture_close',{'sessionId':sid});report['passed']=True
+  async with Client(params,mode='legacy',read_timeout_seconds=240) as fresh:
+   replay=await fresh.call_tool('capture_apply_display_font',{**report['resetKey'],'idempotencyKey':'restore-default'})
+   assert not replay.is_error and not replay.structured_content['data']['mutationReplayed']
+   recovered=await fresh.call_tool('capture_recover_display_font',report['resetKey'])
+   assert not recovered.is_error
+   report['freshRecoveryNoReplay']=True
  except BaseException as e:report.update(error=str(e),traceback=traceback.format_exc())
  report['sourceHashAfter']=sha256(source);report['passed']=report['passed'] and report['sourceHashBefore']==report['sourceHashAfter'];(root/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps({'passed':report['passed'],'error':report.get('error')}));
  if not report['passed']:raise SystemExit(1)

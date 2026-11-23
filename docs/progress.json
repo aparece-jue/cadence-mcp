@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
+    "evidence": ".local/batch-160-default-font/regression.txt"
   },
-  "acceptanceCanonicalSha256": "3c23a2f42c262719ac96f0acd149088c754b993dbb4c4fb07c1e3ca434259ba5"
+  "acceptanceCanonicalSha256": "cc4b17daaae78d984ebd286501a1b12870c66fc18591b3dbcdd39ade4ed9806f"
 }

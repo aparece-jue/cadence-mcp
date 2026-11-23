@@ -25646,7 +25646,7 @@
   {
     "name": "capture_plan_display_font",
     "title": null,
-    "description": "Plan a complete explicit font replacement on an existing display property. Unspecified font fields take schema defaults. Require native identity, source and frozen state; verify all instance fonts/default flags and modeled geometry/properties/connections after independent reopen. Cadence-normalized values are rejected rather than silently accepted. No font rendering guarantee.",
+    "description": "Plan an existing display font edit. resetToDefault recreates the display with inherited font while preserving its layout and color. Supply the expected design default descriptor in font. Unspecified font fields take schema defaults. Require native identity, source and frozen state; verify all instance fonts/default flags and modeled geometry/properties/connections after independent reopen. Cadence-normalized values are rejected rather than silently accepted. No font rendering guarantee.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -25665,6 +25665,11 @@
         },
         "font": {
           "$ref": "#/$defs/VectorFont"
+        },
+        "resetToDefault": {
+          "default": false,
+          "title": "Resettodefault",
+          "type": "boolean"
         }
       },
       "required": [
