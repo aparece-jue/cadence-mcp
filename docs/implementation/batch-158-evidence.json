@@ -1,0 +1,856 @@
+{
+  "batch": 158,
+  "date": "2026-11-23",
+  "feature": "L04",
+  "baseline": "06279601cf640f8a671b5496067d4ae8a1b499f9",
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "goalComplete": false,
+  "fullL04Accepted": false,
+  "productionCodeChanged": false,
+  "tools": 244,
+  "nativeDiagnostic": {
+    "sourceSha256": "cfc2b309edbaf2490d3819e74a16a827dae720ab99ac45507ad6249e40dac7be",
+    "cases": [
+      {
+        "mode": "setter",
+        "steps": [
+          {
+            "label": "before",
+            "process": {
+              "state": "exited",
+              "pid": 8336,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "write",
+            "process": {
+              "state": "exited",
+              "pid": 19232,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                }
+              ]
+            }
+          },
+          {
+            "label": "reopen",
+            "process": {
+              "state": "exited",
+              "pid": 37380,
+              "returnCode": 0,
+              "durationSeconds": 2.188,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          }
+        ],
+        "immediateMatches": true,
+        "reopenMatches": false,
+        "nativeBooleanTypesPreserved": true
+      },
+      {
+        "mode": "savepart",
+        "steps": [
+          {
+            "label": "before",
+            "process": {
+              "state": "exited",
+              "pid": 22772,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "write",
+            "process": {
+              "state": "exited",
+              "pid": 5116,
+              "returnCode": 0,
+              "durationSeconds": 2.218,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                }
+              ]
+            }
+          },
+          {
+            "label": "reopen",
+            "process": {
+              "state": "exited",
+              "pid": 23452,
+              "returnCode": 0,
+              "durationSeconds": 2.219,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          }
+        ],
+        "immediateMatches": true,
+        "reopenMatches": false,
+        "nativeBooleanTypesPreserved": true
+      },
+      {
+        "mode": "savesymbol",
+        "steps": [
+          {
+            "label": "before",
+            "process": {
+              "state": "exited",
+              "pid": 38244,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "write",
+            "process": {
+              "state": "exited",
+              "pid": 38004,
+              "returnCode": 0,
+              "durationSeconds": 2.188,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                }
+              ]
+            }
+          },
+          {
+            "label": "reopen",
+            "process": {
+              "state": "exited",
+              "pid": 2296,
+              "returnCode": 0,
+              "durationSeconds": 2.219,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          }
+        ],
+        "immediateMatches": true,
+        "reopenMatches": false,
+        "nativeBooleanTypesPreserved": true
+      },
+      {
+        "mode": "savepackage",
+        "steps": [
+          {
+            "label": "before",
+            "process": {
+              "state": "exited",
+              "pid": 25496,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "write",
+            "process": {
+              "state": "exited",
+              "pid": 12096,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 0,
+                  "failed": 0,
+                  "after": 0,
+                  "dbAfter": 0
+                }
+              ]
+            }
+          },
+          {
+            "label": "reopen",
+            "process": {
+              "state": "exited",
+              "pid": 30000,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          }
+        ],
+        "immediateMatches": true,
+        "reopenMatches": false,
+        "nativeBooleanTypesPreserved": true
+      },
+      {
+        "mode": "typed",
+        "steps": [
+          {
+            "label": "before",
+            "process": {
+              "state": "exited",
+              "pid": 11496,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "write",
+            "process": {
+              "state": "exited",
+              "pid": 14516,
+              "returnCode": 0,
+              "durationSeconds": 2.203,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 1,
+                  "failed": 1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 1,
+                  "failed": 1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": true,
+                  "code": 1,
+                  "failed": 1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          },
+          {
+            "label": "reopen",
+            "process": {
+              "state": "exited",
+              "pid": 23944,
+              "returnCode": 0,
+              "durationSeconds": 2.219,
+              "remainingOwnedProcesses": 0,
+              "totalOwnedProcesses": 2,
+              "rootExitSignalConfirmed": true,
+              "observedProcessExitSignalsConfirmed": true,
+              "observedOwnedProcessCount": 2
+            },
+            "result": {
+              "partName": "GATE.Normal",
+              "rows": [
+                {
+                  "property": "Pin Names Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Numbers Visible",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                },
+                {
+                  "property": "Pin Names Rotate",
+                  "nativeType": 3,
+                  "before": 1,
+                  "dbBefore": 1,
+                  "attempted": false,
+                  "code": -1,
+                  "failed": -1,
+                  "after": 1,
+                  "dbAfter": 1
+                }
+              ]
+            }
+          }
+        ],
+        "immediateMatches": false,
+        "reopenMatches": false,
+        "nativeBooleanTypesPreserved": true
+      }
+    ],
+    "writeAcceptancePassed": false,
+    "sourceUnchanged": true,
+    "diagnosticCompleted": true
+  },
+  "fullRegressionRerunThisBatch": false,
+  "targetedRegression": {
+    "total": 77,
+    "passed": 77,
+    "skipped": 0
+  },
+  "scope": [
+    "Five private OLB copies and fifteen fresh native processes compare getter and Boolean DBProp views.",
+    "Fixed setters change all three fields in memory with state0. SavePart, SaveSymbol, SavePackageAll and plain save revert to True after reopen.",
+    "GetDBPropValue plus SetBOOL reports Code1/Failed1 and does not update these fields. No unsupported writer is exposed.",
+    "The original temporary checkout was removed between sessions. The clean local develop was revalidated and a new isolated checkout was created."
+  ],
+  "evidenceSha256": {
+    ".local/batch-158-library-bool/native.json": "7c05c52980322285937cb1a77fd85fbd5e0385edd144a5e00853cfe67bae031d",
+    ".local/batch-158-library-bool/library-regression.txt": "fb2379bb312422a30a274dd2fb8873876d9ee93088cfe020cbdbe2c50e7614c4"
+  }
+}

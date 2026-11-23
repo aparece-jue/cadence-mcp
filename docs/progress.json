@@ -8,8 +8,8 @@
   "statusCounts": {
     "passed": 11,
     "baseline_passed": 1,
-    "implemented_partial": 6,
-    "deferred": 15,
+    "implemented_partial": 5,
+    "deferred": 16,
     "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/batch-157-unit-terminal-wire/regression.txt"
   },
-  "acceptanceCanonicalSha256": "893637ff88d0d4775d2a100014d8a27f9290bf9357802b084793dddeb94190d0"
+  "acceptanceCanonicalSha256": "861462e5450df07fbf81e832cb795b723cb15a3b67a7d98c83bc12c522e9856e"
 }
