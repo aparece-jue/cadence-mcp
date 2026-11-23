@@ -42,7 +42,9 @@ def prove_unused_libraries(root,files,rows,check):
         for ref in refs:
             if ref['line'] not in declared or ref['targetRelativePath'] not in files:fail()
             directive,path=declared[ref['line']]
-            if directive!=ref['directive'] or Path(path).resolve()!=(root/ref['targetRelativePath']).resolve():fail()
+            actual=Path(path)
+            if not actual.is_absolute():actual=root/actual
+            if directive!=ref['directive'] or actual.resolve()!=(root/ref['targetRelativePath']).resolve():fail()
             outgoing.append((directive,ref['targetRelativePath']))
         edges[name]=outgoing
     eager=set();pending=['input.cir']

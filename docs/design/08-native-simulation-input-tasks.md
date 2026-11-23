@@ -39,3 +39,10 @@ verify将CIR分析设置、PROBE选择和所有LIB/INC与源profile/配置/已�
 第108批实现/验收详见docs/implementation/batch-108-evidence.json（从仓库根解析）。原文“拟新增”描述保留设计顺序；实际工具以contracts/tools.v0.1.json为准。
 
 第109批：现有profile计划工具可选configurationIni，支持经过原生合并核对的一目录纯global LIB选择，INI字节与配置证明绑定产物。原nom.lib213模型/34,548,882字节和216文件准备闭包通过实际MCP；完整覆盖配置和加密求解仍未通过。见docs/implementation/batch-109-evidence.json。
+
+
+## 引擎 LIB 引用路径策略（批次164）
+
+新独立引擎计划冻结 `libraryReferenceMode=job_relative_v1`：执行副本内的 `.LIB` 指向生成的 `deps/file-NNN.ext`，受控进程工作目录固定为该任务目录。原生对照确认嵌套 LIB 可按此查找；模型使用证明将相对引用绑定到该目录并核对精确闭包。INC/INCLUDE 的现有绝对规则不变。
+
+旧计划缺少该字段时按 `absolute_v1` 还原原字节，以维持原指纹和只验证恢复。CLI 新计划显式冻结 `absolute_v1`，尚未验收 CLI 的相对策略。所有源输入和准备清单保持不变，仅新执行副本采用计划指定规则。原折行及普通嵌套 LIB 的 2.5V 原预期已通过；较长绝对引用仍可使原生初始化退出，本次未确定精确边界。

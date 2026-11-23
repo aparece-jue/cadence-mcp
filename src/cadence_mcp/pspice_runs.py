@@ -72,6 +72,9 @@ def expectations_valid(rows):
 
 class PSpiceRuns(IsolatedJobs):
     kind='pspice_engine_run'
+    # Long absolute LIB references crash native setup; fixed job cwd binds short names.
+    # Plans without this policy keep their original bytes for verify-only recovery.
+    library_reference_mode='job_relative_v1'
     supports_param_list_steps=False
     max_record_bytes=262144
     def __init__(self,config,inputs,data):
@@ -89,7 +92,7 @@ class PSpiceRuns(IsolatedJobs):
                 if not RELATIVE.fullmatch(relative):raise CadenceError('invalid_input_manifest','Input file identity is not a generated path.')
                 files.append({k:f[k] for k in ('relativePath','preparedSha256','originalRelativePath','sourceSha256','references')})
             proof=execution_closure(row['directory'],{f['relativePath']:(row['directory']/f['relativePath']).read_bytes() for f in files},files)
-            payload={'modelUseProof':proof,'inputEncoding':manifest.get('inputEncoding','utf-8'),'inputBudget':manifest.get('inputBudget','standard'),'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
+            payload={'libraryReferenceMode':self.library_reference_mode,'modelUseProof':proof,'inputEncoding':manifest.get('inputEncoding','utf-8'),'inputBudget':manifest.get('inputBudget','standard'),'simulationId':simulation_id,'preparedDirectory':str(row['directory']),'manifestHash':row['manifestHash'],'sourceFingerprint':manifest['sourceFingerprint'],'files':files,'analysis':analysis,'expectedSamples':expected,'timeoutSeconds':timeout}
             if len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))>196608:raise CadenceError('plan_limit','Simulation plan exceeds durable record bound.')
             self.preflight(payload);return self.create_plan(payload)
     def backend_name(self):return 'independent_pspice_engine_tcl'
@@ -98,6 +101,7 @@ class PSpiceRuns(IsolatedJobs):
     def preview(self,p):
         return {k:p[k] for k in ('simulationId','sourceFingerprint','analysis','timeoutSeconds','expectedSamples')}|{'fileCount':len(p['files']),'backend':self.backend_name(),'implicitModelLookupVerified':False,'modelUseProof':p.get('modelUseProof')}
     def preflight(self,p):
+        if p.get('libraryReferenceMode','absolute_v1') not in ('absolute_v1','job_relative_v1'):raise CadenceError('invalid_plan','Unsupported library reference policy.')
         directory=checked_path(p['preparedDirectory'],(self.config.workspace_root,))
         if sha256(checked_path(str(directory/'input-manifest.json'),(directory,)))!=p['manifestHash']:raise CadenceError('target_changed','Prepared input manifest changed after planning.')
         if p.get('inputEncoding','utf-8') not in ('utf-8','preserve-bytes') or p.get('inputBudget','standard') not in ('standard','extended'):raise CadenceError('invalid_plan','Unsupported input encoding/budget policy.')
@@ -119,7 +123,8 @@ class PSpiceRuns(IsolatedJobs):
             for ref in f['references']:
                 if ref['targetRelativePath'] not in names or ref['directive'] not in ('INC','INCLUDE','LIB') or type(ref['line']) is not int or not 1<=ref['line']<=len(lines):raise CadenceError('invalid_input_manifest','Invalid closure reference.')
                 old=lines[ref['line']-1];ending='\r\n' if old.endswith('\r\n') else '\n' if old.endswith('\n') else '\r' if old.endswith('\r') else ''
-                lines[ref['line']-1]='.'+ref['directive']+' "'+(directory/ref['targetRelativePath']).as_posix()+'"'+(ending if preserve else '')
+                target=ref['targetRelativePath'] if ref['directive']=='LIB' and p.get('libraryReferenceMode')=='job_relative_v1' else (directory/ref['targetRelativePath']).as_posix()
+                lines[ref['line']-1]='.'+ref['directive']+' "'+target+'"'+(ending if preserve else '')
             text=''.join(lines) if preserve else '\n'.join(lines)+'\n';result[f['relativePath']]=text.encode('utf-8',errors='surrogateescape' if preserve else 'strict')
             if preserve and raw.startswith(b'\xef\xbb\xbf'):result[f['relativePath']]=b'\xef\xbb\xbf'+result[f['relativePath']]
         if execution_closure(directory,result,p['files'])!=p.get('modelUseProof'):raise CadenceError('model_use_changed','Rebased execution scope differs from its plan.')

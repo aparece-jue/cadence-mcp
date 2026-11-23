@@ -1,0 +1,323 @@
+{
+  "batch": 164,
+  "date": "2026-11-24",
+  "feature": "P02",
+  "baseline": "ce47b9c52c84c368547b2a73e7ab763111230750",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullP02Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "contractsUnchanged": true,
+  "nativePathControls": {
+    "relative-nested": {
+      "process": {
+        "state": "exited",
+        "pid": 36380,
+        "returnCode": 0,
+        "durationSeconds": 2.578,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\nrun_analysis\nfinish\ncleanup\ncomplete\n",
+      "receipt": {
+        "caught": 0,
+        "message": "",
+        "returns": {
+          "batchModeReturn": "",
+          "setupReturn": "0",
+          "analysisReturn": "0",
+          "finishReturn": "0",
+          "cleanupReturn": "0"
+        }
+      },
+      "inputLineLengths": [
+        31,
+        23,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 83,
+        "receipt.json": 137,
+        "result.dat": 739,
+        "result.out": 967
+      }
+    },
+    "absolute-nested": {
+      "process": {
+        "state": "exited",
+        "pid": 35208,
+        "returnCode": 0,
+        "durationSeconds": 2.594,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\nrun_analysis\nfinish\ncleanup\ncomplete\n",
+      "receipt": {
+        "caught": 0,
+        "message": "",
+        "returns": {
+          "batchModeReturn": "",
+          "setupReturn": "0",
+          "analysisReturn": "0",
+          "finishReturn": "0",
+          "cleanupReturn": "0"
+        }
+      },
+      "inputLineLengths": [
+        31,
+        135,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 83,
+        "receipt.json": 137,
+        "result.dat": 739,
+        "result.out": 1079
+      }
+    },
+    "relative-single": {
+      "process": {
+        "state": "exited",
+        "pid": 10968,
+        "returnCode": 0,
+        "durationSeconds": 2.562,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\nrun_analysis\nfinish\ncleanup\ncomplete\n",
+      "receipt": {
+        "caught": 0,
+        "message": "",
+        "returns": {
+          "batchModeReturn": "",
+          "setupReturn": "0",
+          "analysisReturn": "0",
+          "finishReturn": "0",
+          "cleanupReturn": "0"
+        }
+      },
+      "inputLineLengths": [
+        31,
+        22,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 83,
+        "receipt.json": 137,
+        "result.dat": 739,
+        "result.out": 962
+      }
+    },
+    "include-nested": {
+      "process": {
+        "state": "exited",
+        "pid": 24064,
+        "returnCode": 0,
+        "durationSeconds": 2.219,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\nrun_analysis\nfinish\ncleanup\ncomplete\n",
+      "receipt": {
+        "caught": 0,
+        "message": "",
+        "returns": {
+          "batchModeReturn": "",
+          "setupReturn": "0",
+          "analysisReturn": "0",
+          "finishReturn": "0",
+          "cleanupReturn": "0"
+        }
+      },
+      "inputLineLengths": [
+        31,
+        23,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 83,
+        "receipt.json": 137,
+        "result.dat": 739,
+        "result.out": 950
+      }
+    },
+    "absolute-long-nested": {
+      "process": {
+        "state": "exited",
+        "pid": 15812,
+        "returnCode": 3221226356,
+        "durationSeconds": 2.687,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\n",
+      "receipt": null,
+      "inputLineLengths": [
+        31,
+        222,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 46,
+        "result.dat": 0,
+        "result.out": 0
+      }
+    },
+    "relative-long-nested": {
+      "process": {
+        "state": "exited",
+        "pid": 26236,
+        "returnCode": 0,
+        "durationSeconds": 2.578,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "phases": "load_engine\nbatch_license_mode\nsetup_analysis\nrun_analysis\nfinish\ncleanup\ncomplete\n",
+      "receipt": {
+        "caught": 0,
+        "message": "",
+        "returns": {
+          "batchModeReturn": "",
+          "setupReturn": "0",
+          "analysisReturn": "0",
+          "finishReturn": "0",
+          "cleanupReturn": "0"
+        }
+      },
+      "inputLineLengths": [
+        31,
+        23,
+        12,
+        15,
+        11,
+        12,
+        15,
+        4
+      ],
+      "outputFiles": {
+        "phases.log": 83,
+        "receipt.json": 137,
+        "result.dat": 739,
+        "result.out": 967
+      }
+    }
+  },
+  "initialDriverFailure": {
+    "error": "UnicodeDecodeError while decoding copied native .ind as UTF-8 in the INCLUDE control",
+    "correction": "Copy only original .cir/.lib sources, exclude native index/cache files; repeat all controls in new directories.",
+    "firstDriverSha256": "1ba37fc382e7de7a0620894721a2ce0c2f0c0507e8058dd33e24ed5992d0ad37"
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "fixtures": [
+      {
+        "fixture": "flat-libraries-control-20261029",
+        "passed": true,
+        "originalNumericalOracle": {
+          "row": 5,
+          "trace": "V(OUT)",
+          "real": 2.5,
+          "absoluteTolerance": 1e-06
+        },
+        "freshRecoveryNoReplay": true,
+        "terminalNativeHashesUnchanged": true,
+        "originalInputsUnchanged": true,
+        "inputSha256": {
+          "expected.json": "f96aa0a102edb044ade72ce0a170e206ef4b4c5c168c2a3d69cbf901b917c9dd",
+          "inputs\\divider.cir": "17d0af6b59cd30c4bb1f52088c7a41db4872170cdb575943bd88266d177c86eb",
+          "inputs\\divider.mif": "0ad09ef6eb4cfc55edb0097e59b93f22a8c06ecdb69d5ef14e07e4cdd470d7db",
+          "inputs\\inner model.lib": "2e6b2c085137f2c9a6e65582b67c75371dfd4b918d938ac20fc6f077d75d762c",
+          "inputs\\outer models.ind": "a4dd2824cf0ba883ab6ffa406e8f4ce9d921fb4f8ed8d2798e9836f795143ec7",
+          "inputs\\outer models.lib": "f62bc320f3b1d5503edbfdc1c58faf883ec00dbaf6d1fe73d5b781631e1213ad"
+        }
+      },
+      {
+        "fixture": "folded-libraries-20261029",
+        "passed": true,
+        "originalNumericalOracle": {
+          "row": 5,
+          "trace": "V(OUT)",
+          "real": 2.5,
+          "absoluteTolerance": 1e-06
+        },
+        "freshRecoveryNoReplay": true,
+        "terminalNativeHashesUnchanged": true,
+        "originalInputsUnchanged": true,
+        "inputSha256": {
+          "expected.json": "7436210dbe8fadf57e4149dae4be172b1f2090b2453d67238a5d2ffc781570de",
+          "inputs\\divider.cir": "d111ba61436c3249ffbbdc5d0ffe701b8918a31e3f2adad0e9c4d5bbc0201c39",
+          "inputs\\divider.mif": "297025fd410e64bc791efe21dd4763e55eb6f9bf7b13f4a23c627b6b4be01a4d",
+          "inputs\\inner model.lib": "2e6b2c085137f2c9a6e65582b67c75371dfd4b918d938ac20fc6f077d75d762c",
+          "inputs\\outer models.ind": "58f39d2d3ec2f415a947546333b0cabb8f4e1e72e0ae7481d14a2ed1137d7e8d",
+          "inputs\\outer models.lib": "70c445c2d17630ed7073ca2231b04300d8ddd4c2b8588755b670f8fd552b52fa"
+        }
+      }
+    ]
+  },
+  "scope": [
+    "A long absolute nested LIB reference (222 characters in this control) exits native setup with 3221226356; relative nested references from the same long directory complete. A shorter absolute control (135 characters) also completes. Exact native boundary and internal heap cause are not established.",
+    "New engine plans freeze libraryReferenceMode=job_relative_v1. Only LIB references use generated deps/file-NNN names bound by the owned job cwd; INC/INCLUDE retain existing rules. Legacy plans without the policy preserve absolute bytes for recovery. CLI plans retain absolute_v1.",
+    "The original ordinary/folded LIB sources and frozen 2.5V oracles pass actual MCP fresh runs and independent native DAT reads, followed by fresh-service verify-only recovery. Old failed plans remain immutable.",
+    "Native license-unavailable classification, nominal/encrypted default model closure and broader original P02 audit remain pending. No CLI-relative claim or general path-length limit."
+  ],
+  "latestFullRegression": {
+    "total": 754,
+    "passed": 753,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-164-library-paths/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-164-library-paths/native-mcp.json": "6b3a2adf58ec6e545023090d93bc35dddb2688bd1db3595a508678cb5f70a581",
+    ".local/batch-164-library-paths/path-controls.json": "bbc19862726516848b1fb5300e2d1a56f40ab17c9561ed355959c3d9f7db59ab",
+    ".local/batch-164-library-paths/regression.txt": "e00727530f2bc0721260beed1877d4499c69a6ee1d4f84251322bfc64e7cd86f"
+  }
+}

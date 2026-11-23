@@ -2320,7 +2320,7 @@
       "module": "仿真执行",
       "title": "CLI进程树/任务/取消/超时/恢复",
       "required": true,
-      "queueOrder": 75,
+      "queueOrder": 88,
       "dependencies": [
         "P01"
       ],
@@ -2396,7 +2396,8 @@
         ".local/step-backend-guard-mcp-20261027/report.json",
         ".local/regression-param-step-20261027.txt",
         "docs/implementation/batch-136-evidence.json",
-        "docs/implementation/batch-137-evidence.json"
+        "docs/implementation/batch-137-evidence.json",
+        "docs/implementation/batch-164-evidence.json"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -2405,7 +2406,7 @@
         "ISS-P02-nested-lib-engine-setup-exit"
       ],
       "implementationReady": true,
-      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates. Batch137 nested LIB with quoted space-containing filenames prepares three-file closure and raw setup returns0, but fresh prepared engine setup exits3221226356 before run_analysis; ordinary nonfolded nested LIB control fails at same phase/code. Both frozen2.5V oracles/source/report/failed ledgers retained, owned0. Folded references are not established as cause; no new LIB numerical acceptance. P02 deferred to queue tail, prior INCLUDE/INC success retained.",
+      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates. Batch137 nested LIB with quoted space-containing filenames prepares three-file closure and raw setup returns0, but fresh prepared engine setup exits3221226356 before run_analysis; ordinary nonfolded nested LIB control fails at same phase/code. Both frozen2.5V oracles/source/report/failed ledgers retained, owned0. Folded references are not established as cause; no new LIB numerical acceptance. P02 deferred to queue tail, prior INCLUDE/INC success retained. Batch164 resolves the prepared nested-LIB engine failure for new tasks: long absolute LIB reference reproduces setup exit3221226356, whereas relative references in the same long directory complete. New engine plans freeze short job-relative LIB policy; legacy plans and CLI preserve absolute rules. Original ordinary/folded fixtures pass their unchanged 2.5V oracles through actual MCP, independent DAT, fresh recovery/no replay and native hash guards. Exact native threshold/internal cause unproven; license-unavailable/default nominal encrypted closure/remaining P02 audit still deferred.",
       "previousQueueOrderBeforeLicenseDeferral": 40
     },
     {
@@ -3729,12 +3730,13 @@
     {
       "id": "ISS-P02-nested-lib-engine-setup-exit",
       "featureId": "P02",
-      "status": "open",
+      "status": "resolved",
       "summary": "Prepared nested LIB subcircuit fixture and nonfolded control both exit3221226356 during engine setup; no run/numerical verification. Raw setup-only succeeds.",
       "evidence": "docs/implementation/batch-137-evidence.json",
-      "nextAction": "After independent queue work isolate nested versus direct library lookup, prepared path/index lifecycle and native engine context on fresh private copies. Preserve source/oracle and never replay failed plans or label as license failure.",
+      "nextAction": "Original ordinary/folded numerical oracles now pass with versioned job-relative LIB references in new engine plans. Retain old failed plans and original evidence; exact native threshold and CLI relative mode remain outside this accepted scope.",
       "queueOrder": 75,
-      "failedWorkStatus": "deferred"
+      "failedWorkStatus": "resolved_for_new_engine_plans",
+      "resolutionEvidence": "docs/implementation/batch-164-evidence.json"
     },
     {
       "id": "ISS-L04-symbol-bool-persistence",
@@ -3776,12 +3778,12 @@
     "tools": 244,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 752,
-      "passed": 751,
+      "total": 754,
+      "passed": 753,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-163-unnumbered-map/regression.txt"
+      "evidence": ".local/batch-164-library-paths/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3789,7 +3791,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "P02: revisit native nested LIB engine setup failure with the original nonfolded control and frozen numerical oracles.",
+    "nextIndependentWork": "H02: revisit original NULL schematic-net fixture using isolated native reconstruction or a verified equivalent route.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3806,12 +3808,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 752,
-      "passed": 751,
+      "total": 754,
+      "passed": 753,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-163-unnumbered-map/regression.txt"
+      "evidence": ".local/batch-164-library-paths/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3958,7 +3960,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 163,
+    "batch": 164,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4342,7 +4344,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-163-evidence.json",
+    "evidence": "docs/implementation/batch-164-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4425,9 +4427,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "E03",
-      "before": 73,
-      "after": 87
+      "feature": "P02",
+      "before": 75,
+      "after": 88
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4446,7 +4448,7 @@
     "fullP02Accepted": false,
     "cliFoldedReferencesAccepted": false,
     "newUnitTests": 3,
-    "nativeNestedLibSolveAccepted": false,
+    "nativeNestedLibSolveAccepted": true,
     "nativeRawSetupOnlyAccepted": true,
     "nonfoldedControlAlsoFailed": true,
     "foldingRootCauseEstablished": false,
@@ -4494,8 +4496,9 @@
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
     "cacheAllDisplayFontsAccepted": true,
-    "feature": "E03",
-    "explicitUnnumberedSingleUnitMapAccepted": true
+    "feature": "P02",
+    "explicitUnnumberedSingleUnitMapAccepted": true,
+    "foldedLibEngineMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

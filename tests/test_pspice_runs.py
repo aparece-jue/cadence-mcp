@@ -39,6 +39,25 @@ class RunTests(unittest.TestCase):
         payload['inputEncoding']='utf-8'
         with self.assertRaises(CadenceError):self.runs.preflight(payload)
 
+    def test_library_job_paths_are_short_and_legacy_plans_keep_absolute_paths(self):
+        model=self.source.parent/'model.lib';model.write_text('.MODEL DTEST D\n')
+        self.source.write_text('* fixture\n.LIB model.lib\n.DC V1 0 5 1\n.END\n')
+        sid=self.inputs.prepare(str(self.source))['simulationId'];plan=self.runs.plan(sid,'dc')
+        directory,_,row=self.runs._load(plan['planId']);payload=row['plan']['payload']
+        self.assertIn(b'.LIB "deps/file-001.lib"',self.runs.rebased_inputs(directory,payload)['input.cir'])
+        payload.pop('libraryReferenceMode')
+        self.assertIn((directory/'deps/file-001.lib').as_posix().encode(),self.runs.rebased_inputs(directory,payload)['input.cir'])
+        payload['libraryReferenceMode']='unknown'
+        with self.assertRaises(CadenceError):self.runs.preflight(payload)
+
+    def test_cli_library_plans_retain_absolute_policy(self):
+        from cadence_mcp.pspice_cli_runs import PSpiceCliRuns
+        self.source.write_text('* fixture\n.LIB one.inc\n.DC V1 0 5 1\n.END\n')
+        sid=self.inputs.prepare(str(self.source))['simulationId'];runs=PSpiceCliRuns(self.config,self.inputs,self.data)
+        plan=runs.plan(sid,'dc');directory,_,row=runs._load(plan['planId'])
+        self.assertEqual(row['plan']['payload']['libraryReferenceMode'],'absolute_v1')
+        self.assertIn((directory/'deps/file-001.inc').as_posix().encode(),runs.rebased_inputs(directory,row['plan']['payload'])['input.cir'])
+
     def test_numeric_core_path_is_not_a_file_but_actual_file_forms_still_refuse(self):
         execution_preflight('.MODEL Ktest CORE AREA=.65 PATH=8.0 MS=1.2E6')
         for text in ('.MODEL Ktest CORE PATH=other.dat', '.MODEL Ktest CORE PATH=8 FILE=other.dat',

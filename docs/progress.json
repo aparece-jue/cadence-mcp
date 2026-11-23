@@ -34,12 +34,12 @@
   },
   "toolCount": 244,
   "latestFullRegression": {
-    "total": 752,
-    "passed": 751,
+    "total": 754,
+    "passed": 753,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-163-unnumbered-map/regression.txt"
+    "evidence": ".local/batch-164-library-paths/regression.txt"
   },
-  "acceptanceCanonicalSha256": "6ad0983fd24e7fd5aadffc7c752a9d786e06247d035e503ead2f1210a67aaef2"
+  "acceptanceCanonicalSha256": "e93cfe0c1ca8b793042391d25685183c6ff8f11ffefb2d4123f65765c896c829"
 }
