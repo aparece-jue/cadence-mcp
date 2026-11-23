@@ -1,0 +1,49 @@
+{
+  "batch": 163,
+  "date": "2026-11-24",
+  "feature": "E03",
+  "baseline": "edaf0e3ea9f4a9841e2f4a32b1cb8ebae03ee660",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullE03Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "exactOriginalOracleMatched": {
+      "originalDefinitionOracle": true,
+      "allInstanceState": true,
+      "allUnits": true,
+      "allConnectionObjects": true,
+      "allCacheGroups": true
+    },
+    "freshRecoveryNoReplay": true,
+    "originalInputsUnchanged": true,
+    "nativeAutomaticAnnotationAccepted": false
+  },
+  "inputSha256": {
+    "reset.dsn": "e21caa953ccd41d813745661cbfcc257c1c937ee96699eeac21e23d89ab8c92b",
+    "expected.json": "c03286b5370fbef4e5922978cf99c51b1deb9cc9f54bafc3ece0bd50a23febcf"
+  },
+  "scope": [
+    "Explicit package mapping now accepts an unnumbered single-unit source by partId and an explicit numbered destination retaining its prefix. Repeated unnumbered labels are not grouped together.",
+    "Original frozen reset.dsn and expected.json confirm only nativeId2502 R? to R1, including all definition, instance, unit, connection and cache state after independent reopen.",
+    "Unnumbered multiunit groups remain refused; native automatic annotation, occurrence maps and rendering remain unresolved."
+  ],
+  "latestFullRegression": {
+    "total": 752,
+    "passed": 751,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-163-unnumbered-map/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-163-unnumbered-map/native-mcp.json": "f73a5afd8833dc57e5ce2af510bcce3b1901b123e07bfdacdd254722a16cc1ba",
+    ".local/batch-163-unnumbered-map/regression.txt": "ad72afc5c4551388b229ca562942372a0593617258add9329e2060ef7299b4ae"
+  }
+}

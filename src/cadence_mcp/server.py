@@ -1425,7 +1425,7 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
     @register(readonly=False)
     async def capture_plan_package_reference_map(sessionId: str,
                                          mappings: Annotated[list[ReferenceChange], Field(min_length=1, max_length=64)]) -> ToolResult:
-        """Plan whole physical-package base-reference renames/swaps. Each representative expands all placed units in its schematic, including units on other pages. Require verified source-qualified cache ownership and consistent shared pads; preserve NC ownership, complete modeled instance state and old/new pin-node tables. Explicit numbered references only; occurrence mapping and automatic annotation remain unavailable. Apply using capture_apply_reference_map."""
+        """Plan whole physical-package base-reference renames/swaps. Each representative expands all placed units in its schematic, including units on other pages. Require verified source-qualified cache ownership and consistent shared pads; preserve NC ownership, complete modeled instance state and old/new pin-node tables. Explicit destinations retain the prefix. An unnumbered single-unit source is selected by partId; unnumbered multiunit groups, occurrence mapping and automatic allocation remain unavailable. Apply using capture_apply_reference_map."""
         return await invoke(reference_edits.plan_packages, sessionId, [r.model_dump() for r in mappings], backend="capture_dbo",
                             coverage=("explicit_package_reference_mapping", "unit_ownership", "old_new_pin_node_table", "modeled_instance_state", "nc_ownership"),
                             not_checked=("occurrence_reference_mapping", "native_automatic_annotation", "native_drc"))

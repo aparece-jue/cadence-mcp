@@ -41409,7 +41409,7 @@
   {
     "name": "capture_plan_package_reference_map",
     "title": null,
-    "description": "Plan whole physical-package base-reference renames/swaps. Each representative expands all placed units in its schematic, including units on other pages. Require verified source-qualified cache ownership and consistent shared pads; preserve NC ownership, complete modeled instance state and old/new pin-node tables. Explicit numbered references only; occurrence mapping and automatic annotation remain unavailable. Apply using capture_apply_reference_map.",
+    "description": "Plan whole physical-package base-reference renames/swaps. Each representative expands all placed units in its schematic, including units on other pages. Require verified source-qualified cache ownership and consistent shared pads; preserve NC ownership, complete modeled instance state and old/new pin-node tables. Explicit destinations retain the prefix. An unnumbered single-unit source is selected by partId; unnumbered multiunit groups, occurrence mapping and automatic allocation remain unavailable. Apply using capture_apply_reference_map.",
     "inputSchema": {
       "properties": {
         "sessionId": {

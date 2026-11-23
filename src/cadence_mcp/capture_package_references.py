@@ -1,5 +1,5 @@
 """Definition-level whole-package reference maps with unchanged unit ownership and cache state."""
-import copy,json
+import copy,json,re
 from datetime import datetime,timezone
 from .capture import CaptureService
 from .capture_references import REF,read_units
@@ -21,12 +21,16 @@ def package_reference_map(data,units,bindings,mappings):
         if owner is None:raise CadenceError('object_not_found','Representative is outside this design session.')
         if owner['kind']!='placed' or owner['isExternalDesignPart'] or not 1<=owner['packageSize']<=16:raise CadenceError('unsupported_reference_scope','Choose an internal placed package with1..16 device positions.')
         old=owner['reference'];before=REF.fullmatch(old);after=REF.fullmatch(new)
+        unnumbered=re.fullmatch(r'([A-Za-z]{1,8})\?',old)
+        if unnumbered:
+            if owner['packageSize']!=1:raise CadenceError('unsupported_reference_scope','Unnumbered multiunit ownership requires a verified package group.')
+            before=unnumbered
         if not before or not after or len(new)>64 or before[1].casefold()!=after[1].casefold():raise CadenceError('invalid_reference','Use an explicit numbered base reference with the current prefix.')
         if old==new:raise CadenceError('no_change','A package mapping cannot be unchanged.')
-        sch_id=parts[owner['partId']]['schematicId'];group_key=(sch_id,old.casefold())
+        sch_id=parts[owner['partId']]['schematicId'];group_key=(sch_id,owner['nativeId'] if unnumbered else old.casefold())
         if group_key in group_keys:raise CadenceError('duplicate_package_mapping','Each physical base-reference group may appear once.')
         group_keys.add(group_key)
-        members=[u for u in units.values() if parts[u['partId']]['schematicId']==sch_id and u['reference'].casefold()==old.casefold()]
+        members=[owner] if unnumbered else [u for u in units.values() if parts[u['partId']]['schematicId']==sch_id and u['reference'].casefold()==old.casefold()]
         if not members or len(members)>owner['packageSize']:raise CadenceError('ambiguous_package_group','Too many definitions share this package base reference.')
         origin=by_binding.get(owner['partId']);devices=set()
         if origin is None or not all(origin[k] for k in ('isCached','lookupMatchesPlaced','originVerified')):raise CadenceError('cache_binding_unverified','Representative lacks verified cache ownership.')

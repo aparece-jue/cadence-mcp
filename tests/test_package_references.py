@@ -24,6 +24,24 @@ class PackageReferenceTests(unittest.TestCase):
         self.assertEqual((d,u,b),before)
         self.assertEqual({c['temporaryReference'] for c in changes},{'U900000000'})
 
+    def test_unnumbered_single_units_are_selected_by_identity(self):
+        data,units,bindings=fixture()
+        for key in ('a','c'):
+            units[key].update(reference='R?',referenceDesignator='R?',packageSize=1,deviceDesignator='')
+            for row in data['part']:
+                if row['objectId']==key:row['reference']='R?'
+        changes,_=package_reference_map(data,units,bindings,[{'partId':'a','newReference':'R1'}])
+        self.assertEqual([c['partId'] for c in changes],['a'])
+        self.assertEqual(changes[0]['oldFullReference'],'R?')
+        with self.assertRaises(CadenceError):
+            package_reference_map(data,units,bindings,[{'partId':'a','newReference':'U1'}])
+
+    def test_unnumbered_multiunit_group_is_refused(self):
+        data,units,bindings=fixture()
+        units['a'].update(reference='U?',referenceDesignator='U?A')
+        with self.assertRaises(CadenceError):
+            package_reference_map(data,units,bindings,[{'partId':'a','newReference':'U2'}])
+
     def test_swap_whole_packages_and_reserve_unit_alias(self):
         d,u,b=fixture();u['extra']={**u['a'],'partId':'extra','reference':'X1','referenceDesignator':'U900000000A'}
         d['part'].append({'objectId':'extra','schematicId':'s','pageId':'P1','reference':'X1'})

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "planVersion": "1.0.0",
-  "date": "2026-11-09",
+  "date": "2026-11-24",
   "scope": "docs/design/07-cadence-submodules.md",
   "sources": [
     {
@@ -1251,7 +1251,7 @@
       "module": "编号",
       "title": "位号映射/交换/冲突预检/多单元归属",
       "required": true,
-      "queueOrder": 73,
+      "queueOrder": 87,
       "dependencies": [
         "E01",
         "L01"
@@ -1284,7 +1284,8 @@
         ".local/annotation-scope-runtime-20261028/runtime.json",
         ".local/explicit-annotation-list-20261028/report.json",
         ".local/explicit-annotation-list-20261028/native-receipt.json",
-        "docs/implementation/batch-127-evidence.json"
+        "docs/implementation/batch-127-evidence.json",
+        "docs/implementation/batch-163-evidence.json"
       ],
       "issues": [
         "ISS-E03-reference-unit-identity",
@@ -1292,7 +1293,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Explicit package maps now additionally pass native cross-page and three nondefault display fields with literal Chinese/free-text preservation, two actual MCP representatives, conflict/cancel/fresh/no-replay/output-tamper checks. Native incremental annotation experiment failed the frozen R?->R1 map: R? stayed and two non-target drawn hierarchy references gained digits; connection objects/cache unchanged. Full E03 deferred and moved last. Occurrence maps, automatic allocation/scope semantics and render/font matrix remain unaccepted; no automatic annotation tool published. Batch127: original failed source read-only native diagnostics confirm R? isPrimitive1, drawn blocks0, IncludeNonPrimitive option really0. Documentation IsRefDesValid has neither object method nor static binding; first probe failure retained, v2 uses null availability. Documented AssignRefDesToList exists but Tcl selected-pointer list is rejected by overload conversion before save; no exposed DboBaseObjectList constructor found in bounded runtime discovery. New output and source/original oracle bytes unchanged; owned worker stopped. No automatic annotation tool, no scope/root-cause acceptance; move E03 to tail. Investigate supported native app command or verified typed-list source later; explicit package-map/occurrence requirements retained."
+      "remaining": "Explicit package maps now additionally pass native cross-page and three nondefault display fields with literal Chinese/free-text preservation, two actual MCP representatives, conflict/cancel/fresh/no-replay/output-tamper checks. Native incremental annotation experiment failed the frozen R?->R1 map: R? stayed and two non-target drawn hierarchy references gained digits; connection objects/cache unchanged. Full E03 deferred and moved last. Occurrence maps, automatic allocation/scope semantics and render/font matrix remain unaccepted; no automatic annotation tool published. Batch127: original failed source read-only native diagnostics confirm R? isPrimitive1, drawn blocks0, IncludeNonPrimitive option really0. Documentation IsRefDesValid has neither object method nor static binding; first probe failure retained, v2 uses null availability. Documented AssignRefDesToList exists but Tcl selected-pointer list is rejected by overload conversion before save; no exposed DboBaseObjectList constructor found in bounded runtime discovery. New output and source/original oracle bytes unchanged; owned worker stopped. No automatic annotation tool, no scope/root-cause acceptance; move E03 to tail. Investigate supported native app command or verified typed-list source later; explicit package-map/occurrence requirements retained. Batch163: exact explicit single-unit R?->R1 map now passes the original frozen definition/state/units/connection/cache oracle through actual MCP, fresh recovery and no replay. Unnumbered single-unit selection uses partId, never merges equal R? text; unnumbered multiunit groups remain refused. This repairs the safe explicit route, not the native automatic annotation failure. Occurrence mapping and rendering still pending; full E03 stays deferred."
     },
     {
       "id": "E04",
@@ -3771,16 +3772,16 @@
     }
   ],
   "lastBatch": {
-    "date": "2026-11-09",
+    "date": "2026-11-24",
     "tools": 244,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 750,
-      "passed": 749,
+      "total": 752,
+      "passed": 751,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-162-cache-fonts/regression.txt"
+      "evidence": ".local/batch-163-unnumbered-map/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3788,7 +3789,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "E03: revisit original annotation incremental targeting, repeated units and occurrence write acceptance.",
+    "nextIndependentWork": "P02: revisit native nested LIB engine setup failure with the original nonfolded control and frozen numerical oracles.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3805,12 +3806,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 750,
-      "passed": 749,
+      "total": 752,
+      "passed": 751,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-162-cache-fonts/regression.txt"
+      "evidence": ".local/batch-163-unnumbered-map/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3957,7 +3958,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 139,
+    "batch": 163,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4341,7 +4342,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-162-evidence.json",
+    "evidence": "docs/implementation/batch-163-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4424,9 +4425,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "P02",
-      "before": 57,
-      "after": 75
+      "feature": "E03",
+      "before": 73,
+      "after": 87
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4492,7 +4493,9 @@
     "defaultFontResetAccepted": true,
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
-    "cacheAllDisplayFontsAccepted": true
+    "cacheAllDisplayFontsAccepted": true,
+    "feature": "E03",
+    "explicitUnnumberedSingleUnitMapAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",
