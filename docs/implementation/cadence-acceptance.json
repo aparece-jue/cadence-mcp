@@ -1107,7 +1107,7 @@
       "module": "缓存",
       "title": "DSN缓存查询、导入/替换与实例覆盖保留",
       "required": true,
-      "queueOrder": 59,
+      "queueOrder": 86,
       "dependencies": [
         "L01",
         "L04",
@@ -1116,7 +1116,7 @@
       "sources": [
         "CAP-REF"
       ],
-      "implementation": "分离库源、缓存、实例；按需CopyPackage/ReplaceCache及封装同步",
+      "implementation": "分离库源、缓存、实例；按需CopyPackage/ReplaceCache及封装同步；新计划冻结并核对所有实例显示字体及默认继承标志",
       "acceptance": "旧新引脚映射、实例覆盖、不相关实例与连接均核对",
       "status": "deferred",
       "evidence": [
@@ -1154,14 +1154,15 @@
         ".local/regression-456-cache-replace-20261025.txt",
         ".local/cache-replacement-task-probe-20261025/report.json",
         ".local/cache-replacement-task-probe-20261025/diagnostic-process-v2.json",
-        ".local/hetero-cache-replace-failure-audit-20261025/report.json"
+        ".local/hetero-cache-replace-failure-audit-20261025/report.json",
+        "docs/implementation/batch-162-evidence.json"
       ],
       "issues": [
         "ISS-L05-native-replace-preservation",
         "ISS-L05-heterogeneous-unbound-gnd-replace"
       ],
       "implementationReady": true,
-      "remaining": "Native cached+local package enumeration fixed; prior NewPackagesIter-only evidence covered local definitions. Two connected single-unit replacements pass read-only combined audit only with explicit reference/Value/PCB Footprint restoration. No public cache write lifecycle. Source-qualified identity, inheritance/occurrence, multiunit pin mapping, all unrelated geometry/properties, dependency closure and fault/resource matrix remain. Batch47 existing-cache missing-device planning is public (one new plan, shared multiunit task family). Native/MCP B.Convert and connected P.Normal restore, prior identity/pose/Value/FP/cache mapping preservation, actual cached view, native page nets, guards and receipt-loss/cancel/timeout pass. Cross-page unit assignment, non-default override matrix, full graphics/closure, arbitrary heterogeneous import, footprint variants and original requirements remain. Batch71 adds one actual read-only MCP tool for source-qualified cache binding. Coupled complete cache definitions/origins/native placed package equality plus independent full placed-instance identity coverage disambiguate same-name local/cache entries; original prepared and two replacement outputs, shared-reference A/B units, old query IDs and stale/closed/foreign/drawn negatives pass. New read-only audit of original two outputs verifies exact bound package against source OLB logical graph, unrelated cache logical metadata multiset, every effective property with explicit four-field binding changes, and four placed views. No mutation replay or original ledger promotion. Public cache replacement tasks, explicit-origin/inheritance/display preservation, multiunit/variant and original L05 requirements remain unaccepted. Batch72 adds five durable compatible source-qualified cache replacement tools plus verified output kind. All affected instances explicitly declared, same package/device/pad/hotspot/net compatibility, exclusive DSN/OLB copies, native group guards, reference/string override restoration and full modeled instance/cache/connection/view verification. Two real MCP original/custom Unicode-display cases, seven faults and homogeneous/connected heterogeneous groups pass. Unbound heterogeneous group does not pass: physical7 GND becomes bound to GND while original oracle requires unbound; unchanged connection-object inventory cannot certify it. Original failure retained and queued last under ISS-L05-heterogeneous-unbound-gnd-replace; full L05 deferred. Full inheritance origins, fonts/unrelated vectors, remaining variants/occurrences and original gate scope still not certified.",
+      "remaining": "Native cached+local package enumeration fixed; prior NewPackagesIter-only evidence covered local definitions. Two connected single-unit replacements pass read-only combined audit only with explicit reference/Value/PCB Footprint restoration. No public cache write lifecycle. Source-qualified identity, inheritance/occurrence, multiunit pin mapping, all unrelated geometry/properties, dependency closure and fault/resource matrix remain. Batch47 existing-cache missing-device planning is public (one new plan, shared multiunit task family). Native/MCP B.Convert and connected P.Normal restore, prior identity/pose/Value/FP/cache mapping preservation, actual cached view, native page nets, guards and receipt-loss/cancel/timeout pass. Cross-page unit assignment, non-default override matrix, full graphics/closure, arbitrary heterogeneous import, footprint variants and original requirements remain. Batch71 adds one actual read-only MCP tool for source-qualified cache binding. Coupled complete cache definitions/origins/native placed package equality plus independent full placed-instance identity coverage disambiguate same-name local/cache entries; original prepared and two replacement outputs, shared-reference A/B units, old query IDs and stale/closed/foreign/drawn negatives pass. New read-only audit of original two outputs verifies exact bound package against source OLB logical graph, unrelated cache logical metadata multiset, every effective property with explicit four-field binding changes, and four placed views. No mutation replay or original ledger promotion. Public cache replacement tasks, explicit-origin/inheritance/display preservation, multiunit/variant and original L05 requirements remain unaccepted. Batch72 adds five durable compatible source-qualified cache replacement tools plus verified output kind. All affected instances explicitly declared, same package/device/pad/hotspot/net compatibility, exclusive DSN/OLB copies, native group guards, reference/string override restoration and full modeled instance/cache/connection/view verification. Two real MCP original/custom Unicode-display cases, seven faults and homogeneous/connected heterogeneous groups pass. Unbound heterogeneous group does not pass: physical7 GND becomes bound to GND while original oracle requires unbound; unchanged connection-object inventory cannot certify it. Original failure retained and queued last under ISS-L05-heterogeneous-unbound-gnd-replace; full L05 deferred. Full inheritance origins, fonts/unrelated vectors, remaining variants/occurrences and original gate scope still not certified. Batch162 original/custom actual MCP replacements preserve all display font descriptors/default flags. Custom R101 Value first receives a -17 height/700 weight font through a public font task; replacement retains it along with Unicode overrides and layout. Fresh recover/no-replay, terminal design/library hash and negative pin/hotspot/scope checks pass. Legacy records retain old scope. Original heterogeneous unbound GND, occurrence inheritance, rendering and unrelated vector closure remain deferred.",
       "previousQueueOrderBeforeHeterogeneousGndDeferral": 10
     },
     {
@@ -3779,7 +3780,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-161-graphic-stroke/regression.txt"
+      "evidence": ".local/batch-162-cache-fonts/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3787,7 +3788,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "L05: continue original library cache update and replacement cases on isolated multiunit variants.",
+    "nextIndependentWork": "E03: revisit original annotation incremental targeting, repeated units and occurrence write acceptance.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3809,7 +3810,7 @@
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-161-graphic-stroke/regression.txt"
+      "evidence": ".local/batch-162-cache-fonts/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -4340,7 +4341,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-161-evidence.json",
+    "evidence": "docs/implementation/batch-162-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4489,7 +4490,9 @@
     "fullD02Accepted": false,
     "unitTerminalWireMcpAccepted": true,
     "defaultFontResetAccepted": true,
-    "graphicStrokeMcpAccepted": true
+    "graphicStrokeMcpAccepted": true,
+    "fullL05Accepted": false,
+    "cacheAllDisplayFontsAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

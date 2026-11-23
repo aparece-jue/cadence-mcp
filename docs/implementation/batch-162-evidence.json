@@ -1,0 +1,47 @@
+{
+  "batch": 162,
+  "date": "2026-11-24",
+  "feature": "L05",
+  "baseline": "5dea6baf4c5738631c3aa34fe3e0bb734752397a",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullL05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "originalAndCustomReplacement": true,
+    "nonDefaultFont": {
+      "height": -17,
+      "weight": 700,
+      "quality": 1,
+      "fontDefault": false
+    },
+    "allInstanceFontDescriptorsAndDefaultFlagsPreserved": true,
+    "freshRecoveryAndNoReplay": true,
+    "terminalDesignAndLibraryHashGuards": true,
+    "originalInputHashesPreserved": true
+  },
+  "scope": [
+    "New cache replacement plans freeze all instance display fonts and default inheritance flags, then compare the full native table after independent reopen.",
+    "Custom Value display uses a real font-edit task before replacement, in addition to original Unicode user overrides and rotated display layout.",
+    "Legacy expected-state records without fonts remain supported at their original scope. The optional result flag certifies only snapshots actually compared.",
+    "The old heterogeneous unbound GND failure, occurrence inheritance, unrelated vector graphs and rendering remain unresolved."
+  ],
+  "latestFullRegression": {
+    "total": 750,
+    "passed": 749,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-162-cache-fonts/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-162-cache-fonts/native-mcp.json": "32a39c9a638d22de8335cb13e0c3b74025d95e944195007006e669e28a246f3b",
+    ".local/batch-162-cache-fonts/regression.txt": "796ef3079fe5b642effba273e7e8a2ffd985fb1b4cd6adaac80b3e101fe6b59a"
+  }
+}

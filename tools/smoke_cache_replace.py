@@ -47,6 +47,15 @@ async def main():
      for p in targets:
       layers=await call('capture_get_property_layers',{'sessionId':sid,'partId':p['objectId']});assert next(u['value'] for u in layers['user'] if u['name']=='MCP_TAG')==expected_tag
       dp=next(v for v in layers['display'] if v['name']=='Value');assert dp['location']==[17,23] and dp['rotationCode']==2
+    if i==1:
+     before_font=await call('capture_get_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Value'})
+     explicit={**before_font['font'],'height':-17,'weight':700,'quality':1}
+     font_plan=await call('capture_plan_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Value','font':explicit})
+     font_key={k:font_plan[k] for k in ('planId','planDigest')}
+     await call('capture_apply_display_font',{**font_key,'idempotencyKey':'custom-cache-font'})
+     sid=(await call('capture_open_edit_result',{**font_key,'kind':'display_font'}))['sessionId']
+     report['customFontBeforeReplace']=await call('capture_get_display_font',{'sessionId':sid,'partId':target['objectId'],'property':'Value'})
+     assert report['customFontBeforeReplace']['font']==explicit and not report['customFontBeforeReplace']['fontDefault']
     args={'sessionId':sid,'partId':target['objectId'],'libraryId':lid,'packageId':pkg['objectId'],'expectedInstances':expectations}
     await call('capture_plan_cache_replace',{**args,'expectedInstances':expectations[:1]},'incomplete_cache_expectations')
     bad=copy.deepcopy(expectations);bad[0]['pins'][0]['net']='SHORT';bad[0]['pins'][0]['connected']=True
@@ -57,7 +66,7 @@ async def main():
     record={'case':'original' if i==0 else 'custom','plan':plan};report['cases'].append(record);dump()
     if i==0:await call('capture_close',{'sessionId':sid});await call('capture_library_close',{'libraryId':lid})
     result=await call('capture_apply_cache_replace',{**key,'idempotencyKey':f'replace-{i}'});record['result']=result
-    assert result['sourceQualifiedCacheGraphVerified'] and result['modeledAllInstanceStateVerified'] and result['sourceViewsVerified'] and result['changedInstanceCount']==2
+    assert result['allDisplayFontsVerified'] and result['sourceQualifiedCacheGraphVerified'] and result['modeledAllInstanceStateVerified'] and result['sourceViewsVerified'] and result['changedInstanceCount']==2
     opened=await call('capture_open_edit_result',{**key,'kind':'cache_replace'});out_sid=opened['sessionId']
     after=(await call('capture_query',{'sessionId':out_sid,'entity':'part','scope':{'kind':'design'},'limit':1000}))['items']
     for part in [p for p in after if p['reference'] in oracle]:

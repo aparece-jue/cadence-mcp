@@ -117,7 +117,9 @@ class CaptureCacheReplacements(CapturePropertyEdits):
             if len(matches)!=1:raise CadenceError('ambiguous_cache_source','Source-qualified cache group is not unique.')
             new_groups.remove(matches[0]);source_graph=library_graph(subset(lib['data'],package_id))
             new_groups.append({'isCached':True,'sourceLibrary':NEW_LIBRARY,'packageName':package['name'],'graph':source_graph})
-            evidence={'state':expected_state,'units':unit_graph(expected_units),'cacheGroups':sorted(new_groups,key=lambda r:json.dumps(r,sort_keys=True,ensure_ascii=False))}
+            from .capture_display_fonts import read_fonts
+            fonts=read_fonts(self.config,session['design'],session['design'].parent,units)
+            evidence={'fonts':fonts,'state':expected_state,'units':unit_graph(expected_units),'cacheGroups':sorted(new_groups,key=lambda r:json.dumps(r,sort_keys=True,ensure_ascii=False))}
             path=session['design'].parent/(new_id('expected-cache-replace')+'.json');write_json(path,evidence)
             payload={'sourceDesign':str(session['design']),'sourceFingerprint':session['revision'],'sourceLibrary':str(lib['directory']/'library.olb'),'libraryFingerprint':lib['revision'],
                      'oldSourceLibrary':old['sourceLibrary'],'oldPackageName':old['sourcePackage'],'newPackageName':package['name'],'changes':changes,'expectedEvidence':str(path),'expectedEvidenceHash':sha256(path),
@@ -160,6 +162,10 @@ class CaptureCacheReplacements(CapturePropertyEdits):
             for g in actual_groups:
                 if g['isCached'] and g['sourceLibrary']==str(library).casefold() and g['packageName']==p['newPackageName']:g['sourceLibrary']=NEW_LIBRARY
             if sorted(actual_groups,key=lambda r:json.dumps(r,sort_keys=True,ensure_ascii=False))!=expected['cacheGroups']:raise CadenceError('cache_definition_mismatch','Source-qualified new or unrelated cache definitions differ.','verify')
+            if 'fonts' in expected:
+                from .capture_display_fonts import read_fonts
+                if read_fonts(self.config,target,d,units)!=expected['fonts']:
+                    raise CadenceError('cache_display_font_mismatch','Cache replacement changed a native display font or inheritance flag.','verify')
             actual_state=read_state(self.config,target,d,units)
             for row in actual_state:
                 if row['nativeId'] in changes:
@@ -180,6 +186,6 @@ class CaptureCacheReplacements(CapturePropertyEdits):
         self.preflight(p)
         if sha256(target)!=before or sha256(library)!=p['libraryFingerprint']:raise CadenceError('target_changed','Replacement output/input changed during verification.')
         ident=d.name.removeprefix('plan-');artifact={'artifactId':'cache-'+ident,'kind':'capture_edited_design','workspaceRelativePath':'design.dsn','sha256':before,'size':target.stat().st_size,'producedByJob':ident,'sourceFingerprint':p['sourceFingerprint'],'createdAt':datetime.now(timezone.utc).isoformat(),'validationState':'validated'}
-        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'sourceQualifiedCacheGraphVerified':True,'modeledAllInstanceStateVerified':True,'sourceViewsVerified':True,'changedInstanceCount':len(p['changes']),'sourceModified':False,'libraryModified':False,'outputWorkspaceRelativePath':d.relative_to(self.config.workspace_root).as_posix(),
-                'notChecked':['full_inheritance_origin','display_font_and_render','unrelated_cache_vector_graphics','occurrence_connectivity','external_model_or_footprint','native_drc','electrical_behavior']}
+        return {'planId':ident,'state':'verified' if native_completed else 'verified_recovered','artifact':artifact,'nativeCompletionVerified':native_completed,'independentReopenVerified':True,'sourceQualifiedCacheGraphVerified':True,'modeledAllInstanceStateVerified':True,'sourceViewsVerified':True,**({'allDisplayFontsVerified':True} if 'fonts' in expected else {}),'changedInstanceCount':len(p['changes']),'sourceModified':False,'libraryModified':False,'outputWorkspaceRelativePath':d.relative_to(self.config.workspace_root).as_posix(),
+                'notChecked':['full_inheritance_origin','display_rendering' if 'fonts' in expected else 'display_font_and_render','unrelated_cache_vector_graphics','occurrence_connectivity','external_model_or_footprint','native_drc','electrical_behavior']}
 

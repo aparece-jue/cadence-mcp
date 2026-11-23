@@ -339,3 +339,8 @@ capture_query_library_package_properties(libraryId,packageId)按revision读取�
 ## 装饰线笔画
 
 `capture_plan_graphic_line_add` 可同时声明 `lineStyle`（0..5）与 `lineWidth`（0..3）。新计划保存目标页完整装饰线的端点、姿态、线型和线宽，重开后按多重集合核对。省略两项时采用已有默认路径，旧计划仍可重开及恢复。已原生验收的组合包括虚线加第二档线宽，以及点线加第三档线宽。页面边界、颜色、其他图形和渲染另行验收。
+
+
+## 缓存替换的字体保留
+
+新缓存替换计划在完整实例状态之外，冻结所有实例的显示字体描述及默认字体继承标志。保存重开时任一字体变化都会返回 `cache_display_font_mismatch`。旧计划缺少字体快照时沿用原有验证范围，结果仅在确实校验过字体表时返回 `allDisplayFontsVerified=true`。实际字形渲染、occurrence 字体和继承来源仍需单独验收。

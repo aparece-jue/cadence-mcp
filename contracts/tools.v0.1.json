@@ -28523,7 +28523,7 @@
   {
     "name": "capture_plan_cache_replace",
     "title": null,
-    "description": "Plan compatible replacement of the exact source-qualified cache package and every bound instance in a new DSN copy. Declare every affected partId, replacement libraryPartId and complete expected pin/hotspot/net table. Physical pad numbers, package size and device designators stay compatible; connectivity changes, external design parts and typed/source-binding user overrides are refused. Freezes design/library/oracles and modeled identity, effective/user/display state, all instance geometry, cache metadata and connection objects. Full inheritance origins, fonts/rendering and occurrence nets are not certified.",
+    "description": "Plan compatible replacement of the exact source-qualified cache package and every bound instance in a new DSN copy. Declare every affected partId, replacement libraryPartId and complete expected pin/hotspot/net table. Physical pad numbers, package size and device designators stay compatible; connectivity changes, external design parts and typed/source-binding user overrides are refused. Freezes design/library/oracles and modeled identity, effective/user/display state, all instance geometry, cache metadata and connection objects. All instance display font descriptors and default inheritance flags are frozen and verified after reopen. Full inheritance origins, rendering and occurrence nets require separate acceptance.",
     "inputSchema": {
       "properties": {
         "sessionId": {
