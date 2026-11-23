@@ -1625,9 +1625,9 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
 
     @register(readonly=False)
     async def capture_plan_library_vector_edit(libraryId: str, partId: str, vectorId: str,
-            operation: Literal["update", "delete"], replacement: LibraryVector | None = None,
+            operation: Literal["update", "delete"], replacement: LibraryCreationVector | None = None,
             bitmapGeometry: BitmapGeometry | None = None) -> ToolResult:
-        """Plan an existing basic-vector update or deletion on a new OLB copy. Update takes a full same-kind basic-vector declaration and keeps draw position; delete removes only that position, including an existing bitmap. Untouched bitmap bytes are included in preservation checks. Bitmap geometry update uses bitmapGeometry with bounds, location and expectedDibSha256, preserving dimensions and pixel bytes. Bitmap creation uses the dedicated library-create declaration; pixel replacement remains unavailable. Preview includes all device/package references to the same named native part. Freeze complete modeled definition/vector/template/pin-start expectations. Unknown vectors refuse; unmodeled properties and rendering are not certified."""
+        """Plan an existing basic-vector update or deletion on a new OLB copy. Update takes a full same-kind basic-vector declaration and keeps draw position; delete removes only that position, including an existing bitmap. Untouched bitmap bytes are included in preservation checks. Bitmap geometry update uses bitmapGeometry with bounds, location and expectedDibSha256, preserving dimensions and pixel bytes. Pixel replacement accepts a full frozen BMP declaration only for the last vector of the shared view, preserving draw order; other positions are refused. Preview includes all device/package references to the same named native part. Freeze complete modeled definition/vector/template/pin-start expectations. Unknown vectors refuse; unmodeled properties and rendering are not certified."""
         return await invoke(library_vector_edits.plan, libraryId, partId, vectorId, operation,
                             replacement.model_dump() if replacement is not None else None,
                             bitmapGeometry.model_dump() if bitmapGeometry is not None else None, backend="capture_dbo",

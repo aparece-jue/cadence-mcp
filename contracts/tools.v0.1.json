@@ -49770,7 +49770,7 @@
   {
     "name": "capture_plan_library_vector_edit",
     "title": null,
-    "description": "Plan an existing basic-vector update or deletion on a new OLB copy. Update takes a full same-kind basic-vector declaration and keeps draw position; delete removes only that position, including an existing bitmap. Untouched bitmap bytes are included in preservation checks. Bitmap geometry update uses bitmapGeometry with bounds, location and expectedDibSha256, preserving dimensions and pixel bytes. Bitmap creation uses the dedicated library-create declaration; pixel replacement remains unavailable. Preview includes all device/package references to the same named native part. Freeze complete modeled definition/vector/template/pin-start expectations. Unknown vectors refuse; unmodeled properties and rendering are not certified.",
+    "description": "Plan an existing basic-vector update or deletion on a new OLB copy. Update takes a full same-kind basic-vector declaration and keeps draw position; delete removes only that position, including an existing bitmap. Untouched bitmap bytes are included in preservation checks. Bitmap geometry update uses bitmapGeometry with bounds, location and expectedDibSha256, preserving dimensions and pixel bytes. Pixel replacement accepts a full frozen BMP declaration only for the last vector of the shared view, preserving draw order; other positions are refused. Preview includes all device/package references to the same named native part. Freeze complete modeled definition/vector/template/pin-start expectations. Unknown vectors refuse; unmodeled properties and rendering are not certified.",
     "inputSchema": {
       "properties": {
         "libraryId": {
@@ -49800,6 +49800,7 @@
                 "mapping": {
                   "arc": "#/$defs/ArcVector",
                   "bezier": "#/$defs/PathVector",
+                  "bitmap": "#/$defs/BitmapVector",
                   "box": "#/$defs/AreaVector",
                   "ellipse": "#/$defs/AreaVector",
                   "fill": "#/$defs/FillVector",
@@ -49831,6 +49832,9 @@
                 },
                 {
                   "$ref": "#/$defs/TextVector"
+                },
+                {
+                  "$ref": "#/$defs/BitmapVector"
                 }
               ]
             },
@@ -50021,6 +50025,83 @@
             "expectedDibSha256"
           ],
           "title": "BitmapGeometry",
+          "type": "object"
+        },
+        "BitmapVector": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "bitmap",
+              "title": "Kind",
+              "type": "string"
+            },
+            "bounds": {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "title": "Bounds",
+              "type": "array"
+            },
+            "location": {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Location",
+              "type": "array"
+            },
+            "sourceBmp": {
+              "maxLength": 4096,
+              "minLength": 1,
+              "title": "Sourcebmp",
+              "type": "string"
+            },
+            "expectedBmpSha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Expectedbmpsha256",
+              "type": "string"
+            },
+            "expectedDibSha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Expecteddibsha256",
+              "type": "string"
+            },
+            "expectedDimensions": {
+              "items": {
+                "maximum": 4096,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Expecteddimensions",
+              "type": "array"
+            },
+            "expectedDibSize": {
+              "maximum": 16777202,
+              "minimum": 40,
+              "title": "Expecteddibsize",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "bounds",
+            "location",
+            "sourceBmp",
+            "expectedBmpSha256",
+            "expectedDibSha256",
+            "expectedDimensions",
+            "expectedDibSize"
+          ],
+          "title": "BitmapVector",
           "type": "object"
         },
         "FillVector": {

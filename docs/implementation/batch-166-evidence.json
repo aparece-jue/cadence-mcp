@@ -1,0 +1,115 @@
+{
+  "batch": 166,
+  "date": "2026-11-24",
+  "feature": "L02",
+  "baseline": "7813122282a860f553a1914d9625a32bcb49930d",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullL02Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "cases": [
+      {
+        "source": "rgb24",
+        "replacement": "rgb32",
+        "passed": true,
+        "expectedDescriptor": [
+          "bitmap",
+          [
+            0,
+            0,
+            20,
+            20
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          56,
+          "ad2dd739511ffb7a4c4eb3dee44accd16483350d99560f8ce5ae2d954ed53b7e"
+        ],
+        "allViewsAndDrawOrderMatched": true,
+        "frozenAssetTamperRefused": true,
+        "invalidAssetRefused": true,
+        "cancelledBeforeApply": true
+      },
+      {
+        "source": "rgb32",
+        "replacement": "rgb24",
+        "passed": true,
+        "expectedDescriptor": [
+          "bitmap",
+          [
+            0,
+            0,
+            20,
+            20
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          56,
+          "0c36cbe18cd2800bb6d3c016c88c116ca95432f651303926dd5df6324119b487"
+        ],
+        "allViewsAndDrawOrderMatched": true,
+        "frozenAssetTamperRefused": true,
+        "invalidAssetRefused": true,
+        "cancelledBeforeApply": true
+      }
+    ],
+    "freshRecoveryNoReplay": true,
+    "originalInputsUnchanged": true
+  },
+  "inputSha256": {
+    "D:\\workspace\\git\\cadence-mcp\\.local\\bitmap-public-creation-20261024\\expected.json": "1a982b14f41a7de6b9f5fe28bfe50e6cf2b93d943137a5318e0e0f476bda9563",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\bitmap-public-creation-20261024\\work\\isolated-jobs\\capture_library_create\\plan-5927f08d6eb94cecac9eb9e6d484063e\\library.olb": "6ff91443854d9b3777d4c767a97df1e68b8e0d4e552f65bd2dfd50b2b8da6d8c",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\bitmap-public-creation-20261024\\rgb32.bmp": "3fd41d08bd5164bb602f9fdff41f851d0bb57e2e7030bb8729beb06a5141330c",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\bitmap-public-creation-20261024\\work\\isolated-jobs\\capture_library_create\\plan-1ddf5155f24c42fe966ee745cadc57e7\\library.olb": "c32a02cff67126b7ea4b1c19ed9135a5130fca686a479fd235b10f7ea37a7fc5",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\bitmap-public-creation-20261024\\rgb24.bmp": "24723c6271740b2f28e9234ffdf1e7b1ab9220e86ab194cd77438457ada21948"
+  },
+  "initialAcceptanceDriverFailures": [
+    {
+      "phase": "fixture lookup",
+      "observation": "Incorrect historical job-kind directory library_create; corrected to capture_library_create before any native mutation."
+    },
+    {
+      "phase": "post-verification asset guard assertion",
+      "observation": "Native replacement and full view comparison already passed, but test incorrectly demanded completed artifact recovery reject a changed consumed input asset. Moved the asset-tamper assertion before apply, where preflight rejects it without starting. Prior output and failed driver report retained; no replay."
+    }
+  ],
+  "scope": [
+    "Existing library vector-edit task accepts a full bitmap replacement for a bitmap that is last in its complete shared-view draw order. Other positions refuse, preserving the native ordering contract.",
+    "BMP assets use existing strict BI_RGB24/32 validation, independent BMP/DIB hashes, dimensions, size and owned frozen snapshots. Complete graph budget includes repeated shared views and untouched bitmaps.",
+    "Native creates a new last bitmap then deletes the old last object. Every shared part view is checked before mutation; independent reopen compares the complete modeled library, DIB bytes, pin starts, templates, all other vectors and view ordering. Native bitmap object identity is replaced; queried vector identity belongs to the new library session.",
+    "Nonterminal bitmap replacement, rendering, nested symbols, original empty pin literal and arbitrary font-quality persistence remain unaccepted. Legacy geometry-only updates and deletion keep their contract."
+  ],
+  "latestFullRegression": {
+    "total": 756,
+    "passed": 755,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-166-bitmap-pixels/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-166-bitmap-pixels/native-mcp.json": "0d3a62be1ab5161b1cf1a898e1d79283509725520428d06a424e183a5c68535d",
+    ".local/batch-166-bitmap-pixels/driver-fixture-failure.json": "004129890f51ac3ed9300727f80a740e9085b3dbc31bce864950eaa6f46a4093",
+    ".local/batch-166-bitmap-pixels/driver-recovery-assertion-failure.json": "004129890f51ac3ed9300727f80a740e9085b3dbc31bce864950eaa6f46a4093",
+    ".local/batch-166-bitmap-pixels/regression.txt": "01d390d2e36a14b00c7ad356ce29be62c8084c9be23014313d39ccbf1abf8fe5"
+  }
+}

@@ -791,7 +791,7 @@
       "module": "库",
       "title": "创建OLB及单单元符号/物理引脚",
       "required": true,
-      "queueOrder": 77,
+      "queueOrder": 90,
       "dependencies": [
         "L01"
       ],
@@ -862,7 +862,8 @@
         ".local/regression-518-pin-name-20261025.txt",
         "docs/implementation/batch-83-library-pin-boundaries-2026-10-25.md",
         "docs/implementation/batch-135-evidence.json",
-        "docs/implementation/batch-153-evidence.json"
+        "docs/implementation/batch-153-evidence.json",
+        "docs/implementation/batch-166-evidence.json"
       ],
       "issues": [
         "ISS-L02-library-create-f6355f7ec1",
@@ -872,7 +873,7 @@
         "ISS-L02-empty-pin-name-canonicalization"
       ],
       "implementationReady": true,
-      "remaining": "Typed one-package scalar/line OLB create/save/reopen, template/pin-start/hotspot/type/visible/shared/swap/body/style/width, Unicode, new-server idempotency, receipt-loss recover/native-start cancel/timeout and actual placement pass. Full symbol vector/font/render scope, alternate variants and all native fault/resource gates still pending. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion. Batch83 adds independent sparse0..4095/out-of-order12-pin physical maps, all8types, visibility/swap boundary fields, Unicode/128char/repeated literal-name MCP save/reopen/paging/fresh lifecycle. Original empty-name declaration persisted as$PIN0; SetPinName/SetName/combined official probes all preserve the mismatch. Exact empty literal remains unaccepted and full L02 deferred/moved last. Creation now rejects empty literal before assets/durable plan, aligned with existing pin-edit contract. Separate nonempty matrix passes without rewriting old oracle. Font/pixel replacement/remaining original requirements retained. Batch135 official XMATIC_OLB2XML private saved-font diagnostic succeeds after unprefixed documented alias absent; seven exported TextFont Defn omit quality and several other LOGFONT fields. XML export is not a proven lossless workaround and arbitrary quality persistence remains unaccepted. No production restriction relaxed or new XML tool exposed. 第153批定位精确空名差异在 NewSymbolPinScalar 构造时即出现，位置0/7立即生成 $PIN0/$PIN7，GetName/GetPinName 一致且保存、独立重开保持。官方 XMATIC XML 导出/导入的两引脚完整图谱对照通过；仅把已知名称字段改为空，导入后完整图谱仍是原生占位名；删掉该字段则导入拒绝。原空名预期未改。真实 MCP 的四种明确命名/编号矩阵复验通过，另证明显式 $PIN7 及前后空格按字面保存。L02 原空名门槛仍待证实，后移后先做 C05。",
+      "remaining": "Typed one-package scalar/line OLB create/save/reopen, template/pin-start/hotspot/type/visible/shared/swap/body/style/width, Unicode, new-server idempotency, receipt-loss recover/native-start cancel/timeout and actual placement pass. Full symbol vector/font/render scope, alternate variants and all native fault/resource gates still pending. Batch48 multi-view placement identity now compares8basic vector classes (bounds, ordered points/style/font/order) with16real MCP positive cases and pure ellipse/font corruption rejection; text fresh receipt recovery and line compatibility pass. Public vector create/query, remaining graphical attributes/bitmap/nested symbols/rendering, single-view new certification and original scope remain incomplete. Batch49 public typed basic-vector creation/query and mixed9 source/cache/placed-view integration pass; old-schema receipt recovery remains compatible. Full original gate is still incomplete; font quality persistence fails for non1 and remains separately tracked. Bitmap/nested symbol/rendering, existing-vector edits and other original requirements remain. Batch52 private bitmap geometry/save-reopen and complete DIB byte positive/negative/missing-BMP prototype pass. IsEquivalent ignores changed pixels; public bitmap operations and preservation/placement integration remain unavailable, no full-gate promotion. Batch81 supersedes the one-package-only restriction: bounded2..8 independent package variants in one OLB now public via existing creation family, complete modeled per-package/pad graph and ordered mixed-vector/bitmap freeze verification, four actual MCP fixtures and native lifecycle/faults accepted. Two physical-map/footprint variants separately placed on accepted empty-page copies with unchanged DSN/OLB hashes. Cross-package native cell/part aliasing is explicitly refused; original font/rendering, cache, full multiunit/cross-page/hidden/flat/occurrence and other unresolved requirements remain. No full-gate promotion. Batch83 adds independent sparse0..4095/out-of-order12-pin physical maps, all8types, visibility/swap boundary fields, Unicode/128char/repeated literal-name MCP save/reopen/paging/fresh lifecycle. Original empty-name declaration persisted as$PIN0; SetPinName/SetName/combined official probes all preserve the mismatch. Exact empty literal remains unaccepted and full L02 deferred/moved last. Creation now rejects empty literal before assets/durable plan, aligned with existing pin-edit contract. Separate nonempty matrix passes without rewriting old oracle. Font/pixel replacement/remaining original requirements retained. Batch135 official XMATIC_OLB2XML private saved-font diagnostic succeeds after unprefixed documented alias absent; seven exported TextFont Defn omit quality and several other LOGFONT fields. XML export is not a proven lossless workaround and arbitrary quality persistence remains unaccepted. No production restriction relaxed or new XML tool exposed. 第153批定位精确空名差异在 NewSymbolPinScalar 构造时即出现，位置0/7立即生成 $PIN0/$PIN7，GetName/GetPinName 一致且保存、独立重开保持。官方 XMATIC XML 导出/导入的两引脚完整图谱对照通过；仅把已知名称字段改为空，导入后完整图谱仍是原生占位名；删掉该字段则导入拒绝。原空名预期未改。真实 MCP 的四种明确命名/编号矩阵复验通过，另证明显式 $PIN7 及前后空格按字面保存。L02 原空名门槛仍待证实，后移后先做 C05。 Batch166: public last-vector bitmap pixel replacement now accepts full strict frozen BI_RGB24/32 declarations. Actual MCP rgb24->rgb32 and reverse pass independent complete DIB bytes, all four views, shared Normal references, untouched Convert vectors, draw order, invalid asset/preapply tamper/cancel/fresh recovery/no replay. Other bitmap positions explicitly refuse. This supersedes earlier blanket pixel-replacement unavailability; original empty-name, arbitrary quality, nested/rendering and remaining gate requirements stay deferred.",
       "previousQueueOrderBeforeEmptyNameDeferral": 50
     },
     {
@@ -3779,12 +3780,12 @@
     "tools": 244,
     "goalComplete": false,
     "latestFullRegression": {
-      "total": 754,
-      "passed": 753,
+      "total": 756,
+      "passed": 755,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-164-library-paths/regression.txt"
+      "evidence": ".local/batch-166-bitmap-pixels/regression.txt"
     },
     "libraryCreateMcpEvidence": ".local/library-create-mcp-final-20261023/report.json",
     "libraryFaultEvidence": ".local/library-create-faults-20261023/report.json",
@@ -3792,7 +3793,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "L02: complete an independent library vector lifecycle slice while preserving empty-name/font-quality native failures.",
+    "nextIndependentWork": "C05: revisit titleblock generated fields and explicit page context after lifecycle dependencies.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3809,12 +3810,12 @@
     "designCreateNativeEvidence": ".local/design-create-ascii-20261023/report.json",
     "designCreateFaultEvidence": ".local/design-create-faults-20261023/report.json",
     "lastPassingFullRegression": {
-      "total": 754,
-      "passed": 753,
+      "total": 756,
+      "passed": 755,
       "errors": 0,
       "skipped": 1,
       "status": "passed_with_skip",
-      "evidence": ".local/batch-164-library-paths/regression.txt"
+      "evidence": ".local/batch-166-bitmap-pixels/regression.txt"
     },
     "geometryMcpEvidence": ".local/wiring-exact-mcp-20261023/report.json",
     "busProbeEvidence": ".local/bus-fixtures-20261023/report.json",
@@ -3961,7 +3962,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 165,
+    "batch": 166,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4345,7 +4346,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-165-evidence.json",
+    "evidence": "docs/implementation/batch-166-evidence.json",
     "fullRegressionRerunThisBatch": true,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4361,7 +4362,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 11,
-    "productionCodeChanged": false,
+    "productionCodeChanged": true,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4428,9 +4429,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "H02",
-      "before": 76,
-      "after": 89
+      "feature": "L02",
+      "before": 77,
+      "after": 90
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4497,9 +4498,10 @@
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
     "cacheAllDisplayFontsAccepted": true,
-    "feature": "H02",
+    "feature": "L02",
     "explicitUnnumberedSingleUnitMapAccepted": true,
-    "foldedLibEngineMcpAccepted": true
+    "foldedLibEngineMcpAccepted": true,
+    "terminalBitmapPixelsMcpAccepted": true
   },
   "lastResumeVerification": {
     "date": "2026-10-27",

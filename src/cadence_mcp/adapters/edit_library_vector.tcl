@@ -3,6 +3,7 @@ package require json
 source [file join [file dirname [info script]] json.tcl]
 source [file join [file dirname [info script]] dbo_part_signature.tcl]
 source [file join [file dirname [info script]] dbo_vector_json.tcl]
+source [file join [file dirname [info script]] dbo_create_vector.tcl]
 if {$argc!=4} {exit 2}
 lassign $argv root library request output
 if {[file size $request]>65536} {exit 2}
@@ -80,6 +81,7 @@ set rc [catch {
        } finally {delete_DboGraphicObjectVectorsIter $it}
        if {[$vs Failed] && [$vs Code]!=1022} {error unexpected_vector_iterator_end}
        if {$chosen eq ""} {error missing_bound_vector}
+       if {[dict get $spec operation] eq "update" && [dict exists $spec replacement sourceBmp] && [dict get $spec index]!=$index-1} {error unsupported_bitmap_draw_position}
        set phase validate_old
        if {[cmcp::descriptorJson [cmcp::vectorDescriptor $chosen]] ne [cmcp::descriptorJson [dict get $spec old]]} {error old_vector_mismatch}
        dict set chosenObjects $chosen [list $part $chosen]
@@ -96,7 +98,10 @@ set rc [catch {
   lassign $pair part chosen
   if {$phase eq "delete"} {cmcp::check [$part DeleteVector $chosen]} elseif {$phase eq "update"} {
    if {[dict get $spec replacement kind] ne [lindex [dict get $spec old] 0]} {error vector_kind_change}
-   cmcp::setDeclaredVector $chosen [dict get $spec replacement]
+   if {[dict exists $spec replacement sourceBmp]} {
+    cmcp::createDeclaredVector $part [dict get $spec replacement]
+    cmcp::check [$part DeleteVector $chosen]
+   } else {cmcp::setDeclaredVector $chosen [dict get $spec replacement]}
   } else {error invalid_vector_edit_operation}
  }
  set phase save;cmcp::check [$session MarkAllLibForSave $lib];cmcp::check [$session SaveLib $lib]

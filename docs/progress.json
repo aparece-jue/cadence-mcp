@@ -34,12 +34,12 @@
   },
   "toolCount": 244,
   "latestFullRegression": {
-    "total": 754,
-    "passed": 753,
+    "total": 756,
+    "passed": 755,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-164-library-paths/regression.txt"
+    "evidence": ".local/batch-166-bitmap-pixels/regression.txt"
   },
-  "acceptanceCanonicalSha256": "4f397c53ed8df0f5ab54a8ecd693d455537e0ef5eb183b6f08ccca65e7f3b83a"
+  "acceptanceCanonicalSha256": "a0fdeec6bd60eb5fb70e5365c9d4354aab06339423c975f79f15813c46d84b10"
 }

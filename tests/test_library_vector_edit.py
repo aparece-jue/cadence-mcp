@@ -25,6 +25,30 @@ def inspection():
 
 class VectorEditTests(unittest.TestCase):
     scope=['TEST','A',0,'C','P.Normal']
+    def test_last_bitmap_replacement_updates_shared_pixels_and_preserves_prior_vectors(self):
+        graph=vector_graph(inspection());bitmap=['bitmap',[0,0,5,5],[0,0],[2,2],56,'a'*64]
+        for row in graph['metadata']['symbols']:
+            if row['scope'][-1]=='P.Normal':row['orderedVectors'].append(copy.deepcopy(bitmap))
+        before=copy.deepcopy(graph);replacement={'kind':'bitmap','bounds':[0,0,5,5],'location':[0,0],'sourceBmp':'replacement.bmp','expectedBmpSha256':'c'*64,'expectedDibSha256':'b'*64,'expectedDimensions':[2,2],'expectedDibSize':56}
+        expected,_,old,affected=expected_vector_edit(graph,self.scope,2,'update',replacement)
+        self.assertEqual(old,bitmap);self.assertEqual(len(affected),2);self.assertEqual(graph,before)
+        for prior,row in zip(graph['metadata']['symbols'],expected['metadata']['symbols']):
+            if row['scope'][-1]=='P.Normal':
+                self.assertEqual(row['orderedVectors'][:-1],prior['orderedVectors'][:-1]);self.assertEqual(row['orderedVectors'][-1][-1],'b'*64)
+            else:self.assertEqual(row,prior)
+        for row in graph['metadata']['symbols']:
+            if row['scope'][-1]=='P.Normal':row['orderedVectors'].append(['line',[0,0],[1,1],0,0])
+        with self.assertRaises(CadenceError) as caught:expected_vector_edit(graph,self.scope,2,'update',replacement)
+        self.assertEqual(caught.exception.code,'unsupported_bitmap_draw_position')
+
+    def test_pixel_replacement_native_graph_budget_counts_shared_views(self):
+        graph=vector_graph(inspection());bitmap=['bitmap',[0,0,5,5],[0,0],[2,2],56,'a'*64]
+        for row in graph['metadata']['symbols']:row['orderedVectors']=[copy.deepcopy(bitmap)]*3
+        replacement={'kind':'bitmap','bounds':[0,0,5,5],'location':[0,0],'sourceBmp':'replacement.bmp','expectedBmpSha256':'c'*64,'expectedDibSha256':'b'*64,'expectedDimensions':[2,2],'expectedDibSize':56}
+        # Untouched pixels also consume the independent complete-graph read budget.
+        for row in graph['metadata']['symbols']:row['orderedVectors'][0][4]=16777202
+        with self.assertRaises(CadenceError) as caught:expected_vector_edit(graph,self.scope,2,'update',replacement)
+        self.assertEqual(caught.exception.code,'bitmap_asset_limit')
     def test_shared_symbol_update_changes_all_named_references_and_preserves_other_view(self):
         graph=vector_graph(inspection());before=copy.deepcopy(graph)
         expected,declared,old,affected=expected_vector_edit(graph,self.scope,0,'update',{'kind':'line','start':[1,2],'end':[6,2],'style':1})

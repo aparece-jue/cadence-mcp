@@ -11,6 +11,7 @@ from .library_edit import LibraryPinEdits
 from .library_semantics import library_graph
 from .library_vectors import validate_vectors,vector_descriptor,BitmapGeometry
 from .library_vector_query import query_library_vectors,validate_descriptor
+from .bitmap_assets import freeze_assets,verify_assets
 
 def sortrows(rows):return sorted(rows,key=lambda r:json.dumps(r,ensure_ascii=False,sort_keys=True))
 
@@ -72,8 +73,15 @@ def expected_vector_edit(graph,scope,index,operation,replacement,bitmap_geometry
     if operation=='delete':
         if replacement is not None or bitmap_geometry is not None:raise CadenceError('invalid_vector_edit','Delete has no replacement or geometry declaration.')
         declaration=None;new=None
+    elif old[0]=='bitmap' and replacement is not None:
+        if bitmap_geometry is not None:raise CadenceError('invalid_bitmap_edit','Choose pixel replacement or geometry-only update.')
+        declaration=validate_vectors([replacement],allow_bitmaps=True)[0]
+        if declaration['kind']!='bitmap':raise CadenceError('vector_kind_change','A bitmap replacement must retain its native kind.')
+        if index!=len(target['orderedVectors'])-1:raise CadenceError('unsupported_bitmap_draw_position','Pixel replacement currently requires the last vector in the shared view.')
+        new=vector_descriptor(declaration)
+        if new==old:raise CadenceError('no_change','Bitmap pixels and geometry already match.')
     elif old[0]=='bitmap':
-        if replacement is not None or bitmap_geometry is None:raise CadenceError('invalid_bitmap_edit','Bitmap update requires only bitmapGeometry; pixel replacement is unavailable.')
+        if bitmap_geometry is None:raise CadenceError('invalid_bitmap_edit','Bitmap update requires bitmapGeometry or a full bitmap replacement.')
         try:geometry=BitmapGeometry.model_validate(bitmap_geometry,strict=True).model_dump()
         except ValueError as error:raise CadenceError('invalid_bitmap_edit','Invalid explicit bitmap geometry or DIB digest.') from error
         if geometry['expectedDibSha256']!=old[5]:raise CadenceError('bitmap_content_mismatch','Expected bitmap pixels differ from the bound snapshot.')
@@ -97,6 +105,7 @@ def expected_vector_edit(graph,scope,index,operation,replacement,bitmap_geometry
         affected.append(row['scope'])
         if operation=='delete':row['orderedVectors'].pop(index)
         else:row['orderedVectors'][index]=copy.deepcopy(new)
+    if sum(v[4] for row in expected['metadata']['symbols'] for v in row['orderedVectors'] if v[0]=='bitmap')>64*1024*1024:raise CadenceError('bitmap_asset_limit','Complete native graph exceeds the DIB read budget.')
     return expected,declaration,copy.deepcopy(old),affected
 
 class LibraryVectorEdits(LibraryPinEdits):
@@ -127,6 +136,9 @@ class LibraryVectorEdits(LibraryPinEdits):
             if before['definitions']!=library_graph(data):raise CadenceError('target_changed','Library definitions differ from the bound snapshot.')
             expected,declaration,old,affected=expected_vector_edit(before,scope,target['index'],operation,replacement,bitmap_geometry)
             if old!=target['descriptor']:raise CadenceError('target_changed','Target vector differs from the query snapshot.')
+            if declaration and 'sourceBmp' in declaration:
+                frozen=freeze_assets(self.config,{'symbols':[{'cellName':'edit','vectors':[declaration]}],'devices':[{'cellName':'edit'}]})
+                declaration=frozen['symbols'][0]['vectors'][0]
             comparable=normalize_target_font(expected,part['name'],target['index'],operation,declaration['kind'] if declaration else None)
             expected_file=session['directory']/(new_id('expected-vector-edit')+'.json');write_json(expected_file,comparable)
             self.library._session(library_id)
@@ -140,6 +152,7 @@ class LibraryVectorEdits(LibraryPinEdits):
 
     def preview(self,p):return {k:p[k] for k in ('partId','vectorId','scope','index','old','operation','replacement','affectedScopes','sourceFingerprint')}
     def preflight(self,p):
+        if p.get('replacement') and 'sourceBmp' in p['replacement']:verify_assets(self.config,{'symbols':[{'vectors':[p['replacement']]}]})
         source=checked_path(p['sourceLibrary'],(self.config.workspace_root,))
         if source.suffix.lower()!='.olb' or sha256(source)!=p['sourceFingerprint']:raise CadenceError('target_changed','Library source changed after planning.')
         for name in ('beforeEvidence','expectedEvidence'):
