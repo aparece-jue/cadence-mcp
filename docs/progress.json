@@ -41,5 +41,5 @@
     "status": "passed_with_skip",
     "evidence": ".local/batch-173-graphic-line-edits/regression-final.txt"
   },
-  "acceptanceCanonicalSha256": "4b2c6dd89d05b83fca0d153ad860d30a8cdfd5412180e6d1560bdf4f8678e19c"
+  "acceptanceCanonicalSha256": "dbd499cc1f8328cea024333be7be6c6656f511e07886209644a67c53eafb3f2c"
 }

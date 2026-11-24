@@ -1,0 +1,75 @@
+{
+  "batch": 174,
+  "date": "2026-11-25",
+  "baseline": "a4a8382e144edd778ebb02fcb65a016892fa2ad4",
+  "feature": "C05",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullC05Accepted": false,
+  "productionCodeChanged": false,
+  "tools": 245,
+  "newPublicTools": [],
+  "diagnosticTool": "tools/probe_gui_titleblock_cache.py",
+  "nativeSourceSha256": "43da903d757d3650e0703fc48352fc62996a7ff860067c170eae2304383373e4",
+  "originalSourceSha256": "372a447d18e9a3400b295710f604885f075acdaff96dd057f3b71b9a25903f66",
+  "sourcesUnchanged": true,
+  "saveCalled": false,
+  "appOwnedSessionPreserved": true,
+  "startup": {
+    "privateIniVerified": true,
+    "emptyActiveDesignVerifiedBeforeOpen": true,
+    "boundIsolatedDesignVerified": true,
+    "restoreOtherProjectsCancelled": true,
+    "oneLineSourceWrapperRequired": true,
+    "failedAttemptsPreserved": true
+  },
+  "beforeRender": {
+    "count": 9,
+    "dirty": 9,
+    "zeroInstanceBoxes": 9,
+    "zeroDefinitionBoxes": 9
+  },
+  "afterMain": {
+    "activePage": "MAIN",
+    "mainDirty": 0,
+    "mainInstances": 8,
+    "otherDirty": 1,
+    "degenerateBoxesRemain": true
+  },
+  "afterOther": {
+    "activePage": "OTHER",
+    "totalDirty": 0,
+    "degenerateInstanceBoxes": 9,
+    "zeroDefinitionBoxes": 9,
+    "allPageCountAndNumberZero": true,
+    "allPageSizeEmpty": true,
+    "expectedTitleGraphicsVisible": false
+  },
+  "guardErrors": {
+    "host-probe-wrong-ini": "wrong_ini",
+    "host-probe-wrong-pid": "wrong_process",
+    "host-probe-wrong-design": "wrong_design"
+  },
+  "bridgeReadyAfterProbe": true,
+  "regression": {
+    "scope": "bridge-related",
+    "total": 30,
+    "passed": 30,
+    "initialRestrictedRun": {
+      "failures": 1,
+      "errors": 9,
+      "cause": "WinError10013 loopback denied",
+      "evidence": ".local/b174-bridge-regression.txt"
+    },
+    "normalLocalRun": ".local/b174-bridge-regression-approved.txt",
+    "fullRegressionRerun": false,
+    "lastFullRegression": {
+      "total": 773,
+      "passed": 772,
+      "skipped": 1
+    }
+  },
+  "H02AppContextTestedThisBatch": false,
+  "next": "Preserve zero-box original; separately test titleblock definition completeness and genuine rendering, then save/reopen and dynamic context. H02 legacy NULL-flat remains separate."
+}
