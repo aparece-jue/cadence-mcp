@@ -30,6 +30,21 @@ def normalize_fields(row, target, owner_count):
     return native, context, fields
 
 
+def normalize_bounds(row):
+    keys = {"localBounds", "offsetBounds", "symbolBounds", "dirty"}
+    if (not isinstance(row, dict) or set(row) != keys or type(row["dirty"]) is not int
+            or row["dirty"] not in (0, 1)
+            or any(type(row[key]) is not list or len(row[key]) != 4
+                   or any(type(n) is not int or not -(2**31) <= n < 2**31 for n in row[key])
+                   for key in keys - {"dirty"})):
+        raise CadenceError("invalid_worker_result", "Invalid native titleblock bounds.", "decode")
+    degenerate = any(row[key][2] <= row[key][0] or row[key][3] <= row[key][1]
+                     for key in keys - {"dirty"})
+    status = "dirty_cache" if row["dirty"] else "degenerate_cache" if degenerate else "clean_cache_unverified"
+    return {**row, "dirty": bool(row["dirty"]), "degenerate": degenerate,
+            "cacheStatus": status, "renderedBoundsVerified": False}
+
+
 def query_titleblock_fields(capture, sid, target_id):
     with capture.lock:
         session = capture._session(sid)
@@ -46,10 +61,15 @@ def query_titleblock_fields(capture, sid, target_id):
         except (OSError, ValueError) as error:
             raise CadenceError("invalid_worker_result", "Invalid bounded titleblock output.", "decode") from error
         owner_count = sum(row["schematicId"] == schematic["objectId"] for row in session["data"]["page"])
-        native, context, fields = normalize_fields(raw, target, owner_count)
+        if not isinstance(raw, dict) or "boundingBoxObservation" not in raw:
+            raise CadenceError("invalid_worker_result", "Missing titleblock bounds observation.", "decode")
+        bounds = normalize_bounds(raw["boundingBoxObservation"])
+        native, context, fields = normalize_fields(
+            {key: value for key, value in raw.items() if key != "boundingBoxObservation"}, target, owner_count)
         out.unlink()
         return {"sessionId": sid, "revision": session["revision"], "titleblockId": target_id,
                 "pageId": page["objectId"], "schematicName": schematic["name"], "pageName": page["name"],
                 "nativeTitleblockFields": native, "ownerPageContext": context, "fieldStatus": fields,
+                "nativeBoundingBox": bounds,
                 "allGeneratedPageFieldsMatchContext": all(status == "matches_context" for status in fields.values()),
                 "renderedTextVerified": False, "scope": "titleblock_definition_and_owner_page_context"}

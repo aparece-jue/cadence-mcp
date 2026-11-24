@@ -7,6 +7,11 @@ if {![string is integer -strict $nativeId] || $nativeId < 0 || $nativeId > 42949
 proc cmcp::cs {value} {DboTclHelper_sMakeCString $value}
 proc cmcp::str {value} {DboTclHelper_sGetConstCharPtr $value}
 proc cmcp::check {state} {if {[$state Failed]} {error "dbo_[$state Code]"}}
+proc cmcp::rect {value} {
+    set a [DboTclHelper_sGetCRectTopLeft $value]
+    set b [DboTclHelper_sGetCRectBottomRight $value]
+    return [cmcp::arr [list [DboTclHelper_sGetCPointX $a] [DboTclHelper_sGetCPointY $a] [DboTclHelper_sGetCPointX $b] [DboTclHelper_sGetCPointY $b]]]
+}
 set session ""
 set rc [catch {
     load [file join $root tools bin orDb_Dll_Tcl64.dll] DboTclWriteBasic
@@ -31,6 +36,13 @@ set rc [catch {
     set number [$page GetPageNumber $state];cmcp::check $state
     set size [cmcp::cs ""];cmcp::check [$page GetSizeName $size]
     lappend fields ownerPageNumber $number ownerSizeName [cmcp::q [cmcp::str $size]]
+    # Observe the native cache without setting dirty flags or manufacturing bounds.
+    set state [DboState]
+    set symbol [$title GetSymbol $state];cmcp::check $state
+    if {$symbol eq "NULL"} {error missing_titleblock_symbol}
+    set state [DboState]
+    set offset [$title GetOffsetBoundingBox $state];cmcp::check $state
+    lappend fields boundingBoxObservation [cmcp::obj localBounds [cmcp::rect [$title GetBoundingBox]] offsetBounds [cmcp::rect $offset] symbolBounds [cmcp::rect [$symbol GetBoundingBox]] dirty [$title IsBoundingBoxDirty]]
     set f [open $output {WRONLY CREAT EXCL}]
     try {fconfigure $f -encoding utf-8 -translation lf;puts $f [cmcp::obj {*}$fields]} finally {close $f}
 } message]

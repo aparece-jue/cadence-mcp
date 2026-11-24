@@ -1,0 +1,864 @@
+{
+  "batch": 169,
+  "date": "2026-11-24",
+  "feature": "C05",
+  "baseline": "7ca4834c61883dbfbcc76bc264b6a5a017c83ac0",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullC05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "contractsUnchanged": true,
+  "original34Audit": {
+    "baselineCommit": "0a31dda05dfce224fc27cb1f6a950e9fedb4b6fc",
+    "baselineAcceptanceFileSha256": "6df3e059e50c39b9110ba304eb62108f8bc1b6ce25b172626b9381ea2435b5b1",
+    "requiredCount": 34,
+    "criterionChanges": []
+  },
+  "nativeCacheDiagnostic": {
+    "process": {
+      "state": "exited",
+      "pid": 13376,
+      "returnCode": 0,
+      "durationSeconds": 2.203,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "saveCalled": false,
+    "sourceSha256": "372a447d18e9a3400b295710f604885f075acdaff96dd057f3b71b9a25903f66",
+    "sourceAndCopyUnchanged": true,
+    "native": {
+      "caught": 0,
+      "message": "",
+      "rows": [
+        {
+          "nativeId": 1,
+          "location": [
+            200,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              200,
+              200,
+              200,
+              200
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              200,
+              200,
+              200,
+              200
+            ]
+          }
+        },
+        {
+          "nativeId": 3,
+          "location": [
+            380,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              380,
+              200,
+              380,
+              200
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              380,
+              200,
+              380,
+              200
+            ]
+          }
+        },
+        {
+          "nativeId": 5,
+          "location": [
+            560,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              560,
+              200,
+              560,
+              200
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              560,
+              200,
+              560,
+              200
+            ]
+          }
+        },
+        {
+          "nativeId": 7,
+          "location": [
+            740,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              740,
+              200,
+              740,
+              200
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              740,
+              200,
+              740,
+              200
+            ]
+          }
+        },
+        {
+          "nativeId": 9,
+          "location": [
+            200,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              200,
+              380,
+              200,
+              380
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              200,
+              380,
+              200,
+              380
+            ]
+          }
+        },
+        {
+          "nativeId": 11,
+          "location": [
+            380,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              380,
+              380,
+              380,
+              380
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              380,
+              380,
+              380,
+              380
+            ]
+          }
+        },
+        {
+          "nativeId": 13,
+          "location": [
+            560,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              560,
+              380,
+              560,
+              380
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              560,
+              380,
+              560,
+              380
+            ]
+          }
+        },
+        {
+          "nativeId": 15,
+          "location": [
+            740,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              740,
+              380,
+              740,
+              380
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              740,
+              380,
+              740,
+              380
+            ]
+          }
+        },
+        {
+          "nativeId": 17,
+          "location": [
+            300,
+            400
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "initial": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              300,
+              400,
+              300,
+              400
+            ]
+          },
+          "dirtyCaught": 0,
+          "dirtyMessage": "",
+          "after": {
+            "dirty": 1,
+            "local": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "offsetCaught": 0,
+            "offsetCode": 0,
+            "offsetFailed": 0,
+            "offset": [
+              300,
+              400,
+              300,
+              400
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "fullC05Accepted": false,
+    "cases": [
+      {
+        "page": "MAIN",
+        "rotationCode": 0,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 1,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            380,
+            200,
+            380,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 2,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            560,
+            200,
+            560,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 3,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            740,
+            200,
+            740,
+            200
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 0,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            200,
+            380,
+            200,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 1,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            380,
+            380,
+            380,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 2,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            560,
+            380,
+            560,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 3,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            740,
+            380,
+            740,
+            380
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "OTHER",
+        "rotationCode": 0,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "nativeBoundingBox": {
+          "localBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "offsetBounds": [
+            300,
+            400,
+            300,
+            400
+          ],
+          "symbolBounds": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "dirty": true,
+          "degenerate": true,
+          "cacheStatus": "dirty_cache",
+          "renderedBoundsVerified": false
+        },
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      }
+    ],
+    "cachedSourceTamperRefused": true,
+    "crossTitleCursorRefused": true,
+    "closedSessionRefused": true,
+    "sourceAndOracleUnchanged": true,
+    "inputSha256": {
+      "design.dsn": "372a447d18e9a3400b295710f604885f075acdaff96dd057f3b71b9a25903f66",
+      "expected.json": "01a41b32640e07111e49c0e2b510368fb2e5882d3ffbe43dcbe1e9f8c4259a74",
+      "rgb24.bmp": "dc1cce966176fc0d0e8cf2dbc57bf96eab8f87b7e2b9718eaeecd5e6132560ec",
+      "rgb32.bmp": "daf2d66dc1e3d17418f69e798047137dad70502ced6b15f694ee6d7791c6cb00"
+    }
+  },
+  "editorAttempt": {
+    "timestamp": "2026-11-24T11:13:38.0049418+08:00",
+    "reason": "Hidden isolated editor exposes no controllable window; no business command sent",
+    "image": "D:\\Program Files\\Cadence\\SPB_24.1\\tools\\bin\\Capture.exe",
+    "savedByProbe": false,
+    "pid": 22048
+  },
+  "scope": [
+    "Original nine nonempty titleblock definitions and instance bounds are zero. GetOffsetBoundingBox state0 returns a degenerate point at the instance location. Setting dirty1 in memory does not calculate nonzero geometry; diagnostic never saves and source/copy hashes remain unchanged.",
+    "Existing capture_get_titleblock_fields adds bounded raw local/offset/definition bounds and dirty/degenerate/cacheStatus. Clean native cache is still explicitly unverified rendering. No new arbitrary command or public tool. Legacy graphic inventory keeps raw values.",
+    "Actual MCP verifies all nine observations, original eleven ordered vectors and DIB hashes, eight poses plus second-page duplicate name, source tamper and closed-session refusal; original fixture/oracle unchanged.",
+    "Separate editor fixture declares dimensions and uses a dedicated INI. Capture process22048 runs without a targetable window; no render/save probe was dispatched and the owned host was stopped. No editor refresh success or unsupported-method conclusion.",
+    "C05 remains deferred with its original conditions, original failed evidence and remaining scope. The original34 audit changes no criteria or passed count. Next independent item P04 retains original DAT-format/digital/unit cases."
+  ],
+  "latestFullRegression": {
+    "total": 764,
+    "passed": 763,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-169-titleblock-bounds/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-169-titleblock-bounds/native-cache.json": "6f1eaa77f8aacc7866c263e40b49d5dede7d3545e50b417f9604ccfc56a505cd",
+    ".local/batch-169-titleblock-bounds/native-mcp.json": "327c72c037e43d6f637e58cb7f2f468be6d4039c486afcc7655db79ac5a30364",
+    ".local/batch-169-titleblock-bounds/editor-fixture.json": "626ee4b35e00dd8bc2acc99879d711fd4dfe2beee99a153403114a552b9c1d50",
+    ".local/batch-169-titleblock-bounds/editor-unavailable.json": "dddd9a60c7cf3a6aa4b18621393787e7eb514db8e108cd505d60f0321ec17912",
+    ".local/batch-169-titleblock-bounds/original34-audit.json": "af1e6ce6f116cb5db9dcbab3deab952b8ae288e2807000d2d088053a812875c4",
+    ".local/batch-169-titleblock-bounds/default-startup.json": "033224b18f99ff6177c1bf3bd5f854a343b640a7ae94402a68ab7c46873589c4",
+    ".local/batch-169-titleblock-bounds/regression.txt": "7a1ce2bc41612bb826990b4651c63800d47a3e8d53b757073a93edf86e22cb8a"
+  }
+}

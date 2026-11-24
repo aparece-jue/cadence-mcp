@@ -1,5 +1,13 @@
 # 标题栏定义图形查询
 
+## 2026-11-24：原生包围框缓存观察（batch169）
+
+`capture_get_titleblock_fields` 新增 `nativeBoundingBox`，分别保留原生定义框 `symbolBounds`、实例框 `localBounds`、页面偏移框 `offsetBounds`，以及 `dirty` 和 `degenerate`。`cacheStatus` 区分 `dirty_cache`、`degenerate_cache`、`clean_cache_unverified`；三者的 `renderedBoundsVerified` 均为 false。非空图框可能成功返回零框或仅含位置的退化框，调用者应检查状态，不能直接用其判定文字/笔宽/曲线的实际占用范围。原 `capture_query_graphics` 的 bounds 保持原始观察值，未赋予渲染保证。
+
+原九实例冻结样例中的所有定义框、实例框均为零，偏移框退化到实例位置，dirty=1。独立进程只在内存标记 dirty 后重新读取仍然如此；未保存，源与副本指纹保持。专用 INI 和页尺寸明确的另一个隔离副本启动了 Capture，但未获得可控制窗口，故没有编辑器渲染/刷新成功证据；已关闭本次专用进程，未发送工程编辑/保存命令。不能将该尝试解释为原生刷新不受支持，也不伪造包围框来通过验收。
+
+实际 MCP 对九实例/八姿态及跨页同名图框验证了新状态、原11项有序矢量、完整位图字节指纹与独立控制点；源篡改/关闭拒绝也覆盖字段工具。C05 继续 deferred，下一次需在可观察的编辑器上下文核对受支持刷新、动态字段与保存后独立重开。见 [批次169](implementation/batch-169-evidence.json)。
+
 2026-10-28，batch130。新增开发接口`capture_query_titleblock_vectors(sessionId, titleblockId, cursor?, limit=100)`。先从`capture_query_graphics(entity="titleblock")`选择当前session/revision内的实例ID，再查询其符号定义的原生有序向量。工具224，发行65工具白名单保持，未晋级alpha/release。
 
 结果含局部typed descriptor、文字/字体、实例位置/旋转/镜像、原生`GetOffsetGraphicPoint`计算的页面控制点、sourceSymbol、pageId及分页。向量ID只在revision/标题栏/原生顺序内有效；缺少稳定原生ID时明确null。unsupported向量保留，不能因部分支持就推断完整渲染。
