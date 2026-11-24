@@ -1,0 +1,824 @@
+{
+  "batch": 168,
+  "date": "2026-11-24",
+  "feature": "D04",
+  "baseline": "573c791308db78b47499779616d750a242a63b2f",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullD04Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "validatedContractExactMatch": true,
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "cases": [
+      {
+        "kind": "global",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 0,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 1,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          210,
+          310
+        ],
+        "rotation": 2,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          220,
+          300
+        ],
+        "rotation": 3,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 0,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 1,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          210,
+          310
+        ],
+        "rotation": 2,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "global",
+        "location": [
+          220,
+          300
+        ],
+        "rotation": 3,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          220,
+          300
+        ],
+        "rotation": 0,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2804,
+        "nativeSymbolRecreated": false,
+        "sourceCacheReboundToOutput": false,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 1,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 2,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          310
+        ],
+        "rotation": 3,
+        "mirror": 0,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 0,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          310
+        ],
+        "rotation": 1,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          220,
+          300
+        ],
+        "rotation": 2,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      },
+      {
+        "kind": "offpage",
+        "location": [
+          210,
+          300
+        ],
+        "rotation": 3,
+        "mirror": 1,
+        "expectedHotSpot": [
+          220,
+          310
+        ],
+        "oldWirePoints": [
+          [
+            240,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "newWirePoints": [
+          [
+            220,
+            310
+          ],
+          [
+            290,
+            310
+          ]
+        ],
+        "passed": true,
+        "nativeSymbolId": 2948,
+        "nativeSymbolRecreated": true,
+        "sourceCacheReboundToOutput": true,
+        "symbolMetadataExpectedStateVerified": true,
+        "nativePagePartitionsVerified": true
+      }
+    ],
+    "freshRecoveryNoReplay": true,
+    "sourceAndOracleUnchanged": true,
+    "customMetadataCases": 2,
+    "customMetadataPreservation": {
+      "user": {
+        "name": "NOTE",
+        "value": "保留 Ω 00123"
+      },
+      "display": {
+        "location": [
+          -7,
+          13
+        ],
+        "rotation": 1,
+        "displayType": 3,
+        "color": 8,
+        "font": [
+          "Arial",
+          -13,
+          0,
+          0,
+          0,
+          700,
+          1,
+          1,
+          0,
+          0,
+          7,
+          0,
+          1,
+          16
+        ],
+        "fontDefault": 0
+      }
+    },
+    "customFreshRecoveryNoReplay": true,
+    "guards": [
+      "global-preplan-policy-and-schema-refusal",
+      "global-wrong-hotspot-before-save-no-open-no-replay",
+      "global-wrong-node-oracle-no-open-no-replay",
+      "global-cancel-before-native",
+      "global-legacy-set_name",
+      "global-legacy-delete",
+      "offpage-preplan-policy-and-schema-refusal",
+      "offpage-wrong-hotspot-before-save-no-open-no-replay",
+      "offpage-wrong-node-oracle-no-open-no-replay",
+      "offpage-cancel-before-native",
+      "offpage-legacy-set_name",
+      "offpage-legacy-delete"
+    ],
+    "freshLegacyRecoveryNoReplay": true,
+    "terminalTamperRefusedAndRestored": true,
+    "allGuardSourcesUnchanged": true
+  },
+  "nativeSetterDiagnostics": {
+    "noOp": {
+      "process": {
+        "state": "exited",
+        "pid": 27100,
+        "returnCode": 1,
+        "durationSeconds": 2.25,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "native": {
+        "saved": false,
+        "phase": "no_op_setter_probe",
+        "message": "diagnostic_no_save_mirror_1_rotation_1"
+      },
+      "sourceAndCopyUnchanged": true,
+      "sourceSha256": "35bb1825d9e4322d9c15c72c084fd6e6b5110c509db25c8be8152efbfacb59e8",
+      "saveCalled": false
+    },
+    "baseSetters": {
+      "process": {
+        "state": "exited",
+        "pid": 4616,
+        "returnCode": 1,
+        "durationSeconds": 2.25,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "native": {
+        "saved": false,
+        "phase": "base_setter_probe",
+        "message": "diagnostic_no_save"
+      },
+      "setters": [
+        {
+          "command": "DboOffPageConnector_SetRotation",
+          "available": 1,
+          "caught": 0,
+          "message": "Code1 Failed1",
+          "observedRotation": 1
+        },
+        {
+          "command": "DboNetSymbolInstance_SetRotation",
+          "available": 1,
+          "caught": 0,
+          "message": "Code1 Failed1",
+          "observedRotation": 1
+        },
+        {
+          "command": "DboGraphicInstance_SetRotation",
+          "available": 1,
+          "caught": 0,
+          "message": "Code1 Failed1",
+          "observedRotation": 1
+        }
+      ],
+      "sourceAndCopyUnchanged": true,
+      "sourceSha256": "35bb1825d9e4322d9c15c72c084fd6e6b5110c509db25c8be8152efbfacb59e8",
+      "saveCalled": false
+    }
+  },
+  "initialFailures": [
+    {
+      "phase": "registration",
+      "observation": "Unimported Point annotation prevented MCP startup before native mutation; replaced with strict bounded coordinate declarations."
+    },
+    {
+      "phase": "planned node identity",
+      "observation": "First saved global pose passed geometry but failed the old wire-path identity in the node partition. New plans transform only the declared wire endpoint in expected node identities, retaining original groups/members/names; original failed plan remains failed."
+    },
+    {
+      "phase": "offpage setters",
+      "observation": "SetMirror/SetRotation report Code1/Failed1; the documented base wrappers also report failure while rotation changes in memory. These results were not accepted or ignored."
+    },
+    {
+      "phase": "recreation overload",
+      "observation": "GetSymbol returns a generic symbol wrapper rejected by the creation overload; typed cached GetOffPageSymbol lookup corrected the new route."
+    },
+    {
+      "phase": "source cache provenance",
+      "observation": "Strict preservation correctly rejected Source Library changing during reconstruction. New explicit allowSourceCacheRebind policy binds this field exactly to the owned output DSN; no old failed expectation or plan was rewritten."
+    },
+    {
+      "phase": "acceptance scripts",
+      "observation": "A finally-block indentation edit and a Unicode-escape literal failed before native mutation; fixed scripts parse and native holdouts pass."
+    }
+  ],
+  "scope": [
+    "set_pose explicitly declares pose and independent saved hotspot, with one two-point nonempty orthogonal scalar terminal lead. Only that endpoint moves; the other endpoint, native pin/wire membership and names, modeled connection objects and selected-page part geometry are verified. Endpoint pin/wire/symbol/alias dependencies refuse.",
+    "Global pose and offpage translation retain the instance. Offpage orientation uses the documented constructor with the same typed cached definition; a new native symbol ID is explicitly reported. All constructor/save statuses are checked; failed setters are not bypassed by treating Code1 as success.",
+    "Offpage orientation requires explicit allowSourceCacheRebind=true and an existing DSN cache-source field. Source Library must resolve exactly to this owned output design; all other effective/user/display/font fields match the frozen state except declared coordinates. External OLB-origin reconstruction and preserving the old cache-source field remain unsupported.",
+    "No detached symbol movement, complex/branch leads, cross-page flat/global merging, occurrence properties, unmodeled extensions, rendering, DRC or ground-zero simulation certification. Full original D04 stays deferred; original detached-pose/shared-power failures are retained."
+  ],
+  "inputSha256": {
+    "D:\\workspace\\git\\cadence-mcp\\.local\\c04-editor-matrix-base-20261027\\coordinate-frame.json": "e69e80f31e59e96841674605432c84f38b7d498d2184182faf6a9adfb6714996",
+    "C:\\Users\\lenovo\\Documents\\ChatGPT\\cadence tool\\tmp\\cadence-b158\\.local\\b168-final-matrix\\expected.json": "c435035f5cf9ac243f521fcb43850e3059796982d5d1df7c02cada51e57c645f",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\net-symbol-wire-lead-20261023\\global\\design.dsn": "a1aa06838b8242d4313f670a5d2d1a5a2024b6c960b133d2e994e5356461f240",
+    "D:\\workspace\\git\\cadence-mcp\\.local\\net-symbol-wire-lead-20261023\\offpage\\design.dsn": "35bb1825d9e4322d9c15c72c084fd6e6b5110c509db25c8be8152efbfacb59e8"
+  },
+  "latestFullRegression": {
+    "total": 761,
+    "passed": 760,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-168-bound-symbol-pose/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-168-bound-symbol-pose/native-mcp.json": "8e30a121bfdfe43a30241572d67332156fe8d59c612d2e4f73424f3070ec95c4",
+    ".local/batch-168-bound-symbol-pose/custom-mcp.json": "a7a05ceae0f9b879e664b72c435277057630a95c869c301bdc5ad155d95fe45a",
+    ".local/batch-168-bound-symbol-pose/custom-fixture.json": "ba0a153935247e717e67c1422e037f7e7f13ad63e8c681ef323d1236a42f6837",
+    ".local/batch-168-bound-symbol-pose/guards.json": "ef51334488e1fb5012f94e0a4d1bf21f1dc8dc104901148633647c8f4c783ac7",
+    ".local/batch-168-bound-symbol-pose/noop-setters.json": "7a7677a25be2cf203859066357269fc94e08537631487becb48327fb69bccd86",
+    ".local/batch-168-bound-symbol-pose/base-setters.json": "56334e52e9f4e8a1a897ad2f0c2b0d6a74bd7435baea2e355dc52eeb04c526b9",
+    ".local/batch-168-bound-symbol-pose/registration-failure.json": "a69e331863dbd7e82f0cd26c19d8d86ff943aaa32a435e1ece54145a1c2cac6b",
+    ".local/batch-168-bound-symbol-pose/wire-identity-failure.json": "f21778926dc39d1a33c1a02a77e331550eda95e2c69609dd2aab4765bc54e80d",
+    ".local/batch-168-bound-symbol-pose/direct-setter-failure.json": "5bd15066283e00526835871fcba16c7a95d290582b62b3f551260d05442159fb",
+    ".local/batch-168-bound-symbol-pose/overload-failure.json": "427a108fd580c9eb7fb3ede68d3209a410c5553310747b4d860fdfeeb0ce4bdd",
+    ".local/batch-168-bound-symbol-pose/cache-origin-failure.json": "52cfb3f0212229f91e41a9e109bf5ecda28a9a6d68dea6795b1b7090b1f38bbd",
+    ".local/batch-168-bound-symbol-pose/regression.txt": "47c3cf842fcd3f48b5458a017ccf478383d1616f950fbbf37666dd08dad95a3d"
+  }
+}

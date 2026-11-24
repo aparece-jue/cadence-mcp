@@ -8,8 +8,8 @@
   "statusCounts": {
     "passed": 11,
     "baseline_passed": 1,
-    "implemented_partial": 5,
-    "deferred": 16,
+    "implemented_partial": 4,
+    "deferred": 17,
     "planned": 1,
     "failed": 0,
     "waiting_dependency": 0,
@@ -34,12 +34,12 @@
   },
   "toolCount": 244,
   "latestFullRegression": {
-    "total": 756,
-    "passed": 755,
+    "total": 761,
+    "passed": 760,
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-167-titleblock-mixed/regression.txt"
+    "evidence": ".local/batch-168-bound-symbol-pose/regression.txt"
   },
-  "acceptanceCanonicalSha256": "382e3633885be323ee2c075f9f2e94a1145640b606089491540c99367ae0e535"
+  "acceptanceCanonicalSha256": "a038374e4b02c6bd82a0cae7cbd8338aa912c5ebc24edba5aaa8cdc69fbe156a"
 }

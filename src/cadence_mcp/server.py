@@ -1929,12 +1929,17 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
 
     @register(readonly=False)
     async def capture_plan_net_symbol_edit(sessionId: str, symbolId: str, wireId: str,
-            operation: Literal["set_name", "delete"], name: str | None = None,
-            expectedWireNet: str | None = None) -> ToolResult:
-        """Plan scalar attached global/offpage rename/delete on a new copy. Declare native owning wire; preserve full page pin/wire memberships and unrelated names. Optional explicit saved wire name oracle; deletion otherwise permits auto naming. Pose and cross-page flat connectivity remain unverified."""
-        return await invoke(net_symbol_edits.plan, sessionId, symbolId, wireId, operation, name, expectedWireNet,
-                            backend="capture_dbo", coverage=("net_symbol_name_delete_plan", "native_page_partition"),
-                            not_checked=("cross_page_flat_connectivity", "symbol_pose", "native_drc"))
+            operation: Literal["set_name", "delete", "set_pose"], name: str | None = None,
+            expectedWireNet: str | None = None,
+            location: Annotated[list[Annotated[int,Field(strict=True,ge=-1000000,le=1000000)]],Field(min_length=2,max_length=2)] | None = None,
+            rotation: Annotated[int,Field(strict=True,ge=0,le=3)] | None = None,
+            mirror: Annotated[int,Field(strict=True,ge=0,le=1)] | None = None,
+            expectedHotSpot: Annotated[list[Annotated[int,Field(strict=True,ge=-1000000,le=1000000)]],Field(min_length=2,max_length=2)] | None = None,
+            allowSourceCacheRebind: Annotated[bool,Field(strict=True)] = False) -> ToolResult:
+        """Plan scalar attached global/offpage rename/delete or set_pose on a new copy. Pose requires explicit location/rotation/mirror/saved hotspot and a two-point terminal wire; adjust only its moving endpoint and preserve native page pin/wire memberships. Freeze effective/user/display/font metadata. Offpage orientation uses native reconstruction and requires allowSourceCacheRebind=true for an existing DSN cache source: copy symbol metadata, retain the cached definition, bind Source Library to this output DSN, and report the new native symbol ID. Other endpoint dependencies and nonorthogonal leads refuse. Optional explicit saved wire name oracle; deletion otherwise permits auto naming. Cross-page flat connectivity, occurrence metadata, rendering and unmodeled extensions are not certified."""
+        return await invoke(net_symbol_edits.plan, sessionId, symbolId, wireId, operation, name, expectedWireNet,location,rotation,mirror,expectedHotSpot,allowSourceCacheRebind,
+                            backend="capture_dbo", coverage=("net_symbol_name_delete_plan", "native_page_partition") + (("net_symbol_terminal_pose_plan",) if operation=="set_pose" else ()),
+                            not_checked=("cross_page_flat_connectivity", "native_drc"))
 
     @register(readonly=False)
     async def capture_apply_net_symbol_edit(planId: str, planDigest: str,

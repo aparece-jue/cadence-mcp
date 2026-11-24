@@ -63999,7 +63999,7 @@
   {
     "name": "capture_plan_net_symbol_edit",
     "title": null,
-    "description": "Plan scalar attached global/offpage rename/delete on a new copy. Declare native owning wire; preserve full page pin/wire memberships and unrelated names. Optional explicit saved wire name oracle; deletion otherwise permits auto naming. Pose and cross-page flat connectivity remain unverified.",
+    "description": "Plan scalar attached global/offpage rename/delete or set_pose on a new copy. Pose requires explicit location/rotation/mirror/saved hotspot and a two-point terminal wire; adjust only its moving endpoint and preserve native page pin/wire memberships. Freeze effective/user/display/font metadata. Offpage orientation uses native reconstruction and requires allowSourceCacheRebind=true for an existing DSN cache source: copy symbol metadata, retain the cached definition, bind Source Library to this output DSN, and report the new native symbol ID. Other endpoint dependencies and nonorthogonal leads refuse. Optional explicit saved wire name oracle; deletion otherwise permits auto naming. Cross-page flat connectivity, occurrence metadata, rendering and unmodeled extensions are not certified.",
     "inputSchema": {
       "properties": {
         "sessionId": {
@@ -64017,7 +64017,8 @@
         "operation": {
           "enum": [
             "set_name",
-            "delete"
+            "delete",
+            "set_pose"
           ],
           "title": "Operation",
           "type": "string"
@@ -64045,6 +64046,77 @@
           ],
           "default": null,
           "title": "Expectedwirenet"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "rotation": {
+          "anyOf": [
+            {
+              "maximum": 3,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rotation"
+        },
+        "mirror": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mirror"
+        },
+        "expectedHotSpot": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expectedhotspot"
+        },
+        "allowSourceCacheRebind": {
+          "default": false,
+          "title": "Allowsourcecacherebind",
+          "type": "boolean"
         }
       },
       "required": [

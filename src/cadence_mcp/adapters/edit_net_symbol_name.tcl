@@ -1,6 +1,7 @@
 # Fixed global/offpage edit diagnostic; only isolated copied designs.
 package require json
 source [file join [file dirname [info script]] json.tcl]
+source [file join [file dirname [info script]] dbo_net_symbol_metadata.tcl]
 if {$argc!=4} {exit 2}
 lassign $argv root design specPath output
 proc cmcp::cs {v} {return [DboTclHelper_sMakeCString $v]}
@@ -53,6 +54,66 @@ set rc [catch {
  if {[cmcp::str $n] ne [dict get $spec oldName] || [list [DboTclHelper_sGetCPointX $pt] [DboTclHelper_sGetCPointY $pt]] ne [dict get $spec oldLocation] || $r!=[dict get $spec oldRotation] || $m!=[dict get $spec oldMirror] || [list [DboTclHelper_sGetCPointX $h] [DboTclHelper_sGetCPointY $h]] ne [dict get $spec oldHotSpot]} {error stale_symbol}
  set phase mutate_symbol
  switch -- [dict get $spec operation] {
+  set_pose {
+   set phase pose_locate_wire
+   set pose [dict get $spec pose];set ws [DboState];set wires [$page NewWiresIter $ws];cmcp::check $ws;set foundWires {}
+   try {for {set wire [$wires NextWire $ws]} {$wire ne "NULL"} {set wire [$wires NextWire $ws]} {
+    cmcp::check $ws;if {[$wire GetId $ws]==[dict get $spec wireNativeId]} {lappend foundWires $wire};cmcp::check $ws
+   }} finally {delete_DboPageWiresIter $wires}
+   if {[$ws Failed] && [$ws Code]!=1022} {error unexpected_wire_iterator_end}
+   if {[llength $foundWires]!=1} {error ambiguous_terminal_wire};set wire [lindex $foundWires 0];set ws [DboState]
+   if {[$wire GetPointCount $ws]!=2} {error terminal_wire_point_count};cmcp::check $ws
+   set phase pose_validate_wire;set actual {}
+   foreach index {0 1} {set q [$wire GetPoint $index $ws];cmcp::check $ws;lappend actual [list [DboTclHelper_sGetCPointX $q] [DboTclHelper_sGetCPointY $q]]}
+   if {$actual ne [dict get $pose oldWirePoints]} {error old_terminal_wire_mismatch}
+   set phase pose_old_binding;set sn [$obj GetNet $ws];cmcp::check $ws;set wn [$wire GetNet $ws];cmcp::check $ws
+   if {$sn eq "NULL" || $sn ne $wn} {error old_terminal_binding_mismatch}
+   # Offpage orientation setters report failure; reconstruction has an explicit cache policy.
+   if {[dict get $pose recreate]} {
+    set phase pose_recreate_offpage
+    if {$kind ne "offpage" || ![dict get $pose sourceCacheRebind]} {error unexpected_recreation_policy}
+    set metadata [::json::json2dict [cmcp::netSymbolMetadata $obj]]
+    set sourceName [cmcp::cs ""];cmcp::check [$obj GetSourceSymbolName $sourceName]
+    set definition [$d GetOffPageSymbol $sourceName $ws];cmcp::check $ws;if {$definition eq "NULL"} {error missing_cached_symbol}
+    set color [$obj GetColor $ws];cmcp::check $ws
+    set replacement [$page NewOffPageConnector $ws [cmcp::cs [dict get $spec oldName]] $definition [DboTclHelper_sMakeCPoint {*}[dict get $pose location]] [dict get $pose rotation] [dict get $pose mirror]];cmcp::check $ws
+    if {$replacement eq "NULL"} {error offpage_recreation_failed}
+    set newColor [$replacement GetColor $ws];cmcp::check $ws;if {$newColor!=$color} {cmcp::check [$replacement SetColor $color]}
+    cmcp::copyNetSymbolMetadata $obj $replacement
+    set copied [::json::json2dict [cmcp::netSymbolMetadata $replacement]]
+    foreach field {user display} {if {[dict get $metadata $field] ne [dict get $copied $field]} {error "recreated_${field}_mismatch"}}
+    set expectedEffective {}
+    foreach row [dict get $metadata effective] {
+     set propName [dict get $row name];set value [dict get $row value]
+     if {$propName eq "Location X-Coordinate"} {set value [lindex [dict get $pose location] 0]}
+     if {$propName eq "Location Y-Coordinate"} {set value [lindex [dict get $pose location] 1]}
+     if {$propName eq "Source Library"} {
+      if {![string equal -nocase [file extension $value] .dsn]} {error unsupported_source_cache_rebind}
+      set value __OWNED_OUTPUT_CACHE__
+     }
+     dict set expectedEffective $propName $value
+    }
+    set actualEffective {};foreach row [dict get $copied effective] {dict set actualEffective [dict get $row name] [dict get $row value]}
+    if {[lsort [dict keys $expectedEffective]] ne [lsort [dict keys $actualEffective]]} {error recreated_effective_keys_mismatch}
+    dict for {propName value} $expectedEffective {
+     if {$propName eq "Source Library" && $value eq "__OWNED_OUTPUT_CACHE__"} {
+      if {![string equal -nocase [file normalize [dict get $actualEffective $propName]] [file normalize $design]]} {error recreated_source_cache_binding_mismatch}
+     } elseif {[dict get $actualEffective $propName] ne $value} {error "recreated_effective_value_mismatch:$propName"}
+    }
+    cmcp::check [$page DeleteOffPageConnector $obj];set obj $replacement
+   } else {
+    set phase pose_mirror
+    if {[dict get $pose mirror]!=[dict get $spec oldMirror]} {cmcp::check [$obj SetMirror [dict get $pose mirror]]}
+    set phase pose_rotation
+    if {[dict get $pose rotation]!=[dict get $spec oldRotation]} {cmcp::check [$obj SetRotation [dict get $pose rotation]]}
+    set phase pose_location
+    cmcp::check [$obj SetLocation [DboTclHelper_sMakeCPoint {*}[dict get $pose location]]]
+   }
+   set phase pose_new_hotspot;set h [$obj GetOffsetHotSpot $ws];cmcp::check $ws
+   if {[list [DboTclHelper_sGetCPointX $h] [DboTclHelper_sGetCPointY $h]] ne [dict get $pose expectedHotSpot]} {error expected_hotspot_mismatch}
+   set phase pose_wire_endpoint;set scalar [DboWireToDboWireScalar $wire]
+   cmcp::check [$scalar SetPoint [dict get $pose wireEndIndex] [DboTclHelper_sMakeCPoint {*}[dict get $pose expectedHotSpot]]]
+  }
   set_name {cmcp::check [$obj SetName [cmcp::cs [dict get $spec name]]]}
   delete {if {$kind eq "global"} {cmcp::check [$page DeleteGlobal $obj]} else {cmcp::check [$page DeleteOffPageConnector $obj]}}
   default {error invalid_operation}
