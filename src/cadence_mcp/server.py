@@ -25,7 +25,7 @@ from .capture_bus import query_bus
 from .capture_bus_create import CaptureBusCreates
 from .editor_wire_host import EditorWireHost
 from .capture_wire_edit import CaptureWireEdits
-from .capture_graphic_line import CaptureGraphicLines
+from .capture_graphic_line_edit import CaptureGraphicLineEdits as CaptureGraphicLines,GraphicLineChange
 from .capture_graphic_text import CaptureGraphicTexts,GraphicTextChange
 from .capture_part_vectors import query_part_vectors
 from .capture_titleblock_vectors import query_titleblock_vectors
@@ -1507,9 +1507,19 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
                             coverage=("graphic_line_plan", "explicit_endpoints"), not_checked=("rendered_layout", "other_graphic_types", "native_drc"))
 
     @register(readonly=False)
+    async def capture_plan_graphic_line_edit(sessionId: str, graphicId: Annotated[str,Field(min_length=1,max_length=256)],
+                                             operation: Literal['update','delete'],
+                                             change: GraphicLineChange | None = None) -> ToolResult:
+        """Plan update/delete of one decorative line ID from capture_query_page_vectors. Update declares full local endpoints, instance location, rotation/mirror, stroke and native palette color; delete has no change. Preview freezes target identity and old fields; independent reopen verifies ordered modeled graphics/instances, line IDs/colors on every page, and definition connections. Apply/cancel/recover through the existing graphic_line_add task family. Wires, rendered bounds, clipping, titleblocks and DRC remain separate."""
+        return await invoke(graphic_lines.plan_edit,sessionId,graphicId,operation,
+                            None if change is None else change.model_dump(mode='json'),backend='capture_dbo',
+                            coverage=('existing_graphic_line_plan','native_identity_and_field_preconditions'),
+                            not_checked=('rendered_bounds','native_drc'))
+
+    @register(readonly=False)
     async def capture_apply_graphic_line_add(planId: str, planDigest: str,
                                             idempotencyKey: Annotated[str, Field(min_length=1, max_length=128)]) -> ToolResult:
-        """Add a planned decorative line in an owned copy, save and independently reopen; no source mutation."""
+        """Apply a planned decorative-line add/update/delete in an owned copy, save and independently reopen; no source mutation or write replay."""
         return await invoke(graphic_lines.apply, planId, planDigest, idempotencyKey, backend="capture_dbo",
                             coverage=("graphic_line_save_reopen", "definition_and_connection_baseline"), not_checked=("rendered_layout", "native_drc"))
 

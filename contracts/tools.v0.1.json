@@ -44708,9 +44708,381 @@
     "_meta": null
   },
   {
+    "name": "capture_plan_graphic_line_edit",
+    "title": null,
+    "description": "Plan update/delete of one decorative line ID from capture_query_page_vectors. Update declares full local endpoints, instance location, rotation/mirror, stroke and native palette color; delete has no change. Preview freezes target identity and old fields; independent reopen verifies ordered modeled graphics/instances, line IDs/colors on every page, and definition connections. Apply/cancel/recover through the existing graphic_line_add task family. Wires, rendered bounds, clipping, titleblocks and DRC remain separate.",
+    "inputSchema": {
+      "properties": {
+        "sessionId": {
+          "title": "Sessionid",
+          "type": "string"
+        },
+        "graphicId": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Graphicid",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "update",
+            "delete"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "change": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GraphicLineChange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "sessionId",
+        "graphicId",
+        "operation"
+      ],
+      "type": "object",
+      "$defs": {
+        "GraphicLineChange": {
+          "additionalProperties": false,
+          "properties": {
+            "localStart": {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Localstart",
+              "type": "array"
+            },
+            "localEnd": {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Localend",
+              "type": "array"
+            },
+            "location": {
+              "items": {
+                "maximum": 1000000,
+                "minimum": -1000000,
+                "type": "integer"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Location",
+              "type": "array"
+            },
+            "rotation": {
+              "maximum": 3,
+              "minimum": 0,
+              "title": "Rotation",
+              "type": "integer"
+            },
+            "mirror": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Mirror",
+              "type": "integer"
+            },
+            "lineStyle": {
+              "maximum": 5,
+              "minimum": 0,
+              "title": "Linestyle",
+              "type": "integer"
+            },
+            "lineWidth": {
+              "maximum": 3,
+              "minimum": 0,
+              "title": "Linewidth",
+              "type": "integer"
+            },
+            "lineColor": {
+              "maximum": 48,
+              "minimum": 1,
+              "title": "Linecolor",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "localStart",
+            "localEnd",
+            "location",
+            "rotation",
+            "mirror",
+            "lineStyle",
+            "lineWidth",
+            "lineColor"
+          ],
+          "title": "GraphicLineChange",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "capture_plan_graphic_line_editArguments"
+    },
+    "execution": null,
+    "outputSchema": {
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0",
+          "title": "Schemaversion",
+          "type": "string"
+        },
+        "requestId": {
+          "title": "Requestid",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "partial",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": true,
+          "title": "Data",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "artifacts": {
+          "items": {
+            "$ref": "#/$defs/Artifact"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "requestId",
+        "status",
+        "data",
+        "diagnostics",
+        "artifacts",
+        "evidence",
+        "error"
+      ],
+      "type": "object",
+      "$defs": {
+        "Artifact": {
+          "additionalProperties": false,
+          "properties": {
+            "artifactId": {
+              "title": "Artifactid",
+              "type": "string"
+            },
+            "kind": {
+              "title": "Kind",
+              "type": "string"
+            },
+            "workspaceRelativePath": {
+              "title": "Workspacerelativepath",
+              "type": "string"
+            },
+            "sha256": {
+              "title": "Sha256",
+              "type": "string"
+            },
+            "size": {
+              "title": "Size",
+              "type": "integer"
+            },
+            "producedByJob": {
+              "title": "Producedbyjob",
+              "type": "string"
+            },
+            "sourceFingerprint": {
+              "title": "Sourcefingerprint",
+              "type": "string"
+            },
+            "sourceKind": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "file_fingerprint",
+                    "new_library_spec",
+                    "new_design_spec"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sourcekind"
+            },
+            "createdAt": {
+              "title": "Createdat",
+              "type": "string"
+            },
+            "validationState": {
+              "enum": [
+                "unverified",
+                "validated",
+                "failed",
+                "indeterminate"
+              ],
+              "title": "Validationstate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "artifactId",
+            "kind",
+            "workspaceRelativePath",
+            "sha256",
+            "size",
+            "producedByJob",
+            "sourceFingerprint",
+            "createdAt",
+            "validationState"
+          ],
+          "title": "Artifact",
+          "type": "object"
+        },
+        "Error": {
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "title": "Code",
+              "type": "string"
+            },
+            "message": {
+              "title": "Message",
+              "type": "string"
+            },
+            "phase": {
+              "title": "Phase",
+              "type": "string"
+            },
+            "retryable": {
+              "title": "Retryable",
+              "type": "boolean"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "recoveryAction": {
+              "title": "Recoveryaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "phase",
+            "retryable",
+            "details",
+            "recoveryAction"
+          ],
+          "title": "Error",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "enum": [
+                "documented",
+                "file_present",
+                "runtime_probed",
+                "fixture_passed",
+                "workflow_passed"
+              ],
+              "title": "Level",
+              "type": "string"
+            },
+            "backend": {
+              "title": "Backend",
+              "type": "string"
+            },
+            "complete": {
+              "title": "Complete",
+              "type": "boolean"
+            },
+            "coverage": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Coverage",
+              "type": "array"
+            },
+            "notChecked": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Notchecked",
+              "type": "array"
+            }
+          },
+          "required": [
+            "level",
+            "backend",
+            "complete",
+            "coverage",
+            "notChecked"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "title": "Envelope"
+    },
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": null,
+      "openWorldHint": false
+    },
+    "_meta": null
+  },
+  {
     "name": "capture_apply_graphic_line_add",
     "title": null,
-    "description": "Add a planned decorative line in an owned copy, save and independently reopen; no source mutation.",
+    "description": "Apply a planned decorative-line add/update/delete in an owned copy, save and independently reopen; no source mutation or write replay.",
     "inputSchema": {
       "properties": {
         "planId": {

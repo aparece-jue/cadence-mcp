@@ -21,7 +21,7 @@ async def run(args, root, report):
     plans=[]
     try:
         async with Client(params,mode='legacy',read_timeout_seconds=120) as client:
-            tools=(await client.list_tools()).tools;assert len(tools)==244
+            tools=(await client.list_tools()).tools;assert len(tools)==245
             (root/'tools.json').write_text(json.dumps([t.model_dump(mode='json',by_alias=True) for t in tools],ensure_ascii=False,indent=2)+'\n',encoding='utf8')
             schemas={t.name:t.output_schema for t in tools}
             async def call(name,values,error=None):

@@ -1,0 +1,736 @@
+{
+  "batch": 173,
+  "date": "2026-11-25",
+  "feature": "D05",
+  "baseline": "6f48cc5eaef1e0a3d42a218147ff35ebe58cc30c",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullD05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 245,
+  "newPublicTools": [
+    "capture_plan_graphic_line_edit"
+  ],
+  "validatedContractUnchanged": true,
+  "nativePrototype": {
+    "passed": true,
+    "sourceSha256": "5402342e13cbb47ec7613dbce7e100d66eaefae12a58a34cab87dac47b7a06bc",
+    "oracleSha256": "5331c37a2a47de0b1d263f78a9a21b04d2dac06d0592f7f4c47fb8e6b1e0bd9d",
+    "cases": [
+      {
+        "case": "update-0-0",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 30160,
+          "returnCode": 0,
+          "durationSeconds": 2.219,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-0-1",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 26100,
+          "returnCode": 0,
+          "durationSeconds": 2.235,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-1-0",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 19760,
+          "returnCode": 0,
+          "durationSeconds": 2.188,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-1-1",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 20656,
+          "returnCode": 0,
+          "durationSeconds": 2.219,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-2-0",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 2956,
+          "returnCode": 0,
+          "durationSeconds": 2.203,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-2-1",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 16832,
+          "returnCode": 0,
+          "durationSeconds": 2.219,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-3-0",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 21460,
+          "returnCode": 0,
+          "durationSeconds": 2.234,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "update-3-1",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 29560,
+          "returnCode": 0,
+          "durationSeconds": 2.218,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      },
+      {
+        "case": "delete-0-0",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 12628,
+          "returnCode": 0,
+          "durationSeconds": 2.219,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": true,
+          "phase": "save",
+          "error": ""
+        }
+      }
+    ],
+    "sourceAndOracleUnchanged": true
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "fullD05Accepted": false,
+    "cases": [
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          0,
+          0
+        ],
+        "artifactSha256": "f17d5705101c4f1fbae4a2ce5209deb4daa09f90a5744829c70ae1a117923029",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          0,
+          1
+        ],
+        "artifactSha256": "44550156687e6468979e69f281fc4a886b6630db753162ccd0e7d98a99ce6335",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          1,
+          0
+        ],
+        "artifactSha256": "c6bbd62d547d513e745c2d7ea01368114231a026dd844e0da623a5e5a579f30a",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          1,
+          1
+        ],
+        "artifactSha256": "8d3b7a03e3b4406c077bec8078273dd5947df53141ed7880d05f5cd75afd7959",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          2,
+          0
+        ],
+        "artifactSha256": "2e2d063aa2f3f3a3cb6b57b9ec8f1dcfebb6339e1a2ba95368a8c50177ee1652",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          2,
+          1
+        ],
+        "artifactSha256": "18f27a8e1989f3d1447a29c595738a6da41a63cfd6290b92423a18e485496e4d",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          3,
+          0
+        ],
+        "artifactSha256": "b63fa8321304e6c5e735909c26ee26a4a6e54b2d422238d751fa3b89c3a4bf3d",
+        "passed": true
+      },
+      {
+        "operation": "update",
+        "index": 0,
+        "oldPose": [
+          3,
+          1
+        ],
+        "artifactSha256": "0451ab0d903c5397d17578771bcc4649ffe96fdca5e050a9bde1a57e836cb0af",
+        "passed": true
+      },
+      {
+        "operation": "delete",
+        "index": 0,
+        "oldPose": [
+          null,
+          null
+        ],
+        "artifactSha256": "27a19638ec9f0d0e9cb952c1224f1f25e789f2f0a95840f64186c564e04b56c8",
+        "passed": true
+      },
+      {
+        "operation": "delete",
+        "index": 1,
+        "oldPose": [
+          null,
+          null
+        ],
+        "artifactSha256": "30f0de09c0b8667b839c019fba91845ef73883162773b1f3381cc5c5ba3da549",
+        "passed": true
+      },
+      {
+        "operation": "delete",
+        "index": 2,
+        "oldPose": [
+          null,
+          null
+        ],
+        "artifactSha256": "75957421f3fe309cc153a496220038bea8ac1eeaae81e93966c7dab0f1ffdc10",
+        "passed": true
+      }
+    ],
+    "pendingCancelRefused": true,
+    "staleSourceRefusedBeforeNative": true,
+    "terminalTamperError": "target_changed",
+    "terminalTamperRefused": true,
+    "terminalTestBytesRestored": true,
+    "freshRecoveryWithoutReplay": true,
+    "inputsUnchanged": true,
+    "oracleUnchanged": true,
+    "oracleSha256": "7a63e88b99def5206a9861014de356d26ce0791437caf692c9c4989b3d8ae4a5"
+  },
+  "nativeJobAudit": [
+    {
+      "planId": "0a2fc0d14efd46d4aa5a7f94b077f9a4",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 11060,
+        "returnCode": 0,
+        "durationSeconds": 2.25,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "18f27a8e1989f3d1447a29c595738a6da41a63cfd6290b92423a18e485496e4d"
+    },
+    {
+      "planId": "131e65d369be430f8b274bbb80b5ec49",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 26944,
+        "returnCode": 0,
+        "durationSeconds": 2.25,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "8d3b7a03e3b4406c077bec8078273dd5947df53141ed7880d05f5cd75afd7959"
+    },
+    {
+      "planId": "18ba63a4a13141f6a82cf56a33790870",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 12980,
+        "returnCode": 0,
+        "durationSeconds": 2.235,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "b63fa8321304e6c5e735909c26ee26a4a6e54b2d422238d751fa3b89c3a4bf3d"
+    },
+    {
+      "planId": "5d1b7a3f5f364b35a2dcaecfa8892839",
+      "operation": "delete",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 36596,
+        "returnCode": 0,
+        "durationSeconds": 2.265,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "30f0de09c0b8667b839c019fba91845ef73883162773b1f3381cc5c5ba3da549"
+    },
+    {
+      "planId": "6828d2364754406dbef14b4ff7cd23e3",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 1000,
+        "returnCode": 0,
+        "durationSeconds": 2.235,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "2e2d063aa2f3f3a3cb6b57b9ec8f1dcfebb6339e1a2ba95368a8c50177ee1652"
+    },
+    {
+      "planId": "78dfe3c10de6416cb2cc38b58565054e",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 1280,
+        "returnCode": 0,
+        "durationSeconds": 2.219,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "f17d5705101c4f1fbae4a2ce5209deb4daa09f90a5744829c70ae1a117923029"
+    },
+    {
+      "planId": "8512fe509c47427cb35d35afaf1602f1",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 32836,
+        "returnCode": 0,
+        "durationSeconds": 2.234,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "0451ab0d903c5397d17578771bcc4649ffe96fdca5e050a9bde1a57e836cb0af"
+    },
+    {
+      "planId": "8f696a1ba3b64f8fa4b93a6fcd6b9718",
+      "operation": "delete",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 27436,
+        "returnCode": 0,
+        "durationSeconds": 2.234,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "75957421f3fe309cc153a496220038bea8ac1eeaae81e93966c7dab0f1ffdc10"
+    },
+    {
+      "planId": "9cb6afac4de24a9286860ac4c1c66cf5",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 15292,
+        "returnCode": 0,
+        "durationSeconds": 2.265,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "c6bbd62d547d513e745c2d7ea01368114231a026dd844e0da623a5e5a579f30a"
+    },
+    {
+      "planId": "c43a8c7e12c94868bc4f28b62063de01",
+      "operation": "update",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 13504,
+        "returnCode": 0,
+        "durationSeconds": 2.235,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "44550156687e6468979e69f281fc4a886b6630db753162ccd0e7d98a99ce6335"
+    },
+    {
+      "planId": "c80085d3d1c14ab294c567761b9029d2",
+      "operation": "delete",
+      "state": "cancelled",
+      "workerStarted": false,
+      "process": null,
+      "artifactSha256": null
+    },
+    {
+      "planId": "f172bef3eb534f19b34c14651e4ffd10",
+      "operation": "delete",
+      "state": "planned",
+      "workerStarted": false,
+      "process": null,
+      "artifactSha256": null
+    },
+    {
+      "planId": "ffc5b1b41d784927b37dc186b2d00ebc",
+      "operation": "delete",
+      "state": "verified",
+      "workerStarted": true,
+      "process": {
+        "state": "exited",
+        "pid": 20296,
+        "returnCode": 0,
+        "durationSeconds": 2.25,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "artifactSha256": "27a19638ec9f0d0e9cb952c1224f1f25e789f2f0a95840f64186c564e04b56c8"
+    }
+  ],
+  "nativeFaultAcceptance": {
+    "passed": true,
+    "sourceSha256": "7c386a9a33589f916f6473171ed9e4801d933b75c06efaa626c4c0119fc661bd",
+    "originalPlanSha256": "f202d4296e54e91092149d36c85dfae51957d67776fb88bdd9f68379d7ed8a00",
+    "nativePreconditions": [
+      {
+        "case": "wrong_id",
+        "process": {
+          "state": "exited",
+          "pid": 36260,
+          "returnCode": 1,
+          "durationSeconds": 2.25,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": false,
+          "error": "target_identity_changed"
+        },
+        "copiedDesignUnchanged": true,
+        "passed": true
+      },
+      {
+        "case": "wrong_index",
+        "process": {
+          "state": "exited",
+          "pid": 9156,
+          "returnCode": 1,
+          "durationSeconds": 2.266,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": false,
+          "error": "target_identity_changed"
+        },
+        "copiedDesignUnchanged": true,
+        "passed": true
+      },
+      {
+        "case": "wrong_old_location",
+        "process": {
+          "state": "exited",
+          "pid": 20712,
+          "returnCode": 1,
+          "durationSeconds": 2.25,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": false,
+          "error": "old_line_changed"
+        },
+        "copiedDesignUnchanged": true,
+        "passed": true
+      },
+      {
+        "case": "wrong_old_color",
+        "process": {
+          "state": "exited",
+          "pid": 35628,
+          "returnCode": 1,
+          "durationSeconds": 2.25,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "receipt": {
+          "saved": false,
+          "error": "old_line_changed"
+        },
+        "copiedDesignUnchanged": true,
+        "passed": true
+      }
+    ],
+    "wrongSavedColor": {
+      "planId": "b7a940faa9e549479aef8f71bed13fa3",
+      "nativeSaveSucceeded": true,
+      "verificationError": "graphic_line_mismatch",
+      "state": "failed",
+      "process": {
+        "state": "exited",
+        "pid": 19964,
+        "returnCode": 0,
+        "durationSeconds": 2.234,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "recoveryAndReplayRefused": true,
+      "nativeFilesAndTimesUnchanged": true,
+      "openError": "output_unverified"
+    },
+    "inputsUnchanged": true
+  },
+  "nativeDuplicateIdentityAcceptance": {
+    "passed": true,
+    "scope": "native service, complementary to actual MCP pose/deletion matrix",
+    "sourceSha256": "52483c0b32cbf4e412f89499c8cba58fa5c4ee5a7fa5faf694779f8d13750bb1",
+    "cases": [
+      {
+        "operation": "color_only_update",
+        "targetNativeId": 3404,
+        "nativeIds": [
+          3100,
+          3252,
+          3404,
+          3556
+        ],
+        "colors": [
+          1,
+          8,
+          8,
+          48
+        ],
+        "passed": true
+      },
+      {
+        "operation": "delete_one_of_equal_color_twins",
+        "targetNativeId": 3252,
+        "remainingNativeIds": [
+          3100,
+          3404,
+          3556
+        ],
+        "colors": [
+          1,
+          8,
+          48
+        ],
+        "passed": true
+      }
+    ],
+    "freshRecoveryWithoutReplay": true,
+    "sourceUnchanged": true
+  },
+  "initialHarnessFailure": {
+    "passed": false,
+    "observation": "The first duplicate-line service update is natively verified, then test re-import of its own output is refused by configured read roots. The harness had declared only the external source parent.",
+    "correction": "Declare the new private test output root as an additional read root only for that harness. Fresh source copies pass both duplicate scenarios; original failed report and input remain unchanged. No production permission check relaxed."
+  },
+  "scope": [
+    "New planner selects one decorative line graphicId from a revision-bound page-vector query and declares update/delete. Full local endpoints/location/rotation/mirror/style/width/native color are required for update; delete forbids a change. Existing apply/cancel/recover family and output-opening kind are reused. No wire or arbitrary eval entry.",
+    "The fixed native writer validates exact ordinal, nativeId, type, all old geometry/pose/stroke/colors before mutation; all Dbo failed states are checked. Fixed64-page/4096-graphic and line-record/48KiB plan limits,256-character object IDs and pre-read ambiguous locator rejection apply.",
+    "Plans freeze ordered modeled graphics on all pages, modeled instance state and definition/connection state, plus ordered native line IDs and both owner/instance colors. Target update keeps its native ID; deletion removes exactly one, preserving other records including duplicate geometry/color.",
+    "Actual MCP passes eight old-pose to new-pose updates and first/middle/last deletion. New-server terminal recovery does not replay; pending cancel and changed input show no worker or native receipt. Output tamper is refused; test restores exact original artifact bytes afterward.",
+    "Four direct native precondition negatives refuse before saving and leave copied DSN bytes unchanged. A deliberately corrupted worker writes color1 instead of frozen47 and saves successfully; independent verification returns graphic_line_mismatch, state remains failed, recovery/apply/open reject and native bytes/mtime do not change.",
+    "Supplementary native service targets one of four fully coincident lines with different colors, then deletes one of same-color twins by native ID; other IDs/geometry/colors remain. Harness read-root mistake is retained separately.",
+    "The final audit adds locator length/index/ambiguity rejection before native reads, tested with a focused host guard and final actual245 tools/list, then full773 regression. Existing add/no-color/stroke behavior remains delegated unchanged; old65 validated contract is byte-identical.",
+    "C05/native-render bounds, fonts, titleblock editing, other graphic lifecycle and original D05 requirements remain incomplete; no original34 criteria/status promotion."
+  ],
+  "latestFullRegression": {
+    "total": 773,
+    "passed": 772,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-173-graphic-line-edits/regression-final.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-173-graphic-line-edits/native-prototype.json": "42fc01d31f44cb4a9729884a8d7fe0bfec8a848ddff8b15b6b602c80e82b0920",
+    ".local/batch-173-graphic-line-edits/native-mcp.json": "dedf328e10fad53665164e658050c08ca11956b5e2542f6f6bf0f21f2ad62090",
+    ".local/batch-173-graphic-line-edits/native-ledger-audit.json": "17f7f7f9fa589c17a6d2c04bede647bcd60972fb142915572b4f626c3ddb6a68",
+    ".local/batch-173-graphic-line-edits/native-faults.json": "76103583c381ba8e5665bbb9ba502b72a351b2efc3c328d40b07a2e4d6cc9c33",
+    ".local/batch-173-graphic-line-edits/native-duplicates.json": "9da29be6b3467347ea0f68dae3ed89c86d34228957f71506f11c85442ccfafed",
+    ".local/batch-173-graphic-line-edits/duplicate-harness-read-root-failure.json": "a8f9a35f6ea4786a303865651ddb8227612f1334df2ed6678fab7882fca69d10",
+    ".local/batch-173-graphic-line-edits/first-service.json": "38091e5a9fab779568593c031e6d88468a83d95c8902daa6c8d012e633f8ef4f",
+    ".local/batch-173-graphic-line-edits/regression-before-locator-guard.txt": "66dcdca920bb7dd0ee1e00ef60d59bdd378d58c5fbaf96733902a2a960fc1eff",
+    ".local/batch-173-graphic-line-edits/regression-final.txt": "00eef75799e4e237e37192ba9c893a9dd1b8eee25213d2618bc6b95e6baaa964",
+    ".local/batch-173-graphic-line-edits/wrong-color-plan.json": "12341ee7c049024ac12f50eea60befdc3782838b64aec7d352100992eb27ff53",
+    ".local/batch-173-graphic-line-edits/wrong-color-native-result.json": "9a202e6e3815699ecf737e0f7161adbb38c2b32349faea5cec94ca208df8c0a4",
+    ".local/batch-173-graphic-line-edits/wrong-color-line-spec.json": "4722c5ced737a5559df9da5820c8b68a91b16a84e2d1284f505ccf816f8a0cc3",
+    ".local/batch-173-graphic-line-edits/wrong_id-native.json": "637d6842b1c535bcd4ef2795f15da031be03f96837204ef2b9e40df562106688",
+    ".local/batch-173-graphic-line-edits/wrong_index-native.json": "637d6842b1c535bcd4ef2795f15da031be03f96837204ef2b9e40df562106688",
+    ".local/batch-173-graphic-line-edits/wrong_old_location-native.json": "05d58f817d6338666e5a614805804ca3b1ef405980c6ec5b5219f1ac947e9ffc",
+    ".local/batch-173-graphic-line-edits/wrong_old_color-native.json": "05d58f817d6338666e5a614805804ca3b1ef405980c6ec5b5219f1ac947e9ffc"
+  }
+}

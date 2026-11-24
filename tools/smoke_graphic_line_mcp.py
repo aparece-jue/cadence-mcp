@@ -14,7 +14,7 @@ async def main():
     report={'passed':False,'phase':'open','sourceHashBefore':sha256(source),'checks':{}}
     try:
         async with Client(params,mode='legacy',read_timeout_seconds=90) as client:
-            tools=(await client.list_tools()).tools;assert len(tools)==244
+            tools=(await client.list_tools()).tools;assert len(tools)==245
             schemas={t.name:t.output_schema for t in tools}
             for t in tools:Draft202012Validator.check_schema(t.input_schema);Draft202012Validator.check_schema(t.output_schema)
             (root/'tools-list.json').write_text(json.dumps([t.model_dump(mode='json',by_alias=True) for t in tools],indent=2),encoding='utf-8')
@@ -50,7 +50,7 @@ async def main():
             assert recovered['artifact']['sha256']==recover_result['artifact']['sha256']
             assert not (await fresh.call_tool('capture_open_edit_result',{**recover_key,'kind':'graphic_line'})).is_error
             report['checks']['fresh_server_idempotency_and_success_recheck']=True
-        report.update(passed=True,toolCount=244)
+        report.update(passed=True,toolCount=245)
     except BaseException as error:
         import traceback
         report['error']=str(error);report['traceback']=traceback.format_exc()

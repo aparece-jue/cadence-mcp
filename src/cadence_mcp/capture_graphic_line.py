@@ -12,18 +12,19 @@ def line_key(row):return json.dumps(row,sort_keys=True,separators=(',',':'))
 def added_line(start,end,stroke=None):
     return {'localStart':[0,0],'localEnd':[end[0]-start[0],end[1]-start[1]],'location':start,
             'start':start,'end':end,'rotationCode':0,'mirrorCode':0,**(stroke or {})}
-def read_lines(config,design,directory,schematic,page,styled=False,colored=False):
+def read_lines(config,design,directory,schematic,page,styled=False,colored=False,identified=False):
     before=sha256(design);output=directory/(new_id('graphic-lines')+'.json')
-    run_tcl(config,'graphic_line_probe.tcl',[str(design),str(output),schematic,page,'0','0','1','0','read_colored' if colored else 'read_styled' if styled else 'read'],directory)
+    run_tcl(config,'graphic_line_probe.tcl',[str(design),str(output),schematic,page,'0','0','1','0','read_identified' if identified else 'read_colored' if colored else 'read_styled' if styled else 'read'],directory)
     if output.stat().st_size>32*1024*1024:raise CadenceError('output_limit','Graphic line inventory exceeds limit.')
     try:
         data=json.loads(output.read_text(encoding='utf-8'))
-        if set(data)!={'lines'} or not isinstance(data['lines'],list) or len(data['lines'])>100000:raise ValueError()
+        if set(data)!={'lines'} or not isinstance(data['lines'],list) or len(data['lines'])>(4096 if identified else 100000):raise ValueError()
         for row in data['lines']:
-            if set(row)!=({'localStart','localEnd','location','start','end','rotationCode','mirrorCode'} | ({'lineStyle','lineWidth'} if styled or colored else set()) | ({'lineColor','definitionColor'} if colored else set())):raise ValueError()
+            if set(row)!=({'localStart','localEnd','location','start','end','rotationCode','mirrorCode'} | ({'lineStyle','lineWidth'} if styled or colored or identified else set()) | ({'lineColor','definitionColor'} if colored or identified else set()) | ({'nativeId'} if identified else set())):raise ValueError()
             if not all(point(row[k]) for k in ('localStart','localEnd','location','start','end')):raise ValueError()
-            if (styled or colored) and (type(row['lineStyle']) is not int or row['lineStyle'] not in range(6) or type(row['lineWidth']) is not int or row['lineWidth'] not in range(4)):raise ValueError()
-            if colored and any(type(row[k]) is not int or row[k] not in range(1,49) for k in ('lineColor','definitionColor')):raise ValueError()
+            if (styled or colored or identified) and (type(row['lineStyle']) is not int or row['lineStyle'] not in range(6) or type(row['lineWidth']) is not int or row['lineWidth'] not in range(4)):raise ValueError()
+            if (colored or identified) and any(type(row[k]) is not int or row[k] not in range(1,49) for k in ('lineColor','definitionColor')):raise ValueError()
+            if identified and (type(row['nativeId']) is not int or not 0<=row['nativeId']<=4294967295):raise ValueError()
             if type(row['rotationCode']) is not int or type(row['mirrorCode']) is not int:raise ValueError()
     except (ValueError,TypeError,KeyError) as error:raise CadenceError('invalid_worker_result','Malformed graphic line inventory.') from error
     if sha256(design)!=before:raise CadenceError('target_changed','Design changed while reading graphic lines.')

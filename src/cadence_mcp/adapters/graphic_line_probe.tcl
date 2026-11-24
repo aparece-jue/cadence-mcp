@@ -60,14 +60,14 @@ set rc [catch {
         set phase save_schematic;cmcp::check [$d SaveSchematic $schematic]
         set phase save_design;cmcp::check [$session MarkAllLibForSave $d];cmcp::check [$session SaveDesign $d]
         set result [cmcp::obj saved true operation [cmcp::q add_graphic_line]]
-    } elseif {$operation in {read read_styled read_colored}} {
+    } elseif {$operation in {read read_styled read_colored read_identified}} {
         set phase read_graphic_lines
         set rows {};set n 0
         set gi [$page NewCommentGraphicsIter $state];cmcp::check $state
         try {
             for {set obj [$gi NextCommentGraphic $state]} {$obj ne "NULL"} {set obj [$gi NextCommentGraphic $state]} {
                 cmcp::check $state
-                if {[incr n]>100000} {error object_limit}
+                if {[incr n]>100000 || ($operation eq "read_identified" && $n>4096)} {error object_limit}
                 if {[$obj GetObjectType] != $::DboBaseObject_GRAPHIC_LINE_INST} {continue}
                 set line [DboGraphicInstanceToDboGraphicLineInst $obj]
                 set def [$line GetDboLine]
@@ -79,21 +79,26 @@ set rc [catch {
                 set mirror [$line GetMirror $state];cmcp::check $state
                 set a [$line GetOffsetGraphicPoint $start];set b [$line GetOffsetGraphicPoint $end]
                 set stroke {}
-                if {$operation in {read_styled read_colored}} {
+                if {$operation in {read_styled read_colored read_identified}} {
                     set style [$def GetLineStyle $state];cmcp::check $state
                     set width [$def GetLineWidth $state];cmcp::check $state
                     set stroke [list lineStyle $style lineWidth $width]
                 }
-                if {$operation eq "read_colored"} {
+                if {$operation in {read_colored read_identified}} {
                     set color [$line GetColor $state];cmcp::check $state
                     set owner [$def GetOwner]
                     if {$owner eq "NULL"} {error line_owner_missing}
                     set definitionColor [DboGraphicObject_sGetColor $owner $state];cmcp::check $state
                     lappend stroke lineColor $color definitionColor $definitionColor
                 }
+                if {$operation eq "read_identified"} {
+                    set id [$line GetId $state];cmcp::check $state
+                    lappend stroke nativeId $id
+                }
                 lappend rows [cmcp::obj {*}$stroke localStart [cmcp::pt $start] localEnd [cmcp::pt $end] location [cmcp::pt $location] start [cmcp::pt $a] end [cmcp::pt $b] rotationCode $rotation mirrorCode $mirror]
             }
         } finally {delete_DboPageCommentGraphicsIter $gi}
+        if {$operation eq "read_identified" && [$state Failed] && [$state Code]!=1022} {error unexpected_iterator_end}
         set result [cmcp::obj lines [cmcp::arr $rows]]
     } else {error invalid_operation}
 } message]
