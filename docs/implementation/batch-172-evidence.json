@@ -1,0 +1,348 @@
+{
+  "batch": 172,
+  "date": "2026-11-24",
+  "feature": "D05",
+  "baseline": "0453e60ae1fc2af389979ab5fbb80beeacc36bf8",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullD05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "changedDevelopmentTools": [
+    "capture_plan_graphic_line_add"
+  ],
+  "validatedContractUnchanged": true,
+  "officialSources": [
+    {
+      "sourceId": "CAP-REF",
+      "pdfPage": 293,
+      "method": "DboGraphicObject.sSetColor/sGetColor"
+    },
+    {
+      "sourceId": "CAP-REF",
+      "method": "DboVector.GetOwner -> DboBaseObject; DboGraphicInstance.SetColor/GetColor"
+    }
+  ],
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "fullD05Accepted": false,
+    "cases": [
+      {
+        "color": 1,
+        "allReopenedColorPairs": [
+          [
+            1,
+            1
+          ]
+        ],
+        "passed": true
+      },
+      {
+        "color": 8,
+        "allReopenedColorPairs": [
+          [
+            1,
+            1
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "passed": true
+      },
+      {
+        "color": 47,
+        "allReopenedColorPairs": [
+          [
+            1,
+            1
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            47,
+            47
+          ]
+        ],
+        "passed": true
+      },
+      {
+        "color": 48,
+        "allReopenedColorPairs": [
+          [
+            1,
+            1
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            47,
+            47
+          ],
+          [
+            48,
+            48
+          ]
+        ],
+        "passed": true
+      }
+    ],
+    "freshRecoveryWithoutReplay": true,
+    "pendingCancel": true,
+    "sourceSha256": "fb5d043ce44ba2130a5d4bdaee948f682182608c42b33aa005ca0beb24fb98dd",
+    "sourceUnchanged": true,
+    "oracleSha256": "a05e5d4aa447c9de101bd6bcebb694bbb9af09fd7438e4e526f2a1df4943b299",
+    "oracleUnchanged": true
+  },
+  "nativeOwnedProcessAudit": [
+    {
+      "lineColor": 47,
+      "process": {
+        "state": "exited",
+        "pid": 11480,
+        "returnCode": 0,
+        "durationSeconds": 2.219,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "sourceSha256": "fb6bf5f5826c8545c9d185b0069dbffa2196afdebe56332bac2d97201e116f23",
+      "artifactSha256": "8c93dc404be98cbea24c19a56695bee6067a516a46e8b40bc87e0ba2466e533c",
+      "nativeColorVerified": true,
+      "independentReopenVerified": true,
+      "definitionAndConnectionBaselinePreserved": true,
+      "notChecked": [
+        "occurrence_connectivity",
+        "native_drc",
+        "rendered_bounds",
+        "text_fonts",
+        "other_graphic_types",
+        "titleblock_editing",
+        "other_part_properties"
+      ]
+    },
+    {
+      "lineColor": 48,
+      "process": {
+        "state": "exited",
+        "pid": 29576,
+        "returnCode": 0,
+        "durationSeconds": 2.219,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "sourceSha256": "8c93dc404be98cbea24c19a56695bee6067a516a46e8b40bc87e0ba2466e533c",
+      "artifactSha256": "52483c0b32cbf4e412f89499c8cba58fa5c4ee5a7fa5faf694779f8d13750bb1",
+      "nativeColorVerified": true,
+      "independentReopenVerified": true,
+      "definitionAndConnectionBaselinePreserved": true,
+      "notChecked": [
+        "occurrence_connectivity",
+        "native_drc",
+        "rendered_bounds",
+        "text_fonts",
+        "other_graphic_types",
+        "titleblock_editing",
+        "other_part_properties"
+      ]
+    },
+    {
+      "lineColor": 8,
+      "process": {
+        "state": "exited",
+        "pid": 18660,
+        "returnCode": 0,
+        "durationSeconds": 2.234,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "sourceSha256": "0894678114bddae4303fd561d63f0b3cf38f73fa52763899b18b72effd46141a",
+      "artifactSha256": "fb6bf5f5826c8545c9d185b0069dbffa2196afdebe56332bac2d97201e116f23",
+      "nativeColorVerified": true,
+      "independentReopenVerified": true,
+      "definitionAndConnectionBaselinePreserved": true,
+      "notChecked": [
+        "occurrence_connectivity",
+        "native_drc",
+        "rendered_bounds",
+        "text_fonts",
+        "other_graphic_types",
+        "titleblock_editing",
+        "other_part_properties"
+      ]
+    },
+    {
+      "lineColor": 1,
+      "process": {
+        "state": "exited",
+        "pid": 2608,
+        "returnCode": 0,
+        "durationSeconds": 2.203,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "sourceSha256": "fb5d043ce44ba2130a5d4bdaee948f682182608c42b33aa005ca0beb24fb98dd",
+      "artifactSha256": "0894678114bddae4303fd561d63f0b3cf38f73fa52763899b18b72effd46141a",
+      "nativeColorVerified": true,
+      "independentReopenVerified": true,
+      "definitionAndConnectionBaselinePreserved": true,
+      "notChecked": [
+        "occurrence_connectivity",
+        "native_drc",
+        "rendered_bounds",
+        "text_fonts",
+        "other_graphic_types",
+        "titleblock_editing",
+        "other_part_properties"
+      ]
+    }
+  ],
+  "initialFailures": [
+    "Harness initially selected MAIN from another fixture and stopped before planning; original creator explicitly targets HALFADD/MCP_PLACE. Corrected page locator without changing source/geometry/color oracle.",
+    "Initial implementation called SetColor on the DboLine vector wrapper, which exposes no such method. Failure occurred before save. Corrected ownership through documented GetOwner and fixed static graphic-color helpers; original failed job never replayed."
+  ],
+  "scope": [
+    "Optional lineColor1..48 requires explicit lineStyle/lineWidth and sets both new graphic definition owner and instance ColorT values. 1..47 native palette codes and48 DEFAULT_OBJECT_COLOR are independently enumerated;49 INVALID_COLOR refused. No RGB mapping/rendering claimed.",
+    "New plans freeze complete geometry/style/width and both raw color values for all target-page decorative lines as a multiset. Four sequential identical-geometry additions with colors1/8/47/48 preserve every previous native record after independent reopen and retain definition pins/connections.",
+    "Bounds/types/incomplete stroke/pending cancel and fresh-server verify-only recovery pass. Legacy plans without color keep original worker arguments, baseline shape/result and notChecked fields; validated65-tool contract unchanged.",
+    "Existing line update/delete, other graphic lifecycle/titleblocks, fonts/rendered boundaries and full D05 remain incomplete. No original34 status/criteria promotion."
+  ],
+  "latestFullRegression": {
+    "total": 767,
+    "passed": 766,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-172-graphic-color/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-172-graphic-color/native-mcp.json": "bc77a73c11df79f688941b64a755334530854e65470642339b971c29a156022e",
+    ".local/batch-172-graphic-color/native-audit.json": "573cb6537b37af2efcbc076beecb0be3e97c48d1648b58bbd5e42edbfbfe18a4",
+    ".local/batch-172-graphic-color/wrong-page-failure.json": "e5e90e2d7b2ab2cf1ca22ae0e23bbbd36c26558f7e99d85333121e4d0366a0b9",
+    ".local/batch-172-graphic-color/vector-owner-failure.json": "7cc85ba3de6638339e01d1aed29f8d143c4b04ef2726923ea3be6bff3198cca4",
+    ".local/batch-172-graphic-color/vector-owner-native.json": "8b53703bc922d5cb6ac6cd18d4c4f60f560b8101b5ebea81d9e10b256819603a",
+    ".local/batch-172-graphic-color/color-enums.txt": "a54b900eeba7b4ab72b39b887df71cf008f6757f81fb42b0442d0a3626b9acac",
+    ".local/batch-172-graphic-color/regression.txt": "b362e53292987a04a7c32232808e842858c84dc10b36f6a1bbe0ee24a457adbd",
+    ".local/batch-172-graphic-color/color-47-ledger.json": "5370e39b875ef6809b0a07a03efd2b1e61ee38332b4fdcb730e95e8917e69150",
+    ".local/batch-172-graphic-color/color-48-ledger.json": "ee0df976f95cc76b89ae4fea1386e5c36468bb53a57c206247a28dce71b40af2",
+    ".local/batch-172-graphic-color/color-8-ledger.json": "80c2348ead1c1304a6886f6763451fb564aa6823ac937575f2c5b823ea229129",
+    ".local/batch-172-graphic-color/color-1-ledger.json": "a84d14b6ae6495055dfe10527c053a66388b39ec0a6ed02d580ed5919e60bf6d",
+    ".local/batch-172-graphic-color/legacy-mcp.json": "cda2747abb808528c51fa1169d5259ec322d76996b8e653feb3681a0a65472b0",
+    ".local/batch-172-graphic-color/legacy-color-mix.json": "cbc0a8457e310de96704dd60f762a5c408cc3325ae5371c606ad804f24e50cba"
+  },
+  "legacyNativeCompatibility": {
+    "oldMcpWithoutColorPassed": true,
+    "oldMcpFreshRecoveryPassed": true,
+    "mixedDefaultAndExplicitColorNative": {
+      "passed": true,
+      "sourceSha256": "97b6dc469bd337bedf077d971b148f1162c0aff070a58e7f86b5cd392061beef",
+      "expectedBefore": [
+        [
+          1,
+          1,
+          48,
+          48
+        ],
+        [
+          2,
+          2,
+          48,
+          48
+        ]
+      ],
+      "expectedAfter": [
+        [
+          1,
+          1,
+          48,
+          48
+        ],
+        [
+          2,
+          2,
+          48,
+          48
+        ],
+        [
+          3,
+          1,
+          8,
+          8
+        ]
+      ],
+      "result": {
+        "planId": "885ee6a014bf4d44bd6f9e0549e252d6",
+        "state": "verified",
+        "artifact": {
+          "artifactId": "graphic-line-885ee6a014bf4d44bd6f9e0549e252d6",
+          "kind": "capture_edited_design",
+          "workspaceRelativePath": "design.dsn",
+          "sha256": "5402342e13cbb47ec7613dbce7e100d66eaefae12a58a34cab87dac47b7a06bc",
+          "size": 248320,
+          "producedByJob": "885ee6a014bf4d44bd6f9e0549e252d6",
+          "sourceFingerprint": "97b6dc469bd337bedf077d971b148f1162c0aff070a58e7f86b5cd392061beef",
+          "createdAt": "2026-11-24T15:31:26.104606+00:00",
+          "validationState": "validated"
+        },
+        "sourceModified": false,
+        "independentReopenVerified": true,
+        "nativeCompletionVerified": true,
+        "definitionAndConnectionBaselinePreserved": true,
+        "nativeStrokeVerified": true,
+        "nativeColorVerified": true,
+        "designPassed": null,
+        "outputWorkspaceRelativePath": "isolated-jobs/capture_graphic_line/plan-885ee6a014bf4d44bd6f9e0549e252d6",
+        "notChecked": [
+          "occurrence_connectivity",
+          "native_drc",
+          "rendered_bounds",
+          "text_fonts",
+          "other_graphic_types",
+          "titleblock_editing",
+          "other_part_properties"
+        ],
+        "mutationReplayed": false
+      },
+      "actualAfter": [
+        [
+          1,
+          1,
+          48,
+          48
+        ],
+        [
+          2,
+          2,
+          48,
+          48
+        ],
+        [
+          3,
+          1,
+          8,
+          8
+        ]
+      ],
+      "sourceUnchanged": true
+    }
+  }
+}

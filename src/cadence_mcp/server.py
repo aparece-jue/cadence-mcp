@@ -1500,9 +1500,10 @@ def create_server(config: Config, *, profile: str = 'development') -> MCPServer:
     @register(readonly=False)
     async def capture_plan_graphic_line_add(sessionId: str, pageId: str, start: list[int], end: list[int],
                                             lineStyle: Annotated[int, Field(strict=True, ge=0, le=5)] | None = None,
-                                            lineWidth: Annotated[int, Field(strict=True, ge=0, le=3)] | None = None) -> ToolResult:
-        """Plan one decorative graphic line with explicit global endpoints and zero rotation on a new DSN. Does not create an electrical wire. Verify all definition pin nets and connection objects, plus existing target-page line geometry. Declare both lineStyle and lineWidth to verify native stroke values on all target-page lines. Color, other graphic types, page bounds and DRC require separate checks."""
-        return await invoke(graphic_lines.plan, sessionId, pageId, start, end, lineStyle, lineWidth, backend="capture_dbo",
+                                            lineWidth: Annotated[int, Field(strict=True, ge=0, le=3)] | None = None,
+                                            lineColor: Annotated[int, Field(strict=True, ge=1, le=48)] | None = None) -> ToolResult:
+        """Plan one decorative graphic line with explicit global endpoints and zero rotation on a new DSN. Does not create an electrical wire. Verify all definition pin nets and connection objects, plus existing target-page line geometry. Declare both lineStyle and lineWidth to verify native stroke values on all target-page lines. Optional lineColor 1..48 sets the new line definition and instance to the same native ColorT palette code and verifies both on every target-page line; declare style and width with color. Code48 is DEFAULT_OBJECT_COLOR; RGB/rendered appearance, other graphic types, page bounds and DRC require separate checks."""
+        return await invoke(graphic_lines.plan, sessionId, pageId, start, end, lineStyle, lineWidth, lineColor, backend="capture_dbo",
                             coverage=("graphic_line_plan", "explicit_endpoints"), not_checked=("rendered_layout", "other_graphic_types", "native_drc"))
 
     @register(readonly=False)

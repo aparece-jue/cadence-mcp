@@ -1,6 +1,6 @@
 # Fixed graphic-line operation on an owned DSN copy; no electrical wire mutation.
 source [file join [file dirname [info script]] json.tcl]
-if {$argc ni {10 12}} {exit 2}
+if {$argc ni {10 12 13}} {exit 2}
 lassign $argv root design output schematicName pageName x1 y1 x2 y2 operation
 proc cmcp::cs {v} {return [DboTclHelper_sMakeCString $v]}
 proc cmcp::str {v} {return [DboTclHelper_sGetConstCharPtr $v]}
@@ -40,19 +40,27 @@ set rc [catch {
         set phase create_graphic_line
         set line [$page NewGraphicLineInst $state [DboTclHelper_sMakeCPoint 0 0] [DboTclHelper_sMakeCPoint [expr {$x2-$x1}] [expr {$y2-$y1}]] [DboTclHelper_sMakeCPoint $x1 $y1] 0];cmcp::check $state
         if {$line eq "NULL"} {error line_missing}
-        if {$argc==12} {
+        if {$argc>=12} {
             lassign [lrange $argv 10 11] style width
             if {![string is integer -strict $style] || $style<0 || $style>5 || ![string is integer -strict $width] || $width<0 || $width>3} {error invalid_stroke}
             set definition [$line GetDboLine]
             cmcp::check [$definition SetLineStyle $style]
             cmcp::check [$definition SetLineWidth $width]
         }
+        if {$argc==13} {
+            set color [lindex $argv 12]
+            if {![string is integer -strict $color] || $color<1 || $color>48} {error invalid_color}
+            set owner [$definition GetOwner]
+            if {$owner eq "NULL"} {error line_owner_missing}
+            cmcp::check [DboGraphicObject_sSetColor $owner $color]
+            cmcp::check [$line SetColor $color]
+        }
         set phase save_page
         cmcp::check [$page MarkModified];cmcp::check [$schematic MarkModified $page];cmcp::check [$schematic SavePage $page]
         set phase save_schematic;cmcp::check [$d SaveSchematic $schematic]
         set phase save_design;cmcp::check [$session MarkAllLibForSave $d];cmcp::check [$session SaveDesign $d]
         set result [cmcp::obj saved true operation [cmcp::q add_graphic_line]]
-    } elseif {$operation in {read read_styled}} {
+    } elseif {$operation in {read read_styled read_colored}} {
         set phase read_graphic_lines
         set rows {};set n 0
         set gi [$page NewCommentGraphicsIter $state];cmcp::check $state
@@ -71,10 +79,17 @@ set rc [catch {
                 set mirror [$line GetMirror $state];cmcp::check $state
                 set a [$line GetOffsetGraphicPoint $start];set b [$line GetOffsetGraphicPoint $end]
                 set stroke {}
-                if {$operation eq "read_styled"} {
+                if {$operation in {read_styled read_colored}} {
                     set style [$def GetLineStyle $state];cmcp::check $state
                     set width [$def GetLineWidth $state];cmcp::check $state
                     set stroke [list lineStyle $style lineWidth $width]
+                }
+                if {$operation eq "read_colored"} {
+                    set color [$line GetColor $state];cmcp::check $state
+                    set owner [$def GetOwner]
+                    if {$owner eq "NULL"} {error line_owner_missing}
+                    set definitionColor [DboGraphicObject_sGetColor $owner $state];cmcp::check $state
+                    lappend stroke lineColor $color definitionColor $definitionColor
                 }
                 lappend rows [cmcp::obj {*}$stroke localStart [cmcp::pt $start] localEnd [cmcp::pt $end] location [cmcp::pt $location] start [cmcp::pt $a] end [cmcp::pt $b] rotationCode $rotation mirrorCode $mirror]
             }
