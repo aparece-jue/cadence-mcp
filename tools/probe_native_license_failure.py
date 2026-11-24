@@ -7,20 +7,30 @@ from cadence_mcp.core import sha256
 
 p=argparse.ArgumentParser()
 for name in ('workspace-root','install-root'):p.add_argument('--'+name,type=Path,required=True)
+p.add_argument('--cadence-license-only', action='store_true',
+               help='Set CDS_LIC_ONLY=1 in the child only; SPB fallback exclusion is not assumed.')
+p.add_argument('--control', action='store_true', help='Keep every child license variable unchanged.')
+p.add_argument('--native-timeout-seconds', type=int, choices=range(1,61), default=8)
 a=p.parse_args();root=a.workspace_root.resolve();root.mkdir(exist_ok=False);source=root/'source';source.mkdir()
 cir=source/'divider.cir';cir.write_text('* Own license diagnostic divider\nV1 1 0 DC 5\nR1 1 2 1k\nR2 2 0 1k\n.DC V1 5 5 1\n.PROBE64 V([2])\n.END\n',encoding='ascii');source_hash=sha256(cir)
 invalid=root/'no-license.lic';invalid.write_text('# Own acceptance fixture: deliberately no licenses.\n',encoding='ascii')
 def env_hash():return hashlib.sha256(json.dumps({k:os.environ.get(k) for k in ('CDS_LIC_FILE','CDS_LIC_ONLY','LM_LICENSE_FILE')},sort_keys=True).encode()).hexdigest()
-before=env_hash();env=os.environ.copy();env['PYTHONPATH']=str(Path(__file__).resolve().parents[1]/'src');env['CDS_LIC_FILE']=str(invalid);env['LM_LICENSE_FILE']=str(invalid)
-params=StdioServerParameters(command=sys.executable,args=['-m','cadence_mcp.server','--install-root',str(a.install_root.resolve(strict=True)),'--workspace-root',str(root/'work'),'--read-root',str(source),'--timeout-seconds','8'],env=env)
-report={'nativeLicenseFailureAccepted':False,'globalConfigurationModified':False,'childOnlyOverrides':['CDS_LIC_FILE','LM_LICENSE_FILE'],'timeoutIsLicenseEvidence':False}
+before=env_hash();env=os.environ.copy();env['PYTHONPATH']=str(Path(__file__).resolve().parents[1]/'src')
+if not a.control:
+ env['CDS_LIC_FILE']=str(invalid);env['LM_LICENSE_FILE']=str(invalid)
+ if a.cadence_license_only:env['CDS_LIC_ONLY']='1'
+params=StdioServerParameters(command=sys.executable,args=['-m','cadence_mcp.server','--install-root',str(a.install_root.resolve(strict=True)),'--workspace-root',str(root/'work'),'--read-root',str(source),'--timeout-seconds',str(a.native_timeout_seconds)],env=env)
+report={'nativeLicenseFailureAccepted':False,'globalConfigurationModified':False,'childOnlyOverrides':[] if a.control else ['CDS_LIC_FILE','LM_LICENSE_FILE'],'timeoutIsLicenseEvidence':False,'nativeTimeoutSeconds':a.native_timeout_seconds,'control':a.control}
+if a.cadence_license_only and not a.control:
+ report['childOnlyOverrides'].append('CDS_LIC_ONLY')
+ report['licenseSelectionScope']='Cadence-only search hint; exclusion of all SPB fallback/cache sources not proven'
 async def main():
  try:
-  async with Client(params,mode='legacy',read_timeout_seconds=60) as client:
+  async with Client(params,mode='legacy',read_timeout_seconds=max(60,a.native_timeout_seconds+30)) as client:
    async def call(name,args):
     reply=await client.call_tool(name,args);assert not reply.is_error,reply.structured_content;return reply.structured_content['data']
    prepared=await call('pspice_prepare',{'sourceCircuit':str(cir)})
-   plan=await call('pspice_plan_cli_run',{'simulationId':prepared['simulationId'],'analysis':'dc','timeoutSeconds':8,'expectedSamples':[{'block':0,'row':0,'traceName':'V(2)','real':2.5,'imaginary':None,'absoluteTolerance':1e-6,'relativeTolerance':0.0}]});key={k:plan[k] for k in ('planId','planDigest')};report['plan']=plan
+   plan=await call('pspice_plan_cli_run',{'simulationId':prepared['simulationId'],'analysis':'dc','timeoutSeconds':a.native_timeout_seconds,'expectedSamples':[{'block':0,'row':0,'traceName':'V(2)','real':2.5,'imaginary':None,'absoluteTolerance':1e-6,'relativeTolerance':0.0}]});key={k:plan[k] for k in ('planId','planDigest')};report['plan']=plan
    result=await client.call_tool('pspice_apply_cli_run',{**key,'idempotencyKey':'invalid-license-once'});report['response']=result.structured_content
    if result.is_error:
     failure=await call('pspice_inspect_run_failure',{**key,'kind':'cli'});report['failure']=failure

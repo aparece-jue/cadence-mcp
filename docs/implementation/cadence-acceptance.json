@@ -2325,7 +2325,7 @@
       "module": "仿真执行",
       "title": "CLI进程树/任务/取消/超时/恢复",
       "required": true,
-      "queueOrder": 88,
+      "queueOrder": 95,
       "dependencies": [
         "P01"
       ],
@@ -2402,7 +2402,8 @@
         ".local/regression-param-step-20261027.txt",
         "docs/implementation/batch-136-evidence.json",
         "docs/implementation/batch-137-evidence.json",
-        "docs/implementation/batch-164-evidence.json"
+        "docs/implementation/batch-164-evidence.json",
+        "docs/implementation/batch-171-evidence.json"
       ],
       "issues": [
         "ISS-P02-pspice-owned-7797dd67a5",
@@ -2411,7 +2412,7 @@
         "ISS-P02-nested-lib-engine-setup-exit"
       ],
       "implementationReady": true,
-      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates. Batch137 nested LIB with quoted space-containing filenames prepares three-file closure and raw setup returns0, but fresh prepared engine setup exits3221226356 before run_analysis; ordinary nonfolded nested LIB control fails at same phase/code. Both frozen2.5V oracles/source/report/failed ledgers retained, owned0. Folded references are not established as cause; no new LIB numerical acceptance. P02 deferred to queue tail, prior INCLUDE/INC success retained. Batch164 resolves the prepared nested-LIB engine failure for new tasks: long absolute LIB reference reproduces setup exit3221226356, whereas relative references in the same long directory complete. New engine plans freeze short job-relative LIB policy; legacy plans and CLI preserve absolute rules. Original ordinary/folded fixtures pass their unchanged 2.5V oracles through actual MCP, independent DAT, fresh recovery/no replay and native hash guards. Exact native threshold/internal cause unproven; license-unavailable/default nominal encrypted closure/remaining P02 audit still deferred.",
+      "remaining": "Official psp_cmd /r now has fixed durable public tasks and original2.5V/AC/whole-RC numerical acceptance; cancellation/real timeout/receipt recovery/raw-canonical hash identity/old-output refusal pass. Historical60s CLI timeout is not reproduced; its causal explanation is unproven. Real native license-unavailable classification and remaining original P02 closure audit remain, with unsupported advanced/model/implicit-lookup boundaries unchanged. Batch93: preserved-byte divider originally malformed by inserting comment before title; owned native failure retained. New correct source completes CLI but OUT decode rejects undefined comment byte. Fix escapes only full comment lines for explicit policy; existing task recovered numerically2.5V via MCP with unchanged native hashes/no replay. Other OUT lines remain strict; not default-library or license acceptance. Batch103: exact private INI selection plus explicit native ALS include yields four-file closure and independent RC/RL AC acceptance; original nominal encrypted closure remains refused. Missing DAT with native ORPSIM16527 now reports pspice_no_saved_traces; stopped original task reverified without replay or byte changes. Native folded reference preparation remains unaccepted. Batch136 logical plus-continuation statements now resolve folded explicit references before closure traversal; consumed continuation lines are blanked only for rewritten references, original bytes/comments/line mapping retained. Nested INCLUDE/INC with comments passes original native setup, three-file prepared closure, fresh engine DC2.5V and idempotence. UTF8/preserve-byte and extra argument/cycle tests pass. This does not certify original generated nominal/encrypted closure, native folded LIB variants or CLI/license gates. Batch137 nested LIB with quoted space-containing filenames prepares three-file closure and raw setup returns0, but fresh prepared engine setup exits3221226356 before run_analysis; ordinary nonfolded nested LIB control fails at same phase/code. Both frozen2.5V oracles/source/report/failed ledgers retained, owned0. Folded references are not established as cause; no new LIB numerical acceptance. P02 deferred to queue tail, prior INCLUDE/INC success retained. Batch164 resolves the prepared nested-LIB engine failure for new tasks: long absolute LIB reference reproduces setup exit3221226356, whereas relative references in the same long directory complete. New engine plans freeze short job-relative LIB policy; legacy plans and CLI preserve absolute rules. Original ordinary/folded fixtures pass their unchanged 2.5V oracles through actual MCP, independent DAT, fresh recovery/no replay and native hash guards. Exact native threshold/internal cause unproven; license-unavailable/default nominal encrypted closure/remaining P02 audit still deferred. Batch171 CDS_LIC_ONLY child-only trial produces no explicit license diagnostic. Normal8/30second controls and fresh short-absolute/long-relative/long-absolute20second CLI trials all timeout without OUT/DAT. Same unchanged circuit independently solves via engine in2.297s and DAT2.5V verifies, so current CLI startup is a newly open regression, not license proof or established path cause. Owned0, parent/source unchanged. No automatic backend fallback and no failed-job replay. P02 remains deferred.",
       "previousQueueOrderBeforeLicenseDeferral": 40
     },
     {
@@ -3431,8 +3432,8 @@
       "summary": "Explicit license failure text classification has host tests, but real native unavailable-license behavior/diagnostic has not been accepted. Timeout/exit2 alone is not license evidence.",
       "evidence": "docs/implementation/batch-66-official-cli-2026-10-25.md",
       "nextAction": "Retain unverified; seek documented exclusive child-local selection or other non-disruptive native evidence after independent gates. Do not alter global/license-server settings or infer license fault from timeout.",
-      "latestEvidence": ".local/license-child-probe-20261025/report.json",
-      "latestObservation": "Documented child-only CDS_LIC_FILE points at reserved non-listening loopback endpoint; CLI and native Setup still succeed, as does control CLI. Parent environment and original source unchanged. Real unavailable-license condition not established; fallback/cache/other-source explanation is unproven.",
+      "latestEvidence": "docs/implementation/batch-171-evidence.json",
+      "latestObservation": "Child CDS_LIC_ONLY with invalid fixture and matched unchanged-environment controls all timeout without native output. Independent engine remains healthy. No explicit native license error and no proven exclusive SPB selection; preserve unverified.",
       "queueDisposition": "deferred_after_independent_work"
     },
     {
@@ -3782,6 +3783,14 @@
       "summary": "All nine nonempty titleblocks expose dirty zero native definition/instance boxes and state0 degenerate offsets. Dirty toggle does not calculate bounds in standalone context. Private editor rendering not reached.",
       "evidence": "docs/implementation/batch-169-evidence.json",
       "nextAction": "Use a genuinely observable isolated editor context to verify supported refresh and saved fresh reopen; never replace native glyph/stroke bounds with control-point hull or setter-fabricated expected boxes."
+    },
+    {
+      "id": "ISS-P02-current-cli-startup-without-output",
+      "featureId": "P02",
+      "status": "open",
+      "summary": "Current normal CLI controls timeout before OUT/DAT, including short absolute and long relative/absolute commands. Same source engine control yields independently verified2.5V.",
+      "evidence": "docs/implementation/batch-171-evidence.json",
+      "nextAction": "Diagnose actual CLI startup context/modal/environment using owned fixtures and original oracle; do not infer licence failure or overwrite original tasks. No automatic backend substitution."
     }
   ],
   "excluded": [
@@ -3820,7 +3829,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "P02: read official child-local exclusive license selection documentation before any additional unavailable-license experiment; do not alter global settings or infer license failure from timeout.",
+    "nextIndependentWork": "D05 native graphic color support/preservation with isolated save/reopen; keep current CLI startup regression open and separate from healthy engine solving.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3989,7 +3998,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 170,
+    "batch": 171,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4373,7 +4382,7 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-170-evidence.json",
+    "evidence": "docs/implementation/batch-171-evidence.json",
     "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
@@ -4456,9 +4465,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "P04",
-      "before": 80,
-      "after": 94
+      "feature": "P02",
+      "before": 88,
+      "after": 95
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4525,7 +4534,7 @@
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
     "cacheAllDisplayFontsAccepted": true,
-    "feature": "P04",
+    "feature": "P02",
     "explicitUnnumberedSingleUnitMapAccepted": true,
     "foldedLibEngineMcpAccepted": true,
     "terminalBitmapPixelsMcpAccepted": true,

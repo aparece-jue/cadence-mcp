@@ -1,0 +1,228 @@
+{
+  "batch": 171,
+  "date": "2026-11-24",
+  "feature": "P02",
+  "baseline": "78a6952ecff975d400dbdd39d7e54efc8ac6c1cd",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullP02Accepted": false,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "tools": 244,
+  "contractsUnchanged": true,
+  "officialSources": [
+    {
+      "url": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/64957/latency-to-connect-license-server/1405679",
+      "observation": "Cadence expert describes CDS_LIC_ONLY as excluding LM_LICENSE_FILE in an IC/Spectre discussion; SPB24.1 exclusion of all fallback/cache sources is not established by this advice."
+    },
+    {
+      "installRelativePath": "doc/cap_ug/Running_PSpice_in_Batch_Mode.html",
+      "observation": "Official noninteractive workflow is psp_cmd /r circuit-path."
+    }
+  ],
+  "licenseControls": [
+    {
+      "case": "restricted8",
+      "childOnlyOverrides": [
+        "CDS_LIC_FILE",
+        "LM_LICENSE_FILE",
+        "CDS_LIC_ONLY"
+      ],
+      "errorCode": "timeout",
+      "process": {
+        "state": "timeout",
+        "pid": 12644,
+        "returnCode": 3758096385,
+        "durationSeconds": 8.016,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "observedFiles": {},
+      "sourceUnchanged": true,
+      "parentLicenseEnvironmentUnchanged": true,
+      "nativeLicenseFailureAccepted": false
+    },
+    {
+      "case": "control8",
+      "childOnlyOverrides": [],
+      "errorCode": "timeout",
+      "process": {
+        "state": "timeout",
+        "pid": 12588,
+        "returnCode": 3758096385,
+        "durationSeconds": 8.031,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "observedFiles": {},
+      "sourceUnchanged": true,
+      "parentLicenseEnvironmentUnchanged": true,
+      "nativeLicenseFailureAccepted": false
+    },
+    {
+      "case": "control30",
+      "childOnlyOverrides": [],
+      "errorCode": "timeout",
+      "process": {
+        "state": "timeout",
+        "pid": 32752,
+        "returnCode": 3758096385,
+        "durationSeconds": 30.046,
+        "remainingOwnedProcesses": 0,
+        "totalOwnedProcesses": 2,
+        "rootExitSignalConfirmed": true,
+        "observedProcessExitSignalsConfirmed": true,
+        "observedOwnedProcessCount": 2
+      },
+      "observedFiles": {},
+      "sourceUnchanged": true,
+      "parentLicenseEnvironmentUnchanged": true,
+      "nativeLicenseFailureAccepted": false
+    }
+  ],
+  "pathComparison": {
+    "sourceSha256": "7f4adbbd2dab3a05b0c4e6f762259fc10030c9c986ec474ac9c51e2a2f32b81d",
+    "licenseSelectionModified": false,
+    "numericalOracle": {
+      "trace": "V(2)",
+      "real": 2.5,
+      "absoluteTolerance": 1e-06
+    },
+    "cases": [
+      {
+        "mode": "short_absolute",
+        "inputPathLength": 68,
+        "passed": false,
+        "process": {
+          "state": "timeout",
+          "pid": 1908,
+          "returnCode": 3758096385,
+          "durationSeconds": 20.062,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "outProduced": false,
+        "datProduced": false,
+        "error": "",
+        "errorType": "AssertionError",
+        "inputUnchanged": true,
+        "sourceUnchanged": true
+      },
+      {
+        "mode": "long_relative",
+        "inputPathLength": 172,
+        "passed": false,
+        "process": {
+          "state": "timeout",
+          "pid": 7244,
+          "returnCode": 3758096385,
+          "durationSeconds": 20.031,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "outProduced": false,
+        "datProduced": false,
+        "error": "",
+        "errorType": "AssertionError",
+        "inputUnchanged": true,
+        "sourceUnchanged": true
+      },
+      {
+        "mode": "long_absolute",
+        "inputPathLength": 172,
+        "passed": false,
+        "process": {
+          "state": "timeout",
+          "pid": 28748,
+          "returnCode": 3758096385,
+          "durationSeconds": 20.047,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "outProduced": false,
+        "datProduced": false,
+        "error": "",
+        "errorType": "AssertionError",
+        "inputUnchanged": true,
+        "sourceUnchanged": true
+      }
+    ]
+  },
+  "engineControl": {
+    "passed": true,
+    "sourceSha256": "7f4adbbd2dab3a05b0c4e6f762259fc10030c9c986ec474ac9c51e2a2f32b81d",
+    "licenseEnvironmentModified": false,
+    "process": {
+      "state": "exited",
+      "pid": 30168,
+      "returnCode": 0,
+      "durationSeconds": 2.297,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "receipt": {
+      "caught": 0,
+      "message": "",
+      "returns": {
+        "batchModeReturn": "",
+        "setupReturn": "0",
+        "analysisReturn": "0",
+        "finishReturn": "0",
+        "cleanupReturn": "0"
+      }
+    },
+    "samples": [
+      {
+        "index": 0,
+        "real": 2.5,
+        "imaginary": null
+      }
+    ],
+    "datSha256": "0d526dcd65905d0652559c8878024d0073c74685f89ee4846ea4571a697813f2",
+    "outSha256": "cbb7e2d5092d68d37c22df66bf7fe655a09cdc5634ffdfe6c2e38a0ed3985822",
+    "sourceAndCopyUnchanged": true
+  },
+  "conclusions": [
+    "No explicit native unavailable-license diagnostic was produced; timeout is not licence evidence. Original unavailable-license gate remains open.",
+    "Normal-environment controls at8 and30seconds also timed out. Fresh20second CLI controls at68-character absolute and172-character absolute/relative input paths all time out without OUT/DAT. Path shortening/relative argument are not a sufficient remedy in these trials; exact cause remains unproven.",
+    "Same unchanged circuit on the independent native engine completes in2.297seconds and new DAT independently reopens to2.5V. This narrows the current regression to the CLI path rather than all PSpice solving, without identifying a licensing/internal cause.",
+    "All observed owned trees exit and source copies/parent license environment remain unchanged. No failed jobs replayed or global settings modified. Initial automatic approval failure was a usage review limit, action unexecuted; later normal review accepted the prepared experiment after its indicated retry time.",
+    "Next independent work D05 native graphic color/complete record preservation; current CLI startup needs separate diagnosis, not automatic backend substitution."
+  ],
+  "latestFullRegression": {
+    "total": 764,
+    "passed": 763,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-169-titleblock-bounds/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "validation": "All new fixed native controls executed; diagnostic scripts parsed. No production/schema changes; retain batch169 full764-test result with original1skip.",
+  "evidenceSha256": {
+    ".local/batch-171-cli-health/restricted8.json": "8501133d5c5ed7bad12705d24f3d1d56e7444569e2f3d33cd2d8ed28505b9bbd",
+    ".local/batch-171-cli-health/control8.json": "09ace668ae6677ab49eb4974edb59ddd0e7d3acc71591dbc7daf8e1208821ae9",
+    ".local/batch-171-cli-health/control30.json": "59761164b974a7ab98099594a502394554aee44c3819864c764c5b45d9fe6a0a",
+    ".local/batch-171-cli-health/path-comparison.json": "eb7796dd8d2afe80d1b84c27e544b25d221a164cc62b2ea46b095b8bcbe3ad58",
+    ".local/batch-171-cli-health/engine-control.json": "ad563d81606ba7bef42cc1ad92a98085e3254548b681575c217ce781a93c23de"
+  }
+}
