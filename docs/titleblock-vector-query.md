@@ -31,3 +31,10 @@
 CAP-REF669–671页GetDesignName/GetDesignFileName/GetPageSize/GetPageCount/GetPageNumber在独立新进程读取原三页九标题栏样例，均state0；设计名与路径为原生大写值，sourceSymbol正确。但所有标题栏页数/页码0、尺寸空，与构造前冻结的实际三页预期不符，故passed=false。字段可能需要显式属性或应用更新，未将这一假说认定为根因。没有把接口成功当作语义成功，也没有增加动态字段工具。
 
 原DSN、预期与失败报告保持，worker退出且owned0，无GUI或写源。C05按失败后移原则转deferred并放到原队列尾，保留其他未完成要求；后续检查官方字段归属/初始化及受支持的应用更新，不复用曾崩溃的UpdatePageState试验。原图形读取正例仍有效，完整C05仍未验收。证据见batch-133-evidence.json；原34仍8/34，生产/契约和已发布版本不变，沿用最近729回归而未重新运行。
+
+
+## 2026-11-24：混合矢量与位图（batch167）
+
+固定标题栏读取器接入已有有界 DIB 字节进程，修复 tclsh 无 bitmapDigest 回调导致的整查询失败。九个标题栏的八姿态及另一页同名实例验收通过：原五类、polygon/polyline/bezier、RGB24/32 完整 DIB 指纹、局部描述与独立变换后的页控制点，保持原生顺序及两项分页。fill 种子没有可验证边界，保留 unsupported 行，`supportedGeometryComplete` 为 false。原生句柄不出进程，不增加任意脚本接口。
+
+原夹具和冻结预期在修复前后保持同一指纹。额外默认矩形填充断言第一次写成0，按官方 NewBox 的 HOLLOW_FILL 默认和独立枚举值1修正；失败报告保留。这不改变动态刷新、嵌套/OLE、渲染和打印边界的未验收状态。见 [批次167](implementation/batch-167-evidence.json)。

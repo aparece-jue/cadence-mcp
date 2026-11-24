@@ -1,0 +1,186 @@
+{
+  "batch": 167,
+  "date": "2026-11-24",
+  "feature": "C05",
+  "baseline": "fc251a3538e70108d065d397870b829cfdf5ecb5",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullC05Accepted": false,
+  "productionCodeChanged": true,
+  "tools": 244,
+  "newPublicTools": 0,
+  "contractsUnchanged": true,
+  "beforeFix": {
+    "actualMcpFailed": true,
+    "directNativeError": "bitmap_byte_worker_required"
+  },
+  "nativeMcpAcceptance": {
+    "passed": true,
+    "cases": [
+      {
+        "page": "MAIN",
+        "rotationCode": 0,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 1,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 2,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 3,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 0,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 1,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 2,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "MAIN",
+        "rotationCode": 3,
+        "mirrorCode": 1,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      },
+      {
+        "page": "OTHER",
+        "rotationCode": 0,
+        "mirrorCode": 0,
+        "vectors": 11,
+        "bitmapDibHashes": [
+          "ce4224cfb38a0c77d63617c4796d6e9ed208adcd0ade73c537dce1a8c807ea81",
+          "f3158ead3638f32840a50a87ad0de895b135a54a7c6609fc9aebdbb507122efd"
+        ],
+        "passed": true
+      }
+    ],
+    "cachedSourceTamperRefused": true,
+    "crossTitleCursorRefused": true,
+    "closedSessionRefused": true,
+    "sourceAndOracleUnchanged": true,
+    "inputSha256": {
+      "design.dsn": "372a447d18e9a3400b295710f604885f075acdaff96dd057f3b71b9a25903f66",
+      "expected.json": "01a41b32640e07111e49c0e2b510368fb2e5882d3ffbe43dcbe1e9f8c4259a74",
+      "rgb24.bmp": "dc1cce966176fc0d0e8cf2dbc57bf96eab8f87b7e2b9718eaeecd5e6132560ec",
+      "rgb32.bmp": "daf2d66dc1e3d17418f69e798047137dad70502ced6b15f694ee6d7791c6cb00"
+    }
+  },
+  "fixture": {
+    "process": {
+      "state": "exited",
+      "pid": 36348,
+      "returnCode": 0,
+      "durationSeconds": 2.234,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "originalInputsUnchanged": true,
+    "oracleUnchanged": true,
+    "originalInputSha256": {
+      "D:\\workspace\\git\\cadence-mcp\\.local\\titleblock-curves-20261029\\design.dsn": "81d3c1b03879023fb5dacaaea64ce9eeaba288851b78125c36ccfe31142c6549",
+      "D:\\workspace\\git\\cadence-mcp\\.local\\titleblock-curves-20261029\\expected.json": "0d76572777fd88d0fca26a00915225cd26af385dc5f798562a06f768511ab4cf",
+      "D:\\workspace\\git\\cadence-mcp\\.local\\titleblock-curves-20261029\\fixture.tcl": "10cf3e00d5865e152662b03c5920c5b7da2e8ac2936a9b5ed83243e376c0b49d"
+    },
+    "passed": true,
+    "native": {
+      "saved": true,
+      "phase": "save",
+      "error": ""
+    }
+  },
+  "initialVerifierFailure": {
+    "observation": "Additional prefix-box default assertion guessed fill0; original constructor omitted fill and CAP-REF NewBox declares HOLLOW_FILL. Independent native enum probe confirms HOLLOW_FILL1/HORIZONTAL_HATCH0.",
+    "correction": "Corrected the verifier default from the documented signature and enum probe, retaining failed report and original frozen fixture/oracle hashes; no fixture or original expectation rewrite."
+  },
+  "scope": [
+    "The fixed titleblock reader is now allowlisted in the existing same-process DIB hash worker. Native handles remain private; no new tool or arbitrary script/path entry.",
+    "Nine titleblocks hold eleven ordered vectors each. Eight poses plus another-page same-name instance pass polygon/polyline/bezier local descriptors and page points, both complete RGB24/32 DIB hashes, original line/box/ellipse/arc/text, and ordered two-row paging.",
+    "One fill seed per titleblock remains an explicit unsupported geometry row with no invented bounds. Source mutation, cross-title cursor and closed-session queries are refused.",
+    "Dynamic titleblock refresh, rendered glyph/stroke/curve/print bounds, nested/OLE and remaining original C05 scope remain incomplete. No rendered-bounds or full-gate promotion."
+  ],
+  "latestFullRegression": {
+    "total": 756,
+    "passed": 755,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-167-titleblock-mixed/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": true,
+  "evidenceSha256": {
+    ".local/batch-167-titleblock-mixed/before-mcp.json": "fa2448bfb304ca9c5ac8a9cc932cc09de100c8cce086e7cea69e5beb8d78139f",
+    ".local/batch-167-titleblock-mixed/before-native.txt": "f2165958462c30be1738b66560b8cddf2bd670866ba98ce0edb3b1f6ef7e5cd4",
+    ".local/batch-167-titleblock-mixed/verifier-default-failure.json": "9096603d641ee0995c060d117f80dc7d78f23d20f68deaf8993d19098173344f",
+    ".local/batch-167-titleblock-mixed/default-enums.txt": "2c637d95a0c92057d8d40bdd74f52fedc6f97432320485c8bd89e5cb3c63c9ad",
+    ".local/batch-167-titleblock-mixed/native-mcp.json": "f8d06f89fb19ea96b1e4ce97fef95552fede3fb65a0a523b8c6a77beeb58bffc",
+    ".local/batch-167-titleblock-mixed/fixture.json": "c341c61c3514515697e931b359f5cec2a78905e2a5e2cea90a3ded012f6512d7",
+    ".local/batch-167-titleblock-mixed/regression.txt": "ffe01c2989a235b252ef3ce8882e45bb58c12914e113f7ca76200a5be4f80ddf"
+  }
+}

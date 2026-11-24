@@ -39,7 +39,7 @@
     "errors": 0,
     "skipped": 1,
     "status": "passed_with_skip",
-    "evidence": ".local/batch-166-bitmap-pixels/regression.txt"
+    "evidence": ".local/batch-167-titleblock-mixed/regression.txt"
   },
-  "acceptanceCanonicalSha256": "a0fdeec6bd60eb5fb70e5365c9d4354aab06339423c975f79f15813c46d84b10"
+  "acceptanceCanonicalSha256": "382e3633885be323ee2c075f9f2e94a1145640b606089491540c99367ae0e535"
 }

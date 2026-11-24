@@ -1,0 +1,18 @@
+"""Prepare an original mixed titleblock fixture with frozen controls before native creation."""
+import argparse,hashlib,json,struct
+from pathlib import Path
+from cadence_mcp.core import Config,sha256
+from cadence_mcp.environment import ADAPTERS,process_env
+from cadence_mcp.gui_loader import tcl_string
+from cadence_mcp.process_tree import run_owned_process
+p=argparse.ArgumentParser()
+for name in ('install-root','prior-root','output'):p.add_argument('--'+name,type=Path,required=True)
+a=p.parse_args();root=a.output.resolve();root.mkdir(exist_ok=False);prior=a.prior_root.resolve();originals={p:sha256(p) for p in (prior/'design.dsn',prior/'expected.json',prior/'fixture.tcl')};old=json.loads((prior/'expected.json').read_text(encoding='utf8'));specs=[['polygon',[[-25,15],[15,-5],[65,25],[5,55]],2,1,2,3],['polyline',[[-15,45],[5,5],[55,35]],3,2],['bezier',[[-35,5],[-5,65],[35,-25],[75,45]],1,1]];lines=[]
+for kind,points,*style in specs:
+ args=' '.join(str(n) for n in style);lines.append('set shape [$sym New'+{'polygon':'Polygon','polyline':'Polyline','bezier':'Bezier'}[kind]+' $st '+args+'];ck $st')
+ for x,y in points:lines.append('ck [$shape NewPoint [DboTclHelper_sMakeCPoint '+str(x)+' '+str(y)+']]')
+for bits in (24,32):
+ width,height=3,2;stride=((width*bits+31)//32)*4;pixels=bytes((i*37+bits)%256 for i in range(stride*height));dib=struct.pack('<IiiHHIIiiII',40,width,height,1,bits,0,len(pixels),0,0,0,0)+pixels;bmp=struct.pack('<2sIHHI',b'BM',14+len(dib),0,0,54)+dib;path=root/('rgb'+str(bits)+'.bmp');path.write_bytes(bmp);bounds=[-20,15,70,65] if bits==24 else [10,-10,85,45];location=bounds[:2];specs.append(['bitmap',bounds,location,[width,height],len(dib),hashlib.sha256(dib).hexdigest()]);lines.extend(['set data [DboTclHelper_sMakeBitMapData [DboTclHelper_sMakeCRect '+' '.join(map(str,bounds))+'] [DboTclHelper_sMakeCPoint '+' '.join(map(str,location))+'] '+tcl_string(path.as_posix())+']','set shape [DboTclHelper_sMakeBitmap $data $sym NULL 0 $st];ck $st'])
+# Fill seed has no bounded geometry. It must stay explicitly unsupported.
+lines.append('set shape [$sym NewFill $st [DboTclHelper_sMakeCPoint 5 5] 2 3];ck $st')
+expected={'originalOracleSha256':originals[prior/'expected.json'],'originalPoses':old['poses'],'appendedDescriptors':specs,'unsupportedKinds':['fill'],'titleblocks':9,'vectorsPerTitleblock':11,'bmpSha256':{p.name:sha256(p) for p in root.glob('*.bmp')}};(root/'expected.json').write_text(json.dumps(expected,ensure_ascii=False,indent=2)+'\n',encoding='utf8');oracle=sha256(root/'expected.json');script=(prior/'fixture.tcl').read_text(encoding='utf8');marker=' ck [$sym MarkModified]';assert script.count(marker)==1;script=script.replace(marker,'\n'.join(lines)+'\n'+marker);fixture=root/'fixture.tcl';fixture.write_text(script,encoding='utf8');cfg=Config(a.install_root,root/'work',(root,),60);process=run_owned_process([a.install_root/'tcltk/bin/tclsh.exe',fixture,a.install_root,root/'design.dsn',root/'native.json',ADAPTERS/'json.tcl'],root,process_env(cfg),60);report={'process':process,'originalInputsUnchanged':all(sha256(p)==h for p,h in originals.items()),'oracleUnchanged':sha256(root/'expected.json')==oracle,'originalInputSha256':{str(p):h for p,h in originals.items()},'passed':False};report['native']=json.loads((root/'native.json').read_text(encoding='utf8'));report['passed']=process['returnCode']==0 and report['native']['saved'] and report['originalInputsUnchanged'] and report['oracleUnchanged'];(root/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8');print(json.dumps(report),flush=True);assert report['passed']
