@@ -1,0 +1,235 @@
+{
+  "batch": 170,
+  "date": "2026-11-24",
+  "feature": "P04",
+  "baseline": "6908d6789f2b962f26efcdde252b10fd165590ac",
+  "goalComplete": false,
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "fullP04Accepted": false,
+  "productionCodeChanged": false,
+  "newPublicTools": 0,
+  "tools": 244,
+  "contractsUnchanged": true,
+  "officialSources": [
+    {
+      "installRelativePath": "doc/psptclcmdref/create.html",
+      "observation": "The documented DAT versions are9 and10; this does not prove every lifecycle works."
+    },
+    {
+      "installRelativePath": "tools/pspice/tclscripts/pspQuickView/orpspExtractTraceFromDat.tcl",
+      "observation": "Installed one-block sample uses DAT10 and copies SecondaryParamName plus standard optional header context. It does not prove two-block synthetic writing."
+    }
+  ],
+  "nativeExperiment": {
+    "scope": "synthetic writer only; not simulation or public DAT writer",
+    "originalOracleSha256": "f1242ea19ecf571d961925ae1cc732473c115f0c604d04728b367005dfb1450e",
+    "originalFixtureScriptSha256": "c57b00abc9382c12bb27fda565a2a57128da23c9cf15eec2fbe7deb6274acb5d",
+    "cases": [
+      {
+        "mode": "dat9_control",
+        "passed": true,
+        "process": {
+          "state": "exited",
+          "pid": 33588,
+          "returnCode": 0,
+          "durationSeconds": 0.141,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "lastNativeSteps": [
+          "enter closeBlock",
+          "leave closeBlock 1",
+          "enter closeFile",
+          "leave closeFile 1",
+          "completed 1 error {}"
+        ],
+        "observed": [
+          {
+            "block": {
+              "index": 0,
+              "analysisName": "AC Analysis",
+              "axis": "Frequency",
+              "rowCount": 3,
+              "traceCount": 2,
+              "complex": true,
+              "dataTypeCode": 0,
+              "analogReadSupported": true
+            },
+            "frequency": [
+              {
+                "index": 0,
+                "real": 10.0,
+                "imaginary": 0.0
+              },
+              {
+                "index": 1,
+                "real": 20.0,
+                "imaginary": 0.0
+              },
+              {
+                "index": 2,
+                "real": 30.0,
+                "imaginary": 0.0
+              }
+            ],
+            "gain": [
+              {
+                "index": 0,
+                "real": 10.0,
+                "imaginary": -1.0
+              },
+              {
+                "index": 1,
+                "real": 20.0,
+                "imaginary": -2.0
+              },
+              {
+                "index": 2,
+                "real": 30.0,
+                "imaginary": -3.0
+              }
+            ]
+          },
+          {
+            "block": {
+              "index": 1,
+              "analysisName": "AC Analysis",
+              "axis": "Frequency",
+              "rowCount": 3,
+              "traceCount": 2,
+              "complex": true,
+              "dataTypeCode": 0,
+              "analogReadSupported": true
+            },
+            "frequency": [
+              {
+                "index": 0,
+                "real": 10.0,
+                "imaginary": 0.0
+              },
+              {
+                "index": 1,
+                "real": 20.0,
+                "imaginary": 0.0
+              },
+              {
+                "index": 2,
+                "real": 30.0,
+                "imaginary": 0.0
+              }
+            ],
+            "gain": [
+              {
+                "index": 0,
+                "real": 110.0,
+                "imaginary": -2.0
+              },
+              {
+                "index": 1,
+                "real": 120.0,
+                "imaginary": -3.0
+              },
+              {
+                "index": 2,
+                "real": 130.0,
+                "imaginary": -4.0
+              }
+            ]
+          }
+        ],
+        "datSha256": "d65ec38d0dcbecea87b25ae5fa11a8b5983ba9d2dcf70e0b0aeda86d415604dc"
+      },
+      {
+        "mode": "dat10_secondary_empty",
+        "passed": false,
+        "process": {
+          "state": "exited",
+          "pid": 18492,
+          "returnCode": 3221225477,
+          "durationSeconds": 0.125,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "lastNativeSteps": [
+          "enter addDataName Frequency 0",
+          "leave addDataName 1",
+          "enter addDataName Gain 0",
+          "leave addDataName 1",
+          "enter addTimePoint 10 0"
+        ],
+        "error": "native_writer_failed",
+        "errorType": "AssertionError"
+      },
+      {
+        "mode": "dat10_secondary_step",
+        "passed": false,
+        "process": {
+          "state": "exited",
+          "pid": 17668,
+          "returnCode": 3221225477,
+          "durationSeconds": 0.14,
+          "remainingOwnedProcesses": 0,
+          "totalOwnedProcesses": 2,
+          "rootExitSignalConfirmed": true,
+          "observedProcessExitSignalsConfirmed": true,
+          "observedOwnedProcessCount": 2
+        },
+        "lastNativeSteps": [
+          "enter addDataName Frequency 0",
+          "leave addDataName 1",
+          "enter addDataName Gain 0",
+          "leave addDataName 1",
+          "enter addTimePoint 10 0"
+        ],
+        "error": "native_writer_failed",
+        "errorType": "AssertionError"
+      }
+    ],
+    "inputsUnchanged": true
+  },
+  "phaseAudit": [
+    {
+      "mode": "dat9_control",
+      "attemptedBlocks": 2,
+      "completedBlocks": 2,
+      "lastLine": "completed 1 error {}"
+    },
+    {
+      "mode": "dat10_secondary_empty",
+      "attemptedBlocks": 2,
+      "completedBlocks": 1,
+      "lastLine": "enter addTimePoint 10 0"
+    },
+    {
+      "mode": "dat10_secondary_step",
+      "attemptedBlocks": 2,
+      "completedBlocks": 1,
+      "lastLine": "enter addTimePoint 10 0"
+    }
+  ],
+  "conclusion": "DAT9 control independently reopens both full complex blocks against the original frozen oracle. DAT10 with empty or named SecondaryParamName and standard context still exits0xC0000005 on block1 first addTimePoint. Omitting that header is not a sufficient explanation/fix. Original writer10 failure, source and oracle preserved; no public writer or format gate promotion.",
+  "latestFullRegression": {
+    "total": 764,
+    "passed": 763,
+    "errors": 0,
+    "skipped": 1,
+    "status": "passed_with_skip",
+    "evidence": ".local/batch-169-titleblock-bounds/regression.txt"
+  },
+  "fullRegressionRerunThisBatch": false,
+  "validation": "New fixed probe executed natively; all three owned process trees exit with0 remaining. No production/schema changes since the764-test batch169 regression.",
+  "evidenceSha256": {
+    ".local/batch-170-dat10-header/native-report.json": "d5e9a02c5235ad743328daa087c8e25a7e5852af362b37c703dc179774a97f63",
+    ".local/batch-170-dat10-header/phase-audit.json": "5735d8536806adc33def7e406c39dd139e55403d43ceb4ab19cd7058781e13fc",
+    ".local/batch-170-dat10-header/dat9_control.log": "699fc09afc107938760ea70010dbef4ce6b5327918e7e8107f961714b8a3554f",
+    ".local/batch-170-dat10-header/dat10_secondary_empty.log": "aaea61336cd2c4a126adadf4bf13d3cac7f94ba8e5c9bd8b696f80749a95d207",
+    ".local/batch-170-dat10-header/dat10_secondary_step.log": "d18588ba0f5eac36810cd038cf1b7b06817244d237fb927064afd3f2d32dab4b"
+  }
+}

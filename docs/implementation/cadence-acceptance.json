@@ -2471,7 +2471,7 @@
       "module": "仿真数据",
       "title": "DAT block/trace/采样/复数/单位导出",
       "required": true,
-      "queueOrder": 80,
+      "queueOrder": 94,
       "dependencies": [],
       "sources": [
         "SIM-DATA",
@@ -2527,7 +2527,8 @@
         ".local/step-backend-guard-mcp-20261027/report.json",
         ".local/regression-param-step-20261027.txt",
         "docs/implementation/batch-141-evidence.json",
-        "docs/implementation/batch-156-evidence.json"
+        "docs/implementation/batch-156-evidence.json",
+        "docs/implementation/batch-170-evidence.json"
       ],
       "issues": [
         "ISS-P04-complex-fixture-native-crash",
@@ -2535,7 +2536,7 @@
       ],
       "implementationReady": true,
       "dependencyRationale": "可先用现有官方库/设计/数据副本实现独立切片；完整功能及最终联合验收要求不变",
-      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved. Batch141 verifies DC Sweep/TEMP in genuine SPB24.1 engine-generated DAT: Celsius on exact axis, page/measure and durable CSV/JSON, an unknown ordinary parameter control and compatibility with old frozen unknown-unit plans. Initial standalone CLI timeout retained. Digital flags, opaque state, DAT10 writer and the remaining format/unit scope stay open. 第156批补齐状态字26的选用模式。原 OUT 的4 µs X与旧DAT匹配；新 R→F 与 F→R 的2 µs X由求解打印表、OUT告警及原生DAT三路匹配。两组显式X与两组对驱控制仍是原生2。每个DAT三次独立读的时间、强度和状态相同，未解释末字段变化。默认整轨拒绝保持，其他标志、Probe界面、DAT10和剩余格式/单位仍后移。"
+      "remaining": "Unflagged transient getDigital records now pass six-state/time, relative strength, mixed and compressed trace paging through actual MCP. Native flagged states (observed26), opaque-tail semantics, remaining unit/format boundaries, DAT10 writer failure and original full coverage remain open; no gate promotion. Batch110: public CLI literal PARAM LIST stepping generates two new native complex blocks, each3frequency rows, with all6complex values frozen from RC math; block/sample paging, missing/out-of-range refusal, source-linked CSV/JSON fresh native reopen and fresh-server no-replay pass. Single-analysis engine STEP only produces one block and now refuses before task creation. Original DAT10 synthetic writer, digital flags/opaque semantics and remaining full unit/format boundaries are not resolved. Batch141 verifies DC Sweep/TEMP in genuine SPB24.1 engine-generated DAT: Celsius on exact axis, page/measure and durable CSV/JSON, an unknown ordinary parameter control and compatibility with old frozen unknown-unit plans. Initial standalone CLI timeout retained. Digital flags, opaque state, DAT10 writer and the remaining format/unit scope stay open. 第156批补齐状态字26的选用模式。原 OUT 的4 µs X与旧DAT匹配；新 R→F 与 F→R 的2 µs X由求解打印表、OUT告警及原生DAT三路匹配。两组显式X与两组对驱控制仍是原生2。每个DAT三次独立读的时间、强度和状态相同，未解释末字段变化。默认整轨拒绝保持，其他标志、Probe界面、DAT10和剩余格式/单位仍后移。 Batch170 repeats the original frozen two-block complex oracle with a DAT9 control and DAT10 standard header context plus empty/named SecondaryParamName from the official one-block sample. DAT9 all values passes; both DAT10 variants still exit0xC0000005 at second block first addTimePoint, owned0. Missing secondary header is not a sufficient explanation/fix; original DAT10 failure remains unresolved. No scope/status promotion."
     },
     {
       "id": "P05",
@@ -2802,11 +2803,12 @@
         ".local/dat-writer-variants-20261024/report.json",
         ".local/custom-complex-dat-mcp-20261024/report.json"
       ],
-      "latestObservation": "Original DAT10 native writer trace localizes AV to second-block first addTimePoint, after successful first block and second headers/names. Lifecycle/metadata/object variants fail; documented DAT9 fully matches unchanged original2-block oracle via fresh native generation and actual MCP twice. This is a compatible fixture route; DAT10 write failure remains open. Batch110: official CLI creates a new two-block complex parametric RC DAT; native read/export matches all6independent complex values and block boundaries. This is a separate native solver data path, not a fix of the original DAT10 writer or an inferred file format version. Original crash remains open.",
+      "latestObservation": "Original numerical oracle unchanged; fresh DAT9 control passes both complex blocks. DAT10 empty/named SecondaryParamName plus standard header context still access-violates on second-block first sample; all owned trees exit. Header omission not sufficient as cause or fix.",
       "workaroundEvidence": ".local/custom-complex-dat-mcp-20261024/report.json",
       "dat9FixtureCompatibilityAccepted": true,
       "dat10WriterResolved": false,
-      "latestEvidence": "docs/implementation/batch-110-evidence.json"
+      "latestEvidence": "docs/implementation/batch-170-evidence.json",
+      "nextAction": "Seek a documented two-block DAT10 writer lifecycle or demonstrably equivalent original-oracle path without changing expected data; keep original crash/format requirements deferred."
     },
     {
       "id": "ISS-E03-reference-unit-identity",
@@ -3818,7 +3820,7 @@
     "libraryCreateMcpAvailable": true,
     "pageEditMcpAvailable": true,
     "cliRunVerified": false,
-    "nextIndependentWork": "P04: revisit original native DAT format/unit/digital failures, preserve immutable counterexamples and independent expectations; C05 cache/render/dynamic fields remain deferred.",
+    "nextIndependentWork": "P02: read official child-local exclusive license selection documentation before any additional unavailable-license experiment; do not alter global settings or infer license failure from timeout.",
     "hierarchyMcpEvidence": ".local/hierarchy-mcp-20261023/report.json",
     "documentLifecycleEvidence": ".local/document-lifecycle-v2-20261023/report.json",
     "hierarchyMcpAvailable": true,
@@ -3987,7 +3989,7 @@
     "legacyLibraryCreateRecoveryEvidence": ".local/public-vector-legacy-faults-20261024/report.json",
     "publicMixedVectorPlacementEvidence": ".local/public-vector-placement-20261024/report.json",
     "fontQualityPersistenceIssue": "ISS-L02-comment-font-quality-persistence",
-    "batch": 169,
+    "batch": 170,
     "libraryVectorEditMcpAvailable": true,
     "libraryVectorEditMcpEvidence": [
       ".local/library-vector-edits-lines-v2-20261024/report.json",
@@ -4371,8 +4373,8 @@
     "nativeFreshPortPrerequisiteAccepted": true,
     "fullH03Accepted": false,
     "nativeDiagonalGeometryAccepted": true,
-    "evidence": "docs/implementation/batch-169-evidence.json",
-    "fullRegressionRerunThisBatch": true,
+    "evidence": "docs/implementation/batch-170-evidence.json",
+    "fullRegressionRerunThisBatch": false,
     "nativeWirePageIsolationAccepted": true,
     "automaticClearanceAccepted": false,
     "newPublicTools": 0,
@@ -4387,7 +4389,7 @@
     "nativeAnnotationAccepted": false,
     "originalRequired": 34,
     "fullyAccepted": 11,
-    "productionCodeChanged": true,
+    "productionCodeChanged": false,
     "nativeStringPropertySaveAccepted": true,
     "nativeNonStringUserPropsAccepted": false,
     "officialUserPropStringConstraintProven": true,
@@ -4454,9 +4456,9 @@
     "frozenExpectedPageCount": 3,
     "ownedWorkersStopped": true,
     "queueMoved": {
-      "feature": "C05",
-      "before": 91,
-      "after": 93
+      "feature": "P04",
+      "before": 80,
+      "after": 94
     },
     "nativeCrossPageBRefreshAccepted": true,
     "powerPCrossStillFailed": true,
@@ -4523,7 +4525,7 @@
     "graphicStrokeMcpAccepted": true,
     "fullL05Accepted": false,
     "cacheAllDisplayFontsAccepted": true,
-    "feature": "C05",
+    "feature": "P04",
     "explicitUnnumberedSingleUnitMapAccepted": true,
     "foldedLibEngineMcpAccepted": true,
     "terminalBitmapPixelsMcpAccepted": true,
