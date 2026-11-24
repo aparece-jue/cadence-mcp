@@ -1,0 +1,157 @@
+{
+  "batch": 175,
+  "date": "2026-11-25",
+  "baseline": "ec979f2eb091c7ba71d34ddc8047d9ba903dd754",
+  "feature": "C05",
+  "fullyAccepted": 11,
+  "originalRequired": 34,
+  "goalComplete": false,
+  "fullC05Accepted": false,
+  "productionCodeChanged": false,
+  "tools": 245,
+  "newPublicTools": [],
+  "diagnosticEnhancements": [
+    "Per-page native titleblock display and print flags",
+    "Active view membership in explicitly bound design",
+    "Original two-page definition-bound control generator"
+  ],
+  "originalSourceAndOraclePreserved": true,
+  "original174SourceSha256": "43da903d757d3650e0703fc48352fc62996a7ff860067c170eae2304383373e4",
+  "original174AllPageDisplayFlags": 0,
+  "controlOracleSha256": "b0f04381156510aa7b2462c0bf99489f523c959cd931f14e330bc4c905f2f2c0",
+  "controlSourceBeforeSaveSha256": "1f3f5e8805137f26cab33476358ee6a07516ab81da16b6e3dbb53ae465107367",
+  "controlSourceAfterSaveSha256": "6a0103c34d91924ccc1138dce5c16976970f5595e451ecf815d15d1ee4d61203",
+  "nativeConstruction": {
+    "state": "exited",
+    "pid": 13936,
+    "returnCode": 0,
+    "durationSeconds": 0.235,
+    "remainingOwnedProcesses": 0,
+    "totalOwnedProcesses": 2,
+    "rootExitSignalConfirmed": true,
+    "observedProcessExitSignalsConfirmed": true,
+    "observedOwnedProcessCount": 2
+  },
+  "beforeDisplay": {
+    "pages": [
+      {
+        "schematic": "ROOT",
+        "page": "UNDECLARED",
+        "titleBlockDisplayed": 0,
+        "titleBlockPrinted": 0
+      },
+      {
+        "schematic": "ROOT",
+        "page": "DECLARED",
+        "titleBlockDisplayed": 0,
+        "titleBlockPrinted": 0
+      }
+    ],
+    "undeclaredZeroDefinitions": 8,
+    "declaredInputBounds": [
+      -30,
+      10,
+      140,
+      90
+    ],
+    "inputBoundsAreMeasuredBounds": false
+  },
+  "actualDisplay": {
+    "bothPagesWireframeGraphicsVisible": true,
+    "bothPagesDisplayFlag": 1,
+    "undeclaredStillDegenerateInstances": 8,
+    "declaredNondegenerateInstances": 8,
+    "allDirtyZero": true,
+    "fullGlyphStrokeOrMixedGraphicAcceptance": false
+  },
+  "save": {
+    "saved": 1,
+    "stage": "save_design",
+    "error": "",
+    "appOwnedSessionPreserved": true
+  },
+  "independentReopen": {
+    "process": {
+      "state": "exited",
+      "pid": 23980,
+      "returnCode": 0,
+      "durationSeconds": 0.218,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "sourceUnchangedDuringRead": true,
+    "pages": [
+      {
+        "schematic": "ROOT",
+        "page": "UNDECLARED",
+        "titleBlockDisplayed": 1,
+        "titleBlockPrinted": 0
+      },
+      {
+        "schematic": "ROOT",
+        "page": "DECLARED",
+        "titleBlockDisplayed": 1,
+        "titleBlockPrinted": 0
+      }
+    ],
+    "allDirtyOne": true,
+    "declaredReturnsZeroOriginSizeBoxes": true,
+    "undeclaredReturnsZeroBoxes": true,
+    "dynamicPageFieldsStillZeroOrEmpty": true
+  },
+  "publicFixture": {
+    "creation": {
+      "state": "exited",
+      "pid": 17044,
+      "returnCode": 0,
+      "durationSeconds": 0.203,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "reopen": {
+      "state": "exited",
+      "pid": 37872,
+      "returnCode": 0,
+      "durationSeconds": 0.219,
+      "remainingOwnedProcesses": 0,
+      "totalOwnedProcesses": 2,
+      "rootExitSignalConfirmed": true,
+      "observedProcessExitSignalsConfirmed": true,
+      "observedOwnedProcessCount": 2
+    },
+    "initialDisplayAndPrintZeroVerified": true,
+    "nativeRows": 16
+  },
+  "regression": {
+    "fullRegressionRerun": false,
+    "lastFullRegression": {
+      "total": 773,
+      "passed": 772,
+      "skipped": 1
+    },
+    "bridgeRelatedLatest": {
+      "total": 30,
+      "passed": 30,
+      "batch": 174
+    }
+  },
+  "network": {
+    "batch174CommitLocal": "ec979f2",
+    "httpProxyTlsFailuresPreserved": true,
+    "socksSamePortReadProbeSucceeded": true,
+    "pushStillPendingAtEvidenceCreation": true,
+    "batch174PushVerified": "ec979f2eb091c7ba71d34ddc8047d9ba903dd754",
+    "workingCommandOptions": {
+      "http.proxy": "socks5h://127.0.0.1:7890",
+      "http.sslBackend": "openssl",
+      "http.version": "HTTP/1.1"
+    }
+  },
+  "next": "H02 original connected-resistor NULL-schematic/flat in the now working single private editor context; keep original connected design and expected partition immutable. C05 visibility/definition/cache contexts remain distinct."
+}

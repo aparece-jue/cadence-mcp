@@ -24,15 +24,18 @@ namespace eval ::cmcpGuiTitleProbe {
   if {$d eq "NULL" || $d eq ""} {error missing_active_design}
   set name [cs ""];ck [$d GetName $name]
   if {![string equal -nocase [file normalize [str $name]] EXPECTED_DESIGN]} {error wrong_design}
-  set rows {};set pages {};set count 0;set titles 0
+  set rows {};set pages {};set pageHandles {};set count 0;set titles 0
   set st [DboState];set vi [$d NewViewsIter $st $::IterDefs_SCHEMATICS];ck $st
   try {for {set view [$vi NextView $st]} {$view ne "NULL"} {set view [$vi NextView $st]} {
    ck $st;set sch [DboViewToDboSchematic $view];set sn [cs ""];ck [$sch GetName $sn]
    set pi [$sch NewPagesIter $st];ck $st
    try {for {set page [$pi NextPage $st]} {$page ne "NULL"} {set page [$pi NextPage $st]} {
     ck $st;if {[incr count]>64} {error page_limit}
+    lappend pageHandles $page
     set pn [cs ""];ck [$page GetName $pn]
-    lappend pages [cmcp::obj schematic [cmcp::q [str $sn]] page [cmcp::q [str $pn]]]
+    set displayed [$page GetTitleBlockDisplayed $st];ck $st
+    set printed [$page GetTitleBlockPrinted $st];ck $st
+    lappend pages [cmcp::obj schematic [cmcp::q [str $sn]] page [cmcp::q [str $pn]] titleBlockDisplayed $displayed titleBlockPrinted $printed]
     set it [$page NewTitleBlocksIter $st];ck $st
     try {for {set t [$it NextTitleBlock $st]} {$t ne "NULL"} {set t [$it NextTitleBlock $st]} {
      ck $st;if {[incr titles]>4096} {error title_limit}
@@ -51,7 +54,7 @@ namespace eval ::cmcpGuiTitleProbe {
   set activePage "NULL";set ap "";set pageError ""
   catch {set activePage [GetActivePage]} pageError
   if {$activePage ne "NULL" && $activePage ne ""} {set v [cs ""];ck [$activePage GetName $v];set ap [str $v];set pageError ""}
-  return [cmcp::obj activePage [cmcp::q $ap] activePageError [cmcp::q $pageError] pages [cmcp::arr $pages] rows [cmcp::arr $rows]]
+  return [cmcp::obj activePage [cmcp::q $ap] activePageInBoundDesign [expr {[lsearch -exact $pageHandles $activePage]>=0 ? "true" : "false"}] activePageError [cmcp::q $pageError] pages [cmcp::arr $pages] rows [cmcp::arr $rows]]
  }
  proc cs {v} {DboTclHelper_sMakeCString $v}
  proc str {v} {DboTclHelper_sGetConstCharPtr $v}
